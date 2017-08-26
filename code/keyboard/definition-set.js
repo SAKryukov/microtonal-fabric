@@ -6,6 +6,14 @@ const elements = {
         radio19et: document.getElementById("radio-19-et"),
         radio31et: document.getElementById("radio-31-et"),
     },
+    controls: {
+        instrument: document.getElementById("control-instrument"),
+        volume: document.getElementById("control-volume"),
+        volumeIndicator: document.getElementById("control-volume-value"),
+        transposition: document.getElementById("control-transposition"),
+        transpositionIndicator: document.getElementById("control-transposition-value"),
+        reset: document.getElementById("control-reset")
+    }, 
     legend19et: document.getElementById("radio-19-et-legend"),
     legend31et: document.getElementById("radio-31-et-legend")
 }; //elements
@@ -54,4 +62,27 @@ const notes = {
         rightIncrement: 2        
     }
 }; //notation
-notes.tet12Janko.names = notes.tet12.names; 
+notes.tet12Janko.names = notes.tet12.names;
+
+const definitionSet = {
+    highlightSound: "#ffd0a0",
+    highlightChordNote: "yellow",
+    highlightDefault: "white",
+    highlightChord: "yellow",
+    highlightComparer: "lightGreen",
+    presets: [
+        { preset: webAudioFont00, title: "Piano" },
+        { preset: webAudioFont14, title: "Bells" },
+        { preset: webAudioFont16, title: "Organ" },
+        { preset: webAudioFont24, title: "Guitar" },
+        { preset: webAudioFont91, title: "Pad 4 Choir" }
+    ],
+    defaultOctave: 4, // one octave lower than "middle C"
+    defaultPreset: 2,
+    minTransposition: -12,
+    maxTransposition: +12,
+    transpositionStep: 1,
+    minVolume: 0,
+    maxVolume: 1,
+    volumeStep: 0.01
+}; //definitionSet
