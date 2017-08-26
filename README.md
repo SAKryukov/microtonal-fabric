@@ -5,7 +5,7 @@ This project ***under development*** offers of a special structure in the form o
 The software is a pure in-browser application using [Web Audio API](https://developer.mozilla.org/en-US/docs/Web/API/Web_Audio_API). It continues the work at the similar keyboard (not microtonal) for Windows and .NET: [Musical Study with Isomorphic Computer Keyboard](https://www.codeproject.com/Articles/1201737/Musical-Study-with-Isomorphic-Computer-Keyboard).
 
 ### Supported [Tone Systems](https://en.wikipedia.org/wiki/Musical_tuning):
-- [Just Intonation](https://en.wikipedia.org/wiki/Just_intonation) (only on the [chromatic-circle]() keyboard)
+- [Just Intonation](https://en.wikipedia.org/wiki/Just_intonation) (as this system is not [chromatic](https://en.wikipedia.org/wiki/Chromaticism), it is only presented on the [chromatic-circle](https://en.wikipedia.org/wiki/Chromatic_circle) keyboard)
 - [Common-practice](https://en.wikipedia.org/wiki/Common_practice_period) [12-TET](https://en.wikipedia.org/wiki/Equal_temperament)
 - [19-TET](https://en.wikipedia.org/wiki/19_equal_temperament)
 - [31-TET](https://en.wikipedia.org/wiki/31_equal_temperament)
