@@ -1,0 +1,37 @@
+﻿<html>
+	<head>
+	</head>
+	<body>
+
+	<script>
+
+var context = new (window.AudioContext || window.webkitAudioContext)();
+
+
+var mod, modGain, osc;
+
+var out = context.destination;
+
+var startTest = function(){
+    mod = context.createOscillator();
+    mod.frequency.value = 4;
+
+    modGain = context.createGain();
+    modGain.gain.value = 30;
+
+    osc = context.createOscillator();
+    osc.frequency.value = 2300;
+
+    mod.connect(modGain);
+    modGain.connect(osc.frequency);
+    osc.connect(out);
+
+    osc.start(0);
+    mod.start(0);
+};
+
+startTest();
+
+	</script>
+	</body>
+</html>

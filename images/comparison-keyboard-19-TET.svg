@@ -1,0 +1,860 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   id="tet-19-keyboard-19-TET"
+   width="311.72034"
+   viewBox="0 0 311.72034 310.72766"
+   version="1.1"
+   sodipodi:docname="comparison-keyboard-19-TET.svg"
+   inkscape:version="0.92.1 r15371"
+   height="310.72766">
+  <metadata
+     id="tet-19-metadata13">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title />
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <defs
+     id="tet-19-defs11" />
+  <sodipodi:namedview
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1"
+     objecttolerance="10"
+     gridtolerance="10"
+     guidetolerance="10"
+     inkscape:pageopacity="0"
+     inkscape:pageshadow="2"
+     inkscape:window-width="1366"
+     inkscape:window-height="716"
+     id="tet-19-namedview9"
+     showgrid="tet-19-true"
+     inkscape:zoom="1.4142136"
+     inkscape:cx="-56.767136"
+     inkscape:cy="141.6244"
+     inkscape:window-x="-8"
+     inkscape:window-y="-8"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="layer1"
+     fit-margin-top="0"
+     fit-margin-left="0"
+     fit-margin-right="0"
+     fit-margin-bottom="0">
+    <inkscape:grid
+       type="xygrid"
+       id="tet-19-grid4502"
+       originx="635.86015"
+       originy="-45.630195" />
+  </sodipodi:namedview>
+  <text
+     xml:space="preserve"
+     style="font-style:normal;font-weight:normal;font-size:18.66666603px;line-height:0%;font-family:Sans;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+     x="95.860146"
+     y="46.357849"
+     id="tet-19-text8"><tspan
+       sodipodi:role="line"
+       x="95.860146"
+       y="51.721344"
+       id="tet-19-tspan6" /></text>
+  <path
+     style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+     d="M 155.86015,156.35785 V 46.357849"
+     inkscape:connector-curvature="0"
+     id="tet-19-path10" />
+  <path
+     style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+     d="M 155.86015,156.35785 120.14321,52.317949"
+     inkscape:connector-curvature="0"
+     id="tet-19-path12" />
+  <path
+     style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+     d="M 155.86014,156.35785 88.296738,69.552399"
+     inkscape:connector-curvature="0"
+     id="tet-19-path14" />
+  <path
+     style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+     d="M 155.86014,156.35785 63.771838,96.193549"
+     inkscape:connector-curvature="0"
+     id="tet-19-path16" />
+  <path
+     style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+     d="M 155.86014,156.35786 49.226118,129.35446"
+     inkscape:connector-curvature="0"
+     id="tet-19-path18" />
+  <path
+     style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+     d="M 155.86014,156.35786 46.235848,165.44158"
+     inkscape:connector-curvature="0"
+     id="tet-19-path20" />
+  <path
+     style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+     d="M 155.86014,156.35787 55.125078,200.54436"
+     inkscape:connector-curvature="0"
+     id="tet-19-path22" />
+  <path
+     style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+     d="M 155.86014,156.35787 74.930508,230.85883"
+     inkscape:connector-curvature="0"
+     id="tet-19-path24" />
+  <path
+     style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+     d="m 155.86015,156.35785 -52.35421,96.74211"
+     inkscape:connector-curvature="0"
+     id="tet-19-path26" />
+  <path
+     style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+     d="M 155.86015,156.35785 137.75474,264.8576"
+     inkscape:connector-curvature="0"
+     id="tet-19-path28" />
+  <path
+     style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+     d="m 155.86016,156.35785 18.10541,108.49974"
+     inkscape:connector-curvature="0"
+     id="tet-19-path30" />
+  <path
+     style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+     d="m 155.86016,156.35785 52.3542,96.74212"
+     inkscape:connector-curvature="0"
+     id="tet-19-path32" />
+  <path
+     style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+     d="m 155.86016,156.35785 80.92963,74.50096"
+     inkscape:connector-curvature="0"
+     id="tet-19-path34" />
+  <path
+     style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+     d="m 155.86016,156.35785 100.73506,44.1865"
+     inkscape:connector-curvature="0"
+     id="tet-19-path36" />
+  <path
+     style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+     d="m 155.86017,156.35784 109.62428,9.08373"
+     inkscape:connector-curvature="0"
+     id="tet-19-path38" />
+  <path
+     style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+     d="m 155.86017,156.35784 106.63402,-27.0034"
+     inkscape:connector-curvature="0"
+     id="tet-19-path40" />
+  <path
+     style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+     d="m 155.86015,156.35784 67.5634,-86.805451"
+     inkscape:connector-curvature="0"
+     id="tet-19-path42" />
+  <path
+     style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+     d="M 155.86015,156.35783 191.57709,52.317949"
+     inkscape:connector-curvature="0"
+     id="tet-19-path44" />
+  <circle
+     style="opacity:1;vector-effect:none;fill:none;fill-opacity:1;stroke:#000000;stroke-width:1;stroke-linecap:square;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:fill markers stroke"
+     cx="198.18454"
+     cy="97.278229"
+     r="105.05025"
+     transform="rotate(18.947368)"
+     id="tet-19-circle48" />
+  <path
+     style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+     d="M 155.86015,156.35784 247.94847,96.193549"
+     inkscape:connector-curvature="0"
+     id="tet-19-path50" />
+  <g
+     inkscape:groupmode="layer"
+     id="tet-19-octave-2"
+     inkscape:label="octave-2">
+    <circle
+       style="opacity:1;vector-effect:none;fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:1;stroke-linecap:square;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:fill markers stroke"
+       id="tet-19-note-2-18"
+       cx="96.645905"
+       cy="52.635796"
+       r="10"
+       transform="rotate(-18.947368)"
+       inkscape:label="note-2-18" />
+    <circle
+       style="opacity:1;vector-effect:none;fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:1;stroke-linecap:square;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:fill markers stroke"
+       id="tet-19-note-2-17"
+       cx="26.958574"
+       cy="73.261742"
+       r="10"
+       transform="rotate(-37.894737)"
+       inkscape:label="note-2-17" />
+    <circle
+       style="opacity:1;vector-effect:none;fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:1;stroke-linecap:square;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:fill markers stroke"
+       id="tet-19-note-2-16"
+       cx="-45.650127"
+       cy="70.14267"
+       r="10"
+       transform="rotate(-56.842105)"
+       inkscape:label="note-2-16" />
+    <circle
+       style="opacity:1;vector-effect:none;fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:1;stroke-linecap:square;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:fill markers stroke"
+       id="tet-19-note-2-15"
+       cx="-113.31195"
+       cy="43.616615"
+       r="10"
+       transform="rotate(-75.789474)"
+       inkscape:label="note-2-15" />
+    <circle
+       style="opacity:1;vector-effect:none;fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:1;stroke-linecap:square;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:fill markers stroke"
+       id="tet-19-note-2-14"
+       cx="-168.69466"
+       cy="-3.4419827"
+       r="10"
+       transform="rotate(-94.736842)"
+       inkscape:label="note-2-14" />
+    <circle
+       style="opacity:1;vector-effect:none;fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:1;stroke-linecap:square;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:fill markers stroke"
+       id="tet-19-note-2-13"
+       cx="-205.79668"
+       cy="-65.933502"
+       r="10"
+       transform="rotate(-113.68421)"
+       inkscape:label="note-2-13" />
+    <circle
+       style="opacity:1;vector-effect:none;fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:1;stroke-linecap:square;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:fill markers stroke"
+       id="tet-19-note-2-12"
+       cx="-220.59743"
+       cy="-137.08614"
+       r="10"
+       transform="rotate(-132.63158)"
+       inkscape:label="note-2-12" />
+    <circle
+       style="opacity:1;vector-effect:none;fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:1;stroke-linecap:square;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:fill markers stroke"
+       id="tet-19-note-2-11"
+       cx="-211.49306"
+       cy="-209.18925"
+       r="10"
+       transform="rotate(-151.57895)"
+       inkscape:label="note-2-11" />
+    <circle
+       style="opacity:1;vector-effect:none;fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:1;stroke-linecap:square;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:fill markers stroke"
+       id="tet-19-note-2-10"
+       cx="-179.47011"
+       cy="-274.42947"
+       r="10"
+       transform="rotate(-170.52632)"
+       inkscape:label="note-2-10" />
+    <circle
+       style="opacity:1;vector-effect:none;fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:1;stroke-linecap:square;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:fill markers stroke"
+       id="tet-19-note-2-9"
+       cx="-127.99883"
+       cy="-325.73691"
+       r="10"
+       transform="rotate(170.52632)"
+       inkscape:label="note-2-9" />
+    <circle
+       style="opacity:1;vector-effect:none;fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:1;stroke-linecap:square;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:fill markers stroke"
+       id="tet-19-note-2-8"
+       cx="-62.656841"
+       cy="-357.55176"
+       r="10"
+       transform="rotate(151.57895)"
+       inkscape:label="note-2-8" />
+    <circle
+       style="opacity:1;vector-effect:none;fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:1;stroke-linecap:square;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:fill markers stroke"
+       id="tet-19-note-2-7"
+       cx="9.4749689"
+       cy="-366.42621"
+       r="10"
+       transform="rotate(132.63158)"
+       inkscape:label="note-2-7" />
+    <circle
+       style="opacity:1;vector-effect:none;fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:1;stroke-linecap:square;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:fill markers stroke"
+       id="tet-19-note-2-6"
+       cx="80.580017"
+       cy="-351.39871"
+       r="10"
+       transform="rotate(113.68421)"
+       inkscape:label="note-2-6" />
+    <circle
+       style="opacity:1;vector-effect:none;fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:1;stroke-linecap:square;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:fill markers stroke"
+       id="tet-19-note-2-5"
+       cx="142.95297"
+       cy="-314.09763"
+       r="10"
+       transform="rotate(94.736843)"
+       inkscape:label="note-2-5" />
+    <circle
+       style="opacity:1;vector-effect:none;fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:1;stroke-linecap:square;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:fill markers stroke"
+       id="tet-19-note-2-4"
+       cx="189.83475"
+       cy="-258.56519"
+       r="10"
+       transform="rotate(75.789473)"
+       inkscape:label="note-2-4" />
+    <circle
+       style="opacity:1;vector-effect:none;fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:1;stroke-linecap:square;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:fill markers stroke"
+       id="tet-19-note-2-3"
+       cx="216.14497"
+       cy="-190.81918"
+       r="10"
+       transform="rotate(56.842105)"
+       inkscape:label="note-2-3" />
+    <circle
+       style="opacity:1;vector-effect:none;fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:1;stroke-linecap:square;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:fill markers stroke"
+       id="tet-19-note-2-2"
+       cx="219.03255"
+       cy="-118.20085"
+       r="10"
+       transform="rotate(37.894738)"
+       inkscape:label="note-2-2" />
+    <circle
+       style="opacity:1;vector-effect:none;fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:1;stroke-linecap:square;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:fill markers stroke"
+       id="tet-19-note-2-1"
+       cx="198.18456"
+       cy="-48.579662"
+       r="10"
+       transform="rotate(18.947368)"
+       inkscape:label="note-2-1" />
+    <circle
+       style="opacity:1;vector-effect:none;fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:1;stroke-linecap:square;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:fill markers stroke"
+       cx="155.86015"
+       cy="10.500001"
+       r="10"
+       inkscape:label="note-2-0"
+       id="tet-19-circle70" />
+  </g>
+  <g
+     inkscape:groupmode="layer"
+     id="tet-19-octave-1"
+     inkscape:label="octave-1">
+    <circle
+       style="opacity:1;vector-effect:none;fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:1;stroke-linecap:square;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:fill markers stroke"
+       id="tet-19-note-1-17"
+       cx="26.958572"
+       cy="93.968864"
+       r="10"
+       transform="rotate(-37.894737)"
+       inkscape:label="note-1-17" />
+    <circle
+       style="opacity:1;vector-effect:none;fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:1;stroke-linecap:square;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:fill markers stroke"
+       id="tet-19-note-1-18"
+       cx="96.645897"
+       cy="73.342903"
+       r="10"
+       transform="rotate(-18.947368)"
+       inkscape:label="note-1-18" />
+    <circle
+       style="opacity:1;vector-effect:none;fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:1;stroke-linecap:square;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:fill markers stroke"
+       id="tet-19-note-1-16"
+       cx="-45.650131"
+       cy="90.849777"
+       r="10"
+       transform="rotate(-56.842105)"
+       inkscape:label="note-1-16" />
+    <circle
+       style="opacity:1;vector-effect:none;fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:1;stroke-linecap:square;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:fill markers stroke"
+       id="tet-19-note-1-15"
+       cx="-113.31195"
+       cy="64.323723"
+       r="10"
+       transform="rotate(-75.789474)"
+       inkscape:label="note-1-15" />
+    <circle
+       style="opacity:1;vector-effect:none;fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:1;stroke-linecap:square;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:fill markers stroke"
+       id="tet-19-note-1-14"
+       cx="-168.69467"
+       cy="17.265123"
+       r="10"
+       transform="rotate(-94.736842)"
+       inkscape:label="note-1-14" />
+    <circle
+       style="opacity:1;vector-effect:none;fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:1;stroke-linecap:square;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:fill markers stroke"
+       id="tet-19-note-1-13"
+       cx="-205.79668"
+       cy="-45.226402"
+       r="10"
+       transform="rotate(-113.68421)"
+       inkscape:label="note-1-13" />
+    <circle
+       style="opacity:1;vector-effect:none;fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:1;stroke-linecap:square;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:fill markers stroke"
+       id="tet-19-note-1-12"
+       cx="-220.59744"
+       cy="-116.37903"
+       r="10"
+       transform="rotate(-132.63158)"
+       inkscape:label="note-1-12" />
+    <circle
+       style="opacity:1;vector-effect:none;fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:1;stroke-linecap:square;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:fill markers stroke"
+       id="tet-19-note-1-11"
+       cx="-211.49306"
+       cy="-188.48215"
+       r="10"
+       transform="rotate(-151.57895)"
+       inkscape:label="note-1-11" />
+    <circle
+       style="opacity:1;vector-effect:none;fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:1;stroke-linecap:square;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:fill markers stroke"
+       id="tet-19-note-1-10"
+       cx="-179.47009"
+       cy="-253.72238"
+       r="10"
+       transform="rotate(-170.52632)"
+       inkscape:label="note-1-10" />
+    <circle
+       style="opacity:1;vector-effect:none;fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:1;stroke-linecap:square;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:fill markers stroke"
+       id="tet-19-note-1-9"
+       cx="-127.99883"
+       cy="-305.02982"
+       r="10"
+       transform="rotate(170.52632)"
+       inkscape:label="note-1-9" />
+    <circle
+       style="opacity:1;vector-effect:none;fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:1;stroke-linecap:square;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:fill markers stroke"
+       id="tet-19-note-1-8"
+       cx="-62.656841"
+       cy="-336.84464"
+       r="10"
+       transform="rotate(151.57895)"
+       inkscape:label="note-1-8" />
+    <circle
+       style="opacity:1;vector-effect:none;fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:1;stroke-linecap:square;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:fill markers stroke"
+       id="tet-19-note-1-7"
+       cx="9.4749708"
+       cy="-345.71909"
+       r="10"
+       transform="rotate(132.63158)"
+       inkscape:label="note-1-7" />
+    <circle
+       style="opacity:1;vector-effect:none;fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:1;stroke-linecap:square;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:fill markers stroke"
+       id="tet-19-note-1-6"
+       cx="80.580017"
+       cy="-330.69159"
+       r="10"
+       transform="rotate(113.68421)"
+       inkscape:label="note-1-6" />
+    <circle
+       style="opacity:1;vector-effect:none;fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:1;stroke-linecap:square;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:fill markers stroke"
+       id="tet-19-note-1-5"
+       cx="142.95297"
+       cy="-293.39053"
+       r="10"
+       transform="rotate(94.736843)"
+       inkscape:label="note-1-5" />
+    <circle
+       style="opacity:1;vector-effect:none;fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:1;stroke-linecap:square;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:fill markers stroke"
+       id="tet-19-note-1-4"
+       cx="189.83475"
+       cy="-237.85809"
+       r="10"
+       transform="rotate(75.789473)"
+       inkscape:label="note-1-4" />
+    <circle
+       style="opacity:1;vector-effect:none;fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:1;stroke-linecap:square;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:fill markers stroke"
+       id="tet-19-note-1-3"
+       cx="216.14497"
+       cy="-170.11205"
+       r="10"
+       transform="rotate(56.842105)"
+       inkscape:label="note-1-3" />
+    <circle
+       style="opacity:1;vector-effect:none;fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:1;stroke-linecap:square;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:fill markers stroke"
+       id="tet-19-note-1-2"
+       cx="219.03255"
+       cy="-97.493759"
+       r="10"
+       transform="rotate(37.894738)"
+       inkscape:label="note-1-2" />
+    <circle
+       style="opacity:1;vector-effect:none;fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:1;stroke-linecap:square;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:fill markers stroke"
+       id="tet-19-note-1-1"
+       cx="198.18456"
+       cy="-27.872553"
+       r="10"
+       transform="rotate(18.947368)"
+       inkscape:label="note-1-1" />
+    <circle
+       style="opacity:1;vector-effect:none;fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:1;stroke-linecap:square;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:fill markers stroke"
+       id="tet-19-note-1-0"
+       cx="155.86015"
+       cy="31.207111"
+       r="10"
+       inkscape:label="note-1-0" />
+  </g>
+  <g
+     inkscape:groupmode="layer"
+     id="tet-19-octave-0"
+     inkscape:label="octave-0">
+    <circle
+       style="opacity:1;vector-effect:none;fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:1;stroke-linecap:square;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:fill markers stroke"
+       id="tet-19-note-0-18"
+       cx="96.645905"
+       cy="94.050011"
+       r="10"
+       transform="rotate(-18.947368)"
+       inkscape:label="note-0-18" />
+    <circle
+       style="opacity:1;vector-effect:none;fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:1;stroke-linecap:square;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:fill markers stroke"
+       id="tet-19-note-0-17"
+       cx="26.958576"
+       cy="114.67597"
+       r="10"
+       transform="rotate(-37.894737)"
+       inkscape:label="note-0-17" />
+    <circle
+       style="opacity:1;vector-effect:none;fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:1;stroke-linecap:square;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:fill markers stroke"
+       id="tet-19-note-0-16"
+       cx="-45.650127"
+       cy="111.55688"
+       r="10"
+       transform="rotate(-56.842105)"
+       inkscape:label="note-0-16" />
+    <circle
+       style="opacity:1;vector-effect:none;fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:1;stroke-linecap:square;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:fill markers stroke"
+       id="tet-19-note-0-15"
+       cx="-113.31195"
+       cy="85.03083"
+       r="10"
+       transform="rotate(-75.789474)"
+       inkscape:label="note-0-15" />
+    <circle
+       style="opacity:1;vector-effect:none;fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:1;stroke-linecap:square;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:fill markers stroke"
+       cx="-168.69466"
+       cy="37.972233"
+       r="10"
+       transform="rotate(-94.736842)"
+       inkscape:label="note-0-14"
+       id="tet-19-circle97" />
+    <circle
+       style="opacity:1;vector-effect:none;fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:1;stroke-linecap:square;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:fill markers stroke"
+       cx="-205.79668"
+       cy="-24.519291"
+       r="10"
+       transform="rotate(-113.68421)"
+       inkscape:label="note-0-13"
+       id="tet-19-circle99" />
+    <circle
+       style="opacity:1;vector-effect:none;fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:1;stroke-linecap:square;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:fill markers stroke"
+       cx="-220.59743"
+       cy="-95.671906"
+       r="10"
+       transform="rotate(-132.63158)"
+       inkscape:label="note-0-12"
+       id="tet-19-circle101" />
+    <circle
+       style="opacity:1;vector-effect:none;fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:1;stroke-linecap:square;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:fill markers stroke"
+       cx="-211.49306"
+       cy="-167.77504"
+       r="10"
+       transform="rotate(-151.57895)"
+       inkscape:label="note-0-11"
+       id="tet-19-circle103" />
+    <circle
+       style="opacity:1;vector-effect:none;fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:1;stroke-linecap:square;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:fill markers stroke"
+       cx="-179.47011"
+       cy="-233.01527"
+       r="10"
+       transform="rotate(-170.52632)"
+       inkscape:label="note-0-10"
+       id="tet-19-circle105" />
+    <circle
+       style="opacity:1;vector-effect:none;fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:1;stroke-linecap:square;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:fill markers stroke"
+       cx="-127.99883"
+       cy="-284.32269"
+       r="10"
+       transform="rotate(170.52632)"
+       inkscape:label="note-0-9"
+       id="tet-19-circle107" />
+    <circle
+       style="opacity:1;vector-effect:none;fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:1;stroke-linecap:square;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:fill markers stroke"
+       cx="-62.656841"
+       cy="-316.13751"
+       r="10"
+       transform="rotate(151.57895)"
+       inkscape:label="note-0-8"
+       id="tet-19-circle109" />
+    <circle
+       style="opacity:1;vector-effect:none;fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:1;stroke-linecap:square;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:fill markers stroke"
+       cx="9.474968"
+       cy="-325.01199"
+       r="10"
+       transform="rotate(132.63158)"
+       inkscape:label="note-0-7"
+       id="tet-19-circle111" />
+    <circle
+       style="opacity:1;vector-effect:none;fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:1;stroke-linecap:square;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:fill markers stroke"
+       cx="80.580017"
+       cy="-309.9845"
+       r="10"
+       transform="rotate(113.68421)"
+       inkscape:label="note-0-6"
+       id="tet-19-circle113" />
+    <circle
+       style="opacity:1;vector-effect:none;fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:1;stroke-linecap:square;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:fill markers stroke"
+       cx="142.95297"
+       cy="-272.68341"
+       r="10"
+       transform="rotate(94.736843)"
+       inkscape:label="note-0-5"
+       id="tet-19-circle115" />
+    <circle
+       style="opacity:1;vector-effect:none;fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:1;stroke-linecap:square;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:fill markers stroke"
+       cx="189.83475"
+       cy="-217.15099"
+       r="10"
+       transform="rotate(75.789473)"
+       inkscape:label="note-0-4"
+       id="tet-19-circle117" />
+    <circle
+       style="opacity:1;vector-effect:none;fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:1;stroke-linecap:square;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:fill markers stroke"
+       cx="216.14497"
+       cy="-149.40497"
+       r="10"
+       transform="rotate(56.842105)"
+       inkscape:label="note-0-3"
+       id="tet-19-circle119" />
+    <circle
+       style="opacity:1;vector-effect:none;fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:1;stroke-linecap:square;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:fill markers stroke"
+       cx="219.03255"
+       cy="-76.786636"
+       r="10"
+       transform="rotate(37.894738)"
+       inkscape:label="note-0-2"
+       id="tet-19-circle121" />
+    <circle
+       style="opacity:1;vector-effect:none;fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:1;stroke-linecap:square;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:fill markers stroke"
+       cx="198.18456"
+       cy="-7.1654525"
+       r="10"
+       transform="rotate(18.947368)"
+       inkscape:label="note-0-1"
+       id="tet-19-circle123" />
+    <circle
+       style="display:inline;opacity:1;vector-effect:none;fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:1;stroke-linecap:square;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:fill markers stroke"
+       id="tet-19-note-0-0"
+       cx="155.86015"
+       cy="51.914211"
+       r="10"
+       inkscape:label="note-0-0" />
+  </g>
+  <g
+     inkscape:groupmode="layer"
+     id="tet-19-labels"
+     inkscape:label="labels">
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:15.14888191px;line-height:0%;font-family:Sans;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.99999994px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       x="185.97836"
+       y="62.218472"
+       id="tet-19-text129"><tspan
+         sodipodi:role="line"
+         x="185.97836"
+         y="62.218472"
+         style="stroke-width:0.99999994px"
+         id="tet-19-tspan127">♯</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:15.14888191px;line-height:0%;font-family:Sans;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.99999994px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       x="149.7348"
+       y="57.421215"
+       inkscape:transform-center-x="31.819804"
+       inkscape:transform-center-y="64.346715"
+       id="tet-19-text133"><tspan
+         sodipodi:role="line"
+         x="149.7348"
+         y="57.421215"
+         style="stroke-width:0.99999994px"
+         id="tet-19-tspan131">C</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:15.14888191px;line-height:0%;font-family:Sans;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.99999994px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       x="216.95058"
+       y="79.410866"
+       id="tet-19-text137"><tspan
+         sodipodi:role="line"
+         x="216.95058"
+         y="79.410866"
+         style="stroke-width:0.99999994px"
+         id="tet-19-tspan135">♭</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:15.14888191px;line-height:0%;font-family:Sans;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.99999994px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       x="237.87198"
+       y="104.73957"
+       inkscape:transform-center-x="31.819804"
+       inkscape:transform-center-y="64.346715"
+       id="tet-19-text141"><tspan
+         sodipodi:role="line"
+         x="237.87198"
+         y="104.73957"
+         style="stroke-width:0.99999994px"
+         id="tet-19-tspan139">D</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:15.14888191px;line-height:0%;font-family:Sans;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.99999994px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       x="253.31328"
+       y="135.36371"
+       id="tet-19-text145"><tspan
+         sodipodi:role="line"
+         x="253.31328"
+         y="135.36371"
+         style="stroke-width:0.99999994px"
+         id="tet-19-tspan143">♯</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:15.14888191px;line-height:0%;font-family:Sans;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.99999994px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       x="256.88684"
+       y="170.45647"
+       id="tet-19-text149"><tspan
+         sodipodi:role="line"
+         x="256.88684"
+         y="170.45647"
+         style="stroke-width:0.99999994px"
+         id="tet-19-tspan147">♭</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:15.14888191px;line-height:0%;font-family:Sans;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.99999994px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       x="246.39934"
+       y="203.81938"
+       inkscape:transform-center-x="31.819804"
+       inkscape:transform-center-y="64.346715"
+       id="tet-19-text153"><tspan
+         sodipodi:role="line"
+         x="246.39934"
+         y="203.81938"
+         style="stroke-width:0.99999994px"
+         id="tet-19-tspan151">E</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:15.14888191px;line-height:0%;font-family:Sans;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.99999994px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       x="200.57324"
+       y="253.72031"
+       inkscape:transform-center-x="31.819804"
+       inkscape:transform-center-y="64.346715"
+       id="tet-19-text157"><tspan
+         sodipodi:role="line"
+         x="200.57324"
+         y="253.72031"
+         style="stroke-width:0.99999994px"
+         id="tet-19-tspan155">F</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:15.14888191px;line-height:0%;font-family:Sans;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.99999994px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       x="169.25642"
+       y="264.02228"
+       id="tet-19-text161"><tspan
+         sodipodi:role="line"
+         x="169.25642"
+         y="264.02228"
+         style="stroke-width:0.99999994px"
+         id="tet-19-tspan159">♯</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:15.14888191px;line-height:0%;font-family:Sans;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.99999994px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       x="135.60912"
+       y="264.85077"
+       id="tet-19-text165"><tspan
+         sodipodi:role="line"
+         x="135.60912"
+         y="264.85077"
+         style="stroke-width:0.99999994px"
+         id="tet-19-tspan163">♭</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:15.14888191px;line-height:0%;font-family:Sans;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.99999994px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       x="99.628716"
+       y="253.72031"
+       inkscape:transform-center-x="31.819804"
+       inkscape:transform-center-y="64.346715"
+       id="tet-19-text169"><tspan
+         sodipodi:role="line"
+         x="99.628716"
+         y="253.72031"
+         style="stroke-width:0.99999994px"
+         id="tet-19-tspan167">G</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:15.14888191px;line-height:0%;font-family:Sans;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.99999994px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       x="75.223854"
+       y="231.74088"
+       id="tet-19-text173"><tspan
+         sodipodi:role="line"
+         x="75.223854"
+         y="231.74088"
+         style="stroke-width:0.99999994px"
+         id="tet-19-tspan171">♯</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:15.14888191px;line-height:0%;font-family:Sans;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.99999994px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       x="57.153255"
+       y="203.7861"
+       id="tet-19-text177"><tspan
+         sodipodi:role="line"
+         x="57.153255"
+         y="203.7861"
+         style="stroke-width:0.99999994px"
+         id="tet-19-tspan175">♭</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:15.14888191px;line-height:0%;font-family:Sans;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.99999994px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       x="50.817852"
+       y="135.36372"
+       id="tet-19-text181"><tspan
+         sodipodi:role="line"
+         x="50.817852"
+         y="135.36372"
+         style="stroke-width:0.99999994px"
+         id="tet-19-tspan179">♯</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:15.14888191px;line-height:0%;font-family:Sans;letter-spacing:0px;word-spacing:0px;display:inline;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.99999994px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       x="65.363213"
+       y="104.70631"
+       id="tet-19-text185"><tspan
+         sodipodi:role="line"
+         x="65.363213"
+         y="104.70631"
+         style="stroke-width:0.99999994px"
+         id="tet-19-tspan183">♭</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:15.14888191px;line-height:0%;font-family:Sans;letter-spacing:0px;word-spacing:0px;display:inline;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.99999994px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       x="86.07679"
+       y="79.44416"
+       inkscape:transform-center-x="31.819804"
+       inkscape:transform-center-y="64.346715"
+       id="tet-19-text189"><tspan
+         sodipodi:role="line"
+         x="86.07679"
+         y="79.44416"
+         style="stroke-width:0.99999994px"
+         id="tet-19-tspan187">B</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:15.14888191px;line-height:0%;font-family:Sans;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.99999994px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       x="46.595394"
+       y="169.78264"
+       inkscape:transform-center-x="31.819804"
+       inkscape:transform-center-y="64.346715"
+       inkscape:label="text5226-65"
+       id="tet-19-text193"><tspan
+         sodipodi:role="line"
+         x="46.595394"
+         y="169.78264"
+         style="stroke-width:0.99999994px"
+         id="tet-19-tspan191">A</tspan></text>
+  </g>
+  <g
+     inkscape:groupmode="layer"
+     id="tet-19-layer1"
+     inkscape:label="rest">
+    <circle
+       style="opacity:1;vector-effect:none;fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:1;stroke-linecap:square;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:fill markers stroke"
+       id="tet-19-chord-activator"
+       cx="155.75966"
+       cy="156.35785"
+       r="40"
+       inkscape:label="chord-activator" />
+  </g>
+</svg>

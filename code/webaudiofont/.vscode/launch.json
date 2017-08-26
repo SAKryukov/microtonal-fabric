@@ -1,0 +1,12 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "chrome",
+            "request": "launch",
+            "name": "Launch Chrome against localhost",
+            "url": "file:///C:/sa/papers/my/CodeProject/WebAudio/ChromaticKeyboard/code/webaudiofont/broken-timber.html",
+            "webRoot": "${workspaceRoot}"
+        },
+    ]
+}
