@@ -18,6 +18,7 @@ const keyboardHandler = (function () {
             key.rectangle.style.fill = color;
         } else {
             const oldColor = key.colorStack.pop();
+            if (!oldColor) return;
             key.currentColor = oldColor;
             key.rectangle.style.fill = oldColor;            
         } //if
