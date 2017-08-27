@@ -50,4 +50,39 @@
     elements.radioTet.radio31et.checked = true;
     setTet(notes.tet31);
     elements.legend31et.style.visibility = "visible";
+
+    (function setHardwareKeyboardControl() {
+        const keyDictionary = {};
+        const keyHandler = function(event, doActivate) {
+            if (event.repeat) return;
+            if (event.ctrlKey) return;
+            if (event.altKey) return;
+            if (event.metaKey) return;
+            if (event.shiftKey) return;
+            const keyCode = event.keyCode || event.which;
+            const cell = keyDictionary[keyCode]; 
+            if (!cell) return;
+            cell.activate(cell, doActivate);
+            return false;
+        }; //keyHandler
+        window.onkeydown = function(event) { keyHandler(event, true); }
+        window.onkeyup = function(event) { keyHandler(event, false); }
+        const startingRow = definitionSet.hardwareKeyboardControl.startingRow;
+        let rowIndex = startingRow;
+        let xShift = 0;
+        for (row of hardwareRows) {
+            let xIndex = definitionSet.hardwareKeyboardControl.keyShift;
+            if (keyboardHandler.rows[rowIndex].length % 2 > 0)
+                xShift++;
+                xIndex -= rowIndex - xShift;
+            for (key of row) { 
+                const cell = keyboardHandler.rows[rowIndex][xIndex];
+                keyDictionary[key] = cell;
+                cell.rectangle.style.fill = "lightGreen";
+                ++xIndex;
+            } //loop xIndex
+            ++rowIndex
+        } //loop rowIndex
+    })();
+
 })();

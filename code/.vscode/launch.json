@@ -5,7 +5,7 @@
             "type": "chrome",
             "request": "launch",
             "name": "Launch Chrome against localhost",
-            "url": "file:///C:/sa/papers/My/CodeProject/WebAudio/ChromaticKeyboard.GitHub/microtonal-chromatic-lattice-keyboard/code/index.html",
+            "url": "file:///C:/sa/papers/my/CodeProject/WebAudio/ChromaticKeyboard.GitHub/microtonal-chromatic-lattice-keyboard/code/index.html",
             "webRoot": "${workspaceRoot}"
         }
     ]
