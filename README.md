@@ -17,7 +17,9 @@ The software is a pure in-browser application using [Web Audio API](https://deve
 - Chord generation
 - Optional chord visualization
 
-### [Life Demo](https://sakryukov.github.io/microtonal-chromatic-lattice-keyboard)
+### Life Demo
+
+All source code and development is in the directory "docs", which is the source of the product [Web site](https://sakryukov.github.io/microtonal-chromatic-lattice-keyboard).
 
 ### Acknowledgments
 
