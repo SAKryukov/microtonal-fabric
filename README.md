@@ -1,4 +1,4 @@
-## Microtonal Chromatic Lattice Keyboard
+## Microtonal Chromatic Lattice Keyboard — see [Life Demo](https://sakryukov.github.io/microtonal-chromatic-lattice-keyboard)
 
 This project ***under development*** offers a musical keyboard of a special structure in the form of [lattice](https://en.wikipedia.org/wiki/Lattice_%28group%29) resembling computer keyboard. This *rank-two* structure offers certain benefits over traditional *sequentially-structured* keyboards and is especially suitable for [microtonal music](https://en.wikipedia.org/wiki/Microtonal_music). In its use, the keyboard is highly suggestive of the fundamental principles of music harmony. The tone mapping is based on the [Wicki-Hayden layout](https://en.wikipedia.org/wiki/Wicki-Hayden_note_layout), but the geometry is different: it is simpler; and its symmetry matches the symmetry of the tone system more closely.
 
@@ -17,7 +17,7 @@ The software is a pure in-browser application using [Web Audio API](https://deve
 - Chord generation
 - Optional chord visualization
 
-### Life Demo
+### Life Demo and Source Code
 
 All source code and development is in the directory "docs", which is the source of the product [Web site](https://sakryukov.github.io/microtonal-chromatic-lattice-keyboard).
 
