@@ -76,10 +76,10 @@ const definitionSet = {
         { preset: webAudioFont24, title: "Guitar" },
         { preset: webAudioFont91, title: "Pad 4 Choir" }
     ],
-    defaultOctave: 4, // one octave lower than "middle C"
+    defaultOctave: 0,
     defaultPreset: 2,
-    minTransposition: -12,
-    maxTransposition: +12,
+    minTransposition: -24,
+    maxTransposition: +24,
     transpositionStep: 1,
     minVolume: 0,
     maxVolume: 1,

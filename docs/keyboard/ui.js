@@ -29,7 +29,7 @@ const keyboardHandler = (function () {
             rowCells.push(key);
             key.activate = function (key, doActivate) {
                 if (soundAction)
-                    soundAction(key, 1, key.tone, doActivate);
+                    soundAction(key, 0, key.tone, doActivate);
                 if (doActivate)
                     key.rectangle.style.fill = definitionSet.highlightSound;
                 else
