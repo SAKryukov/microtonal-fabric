@@ -67,6 +67,7 @@ const definitionSet = {
     highlightSound: "#ffd0a0",
     highlightChordNote: "yellow",
     highlightDefault: "white",
+    highlightHardwareKey: "lightGreen",
     highlightChord: "yellow",
     labelFontFamily: "sans-serif",
     hardwareKeyboardControl: {

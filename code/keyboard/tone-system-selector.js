@@ -78,7 +78,8 @@
             for (key of row) { 
                 const cell = keyboardHandler.rows[rowIndex][xIndex];
                 keyDictionary[key] = cell;
-                cell.rectangle.style.fill = "lightGreen";
+                cell.currentColor = definitionSet.highlightHardwareKey;
+                cell.rectangle.style.fill = cell.currentColor;
                 ++xIndex;
             } //loop xIndex
             ++rowIndex
