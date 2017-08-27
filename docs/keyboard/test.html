@@ -1,0 +1,25 @@
+﻿<html>
+<head>
+
+<title>onkeyup test</title>
+
+</head>
+
+<body>
+<p>press and hold any key, then release it to fire the keyup event.</p>
+<input id="target" type="text">AAA</input>
+
+<script type="text/javascript">
+
+var p = document.getElementById("target");
+p.innerHTML += "working!";
+p.onkeyup = keyup;
+window.onkeyup = keyup;
+
+function keyup() { alert("keyup event detected!"); }
+
+</script>
+
+
+</body>
+</html>

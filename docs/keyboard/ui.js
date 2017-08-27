@@ -11,6 +11,18 @@ const keyboardHandler = (function () {
 
     const nodes = elements.keyboard.childNodes;
 
+    const colorActivate = function (key, color, doActivate) {
+        if (doActivate) {
+            key.colorStack.push(key.currentColor);
+            key.currentColor = color;
+            key.rectangle.style.fill = color;
+        } else {
+            const oldColor = key.colorStack.pop();
+            key.currentColor = oldColor;
+            key.rectangle.style.fill = oldColor;            
+        } //if
+    } //colorActivate
+
     let numberOfRows = 0;
     for (let node of nodes)
         if (node.constructor == SVGGElement)
@@ -22,18 +34,20 @@ const keyboardHandler = (function () {
         for (let rowCell of node.childNodes) {
             if (rowCell.constructor != SVGRectElement) continue;
             const key = {};
+            key.activated = false;
+            key.currentColor = definitionSet.highlightDefault;
+            key.colorStack = [];
             key.rectangle = rowCell;
             key.rectangle.key = key;
             key.numberInRow = rowCells.length;
             key.row = numberOfRows - rows.length - 1;
             rowCells.push(key);
             key.activate = function (key, doActivate) {
+                if (key.activated && doActivate) return;
+                key.activated = doActivate;
                 if (soundAction)
                     soundAction(key, 0, key.tone, doActivate);
-                if (doActivate)
-                    key.rectangle.style.fill = definitionSet.highlightSound;
-                else
-                    key.rectangle.style.fill = definitionSet.highlightDefault;
+                colorActivate(key, definitionSet.highlightSound, doActivate);
             }; //key.activate
             key.rectangle.onmouseenter = function (event) {
                 if (event.buttons == 1)
