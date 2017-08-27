@@ -1,4 +1,4 @@
-const soundActionSetter = (function populate(comparer) {
+const keyboardHandler = (function populate(comparer) {
 
     let soundAction = null; // soundAction: function(object, octave, tone, doStart)
     let chordSoundAction = null; // chordSoundAction: function(chord, doStart), where chord is and array of: {object, octave: element.octave, tone: element.tone}
@@ -198,6 +198,6 @@ const soundActionSetter = (function populate(comparer) {
     for (let keyboard of elements.keyboardSet)
         populateKeyboard(keyboard.keyboard, keyboard.chordActivator, keyboard.tones);
 
-    return setSoundActions;
+    return { soundActionSetter: setSoundActions };
 
 })(comparer);

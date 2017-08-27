@@ -18,7 +18,6 @@ const elements = {
     legend31et: document.getElementById("radio-31-et-legend")
 }; //elements
 
-
 const notes = {
     tet31: {
         names: [
@@ -69,7 +68,7 @@ const definitionSet = {
     highlightChordNote: "yellow",
     highlightDefault: "white",
     highlightChord: "yellow",
-    highlightComparer: "lightGreen",
+    labelFontFamily: "sans-serif",
     presets: [
         { preset: webAudioFont00, title: "Piano" },
         { preset: webAudioFont14, title: "Bells" },

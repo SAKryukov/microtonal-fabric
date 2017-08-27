@@ -1,4 +1,11 @@
-const keyboardRows = (function () {
+const keyboardHandler = (function () {
+
+    let soundAction = null; // soundAction: function(object, octave, tone, doStart)
+    let chordSoundAction = null; // chordSoundAction: function(chord, doStart), where chord is and array of: {object, octave: element.octave, tone: element.tone}
+    const setSoundActions = function (soundActionInstance, chordSoundActionInstance) {
+        soundAction = soundActionInstance;
+        chordSoundAction = chordSoundActionInstance;
+    }; //setSoundActions
 
     const rows = [];
 
@@ -21,12 +28,12 @@ const keyboardRows = (function () {
             key.row = numberOfRows - rows.length - 1;
             rowCells.push(key);
             key.activate = function (key, doActivate) {
+                if (soundAction)
+                    soundAction(key, 1, key.tone, doActivate);
                 if (doActivate)
-                    key.rectangle.style.fill = "yellow"; //SA???
+                    key.rectangle.style.fill = definitionSet.highlightSound;
                 else
-                    key.rectangle.style.fill = "white"; //SA???
-                if (key.activationHandler)
-                    key.activationHandler(key, doActivate);
+                    key.rectangle.style.fill = definitionSet.highlightDefault;
             }; //key.activate
             key.rectangle.onmouseenter = function (event) {
                 if (event.buttons == 1)
@@ -62,12 +69,6 @@ const keyboardRows = (function () {
                 handler(cell);
     }; //rows.iterateKeys
 
-    rows.setActivationHandler = function (activationHandler) { // activationHandler(key, bool)
-        for (let row of rows)
-            for (let cell of row)
-                cell.activationHandler = activationHandler;
-    }; //rows.setActivationHandler
-
     rows.labelKeys = function (labelMaker) {
         while (notesGroup.firstChild)
             notesGroup.removeChild(notesGroup.firstChild);
@@ -78,7 +79,7 @@ const keyboardRows = (function () {
                 label.innerHTML = labelMaker(cell);
                 const width = cell.rectangle.width.baseVal.value / 3;
                 label.style = "pointer-events:none";
-                label.style.fontFamily = "Arial"; //SA???
+                label.style.fontFamily = definitionSet.labelFontFamily;
                 label.style.fontSize = width;
                 label.setAttributeNS(null, "x", cell.rectangle.x.baseVal.value + 2);
                 label.setAttributeNS(null, "y", cell.rectangle.y.baseVal.value + width + 1);
@@ -86,59 +87,6 @@ const keyboardRows = (function () {
             } //loop
     }; //rows.labelKeys
 
-    return rows;
+    return { rows: rows, soundActionSetter: setSoundActions };
 
 })();
-
-function setTet(system) {
-    let currentRow = 0;
-    let currentX = system.startingMidiNote;
-    let currentFirst = currentX;
-    const names = system.names;
-    const bigRowIncrement = system.bigRowIncrement;
-    const smallRowIncrement = system.smallRowIncrement;
-    const rightIncrement = system.rightIncrement;
-    keyboardRows.labelKeys(function (cell) {
-        if (currentRow != cell.row) {
-            currentRow = cell.row;
-            let increment = (keyboardRows[cell.row].length % 2) == 0 ? bigRowIncrement : smallRowIncrement;
-            currentX = increment + currentFirst;
-            currentFirst = currentX;
-        } //if
-        const result = names[currentX % names.length];
-        currentX += rightIncrement;
-        return result;
-    });
-} //setTet
-
-(function setKeyboardLayoutControl() {
-    elements.radioTet.radio12et.onclick = function (event) {
-        if (event.target.checked)
-            setTet(notes.tet12);
-        elements.legend19et.style.visibility = "hidden";
-        elements.legend31et.style.visibility = "hidden";
-    };
-    elements.radioTet.radio12etJanko.onclick = function (event) {
-        if (event.target.checked)
-            setTet(notes.tet12Janko);
-        elements.legend19et.style.visibility = "hidden";
-        elements.legend31et.style.visibility = "hidden";
-    };
-    elements.radioTet.radio19et.onclick = function (event) {
-        if (event.target.checked)
-            setTet(notes.tet19);
-        elements.legend19et.style.visibility = "visible";
-        elements.legend31et.style.visibility = "hidden";
-    };
-    elements.radioTet.radio31et.onclick = function (event) {
-        if (event.target.checked)
-            setTet(notes.tet31);
-        elements.legend19et.style.visibility = "hidden";
-        elements.legend31et.style.visibility = "visible";
-    };
-    elements.radioTet.radio31et.checked = true;
-    setTet(notes.tet31);
-    elements.legend31et.style.visibility = "visible";
-})();
-
-console.log("done 3");

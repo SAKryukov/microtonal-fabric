@@ -20,7 +20,7 @@
                     soundControlSet.volume);
     } //startStopNote
 
-    soundActionSetter(function (object, octave, tone, doStart) {
+    keyboardHandler.soundActionSetter(function (object, octave, tone, doStart) {
         startStopNote(object, octave, tone, doStart);
     }, function (chord, doStart) {
         for (let chordElement of chord) {
