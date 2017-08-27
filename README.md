@@ -15,8 +15,8 @@ The software is a pure in-browser application using [Web Audio API](https://deve
 - Due to the very special keyboard layout, basic playing skills acquired and techniques learned for one tone system are immediately applicable to other tone systems
 - Side-by-side comparison of the sound of tones and chords in different tone systems
 - Choice of 5 instruments
-- Chord generation
-- Optional chord visualization
+- Chord generation (under development)
+- Optional chord visualization (under development)
 
 ### Life Demo and Source Code
 
