@@ -6,6 +6,7 @@
   <style>
     html, body, svg,
     text { font-family: "Ubuntu", "Verdana"; }
+    div.control { display: inline-block; margin-left: 0.2em; margin-right: 0.2em; }
     #radio-19-et-legend, #radio-31-et-legend { visibility: hidden; margin-left: 3em; }
   </style>
 </head>
@@ -808,8 +809,41 @@
     </p>
   </div>
 
+<div class="control">
+<u>I</u>nstrument:<div class="controlTitleSeparator"></div>
+  <select id="control-instrument" accesskey="I" size="5">
+  </select>
+</p>
+</div>
+
+<div class="control">
+<u>V</u>olume: <span id="control-volume-value">?</span><div class="controlTitleSeparator"></div>
+  <input id="control-volume" accesskey="V" type="range">
+</p>
+</div>
+
+<div class="control">
+<u>T</u>ransposition: <span id="control-transposition-value">000</span><div class="controlTitleSeparator"></div>
+  <input id="control-transposition" accesskey="T" type="range">
+</p>
+</div>
+
+<div class="control">
+  <button accesskey="R" id="control-reset"><u>R</u>eset</button>
+  <div class="controlTitleSeparator"></div>
+</div>
+
+  <script src="../webaudiofont/00-acoustic-grand-piano.js"></script>
+  <script src="../webaudiofont/14-tubular-bells.js"></script>
+  <script src="../webaudiofont/16-drawbar-organ.js"></script>
+  <script src="../webaudiofont/24-acoustic-guitar-nylon.js"></script>
+  <script src="../webaudiofont/91-pad4-choir.js"></script>
+  <script src="../webaudiofont/player.js"></script>
   <script src="definition-set.js"></script>
+  <script src="../tone-system-comparison/sound-control.js"></script>
   <script src="ui.js"></script>
+  <script src="tone-system-selector.js"></script>
+  <script src="../tone-system-comparison/sound.js"></script>
   
 </body>
 
