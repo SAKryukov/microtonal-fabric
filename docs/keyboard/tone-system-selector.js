@@ -52,14 +52,13 @@
     elements.legend31et.style.visibility = "visible";
 
     (function setHardwareKeyboardControl() {
-        if (navigator.userAgent.toLowerCase().includes("seamonkey")) return;        
         const keyDictionary = {};
         const keyHandler = function(event, doActivate) {
-            if (event.repeat) return;
             if (event.ctrlKey) return;
             if (event.altKey) return;
             if (event.metaKey) return;
             if (event.shiftKey) return;
+            event.preventDefault();
             const keyCode = event.keyCode || event.which;
             const cell = keyDictionary[keyCode]; 
             if (!cell) return;
