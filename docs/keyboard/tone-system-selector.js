@@ -54,16 +54,15 @@
     (function setHardwareKeyboardControl() {
         const keyDictionary = {};
         const keyHandler = function(event, doActivate) {
-            if (event.ctrlKey) return;
-            if (event.altKey) return;
-            if (event.metaKey) return;
-            event.preventDefault();
+            if (event.ctrlKey) return true;
+            if (event.altKey) return true;
+            if (event.metaKey) return true;
             const keyCode = event.keyCode || event.which;
-            //if (keyCode == 59) keyCode = 186;
             if (event.shiftKey && keyCode != 16) return; //16 is shift
             const cell = keyDictionary[keyCode]; 
-            if (!cell) return;
+            if (!cell) return true;
             cell.activate(cell, doActivate);
+            event.preventDefault();
             return false;
         }; //keyHandler
         window.onkeydown = function(event) { keyHandler(event, true); }
