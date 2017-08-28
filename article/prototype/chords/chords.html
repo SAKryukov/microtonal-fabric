@@ -18,18 +18,121 @@
 
 <div class="control">
 <table>
+<tr><th colspan="3">Just Intonation <button>Build</button></th></tr>
 <tr><th>Use</th><th colspan="2">Inverions</th></tr>
-<tr><td><input type="checkbox">13</input></td><td><input type="checkbox">/2</input></td><td><input type="checkbox">/4</input></td></tr>
-<tr><td><input type="checkbox">11</input></td><td><input type="checkbox">/2</input></td><td><input type="checkbox">/4</input></td></tr>
-<tr><td><input type="checkbox">9</input></td><td><input type="checkbox">/2</input></td><td><input type="checkbox">/4</input></td></tr>
-<tr><td><input type="checkbox">7+</input></td><td colspan="2"><input type="checkbox">/2</input></tr>
 <tr><td>
-<input type="radio" name="just-chord-group234">sus4</input><br/>
-<input type="radio" name="just-chord-group234">sus2</input><br/>
-<input type="radio" name="just-chord-group234">major</input>
-</td><td colspan="2"><input type="checkbox">/2</input></tr>
+	<input type="checkbox" id="just-chords-13"/><label for="just-chords-13">13</label>
+</td><td>
+	<input type="checkbox" id="just-chords-13-inv2"/><label for="just-chords-13-inv2">/2</label>
+</td><td>
+	<input type="checkbox" id="just-chords-13-inv4"/><label for="just-chords-13-inv4">/4</label>
+</td></tr>
+<tr><td>
+	<input type="checkbox" id="just-chords-11"/><label for="just-chords-11">11</label>
+</td><td>
+	<input type="checkbox" id="just-chords-11-inv2"/><label for="just-chords-11-inv2">/2</label>
+</td><td>
+	<input type="checkbox" id="just-chords-11-inv4"/><label for="just-chords-11-inv4">/4</label>
+</td></tr>
+<tr><td>
+	<input type="checkbox" id="just-chords-9"/><label for="just-chords-9">9</label>
+</td><td>
+	<input type="checkbox" id="just-chords-9-inv2"/><label for="just-chords-9-inv2">/2</label>
+</td><td>
+	<input type="checkbox" id="just-chords-9-inv4"/><label for="just-chords-9-inv4">/4</label>
+</td></tr>
+<tr><td>
+	<input type="checkbox" id="just-chords-7plus"/><label for="just-chords-7plus">7+</label>
+</td><td colspan="2">
+	<input type="checkbox" id="just-chords-7plus-inv2"/><label for="just-chords-7plus-inv2">/2</label>
+</tr>
+<tr><td>
+	<input type="radio" id="just-chords-sus4" name="just-chord-group234"/><label for="just-chords-sus4">sus4</label><br/>
+	<input type="radio" id="just-chords-sus2" name="just-chord-group234" checked="true"/><label for="just-chords-sus2">major</label><br/>
+	<input type="radio" id="just-chords-major" name="just-chord-group234"/><label for="just-chords-major">sus2</label>
+</td><td colspan="2">
+	<input type="checkbox" id="just-chords-234-inv2"/><label for="just-chords-234-inv2">/2</label>
+</tr>
 </table>
-</div
+</div>
+
+<div class="control">
+<table>
+<tr><th colspan="6">12-TET <button>Build</button></th></tr>
+<tr><th></th>
+<th>&minus;</th><th>Pure</th><th>+</th>
+<th colspan="2">Inversions</th></tr>
+<tr><td>
+	<input type="radio" id="tet12-chords-13x" name="tet12-chords-13" checked="true"/><label for="tet12-chords-13x">x</label>
+</td><td>
+	<input type="radio" id="tet12-chords-13-flat" name="tet12-chords-13"/><label for="tet12-chords-13-flat">13&minus;</label>
+</td><td>
+	<input type="radio" id="tet12-chords-13" name="tet12-chords-13"/><label for="tet12-chords-13">13</label>
+</td><td>
+</td><td>
+	<input type="checkbox" id="tet12-chords-13-inv2"/><label for="tet12-chords-13-inv2">/2</label>
+</td><td>
+	<input type="checkbox" id="tet12-chords-13-inv4"/><label for="tet12-chords-13-inv4">/4</label>
+</td></tr>
+<tr><td>
+	<input type="radio" id="tet12-chords-11x" name="tet12-chords-11" checked="true"/><label for="tet12-chords-11x">x</label>
+</td><td>
+</td><td>
+	<input type="radio" id="tet12-chords-11" name="tet12-chords-11"/><label for="tet12-chords-11">11</label>
+</td><td>
+	<input type="radio" id="tet12-chords-11-sharp" name="tet12-chords-11"/><label for="tet12-chords-11-sharp">11+</label>
+</td><td>
+	<input type="checkbox" id="tet12-chords-11-inv2"/><label for="tet12-chords-11-inv2">/2</label>
+</td><td>
+	<input type="checkbox" id="tet12-chords-11-inv4"/><label for="tet12-chords-11-inv4">/4</label>
+</td></tr>
+<tr><td>
+	<input type="radio" id="tet12-chords-9x" name="tet12-chords-9" checked="true"/><label for="tet12-chords-9x">x</label>
+</td><td>
+	<input type="radio" id="tet12-chords-9-flat" name="tet12-chords-9"/><label for="tet12-chords-9-flat">9&minus;</label>
+</td><td>
+	<input type="radio" id="tet12-chords-9" name="tet12-chords-9"/><label for="tet12-chords-9">9</label>
+</td><td>
+	<input type="radio" id="tet12-chords-9-sharp" name="tet12-chords-9"/><label for="tet12-chords-9-sharp">9+</label>
+</td><td>
+	<input type="checkbox" id="tet12-chords-9-inv2"/><label for="tet12-chords-9-inv2">/2</label>
+</td><td>
+	<input type="checkbox" id="tet12-chords-9-inv4"/><label for="tet12-chords-9-inv4">/4</label>
+</td></tr>
+<tr><td>
+	<input type="radio" id="tet12-chords-7x" name="tet12-chords-7" checked="true"/><label for="tet12-chords-7x">x</label>
+</td><td>
+	<input type="radio" id="tet12-chords-6" name="tet12-chords-7"/><label for="tet12-chords-6">6</label>
+</td><td>
+	<input type="radio" id="tet12-chords-7" name="tet12-chords-7"/><label for="tet12-chords-7">7</label>
+</td><td>
+	<input type="radio" id="tet12-chords-7-sharp" name="tet12-chords-7"/><label for="tet12-chords-7-sharp">7+</label>
+</td><td colspan="2">
+	<input type="checkbox" id="tet12-chords-7-inv2"/><label for="tet12-chords-7-inv2">/2</label>
+</td></tr>
+<tr><td>
+</td><td>
+	<input type="radio" id="tet12-chords-5-flat" name="tet12-chords-5"/><label for="tet12-chords-5-flat">5&minus;</label>
+</td><td>
+	<input type="radio" id="tet12-chords-5" name="tet12-chords-5" checked="true"/><label for="tet12-chords-5">5</label>
+</td><td>
+	<input type="radio" id="tet12-chords-5-sharp" name="tet12-chords-5"/><label for="tet12-chords-5-sharp">5+</label>
+</td><td colspan="2">
+	<input type="checkbox" id="tet12-chords-5-inv2"/><label for="tet12-chords-5-inv2">/2</label>
+</td></tr>
+<tr><td>
+	<input type="radio" id="tet12-chords-2" name="tet12-chords-234" checked="true"/><label for="tet12-chords-2">2</label>
+</td><td>
+	<input type="radio" id="tet12-chords-3-flat" name="tet12-chords-234"/><label for="tet12-chords-3-flat">m</label>
+</td><td>
+	<input type="radio" id="tet12-chords-3" name="tet12-chords-234" checked="true"/><label for="tet12-chords-3">3</label>
+</td><td>
+	<input type="radio" id="tet12-chords-4" name="tet12-chords-234"/><label for="tet12-chords-4">4</label>
+</td><td colspan="2">
+	<input type="checkbox" id="tet12-chords-234-inv2"/><label for="tet12-chords-234-inv2">/2</label>
+</td></tr>
+</table>
+</div>
 
 </body>
 
