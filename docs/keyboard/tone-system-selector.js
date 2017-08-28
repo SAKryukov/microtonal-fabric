@@ -59,6 +59,7 @@
             if (event.metaKey) return;
             event.preventDefault();
             const keyCode = event.keyCode || event.which;
+            //if (keyCode == 59) keyCode = 186;
             if (event.shiftKey && keyCode != 16) return; //16 is shift
             const cell = keyDictionary[keyCode]; 
             if (!cell) return;
@@ -70,7 +71,7 @@
         const startingRow = definitionSet.hardwareKeyboardControl.startingRow;
         let rowIndex = startingRow;
         let xShift = 0;
-        for (row of hardwareRows) {
+        for (row of hardwareKeyboard.rows) {
             let xIndex = definitionSet.hardwareKeyboardControl.keyShift;
             if (keyboardHandler.rows[rowIndex].length % 2 > 0)
                 xShift++;
@@ -84,6 +85,10 @@
             } //loop xIndex
             ++rowIndex
         } //loop rowIndex
+        for (substitutionIndex in hardwareKeyboard.substitutions) {
+            const substitution = hardwareKeyboard.substitutions[substitutionIndex];
+            keyDictionary[substitutionIndex] = keyDictionary[substitution];
+        } //loop hardwareKeyboard.substitutions
     })();
 
 })();
