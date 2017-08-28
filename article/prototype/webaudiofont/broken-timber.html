@@ -1,0 +1,147 @@
+﻿<html>
+
+<head>
+	<script src="../../../docs/webaudiofont/00-acoustic-grand-piano.js"></script>
+	<script src="../../../docs/webaudiofont/14-tubular-bells.js"></script>
+	<script src="../../../docs/webaudiofont/16-drawbar-organ.js"></script>
+	<script src="../../../docs/webaudiofont/24-acoustic-guitar-nylon.js"></script>
+	<script src="../../../docs/webaudiofont/91-pad4-choir.js"></script>
+	<script src="../../../docs/webaudiofont/player.js"></script>
+
+<body>
+
+	<p><a href='javascript:scratch();'>Start from scratch</a></p>
+	<p><a href='javascript:stopAll();'>Stop All</a></p>
+
+	<a href='javascript:play(2.0+12*4);'>MIDI note 50: E</a><br/> Moving up by 10 cents:</br>
+	<a href='javascript:play(2.000001+12*4);'>50.000001</a><br/>
+	<a href='javascript:play(2.1+12*4);'>50.1</a> <a href='javascript:stop();'>Stop</a><br/>
+	<a href='javascript:play(2.2+12*4);'>50.2</a>
+	<a href='javascript:play(2.3+12*4);'>50.3</a>
+	<a href='javascript:play(2.4+12*4);'>50.4</a>
+	<a href='javascript:play(2.5+12*4);'>50.5</a>
+	<a href='javascript:play(2.6+12*4);'>50.6</a>
+	<a href='javascript:play(2.7+12*4);'>50.7</a>
+	<a href='javascript:play(2.8+12*4);'>50.8</a>
+	<a href='javascript:play(2.9+12*4);'>50.9</a><br/>
+	<a href='javascript:play(3.1+12*4);'>51.1</a>
+	<a href='javascript:play(3.2+12*4);'>51.2</a>
+	<a href='javascript:play(3.3+12*4);'>51.3</a>
+	<a href='javascript:play(3.4+12*4);'>51.4</a>
+	<a href='javascript:play(3.5+12*4);'>51.5</a>
+	<a href='javascript:play(3.6+12*4);'>51.6</a>
+	<a href='javascript:play(3.7+12*4);'>51.7</a>
+	<a href='javascript:play(3.8+12*4);'>51.8</a>
+	<a href='javascript:play(3.9+12*4);'>51.9</a><br/> Done!
+	</br></br>
+
+	<select size="5" id="select-instrument">
+		<option selected="true" value="0">00-acoustic-grand-piano-0000_SBLive_sf2.js</option>
+		<option value="1">14-tubular-bells-0140_SoundBlasterOld_sf2.js</option>
+		<option value="2">16-drawbar-organ.js</option>
+		<option value="3">24-acoustic-guitar-nylon.js</option>
+		<option value="4">91-pad4-choir.js</option>
+	</select>
+
+	<script>
+		const instrumentSelector = document.getElementById("select-instrument");
+		const presets = [
+                    webAudioFont00,
+                    webAudioFont14,
+                    webAudioFont16,
+                    webAudioFont24,
+                    webAudioFont91];		
+		let selectedPreset = presets[0];
+		const selectInstrument = function() {
+			selectedPreset = presets[parseInt(instrumentSelector.value)];
+		}
+		//const selectedPreset = _tone_0010_Chaos_sf2_file;
+		const AudioContextFunc = window.AudioContext || window.webkitAudioContext;
+		const audioContext = new AudioContextFunc();
+		const player = new WebAudioFontPlayer();
+		for (let preset of presets) 
+			player.adjustPreset(audioContext, preset);
+		let last;
+
+		const populateBuffer = function (source, buffer) {
+			const samples = buffer.getChannelData(0);
+			for (let index = 0; index < source.length / 2; index++) {
+				let word = source.charCodeAt(index * 2) | (source.charCodeAt(index * 2 + 1) << 8);
+				if (word >= 0x10000 / 2) word -= 0x10000;
+				samples[index] = word / 0x10000;
+			} //loop
+		} //populateBuffer
+
+		const zoneBufferFromFile = function (audioContext, source, zone) {
+			const ab = new ArrayBuffer(source.length);
+			const view = new Uint8Array(ab);
+			for (let index = 0; index < source.length; index++)
+				view[index] = source.charCodeAt(index);
+			audioContext.decodeAudioData(ab, function (audioBuffer) {
+				zone.buffer = audioBuffer;
+				if (zone.anchor) {
+					const float32Array = audioBuffer.getChannelData(0);
+					let mx = 0;
+					let wh = 0;
+					for (let i = 0; i < float32Array.length; i++)
+						if (float32Array[i] > mx) {
+							mx = float32Array[i];
+							wh = i;
+						} //if
+					zone.delay = wh / audioBuffer.sampleRate - zone.anchor;
+					if (zone.delay < 0)
+						zone.delay = 0;
+				} //if
+			}); //audioContext.decodeAudioData
+		}; //zoneBufferFromFile	
+
+		const createBuffer = function (audioContext, source, sampleRate) {
+			const buffer = audioContext.createBuffer(1, source.length / 2, sampleRate);
+			const samples = buffer.getChannelData(0);
+			for (let index = 0; index < source.length / 2; index++) {
+				let word = source.charCodeAt(index * 2) | (source.charCodeAt(index * 2 + 1) << 8);
+				if (word >= 0x10000 / 2) word -= 0x10000;
+				samples[index] = word / 0x10000;
+			} //loop
+			return buffer;
+		}; //createBuffer
+
+		function scratch() {
+			selectInstrument();
+			const zone = selectedPreset.zones[0];
+			if (zone.sample)
+				zone.buffer = createBuffer(audioContext, atob(zone.sample), zone.sampleRate);
+			else if (zone.file)
+				zoneBufferFromFile(audioContext, atob(zone.file), zone);
+			const source = audioContext.createBufferSource();
+			const gainNode = audioContext.createGain();
+			gainNode.gain.value = 1;
+			gainNode.connect(audioContext.destination);
+			source.buffer = zone.buffer;
+			source.playbackRate.value = 2; //	zone.sampleRate;
+			source.connect(gainNode);
+			let referenceTime = audioContext.currentTime;
+			gainNode.gain.setValueAtTime(1, referenceTime + zone.loopStart/10000);
+			gainNode.gain.exponentialRampToValueAtTime(0.0000000001, referenceTime + zone.loopEnd/20000);
+			source.start();
+		} //scratch
+
+		function play(pitch) {
+			selectInstrument();
+			last = player.startNote(
+				audioContext, audioContext.destination, selectedPreset,
+				audioContext.currentTime, pitch,
+				false);
+		} // play
+		function stop() {
+			if (last)
+				last.cancel();
+		} //stop
+		function stopAll() {
+			player.cancelQueue(audioContext);
+		} //stopAll
+	</script>
+
+</body>
+
+</html>
