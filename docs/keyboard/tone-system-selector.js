@@ -57,9 +57,9 @@
             if (event.ctrlKey) return;
             if (event.altKey) return;
             if (event.metaKey) return;
-            if (event.shiftKey) return;
             event.preventDefault();
             const keyCode = event.keyCode || event.which;
+            if (event.shiftKey && keyCode != 16) return; //16 is shift
             const cell = keyDictionary[keyCode]; 
             if (!cell) return;
             cell.activate(cell, doActivate);
