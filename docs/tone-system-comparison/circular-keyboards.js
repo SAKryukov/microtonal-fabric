@@ -198,6 +198,7 @@ const keyboardHandler = (function populate(comparer) {
     for (let keyboard of elements.keyboardSet)
         populateKeyboard(keyboard.keyboard, keyboard.chordActivator, keyboard.tones);
 
+    /*
     window.oncontextmenu = function(event) {
         const foundKeyboard;
         for (keyboard of elements.keyboardSet) {
@@ -216,7 +217,8 @@ const keyboardHandler = (function populate(comparer) {
             } //if
         } //loop
     }; //window.oncontextmenu
-
+    */
+    
     return { soundActionSetter: setSoundActions };
 
 })(comparer);
