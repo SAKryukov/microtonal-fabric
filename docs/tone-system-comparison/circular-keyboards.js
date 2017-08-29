@@ -198,6 +198,25 @@ const keyboardHandler = (function populate(comparer) {
     for (let keyboard of elements.keyboardSet)
         populateKeyboard(keyboard.keyboard, keyboard.chordActivator, keyboard.tones);
 
+    window.oncontextmenu = function(event) {
+        const foundKeyboard;
+        for (keyboard of elements.keyboardSet) {
+            const element = keyboard.keyboard;
+            const comStyle = window.getComputedStyle(element, null);
+            const rect = element.getBoundingClientRect(); 
+            const x = rect.left;
+            const y = rect.top;
+            const width = rect.width;
+            const height = rect.height;
+            const eventX = event.clientX;
+            const eventY = event.clientY;
+            if (x <= eventX && eventX <= x + width && y <= eventY && eventY <= y + height) {
+                foundKeyboard = element;
+                break;
+            } //if
+        } //loop
+    }; //window.oncontextmenu
+
     return { soundActionSetter: setSoundActions };
 
 })(comparer);

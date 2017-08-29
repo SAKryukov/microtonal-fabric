@@ -19,7 +19,8 @@
     th, td { border: thin solid black; padding-left: 1em; padding-right: 1em; }
     th { border-bottom: solid black 2px; }
     th { background-color: lightGray; font-weight: normal; font-size: 100%; }
-    table { border: solid black 2px; border-collapse: collapse; }  </style>
+    table { border: solid black 2px; border-collapse: collapse; }
+    div.chordSet { visibility: collapse; }
   </style>
 </head>
 
@@ -3147,10 +3148,9 @@
   <div class="controlTitleSeparator"></div>
 </div>
 
-<!-- details><summary accesskey="O">Ch<u>o</u>rds</summary -->
+<div class="chordSet">
 <!--- Just: ---------------------------------------------------------------------------------------------------------------------->
-<div class="control">
-<table>
+<table id="just-chord-table">
 <tr><th colspan="3">Just Intonation <button id="just-chords-build">Build</button></th></tr>
 <tr><th>Use</th><th colspan="2">Inversions</th></tr>
 <tr><td>
@@ -3187,11 +3187,9 @@
 	<input type="checkbox" id="just-chords-234-inv2"/><label for="just-chords-234-inv2">/2</label>
 </tr>
 </table>
-</div>
 
 <!--- 12-TET: -------------------------------------------------------------------------------------------------------------------->
-<div class="control">
-<table>
+<table id="tet12-chord-table">
 <tr><th colspan="6">12-TET <button id="tet12-chords-build">Build</button></th></tr>
 <tr><th></th>
 <th>&minus;</th><th>Pure</th><th>+</th>
@@ -3266,12 +3264,9 @@
 	<input type="checkbox" id="tet12-chords-234-inv2"/><label for="tet12-chords-234-inv2">/2</label>
 </td></tr>
 </table>
-</div>
-
 
 <!--- 19-TET: -------------------------------------------------------------------------------------------------------------------->
-<div class="control">
-<table>
+<table id="tet19-chord-table">
 <tr><th colspan="6">19-TET <button id="tet19-chords-build">Build</button></th></tr>
 <tr><th></th>
 <th>&minus;</th><th>Pure</th><th>+</th>
@@ -3395,12 +3390,10 @@
 	<input type="checkbox" id="tet19-chords-2-inv2"/><label for="tet19-chords-2-inv2">/2</label>
 </td></tr>
 </table>
-</div>
 
 <!--- 31-TET: -------------------------------------------------------------------------------------------------------------------->
-<div class="control">
-<table>
-<tr><th colspan="8">19-TET <button id="tet31-chords-build">Build</button></th></tr>
+<table id="tet31-chord-table">
+<tr><th colspan="8">31-TET <button id="tet31-chords-build">Build</button></th></tr>
 <tr><th></th>
 <th>&minus;&minus;</th><th>&minus;</th><th>Pure</th><th>+</th><th>++</th>
 <th colspan="2">Inversions</th></tr>
@@ -3562,7 +3555,6 @@
 </td></tr>
 </table>
 </div>
-</details>
 
   <p>All round shapes are musical instrument keys. Lower octaves are closer to the center.
     <br/>Central areas play chords. Use Shift+note to toggle a note of a chord, double click to clear chord.</p>

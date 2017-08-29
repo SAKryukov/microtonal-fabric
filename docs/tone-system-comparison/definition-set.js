@@ -3,6 +3,7 @@ const elements = {
         {
             keyboard: document.getElementById("just-keyboard"),
             chordActivator: document.getElementById("just-chord-activator"),
+            chordTable: document.getElementById("just-chord-table"),            
             title: "Just Intonation",
             tones: [
                 1 / 1, //C
@@ -17,16 +18,19 @@ const elements = {
         {
             keyboard: document.getElementById("tet-12-keyboard"),
             chordActivator: document.getElementById("tet-12-chord-activator"),
+            chordTable: document.getElementById("tet12-chord-table"),            
             title: "12-TET"
         },
         {
             keyboard: document.getElementById("tet-19-keyboard"),
             chordActivator: document.getElementById("tet-19-chord-activator"),
+            chordTable: document.getElementById("tet19-chord-table"),            
             title: "19-TET"
         },
         {
             keyboard: document.getElementById("tet-31-keyboard"),
             chordActivator: document.getElementById("tet-31-chord-activator"),
+            chordTable: document.getElementById("tet31-chord-table"),            
             title: "31-TET"
         }
     ],
