@@ -3,8 +3,22 @@
 function WebAudioFontPlayer() {
 
     const envelopes = new Set();
-
-    const setupEnvelope = function (audioContext, envelope, zone, volume, when, sampleDuration, noteDuration) {
+    this.cancelQueue = function (audioContext) {
+        for (let envelopeEntry of envelopes.entries())
+            envelopeEntry[0].cancel();
+        envelopes.clear();
+    }; //cancelQueue
+    
+    const createEnvelope = function (audioContext, target, zone, volume, when, sampleDuration, noteDuration) {
+        const envelope = audioContext.createGain();
+        envelope.noDuration = (noteDuration != undefined && noteDuration.constructor == Boolean);
+        if (envelope.noDuration)
+            noteDuration = 1;
+        envelope.target = target;
+        envelope.connect(target);
+        setupCancel(envelope);
+        envelopes.add(envelope);
+        // setup:
         envelope.gain.setValueAtTime(0, audioContext.currentTime);
         let lastTime = 0;
         let lastVolume = 0;
@@ -54,7 +68,8 @@ function WebAudioFontPlayer() {
         }
         if (!envelope.noDuration)
             envelope.gain.linearRampToValueAtTime(0, when + duration);
-    }; //setupEnvelope
+        return envelope;
+    }; //createEnvelope
 
     const numValue = function (aValue, defValue) {
         if (aValue == 0 || (aValue && aValue.constructor == Number))
@@ -63,23 +78,9 @@ function WebAudioFontPlayer() {
             return defValue;
     }; //numValue
 
-    const findEnvelope = function (audioContext, target, when, duration) {
-        const envelope = audioContext.createGain();
-        envelope.target = target;
-        envelope.connect(target);
-        envelope.cancel = function () {
-            if (envelope.noDuration || envelope.when + envelope.duration > audioContext.currentTime) {
-                envelope.gain.cancelScheduledValues(0);
-                envelope.gain.setTargetAtTime(0.00001, audioContext.currentTime, 0.1);
-                envelope.when = audioContext.currentTime + 0.00001;
-                envelope.duration = 0;
-            } //if
-        }; //envelope.cancel
-        envelopes.add(envelope);
-        return envelope;
-    }; //findEnvelope
-
     this.adjustPreset = function (audioContext, preset) {
+        if (!preset) return;
+        if (preset.constructor == String) return;
         const fixedZones = [];
         for (let zone of preset.zones) {
             if (zone.keyRangeLow > zone.keyRangeHigh) continue; // pathological case, not used anyway
@@ -153,35 +154,27 @@ function WebAudioFontPlayer() {
         return zone;
     }; //findZone
 
-    this.cancelQueue = function (audioContext) {
-        for (let envelopeEntry of envelopes.entries()) {
-            const envelope = envelopeEntry[0];
-            envelope.gain.cancelScheduledValues(0);
-            envelope.gain.value = 0;
-            envelope.when = -1;
-            try {
-                envelope.source.disconnect();
-            } catch (ex) {
-                console.log(ex);
-            }
-        } //loop
-    }; //cancelQueue
+    function setupCancel(envelope) {
+        envelope.cancel = function (cancellingQueue) {
+            if (!cancellingQueue)
+                envelopes.delete(this);
+            this.source.stop();
+            this.source.disconnect();
+            this.disconnect();
+        }; //envelope.cancel
+    } //setupCancel
 
-    const synthesizeDirectly = function (audioContext, target, waveForm, when, pitch, duration, volume) {
+    const startWaveForm = function (audioContext, target, waveForm, when, pitch, duration, volume) {
         const oscillator = audioContext.createOscillator();
         const gainNode = audioContext.createGain();
         oscillator.gainNode = gainNode;
         oscillator.connect(gainNode);
-        gainNode.connect(audioContext.destination);
+        gainNode.connect(target);
         oscillator.type = waveForm; // sine wave — other values are 'square', 'sawtooth', 'triangle' and 'custom'
         oscillator.frequency.value = 27.5 * Math.pow(2, (pitch - 21) / 12);
-        gainNode.gain.value = 1; //volume;
-        gainNode.cancel = function () {
-            oscillator.stop();
-            oscillator.disconnect();
-            gainNode.disconnect();
-        } //
-        gainNode.source = oscillator; 
+        gainNode.gain.value = volume;
+        setupCancel(gainNode);
+        gainNode.source = oscillator;
         let noDuration = (duration != undefined && duration.constructor == Boolean);
         let startWhen = when;
         if (startWhen < audioContext.currentTime)
@@ -194,7 +187,7 @@ function WebAudioFontPlayer() {
         }; //oscillator.onended
         envelopes.add(gainNode);
         return gainNode;
-    } //synthesizeDirectly
+    } //startWaveForm
 
     this.startNote = function (audioContext, target, preset, when, pitch, duration, volume, slides) {
         if (volume)
@@ -204,7 +197,7 @@ function WebAudioFontPlayer() {
         if (!preset)
             preset = "sine";
         if (preset.constructor == String)
-            return synthesizeDirectly(audioContext, target, preset, when, pitch, duration, volume);
+            return startWaveForm(audioContext, target, preset, when, pitch, duration, volume);
         const zone = findZone(audioContext, preset, pitch);
         if (!(zone.buffer)) {
             console.log('empty buffer ', zone);
@@ -216,9 +209,6 @@ function WebAudioFontPlayer() {
         let startWhen = when;
         if (startWhen < audioContext.currentTime)
             startWhen = audioContext.currentTime;
-        let noDuration = (duration != undefined && duration.constructor == Boolean);
-        if (noDuration)
-            duration = 1;
         const waveDuration = duration;
         let loop = true;
         if (zone.loopStart < 1 || zone.loopStart >= zone.loopEnd)
@@ -226,35 +216,32 @@ function WebAudioFontPlayer() {
         if (!loop)
             if (waveDuration > zone.buffer.duration / playbackRate)
                 waveDuration = zone.buffer.duration / playbackRate;
-        const envelope = findEnvelope(audioContext, target, startWhen, waveDuration);
-        envelope.noDuration = noDuration;
-        setupEnvelope(audioContext, envelope, zone, volume, startWhen, waveDuration, duration);
-        envelope.audioBufferSourceNode = audioContext.createBufferSource();
-        envelope.source = envelope.audioBufferSourceNode;
-        envelope.audioBufferSourceNode.envelope = envelope;
-        envelope.audioBufferSourceNode.onended = function (event) {
+        const envelope = createEnvelope(audioContext, target, zone, volume, startWhen, waveDuration, duration);
+        envelope.source = audioContext.createBufferSource();
+        envelope.source.envelope = envelope;
+        envelope.source.onended = function (event) {
             event.target.envelope.cancel();
         }; //oscillator.onended
-        envelope.audioBufferSourceNode.playbackRate.value = playbackRate;
+        envelope.source.playbackRate.value = playbackRate;
         if (slides && slides.length > 0) {
-            envelope.audioBufferSourceNode.playbackRate.setValueAtTime(playbackRate, when);
+            envelope.source.playbackRate.setValueAtTime(playbackRate, when);
             for (let slide of slides) {
                 const newPlaybackRate = 1.0 * Math.pow(2, (100.0 * slide.pitch - baseDetune) / 1200.0);
                 const newWhen = when + slide.when;
-                envelope.audioBufferSourceNode.playbackRate.linearRampToValueAtTime(newPlaybackRate, newWhen);
+                envelope.source.playbackRate.linearRampToValueAtTime(newPlaybackRate, newWhen);
             } //loop
         } //if
-        envelope.audioBufferSourceNode.buffer = zone.buffer;
+        envelope.source.buffer = zone.buffer;
         if (loop) {
-            envelope.audioBufferSourceNode.loop = true;
-            envelope.audioBufferSourceNode.loopStart = zone.loopStart / zone.sampleRate + zone.delay;
-            envelope.audioBufferSourceNode.loopEnd = zone.loopEnd / zone.sampleRate + zone.delay;
+            envelope.source.loop = true;
+            envelope.source.loopStart = zone.loopStart / zone.sampleRate + zone.delay;
+            envelope.source.loopEnd = zone.loopEnd / zone.sampleRate + zone.delay;
         } else
-            envelope.audioBufferSourceNode.loop = false;
-        envelope.audioBufferSourceNode.connect(envelope);
-        envelope.audioBufferSourceNode.start(startWhen, zone.delay);
+            envelope.source.loop = false;
+        envelope.source.connect(envelope);
+        envelope.source.start(startWhen, zone.delay);
         if (!envelope.noDuration)
-            envelope.audioBufferSourceNode.stop(startWhen + waveDuration);
+            envelope.source.stop(startWhen + waveDuration);
         envelope.when = startWhen;
         envelope.duration = waveDuration;
         envelope.pitch = pitch;

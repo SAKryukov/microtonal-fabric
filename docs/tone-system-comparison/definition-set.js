@@ -54,7 +54,12 @@ const definitionSet = {
         { preset: webAudioFont14, title: "Bells" },
         { preset: webAudioFont16, title: "Organ" },
         { preset: webAudioFont24, title: "Guitar" },
-        { preset: webAudioFont91, title: "Pad 4 Choir" }
+        { preset: webAudioFont91, title: "Pad 4 Choir" },
+        //"sine", "square", "sawtooth", "triangle":
+        { preset: "sine", title: "Sine" },
+        { preset: "square", title: "Square" },
+        { preset: "sawtooth", title: "Saw Tooth" },
+        { preset: "triangle", title: "Triangle" }
     ],
     defaultOctave: 4, // one octave lower than "middle C"
     defaultPreset: 2,
