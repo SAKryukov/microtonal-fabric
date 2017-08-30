@@ -12,12 +12,13 @@
     div.keyboard, div.control, div.comparer { margin: 0; display: inline-block; margin-left: 0.2em; margin-right: 0.2em; }
     p { margin:0; margin-top:0.6em; }
     div.comparer { text-align: center; }
-    button { display: block; }
+    #control-reset { display: block; }
+    button { margin-left: 1em; float: right; }
     div.keyboard > p { font-size: 140%; text-align: center; }
     select { overflow: auto; padding-left: 0.4em; padding-right: 0.4em; }
     div.controlTitleSeparator { margin: 0; margin-bottom: 8px; }
     option.off { background-color: red; color: white; }
-    th, td { border: thin solid black; padding-left: 1em; padding-right: 1em; }
+    th, td { border: thin solid black; padding-left: 1em; padding-right: 1em; background-color: white; }
     th { border-bottom: solid black 2px; }
     th { background-color: lightGray; font-weight: normal; font-size: 100%; }
     table { border: solid black 2px; border-collapse: collapse; }
@@ -3152,7 +3153,7 @@
 <div class="chordSet">
 <!--- Just: ---------------------------------------------------------------------------------------------------------------------->
 <table id="just-chord-table">
-<tr><th colspan="3">Just Intonation <button id="just-chords-build">Build</button></th></tr>
+<tr><th colspan="3">Just Intonation <button id="just-chord-close">Close</button> <button id="just-chord-build">Build</button></th></tr>
 <tr><th>Use</th><th colspan="2">Inversions</th></tr>
 <tr><td>
 	<input type="checkbox" id="just-chords-13"/><label for="just-chords-13">13</label>
@@ -3191,7 +3192,7 @@
 
 <!--- 12-TET: -------------------------------------------------------------------------------------------------------------------->
 <table id="tet12-chord-table">
-<tr><th colspan="6">12-TET <button id="tet12-chords-build">Build</button></th></tr>
+<tr><th colspan="6">12-TET <button id="tet12-chord-close">Close</button> <button id="tet12-chord-build">Build</button></th></tr>
 <tr><th></th>
 <th>&minus;</th><th>Pure</th><th>+</th>
 <th colspan="2">Inversions</th></tr>
@@ -3268,7 +3269,7 @@
 
 <!--- 19-TET: -------------------------------------------------------------------------------------------------------------------->
 <table id="tet19-chord-table">
-<tr><th colspan="6">19-TET <button id="tet19-chords-build">Build</button></th></tr>
+<tr><th colspan="6">19-TET <button id="tet19-chord-close">Close</button> <button id="tet19-chord-build">Build</button></th></tr>
 <tr><th></th>
 <th>&minus;</th><th>Pure</th><th>+</th>
 <th colspan="2">Inversions</th></tr>
@@ -3394,7 +3395,7 @@
 
 <!--- 31-TET: -------------------------------------------------------------------------------------------------------------------->
 <table id="tet31-chord-table">
-<tr><th colspan="8">31-TET <button id="tet31-chords-build">Build</button></th></tr>
+<tr><th colspan="8">31-TET <button id="tet31-chord-close">Close</button> <button id="tet31-chord-build">Build</button></th></tr>
 <tr><th></th>
 <th>&minus;&minus;</th><th>&minus;</th><th>Pure</th><th>+</th><th>++</th>
 <th colspan="2">Inversions</th></tr>
@@ -3568,7 +3569,9 @@
   <script src="../webaudiofont/player.js"></script>
   <script src="definition-set.js"></script>
   <script src="comparer.js"></script>
+  <script src="../ui/chord-builder.js"></script>
   <script src="circular-keyboards.js"></script>
+  <script src="chords.js"></script>
   <script src="../ui/sound-control.js"></script>
   <script src="../ui/sound.js"></script>
 

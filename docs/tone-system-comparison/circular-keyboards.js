@@ -74,7 +74,20 @@ const keyboardHandler = (function populate(comparer) {
                 if (chordActivator.chord.count < 1)
                     chordActivator.setVisibility(chordActivator, false);
             } //if
-        }; //setKeyState    
+        }; //setKeyState
+
+        keyboard.setChordNode = function(octave, note, doSet) {
+            const newState = doSet ? keyStates.chord : keyStates.none;
+            setKeyState(octaveGroups[octaveGroups.length - octave - 1][octaveGroups[0].length - note - 1], newState);
+        } //keyboard.setChordNode
+        keyboard.resetChord = function() {
+            const chordClone = Object.assign({}, chordActivator.chord);
+            for (let index in chordClone) {
+                const chordElement = chordClone[index];
+                if (chordElement.constructor == Number) continue;
+                setKeyState(chordElement, keyStates.none);
+            } //loop chordClone
+        } //keyboard.resetChord
 
         let octaveNumber = octaveGroups.length - 1;
         for (let octaveGroup of octaveGroups) {
@@ -88,14 +101,7 @@ const keyboardHandler = (function populate(comparer) {
                 else
                     circle.tone = circle.note / octaveGroup.length;
                 circle.tone *= 12; // in Web Audio Font system, tones are expressed in 12-TET semitones
-                circle.resetChord = function () {
-                    const chordClone = Object.assign({}, chordActivator.chord);
-                    for (let index in chordClone) {
-                        const chordElement = chordClone[index];
-                        if (chordElement.constructor == Number) continue;
-                        setKeyState(chordElement, keyStates.none);
-                    } //loop chordClone
-                } //circle.resetChord
+                circle.resetChord = function () { keyboard.resetChord(); };
                 circle.activate = function (key, prefixed, doActivate) {
                     if (doActivate) {
                         if (prefixed) {
@@ -198,27 +204,6 @@ const keyboardHandler = (function populate(comparer) {
     for (let keyboard of elements.keyboardSet)
         populateKeyboard(keyboard.keyboard, keyboard.chordActivator, keyboard.tones);
 
-    /*
-    window.oncontextmenu = function(event) {
-        const foundKeyboard;
-        for (keyboard of elements.keyboardSet) {
-            const element = keyboard.keyboard;
-            const comStyle = window.getComputedStyle(element, null);
-            const rect = element.getBoundingClientRect(); 
-            const x = rect.left;
-            const y = rect.top;
-            const width = rect.width;
-            const height = rect.height;
-            const eventX = event.clientX;
-            const eventY = event.clientY;
-            if (x <= eventX && eventX <= x + width && y <= eventY && eventY <= y + height) {
-                foundKeyboard = element;
-                break;
-            } //if
-        } //loop
-    }; //window.oncontextmenu
-    */
-    
     return { soundActionSetter: setSoundActions };
 
 })(comparer);

@@ -3,7 +3,11 @@ const elements = {
         {
             keyboard: document.getElementById("just-keyboard"),
             chordActivator: document.getElementById("just-chord-activator"),
-            chordTable: document.getElementById("just-chord-table"),            
+            chordTable: {
+                table: document.getElementById("just-chord-table"),
+                buildButton: document.getElementById("just-chord-build"),
+                closeButton: document.getElementById("just-chord-close")
+            },            
             title: "Just Intonation",
             tones: [
                 1 / 1, //C
@@ -18,19 +22,31 @@ const elements = {
         {
             keyboard: document.getElementById("tet-12-keyboard"),
             chordActivator: document.getElementById("tet-12-chord-activator"),
-            chordTable: document.getElementById("tet12-chord-table"),            
+            chordTable:  {
+                table: document.getElementById("tet12-chord-table"),
+                buildButton: document.getElementById("tet12-chord-build"),
+                closeButton: document.getElementById("tet12-chord-close")
+            },
             title: "12-TET"
         },
         {
             keyboard: document.getElementById("tet-19-keyboard"),
             chordActivator: document.getElementById("tet-19-chord-activator"),
-            chordTable: document.getElementById("tet19-chord-table"),            
+            chordTable:  {
+                table: document.getElementById("tet19-chord-table"),
+                buildButton: document.getElementById("tet19-chord-build"),
+                closeButton: document.getElementById("tet19-chord-close")
+            },            
             title: "19-TET"
         },
         {
             keyboard: document.getElementById("tet-31-keyboard"),
             chordActivator: document.getElementById("tet-31-chord-activator"),
-            chordTable: document.getElementById("tet31-chord-table"),            
+            chordTable:  {
+                table: document.getElementById("tet31-chord-table"),
+                buildButton: document.getElementById("tet31-chord-build"),
+                closeButton: document.getElementById("tet31-chord-close")
+            },            
             title: "31-TET"
         }
     ],
