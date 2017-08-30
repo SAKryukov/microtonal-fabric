@@ -9,6 +9,8 @@
 
     let enteredElement = null;
 
+    const baseOctave = 1; // specific to circular keyboards
+
     (function setupChordTables() {
         for (keyboard of elements.keyboardSet) {
             const element = keyboard.keyboard;
@@ -29,8 +31,11 @@
             buildButton.onclick = function(event) {
                 element.resetChord();
                 const chord = chordBuilder.build();
-                for (let chordNote of chord)
-                    element.setChordNode(chordNote.octave, chordNote.note, true);
+                for (let chordNote of chord) {
+                    const noteOctave = Math.floor(chordNote.note / keyboard.toneCount);
+                    const note = chordNote.note % keyboard.toneCount;
+                    element.setChordNode(baseOctave + chordNote.octave + noteOctave, note, true);
+                } //loop
                 removeShown();
             } //buildButton.onclick
             buildButton.table = table;

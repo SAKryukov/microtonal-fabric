@@ -1,18 +1,40 @@
 function ChordBuilder(table) {
 
-    const noteGroup = [];
-    const noteInversionGroup = { inversion2: null, inversion4: null };
-    const lines = [];
+    const notes = [];
+
+    const addInverter = function(radio, note, octaveValue) {
+        if (!note.inverters)
+            note.inverters = [];
+        const inverterId = radio.dataset["inverter" + octaveValue];
+        if (!inverterId) return;
+        const inverter = document.getElementById(inverterId);
+        if (!inverter) return;
+        note.inverters.push(inverter);   
+    } //addInverter
+    const addInverters = function(radio, note) {
+        addInverter(radio, note, 2);
+        addInverter(radio, note, 4);
+        if (note.inverters[1]) {
+            if (note.inverters[1].lower) return;
+            note.inverters[1].lower = note.inverters[0];
+            note.inverters[1].onclick = function(event) {
+                event.target.lower.disabled = event.target.checked;
+            } //onclick
+        } //if there are two
+    } //addInverters
 
     const parseTableElement = function (element) {
         for (child of element.childNodes) {
             const constructor = child.constructor;
             if (constructor == HTMLInputElement) {
                 const attributeType = child.getAttribute("type");
-                if (attributeType == "checkbox")
-                    lines.push(child);
-                else if (attributeType == "radio")
-                    noteGroup.push(child);
+                if (attributeType == "radio") {
+                    if (!child.dataset.note) continue;
+                    const note = { radio: child };
+                    note.note = child.dataset.note;
+                    addInverters(child, note);
+                    notes.push(note);
+                } //if
             } //if
             parseTableElement(child);
         } //loop
@@ -20,10 +42,18 @@ function ChordBuilder(table) {
     parseTableElement(table);
 
     ChordBuilder.prototype.build = function () {
-        return [
-            { octave: 0, note: 0 },
-            { octave: 1, note: 1 }
-        ];
+        const result = [];
+        for (note of notes) {
+            if (!note.radio.checked) continue;
+            debugger;
+            let octave = 0;
+            if (note.inverters.length > 1 && note.inverters[1].checked) {
+                    octave -= 2;
+            } else if (note.inverters[0].checked)
+                --octave;
+            result.push({octave: octave, note: note.note});
+        } //loop
+        return result;
     } //build
 
 } //ChordBuilder

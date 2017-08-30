@@ -2,6 +2,7 @@ const elements = {
     keyboardSet: [
         {
             keyboard: document.getElementById("just-keyboard"),
+            toneCount: 7,
             chordActivator: document.getElementById("just-chord-activator"),
             chordTable: {
                 table: document.getElementById("just-chord-table"),
@@ -21,6 +22,7 @@ const elements = {
         },
         {
             keyboard: document.getElementById("tet-12-keyboard"),
+            toneCount: 12,
             chordActivator: document.getElementById("tet-12-chord-activator"),
             chordTable:  {
                 table: document.getElementById("tet12-chord-table"),
@@ -31,6 +33,7 @@ const elements = {
         },
         {
             keyboard: document.getElementById("tet-19-keyboard"),
+            toneCount: 19,            
             chordActivator: document.getElementById("tet-19-chord-activator"),
             chordTable:  {
                 table: document.getElementById("tet19-chord-table"),
@@ -41,6 +44,7 @@ const elements = {
         },
         {
             keyboard: document.getElementById("tet-31-keyboard"),
+            toneCount: 31,            
             chordActivator: document.getElementById("tet-31-chord-activator"),
             chordTable:  {
                 table: document.getElementById("tet31-chord-table"),
