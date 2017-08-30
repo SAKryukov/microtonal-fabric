@@ -28,13 +28,18 @@
             closeButton.onclick = function(event) {
                 removeShown();
             } //closeButton.onclick
+            buildButton.chordBuilder = chordBuilder;
+            buildButton.keyboard = element;
+            buildButton.toneCount = keyboard.toneCount; 
             buildButton.onclick = function(event) {
-                element.resetChord();
-                const chord = chordBuilder.build();
+                const keyboard = event.target.keyboard;
+                const toneCount = event.target.toneCount;
+                keyboard.resetChord();
+                const chord = event.target.chordBuilder.build();
                 for (let chordNote of chord) {
-                    const noteOctave = Math.floor(chordNote.note / keyboard.toneCount);
-                    const note = chordNote.note % keyboard.toneCount;
-                    element.setChordNode(baseOctave + chordNote.octave + noteOctave, note, true);
+                    const noteOctave = Math.floor(chordNote.note / toneCount);
+                    const note = chordNote.note % toneCount;
+                    keyboard.setChordNode(baseOctave + chordNote.octave + noteOctave, note, true);
                 } //loop
                 removeShown();
             } //buildButton.onclick

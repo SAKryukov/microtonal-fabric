@@ -1,6 +1,7 @@
 function ChordBuilder(table) {
 
-    const notes = [];
+    this.table = table;
+    this.notes = [];
 
     const addInverter = function(radio, note, octaveValue) {
         if (!note.inverters)
@@ -23,7 +24,7 @@ function ChordBuilder(table) {
         } //if there are two
     } //addInverters
 
-    const parseTableElement = function (element) {
+    ChordBuilder.prototype.parseTableElement = function (element) {
         for (child of element.childNodes) {
             const constructor = child.constructor;
             if (constructor == HTMLInputElement) {
@@ -33,19 +34,18 @@ function ChordBuilder(table) {
                     const note = { radio: child };
                     note.note = child.dataset.note;
                     addInverters(child, note);
-                    notes.push(note);
+                    this.notes.push(note);
                 } //if
             } //if
-            parseTableElement(child);
+            this.parseTableElement(child);
         } //loop
     } //parseTableElement
-    parseTableElement(table);
+    this.parseTableElement(this.table);
 
     ChordBuilder.prototype.build = function () {
         const result = [];
-        for (note of notes) {
+        for (note of this.notes) {
             if (!note.radio.checked) continue;
-            debugger;
             let octave = 0;
             if (note.inverters.length > 1 && note.inverters[1].checked) {
                     octave -= 2;
@@ -55,5 +55,7 @@ function ChordBuilder(table) {
         } //loop
         return result;
     } //build
+
+    return this;
 
 } //ChordBuilder
