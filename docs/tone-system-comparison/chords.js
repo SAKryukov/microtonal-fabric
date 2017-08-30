@@ -10,8 +10,8 @@
     (function setupChordTables() {
         for (keyboard of elements.keyboardSet) {
             const element = keyboard.keyboard;
-            const chordBuilder = new ChordBuilder(element);
             const table = keyboard.chordTable.table;
+            const chordBuilder = new ChordBuilder(table);
             const buildButton = keyboard.chordTable.buildButton;
             const closeButton = keyboard.chordTable.closeButton;
             closeButton.table = table;
