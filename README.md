@@ -17,6 +17,7 @@ The software is a pure in-browser application using [Web Audio API](https://deve
 - Choice of 5 instruments
 - Chord generation (under development)
 - Optional chord visualization (under development)
+- Compatible browsers include, but not limited to Google Chrome, Mozilla Firefox, Mozilla SeaMonkey and Opera
 
 ### Live Demo and Source Code
 
