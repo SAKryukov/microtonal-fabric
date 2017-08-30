@@ -7,9 +7,17 @@
         shown = null;
     }; //removeShown
 
+    let enteredElement = null;
+
     (function setupChordTables() {
         for (keyboard of elements.keyboardSet) {
             const element = keyboard.keyboard;
+            element.onmouseenter = function(event) {
+                enteredElement = event.target;
+            } //element.onmouseenter
+            element.onmouseleave = function(event) {
+                enteredElement = null
+            } //element.onmouseleave
             const table = keyboard.chordTable.table;
             const chordBuilder = new ChordBuilder(table);
             const buildButton = keyboard.chordTable.buildButton;
@@ -57,11 +65,18 @@
             const width = rect.width;
             const height = rect.height;
             table.targetRect = rect;
-            const eventX = event.clientX;
-            const eventY = event.clientY;
-            if (x <= eventX && eventX <= x + width && y <= eventY && eventY <= y + height) {
-                foundTable = table;
-                break;
+            if (event.button == 2) {
+                const eventX = event.clientX;
+                const eventY = event.clientY;
+                if (x <= eventX && eventX <= x + width && y <= eventY && eventY <= y + height) {
+                    foundTable = table;
+                    break;
+                } //if    
+            } else if (enteredElement) {
+                if (enteredElement == element) {
+                    foundTable = table;
+                    break;                    
+                } //if
             } //if
         } //loop
         if (foundTable) {

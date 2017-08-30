@@ -1,4 +1,3 @@
-debugger;
 const elements = {
     keyboard: document.getElementById("keyboard"),
     radioTet: {
