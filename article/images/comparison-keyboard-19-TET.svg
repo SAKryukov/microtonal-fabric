@@ -7,7 +7,7 @@
    xmlns="http://www.w3.org/2000/svg"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
-   id="tet-19-keyboard-19-TET"
+   id="tet-19-keyboard"
    width="311.72034"
    viewBox="0 0 311.72034 310.72766"
    version="1.1"
@@ -40,14 +40,14 @@
      inkscape:window-width="1366"
      inkscape:window-height="716"
      id="tet-19-namedview9"
-     showgrid="tet-19-true"
+     showgrid="false"
      inkscape:zoom="1.4142136"
-     inkscape:cx="-56.767136"
+     inkscape:cx="88.514408"
      inkscape:cy="141.6244"
      inkscape:window-x="-8"
      inkscape:window-y="-8"
      inkscape:window-maximized="1"
-     inkscape:current-layer="layer1"
+     inkscape:current-layer="tet-19-octave-2"
      fit-margin-top="0"
      fit-margin-left="0"
      fit-margin-right="0"
@@ -332,20 +332,20 @@
      inkscape:label="octave-1">
     <circle
        style="opacity:1;vector-effect:none;fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:1;stroke-linecap:square;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:fill markers stroke"
-       id="tet-19-note-1-17"
-       cx="26.958572"
-       cy="93.968864"
-       r="10"
-       transform="rotate(-37.894737)"
-       inkscape:label="note-1-17" />
-    <circle
-       style="opacity:1;vector-effect:none;fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:1;stroke-linecap:square;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:fill markers stroke"
        id="tet-19-note-1-18"
        cx="96.645897"
        cy="73.342903"
        r="10"
        transform="rotate(-18.947368)"
        inkscape:label="note-1-18" />
+    <circle
+       style="opacity:1;vector-effect:none;fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:1;stroke-linecap:square;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:fill markers stroke"
+       id="tet-19-note-1-17"
+       cx="26.958572"
+       cy="93.968864"
+       r="10"
+       transform="rotate(-37.894737)"
+       inkscape:label="note-1-17" />
     <circle
        style="opacity:1;vector-effect:none;fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:1;stroke-linecap:square;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:fill markers stroke"
        id="tet-19-note-1-16"
