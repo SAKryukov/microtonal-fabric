@@ -28,9 +28,7 @@ function ChordBuilder(table) {
         for (child of element.childNodes) {
             const constructor = child.constructor;
             if (constructor == HTMLInputElement) {
-                const attributeType = child.getAttribute("type");
-                if (attributeType == "radio") {
-                    if (!child.dataset.note) continue;
+                if (child.dataset.note) {
                     const note = { radio: child };
                     note.note = child.dataset.note;
                     addInverters(child, note);
