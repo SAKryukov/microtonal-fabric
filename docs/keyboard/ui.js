@@ -14,18 +14,26 @@ const keyboardHandler = (function () {
 
     const nodes = elements.keyboard.childNodes;
 
-    const colorActivate = function (key, color, doActivate) {
+    const visualActivate = function (key, color, text, doActivate) {
         if (doActivate) {
             key.colorStack.push(key.currentColor);
+            if (text) {
+                key.textStack.push(key.label.innerHTML);
+                key.label.innerHTML = text;
+            } //if
             key.currentColor = color;
             key.rectangle.style.fill = color;
         } else {
+            const oldText = key.textStack.pop();
+            if (oldText)
+                key.label.innerHTML = oldText;
             const oldColor = key.colorStack.pop();
-            if (!oldColor) return;
-            key.currentColor = oldColor;
-            key.rectangle.style.fill = oldColor;            
+            if (oldColor) {
+                key.currentColor = oldColor;
+                key.rectangle.style.fill = oldColor;                
+            } //if
         } //if
-    } //colorActivate
+    } //visualActivate
 
     let numberOfRows = 0;
     for (let node of nodes)
@@ -41,17 +49,19 @@ const keyboardHandler = (function () {
             key.activated = false;
             key.currentColor = definitionSet.highlightDefault;
             key.colorStack = [];
+            key.textStack = [];
             key.rectangle = rowCell;
             key.rectangle.key = key;
             key.numberInRow = rowCells.length;
             key.row = numberOfRows - rows.length - 1;
             rowCells.push(key);
-            key.activate = function (key, doActivate) {
+            key.activate = function (key, doActivate, text) {
                 if (key.activated && doActivate) return;
+                if (!key.activated && !doActivate) return;
                 key.activated = doActivate;
                 if (soundAction)
                     soundAction(key, 0, key.tone, doActivate);
-                colorActivate(key, definitionSet.highlightSound, doActivate);
+                visualActivate(key, definitionSet.highlightSound, text, doActivate);
             }; //key.activate
             key.rectangle.onmouseenter = function (event) {
                 if (event.buttons == 1)
@@ -94,7 +104,8 @@ const keyboardHandler = (function () {
         for (let row of rows)
             for (let cell of row) {
                 const label = document.createElementNS(svgNS, "text");
-                label.innerHTML = labelMaker(cell);
+                const labelText = labelMaker(cell);
+                label.innerHTML = labelText;
                 const width = cell.rectangle.width.baseVal.value / 3;
                 label.style = "pointer-events:none";
                 label.style.fontFamily = definitionSet.labelFontFamily;
@@ -102,6 +113,8 @@ const keyboardHandler = (function () {
                 label.setAttributeNS(null, "x", cell.rectangle.x.baseVal.value + 2);
                 label.setAttributeNS(null, "y", cell.rectangle.y.baseVal.value + width + 1);
                 notesGroup.appendChild(label);
+                cell.label = label;
+                cell.textStack.push(labelText);
             } //loop
     }; //rows.labelKeys
 
