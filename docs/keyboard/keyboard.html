@@ -9,6 +9,12 @@
     div.control { display: inline-block; margin-left: 0.2em; margin-right: 0.2em; }
     div.controlTitleSeparator { margin: 0; margin-bottom: 8px; }
     #radio-19-et-legend, #radio-31-et-legend { visibility: hidden; margin-left: 3em; }
+    div.options { display: table; width: 100%; margin:0; margin-top:0.4em; margin-bottom:0.4em; }
+    div.optionGroup { display: table-row; }
+    div.option { display: table-cell; padding-left: 1em; }
+    div.option:nth-child(1) { padding:0; width: 1px;  white-space: nowrap; }
+    div.option:nth-child(2) { }
+    div.option:last-child { text-align: right; white-space: nowrap; }
   </style>
 </head>
 
@@ -798,16 +804,40 @@
     </g>
   </svg>
 
-  <div>
-    <p>
-    <input type="radio" id="radio-12-et" accesskey="1" name="TET"/><u>1</u>2-TET</input>
-    <input type="radio" id="radio-12-et-Janko" accesskey="J" name="TET"/><u>J</u>ankó</input><br/>
-    <input type="radio" id="radio-19-et" accesskey="9" name="TET"/>1<u>9</u>-TET</input>
-    <span id="radio-19-et-legend">Notation: ♯: sharp, 1 microtone higher, ♭: flat, 1 microtone lower, enharmonically equal ef: E♯≡F♭, bc: B♯≡C♭</span><br/>
-    <input type="radio" id="radio-31-et" accesskey="3" name="TET"/><u>3</u>1-TET</input>
-    <span id="radio-31-et-legend">Notation: ♯, ♭: sharp/flat, 2 microtones higher/lower (♯¹, ♭¹: same intervals between E/F or B/C); ♯², ♭²: double flat/sharp, 4 microtones higher/lower</span>
-    </p>
+<div class="options">
+<div class="optionGroup">
+  <div class="option">
+    <input type="radio" id="radio-12-et" accesskey="1" name="TET"/><label for="radio-12-et"><u>1</u>2-TET</label>
   </div>
+  <div class="option">
+    <input type="radio" id="radio-12-et-Janko" accesskey="J" name="TET"/><label for="radio-12-et-Janko"><u>J</u>ankó</label>
+  </div>
+  <div class="option">
+    <input type="checkbox" id="radio-option-chords" checked="true" accesskey="H" name="TET"/><label for="radio-option-highlight-chords"><u>H</u>ighlight Chords</label>
+    <input type="checkbox" id="radio-option-note-degrees" checked="true" accesskey="N" name="TET"/><label for="radio-option-chord-notes">Show Chord <u>N</u>otes</label>
+  </div>
+</div>
+<div class="optionGroup">
+  <div class="option">
+    <input type="radio" id="radio-19-et" accesskey="9" name="TET"/><label for="radio-19-et">1<u>9</u>-TET</label>
+  </div>
+  <div class="option" id="radio-19-et-legend">
+    Notation: ♯: sharp, 1 microtone higher, ♭: flat, 1 microtone lower, enharmonically equal ef: E♯≡F♭, bc: B♯≡C♭
+  </div>
+  <div class="option">
+  </div>
+</div>
+<div class="optionGroup">
+  <div class="option">
+    <input type="radio" id="radio-31-et" accesskey="3" name="TET"/><label for="radio-31-et"><u>3</u>1-TET</label>
+  </div>
+  <div class="option" id="radio-31-et-legend">
+    Notation: ♯, ♭: sharp/flat, 2 microtones higher/lower (♯¹, ♭¹: same intervals between E/F or B/C); ♯², ♭²: double flat/sharp, 4 microtones higher/lower
+  </div>
+  <div class="option">
+  </div>
+</div>
+</div>
 
 <details><summary accesskey="S"><u>S</u>ound Control</summary>
 

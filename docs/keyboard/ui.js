@@ -10,6 +10,7 @@ const keyboardHandler = (function () {
     }; //setSoundActions
 
     const rows = [];
+    const chord = [1, 5, 7];
 
     const nodes = elements.keyboard.childNodes;
 
