@@ -1,3 +1,5 @@
+"use strict";
+
 const comparer = (function setupComparer() {
 
     const comparer = elements.controls.comparer;
@@ -63,7 +65,7 @@ const comparer = (function setupComparer() {
     }; //half's event handlers
 
     (function setupKeyboard(){
-        arrow = {left: 37, right: 39 };
+        const arrow = {left: 37, right: 39 };
         const keyboardHandler = function(event, doActivate) {
             if (!event.ctrlKey) return;
             const keyCode = event.keyCode || event.which;

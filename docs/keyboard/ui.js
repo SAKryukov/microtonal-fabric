@@ -1,3 +1,5 @@
+"use strict";
+
 const keyboardHandler = (function () {
 
     let soundAction = null; // soundAction: function(object, octave, tone, doStart)

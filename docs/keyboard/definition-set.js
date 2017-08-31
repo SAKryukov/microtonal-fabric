@@ -1,3 +1,5 @@
+"use strict";
+
 const elements = {
     keyboard: document.getElementById("keyboard"),
     radioTet: {

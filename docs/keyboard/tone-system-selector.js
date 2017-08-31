@@ -1,3 +1,5 @@
+"use strict";
+
 (function setKeyboardLayoutControl() {
 
     function setTet(system) {
@@ -70,12 +72,12 @@
         const startingRow = definitionSet.hardwareKeyboardControl.startingRow;
         let rowIndex = startingRow;
         let xShift = 0;
-        for (row of hardwareKeyboard.rows) {
+        for (let row of hardwareKeyboard.rows) {
             let xIndex = definitionSet.hardwareKeyboardControl.keyShift;
             if (keyboardHandler.rows[rowIndex].length % 2 > 0)
                 xShift++;
                 xIndex -= rowIndex - xShift;
-            for (key of row) { 
+            for (let key of row) { 
                 const cell = keyboardHandler.rows[rowIndex][xIndex];
                 keyDictionary[key] = cell;
                 cell.currentColor = definitionSet.highlightHardwareKey;
@@ -84,7 +86,7 @@
             } //loop xIndex
             ++rowIndex
         } //loop rowIndex
-        for (substitutionIndex in hardwareKeyboard.substitutions) {
+        for (let substitutionIndex in hardwareKeyboard.substitutions) {
             const substitution = hardwareKeyboard.substitutions[substitutionIndex];
             keyDictionary[substitutionIndex] = keyDictionary[substitution];
         } //loop hardwareKeyboard.substitutions

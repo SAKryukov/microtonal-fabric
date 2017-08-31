@@ -1,3 +1,5 @@
+"use strict";
+
 const soundControlSet = (function setSoundControl() {
 
     const soundControlSet = {

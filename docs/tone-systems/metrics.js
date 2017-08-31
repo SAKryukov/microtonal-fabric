@@ -1,3 +1,5 @@
+"use strict";
+
 const toneSystemMetrics = {
     just: {
         noteCount: 7,

@@ -1,3 +1,5 @@
+"use strict";
+
 const elements = {
     keyboardSet: [
         {
@@ -7,6 +9,7 @@ const elements = {
             chordTable: {
                 table: document.getElementById("just-chord-table"),
                 buildButton: document.getElementById("just-chord-build"),
+                resetButton: document.getElementById("just-chord-reset"),
                 closeButton: document.getElementById("just-chord-close")
             },            
             title: "Just Intonation",
@@ -27,6 +30,7 @@ const elements = {
             chordTable:  {
                 table: document.getElementById("tet12-chord-table"),
                 buildButton: document.getElementById("tet12-chord-build"),
+                resetButton: document.getElementById("tet12-chord-reset"),
                 closeButton: document.getElementById("tet12-chord-close")
             },
             title: "12-TET"
@@ -38,6 +42,7 @@ const elements = {
             chordTable:  {
                 table: document.getElementById("tet19-chord-table"),
                 buildButton: document.getElementById("tet19-chord-build"),
+                resetButton: document.getElementById("tet19-chord-reset"),
                 closeButton: document.getElementById("tet19-chord-close")
             },            
             title: "19-TET"
@@ -49,6 +54,7 @@ const elements = {
             chordTable:  {
                 table: document.getElementById("tet31-chord-table"),
                 buildButton: document.getElementById("tet31-chord-build"),
+                resetButton: document.getElementById("tet31-chord-reset"),
                 closeButton: document.getElementById("tet31-chord-close")
             },            
             title: "31-TET"

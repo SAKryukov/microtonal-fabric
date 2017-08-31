@@ -1,3 +1,5 @@
+"use strict";
+
 const hardwareKeyboard = {
     rows: [
         [90, 88, 67, 86, 66, 78, 77, 188, 190, 191, 16], // 16 is shift, it works, but if produces event.shiftKey == true 

@@ -1,3 +1,5 @@
+"use strict";
+
 const keyboardHandler = (function populate(comparer) {
 
     let soundAction = null; // soundAction: function(object, octave, tone, doStart)
@@ -23,7 +25,7 @@ const keyboardHandler = (function populate(comparer) {
         }; //comparer.addChord
     })();
 
-    populateKeyboard = function (keyboard, chordActivator, toneSet) {
+    const populateKeyboard = function (keyboard, chordActivator, toneSet) {
 
         chordActivator.chord = { count: 0 };
 
@@ -80,14 +82,14 @@ const keyboardHandler = (function populate(comparer) {
             const newState = doSet ? keyStates.chord : keyStates.none;
             setKeyState(octaveGroups[octaveGroups.length - octave - 1][octaveGroups[0].length - note - 1], newState);
         } //keyboard.setChordNode
-        keyboard.resetChord = function() {
+        keyboard.clearChord = function() {
             const chordClone = Object.assign({}, chordActivator.chord);
             for (let index in chordClone) {
                 const chordElement = chordClone[index];
                 if (chordElement.constructor == Number) continue;
                 setKeyState(chordElement, keyStates.none);
             } //loop chordClone
-        } //keyboard.resetChord
+        } //keyboard.clearChord
 
         let octaveNumber = octaveGroups.length - 1;
         for (let octaveGroup of octaveGroups) {
@@ -101,7 +103,7 @@ const keyboardHandler = (function populate(comparer) {
                 else
                     circle.tone = circle.note / octaveGroup.length;
                 circle.tone *= 12; // in Web Audio Font system, tones are expressed in 12-TET semitones
-                circle.resetChord = function () { keyboard.resetChord(); };
+                circle.clearChord = function () { keyboard.clearChord(); };
                 circle.activate = function (key, prefixed, doActivate) {
                     if (doActivate) {
                         if (prefixed) {
@@ -140,7 +142,7 @@ const keyboardHandler = (function populate(comparer) {
                 };
                 circle.ondblclick = function (event) {
                     if (event.button == 0)
-                        event.target.resetChord();
+                        event.target.clearChord();
                     return false;
                 };
             } //loop
@@ -151,7 +153,7 @@ const keyboardHandler = (function populate(comparer) {
             if (!chordOwner.chord) return;
             if (chordSoundAction) {
                 const exposeChord = [];
-                for (index in chordOwner.chord) {
+                for (let index in chordOwner.chord) {
                     const element = chordOwner.chord[index];
                     if (element.constructor == Number) continue;
                     exposeChord.push({ object: element, octave: element.octave, tone: element.tone });

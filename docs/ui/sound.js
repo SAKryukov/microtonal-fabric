@@ -1,3 +1,5 @@
+"use strict";
+
 (function setupSounds() {
 
     const audioContext = new (window.AudioContext || window.webkitAudioContext)();

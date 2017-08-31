@@ -1,3 +1,5 @@
+"use strict";
+
 (function setupChords() {
 
     let shown;
@@ -11,8 +13,50 @@
 
     const baseOctave = 1; // specific to circular keyboards
 
+    function setupChordTable(table, toneCount, buildButton, resetButton, closeButton, beforeClosing) {
+        resetButton.inputElements = [];
+        const findInputElements = function(element) {
+            for (let child of element.childNodes) {
+                const constructor = child.constructor;
+                if (constructor == HTMLInputElement && child.checked != undefined) {
+                    if (child.checked)
+                        child.checkedByDefault = true;
+                    resetButton.inputElements.push(child); 
+                } //loop element.childNodes
+                findInputElements(child);
+            } //loop
+        }; //findInputElements
+        findInputElements(table);
+        closeButton.table = table;
+        closeButton.onclick = function(event) {
+            if (beforeClosing)
+                beforeClosing();
+        }; //closeButton.onclick
+        buildButton.chordBuilder = new ChordBuilder(table);
+        buildButton.toneCount = toneCount;
+        resetButton.onclick = function(event) {
+            for (let inputControl of event.target.inputElements)
+                inputControl.checked = inputControl.checkedByDefault;
+        }; //resetButton.onclick
+        buildButton.onclick = function(event) {
+            const keyboard = event.target.keyboard;
+            const toneCount = event.target.toneCount;
+            keyboard.clearChord();
+            const chord = event.target.chordBuilder.build();
+            keyboard.setChordNode(baseOctave + 0, 0, true);
+            for (let chordNote of chord) {
+                const noteOctave = Math.floor(chordNote.note / toneCount);
+                const note = chordNote.note % toneCount;
+                keyboard.setChordNode(baseOctave + chordNote.octave + noteOctave, note, true);
+            } //loop
+            if (beforeClosing)
+                beforeClosing();
+        }; //buildButton.onclick
+        buildButton.table = table;
+    } //setupChordTable
+
     (function setupChordTables() {
-        for (keyboard of elements.keyboardSet) {
+        for (let keyboard of elements.keyboardSet) {
             const element = keyboard.keyboard;
             element.onmouseenter = function(event) {
                 enteredElement = event.target;
@@ -21,30 +65,10 @@
                 enteredElement = null
             } //element.onmouseleave
             const table = keyboard.chordTable.table;
-            const chordBuilder = new ChordBuilder(table);
             const buildButton = keyboard.chordTable.buildButton;
+            const resetButton = keyboard.chordTable.resetButton;
             const closeButton = keyboard.chordTable.closeButton;
-            closeButton.table = table;
-            closeButton.onclick = function(event) {
-                removeShown();
-            } //closeButton.onclick
-            buildButton.chordBuilder = chordBuilder;
-            buildButton.keyboard = element;
-            buildButton.toneCount = keyboard.toneCount; 
-            buildButton.onclick = function(event) {
-                const keyboard = event.target.keyboard;
-                const toneCount = event.target.toneCount;
-                keyboard.resetChord();
-                const chord = event.target.chordBuilder.build();
-                keyboard.setChordNode(baseOctave + 0, 0, true);
-                for (let chordNote of chord) {
-                    const noteOctave = Math.floor(chordNote.note / toneCount);
-                    const note = chordNote.note % toneCount;
-                    keyboard.setChordNode(baseOctave + chordNote.octave + noteOctave, note, true);
-                } //loop
-                removeShown();
-            } //buildButton.onclick
-            buildButton.table = table;
+            setupChordTable(table, keyboard.toneCount, buildButton, resetButton, closeButton, removeShown);
             buildButton.keyboard = element;
         } //loop  
     })(); //setupChordTables
@@ -66,7 +90,7 @@
     window.oncontextmenu = function(event) {
         removeShown();
         let foundTable;
-        for (keyboard of elements.keyboardSet) {
+        for (let keyboard of elements.keyboardSet) {
             const element = keyboard.keyboard;
             const table = keyboard.chordTable.table;
             const comStyle = window.getComputedStyle(element, null);

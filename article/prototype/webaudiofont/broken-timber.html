@@ -1,12 +1,12 @@
 ﻿<html>
 
 <head>
-	<script src="../../../docs/webaudiofont/00-acoustic-grand-piano.js"></script>
-	<script src="../../../docs/webaudiofont/14-tubular-bells.js"></script>
-	<script src="../../../docs/webaudiofont/16-drawbar-organ.js"></script>
-	<script src="../../../docs/webaudiofont/24-acoustic-guitar-nylon.js"></script>
-	<script src="../../../docs/webaudiofont/91-pad4-choir.js"></script>
-	<script src="../../../docs/webaudiofont/player.js"></script>
+	<script src="00-acoustic-grand-piano.js"></script>
+	<script src="14-tubular-bells.js"></script>
+	<script src="16-drawbar-organ.js"></script>
+	<script src="24-acoustic-guitar-nylon.js"></script>
+	<script src="91-pad4-choir.js"></script>
+	<script src="player.js"></script>
 
 <body>
 
@@ -129,7 +129,9 @@
 		function play(pitch) {
 			selectInstrument();
 			last = player.startNote(
-				audioContext, audioContext.destination, selectedPreset,
+				audioContext, audioContext.destination, 
+				selectedPreset,
+				//"triangle",
 				audioContext.currentTime, pitch,
 				false);
 		} // play

@@ -1,3 +1,5 @@
+"use strict";
+
 function ChordBuilder(table) {
 
     this.table = table;
@@ -25,7 +27,7 @@ function ChordBuilder(table) {
     } //addInverters
 
     ChordBuilder.prototype.parseTableElement = function (element) {
-        for (child of element.childNodes) {
+        for (let child of element.childNodes) {
             const constructor = child.constructor;
             if (constructor == HTMLInputElement) {
                 if (child.dataset.note) {
@@ -42,7 +44,7 @@ function ChordBuilder(table) {
 
     ChordBuilder.prototype.build = function () {
         const result = [];
-        for (note of this.notes) {
+        for (let note of this.notes) {
             if (!note.radio.checked) continue;
             let octave = 0;
             if (note.inverters.length > 1 && note.inverters[1].checked) {
