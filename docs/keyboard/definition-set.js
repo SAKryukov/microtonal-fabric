@@ -2,6 +2,7 @@
 
 const elements = {
     keyboard: document.getElementById("keyboard"),
+    buttonShowChordTable: document.getElementById("button-show-chord-table"),
     radioTet: {
         radio12et: document.getElementById("radio-12-et"),
         radio12etJanko: document.getElementById("radio-12-et-Janko"),
@@ -17,8 +18,38 @@ const elements = {
         reset: document.getElementById("control-reset")
     }, 
     legend19et: document.getElementById("radio-19-et-legend"),
-    legend31et: document.getElementById("radio-31-et-legend")
+    legend31et: document.getElementById("radio-31-et-legend"),
+    chordSet: [
+        {
+            toneCount: 12,
+            table: document.getElementById("tet12-chord-table"),
+            buildButton: document.getElementById("tet12-chord-build"),
+            resetButton: document.getElementById("tet12-chord-reset"),
+            closeButton: document.getElementById("tet12-chord-close")
+        },
+        {
+            toneCount: 19,
+            table: document.getElementById("tet19-chord-table"),
+            buildButton: document.getElementById("tet19-chord-build"),
+            resetButton: document.getElementById("tet19-chord-reset"),
+            closeButton: document.getElementById("tet19-chord-close")
+        },
+        {
+            toneCount: 31,
+            table: document.getElementById("tet31-chord-table"),
+            buildButton: document.getElementById("tet31-chord-build"),
+            resetButton: document.getElementById("tet31-chord-reset"),
+            closeButton: document.getElementById("tet31-chord-close")
+        }        
+    ]
 }; //elements
+
+(function associateChordTables() {
+    elements.radioTet.radio12et.chordTable = elements.chordSet[0].table;
+    elements.radioTet.radio12etJanko.chordTable = elements.chordSet[0].table;
+    elements.radioTet.radio19et.chordTable = elements.chordSet[1].table;
+    elements.radioTet.radio31et.chordTable = elements.chordSet[2].table;
+})();
 
 const notes = {
     tet31: {

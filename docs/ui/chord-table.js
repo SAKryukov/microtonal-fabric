@@ -20,6 +20,7 @@ function setupChordTable(table, toneCount, baseOctave, buildButton, resetButton,
             beforeClosing();
     }; //closeButton.onclick
     buildButton.chordBuilder = new ChordBuilder(table);
+    table.chordBuilder = buildButton.chordBuilder;
     buildButton.toneCount = toneCount;
     resetButton.onclick = function(event) {
         for (let inputControl of event.target.inputElements)
@@ -28,13 +29,16 @@ function setupChordTable(table, toneCount, baseOctave, buildButton, resetButton,
     buildButton.onclick = function(event) {
         const keyboard = event.target.keyboard;
         const toneCount = event.target.toneCount;
-        keyboard.clearChord();
+        if (keyboard)
+            keyboard.clearChord();
         const chord = event.target.chordBuilder.build();
-        keyboard.setChordNode(baseOctave + 0, 0, true);
+        if (keyboard)
+            keyboard.setChordNode(baseOctave + 0, 0, true);
         for (let chordNote of chord) {
             const noteOctave = Math.floor(chordNote.note / toneCount);
             const note = chordNote.note % toneCount;
-            keyboard.setChordNode(baseOctave + chordNote.octave + noteOctave, note, true);
+            if (keyboard)
+                keyboard.setChordNode(baseOctave + chordNote.octave + noteOctave, note, true);
         } //loop
         if (beforeClosing)
             beforeClosing();

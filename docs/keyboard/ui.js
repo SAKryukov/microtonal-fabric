@@ -10,7 +10,10 @@ const keyboardHandler = (function () {
     }; //setSoundActions
 
     const rows = [];
-    const chord = [{ note: 1, title: "1" }, { note: 3, title: "3" }, { note: 5, title: "5" }];
+    let chord;
+    const assignChord = function(chordInstance) {
+        chord = chordInstance;
+    }; //assignChord
 
     const nodes = elements.keyboard.childNodes;
 
@@ -55,7 +58,7 @@ const keyboardHandler = (function () {
             key.numberInRow = rowCells.length;
             key.row = numberOfRows - rows.length - 1;
             rowCells.push(key);
-            key.activate = function (key, doActivate, chordNote, text) {
+            key.activate = function (key, chordMode, doActivate, chordNote, text) {
                 if (key.activated && doActivate) return;
                 if (!key.activated && !doActivate) return;
                 key.activated = doActivate;
@@ -63,32 +66,33 @@ const keyboardHandler = (function () {
                     soundAction(key, 0, key.tone, doActivate);
                 const effectiveColor = chordNote ? definitionSet.highlightChordNote : definitionSet.highlightSound;
                 visualActivate(key, effectiveColor, text, doActivate);
-                if (!chordNote)
+                if (!chordMode && doActivate) return;
+                if (chord && !chordNote)
                     for (let chordElement of chord) {
-                        const childKey = rows[key.row][key.numberInRow + chordElement.note];
+                        const childKey = rows[key.row][key.numberInRow + 1]; //chordElement.note];
                         if (childKey)
-                            childKey.activate(childKey, doActivate, true, "SA?");
+                            childKey.activate(childKey, chordMode, doActivate, true, chordElement.title);
                     } //loop chord
             }; //key.activate
             key.rectangle.onmouseenter = function (event) {
                 if (event.buttons == 1)
-                    event.target.key.activate(event.target.key, true);
+                    event.target.key.activate(event.target.key, event.ctrlKey, true);
                 return false;
             };
             key.rectangle.onmouseleave = function (event) {
-                event.target.key.activate(event.target.key, false);
+                event.target.key.activate(event.target.key, event.ctrlKey, false);
                 return false;
             };
             key.rectangle.onmousedown = function (event) {
                 if (event.button == 0)
-                    event.target.key.activate(event.target.key, true);
+                    event.target.key.activate(event.target.key, event.ctrlKey, true);
                 else
-                    event.target.key.activate(event.target.key, false);
+                    event.target.key.activate(event.target.key, event.ctrlKey, false);
                 return false;
             };
             key.rectangle.onmouseup = function (event) {
                 if (event.button == 0)
-                    event.target.key.activate(event.target.key, false);
+                    event.target.key.activate(event.target.key, event.ctrlKey, false);
                 return false;
             };
         } //loop cells
@@ -125,6 +129,6 @@ const keyboardHandler = (function () {
             } //loop
     }; //rows.labelKeys
 
-    return { rows: rows, soundActionSetter: setSoundActions };
+    return { rows: rows, soundActionSetter: setSoundActions, chordSetter: assignChord };
 
 })();

@@ -15,7 +15,13 @@
     div.option:nth-child(1) { padding:0; width: 1px;  white-space: nowrap; }
     div.option:nth-child(2) { }
     div.option:last-child { text-align: right; white-space: nowrap; }
-  </style>
+    div.chordSet { display: none; }
+    th, td { border: thin solid black; padding-left: 1em; padding-right: 1em; background-color: white; }
+    th { border-bottom: solid black 2px; }
+    th { background-color: lightGray; font-weight: normal; font-size: 100%; }
+    th > button { margin-left: 1em; float: right; }
+    table { border: solid black 2px; border-collapse: collapse; }
+</style>
 </head>
 
 <body>
@@ -813,7 +819,7 @@
     <input type="radio" id="radio-12-et-Janko" accesskey="J" name="TET"/><label for="radio-12-et-Janko"><u>J</u>ankó</label>
   </div>
   <div class="option">
-    <input type="checkbox" id="radio-option-highlight-chords" checked="true" accesskey="H" name="TET"/><label for="radio-option-highlight-chords"><u>H</u>ighlight <button>Chords</button></label>
+    <input type="checkbox" id="radio-option-highlight-chords" checked="true" accesskey="H" name="TET"/><label for="radio-option-highlight-chords"><u>H</u>ighlight <button id="button-show-chord-table">Chords</button></label>
   </div>
 </div>
 <div class="optionGroup">
@@ -871,6 +877,357 @@
 <hr/>
 <p><small>Copyright &copy; 2017, <a href="http://www.SAKryukov.org">Sergey A Kryukov</a> License: <a href="https://github.com/SAKryukov/microtonal-chromatic-lattice-keyboard/blob/master/LICENSE.txt">MIT</a></small></p>
 
+<div class="chordSet">
+<!--- 12-TET: -------------------------------------------------------------------------------------------------------------------->
+<table id="tet12-chord-table">
+<tr><th colspan="6">12-TET <button id="tet12-chord-close">Close</button> <button id="tet12-chord-reset">Reset</button> <button id="tet12-chord-build">Build</button></th></tr>
+<tr><th></th>
+<th>♭</th><th>Pure</th><th>♯</th>
+<th colspan="2">Inversions</th></tr>
+<tr><td>
+	<input type="radio" id="tet12-chords-13x" name="tet12-chords-13" checked="true"/><label for="tet12-chords-13x">x</label>
+</td><td>
+	<input type="radio" data-note="21" data-inverter2="tet12-chords-13-inv2" data-inverter4="tet12-chords-13-inv4" id="tet12-chords-13-flat" name="tet12-chords-13"/><label for="tet12-chords-13-flat">13&minus;</label>
+</td><td>
+	<input type="radio" data-note="22" data-inverter2="tet12-chords-13-inv2" data-inverter4="tet12-chords-13-inv4" id="tet12-chords-13" name="tet12-chords-13"/><label for="tet12-chords-13">13</label>
+</td><td>
+</td><td>
+	<input type="checkbox" id="tet12-chords-13-inv2"/><label for="tet12-chords-13-inv2">/2</label>
+</td><td>
+	<input type="checkbox" id="tet12-chords-13-inv4"/><label for="tet12-chords-13-inv4">/4</label>
+</td></tr>
+<tr><td>
+	<input type="radio" id="tet12-chords-11x" name="tet12-chords-11" checked="true"/><label for="tet12-chords-11x">x</label>
+</td><td>
+</td><td>
+	<input type="radio" data-note="17" data-inverter2="tet12-chords-11-inv2" data-inverter4="tet12-chords-11-inv4" id="tet12-chords-11" name="tet12-chords-11"/><label for="tet12-chords-11">11</label>
+</td><td>
+	<input type="radio" data-note="18" data-inverter2="tet12-chords-11-inv2" data-inverter4="tet12-chords-11-inv4" id="tet12-chords-11-sharp" name="tet12-chords-11"/><label for="tet12-chords-11-sharp">11+</label>
+</td><td>
+	<input type="checkbox" id="tet12-chords-11-inv2"/><label for="tet12-chords-11-inv2">/2</label>
+</td><td>
+	<input type="checkbox" id="tet12-chords-11-inv4"/><label for="tet12-chords-11-inv4">/4</label>
+</td></tr>
+<tr><td>
+	<input type="radio" id="tet12-chords-9x" name="tet12-chords-9" checked="true"/><label for="tet12-chords-9x">x</label>
+</td><td>
+	<input type="radio" data-note="13" data-inverter2="tet12-chords-9-inv2" data-inverter4="tet12-chords-9-inv4" id="tet12-chords-9-flat" name="tet12-chords-9"/><label for="tet12-chords-9-flat">9&minus;</label>
+</td><td>
+	<input type="radio" data-note="14" data-inverter2="tet12-chords-9-inv2" data-inverter4="tet12-chords-9-inv4" id="tet12-chords-9" name="tet12-chords-9"/><label for="tet12-chords-9">9</label>
+</td><td>
+	<input type="radio" data-note="15" data-inverter2="tet12-chords-9-inv2" data-inverter4="tet12-chords-9-inv4" id="tet12-chords-9-sharp" name="tet12-chords-9"/><label for="tet12-chords-9-sharp">9+</label>
+</td><td> 
+	<input type="checkbox" id="tet12-chords-9-inv2"/><label for="tet12-chords-9-inv2">/2</label>
+</td><td>
+	<input type="checkbox" id="tet12-chords-9-inv4"/><label for="tet12-chords-9-inv4">/4</label>
+</td></tr>
+<tr><td>
+	<input type="radio" id="tet12-chords-7x" name="tet12-chords-7" checked="true"/><label for="tet12-chords-7x">x</label>
+</td><td>
+	<input type="radio" data-note="9" data-inverter2="tet12-chords-7-inv2" id="tet12-chords-6" name="tet12-chords-7"/><label for="tet12-chords-6">6</label>
+</td><td>
+	<input type="radio" data-note="10" data-inverter2="tet12-chords-7-inv2" id="tet12-chords-7" name="tet12-chords-7"/><label for="tet12-chords-7">7</label>
+</td><td>
+	<input type="radio" data-note="11" data-inverter2="tet12-chords-7-inv2" id="tet12-chords-7-sharp" name="tet12-chords-7"/><label for="tet12-chords-7-sharp">7+</label>
+</td><td colspan="2">
+	<input type="checkbox" id="tet12-chords-7-inv2"/><label for="tet12-chords-7-inv2">/2</label>
+</td></tr>
+<tr><td>
+</td><td>
+	<input type="radio" data-note="6" data-inverter2="tet12-chords-5-inv2" id="tet12-chords-5-flat" name="tet12-chords-5"/><label for="tet12-chords-5-flat">5&minus;</label>
+</td><td>
+	<input type="radio" data-note="7" data-inverter2="tet12-chords-5-inv2" id="tet12-chords-5" name="tet12-chords-5" checked="true"/><label for="tet12-chords-5">5</label>
+</td><td>
+	<input type="radio" data-note="8" data-inverter2="tet12-chords-5-inv2" id="tet12-chords-5-sharp" name="tet12-chords-5"/><label for="tet12-chords-5-sharp">5+</label>
+</td><td colspan="2">
+	<input type="checkbox" id="tet12-chords-5-inv2"/><label for="tet12-chords-5-inv2">/2</label>
+</td></tr>
+<tr><td>
+	<input type="radio" data-note="2" data-inverter2="tet12-chords-234-inv2" id="tet12-chords-2" name="tet12-chords-234" checked="true"/><label for="tet12-chords-2">2</label>
+</td><td>
+	<input type="radio" data-note="3" data-inverter2="tet12-chords-234-inv2" id="tet12-chords-3-flat" name="tet12-chords-234"/><label for="tet12-chords-3-flat">m</label>
+</td><td>
+	<input type="radio" data-note="4" data-inverter2="tet12-chords-234-inv2" id="tet12-chords-3" name="tet12-chords-234" checked="true"/><label for="tet12-chords-3">3</label>
+</td><td>
+	<input type="radio" data-note="5" data-inverter2="tet12-chords-234-inv2" id="tet12-chords-4" name="tet12-chords-234"/><label for="tet12-chords-4">4</label>
+</td><td colspan="2">
+	<input type="checkbox" id="tet12-chords-234-inv2"/><label for="tet12-chords-234-inv2">/2</label>
+</td></tr>
+</table>
+
+<!--- 19-TET: -------------------------------------------------------------------------------------------------------------------->
+<table id="tet19-chord-table">
+<tr><th colspan="6">19-TET <button id="tet19-chord-close">Close</button> <button id="tet19-chord-reset">Reset</button> <button id="tet19-chord-build">Build</button></th></tr>
+<tr><th></th>
+<th>♭</th><th>Pure</th><th>♯</th>
+<th colspan="2">Inversions</th></tr>
+<tr><td>
+	<input type="radio" id="tet19-chords-13x" name="tet19-chords-13" checked="true"/><label for="tet19-chords-13x">x</label>
+</td><td>
+	<input type="radio" data-note="32" data-inverter2="tet19-chords-13-inv2" data-inverter4="tet19-chords-13-inv4" id="tet19-chords-13-flat" name="tet19-chords-13"/><label for="tet19-chords-13-flat">13&minus;</label>
+</td><td>
+	<input type="radio" data-note="33" data-inverter2="tet19-chords-13-inv2" data-inverter4="tet19-chords-13-inv4" id="tet19-chords-13" name="tet19-chords-13"/><label for="tet19-chords-13">13</label>
+</td><td>
+	<input type="radio" data-note="34" data-inverter2="tet19-chords-13-inv2" data-inverter4="tet19-chords-13-inv4" id="tet19-chords-13-sharp" name="tet19-chords-13"/><label for="tet19-chords-13-sharp">13+</label>
+</td><td>
+	<input type="checkbox" id="tet19-chords-13-inv2"/><label for="tet19-chords-13-inv2">/2</label>
+</td><td>
+	<input type="checkbox" id="tet19-chords-13-inv4"/><label for="tet19-chords-13-inv4">/4</label>
+</td></tr>
+<tr><td>
+	<input type="radio" id="tet19-chords-11x" name="tet19-chords-11" checked="true"/><label for="tet19-chords-11x">x</label>
+</td><td>
+  <input type="radio" data-note="26" data-inverter2="tet19-chords-11-inv2" data-inverter4="tet19-chords-11-inv4" id="tet19-chords-11-flat" name="tet19-chords-11"/><label for="tet19-chords-11-flat">11&minus;</label>
+</td><td>
+	<input type="radio" data-note="27" data-inverter2="tet19-chords-11-inv2" data-inverter4="tet19-chords-11-inv4" id="tet19-chords-11" name="tet19-chords-11"/><label for="tet19-chords-11">11</label>
+</td><td>
+	<input type="radio" data-note="28" data-inverter2="tet19-chords-11-inv2" data-inverter4="tet19-chords-11-inv4" id="tet19-chords-11-sharp" name="tet19-chords-11"/><label for="tet19-chords-11-sharp">11+</label>
+</td><td>
+	<input type="checkbox" id="tet19-chords-11-inv2"/><label for="tet19-chords-11-inv2">/2</label>
+</td><td>
+	<input type="checkbox" id="tet19-chords-11-inv4"/><label for="tet19-chords-11-inv4">/4</label>
+</td></tr>
+<tr><td>
+	<input type="radio" id="tet19-chords-9x" name="tet19-chords-9" checked="true"/><label for="tet19-chords-9x">x</label>
+</td><td>
+  <input type="radio" data-note="21" data-inverter2="tet19-chords-9-inv2" data-inverter4="tet19-chords-9-inv4" id="tet19-chords-9-flat" name="tet19-chords-9"/><label for="tet19-chords-9-flat">9&minus;</label>
+</td><td>
+	<input type="radio" data-note="22" data-inverter2="tet19-chords-9-inv2" data-inverter4="tet19-chords-9-inv4" id="tet19-chords-9" name="tet19-chords-9"/><label for="tet19-chords-9">9</label>
+</td><td>
+	<input type="radio" data-note="23" data-inverter2="tet19-chords-9-inv2" data-inverter4="tet19-chords-9-inv4" id="tet19-chords-9-sharp" name="tet19-chords-9"/><label for="tet19-chords-9-sharp">9+</label>
+</td><td>
+	<input type="checkbox" id="tet19-chords-9-inv2"/><label for="tet19-chords-9-inv2">/2</label>
+</td><td>
+	<input type="checkbox" id="tet19-chords-9-inv4"/><label for="tet19-chords-9-inv4">/4</label>
+</td></tr>
+<tr><td>
+	<input type="radio" id="tet19-chords-7x" name="tet19-chords-7" checked="true"/><label for="tet19-chords-7x">x</label>
+</td><td>
+  <input type="radio" data-note="16" data-inverter2="tet19-chords-7-inv2" id="tet19-chords-7-flat" name="tet19-chords-7"/><label for="tet19-chords-7-flat">7&minus;</label>
+</td><td>
+	<input type="radio" data-note="17" data-inverter2="tet19-chords-7-inv2" id="tet19-chords-7" name="tet19-chords-7"/><label for="tet19-chords-7">7</label>
+</td><td>
+	<input type="radio" data-note="18" data-inverter2="tet19-chords-7-inv2" id="tet19-chords-7-sharp" name="tet19-chords-7"/><label for="tet19-chords-7-sharp">7+</label>
+</td><td colspan="2">
+	<input type="checkbox" id="tet19-chords-7-inv2"/><label for="tet19-chords-7-inv2">/2</label>
+</td></tr>
+<tr><td>
+	<input type="radio" id="tet19-chords-6x" name="tet19-chords-6" checked="true"/><label for="tet19-chords-6x">x</label>
+</td><td>
+	<input type="radio" data-note="13" data-inverter2="tet19-chords-6-inv2" id="tet19-chords-6-flat" name="tet19-chords-6"/><label for="tet19-chords-6-flat">6&minus;</label>
+</td><td>
+	<input type="radio" data-note="14" data-inverter2="tet19-chords-6-inv2" id="tet19-chords-6" name="tet19-chords-6"/><label for="tet19-chords-6">6</label>
+</td><td>
+	<input type="radio" data-note="15" data-inverter2="tet19-chords-6-inv2" id="tet19-chords-6-sharp" name="tet19-chords-6"/><label for="tet19-chords-6-sharp">6+</label>
+</td><td colspan="2">
+  <input type="checkbox" id="tet19-chords-6-inv2"/><label for="tet19-chords-6-inv2">/2</label>
+</td></tr>
+<tr><td>
+	<input type="radio" id="tet19-chords-5x" name="tet19-chords-5" checked="true"/><label for="tet19-chords-5x">x</label>
+</td><td>
+	<input type="radio" data-note="10" data-inverter2="tet19-chords-5-inv2" id="tet19-chords-5-flat" name="tet19-chords-5"/><label for="tet19-chords-5-flat">5&minus;</label>
+</td><td>
+	<input type="radio" data-note="11" data-inverter2="tet19-chords-5-inv2" id="tet19-chords-5" name="tet19-chords-5" checked="true"/><label for="tet19-chords-5">5</label>
+</td><td>
+	<input type="radio" data-note="12" data-inverter2="tet19-chords-5-inv2" id="tet19-chords-5-sharp" name="tet19-chords-5"/><label for="tet19-chords-5-sharp">5+</label>
+</td><td colspan="2">
+	<input type="checkbox" id="tet19-chords-5-inv2"/><label for="tet19-chords-5-inv2">/2</label>
+</td></tr>
+<tr><td>
+	<input type="radio" id="tet19-chords-4x" name="tet19-chords-4" checked="true"/><label for="tet19-chords-4x">x</label>
+</td><td>
+	<input type="radio" data-note="7" data-inverter2="tet19-chords-4-inv2" id="tet19-chords-4-flat" name="tet19-chords-4"/><label for="tet19-chords-4-flat">4&minus;</label>
+</td><td>
+	<input type="radio" data-note="8" data-inverter2="tet19-chords-4-inv2" id="tet19-chords-4" name="tet19-chords-4"/><label for="tet19-chords-4">4</label>
+</td><td>
+	<input type="radio" data-note="9" data-inverter2="tet19-chords-4-inv2" id="tet19-chords-4-sharp" name="tet19-chords-4"/><label for="tet19-chords-4-sharp">4+</label>
+</td><td colspan="2">
+	<input type="checkbox" id="tet19-chords-4-inv2"/><label for="tet19-chords-4-inv2">/2</label>
+</td></tr>
+<tr><td>
+	<input type="radio" id="tet19-chords-3x" name="tet19-chords-3" checked="true"/><label for="tet19-chords-3x">x</label>
+</td><td>
+	<input type="radio" data-note="5" data-inverter2="tet19-chords-3-inv2" id="tet19-chords-3-flat" name="tet19-chords-3"/><label for="tet19-chords-3-flat">3&minus;</label>
+</td><td>
+	<input type="radio" data-note="6" data-inverter2="tet19-chords-3-inv2" id="tet19-chords-3" name="tet19-chords-3" checked="true"/><label for="tet19-chords-3">3</label>
+</td><td>
+	<input type="radio" data-note="7" data-inverter2="tet19-chords-3-inv2" id="tet19-chords-3-sharp" name="tet19-chords-3"/><label for="tet19-chords-3-sharp">3+</label>
+</td><td colspan="2">
+	<input type="checkbox" id="tet19-chords-3-inv2"/><label for="tet19-chords-3-inv2">/2</label>
+</td></tr>
+<tr><td>
+	<input type="radio" id="tet19-chords-2x" name="tet19-chords-2" checked="true"/><label for="tet19-chords-2x">x</label>
+</td><td>
+	<input type="radio" data-note="2" data-inverter2="tet19-chords-2-inv2" id="tet19-chords-2-flat" name="tet19-chords-2"/><label for="tet19-chords-2-flat">2&minus;</label>
+</td><td>
+	<input type="radio" data-note="3" data-inverter2="tet19-chords-2-inv2" id="tet19-chords-2" name="tet19-chords-2"/><label for="tet19-chords-2">2</label>
+</td><td>
+	<input type="radio" data-note="4" data-inverter2="tet19-chords-2-inv2" id="tet19-chords-2-sharp" name="tet19-chords-2"/><label for="tet19-chords-2-sharp">2+</label>
+</td><td colspan="2">
+	<input type="checkbox" id="tet19-chords-2-inv2"/><label for="tet19-chords-2-inv2">/2</label>
+</td></tr>
+</table>
+
+<!--- 31-TET: -------------------------------------------------------------------------------------------------------------------->
+<table id="tet31-chord-table">
+<tr><th colspan="8">31-TET <button id="tet31-chord-close">Close</button> <button id="tet31-chord-reset">Reset</button> <button id="tet31-chord-build">Build</button></th></tr>
+<tr><th></th>
+<th>Double ♭</th><th>♭</th><th>Pure</th><th>♯</th><th>Double ♯</th>
+<th colspan="2">Inversions</th></tr>
+<tr><td>
+	<input type="radio" id="tet31-chords-13x" name="tet31-chords-13" checked="true"/><label for="tet31-chords-13x">x</label>
+</td><td>
+	<input type="radio" data-note="50" data-inverter2="tet31-chords-13-inv2" data-inverter4="tet31-chords-13-inv4" id="tet31-chords-13-flat-flat" name="tet31-chords-13"/><label for="tet31-chords-13-flat-flat">13&minus;&minus;</label>
+</td><td>
+	<input type="radio" data-note="52" data-inverter2="tet31-chords-13-inv2" data-inverter4="tet31-chords-13-inv4" id="tet31-chords-13-flat" name="tet31-chords-13"/><label for="tet31-chords-13-flat">13&minus;</label>
+</td><td>
+	<input type="radio" data-note="54" data-inverter2="tet31-chords-13-inv2" data-inverter4="tet31-chords-13-inv4" id="tet31-chords-13" name="tet31-chords-13"/><label for="tet31-chords-13">13</label>
+</td><td>
+	<input type="radio" data-note="56" data-inverter2="tet31-chords-13-inv2" data-inverter4="tet31-chords-13-inv4" id="tet31-chords-13-sharp" name="tet31-chords-13"/><label for="tet31-chords-13-sharp">13+</label>
+</td><td>
+	<input type="radio" data-note="58" data-inverter2="tet31-chords-13-inv2" data-inverter4="tet31-chords-13-inv4" id="tet31-chords-13-sharp-sharp" name="tet31-chords-13"/><label for="tet31-chords-13-sharp-sharp">13++</label>
+</td><td>
+	<input type="checkbox" id="tet31-chords-13-inv2"/><label for="tet31-chords-13-inv2">/2</label>
+</td><td>
+	<input type="checkbox" id="tet31-chords-13-inv4"/><label for="tet31-chords-13-inv4">/4</label>
+</td></tr>
+<tr><td>
+	<input type="radio" id="tet31-chords-11x" name="tet31-chords-11" checked="true"/><label for="tet31-chords-11x">x</label>
+</td><td>
+</td><td>
+	<input type="radio" data-note="42" data-inverter2="tet31-chords-11-inv2" data-inverter4="tet31-chords-11-inv4" id="tet31-chords-11-flat" name="tet31-chords-11"/><label for="tet31-chords-11-flat">11&minus;</label>
+</td><td>
+	<input type="radio" data-note="44" data-inverter2="tet31-chords-11-inv2" data-inverter4="tet31-chords-11-inv4" id="tet31-chords-11" name="tet31-chords-11"/><label for="tet31-chords-11">11</label>
+</td><td>
+	<input type="radio" data-note="46" data-inverter2="tet31-chords-11-inv2" data-inverter4="tet31-chords-11-inv4" id="tet31-chords-11-sharp" name="tet31-chords-11"/><label for="tet31-chords-11-sharp">11+</label>
+</td><td>
+	<input type="radio" data-note="48" data-inverter2="tet31-chords-11-inv2" data-inverter4="tet31-chords-11-inv4" id="tet31-chords-11-sharp-sharp" name="tet31-chords-11"/><label for="tet31-chords-11-sharp-sharp">11++</label>
+</td><td>
+	<input type="checkbox" id="tet31-chords-11-inv2"/><label for="tet31-chords-11-inv2">/2</label>
+</td><td>
+	<input type="checkbox" id="tet31-chords-11-inv4"/><label for="tet31-chords-11-inv4">/4</label>
+</td></tr>
+<tr><td>
+	<input type="radio" id="tet31-chords-9x" name="tet31-chords-9" checked="true"/><label for="tet31-chords-9x">x</label>
+</td><td>
+  <input type="radio" data-note="32" data-inverter2="tet31-chords-9-inv2" data-inverter4="tet31-chords-9-inv4" id="tet31-chords-9-flat-flat" name="tet31-chords-9"/><label for="tet31-chords-9-flat-flat">9&minus;&minus;</label>
+</td><td>
+	<input type="radio" data-note="34" data-inverter2="tet31-chords-9-inv2" data-inverter4="tet31-chords-9-inv4" id="tet31-chords-9-flat" name="tet31-chords-9"/><label for="tet31-chords-9-flat">9&minus;</label>
+</td><td>
+	<input type="radio" data-note="36" data-inverter2="tet31-chords-9-inv2" data-inverter4="tet31-chords-9-inv4" id="tet31-chords-9" name="tet31-chords-9"/><label for="tet31-chords-9">9</label>
+</td><td>
+	<input type="radio" data-note="38" data-inverter2="tet31-chords-9-inv2" data-inverter4="tet31-chords-9-inv4" id="tet31-chords-9-sharp" name="tet31-chords-9"/><label for="tet31-chords-9-sharp">9+</label>
+</td><td>
+	<input type="radio" data-note="40" data-inverter2="tet31-chords-9-inv2" data-inverter4="tet31-chords-9-inv4" id="tet31-chords-9-sharp-sharp" name="tet31-chords-9"/><label for="tet31-chords-9-sharp-sharp">9++</label>
+</td><td>
+	<input type="checkbox" id="tet31-chords-9-inv2"/><label for="tet31-chords-9-inv2">/2</label>
+</td><td>
+	<input type="checkbox" id="tet31-chords-9-inv4"/><label for="tet31-chords-9-inv4">/4</label>
+</td></tr>
+<tr><td>
+	<input type="radio" id="tet31-chords-8x" name="tet31-chords-8" checked="true"/><label for="tet31-chords-8x">x</label>
+</td><td>
+</td><td>
+	<input type="radio" data-note="29" data-inverter2="tet31-chords-8-inv2" data-inverter4="tet31-chords-8-inv4" id="tet31-chords-8-flat" name="tet31-chords-8"/><label for="tet31-chords-8-flat">8&minus;</label>
+</td><td>
+	<input type="radio" data-note="31" data-inverter2="tet31-chords-8-inv2" data-inverter4="tet31-chords-8-inv4" id="tet31-chords-8" name="tet31-chords-8"/><label for="tet31-chords-8">8</label>
+</td><td>
+	<input type="radio" data-note="33" data-inverter2="tet31-chords-8-inv2" data-inverter4="tet31-chords-8-inv4" id="tet31-chords-8-sharp" name="tet31-chords-8"/><label for="tet31-chords-8-sharp">8+</label>
+</td><td>
+	<input type="radio" data-note="35" data-inverter2="tet31-chords-8-inv2" data-inverter4="tet31-chords-8-inv4" id="tet31-chords-8-sharp-sharp" name="tet31-chords-8"/><label for="tet31-chords-8-sharp-sharp">8++</label>
+</td><td>
+	<input type="checkbox" id="tet31-chords-8-inv2"/><label for="tet31-chords-8-inv2">/2</label>
+</td><td>
+	<input type="checkbox" id="tet31-chords-8-inv4"/><label for="tet31-chords-8-inv4">/4</label>
+</td></tr>
+<tr><td>
+	<input type="radio" id="tet31-chords-7x" name="tet31-chords-7" checked="true"/><label for="tet31-chords-7x">x</label>
+</td><td>
+	<input type="radio" data-note="24" data-inverter2="tet31-chords-7-inv2" id="tet31-chords-7-flat-flat" name="tet31-chords-7"/><label for="tet31-chords-7-flat-flat">7&minus;&minus;</label>
+</td><td>
+	<input type="radio" data-note="26" data-inverter2="tet31-chords-7-inv2" id="tet31-chords-7-flat" name="tet31-chords-7"/><label for="tet31-chords-7-flat">7&minus;</label>
+</td><td>
+	<input type="radio" data-note="28" data-inverter2="tet31-chords-7-inv2" id="tet31-chords-7" name="tet31-chords-7"/><label for="tet31-chords-7">7</label>
+</td><td>
+	<input type="radio" data-note="30" data-inverter2="tet31-chords-7-inv2" id="tet31-chords-7-sharp" name="tet31-chords-7"/><label for="tet31-chords-7-sharp">7+</label>
+</td><td>
+</td><td colspan="2">
+	<input type="checkbox" id="tet31-chords-7-inv2"/><label for="tet31-chords-7-inv2">/2</label>
+</td></tr>
+<tr><td>
+	<input type="radio" id="tet31-chords-6x" name="tet31-chords-6" checked="true"/><label for="tet31-chords-6x">x</label>
+</td><td>
+	<input type="radio" data-note="19" data-inverter2="tet31-chords-6-inv2" id="tet31-chords-6-flat-flat" name="tet31-chords-6"/><label for="tet31-chords-6-flat-flat">6&minus;&minus;</label>
+</td><td>
+	<input type="radio" data-note="21" data-inverter2="tet31-chords-6-inv2" id="tet31-chords-6-flat" name="tet31-chords-6"/><label for="tet31-chords-6-flat">6&minus;</label>
+</td><td>
+	<input type="radio" data-note="23" data-inverter2="tet31-chords-6-inv2" id="tet31-chords-6" name="tet31-chords-6"/><label for="tet31-chords-6">6</label>
+</td><td>
+	<input type="radio" data-note="25" data-inverter2="tet31-chords-6-inv2" id="tet31-chords-6-sharp" name="tet31-chords-6"/><label for="tet31-chords-6-sharp">6+</label>
+</td><td>
+	<input type="radio" data-note="27" data-inverter2="tet31-chords-6-inv2" id="tet31-chords-6-sharp-sharp" name="tet31-chords-6"/><label for="tet31-chords-6-sharp-sharp">6++</label>
+</td><td colspan="2">
+	<input type="checkbox" id="tet31-chords-6-inv2"/><label for="tet31-chords-6-inv2">/2</label>
+</td></tr><tr><td>
+	<input type="radio" id="tet31-chords-5x" name="tet31-chords-5" checked="true"/><label for="tet31-chords-5x">x</label>
+</td><td>
+	<input type="radio" data-note="14" data-inverter2="tet31-chords-4-inv2" id="tet31-chords-5-flat-flat" name="tet31-chords-5"/><label for="tet31-chords-5-flat-flat">5&minus;&minus;</label>
+</td><td>
+	<input type="radio" data-note="16" data-inverter2="tet31-chords-4-inv2" id="tet31-chords-5-flat" name="tet31-chords-5"/><label for="tet31-chords-5-flat">5&minus;</label>
+</td><td>
+	<input type="radio" data-note="18" data-inverter2="tet31-chords-4-inv2" id="tet31-chords-5" name="tet31-chords-5" checked="true"/><label for="tet31-chords-5">5</label>
+</td><td>
+	<input type="radio" data-note="20" data-inverter2="tet31-chords-4-inv2" id="tet31-chords-5-sharp" name="tet31-chords-5"/><label for="tet31-chords-5-sharp">5+</label>
+</td><td>
+	<input type="radio" data-note="22" data-inverter2="tet31-chords-4-inv2" id="tet31-chords-5-sharp-sharp" name="tet31-chords-5"/><label for="tet31-chords-5-sharp-sharp">5++</label>
+</td><td colspan="2">
+	<input type="checkbox" id="tet31-chords-5-inv2"/><label for="tet31-chords-5-inv2">/2</label>
+</td></tr>
+<tr><td>
+	<input type="radio" id="tet31-chords-4x" name="tet31-chords-4" checked="true"/><label for="tet31-chords-4x">x</label>
+</td><td>
+</td><td>
+	<input type="radio" data-note="11" data-inverter2="tet31-chords-4-inv2" id="tet31-chords-4-flat" name="tet31-chords-4"/><label for="tet31-chords-4-flat">4&minus;</label>
+</td><td>
+	<input type="radio" data-note="13" data-inverter2="tet31-chords-4-inv2" id="tet31-chords-4" name="tet31-chords-4"/><label for="tet31-chords-4">4</label>
+</td><td>
+	<input type="radio" data-note="15" data-inverter2="tet31-chords-4-inv2" id="tet31-chords-4-sharp" name="tet31-chords-4"/><label for="tet31-chords-4-sharp">4+</label>
+</td><td>
+	<input type="radio" data-note="17" data-inverter2="tet31-chords-4-inv2" id="tet31-chords-4-sharp-sharp" name="tet31-chords-4"/><label for="tet31-chords-4-sharp-sharp">4++</label>
+</td><td colspan="2">
+	<input type="checkbox" id="tet31-chords-4-inv2"/><label for="tet31-chords-4-inv2">/2</label>
+</td></tr>
+<tr><td>
+	<input type="radio" id="tet31-chords-3x" name="tet31-chords-3" checked="true"/><label for="tet31-chords-3x">x</label>
+</td><td>
+	<input type="radio" data-note="6" data-inverter2="tet31-chords-3-inv2" id="tet31-chords-3-flat-flat" name="tet31-chords-3"/><label for="tet31-chords-3-flat-flat">3&minus;&minus;</label>
+</td><td>
+	<input type="radio" data-note="8" data-inverter2="tet31-chords-3-inv2" id="tet31-chords-3-flat" name="tet31-chords-3"/><label for="tet31-chords-3-flat">3&minus;</label>
+</td><td>
+	<input type="radio" data-note="10" data-inverter2="tet31-chords-3-inv2" id="tet31-chords-3" name="tet31-chords-3" checked="true"/><label for="tet31-chords-3">3</label>
+</td><td>
+	<input type="radio" data-note="12" data-inverter2="tet31-chords-3-inv2" id="tet31-chords-3-sharp" name="tet31-chords-3"/><label for="tet31-chords-3-sharp">3+</label>
+</td><td>
+</td><td colspan="2">
+	<input type="checkbox" id="tet31-chords-3-inv2"/><label for="tet31-chords-3-inv2">/2</label>
+</td></tr><tr><td>
+	<input type="radio" id="tet31-chords-2x" name="tet31-chords-2" checked="true"/><label for="tet31-chords-2x">x</label>
+</td><td>
+	<input type="radio" data-note="1" data-inverter2="tet31-chords-2-inv2" id="tet31-chords-2-flat-flat" name="tet31-chords-2"/><label for="tet31-chords-2-flat-flat">2&minus;&minus;</label>
+</td><td>
+	<input type="radio" data-note="3" data-inverter2="tet31-chords-2-inv2" id="tet31-chords-2-flat" name="tet31-chords-2"/><label for="tet31-chords-2-flat">2&minus;</label>
+</td><td>
+	<input type="radio" data-note="5" data-inverter2="tet31-chords-2-inv2" id="tet31-chords-2" name="tet31-chords-2"/><label for="tet31-chords-2">2</label>
+</td><td>
+	<input type="radio" data-note="7" data-inverter2="tet31-chords-2-inv2" id="tet31-chords-2-sharp" name="tet31-chords-2"/><label for="tet31-chords-2-sharp">2+</label>
+</td><td>
+	<input type="radio" data-note="9" data-inverter2="tet31-chords-2-inv2" id="tet31-chords-2-sharp-sharp" name="tet31-chords-2"/><label for="tet31-chords-2-sharp-sharp">2++</label>
+</td><td colspan="2">
+	<input type="checkbox" id="tet31-chords-2-inv2"/><label for="tet31-chords-2-inv2">/2</label>
+</td></tr>
+</table>
+</div>
+
   <script src="../webaudiofont/00-acoustic-grand-piano.js"></script>
   <script src="../webaudiofont/14-tubular-bells.js"></script>
   <script src="../webaudiofont/16-drawbar-organ.js"></script>
@@ -881,6 +1238,8 @@
   <script src="hardware-keyboard.js"></script>
   <script src="../ui/sound-control.js"></script>
   <script src="ui.js"></script>
+  <script src="../ui/chord-builder.js"></script>
+  <script src="../ui/chord-table.js"></script>
   <script src="tone-system-selector.js"></script>
   <script src="../ui/sound.js"></script>
   
