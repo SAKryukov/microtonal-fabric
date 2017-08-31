@@ -36,6 +36,7 @@
                 const toneCount = event.target.toneCount;
                 keyboard.resetChord();
                 const chord = event.target.chordBuilder.build();
+                keyboard.setChordNode(baseOctave + 0, 0, true);
                 for (let chordNote of chord) {
                     const noteOctave = Math.floor(chordNote.note / toneCount);
                     const note = chordNote.note % toneCount;
