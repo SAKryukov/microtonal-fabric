@@ -26,7 +26,7 @@
             const buildButton = keyboard.chordTable.buildButton;
             const resetButton = keyboard.chordTable.resetButton;
             const closeButton = keyboard.chordTable.closeButton;
-            setupChordTable(table, keyboard.toneCount, buildButton, resetButton, closeButton, removeShown);
+            setupChordTable(table, keyboard.toneCount, baseOctave, buildButton, resetButton, closeButton, removeShown);
             buildButton.keyboard = element;
         } //loop  
     })(); //setupChordTables

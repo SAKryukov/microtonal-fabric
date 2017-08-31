@@ -1,6 +1,6 @@
 "use strict";
 
-function setupChordTable(table, toneCount, buildButton, resetButton, closeButton, beforeClosing) {
+function setupChordTable(table, toneCount, baseOctave, buildButton, resetButton, closeButton, beforeClosing) {
     resetButton.inputElements = [];
     const findInputElements = function(element) {
         for (let child of element.childNodes) {

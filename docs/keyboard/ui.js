@@ -10,7 +10,7 @@ const keyboardHandler = (function () {
     }; //setSoundActions
 
     const rows = [];
-    const chord = [1, 5, 7];
+    const chord = [{ note: 1, title: "1" }, { note: 3, title: "3" }, { note: 5, title: "5" }];
 
     const nodes = elements.keyboard.childNodes;
 
@@ -30,7 +30,7 @@ const keyboardHandler = (function () {
             const oldColor = key.colorStack.pop();
             if (oldColor) {
                 key.currentColor = oldColor;
-                key.rectangle.style.fill = oldColor;                
+                key.rectangle.style.fill = oldColor;
             } //if
         } //if
     } //visualActivate
@@ -55,13 +55,20 @@ const keyboardHandler = (function () {
             key.numberInRow = rowCells.length;
             key.row = numberOfRows - rows.length - 1;
             rowCells.push(key);
-            key.activate = function (key, doActivate, text) {
+            key.activate = function (key, doActivate, chordNote, text) {
                 if (key.activated && doActivate) return;
                 if (!key.activated && !doActivate) return;
                 key.activated = doActivate;
                 if (soundAction)
                     soundAction(key, 0, key.tone, doActivate);
-                visualActivate(key, definitionSet.highlightSound, text, doActivate);
+                const effectiveColor = chordNote ? definitionSet.highlightChordNote : definitionSet.highlightSound;
+                visualActivate(key, effectiveColor, text, doActivate);
+                if (!chordNote)
+                    for (let chordElement of chord) {
+                        const childKey = rows[key.row][key.numberInRow + chordElement.note];
+                        if (childKey)
+                            childKey.activate(childKey, doActivate, true, "SA?");
+                    } //loop chord
             }; //key.activate
             key.rectangle.onmouseenter = function (event) {
                 if (event.buttons == 1)
