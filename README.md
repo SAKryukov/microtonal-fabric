@@ -14,7 +14,7 @@ The software is a pure in-browser application using [Web Audio API](https://deve
 - For three chromatic tone systems, the same keyboard is used; the choice of tone system can be changed dynamically
 - Due to the very special keyboard layout, basic playing skills acquired and techniques learned for one tone system are immediately applicable to other tone systems
 - Side-by-side comparison of the sound of tones and chords in different tone systems
-- Choice of 5 instruments
+- Choice of 5 instruments or 4 basic waveforms
 - Chord generation (under development)
 - Optional chord visualization (under development)
 - Compatible browsers include, but not limited to Google Chrome, Mozilla Firefox, Mozilla SeaMonkey and Opera
