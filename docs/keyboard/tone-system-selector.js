@@ -127,7 +127,6 @@
     (function setHardwareKeyboardControl() {
         const keyDictionary = {};
         const keyHandler = function (event, doActivate) {
-            if (event.ctrlKey) return true;
             if (event.altKey) return true;
             if (event.metaKey) return true;
             const keyCode = event.keyCode || event.which;
