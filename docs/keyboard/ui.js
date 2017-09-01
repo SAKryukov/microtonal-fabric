@@ -130,7 +130,7 @@ const keyboardHandler = (function () {
                 label.setAttributeNS(null, "y", cell.rectangle.y.baseVal.value + width + 1);
                 notesGroup.appendChild(label);
                 cell.label = label;
-                cell.textStack.push(labelText);
+                cell.textStack = [labelText];
             } //loop
     }; //rows.labelKeys
 
