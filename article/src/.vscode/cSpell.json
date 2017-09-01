@@ -18,9 +18,16 @@
         "Sergey",
         "Verdana",
         "blockquote",
+        "enharmonic",
+        "enharmonically",
+        "microtone",
+        "microtones",
         "nbsp",
         "toolchain",
         "transpositional",
+        "webaudiofont",
+        "webaudiofontdata",
+        "xenharmonic",
         "yzhang"
     ],
     // flagWords - list of words to be always considered incorrect

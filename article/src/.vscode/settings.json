@@ -31,42 +31,6 @@
         "relativePath": "", // relative to workspace
         "plugins": [
             {
-                "name": "markdown-it-sub",
-                "enable": false,
-                "syntacticDecorators": [
-                    {
-                        "enable": true,
-                        "regexString": "\\~([^\\s]*)\\~",
-                        "tooltipFormat": "Subscript expression: %s",
-                        "style": {
-                            "color": "darkGreen",
-                            "backgroundColor": "lightGreen",
-                            "border": "solid thin navy"
-                        }
-                    }
-                ]
-            },
-            {
-                "name": "markdown-it-sup",
-                "enable": true,
-                "syntacticDecorators": [
-                    {
-                        "enable": true,
-                        "regexString": "\\^([^\\s]*)\\^",
-                        "tooltipFormat": "Superscript expression: %s",
-                        "style": {
-                            "color": "darkBlue",
-                            "backgroundColor": "yellow",
-                            "border": "solid thin brown"
-                        }
-                    }
-                ]                
-            },
-            {
-                "name": "markdown-it-footnote",
-                "enable": true
-            },
-            {
                 "name": "markdown-it-attrs",
                 "enable": true,
                 "syntacticDecorators": [
