@@ -51,7 +51,7 @@ function ChordBuilder(table) {
                     octave -= 2;
             } else if (note.inverters[0].checked)
                 --octave;
-            result.push({octave: octave, note: parseInt(note.note), title: note.radio.innerHTML });
+            result.push({octave: octave, note: parseInt(note.note), title: note.radio.parentElement.childNodes[2].innerHTML });
         } //loop
         return result;
     } //build
