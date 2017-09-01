@@ -40,7 +40,7 @@ const elements = {
             buildButton: document.getElementById("tet31-chord-build"),
             resetButton: document.getElementById("tet31-chord-reset"),
             closeButton: document.getElementById("tet31-chord-close")
-        }        
+        }  
     ]
 }; //elements
 

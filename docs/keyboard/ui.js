@@ -67,12 +67,11 @@ const keyboardHandler = (function () {
                 const effectiveColor = chordNote ? definitionSet.highlightChordNote : definitionSet.highlightSound;
                 visualActivate(key, effectiveColor, text, doActivate);
                 if (!chordMode && doActivate) return;
-                if (chord && !chordNote)
-                    for (let chordElement of chord) {
-                        const childKey = rows[key.row][key.numberInRow + 1]; //chordElement.note];
-                        if (childKey)
-                            childKey.activate(childKey, chordMode, doActivate, true, chordElement.title);
-                    } //loop chord
+                if (chord && !chordNote) {
+                    const chordLayout = chordLayoutFinder(key, chord);
+                    for (let chordElement of chordLayout)
+                        chordElement.key.activate(chordElement.key, chordMode, doActivate, true, chordElement.title);
+                } //if
             }; //key.activate
             key.rectangle.onmouseenter = function (event) {
                 if (event.buttons == 1)
