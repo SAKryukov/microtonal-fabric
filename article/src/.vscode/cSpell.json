@@ -20,6 +20,7 @@
         "blockquote",
         "nbsp",
         "toolchain",
+        "transpositional",
         "yzhang"
     ],
     // flagWords - list of words to be always considered incorrect
