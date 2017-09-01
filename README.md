@@ -1,6 +1,6 @@
 ## Microtonal Chromatic Lattice Keyboard — see [Live Demo](https://sakryukov.github.io/microtonal-chromatic-lattice-keyboard)
 
-This project ***under development*** offers a musical keyboard of a special structure in the form of [lattice](https://en.wikipedia.org/wiki/Lattice_%28group%29) resembling computer keyboard. This *rank-two* structure offers certain benefits over traditional *sequentially-structured* keyboards and is especially suitable for [microtonal music](https://en.wikipedia.org/wiki/Microtonal_music). In its use, the keyboard is highly suggestive of the fundamental principles of music harmony. The tone mapping is based on the [Wicki-Hayden layout](https://en.wikipedia.org/wiki/Wicki-Hayden_note_layout), but the geometry is different: it is simpler; and its symmetry matches the symmetry of the tone system more closely.
+This project offers a musical keyboard of a special structure in the form of [lattice](https://en.wikipedia.org/wiki/Lattice_%28group%29) resembling computer keyboard. This *rank-two* structure offers certain benefits over traditional *sequentially-structured* keyboards and is especially suitable for [microtonal music](https://en.wikipedia.org/wiki/Microtonal_music). In its use, the keyboard is highly suggestive of the fundamental principles of music harmony. The tone mapping is based on the [Wicki-Hayden layout](https://en.wikipedia.org/wiki/Wicki-Hayden_note_layout), but the geometry is different: it is simpler; and its symmetry matches the symmetry of the tone system more closely.
 
 The software is a pure in-browser application using [Web Audio API](https://developer.mozilla.org/en-US/docs/Web/API/Web_Audio_API). It continues the work at the similar keyboard (not microtonal) for Windows and .NET: [Musical Study with Isomorphic Computer Keyboard](https://www.codeproject.com/Articles/1201737/Musical-Study-with-Isomorphic-Computer-Keyboard).
 
@@ -15,8 +15,8 @@ The software is a pure in-browser application using [Web Audio API](https://deve
 - Due to the very special keyboard layout, basic playing skills acquired and techniques learned for one tone system are immediately applicable to other tone systems
 - Side-by-side comparison of the sound of tones and chords in different tone systems
 - Choice of 5 instruments or 4 basic waveforms
-- Chord generation (under development)
-- Optional chord visualization (under development)
+- Chord generation
+- Optional chord visualization
 - Compatible browsers include, but not limited to Google Chrome, Mozilla Firefox, Mozilla SeaMonkey and Opera
 
 ### Live Demo and Source Code
