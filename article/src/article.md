@@ -160,10 +160,10 @@ The intervals in semitones depend on the tone system:
 <td>12-TET</td><td>K=2</td><td>L=5</td><td>M=7</td>
 </tr>
 <tr>
-<td>12-TET</td><td>K=3</td><td>L=8</td><td>M=11</td>
+<td>19-TET</td><td>K=3</td><td>L=8</td><td>M=11</td>
 </tr>
 <tr>
-<td>12-TET</td><td>K=5</td><td>L=13</td><td>M=18</td>
+<td>31-TET</td><td>K=5</td><td>L=13</td><td>M=18</td>
 <tr>
 </table>
 
