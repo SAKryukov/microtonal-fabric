@@ -69,6 +69,7 @@ const keyboardHandler = (function () {
                 if (soundAction)
                     soundAction(key, 0, key.tone, doActivate);
                 const effectiveColor = chordNote ? definitionSet.highlightChordNote : definitionSet.highlightSound;
+                if (!chordNote) highlightChords = true;
                 visualActivate(key, effectiveColor, text, highlightChords, doActivate);
                 if (!chordMode && doActivate) return;
                 if (chord && !chordNote) {
