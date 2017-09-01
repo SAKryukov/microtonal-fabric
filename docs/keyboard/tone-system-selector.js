@@ -66,6 +66,7 @@
         const smallRowIncrement = system.smallRowIncrement;
         const rightIncrement = system.rightIncrement;
         keyboardHandler.rows.labelKeys(function (cell) {
+            cell.toneSystem = system;	
             if (currentRow != cell.row) {
                 currentRow = cell.row;
                 let increment = (keyboardHandler.rows[cell.row].length % 2) == 0 ? bigRowIncrement : smallRowIncrement;

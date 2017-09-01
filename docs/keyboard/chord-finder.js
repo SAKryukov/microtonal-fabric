@@ -55,10 +55,11 @@ const chordLayoutFinder = (function() {
     } //findChordNote
 
     const find = function(rootNote, chord) {
+        const notesInOctave = rootNote.toneSystem.names.length;
         const result = [];
         const showChordNotes = chordOptionSet.showChordNotes;
         for (let chordElement of chord) {
-            const key = findChordNote(rootNote, rootNote.note + chordElement.note);
+            const key = findChordNote(rootNote, rootNote.note + chordElement.note + notesInOctave * chordElement.octave);
             if (!key) continue;
             const title = showChordNotes ? chordElement.title : null
             result.push({ key: key, title: title });
