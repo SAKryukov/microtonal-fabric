@@ -3,6 +3,10 @@
 const elements = {
     keyboard: document.getElementById("keyboard"),
     buttonShowChordTable: document.getElementById("button-show-chord-table"),
+    showOptions: {
+        optionHighlightChords: document.getElementById("checkbox-option-highlight-chords"),
+        optionShowChordNotes: document.getElementById("checkbox-option-chord-notes")
+    },
     radioTet: {
         radio12et: document.getElementById("radio-12-et"),
         radio12etJanko: document.getElementById("radio-12-et-Janko"),

@@ -11,30 +11,34 @@ const keyboardHandler = (function () {
 
     const rows = [];
     let chord;
-    const assignChord = function(chordInstance) {
+    const assignChord = function (chordInstance) {
         chord = chordInstance;
     }; //assignChord
 
     const nodes = elements.keyboard.childNodes;
 
-    const visualActivate = function (key, color, text, doActivate) {
+    const visualActivate = function (key, color, text, highlightChords, doActivate) {
         if (doActivate) {
-            key.colorStack.push(key.currentColor);
             if (text) {
                 key.textStack.push(key.label.innerHTML);
                 key.label.innerHTML = text;
             } //if
-            key.currentColor = color;
-            key.rectangle.style.fill = color;
+            if (highlightChords) {
+                key.colorStack.push(key.currentColor);
+                key.currentColor = color;
+                key.rectangle.style.fill = color;
+            } //if
         } else {
             const oldText = key.textStack.pop();
             if (oldText)
                 key.label.innerHTML = oldText;
-            const oldColor = key.colorStack.pop();
-            if (oldColor) {
-                key.currentColor = oldColor;
-                key.rectangle.style.fill = oldColor;
-            } //if
+            if (highlightChords) {
+                const oldColor = key.colorStack.pop();
+                if (oldColor) {
+                    key.currentColor = oldColor;
+                    key.rectangle.style.fill = oldColor;
+                } //if
+            } //if highlightChords
         } //if
     } //visualActivate
 
@@ -58,19 +62,20 @@ const keyboardHandler = (function () {
             key.numberInRow = rowCells.length;
             key.row = numberOfRows - rows.length - 1;
             rowCells.push(key);
-            key.activate = function (key, chordMode, doActivate, chordNote, text) {
+            key.activate = function (key, chordMode, doActivate, chordNote, text, highlightChords) {
                 if (key.activated && doActivate) return;
                 if (!key.activated && !doActivate) return;
                 key.activated = doActivate;
                 if (soundAction)
                     soundAction(key, 0, key.tone, doActivate);
                 const effectiveColor = chordNote ? definitionSet.highlightChordNote : definitionSet.highlightSound;
-                visualActivate(key, effectiveColor, text, doActivate);
+                visualActivate(key, effectiveColor, text, highlightChords, doActivate);
                 if (!chordMode && doActivate) return;
                 if (chord && !chordNote) {
                     const chordLayout = chordLayoutFinder(key, chord);
+                    const highlightChords = chordLayout.highlightChords;
                     for (let chordElement of chordLayout)
-                        chordElement.key.activate(chordElement.key, chordMode, doActivate, true, chordElement.title);
+                        chordElement.key.activate(chordElement.key, chordMode, doActivate, true, chordElement.title, highlightChords);
                 } //if
             }; //key.activate
             key.rectangle.onmouseenter = function (event) {

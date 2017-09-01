@@ -2,6 +2,20 @@
 
 const chordLayoutFinder = (function() {
 
+    function ChordOptionSet() {
+        this.highlightChords = true;
+        this.showChordNotes = true;
+        elements.showOptions.optionHighlightChords.optionSet = this;
+        elements.showOptions.optionShowChordNotes.optionSet = this;
+        elements.showOptions.optionHighlightChords.onclick = function(event) {
+            this.optionSet.highlightChords = event.target.checked;
+        }; //elements.showOptions.optionHighlightChords.onclick
+        elements.showOptions.optionShowChordNotes.onclick = function(event) {
+            this.optionSet.showChordNotes = event.target.checked;
+        }; //elements.showOptions.optionShowChordNotes.onclick
+    } //ChordOptionSet
+    const chordOptionSet = new ChordOptionSet();
+        
     (function setup() {
         keyboardHandler.rows.iterateKeys(function(key) {
             key.rectangle.getAttributeNS(null, "x");
@@ -42,11 +56,14 @@ const chordLayoutFinder = (function() {
 
     const find = function(rootNote, chord) {
         const result = [];
+        const showChordNotes = chordOptionSet.showChordNotes;
         for (let chordElement of chord) {
             const key = findChordNote(rootNote, rootNote.note + chordElement.note);
             if (!key) continue;
-            result.push({ key: key, title: chordElement.title });
+            const title = showChordNotes ? chordElement.title : null
+            result.push({ key: key, title: title });
         } //loop
+        result.highlightChords = chordOptionSet.highlightChords;
         return result;
     }; //this.find
 
