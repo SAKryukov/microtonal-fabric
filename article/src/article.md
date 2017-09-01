@@ -18,8 +18,6 @@ C &mdash; D♭² &mdash; Db &mdash; C♯ &mdash; C♯² &mdash; D
 
 --> 
 
-
-
 ---
 
 <!-- copy to CodeProject from here ------------------------------------------->
@@ -172,6 +170,129 @@ The intervals in semitones depend on the tone system:
 Obviously, the ratio values 3/2, 4/3 and 9/8 are only approximated by microtonal intervals, because rational frequency ratio values are [impossible with equal temperaments](https://www.codeproject.com/Articles/1201737/Musical-Study-with-Isomorphic-Computer-Keyboard#heading.rational-and-irrational-numbers).
 
 ## Implementation
+
+### Sound Synthesis
+
+First of all, sound synthesis it totally based on [Web Audio API](https://developer.mozilla.org/en-US/docs/Web/API/Web_Audio_API) implemented by nearly all major browsers. Presently, it is based on the [W3C working draft of August 2017](https://webaudio.github.io/web-audio-api).
+
+This part of the application code is based on the work referenced [below](#acknowledgments), but the resulting code is radically different, due to numerous problems I found. The approach is based on [wavetable synthesis](https://en.wikipedia.org/wiki/Wavetable_synthesis), which is itself problematic, because quality synthesis would require more comprehensive set of samples which would take enormous amount of memory. Besides, looping is the inherent problem is such approach.
+
+First of all, it would be interesting to see what was the cost of extending the functionality to microtonal set of tones. It was pretty easy. Most important thing here was just understanding. First of all, in the original API, pitch was expressed in integer numbers, MIDI note values, or [12-TET](https://en.wikipedia.org/wiki/Equal_temperament) *semitones*. Using fractional values to represent semitones seemed to work, but only at first. Some tones produced unbearably nasty sound. Simple debugging revealed a pretty bad *design bug* in the [sound fonts](https://en.wikipedia.org/wiki/SoundFont) themselves.
+
+The sound fonts have been represented in the form of JavaScript files, apparently converted from different source. I'm not familiar with the original formats and simply borrowed some of these files, but my guess was: the problem was created not by the author of [webaudiofontdata](https://github.com/surikov/webaudiofontdata), but probably by the creators of the source formats. The problem is: the sound samples of the same font are classified into zones which come with the gap of one semitone: say, a zone range for notes 0 to 27 is followed by the range 28 to 45. As a result, for the microtone between 27 and 28 semitones, the zone is not found and defaults to zone 0;    
+
+<pre src="JavaScript" id="code.adjustPreset">
+this.adjustPreset = function (audioContext, preset) {
+    if (!preset) return;
+    if (preset.constructor == String) return;
+    const fixedZones = [];
+    for (let zone of preset.zones) {
+        // pathological case, not used anyway:
+        if (zone.keyRangeLow &gt; zone.keyRangeHigh) continue;
+        fixedZones.push(zone);
+        adjustZone(audioContext, zone);
+    } //loop preset.zones
+    preset.zones = fixedZones;
+    // removing 1-semitone gaps between zones; important for microtones:
+    for (let index = 1; index &lt; preset.zones.length; ++index)
+        preset.zones[index].keyRangeLow = preset.zones[index - 1].keyRangeHigh;
+}; //adjustPreset
+</pre>
+
+This code is submitted as a [pull request](https://github.com/surikov/webaudiofont/pulls) to the original [webaudiofont](https://github.com/surikov/webaudiofont) project, but it needs a lot more critical fixes. 
+
+I fixed many bugs, I also implemented primitive waveform sounds and most important feature: "infinite" sound which lasts until the player holds the instrument key, or until the natural [damping](https://en.wikipedia.org/wiki/Damping_ratio) of the simulated instrument is complete. The instruments with such damping (piano, bells, plucking/strumming strings and the like) present the problem of looping, just because all the samples I tried are shorter than the damping time. The implementation loops the sound, which is not how the real instrument should play, so it sounds reasonably only for short sound durations. The interpolation of sounds using the sample of a neighboring zone is also too primitive to be good: the required pitch is achieved by changing the play ratio. In other words, there is a big room for improvements.
+
+### Sound Quality
+
+Because to the problems explained above, I would consider the quality as basically acceptable, but far from decent. First of all, I just failed to find sufficient number of good samples. I would gladly try to use any data or advice. Perhaps sample-free synthesis of sounds from scratch 
+
+### Scalable Vector Graphics
+
+I developed not a very usual method of HTML/CSS/JavaScript development: embedded [SVG](https://en.wikipedia.org/wiki/Scalable_Vector_Graphics). Here is the idea: the UI element is developed using wonderful SVG-based vector editor, [https://en.wikipedia.org/wiki/Inkscape](https://en.wikipedia.org/wiki/Inkscape); any other suitable editor can be used. In JavaScript code, some of the SVG elements are found using their `id` values or known inner XML structure. When this is done, obtained JavaScript objects can be modified by altering their attributes (first of all, CSS attributes). And then, input event properties can be added to these elements. This is how a musical instrument key function can be implemented, such as production of sound and highlight.
+
+Let's see how it works on the example of the [Chromatic Lattice Keyboard]():
+
+<pre lang="JavaScript" id="code.elements">
+const elements = {
+    keyboard: document.getElementById("keyboard"),
+    buttonShowChordTable: document.getElementById("button-show-chord-table"),
+    showOptions: {
+        optionHighlightChords: document.getElementById("checkbox-option-highlight-chords"),
+        optionShowChordNotes: document.getElementById("checkbox-option-chord-notes")
+    },
+    radioTet: {
+        radio12et: document.getElementById("radio-12-et"),
+        radio12etJanko: document.getElementById("radio-12-et-Janko"),
+        radio19et: document.getElementById("radio-19-et"),
+        radio31et: document.getElementById("radio-31-et"),
+    },
+    controls: {
+        instrument: document.getElementById("control-instrument"),
+        volume: document.getElementById("control-volume"),
+        // ...
+    }, 
+    chordSet: [
+        {
+            toneCount: 12,
+            table: document.getElementById("tet12-chord-table"),
+            buildButton: document.getElementById("tet12-chord-build"),
+            resetButton: document.getElementById("tet12-chord-reset"),
+            closeButton: document.getElementById("tet12-chord-close")
+        },
+        // ...
+        }  
+    ]
+}; //elements
+</pre>
+
+So far, there is nothing unusual. Actually, getting the inner SVG elements is not shown here, but this technique is used for [Microtonal Tone Systems Comparison](https://sakryukov.github.io/microtonal-chromatic-lattice-keyboard/tone-system-comparison/tone-system-comparison.html) keyboards — it just works. More importantly, the SVG elements corresponding to separate keys are not found by their `id` values — it would be too much of error-prone code. Instead, the assumptions of their order is used. Let's see how it works:
+
+<pre lang="JavaScript" id="code.ui">
+const nodes = elements.keyboard.childNodes;
+
+// If we know that each row is the immediate child of the top SVG element,
+// we can simply count all keyboard rows:
+let numberOfRows = 0;
+for (let node of nodes)
+    if (node.constructor == SVGGElement)
+        numberOfRows++;
+
+//...
+
+// Then we can access each key, assuming that keys are the only "rect"
+// element on certain level:
+
+for (let node of nodes) {
+    const rowCells = [];
+    rowCells.rowNumber = rows.length;
+    if (node.constructor != SVGGElement) continue;
+    for (let rowCell of node.childNodes) {
+        // anything which is not "rect" can be ignored:
+        if (rowCell.constructor != SVGRectElement) continue;
+        const key = {};
+        // gather and construct key data
+        // ...
+        key.rectangle = rowCell;
+        // this is how event handlers are added, per keyboard key:
+        key.rectangle.onmouseenter = function (event) { /* ... * /}
+        key.rectangle.onmouseleave = function (event) { /* ... * /}
+        key.rectangle.onmousedown = function (event) {
+            if (event.button == 0)
+                event.target.key.activate(event.target.key,
+                    event.ctrlKey, true);
+            else
+                event.target.key.activate(event.target.key,
+                    event.ctrlKey, false);
+            // ...
+        };
+        key.rectangle.onmouseup = function (event) { /* ... * /}
+    }
+    // ...
+}
+</pre>
+
+For the detail, please see complete source code.
 
 ## Acknowledgments
 
