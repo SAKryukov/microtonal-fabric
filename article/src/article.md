@@ -71,7 +71,7 @@ There can be very [many answers](http://xenharmonic.wikispaces.com/Why+use+alter
 The application could be considered as two independent [single-page applications](https://en.wikipedia.org/wiki/Single-page_application), not counting [index file](https://sakryukov.github.io/microtonal-chromatic-lattice-keyboard) simply referencing the matter involved. Implementations share some of JavaScript files, that's it.
 
 1. First part: [Microtonal Tone Systems Comparison](https://sakryukov.github.io/microtonal-chromatic-lattice-keyboard/tone-system-comparison/tone-system-comparison.html) based on four chromatic-circle keyboards. Chords can be defined directly on the chromatic-circle keyboard and played separately on in fast succession comparison.
-2. Second part: [Microtonal Chromatic Lattice](https://sakryukov.github.io/microtonal-chromatic-lattice-keyboard/keyboard/keyboard.html) keyboard, which allows to play wide range of tones. Chords can be defined through chord tables, auto-generated and played with single click or key press. 
+2. Second part: [Microtonal Chromatic Lattice](https://sakryukov.github.io/microtonal-chromatic-lattice-keyboard/keyboard/keyboard.html) keyboard, which allows playing wide range of tones. Chords can be defined through chord tables, auto-generated and played with single click or key press. 
 
 The full source code can be downloaded, but there is no a need to download software to use it — everything can be played directly on the application [Web site](https://sakryukov.github.io/microtonal-chromatic-lattice-keyboard).
 
@@ -84,12 +84,12 @@ The chords can be played by clicking at the center round areas. Besides, if more
 
 ![Chord Comparer](comparer.png)
 
-Now, lets consider the circular keyboards to be used for study of different tone systems.
+Now, let's consider the circular keyboards to be used for study of different tone systems.
 
 [Just Intonation](https://en.wikipedia.org/wiki/Just_intonation):
 ![Just Intonation Keyboard](just.png)
 
-Just intonation is shown in comparison with the positions of [Common-practice](https://en.wikipedia.org/wiki/Common_practice_period) [12-TET](https://en.wikipedia.org/wiki/Equal_temperament) *semitones* depicted as gray radial lines. This picture reveals the bigger problem of tuning accuracy of 12-TET: pure rendering of 6th and, even more importantly, 3rd, which is the central note of very important [major chord](https://en.wikipedia.org/wiki/Major_chord). The errors are 15.6 [cents](https://en.wikipedia.org/wiki/Cent_%28music%29) for 6th and 13.7 for 3rd. Probably, most people can hear the pretty subtle difference, perhaps after certain training, but the difference becomes more apparent in cases where inter-string resonances of the instruments (like piano or guitar) are noticeable.
+Just intonation is shown in comparison with the positions of [Common-practice](https://en.wikipedia.org/wiki/Common_practice_period) [12-TET](https://en.wikipedia.org/wiki/Equal_temperament) *semitones* depicted as gray radial lines. This picture reveals the bigger problem of tuning accuracy of 12-TET: pure rendering of 6th and, even more importantly, 3rd, which is the central note of very important [major chord](https://en.wikipedia.org/wiki/Major_chord). The errors are 15.6 [cents](https://en.wikipedia.org/wiki/Cent_%28music%29) for 6th and 13.7 for 3rd. Most probably people can hear the pretty subtle difference, perhaps after certain training, but the difference becomes more apparent in cases where inter-string resonances of the instruments (like piano or guitar) are noticeable.
 
 I want to remind that [Just Intonation](https://en.wikipedia.org/wiki/Just_intonation) is based on pure [harmonic relationships]((https://www.codeproject.com/Articles/1201737/Musical-Study-with-Isomorphic-Computer-Keyboard#heading.rational-and-irrational-numbers)) between tones, is very important for comparison of tone systems, but is fairly impractical for playing of most musical pieces due to the lack of [transpositional equivalence](https://en.wikipedia.org/wiki/Transposition_%28music%29#Transpositional_equivalence).
 
@@ -99,7 +99,7 @@ I want to remind that [Just Intonation](https://en.wikipedia.org/wiki/Just_inton
 [19-TET](https://en.wikipedia.org/wiki/19_equal_temperament):
 ![19-TET Keyboard](19-tet.png)
 
-With [19-TET](https://en.wikipedia.org/wiki/19_equal_temperament), th two different intervals between the degrees of [major scale](https://en.wikipedia.org/wiki/Major_scale): 2 (for B-C and E-F intervals) or 3 microtones. So, there is only one kind of sharp and one kind of flat, &plusmn;1 microtone. However, I avoid using ♯ and ♭ inside minor second intervals, to avoid the choice between [enharmonically equivalent](https://en.wikipedia.org/wiki/Enharmonic) notations, because, in microtonal systems, enharmonic equivalence generally cannot be assumed -- it is not the case for the 3-microtone minor second intervals.
+With [19-TET](https://en.wikipedia.org/wiki/19_equal_temperament), two different intervals between the degrees of [major scale](https://en.wikipedia.org/wiki/Major_scale): 2 (for B-C and E-F intervals) or 3 microtones. So, there is only one kind of sharp and one kind of flat, &plusmn;1 microtone. However, I avoid using ♯ and ♭ inside minor second intervals, to avoid the choice between [enharmonically equivalent](https://en.wikipedia.org/wiki/Enharmonic) notations, because, in microtonal systems, enharmonic equivalence generally cannot be assumed -- it is not the case for the 3-microtone minor second intervals.
 
 [31-TET](https://en.wikipedia.org/wiki/31_equal_temperament):
 ![31-TET Keyboard](31-tet.png)
@@ -129,7 +129,7 @@ For [Just Intonation](https://en.wikipedia.org/wiki/Just_intonation) and [12-TET
 
 This is not the case for microtonal systems. For consistency, generalization and simplification, any subset of notes can be chosen, even the empty set, but no more than one alteration per zone. Note that 6th and 7th zones are not united for microtonal systems, because generally there is no [enharmonically equivalent](https://en.wikipedia.org/wiki/Enharmonic) between 6th and 7&minus;; by the same reasons, there are no empty table cells for altered notes.
 
-The chord [inversions](https://en.wikipedia.org/wiki/Inversion_(music)) are created by the check boxes "/2" and "/4", which lower a note by one or two octaves. 
+The chord [inversions](https://en.wikipedia.org/wiki/Inversion_(music)) are created by the check boxes "/2" and "/4", which lower notes by one or two octaves. 
 
 The same system of chord selection, based on shared JavaScript code, is used for "big" chromatic lattice keyboard. Such selection provides the only way to play a chord in one click.
 
@@ -143,11 +143,11 @@ The keyboard takes the same share, dimensions and structure as the one offered i
 
 The green area is used to play part of the tones using the physical computer keyboard (sorry, modeled based on standard US keyboard layout, without any options; anyone who really needs something else is welcome to address me).
 
-The controls are different. First of all, one of the three tone systems and four layout ([12-TET](https://en.wikipedia.org/wiki/Equal_temperament), 12-TET in [Jankó layout](https://en.wikipedia.org/wiki/Jank%C3%B3_keyboard), [19-TET](https://en.wikipedia.org/wiki/19_equal_temperament) and [31-TET](https://en.wikipedia.org/wiki/31_equal_temperament)) can be chosen at any time.
+The controls are different. First of all, one of the three tone systems and four layouts ([12-TET](https://en.wikipedia.org/wiki/Equal_temperament), 12-TET in [Jankó layout](https://en.wikipedia.org/wiki/Jank%C3%B3_keyboard), [19-TET](https://en.wikipedia.org/wiki/19_equal_temperament) and [31-TET](https://en.wikipedia.org/wiki/31_equal_temperament)) can be chosen at any time.
 
 Other controls enable optional highlighting of chords (played prefixed with Ctrl+) and chosen from the tables [described above](special.chord-tables) and chord note marking using the scale degree notation.
 
-First surprising thing is that the tone layout looks nearly identical to that of 12-TET. This layout is very special: 1) it is very suggestive of harmonic relationship between notes, 2) the layouts for different tone systems are "locally identical". The differences become apparent, for example, in the attempt to perform [harmonic modulation](https://en.wikipedia.org/wiki/Modulation_%28music%29), which is very easy though, due to chromatic nature of the keyboard. How it works?
+First surprising thing is that the tone layout looks nearly identical to that of 12-TET. This layout is very special: 1) it is very suggestive of harmonic relationship between notes; 2) the layouts for different tone systems are "locally identical". The differences become apparent, for example, in the attempt to perform [harmonic modulation](https://en.wikipedia.org/wiki/Modulation_%28music%29), which is very easy though, due to chromatic nature of the keyboard. How it works?
 
 Here is how the layout is structured:
 
@@ -175,9 +175,9 @@ Obviously, the ratio values 3/2, 4/3 and 9/8 are only approximated by microtonal
 
 First of all, sound synthesis it totally based on [Web Audio API](https://developer.mozilla.org/en-US/docs/Web/API/Web_Audio_API) implemented by nearly all major browsers. Presently, it is based on the [W3C working draft of August 2017](https://webaudio.github.io/web-audio-api).
 
-This part of the application code is based on the work referenced [below](#acknowledgments), but the resulting code is radically different, due to numerous problems I found. The approach is based on [wavetable synthesis](https://en.wikipedia.org/wiki/Wavetable_synthesis), which is itself problematic, because quality synthesis would require more comprehensive set of samples which would take enormous amount of memory. Besides, looping is the inherent problem is such approach.
+This part of the application code is based on the work referenced [below](#acknowledgments), but the resulting code is radically different, due to numerous problems I found. The approach is based on [wavetable synthesis](https://en.wikipedia.org/wiki/Wavetable_synthesis), which is problematic, because quality synthesis would require more comprehensive set of samples which would take enormous amount of memory. Besides, looping is the inherent problem is such approach.
 
-First of all, it would be interesting to see what was the cost of extending the functionality to microtonal set of tones. It was pretty easy. Most important thing here was just understanding. First of all, in the original API, pitch was expressed in integer numbers, MIDI note values, or [12-TET](https://en.wikipedia.org/wiki/Equal_temperament) *semitones*. Using fractional values to represent semitones seemed to work, but only at first. Some tones produced unbearably nasty sound. Simple debugging revealed a pretty bad *design bug* in the [sound fonts](https://en.wikipedia.org/wiki/SoundFont) themselves.
+First of all, it would be interesting to see the cost of extending the functionality to microtonal set of tones. It was pretty easy. Most important thing here was just about understanding. First of all, in the original API, pitch was expressed in integer numbers, MIDI note values, or [12-TET](https://en.wikipedia.org/wiki/Equal_temperament) *semitones*. Using fractional values to represent semitones seemed to work, but only at first. Some tones produced unbearably nasty sound. Simple debugging revealed a pretty bad *design bug* in the [sound fonts](https://en.wikipedia.org/wiki/SoundFont) themselves.
 
 The sound fonts have been represented in the form of JavaScript files, apparently converted from different source. I'm not familiar with the original formats and simply borrowed some of these files, but my guess was: the problem was created not by the author of [webaudiofontdata](https://github.com/surikov/webaudiofontdata), but probably by the creators of the source formats. The problem is: the sound samples of the same font are classified into zones which come with the gap of one semitone: say, a zone range for notes 0 to 27 is followed by the range 28 to 45. As a result, for the microtone between 27 and 28 semitones, the zone is not found and defaults to zone 0;    
 
@@ -201,7 +201,7 @@ this.adjustPreset = function (audioContext, preset) {
 
 This code is submitted as a [pull request](https://github.com/surikov/webaudiofont/pulls) to the original [webaudiofont](https://github.com/surikov/webaudiofont) project, but it needs a lot more critical fixes. 
 
-I fixed many bugs, I also implemented primitive waveform sounds and most important feature: "infinite" sound which lasts until the player holds the instrument key, or until the natural [damping](https://en.wikipedia.org/wiki/Damping_ratio) of the simulated instrument is complete. The instruments with such damping (piano, bells, plucking/strumming strings and the like) present the problem of looping, just because all the samples I tried are shorter than the damping time. The implementation loops the sound, which is not how the real instrument should play, so it sounds reasonably only for short sound durations. The interpolation of sounds using the sample of a neighboring zone is also too primitive to be good: the required pitch is achieved by changing the play ratio. In other words, there is a big room for improvements.
+I fixed many bugs and also implemented primitive waveform sounds and most important feature: "infinite" sound which lasts until the player holds the instrument key, or until the natural [damping](https://en.wikipedia.org/wiki/Damping_ratio) of the simulated instrument is complete. The instruments with such damping (piano, bells, plucking/strumming strings and the like) present the problem of looping, just because all the samples I tried are shorter than the damping time. The implementation loops the sound, which is not how the real instrument should play, so it sounds reasonably only for short sound durations. The interpolation of sounds using the sample of a neighboring zone is also too primitive to be good: the required pitch is achieved by changing the play ratio. In other words, there is a big room for improvements.
 
 ### Sound Quality
 
@@ -246,7 +246,7 @@ const elements = {
 }; //elements
 </pre>
 
-So far, there is nothing unusual. Actually, getting the inner SVG elements is not shown here, but this technique is used for [Microtonal Tone Systems Comparison](https://sakryukov.github.io/microtonal-chromatic-lattice-keyboard/tone-system-comparison/tone-system-comparison.html) keyboards — it just works. More importantly, the SVG elements corresponding to separate keys are not found by their `id` values — it would be too much of error-prone code. Instead, the assumptions of their order is used. Let's see how it works:
+So far, there is nothing unusual. Actually, getting the inner SVG elements is not shown here, but this technique is used for [Microtonal Tone Systems Comparison](https://sakryukov.github.io/microtonal-chromatic-lattice-keyboard/tone-system-comparison/tone-system-comparison.html) keyboards — it just works. More importantly, the SVG elements corresponding to separate keys are not found by their `id` values — it would be too much of error-prone code. Instead, the assumption of their order is used. Let's see how it works:
 
 <pre lang="JavaScript" id="code.ui">
 const nodes = elements.keyboard.childNodes;
