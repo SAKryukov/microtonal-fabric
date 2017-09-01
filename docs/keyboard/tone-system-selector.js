@@ -17,6 +17,7 @@
             const closeButton = chordSetElement.closeButton
             setupChordTable(table, toneCount, baseOctave, buildButton, resetButton, closeButton,
                 function() {
+                    keyboardHandler.chordSetter(visibleChordTable.chordBuilder.build());        
                     showChordTable(visibleChordTable, false);
                 });
         } //loop    
