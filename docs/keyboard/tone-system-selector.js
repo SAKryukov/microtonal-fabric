@@ -16,7 +16,7 @@
     let selectedTet;
     let chord;
 
-    (function setupChordTables(){
+    (function setupChordTables() {
         for (let chordSetElement of elements.chordSet) {
             const table = chordSetElement.table;
             const toneCount = chordSetElement.toneCount;
@@ -26,8 +26,8 @@
             const resetButton = chordSetElement.resetButton;
             const closeButton = chordSetElement.closeButton
             setupChordTable(table, toneCount, baseOctave, buildButton, resetButton, closeButton,
-                function() {
-                    keyboardHandler.chordSetter(visibleChordTable.chordBuilder.build());        
+                function () {
+                    keyboardHandler.chordSetter(visibleChordTable.chordBuilder.build());
                     showChordTable(visibleChordTable, false);
                 });
         } //loop    
@@ -35,12 +35,10 @@
 
     function optimizeTableLocation(table) {
         const room = { x: window.innerWidth, y: window.innerHeight };
-        //const svgNS = keyboard.getAttribute("xmlns");        
         const x = Math.floor((room.x - table.offsetWidth) / 2);
-        //if (table.offsetHeight <= elements.keyboard.offsetHeight)
         const y = elements.keyboard.clientHeight - table.offsetHeight > 0 ?
             Math.floor((elements.keyboard.clientHeight - table.offsetHeight) / 2)
-            : 22;
+            : 22; //SA???
         return { x: x, y: y };
     } //optimizeTableLocation
 
@@ -76,7 +74,7 @@
         const smallRowIncrement = system.smallRowIncrement;
         const rightIncrement = system.rightIncrement;
         keyboardHandler.rows.labelKeys(function (cell) {
-            cell.toneSystem = system;	
+            cell.toneSystem = system;
             if (currentRow != cell.row) {
                 currentRow = cell.row;
                 let increment = (keyboardHandler.rows[cell.row].length % 2) == 0 ? bigRowIncrement : smallRowIncrement;
@@ -89,7 +87,7 @@
             currentX += rightIncrement;
             return result;
         });
-        keyboardHandler.chordSetter(option.chordTable.chordBuilder.build());        
+        keyboardHandler.chordSetter(option.chordTable.chordBuilder.build());
         if (!option) return;
         if (!option.chordTable) return;
         if (!visibleChordTable) return;
@@ -135,8 +133,22 @@
     elements.legend31et.style.visibility = "visible";
 
     (function setHardwareKeyboardControl() {
+        let useComputerKeyboard = true;
+        elements.showOptions.optionUseComputerKeyboard.checked = true;
         const keyDictionary = {};
+        const markComputerKeyboard = function(doMark) {
+            for (let index in keyDictionary) {
+                const cell = keyDictionary[index];
+                cell.currentColor = doMark ? definitionSet.highlightHardwareKey : definitionSet.highlightDefault;
+                cell.rectangle.style.fill = cell.currentColor;                
+            } //loop
+        }; //markComputerKeyboard
+        elements.showOptions.optionUseComputerKeyboard.onclick = function (event) {
+            useComputerKeyboard = event.target.checked;
+            markComputerKeyboard(useComputerKeyboard);
+        }; //elements.showOptions.optionUseComputerKeyboard.onclick
         const keyHandler = function (event, doActivate) {
+            if (doActivate && !useComputerKeyboard) return true;
             if (event.altKey) return true;
             if (event.metaKey) return true;
             const keyCode = event.keyCode || event.which;
@@ -171,5 +183,4 @@
             keyDictionary[substitutionIndex] = keyDictionary[substitution];
         } //loop hardwareKeyboard.substitutions
     })();
-
 })();

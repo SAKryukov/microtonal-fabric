@@ -16,6 +16,7 @@ const elements = {
     keyboard: document.getElementById("keyboard"),
     buttonShowChordTable: document.getElementById("button-show-chord-table"),
     showOptions: {
+        optionUseComputerKeyboard: document.getElementById("checkbox-use-computer-keyboard"),
         optionHighlightChords: document.getElementById("checkbox-option-highlight-chords"),
         optionShowChordNotes: document.getElementById("checkbox-option-chord-notes")
     },
