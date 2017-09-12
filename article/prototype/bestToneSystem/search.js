@@ -1,0 +1,81 @@
+const util = require("util");
+
+const western = 12;
+const cents = 1200;
+const cent = Math.pow(2, 1 / cents);
+const halftone = Math.pow(2, 1 / western);
+
+const notes = [ // https://en.wikipedia.org/wiki/Just_intonation
+    { name: 'C', interval: 00, justNumerator: 01, justDenominator: 01 },
+    { name: 'D', interval: 02, justNumerator: 09, justDenominator: 08 },
+    { name: 'E', interval: 04, justNumerator: 05, justDenominator: 04 },
+    { name: 'F', interval: 05, justNumerator: 04, justDenominator: 03 },
+    { name: 'G', interval: 07, justNumerator: 03, justDenominator: 02 },
+    { name: 'A', interval: 09, justNumerator: 05, justDenominator: 03 },
+    { name: 'B', interval: 11, justNumerator: 15, justDenominator: 08 }
+];
+
+(function setupNotes() {
+    notes.first = notes[1];
+    notes.last = notes[notes.length - 1];
+    let index = 0;
+    for (let note of notes) {
+        note.index = index++;
+        note.complexity = Math.max(note.justDenominator, note.justNumerator);
+        note.frequency = note.justNumerator / note.justDenominator;
+        note.cents = Math.log(note.frequency) / Math.log(cent);
+    }
+})();
+
+function approximationBadness(justNote, systemNote, system) {
+    const badness = justNote.cents - systemNote * cents / system;
+    const relativeBadness = Math.sqrt(badness * badness) / justNote.complexity;
+    return relativeBadness;
+} //approximationBadness
+
+function findByBadness(justNote, system) {
+    if (justNote.interval == 0) { return 0; }
+    let minBadness = cents;
+    let bestNote = null;
+    for (let equalNote = 1; equalNote < system; ++equalNote) {
+        const badness = approximationBadness(justNote, equalNote, system);
+        if (badness < minBadness) {
+            minBadness = badness;
+            bestNote = equalNote;
+        } //if
+    } //loop
+    return { justNote: justNote, interval: bestNote, badness: minBadness };
+} //findByBadness
+
+function evaluateSystem(system) {
+    let accumulatedBadness = 0;
+    const approximationSet = [];
+    for (let justIndex = notes.first.index; justIndex <= notes.last.index; ++justIndex) {
+        const justNote = notes[justIndex];
+        const approximation = findByBadness(justNote, system);
+        accumulatedBadness += approximation.badness;
+        approximationSet.push(approximation);
+    } //loop
+    return { system: system, badness: accumulatedBadness, approximationSet: approximationSet };
+} //evaluateSystem
+
+//debugger;
+
+function findChampion(max) {
+    let minRelativeBadness = cents * max * max;
+    let bestSystem;
+    for (let index = 7; index < max; ++index) {
+        const evaluation = evaluateSystem(index);
+        const relativeBadness = evaluation.badness * index;
+        if (relativeBadness < minRelativeBadness) {
+            minRelativeBadness = relativeBadness;
+            bestSystem = evaluation; 
+        } //if
+        //console.log(util.format("%d\t%d\t%d", index, evaluation.badness, evaluation.badness * index));
+    }
+    return bestSystem;
+} //findChampion
+
+const result = findChampion(400);
+console.log(result.system);
+console.log("done");
