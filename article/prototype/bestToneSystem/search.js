@@ -1,4 +1,5 @@
 const util = require("util");
+const el = require('os').EOL;
 
 const western = 12;
 const cents = 1200;
@@ -47,7 +48,7 @@ function findByBadness(justNote, system) {
     return { justNote: justNote, interval: bestNote, badness: minBadness };
 } //findByBadness
 
-function evaluateSystem(system) {
+function SystemDescriptor(system) {
     let accumulatedBadness = 0;
     const approximationSet = [];
     for (let justIndex = notes.first.index; justIndex <= notes.last.index; ++justIndex) {
@@ -56,8 +57,30 @@ function evaluateSystem(system) {
         accumulatedBadness += approximation.badness;
         approximationSet.push(approximation);
     } //loop
-    return { system: system, badness: accumulatedBadness, approximationSet: approximationSet };
-} //evaluateSystem
+    this.system = system;
+    this.badness = accumulatedBadness;
+    this.approximationSet = approximationSet;
+} //SystemDescriptor
+
+SystemDescriptor.prototype.toString = function() {
+    let result = util.format("System: %s-TET:%s", this.system, el);
+    for (let note of this.approximationSet)
+        result += util.format("\t%s: interval %d, badness %d cents (compared to just: %s/%s)%s",
+            note.justNote.name,
+            note.interval,
+            note.justNote.cents - note.interval * cents / this.system,
+            note.justNote.justNumerator,
+            note.justNote.justDenominator,
+            el);
+    result += "Intervals:";
+    let previous = 0;
+    for (let note of this.approximationSet) {
+        result += util.format(" %d", note.interval - previous);
+        previous = note.interval;
+    }
+    result += util.format(" %d", this.system - previous);    
+    return result;
+}; //SystemDescriptor.prototype.toString
 
 //debugger;
 
@@ -65,17 +88,15 @@ function findChampion(max) {
     let minRelativeBadness = cents * max * max;
     let bestSystem;
     for (let index = 7; index < max; ++index) {
-        const evaluation = evaluateSystem(index);
+        const evaluation = new SystemDescriptor(index);
         const relativeBadness = evaluation.badness * index;
         if (relativeBadness < minRelativeBadness) {
             minRelativeBadness = relativeBadness;
             bestSystem = evaluation; 
         } //if
-        //console.log(util.format("%d\t%d\t%d", index, evaluation.badness, evaluation.badness * index));
-    }
+    } //loop
     return bestSystem;
 } //findChampion
 
 const result = findChampion(400);
-console.log(result.system);
-console.log("done");
+console.log(result.toString());
