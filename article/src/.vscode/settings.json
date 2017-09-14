@@ -5,6 +5,9 @@
     "markdown.extension.convertToHtml.showHtmlInBrowser": false, // default
     "markdown.extension.convertToHtml.embedCss": true, // default
     "markdown.extension.convertToHtml.outputPath": "",
+    "markdown.extension.convertToHtml.defaultListElementAttributeSet": {
+        "style": "list-style-type: none; margin-top:0; margin-bottom:0;"
+    },    
     // markdown-it options, all defaults:
     "markdown.extension.convertToHtml.options.allowHTML": true,
     // "markdown-it-named-headers" plug-in, adds id attributes to h1 .. h6 elements:
