@@ -54,7 +54,8 @@ function SystemDescriptor(system) {
     for (let justIndex = notes.first.index; justIndex <= notes.last.index; ++justIndex) {
         const justNote = notes[justIndex];
         const approximation = findByBadness(justNote, system);
-        accumulatedBadness += approximation.badness;
+        if (accumulatedBadness < approximation.badness)
+            accumulatedBadness = approximation.badness;
         approximationSet.push(approximation);
     } //loop
     this.system = system;
@@ -98,5 +99,5 @@ function findChampion(max) {
     return bestSystem;
 } //findChampion
 
-const result = findChampion(400);
+const result = findChampion(800);
 console.log(result.toString());
