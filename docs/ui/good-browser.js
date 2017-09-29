@@ -26,4 +26,4 @@ function handleGoodBrowser(scripts) {
     }; //loadScript
     loadScript();       
 
-} //handleBadBrowser
+} //handleGoodBrowser
