@@ -286,13 +286,67 @@ for (let node of nodes) {
                     event.ctrlKey, false);
             // ...
         };
-        key.rectangle.onmouseup = function (event) { /* ... * /}
+        key.rectangle.onmouseup = function (event) { /* ... */ }
     }
     // ...
 }
 </pre>
 
 For the detail, please see complete source code.
+
+### Compatibility
+
+At the moment of writing, Web Audio API exists as a W3C editor's [draft of September 2017](https://webaudio.github.io/web-audio-api). Nevertheless, the applications described in the present article work with most major browsers.
+
+Another advanced aspect is the use of SVG embedded in HTML. This feature is presently the part of [W3C Recommendation of October 28, 2014](https://www.w3.org/TR/html5/embedded-content-0.html#svg) and also should be quite usable.
+
+Besides, more modern JavaScript syntax is used, including `const`, `let` and `for... of`, not supported by some old browsers.
+
+The applications are successfully tested on Google Chrome, Opera, Mozilla Firefox and Seamonkey.
+
+Not too surprisingly, nothing works on Microsoft browsers, and by some reasons, not even Edge (despite Mozilla documentation claiming that both Audio API and embedded SVG are supported by Microsoft Edge). As these products often demonstrated lack of compliance throughout their history and improvements have been very limited, it seems to be practical to curb their operation with advanced applications and provide some information on their incompatibility. However, this brings us to the problem solved in not very trivial way.
+
+The problems start at the attempt to detect the browser or some separate feature and present some information on incompatible browser. Generally, if we have this code followed by some code unsupported by some browsers, it is impossible, because the whole thing, including detection code, may not execute at all. Why? Because JavaScript is not a pure interpreter. After loading, the script is "pre-compiled" on some lexical level. If this step fails, whole script fails, without execution of supportable part of code. This failure cannot be bypassed by putting the incompatible code in a `try` block.
+
+It looks like the only feasible general-purpose resolution of this problem is dynamic loading of scripts. The HTML file can include only one script via the use of the `script` element. This script can detect the browser, perform appropriate processing depending on the detection result and then load other scripts. The names of the scripts to be loaded need to be passed to the first script.
+
+This is how it works:
+
+<pre lang="JavaScript" id="code.good-browser">
+"use strict";
+
+function handleGoodBrowser(scripts) {
+
+    // no "const", "let", lambda-like syntax () =&gt; {}, not "for... of Object",
+    // no String.prototype.includes -- it won't work with some bad browsers    
+
+    if (navigator.appName.indexOf("Microsoft") &gt;= 0) { // bad browser
+        while (document.body.lastChild)
+            document.body.removeChild(document.body.lastChild);
+        document.write("Oh, " + navigator.appName + "? ...");
+        // tell those guys there are no chances :-)
+    } //if
+
+    var currentOrder = 0;   
+    function loadScript() {
+        if (currentOrder == scripts.length)
+            return;
+        var scriptElement = document.createElement("script");
+        scriptElement.src = scripts[currentOrder];
+        scriptElement.onload = function() {
+            currentOrder++;
+            loadScript();
+        }; //scriptElement.onload
+        document.body.appendChild(scriptElement);
+    }; //loadScript
+    loadScript();       
+
+}
+</pre>
+
+The function `handleGoodBrowser` accepts array of script names relative to the name of the HTML file. So, instead of loading all the scripts using the `script` element, the developer needs to add only the script with `handleGoodBrowser` and pass the file names of other script in the actual argument of the call.
+
+The other scripts, all the scripts other than the one shown above, are loaded recursively via `loadScript` by one important reason: generally, scripts depend on each other, so the order of their execution is essential. This function guarantees that the scripts are loaded one by one, because each load entails adding next script in the array in DOM.
 
 ## Versions
 
@@ -305,6 +359,10 @@ Initial production version
 * On application pages, added links to original publication
 
 The option added is important because some key combinations such as Ctrl+W (usually, browser's close tab) are busy with the physical computer keyboard function.
+
+#### 2.0.0
+
+* Added browser detection and dynamic [script loading](#heading.compatibility).
 
 ## Acknowledgments
 
