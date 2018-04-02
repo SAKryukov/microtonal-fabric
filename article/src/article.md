@@ -32,8 +32,8 @@ C &mdash; D♭² &mdash; Db &mdash; C♯ &mdash; C♯² &mdash; D
 
 This is the second article  in the series dedicated to musical study using specialized keyboards based on the computer keyboard:
 
-1. Present article
-2. *[Musical Study with Isomorphic Computer Keyboard](https://www.codeproject.com/Articles/1201737/Musical-Study-with-Isomorphic-Computer-Keyboard)*
+1. *[Musical Study with Isomorphic Computer Keyboard](https://www.codeproject.com/Articles/1201737/Musical-Study-with-Isomorphic-Computer-Keyboard)*
+2. Present article
  
  In my [previous article](https://www.codeproject.com/Articles/1201737/Musical-Study-with-Isomorphic-Computer-Keyboard), I tried to explain very basic mathematical and physical aspects of music and put forward a keyboard structured to be very suggestive of music harmony. However, the application illustrates everything on much less general case of common-practice [common-practice](https://en.wikipedia.org/wiki/Common_practice_period) [tone system](https://en.wikipedia.org/wiki/Musical_tuning).
 
@@ -315,33 +315,43 @@ This is how it works:
 <pre lang="JavaScript" id="code.good-browser">
 "use strict";
 
-function handleGoodBrowser(scripts) {
+function handleGoodBrowser(scripts, successAction, errorAction) {
 
     // no "const", "let", lambda-like syntax () =&gt; {}, not "for... of Object",
     // no String.prototype.includes -- it won't work with some bad browsers    
 
-    if (navigator.appName.indexOf("Microsoft") &gt;= 0) { // bad browser
-        while (document.body.lastChild)
-            document.body.removeChild(document.body.lastChild);
-        document.write("Oh, " + navigator.appName + "? ...");
-        // tell those guys there are no chances :-)
-    } //if
-
-    var currentOrder = 0;   
+    var saveWindowErrorHandler = window.onerror;
+    var saveBodyLoadHandler = document.body.onload;
+    var hasError = false;
+    window.onerror = function (event) {
+        hasError = true;
+    };
+    var currentOrder = 0;
     function loadScript() {
         if (currentOrder == scripts.length)
             return;
         var scriptElement = document.createElement("script");
         scriptElement.src = scripts[currentOrder];
-        scriptElement.onload = function() {
+        scriptElement.onload = function () {
             currentOrder++;
             loadScript();
         }; //scriptElement.onload
+        scriptElement.onerror = function () {
+            throw new URIError("error");
+        }; //scriptElement.onerror
         document.body.appendChild(scriptElement);
     }; //loadScript
-    loadScript();       
+    loadScript();
+    window.onerror = window.onerror;
+    document.body.onload = function () {
+        if (hasError && errorAction)
+            errorAction();
+        else if (!hasError && successAction)
+            successAction();
+        document.body.onload = saveBodyLoadHandler;
+    }; //if hasError
 
-}
+} //handleGoodBrowser
 </pre>
 
 The function `handleGoodBrowser` accepts array of script names relative to the name of the HTML file. So, instead of loading all the scripts using the `script` element, the developer needs to add only the script with `handleGoodBrowser` and pass the file names of other script in the actual argument of the call.
@@ -363,6 +373,12 @@ The option added is important because some key combinations such as Ctrl+W (usua
 #### 2.0.0
 
 * Added browser detection and dynamic [script loading](#heading.compatibility).
+
+#### 2.1.0
+
+* Improved detection of incompatible browsers.
+
+Now the compatible browser is detected as the one which successfully loads all scripts. No criteria related to user agent product names, manufacturers or versions are used.
 
 ## Acknowledgments
 

@@ -1,6 +1,17 @@
 // Original publication:
 // https://www.codeproject.com/Articles/1194125/Article-Writing-Toolchain-with-VSCode
 {
+    "python.pythonPath": "c:\\app\\Python\\python2\\python.exe",
+    "python.linting.pylintEnabled": true,
+    "python.formatting.provider": "yapf",
+    "cSpell.words": [
+        "abnormal",
+        "exit",
+        "iskeyword",
+        "normal",
+        "on",
+        "wait"
+    ]
     "markdown.extension.convertToHtml.reportSuccess": true, // default
     "markdown.extension.convertToHtml.showHtmlInBrowser": false, // default
     "markdown.extension.convertToHtml.embedCss": true, // default
