@@ -89,19 +89,25 @@ const keyboardHandler = (function () {
                         chordElement.key.activate(chordElement.key, chordMode, doActivate, true, chordElement.title, highlightChords);
                 } //if
             }; //key.activate
-            /*
-            key.rectangle.addEventListener("touchstart", function (event) {
+            key.rectangle.ontouchstart = function (event) {
                 event.target.key.activate(event.target.key, event.ctrlKey, true);
                 event.preventDefaults();
                 return false;
-            }, false);
-            key.rectangle.addEventListener("touchend", function (event) {
+            };
+            key.rectangle.ontouchend = function (event) {
                 event.target.key.activate(event.target.key, event.ctrlKey, false);
                 event.preventDefaults();
                 return false;
-            }, false);
-            */
-            ///*
+            };
+            key.rectangle.ontouchcancel = function (event) {
+                event.target.key.activate(event.target.key, event.ctrlKey, false);
+                event.preventDefaults();
+                return false;
+            };
+            key.rectangle.ontouchmove = function (event) {
+                event.preventDefaults();
+                return false;
+            };            
             key.rectangle.onmouseenter = function (event) {
                 if (event.buttons == 1)
                     event.target.key.activate(event.target.key, event.ctrlKey, true);
@@ -157,10 +163,6 @@ const keyboardHandler = (function () {
                 cell.textStack = [labelText];
             } //loop
     }; //rows.labelKeys
-
-    elements.keyboard.ontouchstart = function (event) {
-        alert("touch happens!");
-    }
 
     return { rows: rows, soundActionSetter: setSoundActions, chordSetter: assignChord };
 
