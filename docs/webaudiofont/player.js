@@ -32,7 +32,7 @@ function WebAudioFontPlayer() {
             noteDuration = 1;
         envelope.target = target;
         envelope.connect(target);
-        setupCancel(envelope);
+        setupCancel(audioContext, envelope);
         envelopes.add(envelope);
         // setup:
         envelope.gain.setValueAtTime(0, audioContext.currentTime);
@@ -170,13 +170,20 @@ function WebAudioFontPlayer() {
         return zone;
     }; //findZone
 
-    function setupCancel(envelope) {
+    function setupCancel(audioContext, envelope) {
+        const soundDelay = 0.1; //s
+        const disconnectDelay = 3000; //0.3s 
+        envelope.audioContextRef = audioContext;
         envelope.cancel = function (cancellingQueue) {
+            envelope.gain.cancelScheduledValues(0);
+            envelope.gain.linearRampToValueAtTime(0, envelope.audioContextRef.currentTime + soundDelay);
             if (!cancellingQueue)
                 envelopes.delete(this);
-            this.source.stop();
-            this.source.disconnect();
-            this.disconnect();
+            this.source.stop(envelope.audioContextRef.currentTime + 2 * soundDelay);
+            let timerId = setTimeout((thisPtr) => {
+                thisPtr.source.disconnect();
+                thisPtr.disconnect();    
+            }, disconnectDelay, this);
         }; //envelope.cancel
     } //setupCancel
 
@@ -189,7 +196,7 @@ function WebAudioFontPlayer() {
         oscillator.type = waveForm; // sine wave — other values are 'square', 'sawtooth', 'triangle' and 'custom'
         oscillator.frequency.value = 27.5 * Math.pow(2, (pitch - 21) / 12);
         gainNode.gain.value = volume;
-        setupCancel(gainNode);
+        setupCancel(audioContext, gainNode);
         gainNode.source = oscillator;
         let noDuration = (duration != undefined && duration.constructor == Boolean);
         let startWhen = when;
