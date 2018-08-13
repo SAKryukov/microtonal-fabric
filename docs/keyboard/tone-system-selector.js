@@ -101,7 +101,9 @@
             selectedTet = event.target;
         } //if
         elements.legend19et.style.visibility = "hidden";
+        elements.legend29et.style.visibility = "hidden";
         elements.legend31et.style.visibility = "hidden";
+        elements.buttonShowChordTable.disabled = false;
     };
     elements.radioTet.radio12etJanko.onclick = function (event) {
         if (event.target.checked) {
@@ -109,15 +111,29 @@
             selectedTet = event.target;
         } //if
         elements.legend19et.style.visibility = "hidden";
+        elements.legend29et.style.visibility = "hidden";
         elements.legend31et.style.visibility = "hidden";
+        elements.buttonShowChordTable.disabled = false;
     };
     elements.radioTet.radio19et.onclick = function (event) {
         if (event.target.checked) {
             setTet(event.target, notes.tet19);
             selectedTet = event.target;
         } //if
-        elements.legend19et.style.visibility = "visible";
         elements.legend31et.style.visibility = "hidden";
+        elements.legend29et.style.visibility = "hidden";
+        elements.legend19et.style.visibility = "visible";
+        elements.buttonShowChordTable.disabled = false;
+    };
+    elements.radioTet.radio29et.onclick = function (event) {
+        if (event.target.checked) {
+            setTet(event.target, notes.tet29);
+            selectedTet = event.target;
+        } //if            
+        elements.legend19et.style.visibility = "hidden";
+        elements.legend31et.style.visibility = "hidden";
+        elements.legend29et.style.visibility = "visible";
+        elements.buttonShowChordTable.disabled = true;
     };
     elements.radioTet.radio31et.onclick = function (event) {
         if (event.target.checked) {
@@ -125,7 +141,9 @@
             selectedTet = event.target;
         } //if            
         elements.legend19et.style.visibility = "hidden";
+        elements.legend29et.style.visibility = "hidden";
         elements.legend31et.style.visibility = "visible";
+        elements.buttonShowChordTable.disabled = false;
     };
     elements.radioTet.radio31et.checked = true;
     setTet(elements.radioTet.radio31et, notes.tet31);

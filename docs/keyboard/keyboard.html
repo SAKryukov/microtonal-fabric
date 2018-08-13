@@ -24,7 +24,7 @@
     text { font-family: "Ubuntu", "Verdana", "sans"; }
     div.control { display: inline-block; margin-left: 0.2em; margin-right: 0.2em; }
     div.controlTitleSeparator { margin: 0; margin-bottom: 8px; }
-    #radio-19-et-legend, #radio-31-et-legend { visibility: hidden; margin-left: 3em; }
+    #radio-19-et-legend, #radio-29-et-legend, #radio-31-et-legend { visibility: hidden; margin-left: 3em; }
     div.options { display: table; width: 100%; margin:0; margin-top:0.4em; margin-bottom:0.4em; }
     div.optionGroup { display: table-row; }
     div.option { display: table-cell; padding-left: 1em; }
@@ -845,6 +845,7 @@
     <input type="checkbox" id="checkbox-option-highlight-chords" checked="true" accesskey="H" name="TET"/><label for="radio-option-highlight-chords"><u>H</u>ighlight <button title="Ctrl+note plays chord" id="button-show-chord-table" accesskey="C"><u>C</u>hords</button></label>
   </div>
 </div>
+
 <div class="optionGroup">
   <div class="option">
     <input type="radio" id="radio-19-et" accesskey="9" name="TET"/><label for="radio-19-et">1<u>9</u>-TET</label>
@@ -854,6 +855,17 @@
   </div>
   <div class="option">
     <input type="checkbox" id="checkbox-option-chord-notes" checked="true" accesskey="N" name="TET"/><label for="radio-option-chord-notes">Show Chord <u>N</u>otes</label>
+  </div>
+</div>
+<div class="optionGroup">
+  <div class="option">
+    <input type="radio" id="radio-29-et" accesskey="3" name="TET"/><label for="radio-29-et">29-TET</label>
+  </div>
+  <div class="option" id="radio-29-et-legend">
+    Notation: ♯, ♭: sharp/flat, &plusmn;2 microtones;  ♯², ♭²: double flat/sharp, &plusmn;4 microtones; enharmonically equal: ef≡E♯≡F♭, bc≡B♯≡C♭
+  </div>
+  <div class="option">
+	<!-- SA??? new option -->
   </div>
 </div>
 <div class="optionGroup">

@@ -24,6 +24,7 @@ const elements = {
         radio12et: document.getElementById("radio-12-et"),
         radio12etJanko: document.getElementById("radio-12-et-Janko"),
         radio19et: document.getElementById("radio-19-et"),
+        radio29et: document.getElementById("radio-29-et"),
         radio31et: document.getElementById("radio-31-et"),
     },
     controls: {
@@ -35,6 +36,7 @@ const elements = {
         reset: document.getElementById("control-reset")
     }, 
     legend19et: document.getElementById("radio-19-et-legend"),
+    legend29et: document.getElementById("radio-29-et-legend"),
     legend31et: document.getElementById("radio-31-et-legend"),
     chordSet: [
         {
@@ -65,6 +67,7 @@ const elements = {
     elements.radioTet.radio12et.chordTable = elements.chordSet[0].table;
     elements.radioTet.radio12etJanko.chordTable = elements.chordSet[0].table;
     elements.radioTet.radio19et.chordTable = elements.chordSet[1].table;
+    elements.radioTet.radio29et.chordTable = elements.chordSet[2].table; //SA???
     elements.radioTet.radio31et.chordTable = elements.chordSet[2].table;
 })();
 
@@ -81,6 +84,19 @@ const notes = {
         startingMidiNote: 0,
         bigRowIncrement: 18,
         smallRowIncrement: 13,
+        rightIncrement: 5
+    },
+    tet29: {
+        names: [
+            "C", "D♭²", "C♯", "D♭", "C♯²",
+            "D", "E♭²", "D♯", "E♭", "D♯²",
+            "E", "ef", "F", "G♭²", "F♯", "G♭", "F♯²",
+            "G", "A♭²", "G♯", "A♭", "G♯²",
+            "A", "B♭²", "A♯", "B♭", "A♯²",
+            "B", "bc"],
+        startingMidiNote: 0,
+        bigRowIncrement: 17,
+        smallRowIncrement: 12,
         rightIncrement: 5
     },
     tet19: {
