@@ -12,16 +12,20 @@ const assignTouchEnd = (element, handler) => {
 };
 
 document.body.onload = function () {
+    const hiddenElementPropertyName = ""; //SA???
+    const isGoodElement = element => element && element[hiddenElementPropertyName]; 
     const elementDictionary = {};
+    const elementHandler = (target, on) => { if (on) turnOn(target); else turnOff(target); };
     const addRemoveElement = (touch, element, doAdd) => {
-        if (element && element.specialControlHandler) element.specialControlHandler(element, doAdd);
+        if (isGoodElement(element))
+            elementHandler(element, doAdd);
         if (doAdd)
             elementDictionary[touch.identifier] = element;
         else
             delete elementDictionary[touch.identifier];
     }; //addRemoveElement
     const turnOn = (target) => { target.style.backgroundColor = "red"; };
-    const turnOff = (target) => { target.style.backgroundColor = "yellow"; };c
+    const turnOff = (target) => { target.style.backgroundColor = "yellow"; };
     const track = document.querySelector("body textarea");
     const body = document.body;
     assignTouchStart(document, (ev) => {
@@ -33,16 +37,16 @@ document.body.onload = function () {
     assignTouchMove(document, (ev) => {
         for (let touch of ev.touches) {
             let element = document.elementFromPoint(touch.clientX, touch.clientY);
+            const goodElement = isGoodElement(element); 
             const touchElement = elementDictionary[touch.identifier];
-            if (element && element.specialControlHandler && touchElement) {
+            if (goodElement && touchElement) {
                 addRemoveElement(touch, touchElement, false);            
                 addRemoveElement(touch, element, true);
             } else {
-                const add = !!(element && element.specialControlHandler);
-                if (add)
-                    addRemoveElement(touch, element, add);
+                if (goodElement)
+                    addRemoveElement(touch, element, goodElement);
                 else
-                    addRemoveElement(touch, touchElement, add);
+                    addRemoveElement(touch, touchElement, goodElement);
             } //if    
         } //loop
     }); //assignTouchMove
@@ -55,10 +59,7 @@ document.body.onload = function () {
     const container = document.querySelector("body section");
     let current = container.firstElementChild;
     while (current) {
-        current.specialControlHandler = (target, on) => {
-            track.textContent = target.textContent;
-            if (on) turnOn(target); else turnOff(target); 
-        }; //current.specialControlHandler
+        current[hiddenElementPropertyName] = true;
         current = current.nextElementSibling;
     } //loop
     const boolUseMouse = document.getElementById("bool-use-mouse");
