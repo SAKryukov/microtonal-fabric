@@ -89,25 +89,7 @@ const keyboardHandler = (function () {
                         chordElement.key.activate(chordElement.key, chordMode, doActivate, true, chordElement.title, highlightChords);
                 } //if
             }; //key.activate
-            key.rectangle.ontouchstart = function (event) {
-                event.target.key.activate(event.target.key, event.ctrlKey, true);
-                event.preventDefaults();
-                return false;
-            };
-            key.rectangle.ontouchend = function (event) {
-                event.target.key.activate(event.target.key, event.ctrlKey, false);
-                event.preventDefaults();
-                return false;
-            };
-            key.rectangle.ontouchcancel = function (event) {
-                event.target.key.activate(event.target.key, event.ctrlKey, false);
-                event.preventDefaults();
-                return false;
-            };
-            key.rectangle.ontouchmove = function (event) {
-                event.preventDefaults();
-                return false;
-            };            
+            key.rectangle.dataset.multiTouchTarget = true;
             key.rectangle.onmouseenter = function (event) {
                 if (event.buttons == 1)
                     event.target.key.activate(event.target.key, event.ctrlKey, true);
@@ -136,6 +118,11 @@ const keyboardHandler = (function () {
     const svgNS = keyboard.getAttribute("xmlns");
     const notesGroup = document.createElementNS(svgNS, "g");
     keyboard.appendChild(notesGroup);
+
+    setMultiTouch(
+        (element) => { return element.dataset.multiTouchTarget; }, //elementSelector
+        (element, touch, on) => { element.key.activate(event.target.key, false, on); } //elementHandler
+    );
 
     rows.iterateKeys = function (handler) { // handler(key)
         for (let row of rows)

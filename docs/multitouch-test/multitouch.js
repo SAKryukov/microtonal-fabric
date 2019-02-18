@@ -43,6 +43,8 @@ function setMultiTouch(
             const goodElement = isGoodElement(element); 
             const touchElement = elementDictionary[touch.identifier];
             if (goodElement && touchElement) {
+                if (element == touchElement)
+                    return;
                 addRemoveElement(touch, touchElement, false);            
                 addRemoveElement(touch, element, true);
             } else {
