@@ -6,8 +6,10 @@
   <meta charset="utf-8" />
   <style>
     * { font-family: sans-serif; }
+    html, body { touch-action: none; }
     body > section > div { border: solid black thin; padding: 1em; background-color: yellow; display: inline-block; width: 5em; height: 3em; }
     section { margin: 0; margin-bottom: 5em; }
+    body textarea { width: 100%; height: 5em; }
   </style>
 </head>
 
@@ -30,6 +32,7 @@
   </section>
 
   <label for="boolusemouse" accesskey="u"> <input type="checkbox" id="boolusemouse" />Use <u>M</u>ouse</label>
+  <textarea></textarea>
 
   <script src="code.js"></script>
   
