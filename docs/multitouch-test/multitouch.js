@@ -1,4 +1,4 @@
-function setMultiTouch(elementSelector) {
+function setMultiTouch(elementSelector, elementHandler) {
 
     const assignEvent = (element, name, handler) => {
         element.addEventListener(name, handler);
@@ -15,9 +15,9 @@ function setMultiTouch(elementSelector) {
 
     const isGoodElement = element => element && elementSelector(element); 
     const elementDictionary = {};
-    const elementHandler = (target, on) => { if (on) turnOn(target); else turnOff(target); };
+    
     const addRemoveElement = (touch, element, doAdd) => {
-        if (isGoodElement(element))
+        if (isGoodElement(element) && elementHandler)
             elementHandler(element, doAdd);
         if (doAdd)
             elementDictionary[touch.identifier] = element;
@@ -25,11 +25,6 @@ function setMultiTouch(elementSelector) {
             delete elementDictionary[touch.identifier];
     }; //addRemoveElement
 
-    const turnOn = (target) => { target.style.backgroundColor = "red"; };
-    const turnOff = (target) => { target.style.backgroundColor = "yellow"; };
-    const track = document.querySelector("body textarea");
-    const body = document.body;
-    
     assignTouchStart(document, (ev) => {
         for (let touch of ev.touches) {
             const element = document.elementFromPoint(touch.clientX, touch.clientY);
