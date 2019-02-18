@@ -6,6 +6,7 @@ const cents = 1200;
 const cent = Math.pow(2, 1 / cents);
 const halftone = Math.pow(2, 1 / western);
 
+/*
 const notes = [ // https://en.wikipedia.org/wiki/Just_intonation
     { name: 'C', interval: 00, justNumerator: 01, justDenominator: 01 },
     { name: 'D', interval: 02, justNumerator: 09, justDenominator: 08 },
@@ -14,6 +15,15 @@ const notes = [ // https://en.wikipedia.org/wiki/Just_intonation
     { name: 'G', interval: 07, justNumerator: 03, justDenominator: 02 },
     { name: 'A', interval: 09, justNumerator: 05, justDenominator: 03 },
     { name: 'B', interval: 11, justNumerator: 15, justDenominator: 08 }
+];
+*/
+
+const notes = [ // https://en.wikipedia.org/wiki/Just_intonation
+    { name: 'C', interval: 00, justNumerator: 01, justDenominator: 01 },
+    { name: 'Eb', interval: 02, justNumerator: 06, justDenominator: 05 },
+    { name: 'E', interval: 04, justNumerator: 05, justDenominator: 04 },
+    { name: 'F', interval: 05, justNumerator: 04, justDenominator: 03 },
+    { name: 'G', interval: 07, justNumerator: 03, justDenominator: 02 }
 ];
 
 (function setupNotes() {
@@ -79,7 +89,7 @@ SystemDescriptor.prototype.toString = function() {
         result += util.format(" %d", note.interval - previous);
         previous = note.interval;
     }
-    result += util.format(" %d", this.system - previous);    
+    result += util.format(" %d", this.system - previous);
     return result;
 }; //SystemDescriptor.prototype.toString
 
@@ -90,7 +100,7 @@ function findChampion(max) {
     let bestSystem;
     for (let index = 7; index < max; ++index) {
         const evaluation = new SystemDescriptor(index);
-        const relativeBadness = evaluation.badness * index;
+        const relativeBadness = evaluation.badness / index;
         if (relativeBadness < minRelativeBadness) {
             minRelativeBadness = relativeBadness;
             bestSystem = evaluation; 
@@ -99,5 +109,14 @@ function findChampion(max) {
     return bestSystem;
 } //findChampion
 
-const result = findChampion(800);
+const result = findChampion(30);
 console.log(result.toString());
+
+/*
+const evaluation12 = new SystemDescriptor(12);
+console.log(evaluation12.toString());
+const evaluation = new SystemDescriptor(29);
+console.log(evaluation.toString());
+const evaluation19 = new SystemDescriptor(19);
+console.log(evaluation19.toString());
+*/
