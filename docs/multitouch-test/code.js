@@ -22,30 +22,25 @@ document.body.onload = function () {
 
     const container = document.querySelector("body section");
     let current = container.firstElementChild;
+
+    onHandler = (ev) => {
+        ev.preventDefault();
+        if (!useMouse) return;
+        if (ev.buttons == 1)
+            turn(ev.target, null, true);
+    } //onHandler
+    offHandler = (ev) => {
+        ev.preventDefault();
+        if (!useMouse) return;
+        turn(ev.target, null, false);
+    } //offHandler
+
     while (current) {
         current.dataset.index = current.textContent;
-        current.onmouseenter = (ev) => {
-            ev.preventDefault();
-            if (!useMouse) return;
-            if (ev.buttons == 1)
-                turn(ev.target, null, true);
-        } //current.onmouseenter
-        current.onmouseleave = (ev) => {
-            ev.preventDefault();
-            if (!useMouse) return;
-            turn(ev.target, null, false);
-        } //current.onmouseleave
-        current.onmousedown = (ev) => {
-            ev.preventDefault();
-            if (!useMouse) return;
-            if (ev.buttons == 1)
-                turn(ev.target, null, true);
-        } //current.onmouseenter
-        current.onmouseup = (ev) => {
-            ev.preventDefault();
-            if (!useMouse) return;
-            turn(ev.target, null, false);
-        } //current.onmouseleave
+        current.onmouseenter = onHandler;
+        current.onmouseleave = offHandler;
+        current.onmousedown = onHandler;
+        current.onmouseup = offHandler;
         current = current.nextElementSibling;
     } //loop
 
