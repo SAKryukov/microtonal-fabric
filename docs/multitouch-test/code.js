@@ -2,7 +2,7 @@ document.body.onload = function () {
 
     let useMouse = false;
     const boolUseMouse = document.getElementById("bool-use-mouse");
-    boolUseMouse.onclick = checkMouseOption = (ev) => { ev.preventDefault(); useMouse = ev.target.checked; }; 
+    boolUseMouse.onclick = checkMouseOption = (ev) => { useMouse = ev.target.checked; }; 
 
     const turn = (target, on) => {
         if (on)
@@ -20,6 +20,28 @@ document.body.onload = function () {
     let current = container.firstElementChild;
     while (current) {
         current.dataset.index = true;
+        current.onmouseenter = (ev) => {
+            ev.preventDefault();
+            if (!useMouse) return;
+            if (ev.buttons == 1)
+                turn(ev.target, true);
+        } //current.onmouseenter
+        current.onmouseleave = (ev) => {
+            ev.preventDefault();
+            if (!useMouse) return;
+            turn(ev.target, false);
+        } //current.onmouseleave
+        current.onmousedown = (ev) => {
+            ev.preventDefault();
+            if (!useMouse) return;
+            if (ev.buttons == 1)
+                turn(ev.target, true);
+        } //current.onmouseenter
+        current.onmouseup = (ev) => {
+            ev.preventDefault();
+            if (!useMouse) return;
+            turn(ev.target, false);
+        } //current.onmouseleave
         current = current.nextElementSibling;
     } //loop    
 
