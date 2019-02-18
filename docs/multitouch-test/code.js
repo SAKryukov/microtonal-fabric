@@ -4,45 +4,49 @@ document.body.onload = function () {
     const boolUseMouse = document.getElementById("bool-use-mouse");
     boolUseMouse.onclick = checkMouseOption = (ev) => { useMouse = ev.target.checked; }; 
 
-    const turn = (target, on) => {
-        if (on)
+    const turn = (target, touch, on) => {
+        if (on) {
             target.style.backgroundColor = "red";
-        else
+            if (touch)
+                target.textContent = target.dataset.index + ": " + touch.radiusX * touch.radiusY;     
+        } else {
             target.style.backgroundColor = "yellow";
+            target.textContent = target.dataset.index;     
+        } //if
     }; //turn
 
     setMultiTouch(
         (element) => { return element.dataset.index; }, //elementSelector
-        (element, on) => { turn(element, on); } //elementHandler
+        (element, touch, on) => { turn(element, touch, on); } //elementHandler
     );
 
     const container = document.querySelector("body section");
     let current = container.firstElementChild;
     while (current) {
-        current.dataset.index = true;
+        current.dataset.index = current.textContent;
         current.onmouseenter = (ev) => {
             ev.preventDefault();
             if (!useMouse) return;
             if (ev.buttons == 1)
-                turn(ev.target, true);
+                turn(ev.target, null, true);
         } //current.onmouseenter
         current.onmouseleave = (ev) => {
             ev.preventDefault();
             if (!useMouse) return;
-            turn(ev.target, false);
+            turn(ev.target, null, false);
         } //current.onmouseleave
         current.onmousedown = (ev) => {
             ev.preventDefault();
             if (!useMouse) return;
             if (ev.buttons == 1)
-                turn(ev.target, true);
+                turn(ev.target, null, true);
         } //current.onmouseenter
         current.onmouseup = (ev) => {
             ev.preventDefault();
             if (!useMouse) return;
-            turn(ev.target, false);
+            turn(ev.target, null, false);
         } //current.onmouseleave
         current = current.nextElementSibling;
-    } //loop    
+    } //loop
 
 }; //document.body.onload

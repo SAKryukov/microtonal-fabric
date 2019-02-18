@@ -1,4 +1,7 @@
-function setMultiTouch(elementSelector, elementHandler) {
+function setMultiTouch(
+    elementSelector, // element => bool
+    elementHandler,  // (element, Touch touchObject, bool on) => undefined
+) {
 
     const assignEvent = (element, name, handler) => {
         element.addEventListener(name, handler);
@@ -18,7 +21,7 @@ function setMultiTouch(elementSelector, elementHandler) {
     
     const addRemoveElement = (touch, element, doAdd) => {
         if (isGoodElement(element) && elementHandler)
-            elementHandler(element, doAdd);
+            elementHandler(element, touch, doAdd);
         if (doAdd)
             elementDictionary[touch.identifier] = element;
         else
