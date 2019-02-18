@@ -11,8 +11,15 @@ const assignTouchEnd = (element, handler) => {
     assignEvent(element, "touchend", handler);
 };
 
-
 document.body.onload = function () {
+    const elementDictionary = {};
+    const addRemoveElement = (touch, element, doAdd) => {
+        if (element && element.specialControlHandler) element.specialControlHandler(element, doAdd);
+        if (doAdd)
+            elementDictionary[touch.identifier] = element;
+        else
+            delete elementDictionary[touch.identifier];
+    };
     const turnOn = (target) => { target.style.backgroundColor = "red"; };
     const turnOff = (target) => { target.style.backgroundColor = "yellow"; };
     const track = document.querySelector("body textarea");
@@ -20,23 +27,23 @@ document.body.onload = function () {
     assignTouchStart(document, (ev) => {
         const touch = ev.touches[0];
         const element = document.elementFromPoint(touch.clientX, touch.clientY);
-        if ((!element) || (!element.specialControlHandler)) { track.textContent = null; return; }
-        element.specialControlHandler(element, true);
+        addRemoveElement(touch, element, true);
     });
     assignTouchMove(document, (ev) => {
         const touch = ev.touches[0];
-        if (touch.SpecialProperty)
-            document.title = touch.SpecialProperty;
-        touch.SpecialProperty = 1313;
-        if (ev.changedTouches) {
-            const changed = ev.touches[0];
-            const element = document.elementFromPoint(changed.clientX, changed.clientY);
-            if (element && element.specialControlHandler)
-                element.specialControlHandler(element, false);
-        }
+        let element = document.elementFromPoint(touch.clientX, touch.clientY);
+        const touchElement = elementDictionary[touch.identifier];
+        //if (element == touchElement) return;
+        const add = !!(element && element.specialControlHandler);
+        if (add)
+            addRemoveElement(touch, element, add);
+        else
+            addRemoveElement(touch, touchElement, add);
+    });
+    assignTouchEnd(document, (ev) => {
+        const touch = ev.changedTouches[0];
         const element = document.elementFromPoint(touch.clientX, touch.clientY);
-        if ((!element) || (!element.specialControlHandler)) { track.textContent = null; return; }
-        element.specialControlHandler(element, true);
+        addRemoveElement(touch, element, false);
     });
     const container = document.querySelector("body section");
     let current = container.firstElementChild;
@@ -45,19 +52,12 @@ document.body.onload = function () {
             track.textContent = target.textContent;
             if (on) turnOn(target); else turnOff(target); 
         };
-        assignTouchEnd(current, (ev) => {
+        assignTouchStart(current, (ev) => {
             if (!ev.target.specialControlHandler) return;
-            turnOff(ev.target);
-        });
-        assignTouchMove(current, (ev) => {
-            if (!ev.target.specialControlHandler) return;
-            const changed = ev.touches[0];
-            const element = document.elementFromPoint(changed.clientX, changed.clientY);
-            if (element != ev.target)
-                turnOff(ev.target);
+            turnOn(ev.target);
         });
         current = current.nextElementSibling;
     } //loop
-    var boolUseMouse = document.getElementById("boolusemouse");
-    var checkMouseOption = function (ev) { ev.preventDefault(); return boolusemouse.checked; };
+    const boolUseMouse = document.getElementById("bool-use-mouse");
+    const checkMouseOption = function (ev) { ev.preventDefault(); return boolUseMouse.checked; };
 };
