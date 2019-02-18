@@ -4,7 +4,7 @@ function setMultiTouch(
 ) {
 
     const assignEvent = (element, name, handler) => {
-        element.addEventListener(name, handler);
+        element.addEventListener(name, handler, { passive: false, capture: true });
     };
     const assignTouchStart = (element, handler) => {
         assignEvent(element, "touchstart", handler);
@@ -29,6 +29,7 @@ function setMultiTouch(
     }; //addRemoveElement
 
     assignTouchStart(document, (ev) => {
+        ev.preventDefault();
         for (let touch of ev.touches) {
             const element = document.elementFromPoint(touch.clientX, touch.clientY);
             addRemoveElement(touch, element, true);    
@@ -36,6 +37,7 @@ function setMultiTouch(
     }); //assignTouchStart
     
     assignTouchMove(document, (ev) => {
+        ev.preventDefault();
         for (let touch of ev.touches) {
             let element = document.elementFromPoint(touch.clientX, touch.clientY);
             const goodElement = isGoodElement(element); 
@@ -53,6 +55,7 @@ function setMultiTouch(
     }); //assignTouchMove
     
     assignTouchEnd(document, (ev) => {
+        ev.preventDefault();
         for (let touch of ev.changedTouches) {
             const element = document.elementFromPoint(touch.clientX, touch.clientY);
             addRemoveElement(touch, element, false);
