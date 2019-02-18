@@ -21,33 +21,36 @@ document.body.onload = function () {
             delete elementDictionary[touch.identifier];
     }; //addRemoveElement
     const turnOn = (target) => { target.style.backgroundColor = "red"; };
-    const turnOff = (target) => { target.style.backgroundColor = "yellow"; };
+    const turnOff = (target) => { target.style.backgroundColor = "yellow"; };c
     const track = document.querySelector("body textarea");
     const body = document.body;
     assignTouchStart(document, (ev) => {
-        const touch = ev.touches[0];
-        const element = document.elementFromPoint(touch.clientX, touch.clientY);
-        addRemoveElement(touch, element, true);
+        for (let touch of ev.touches) {
+            const element = document.elementFromPoint(touch.clientX, touch.clientY);
+            addRemoveElement(touch, element, true);    
+        } //loop
     }); //assignTouchStart
     assignTouchMove(document, (ev) => {
-        const touch = ev.touches[0];
-        let element = document.elementFromPoint(touch.clientX, touch.clientY);
-        const touchElement = elementDictionary[touch.identifier];
-        if (element && element.specialControlHandler && touchElement) {
-            addRemoveElement(touch, touchElement, false);            
-            addRemoveElement(touch, element, true);
-        } else {
-            const add = !!(element && element.specialControlHandler);
-            if (add)
-                addRemoveElement(touch, element, add);
-            else
-                addRemoveElement(touch, touchElement, add);    
-        } //if
+        for (let touch of ev.touches) {
+            let element = document.elementFromPoint(touch.clientX, touch.clientY);
+            const touchElement = elementDictionary[touch.identifier];
+            if (element && element.specialControlHandler && touchElement) {
+                addRemoveElement(touch, touchElement, false);            
+                addRemoveElement(touch, element, true);
+            } else {
+                const add = !!(element && element.specialControlHandler);
+                if (add)
+                    addRemoveElement(touch, element, add);
+                else
+                    addRemoveElement(touch, touchElement, add);
+            } //if    
+        } //loop
     }); //assignTouchMove
     assignTouchEnd(document, (ev) => {
-        const touch = ev.changedTouches[0];
-        const element = document.elementFromPoint(touch.clientX, touch.clientY);
-        addRemoveElement(touch, element, false);
+        for (let touch of ev.changedTouches) {
+            const element = document.elementFromPoint(touch.clientX, touch.clientY);
+            addRemoveElement(touch, element, false);
+        } //loop
     }); //assignTouchEnd
     const container = document.querySelector("body section");
     let current = container.firstElementChild;
