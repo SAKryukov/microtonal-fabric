@@ -33,12 +33,16 @@ document.body.onload = function () {
         const touch = ev.touches[0];
         let element = document.elementFromPoint(touch.clientX, touch.clientY);
         const touchElement = elementDictionary[touch.identifier];
-        //if (element == touchElement) return;
-        const add = !!(element && element.specialControlHandler);
-        if (add)
-            addRemoveElement(touch, element, add);
-        else
-            addRemoveElement(touch, touchElement, add);
+        if (element && element.specialControlHandler && touchElement) {
+            addRemoveElement(touch, touchElement, false);            
+            addRemoveElement(touch, element, true);
+        } else {
+            const add = !!(element && element.specialControlHandler);
+            if (add)
+                addRemoveElement(touch, element, add);
+            else
+                addRemoveElement(touch, touchElement, add);    
+        } //if
     });
     assignTouchEnd(document, (ev) => {
         const touch = ev.changedTouches[0];
