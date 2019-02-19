@@ -121,7 +121,7 @@ const keyboardHandler = (function () {
 
     setMultiTouch(
         (element) => { return element.dataset.multiTouchTarget; }, //elementSelector
-        (element, touch, on) => { element.key.activate(event.target.key, false, on); } //elementHandler
+        (element, touch, on) => { element.key.activate(element.key, false, on); } //elementHandler
     );
 
     rows.iterateKeys = function (handler) { // handler(key)
