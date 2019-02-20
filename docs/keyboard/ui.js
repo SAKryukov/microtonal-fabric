@@ -88,7 +88,7 @@ const keyboardHandler = (function () {
                     const chordLayout = chordLayoutFinder(key, chord);
                     const highlightChords = chordLayout.highlightChords;
                     for (let chordElement of chordLayout)
-                        chordElement.key.activate(chordElement.key, chordMode, doActivate, true, chordElement.title, highlightChords);
+                        chordElement.key.activate(chordElement.key, chordMode, doActivate, volumeDynamics, true, chordElement.title, highlightChords);
                 } //if
             }; //key.activate
             key.rectangle.dataset.multiTouchTarget = true;
