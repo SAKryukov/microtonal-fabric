@@ -17,7 +17,7 @@
     for (let preset of definitionSet.presets)
         player.adjustPreset(audioContext, preset.preset);
 
-    const startStopNote = function (object, octave, tone, doStart) {
+    const startStopNote = function (object, octave, tone, doStart, volumeDynamics) {
         if (object.audioGraph && !doStart) {
             object.audioGraph.cancel();
             object.audioGraph = null;
@@ -29,17 +29,17 @@
                     audioContext.currentTime,
                     (definitionSet.defaultOctave + octave) * 12 + tone + soundControlSet.transposition,
                     false,
-                    soundControlSet.volume);
+                    soundControlSet.volume * volumeDynamics);
     } //startStopNote
 
-    keyboardHandler.soundActionSetter(function (object, octave, tone, doStart) {
-        startStopNote(object, octave, tone, doStart);
+    keyboardHandler.soundActionSetter(function (object, octave, tone, doStart, volumeDynamics) {
+        startStopNote(object, octave, tone, doStart, volumeDynamics);
     }, function (chord, doStart) {
         for (let chordElement of chord) {
             const object = chordElement.object;
             const octave = chordElement.octave;
             const tone = chordElement.tone;
-            startStopNote(object, octave, tone, doStart);
+            startStopNote(object, octave, tone, doStart, volumeDynamics);
         } //loop
     });
 

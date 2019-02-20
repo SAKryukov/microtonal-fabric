@@ -79,7 +79,7 @@ const keyboardHandler = (function () {
                     volumeDynamics = 1.0; 
                 key.activated = doActivate;
                 if (soundAction)
-                    soundAction(key, 0, key.tone, doActivate);
+                    soundAction(key, 0, key.tone, doActivate, volumeDynamics);
                 const effectiveColor = chordNote ? definitionSet.highlightChordNote : definitionSet.highlightSound;
                 if (!chordNote) highlightChords = true;
                 visualActivate(key, effectiveColor, text, highlightChords, doActivate);
@@ -123,7 +123,7 @@ const keyboardHandler = (function () {
 
     setMultiTouch(
         (element) => { return element.dataset.multiTouchTarget; }, //elementSelector
-        (element, touch, on) => { element.key.activate(element.key, false, on, 1.1313); } //elementHandler
+        (element, touch, on) => { element.key.activate(element.key, false, on, Math.exp(touch.radiusX * touch.radiusY)/100 ); } //elementHandler
     );
 
     rows.iterateKeys = function (handler) { // handler(key)
