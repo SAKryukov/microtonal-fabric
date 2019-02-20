@@ -123,7 +123,7 @@ const keyboardHandler = (function () {
 
     setMultiTouch(
         (element) => { return element.dataset.multiTouchTarget; }, //elementSelector
-        (element, touch, on) => { element.key.activate(element.key, false, on, Math.exp(touch.radiusX * touch.radiusY)/100 ); } //elementHandler
+        (element, touch, on) => { element.key.activate(element.key, false, on, Math.pow(touch.radiusX * touch.radiusY, 2) / 300 ); } //elementHandler
     );
 
     rows.iterateKeys = function (handler) { // handler(key)

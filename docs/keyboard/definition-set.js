@@ -159,5 +159,6 @@ const definitionSet = {
     transpositionStep: 1,
     minVolume: 0,
     maxVolume: 1,
+    initialVolume: 0.4,
     volumeStep: 0.01
 }; //definitionSet

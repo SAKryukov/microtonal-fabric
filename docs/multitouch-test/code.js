@@ -4,20 +4,30 @@ document.body.onload = function () {
     const boolUseMouse = document.getElementById("bool-use-mouse");
     boolUseMouse.onclick = checkMouseOption = (ev) => { useMouse = ev.target.checked; }; 
 
+    const output = document.querySelector("textarea");
     const turn = (target, touch, on) => {
         if (on) {
+            output.textContent = "";
             target.style.backgroundColor = "red";
             if (touch)
-                target.textContent = target.dataset.index + ": " + touch.radiusX * touch.radiusY;     
+                target.textContent = target.dataset.index + ": " + Math.pow(touch.radiusX * touch.radiusY, 2).toPrecision(3);
         } else {
             target.style.backgroundColor = "yellow";
             target.textContent = target.dataset.index;     
         } //if
     }; //turn
+    const handleVolume = (target, touch) => {
+        if (!touch) return;
+        const value = Math.pow(touch.radiusX * touch.radiusY, 2).toPrecision(3);
+        target.textContent = target.dataset.index + ": " + value;
+        output.textContent += "Volume change: " + value + "\n";
+        output.scrollTop = output.scrollHeight;
+    }; //handleVolume
 
     setMultiTouch(
         (element) => { return element.dataset.index; }, //elementSelector
-        (element, touch, on) => { turn(element, touch, on); } //elementHandler
+        (element, touch, on) => { turn(element, touch, on); }, //elementHandler
+        (element, touch) => { handleVolume(element, touch); } //sameElementHandler
     );
 
     const container = document.querySelector("body section");

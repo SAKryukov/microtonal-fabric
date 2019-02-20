@@ -1,6 +1,7 @@
 function setMultiTouch(
     elementSelector, // element => bool
     elementHandler,  // (element, Touch touchObject, bool on) => undefined
+    sameElementHandler, // (element, Touch touchObject) => undefined: handles move in the area of the same element
 ) {
 
     const assignEvent = (element, name, handler) => {
@@ -43,8 +44,11 @@ function setMultiTouch(
             const goodElement = isGoodElement(element); 
             const touchElement = elementDictionary[touch.identifier];
             if (goodElement && touchElement) {
-                if (element == touchElement)
-                    continue;
+                if (element == touchElement) {
+                    if (sameElementHandler)
+                        sameElementHandler(element, touch)
+                        continue;
+                    } //if same
                 addRemoveElement(touch, touchElement, false);            
                 addRemoveElement(touch, element, true);
             } else {

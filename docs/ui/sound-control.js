@@ -36,7 +36,7 @@ const soundControlSet = (function setSoundControl() {
         soundControlSet.volume = parseFloat(event.target.value);
         elements.controls.volumeIndicator.innerHTML = event.target.value;
     }; //elements.controls.volume.oninput
-    elements.controls.volume.value = definitionSet.maxVolume;
+    elements.controls.volume.value = definitionSet.initialVolume;
 
     elements.controls.transposition.min = definitionSet.minTransposition;
     elements.controls.transposition.max = definitionSet.maxTransposition;
@@ -48,7 +48,7 @@ const soundControlSet = (function setSoundControl() {
 
     const reset = function() {
         elements.controls.instrument.selectedIndex = definitionSet.defaultPreset;
-        elements.controls.volume.value = 1;
+        elements.controls.volume.value = definitionSet.initialVolume;
         elements.controls.transposition.value = 0;
         elements.controls.volume.oninput({target: elements.controls.volume});
         elements.controls.transposition.oninput({target: elements.controls.transposition});
