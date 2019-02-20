@@ -72,9 +72,11 @@ const keyboardHandler = (function () {
             key.numberInRow = rowCells.length;
             key.row = numberOfRows - rows.length - 1;
             rowCells.push(key);
-            key.activate = function (key, chordMode, doActivate, chordNote, text, highlightChords) {
+            key.activate = function (key, chordMode, doActivate, volumeDynamics, chordNote, text, highlightChords) {
                 if (key.activated && doActivate) return;
                 if (!key.activated && !doActivate) return;
+                if (volumeDynamics == undefined)
+                    volumeDynamics = 1.0; 
                 key.activated = doActivate;
                 if (soundAction)
                     soundAction(key, 0, key.tone, doActivate);
@@ -90,23 +92,23 @@ const keyboardHandler = (function () {
                 } //if
             }; //key.activate
             key.rectangle.dataset.multiTouchTarget = true;
-            key.rectangle.onmouseenter = function (event) {
+            key.rectangle.onmouseenter = (event) => {
                 if (event.buttons == 1)
                     event.target.key.activate(event.target.key, event.ctrlKey, true);
                 return false;
             };
-            key.rectangle.onmouseleave = function (event) {
+            key.rectangle.onmouseleave = (event) => {
                 event.target.key.activate(event.target.key, event.ctrlKey, false);
                 return false;
             };
-            key.rectangle.onmousedown = function (event) {
+            key.rectangle.onmousedown = (event) => {
                 if (event.button == 0)
                     event.target.key.activate(event.target.key, event.ctrlKey, true);
                 else
                     event.target.key.activate(event.target.key, event.ctrlKey, false);
                 return false;
             };
-            key.rectangle.onmouseup = function (event) {
+            key.rectangle.onmouseup = (event) => {
                 if (event.button == 0)
                     event.target.key.activate(event.target.key, event.ctrlKey, false);
                 return false;
@@ -121,7 +123,7 @@ const keyboardHandler = (function () {
 
     setMultiTouch(
         (element) => { return element.dataset.multiTouchTarget; }, //elementSelector
-        (element, touch, on) => { element.key.activate(element.key, false, on); } //elementHandler
+        (element, touch, on) => { element.key.activate(element.key, false, on, 1.1313); } //elementHandler
     );
 
     rows.iterateKeys = function (handler) { // handler(key)
