@@ -1,6 +1,6 @@
 // Microtonal Music Study with Chromatic Lattice Keyboard
 //
-// Copyright (c) Sergey A Kryukov, 2017
+// Copyright (c) Sergey A Kryukov, 2017, 2019
 //
 // http://www.SAKryukov.org
 // http://www.codeproject.com/Members/SAKryukov
@@ -34,7 +34,7 @@
 
     keyboardHandler.soundActionSetter(function (object, octave, tone, doStart, volumeDynamics) {
         startStopNote(object, octave, tone, doStart, volumeDynamics);
-    }, function (chord, doStart) {
+    }, function (chord, doStart, volumeDynamics) {
         for (let chordElement of chord) {
             const object = chordElement.object;
             const octave = chordElement.octave;

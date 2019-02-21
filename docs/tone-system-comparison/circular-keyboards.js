@@ -1,6 +1,6 @@
 // Microtonal Music Study with Chromatic Lattice Keyboard
 //
-// Copyright (c) Sergey A Kryukov, 2017
+// Copyright (c) Sergey A Kryukov, 2017, 2019
 //
 // http://www.SAKryukov.org
 // http://www.codeproject.com/Members/SAKryukov
@@ -66,9 +66,9 @@ const keyboardHandler = (function populate(comparer) {
                 key.style.fill = definitionSet.highlightDefault;
             if (soundAction) {
                 if (key.state == keyStates.sound && value == keyStates.none)
-                    soundAction(key, key.octave, key.tone, false);
+                    soundAction(key, key.octave, key.tone, false, 1);
                 else if (key.state == keyStates.none && value == keyStates.sound)
-                    soundAction(key, key.octave, key.tone, true);
+                    soundAction(key, key.octave, key.tone, true, 1);
             } //soundAction
             key.state = value;
             const chordKeyKey = getKeyChordKey(key);
@@ -159,7 +159,7 @@ const keyboardHandler = (function populate(comparer) {
             octaveNumber--;
         } //loop octaveGroups
 
-        const triggerChordSoundAction = function (chordOwner, doActivate) {
+        const triggerChordSoundAction = function (chordOwner, doActivate, volumeDynamics) {
             if (!chordOwner.chord) return;
             if (chordSoundAction) {
                 const exposeChord = [];
@@ -168,12 +168,12 @@ const keyboardHandler = (function populate(comparer) {
                     if (element.constructor == Number) continue;
                     exposeChord.push({ object: element, octave: element.octave, tone: element.tone });
                 } //loop
-                chordSoundAction(exposeChord, doActivate);
+                chordSoundAction(exposeChord, doActivate, volumeDynamics);
             } //if
         }; //triggerChordSoundAction
 
-        chordActivator.activate = function (key, doActivate) {
-            triggerChordSoundAction(chordActivator, doActivate);
+        chordActivator.activate = function (key, doActivate, volumeDynamics) {
+            triggerChordSoundAction(chordActivator, doActivate, volumeDynamics);
             if (doActivate)
                 key.style.fill = definitionSet.highlightChord;
             else
@@ -195,19 +195,19 @@ const keyboardHandler = (function populate(comparer) {
             return false;
         };
         chordActivator.onmouseleave = function (event) {
-            event.target.activate(event.target, false);
+            event.target.activate(event.target, false, 1);
             return false;
         };
         chordActivator.onmousedown = function (event) {
             if (event.button == 0)
-                event.target.activate(event.target, true);
+                event.target.activate(event.target, true, 1);
             else
-                event.target.activate(event.target, false);
+                event.target.activate(event.target, false, 1);
             return false;
         };
         chordActivator.onmouseup = function (event) {
             if (event.button == 0)
-                event.target.activate(event.target, false);
+                event.target.activate(event.target, false, 1);
             return false;
         };
 
