@@ -1,3 +1,5 @@
+"use strict";
+
 const svgPreparer = (function (svg) {
     const findNamespace = () => {
         for (let attribute of svg.attributes)
@@ -8,13 +10,13 @@ const svgPreparer = (function (svg) {
     return { svg: svg, elementCreator: (tagName) => { return document.createElementNS(namespace, tagName); } };
 })(elements.keyboard);
 
-const keyboardRenderer = () => {
+const keyboardStructure = (function() {
     const keyboardStructure = { rows: []};
     const svg = svgPreparer.svg;
     const elementCreator = svgPreparer.elementCreator;
-    const rows = 11, columns = 35;
-    const width = 128;
-    const margins = width / 128;
+    const rows = 11, columns = 35; //SA???
+    const width = 128; //SA???
+    const margins = width / 128; //SA???
     const effectiveWidth = width - 2 * margins;
     const size = effectiveWidth / columns;
     let maxY = 0;
@@ -24,7 +26,7 @@ const keyboardRenderer = () => {
         const isEven = row % 2 == 0;
         let shift = 0;
         let actualColumns = columns;
-        if (isEven) {
+        if (!isEven) {
             shift = size / 2;
             actualColumns = columns - 1;
         }
@@ -35,18 +37,16 @@ const keyboardRenderer = () => {
             keyRect.width.baseVal.value = size;
             keyRect.height.baseVal.value = size;
             keyRect.style.fill = "transparent";
-            keyRect.style.stroke = "gray";
-            keyRect.rx.baseVal.value = 0.4;
+            keyRect.style.stroke = "gray"; //SA???
+            keyRect.rx.baseVal.value = 0.4;  //SA???
             keyRect.ry.baseVal.value = 0.4;
-            keyRect.style.strokeWidth = width / 1400;
+            keyRect.style.strokeWidth = width / 1400;  //SA???
             keyRect.x.baseVal.value = margins + index * size + shift;
             keyRect.y.baseVal.value = margins + row * size;
             svg.appendChild(keyRect);
         }
     }
     const viewBox = elementCreator("rect");
-    svg.setAttributeNS(null, "viewBox", "0 0 " + width + " " + (maxY + 1));
+    svg.setAttributeNS(null, "viewBox", "0 0 " + width + " " + maxY);  //SA???
     return keyboardStructure;
-}; //keyboardRenderer
-
-const keyboardStructure = keyboardRenderer();
+})(); //keyboardStructure
