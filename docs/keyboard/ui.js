@@ -154,12 +154,12 @@ const keyboardHandler = (function () {
                 const label = document.createElementNS(svgNS, "text");
                 const labelText = labelMaker(cell);
                 label.innerHTML = labelText;
-                const width = Math.round(cell.rectangle.width.baseVal.value / 3);
+                const width = Math.round(cell.rectangle.width.baseVal.value / 3); //SA???
                 label.style = "pointer-events:none";
                 label.style.fontFamily = definitionSet.labelFontFamily;
                 label.style.fontSize = width+"px";
-                label.setAttributeNS(null, "x", cell.rectangle.x.baseVal.value + 2);
-                label.setAttributeNS(null, "y", cell.rectangle.y.baseVal.value + width + 1);
+                label.setAttributeNS(null, "x", cell.rectangle.x.baseVal.value + 0.2); //SA???
+                label.setAttributeNS(null, "y", cell.rectangle.y.baseVal.value + width + 0.1); //SA???
                 notesGroup.appendChild(label);
                 cell.label = label;
                 cell.textStack = [labelText];

@@ -26,7 +26,7 @@ const keyboardStructure = (function() {
         const isEven = row % 2 == 0;
         let shift = 0;
         let actualColumns = columns;
-        if (!isEven) {
+        if (isEven) {
             shift = size / 2;
             actualColumns = columns - 1;
         }
@@ -37,7 +37,7 @@ const keyboardStructure = (function() {
             keyRect.width.baseVal.value = size;
             keyRect.height.baseVal.value = size;
             keyRect.style.fill = "transparent";
-            keyRect.style.stroke = "gray"; //SA???
+            keyRect.style.stroke = "darkGray"; //SA???
             keyRect.rx.baseVal.value = 0.4;  //SA???
             keyRect.ry.baseVal.value = 0.4;
             keyRect.style.strokeWidth = width / 1400;  //SA???
