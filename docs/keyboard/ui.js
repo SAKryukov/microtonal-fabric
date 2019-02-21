@@ -52,26 +52,21 @@ const keyboardHandler = (function () {
         } //if
     } //visualActivate
 
-    let numberOfRows = 0;
-    for (let node of nodes)
-        if (node.constructor == SVGGElement)
-            numberOfRows++;
-    for (let node of nodes) {
-        const rowCells = [];
-        rowCells.rowNumber = rows.length;
-        if (node.constructor != SVGGElement) continue;
-        for (let rowCell of node.childNodes) {
-            if (rowCell.constructor != SVGRectElement) continue;
+    for (let rowIndex = 0; rowIndex < keyboardStructure.rows.length; ++rowIndex) {
+        const currentRow = keyboardStructure.rows[rowIndex];
+        const currentKeyRow = [];
+        rows.push(currentKeyRow); 
+        for (let keyIndex = 0; keyIndex < currentRow.length; ++keyIndex) {
             const key = {};
+            currentKeyRow.push(key);
             key.activated = false;
             key.currentColor = definitionSet.highlightDefault;
             key.colorStack = [];
             key.textStack = [];
-            key.rectangle = rowCell;
+            key.rectangle = currentRow[keyIndex];
             key.rectangle.key = key;
-            key.numberInRow = rowCells.length;
-            key.row = numberOfRows - rows.length - 1;
-            rowCells.push(key);
+            key.numberInRow = keyIndex;
+            key.row = rowIndex;
             key.activate = function (key, chordMode, doActivate, volumeDynamics, chordNote, text, highlightChords) {
                 if (key.activated && doActivate) return;
                 if (!key.activated && !doActivate) return;
@@ -113,9 +108,9 @@ const keyboardHandler = (function () {
                     event.target.key.activate(event.target.key, event.ctrlKey, false);
                 return false;
             };
-        } //loop cells
-        rows.splice(0, 0, rowCells);
-    } //loop rows
+        } //loop key
+    } //loop row
+
     const svgNS = keyboard.getAttribute("xmlns");
     const notesGroup = document.createElementNS(svgNS, "g");
     keyboard.appendChild(notesGroup);
