@@ -113,7 +113,6 @@ const keyboardHandler = (function () {
                     event.target.key.activate(event.target.key, event.ctrlKey, false);
                 return false;
             };
-            //*/
         } //loop cells
         rows.splice(0, 0, rowCells);
     } //loop rows
@@ -121,10 +120,25 @@ const keyboardHandler = (function () {
     const notesGroup = document.createElementNS(svgNS, "g");
     keyboard.appendChild(notesGroup);
 
-    setMultiTouch(
-        (element) => { return element.dataset.multiTouchTarget; }, //elementSelector
-        (element, touch, on) => { element.key.activate(element.key, false, on, Math.pow(touch.radiusX * touch.radiusY, 2) / 300 ); } //elementHandler
-    );
+    (function setupTouch() {
+        let touchEnabled = elements.controls.touch.checkboxUseTouchDynamics.checked;
+        elements.controls.touch.checkboxUseTouchDynamics.onclick = (ev) => { touchEnabled = ev.target.checked; }
+        let volumeDivider = definitionSet.initialTouchDynamicsDivider;
+        const calibrationDoneHandler = (value) => {
+            volumeDivider = value;
+        }; 
+        setupMultiTouchCalibration(
+            elements.controls.touch.calibrationProbe,
+            elements.controls.touch.calibrationResult,
+            elements.controls.touch.buttonDone,
+            calibrationDoneHandler);
+        const dynamicAlgorithm = setMultiTouch().dynamicAlgorithm;
+        setMultiTouch(
+            () => { return touchEnabled; }, //enabler
+            (element) => { return element.dataset.multiTouchTarget; }, //elementSelector
+            (element, touch, on) => { element.key.activate(element.key, false, on, dynamicAlgorithm(touch, volumeDivider)); } //elementHandler
+        );    
+    })();
 
     rows.iterateKeys = function (handler) { // handler(key)
         for (let row of rows)

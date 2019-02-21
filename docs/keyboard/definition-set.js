@@ -33,8 +33,14 @@ const elements = {
         volumeIndicator: document.getElementById("control-volume-value"),
         transposition: document.getElementById("control-transposition"),
         transpositionIndicator: document.getElementById("control-transposition-value"),
+        touch: {
+            checkboxUseTouchDynamics: document.getElementById("checkbox-use-touch-dynamics"),
+            calibrationProbe: document.getElementById("touch-calibration"),
+            calibrationResult: document.getElementById("touch-calibration-result"),
+            buttonDone: document.getElementById("button-touch-calibration-done")
+        },
         reset: document.getElementById("control-reset")
-    }, 
+    },
     legend19et: document.getElementById("radio-19-et-legend"),
     legend29et: document.getElementById("radio-29-et-legend"),
     legend31et: document.getElementById("radio-31-et-legend"),
@@ -160,5 +166,6 @@ const definitionSet = {
     minVolume: 0,
     maxVolume: 1,
     initialVolume: 0.4,
-    volumeStep: 0.01
+    volumeStep: 0.01,
+    initialTouchDynamicsDivider: 500
 }; //definitionSet

@@ -36,7 +36,6 @@ const soundControlSet = (function setSoundControl() {
         soundControlSet.volume = parseFloat(event.target.value);
         elements.controls.volumeIndicator.innerHTML = event.target.value;
     }; //elements.controls.volume.oninput
-    elements.controls.volume.value = definitionSet.initialVolume;
 
     elements.controls.transposition.min = definitionSet.minTransposition;
     elements.controls.transposition.max = definitionSet.maxTransposition;
@@ -52,6 +51,8 @@ const soundControlSet = (function setSoundControl() {
         elements.controls.transposition.value = 0;
         elements.controls.volume.oninput({target: elements.controls.volume});
         elements.controls.transposition.oninput({target: elements.controls.transposition});
+        elements.controls.touch.checkboxUseTouchDynamics.checked = true;
+        elements.controls.touch.calibrationResult.value = definitionSet.initialTouchDynamicsDivider;
     } //reset
     reset();
 
