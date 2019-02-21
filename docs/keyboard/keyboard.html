@@ -37,6 +37,10 @@
     th { background-color: lightGray; font-weight: normal; font-size: 100%; }
     th > button { margin-left: 1em; float: right; }
     table { border: solid black 2px; border-collapse: collapse; }
+    div.touchCalibration { background-color: lightYellow; width: 5em; height: 5em; border: thin solid black; display: inline-block; }
+    input.touchCalibration { display: inline-block; vertical-align: top; }
+    .touchCalibrationPad { padding-top: 0.4em; }
+    #button-touch-calibration-done { margin-top: 1em; }
 </style>
 </head>
 
@@ -903,9 +907,23 @@
 </div>
 
 <div class="control">
+  <label for="checkbox-use-touch-dynamics"><input type="checkbox" id="checkbox-use-touch-dynamics" accesskey="S"/> Use Touch <u>S</u>creen Volume Dynamics</label>
+  <details><summary>Calibration</summary>
+    <div class="touchCalibrationPad">
+    	<div class="touchCalibration" id="touch-calibration"></div>
+    	<input type="text" class="touchCalibration" id="touch-calibration-result"></input>
+    </div>
+    Hit this light yellow rectangle with a finger several times with different fource.<br/>Maximum strengh will be recorded.
+    <br/>
+    <button id="button-touch-calibration-done">Done</button>
+  </details>
+</div>
+
+<div class="control">
   <button accesskey="R" id="control-reset"><u>R</u>eset</button>
   <div class="controlTitleSeparator"></div>
 </div>
+
 
 </details>
 
