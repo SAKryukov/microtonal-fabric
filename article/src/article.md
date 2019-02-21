@@ -70,7 +70,6 @@ There can be very [many answers](http://xenharmonic.wikispaces.com/Why+use+alter
 Since v.4.0:
 - Touch screen support
 - Key press dynamics
-- Flexible keyboard size, due to dynamically generated SVG
 
 ## Using the Application
 
@@ -386,7 +385,9 @@ Now the compatible browser is detected as the one which successfully loads all s
 #### 4.0.0
 * Touch screen support
 * Key press dynamic support
-* Keyboard layout is generated dynamically rather then imported from vector graphics image; it helped to make keyboard dimensions variable.
+
+#### 4.1.0
+* Keyboard layout is generated dynamically rather then imported from vector graphics image; it helped to make keyboard layout variable.
 
 ## Acknowledgments
 
