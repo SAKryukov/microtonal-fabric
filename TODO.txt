@@ -1,4 +1,3 @@
-Fix hard-coded values, see //SA???
-Fix generation of chords, now they go down
+Make hardwareKeybord automatically fit keyboard dimensions
 Review dynamicAlgorithm (multitouch.js), maybe it has to be more linear
 
