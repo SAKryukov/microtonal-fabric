@@ -55,6 +55,7 @@ There can be very [many answers](http://xenharmonic.wikispaces.com/Why+use+alter
 - [Just Intonation](https://en.wikipedia.org/wiki/Just_intonation) (only [presented](https://sakryukov.github.io/microtonal-chromatic-lattice-keyboard/tone-system-comparison/tone-system-comparison.html) on the [chromatic-circle](https://en.wikipedia.org/wiki/Chromatic_circle) keyboard)
 - [Common-practice](https://en.wikipedia.org/wiki/Common_practice_period) [12-TET](https://en.wikipedia.org/wiki/Equal_temperament)
 - [19-TET](https://en.wikipedia.org/wiki/19_equal_temperament)
+- 19-TET (since v.4.0)
 - [31-TET](https://en.wikipedia.org/wiki/31_equal_temperament).
 
 ## Features
@@ -65,6 +66,11 @@ There can be very [many answers](http://xenharmonic.wikispaces.com/Why+use+alter
 - Chord generation
 - Optional chord visualization
 - Compatible browsers include, but not limited to Google Chrome, Mozilla Firefox, Mozilla SeaMonkey and Opera.
+
+Since v.4.0:
+- Touch screen support
+- Key press dynamics
+- Flexible keyboard size, due to dynamically generated SVG
 
 ## Using the Application
 
@@ -364,21 +370,23 @@ The other scripts, all the scripts other than the one shown above, are loaded re
 Initial production version
 
 #### 1.1.0
-
 * Added option "Use Computer Keyboard"
 * On application pages, added links to original publication
 
 The option added is important because some key combinations such as Ctrl+W (usually, browser's close tab) are busy with the physical computer keyboard function.
 
 #### 2.0.0
-
 * Added browser detection and dynamic [script loading](#heading.compatibility).
 
-#### 2.1.0
+Now the compatible browser is detected as the one which successfully loads all scripts. No criteria related to user agent product names, manufacturers or versions are used.
 
+#### 2.1.0
 * Improved detection of incompatible browsers.
 
-Now the compatible browser is detected as the one which successfully loads all scripts. No criteria related to user agent product names, manufacturers or versions are used.
+#### 4.0.0
+* Touch screen support
+* Key press dynamic support
+* Keyboard layout is generated dynamically rather then imported from vector graphics image; it helped to make keyboard dimensions variable.
 
 ## Acknowledgments
 
