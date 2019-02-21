@@ -121,8 +121,8 @@ const keyboardHandler = (function () {
     keyboard.appendChild(notesGroup);
 
     (function setupTouch() {
-        let touchEnabled = elements.controls.touch.checkboxUseTouchDynamics.checked;
-        elements.controls.touch.checkboxUseTouchDynamics.onclick = (ev) => { touchEnabled = ev.target.checked; }
+        let touchDynamicsEnabled = elements.controls.touch.checkboxUseTouchDynamics.checked;
+        elements.controls.touch.checkboxUseTouchDynamics.onclick = (ev) => { touchDynamicsEnabled = ev.target.checked; }
         let volumeDivider = definitionSet.initialTouchDynamicsDivider;
         const calibrationDoneHandler = (value) => {
             volumeDivider = value;
@@ -134,9 +134,13 @@ const keyboardHandler = (function () {
             calibrationDoneHandler);
         const dynamicAlgorithm = setMultiTouch().dynamicAlgorithm;
         setMultiTouch(
-            () => { return touchEnabled; }, //enabler
             (element) => { return element.dataset.multiTouchTarget; }, //elementSelector
-            (element, touch, on) => { element.key.activate(element.key, false, on, dynamicAlgorithm(touch, volumeDivider)); } //elementHandler
+            (element, touch, on) => {
+                let volume = 1;
+                if (touchDynamicsEnabled)
+                    volume = dynamicAlgorithm(touch, volumeDivider);
+                element.key.activate(element.key, false, on, volume);
+            } //elementHandler
         );    
     })();
 

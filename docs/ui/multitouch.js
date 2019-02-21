@@ -1,5 +1,4 @@
 function setMultiTouch(
-    enabler, // () => bool
     elementSelector, // element => bool
     elementHandler,  // (element, Touch touchObject, bool on) => undefined
     sameElementHandler, // (element, Touch touchObject) => undefined: handles move in the area of the same element
@@ -18,7 +17,7 @@ function setMultiTouch(
         assignEvent(element, "touchend", handler);
     };
 
-    if (!enabler)
+    if (!elementSelector)
         return {
             assignTouchStart: assignTouchStart,
             assignTouchMove: assignTouchMove,
@@ -37,7 +36,6 @@ function setMultiTouch(
     }; //addRemoveElement
 
     assignTouchStart(document, (ev) => {
-        if (!enabler()) return;
         ev.preventDefault();
         for (let touch of ev.touches) {
             const element = document.elementFromPoint(touch.clientX, touch.clientY);
@@ -46,7 +44,6 @@ function setMultiTouch(
     }); //assignTouchStart
     
     assignTouchMove(document, (ev) => {
-        if (!enabler()) return;
         ev.preventDefault();
         for (let touch of ev.touches) {
             let element = document.elementFromPoint(touch.clientX, touch.clientY);
@@ -70,7 +67,6 @@ function setMultiTouch(
     }); //assignTouchMove
     
     assignTouchEnd(document, (ev) => {
-        if (!enabler()) return;
         ev.preventDefault();
         for (let touch of ev.changedTouches) {
             const element = document.elementFromPoint(touch.clientX, touch.clientY);
