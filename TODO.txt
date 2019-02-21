@@ -1,0 +1,4 @@
+Fix hard-coded values, see //SA???
+Fix generation of chords, now they go down
+Review dynamicAlgorithm (multitouch.js), maybe it has to be more linear
+
