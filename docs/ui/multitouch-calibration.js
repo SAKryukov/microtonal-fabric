@@ -4,11 +4,13 @@ const setupMultiTouchCalibration = (
     buttonDone,
     calibrationDoneHandler) => {
 
+    calibrationResult.style.color = definitionSet.touchValueColor;
+
     const eventAssigner = setMultiTouch();
     let force = 1;
 
     const touchHandler = (touch, isMove) => {
-        calibrationResult.style.color = "red";
+        calibrationResult.style.color = definitionSet.touchValueColorModified;
         const forceValue = eventAssigner.dynamicAlgorithm(touch, 1);
         if (isMove && forceValue < force) return;
         force = forceValue;
@@ -19,7 +21,7 @@ const setupMultiTouchCalibration = (
     eventAssigner.assignTouchMove(calibrationProbe, (ev) => { touchHandler(ev.changedTouches[0]), true; });
 
     buttonDone.onclick = () => {
-        calibrationResult.style.color = "black";
+        calibrationResult.style.color = definitionSet.touchValueColor;
         calibrationDoneHandler(force);
     }; //buttonDone.onclick
 

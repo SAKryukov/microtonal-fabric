@@ -1,4 +1,4 @@
-// Microtonal Music Study with Chromatic Lattice Keyboard
+﻿// Microtonal Music Study with Chromatic Lattice Keyboard
 //
 // Copyright (c) Sergey A Kryukov, 2017, 2019
 //
@@ -167,5 +167,7 @@ const definitionSet = {
     maxVolume: 1,
     initialVolume: 0.4,
     volumeStep: 0.01,
-    initialTouchDynamicsDivider: 500
+    initialTouchDynamicsDivider: 500,
+    touchValueColor: "black",
+    touchValueColorModified: "red"
 }; //definitionSet
