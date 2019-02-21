@@ -55,7 +55,7 @@ const keyboardHandler = (function () {
     for (let rowIndex = 0; rowIndex < keyboardStructure.rows.length; ++rowIndex) {
         const currentRow = keyboardStructure.rows[rowIndex];
         const currentKeyRow = [];
-        rows.push(currentKeyRow); 
+        rows.unshift(currentKeyRow); 
         for (let keyIndex = 0; keyIndex < currentRow.length; ++keyIndex) {
             const key = {};
             currentKeyRow.push(key);
