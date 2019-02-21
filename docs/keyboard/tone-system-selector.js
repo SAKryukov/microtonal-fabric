@@ -182,12 +182,16 @@
         const startingRow = definitionSet.hardwareKeyboardControl.startingRow;
         let rowIndex = startingRow;
         let xShift = 0;
+        const maxRowIndex = keyboardHandler.rows.length - 1;
         for (let row of hardwareKeyboard.rows) {
+            if (rowIndex > maxRowIndex) break;
             let xIndex = definitionSet.hardwareKeyboardControl.keyShift;
             if (keyboardHandler.rows[rowIndex].length % 2 > 0)
                 xShift++;
             xIndex -= rowIndex - xShift;
+            const maxXIndex = keyboardHandler.rows[rowIndex].length - 1; 
             for (let key of row) {
+                if (xIndex > maxXIndex) break;
                 const cell = keyboardHandler.rows[rowIndex][xIndex];
                 keyDictionary[key] = cell;
                 cell.currentColor = definitionSet.highlightHardwareKey;

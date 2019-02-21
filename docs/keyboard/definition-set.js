@@ -73,7 +73,7 @@ const elements = {
     elements.radioTet.radio12et.chordTable = elements.chordSet[0].table;
     elements.radioTet.radio12etJanko.chordTable = elements.chordSet[0].table;
     elements.radioTet.radio19et.chordTable = elements.chordSet[1].table;
-    elements.radioTet.radio29et.chordTable = elements.chordSet[2].table; //SA???
+    elements.radioTet.radio29et.chordTable = elements.chordSet[2].table;
     elements.radioTet.radio31et.chordTable = elements.chordSet[2].table;
 })();
 
@@ -136,6 +136,16 @@ const notes = {
 notes.tet12Janko.names = notes.tet12.names;
 
 const definitionSet = {
+    keyboardSize: { rows: 11, longRowWidth: 35 },
+    keyboard: {
+        width: 128,
+        //relative to width:
+        margins: 0.008,
+        keyRadius: 0.0032,
+        strokeWidth: 0.001
+    },
+    label: { fontSize: 0.28, paddingLeft: 0.25, paddingTop: 0.1 }, // relative to key size
+    keyStroke: "darkGray",
     highlightSound: "#ffd0a0",
     highlightChordNote: "yellow",
     highlightDefault: "white",
