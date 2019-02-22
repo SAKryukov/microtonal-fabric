@@ -1,4 +1,4 @@
-Microtonal Music Study with Chromatic Lattice Keyboard[](title)
+﻿Microtonal Music Study with Chromatic Lattice Keyboard[](title)
 
 [*Sergey A Kryukov*](https://www.SAKryukov.org)
 
@@ -22,7 +22,11 @@ C &mdash; D♭² &mdash; Db &mdash; C♯ &mdash; C♯² &mdash; D
 
 <!-- copy to CodeProject from here ------------------------------------------->
 
-![31-TET Keyboard, harmonic seventh chord](title.png){id=image.title}
+<p id="image.title">
+
+![31-TET Keyboard, harmonic seventh chord](title.png)
+
+</p>
 
 ## Contents[](notoc)
 
@@ -120,7 +124,9 @@ This way, there is only one kind of ♯ and one kind of ♭: &plusmn;2 microtone
 
 So, there are two different intervals between the degrees of [major scale](https://en.wikipedia.org/wiki/Major_scale): either 5 or 3 (between B and C and between E and F) microtones. It makes 31 microtones and very good rendering of [major scale](https://en.wikipedia.org/wiki/Major_scale). At the same time altered intervals and chord can sound very differently.  
 
-Another way to define a chord is based on the degrees of the scale, chosen from a table.{id=special.chord-tables}
+<p id="special.chord-tables">
+Another way to define a chord is based on the degrees of the scale, chosen from a table.
+</p>
 
 This is the example of the table for [19-TET](https://en.wikipedia.org/wiki/19_equal_temperament) showing the default selection of [major chord](https://en.wikipedia.org/wiki/Major_chord):
 
@@ -150,7 +156,7 @@ The green area is used to play part of the tones using the physical computer key
 
 The controls are different. First of all, one of the three tone systems and four layouts ([12-TET](https://en.wikipedia.org/wiki/Equal_temperament), 12-TET in [Jankó layout](https://en.wikipedia.org/wiki/Jank%C3%B3_keyboard), [19-TET](https://en.wikipedia.org/wiki/19_equal_temperament) and [31-TET](https://en.wikipedia.org/wiki/31_equal_temperament)) can be chosen at any time.
 
-Other controls enable optional highlighting of chords (played prefixed with Ctrl+) and chosen from the tables [described above](special.chord-tables) and chord note marking using the scale degree notation.
+Other controls enable optional highlighting of chords (played prefixed with Ctrl+) and chosen from the tables [described above](#special.chord-tables) and chord note marking using the scale degree notation.
 
 First surprising thing is that the tone layout looks nearly identical to that of 12-TET. This layout is very special: 1) it is very suggestive of harmonic relationship between notes; 2) the layouts for different tone systems are "locally identical". The differences become apparent, for example, in the attempt to perform [harmonic modulation](https://en.wikipedia.org/wiki/Modulation_%28music%29), which is very easy though, due to chromatic nature of the keyboard. How it works?
 
@@ -366,11 +372,11 @@ The other scripts, all the scripts other than the one shown above, are loaded re
 ## Versions
 
 #### 1.0.0
-Initial production version
+Initial production version.
 
 #### 1.1.0
-* Added option "Use Computer Keyboard"
-* On application pages, added links to original publication
+* Added option "Use Computer Keyboard".
+* On application pages, added links to original publication.
 
 The option added is important because some key combinations such as Ctrl+W (usually, browser's close tab) are busy with the physical computer keyboard function.
 
@@ -383,11 +389,13 @@ Now the compatible browser is detected as the one which successfully loads all s
 * Improved detection of incompatible browsers.
 
 #### 4.0.0
-* Touch screen support
-* Key press dynamic support
+* Touch screen support.
+* Key press dynamic support.
 
 #### 4.1.0
 * Keyboard layout is generated dynamically rather then imported from vector graphics image; it helped to make keyboard layout variable.
+* Markup of the hardware keyboard on a on-screen keyboard (shown in green) is automatically calculated based on on-screen keyboard.
+* Several minor improvements.
 
 ## Acknowledgments
 
