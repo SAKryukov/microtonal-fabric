@@ -1,3 +1,4 @@
-Make hardwareKeybord automatically fit keyboard dimensions
 Review dynamicAlgorithm (multitouch.js), maybe it has to be more linear
+Review good-browser.js
+
 

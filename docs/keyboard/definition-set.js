@@ -157,10 +157,6 @@ const definitionSet = {
     highlightHardwareKey: "lightGreen",
     highlightChord: "yellow",
     labelFontFamily: "sans-serif",
-    hardwareKeyboardControl: {
-        startingRow: 4,
-        keyShift: 15,
-    },
     presets: [
         { preset: webAudioFont00, title: "Piano" },
         { preset: webAudioFont14, title: "Bells" },

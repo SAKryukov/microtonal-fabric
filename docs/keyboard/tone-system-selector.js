@@ -129,7 +129,7 @@
         if (event.target.checked) {
             setTet(event.target, notes.tet29);
             selectedTet = event.target;
-        } //if            
+        } //if            33
         elements.legend19et.style.visibility = "hidden";
         elements.legend31et.style.visibility = "hidden";
         elements.legend29et.style.visibility = "visible";
@@ -151,6 +151,11 @@
     elements.legend31et.style.visibility = "visible";
 
     (function setHardwareKeyboardControl() {
+        if ((definitionSet.keyboardSize.longRowWidth % 2) == 0) {
+            //SA??? good-browser.js to review instead
+            alert("definitionSet.keyboardSize.longRowWidth value ("+ definitionSet.keyboardSize.longRowWidth +") must be odd");
+            throw definitionSet.keyboardSize.longRowWidth;
+        } //if
         let useComputerKeyboard = true;
         elements.showOptions.optionUseComputerKeyboard.checked = true;
         const keyDictionary = {};
@@ -179,31 +184,48 @@
         }; //keyHandler
         window.onkeydown = function (event) { keyHandler(event, true); }
         window.onkeyup = function (event) { keyHandler(event, false); }
-        const startingRow = definitionSet.hardwareKeyboardControl.startingRow;
-        let rowIndex = startingRow;
-        let xShift = 0;
-        const maxRowIndex = keyboardHandler.rows.length - 1;
-        for (let row of hardwareKeyboard.rows) {
-            if (rowIndex > maxRowIndex) break;
-            let xIndex = definitionSet.hardwareKeyboardControl.keyShift;
-            if (keyboardHandler.rows[rowIndex].length % 2 > 0)
-                xShift++;
-            xIndex -= rowIndex - xShift;
-            const maxXIndex = keyboardHandler.rows[rowIndex].length - 1; 
-            for (let key of row) {
-                if (xIndex > maxXIndex) break;
-                const cell = keyboardHandler.rows[rowIndex][xIndex];
-                keyDictionary[key] = cell;
-                cell.currentColor = definitionSet.highlightHardwareKey;
-                cell.rectangle.style.fill = cell.currentColor;
-                ++xIndex;
-            } //loop xIndex
-            ++rowIndex
-        } //loop rowIndex
+        const placeKeys = () => {
+            const location = (function test() {
+                const startingRow = Math.round((keyboardHandler.rows.length - hardwareKeyboard.rows.length) / 2)
+                const leftmost = -hardwareKeyboard.rows.length
+                let rightmost = 0;
+                for (let index = 0; index < hardwareKeyboard.rows.length; ++index) {
+                    value = hardwareKeyboard.rows[index].length;
+                    if (index % 2 == 0) value--; 
+                    if (value > rightmost) rightmost = value;
+                } //loop
+                const width = rightmost;
+                const keyShift = Math.round((definitionSet.keyboardSize.longRowWidth - width) / 2);
+                return { startingRow: startingRow, keyShift: keyShift };  
+            })();
+            const startingRow = location.startingRow;
+            let rowIndex = startingRow;
+            let xShift = 0;
+            const maxRowIndex = keyboardHandler.rows.length - 1;
+            for (let row of hardwareKeyboard.rows) {
+                if (rowIndex > maxRowIndex) break;
+                let xIndex = location.startingRow + 1 + location.keyShift;
+                if (keyboardHandler.rows[rowIndex].length % 2 > 0)
+                    xShift++;
+                xIndex -= rowIndex - xShift;
+                const maxXIndex = keyboardHandler.rows[rowIndex].length - 1; 
+                for (let key of row) {
+                    if (xIndex > maxXIndex) break;
+                    const cell = keyboardHandler.rows[rowIndex][xIndex];
+                    if (!cell) break;
+                    keyDictionary[key] = cell;
+                    cell.currentColor = definitionSet.highlightHardwareKey;
+                    cell.rectangle.style.fill = cell.currentColor;
+                    ++xIndex;
+                } //loop xIndex
+                ++rowIndex
+            } //loop rowIndex    
+        } //placeKeys
+        placeKeys();
         for (let substitutionIndex in hardwareKeyboard.substitutions) {
             const substitution = hardwareKeyboard.substitutions[substitutionIndex];
             keyDictionary[substitutionIndex] = keyDictionary[substitution];
         } //loop hardwareKeyboard.substitutions
-    })();
+    })(); //setHardwareKeyboardControl
 
 })();
