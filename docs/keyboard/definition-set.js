@@ -13,6 +13,10 @@
 "use strict";
 
 const elements = {
+    copyright: {
+        spanYears: document.getElementById("years"),
+        spanVersion: document.getElementById("version")
+    },
     keyboard: document.getElementById("keyboard"),
     buttonShowChordTable: document.getElementById("button-show-chord-table"),
     showOptions: {
@@ -136,6 +140,7 @@ const notes = {
 notes.tet12Janko.names = notes.tet12.names;
 
 const definitionSet = {
+    copyright: { version: "4.1", years: "2017-2019" },
     keyboardSize: { rows: 11, longRowWidth: 35 },
     keyboard: {
         width: 128,

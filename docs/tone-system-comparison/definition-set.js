@@ -11,6 +11,10 @@
 // https://www.codeproject.com/Articles/1204180/Microtonal-Music-Study-Chromatic-Lattice-Keyboard"use strict";
 
 const elements = {
+    copyright: {
+        spanYears: document.getElementById("years"),
+        spanVersion: document.getElementById("version")
+    },
     keyboardSet: [
         {
             keyboard: document.getElementById("just-keyboard"),
@@ -84,6 +88,7 @@ const elements = {
 }; //elements
 
 const definitionSet = {
+    copyright: { version: "4.1", years: "2017-2019" },
     highlightSound: "#ffd0a0",
     highlightChordNote: "yellow",
     highlightDefault: "white",

@@ -12,6 +12,11 @@
 
 const keyboardHandler = (function populate(comparer) {
 
+    (function setCopyright() {
+        elements.copyright.spanYears.textContent = definitionSet.copyright.years;
+        elements.copyright.spanVersion.textContent = definitionSet.copyright.version;
+    })(); //setCopyright
+
     let soundAction = null; // soundAction: function(object, octave, tone, doStart)
     let chordSoundAction = null; // chordSoundAction: function(chord, doStart), where chord is and array of: {object, octave: element.octave, tone: element.tone}
     const setSoundActions = function (soundActionInstance, chordSoundActionInstance) {
