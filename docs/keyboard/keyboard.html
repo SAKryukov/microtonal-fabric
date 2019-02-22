@@ -21,6 +21,8 @@
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
     main { padding-left: 1em; padding-right: 1em; }
+    input[type="checkbox"], input[type="radio"] { margin-right: 0.4em; }
+    button { padding-left: 1em; padding-right: 1em; }
     html, body, svg,
     text { font-family: "Ubuntu", "Verdana", "sans"; }
     div.control { display: inline-block; margin-left: 0.2em; margin-right: 0.2em; background-color: }
@@ -130,7 +132,7 @@
 </div>
 
 <div class="control">
-  <label for="checkbox-use-touch-dynamics"><input type="checkbox" id="checkbox-use-touch-dynamics"/> Use Touch Screen Volume Dynamics</label>
+  <label for="checkbox-use-touch-dynamics"><input type="checkbox" id="checkbox-use-touch-dynamics"/>Use Touch Screen Volume Dynamics</label>
   <details><summary>Calibration</summary>
     <div class="touchCalibrationPad">
     	<div class="touchCalibration" id="touch-calibration"></div>
