@@ -205,4 +205,7 @@
             keyDictionary[substitutionIndex] = keyDictionary[substitution];
         } //loop hardwareKeyboard.substitutions
     })();
+
+    alert("UI initialized...");
+
 })();
