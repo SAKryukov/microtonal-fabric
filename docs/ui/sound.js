@@ -13,11 +13,22 @@
 (function setupSounds() {
 
     const audioContext = new (window.AudioContext || window.webkitAudioContext)();
+    let audioContextRunning = false;
     const player = new WebAudioFontPlayer();
     for (let preset of definitionSet.presets)
         player.adjustPreset(audioContext, preset.preset);
 
     const startStopNote = function (object, octave, tone, doStart, volumeDynamics) {
+        if (doStart && !audioContextRunning) {
+            // This is a trick needed to resume AudioContext, see 
+            // due to bloody design bug in WebAudio implementation: it requires resume after first input gesture,
+            // but it does not work for touch screen events
+            // Solution: not calling preventDefault() on first call, to allow mouse emulation
+            // See also: audioContextRunning above and multitouch.js
+            audioContext.resume();
+            audioContextRunning = audioContext.state == "running";
+            if (!audioContextRunning) return;    
+        } //if
         if (object.audioGraph && !doStart) {
             object.audioGraph.cancel();
             object.audioGraph = null;

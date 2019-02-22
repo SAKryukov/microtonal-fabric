@@ -38,8 +38,17 @@ function setMultiTouch(
             delete elementDictionary[touch.identifier];
     }; //addRemoveElement
 
+    let firstTime = true;
     assignTouchStart(container, (ev) => {
-        ev.preventDefault();
+        if (!firstTime)
+            // This is a trick needed to resume AudioContext, see 
+            // due to bloody design bug in WebAudio implementation: it requires resume after first input gesture,
+            // but it does not work for touch screen events
+            // Solution: not calling preventDefault() on first call, to allow mouse emulation
+            // See also: sound.js
+            ev.preventDefault();  
+        else
+            firstTime = false;
         for (let touch of ev.touches) {
             const element = document.elementFromPoint(touch.clientX, touch.clientY);
             addRemoveElement(touch, element, true);    
