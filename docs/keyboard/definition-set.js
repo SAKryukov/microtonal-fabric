@@ -141,7 +141,7 @@ notes.tet12Janko.names = notes.tet12.names;
 
 const definitionSet = {
     copyright: { version: "4.1", years: "2017-2019" },
-    keyboardSize: { rows: 11, longRowWidth: 35 },
+    keyboardSize: { rows: 9, longRowWidth: 25 },
     keyboard: {
         width: 128,
         //relative to width:
@@ -150,6 +150,7 @@ const definitionSet = {
         strokeWidth: 0.001
     },
     label: { fontSize: 0.28, paddingLeft: 0.25, paddingTop: 0.1 }, // relative to key size
+    audibleMiddle: { note: "C", frequency: 261.625 },
     keyStroke: "darkGray",
     highlightSound: "#ffd0a0",
     highlightChordNote: "yellow",
