@@ -25,6 +25,7 @@ document.body.onload = function () {
     }; //handleVolume
 
     setMultiTouch(
+        document,
         (element) => { return element.dataset.index; }, //elementSelector
         (element, touch, on) => { turn(element, touch, on); }, //elementHandler
         (element, touch) => { handleVolume(element, touch); } //sameElementHandler

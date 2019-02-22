@@ -129,6 +129,7 @@ const keyboardHandler = (function () {
             calibrationDoneHandler);
         const dynamicAlgorithm = setMultiTouch().dynamicAlgorithm;
         setMultiTouch(
+            elements.keyboard,
             (element) => { return element.dataset.multiTouchTarget; }, //elementSelector
             (element, touch, on) => {
                 let volume = 1;
