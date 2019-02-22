@@ -141,7 +141,8 @@ notes.tet12Janko.names = notes.tet12.names;
 
 const definitionSet = {
     copyright: { version: "4.1", years: "2017-2019" },
-    keyboardSize: { rows: 9, longRowWidth: 25 },
+    //keyboardSize: { rows: 9, longRowWidth: 25 },
+    keyboardSize: { rows: 11, longRowWidth: 35 },
     keyboard: {
         width: 128,
         //relative to width:

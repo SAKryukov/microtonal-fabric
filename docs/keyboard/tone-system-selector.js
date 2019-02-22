@@ -68,6 +68,7 @@
     function setTet(option, system) {
         let currentRow = 0;
         let currentX = system.startingMidiNote;
+        // SA??? calculate location of middle C note, then pitch of starting row-first-x note, make it currentX
         let currentFirst = currentX;
         const names = system.names;
         const bigRowIncrement = system.bigRowIncrement;
