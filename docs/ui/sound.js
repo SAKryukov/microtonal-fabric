@@ -43,6 +43,4 @@
         } //loop
     });
 
-    alert("sound initialized...");
-
 })();

@@ -206,6 +206,4 @@
         } //loop hardwareKeyboard.substitutions
     })();
 
-    alert("UI initialized...");
-
 })();
