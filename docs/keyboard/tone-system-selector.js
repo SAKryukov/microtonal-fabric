@@ -66,28 +66,35 @@
     } //elements.buttonShowChordTable.onclick
 
     function setTet(option, system) {
-        let currentRow = 0;
-        let currentX = system.startingMidiNote;
-        // SA??? calculate location of middle C note, then pitch of starting row-first-x note, make it currentX
-        let currentFirst = currentX;
         const names = system.names;
-        const bigRowIncrement = system.bigRowIncrement;
-        const smallRowIncrement = system.smallRowIncrement;
-        const rightIncrement = system.rightIncrement;
-        keyboardHandler.rows.labelKeys(function (cell) {
-            cell.toneSystem = system;
-            if (currentRow != cell.row) {
-                currentRow = cell.row;
-                let increment = (keyboardHandler.rows[cell.row].length % 2) == 0 ? bigRowIncrement : smallRowIncrement;
-                currentX = increment + currentFirst;
-                currentFirst = currentX;
-            } //if
-            cell.note = currentX;
-            cell.tone = currentX * 12 / system.names.length;
-            const result = names[currentX % names.length];
-            currentX += rightIncrement;
-            return result;
-        });
+        const traverseAndLabel = (startingNode, cellHandler) => { // cellHandler: (cell, noteNumber) => return label
+            let currentRow = 0;
+            let noteNumber = startingNode;
+            let currentFirst = noteNumber;
+            const bigRowIncrement = system.bigRowIncrement;
+            const smallRowIncrement = system.smallRowIncrement;
+            const rightIncrement = system.rightIncrement;
+            keyboardHandler.rows.labelKeys(function (cell) {
+                cell.toneSystem = system;
+                if (currentRow != cell.row) {
+                    currentRow = cell.row;
+                    let increment = (keyboardHandler.rows[cell.row].length % 2) == 0 ? bigRowIncrement : smallRowIncrement;
+                    noteNumber = increment + currentFirst;
+                    currentFirst = noteNumber;
+                } //if
+                let keyLabel = noteNumber;
+                if (cellHandler) keyLabel = cellHandler(cell, noteNumber)
+                noteNumber += rightIncrement; 
+                return keyLabel;
+            });    
+        }; //traverseAndLabel
+        // SA??? calculate location of middle C note, then pitch of starting row-first-x note, make it currentX
+        // calculate correct startingMidiNote, instead of system.startingMidiNote 
+        traverseAndLabel(system.startingMidiNote, (cell, noteNumber) => {
+            cell.note = noteNumber;
+            cell.tone = noteNumber * 12 / names.length;
+            return names[noteNumber % names.length];
+        }); //traverseAndLabel
         keyboardHandler.chordSetter(option.chordTable.chordBuilder.build());
         if (!option) return;
         if (!option.chordTable) return;
