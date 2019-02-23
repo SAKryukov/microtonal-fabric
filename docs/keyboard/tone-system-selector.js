@@ -65,36 +65,51 @@
         showChordTable(selectedTet.chordTable, !visibleChordTable);
     } //elements.buttonShowChordTable.onclick
 
+    // const calculateToneSystemMetrics = (system) => {
+    //     const middleRow = definitionSet.keyboardSize.verticalSizeFactor; // => either big or short row
+    //     let currentToneNumber = 0;
+    //     for (let index = 0; index < middleRow; ++index)
+    //         if (index % 2 > 0)
+    //             currentToneNumber += notes.tet12.bigRowIncrement;
+    //         else
+    //             currentToneNumber += notes.tet12.smallRowIncrement;
+    //     const middleKey = Math.floor(keyboardHandler.rows[middleRow].length / 2); // middle C
+    //     const middleToneNumber = currentToneNumber + middleKey * notes.tet12.rightIncrement;
+    //     return { //SA???
+    //         middleRow: middleRow,
+    //         middleKey: middleKey,
+    //         startingTet12MidiNote: (definitionSet.audibleMiddle.midiNote - middleToneNumber)
+    //     };
+    // }; //calculateToneSystemMetrics
+
     function setTet(option, system) {
+        // toneSystemMetrics = calculateToneSystemMetrics(system);
+        let currentRow = 0;
+        let currentNoteNumber = 0;
+        if (system == notes.tet12Janko) currentNoteNumber = 12 * 2;
+        // we keep C at note #0
+        let currentFirst = currentNoteNumber;
         const names = system.names;
-        const traverseAndLabel = (startingNode, cellHandler) => { // cellHandler: (cell, noteNumber) => return label
-            let currentRow = 0;
-            let noteNumber = startingNode;
-            let currentFirst = noteNumber;
-            const bigRowIncrement = system.bigRowIncrement;
-            const smallRowIncrement = system.smallRowIncrement;
-            const rightIncrement = system.rightIncrement;
-            keyboardHandler.rows.labelKeys(function (cell) {
-                cell.toneSystem = system;
-                if (currentRow != cell.row) {
-                    currentRow = cell.row;
-                    let increment = (keyboardHandler.rows[cell.row].length % 2) == 0 ? bigRowIncrement : smallRowIncrement;
-                    noteNumber = increment + currentFirst;
-                    currentFirst = noteNumber;
-                } //if
-                let keyLabel = noteNumber;
-                if (cellHandler) keyLabel = cellHandler(cell, noteNumber)
-                noteNumber += rightIncrement; 
-                return keyLabel;
-            });    
-        }; //traverseAndLabel
-        // SA??? calculate location of middle C note, then pitch of starting row-first-x note, make it currentX
-        // calculate correct startingMidiNote, instead of system.startingMidiNote 
-        traverseAndLabel(system.startingMidiNote, (cell, noteNumber) => {
-            cell.note = noteNumber;
-            cell.tone = noteNumber * 12 / names.length;
-            return names[noteNumber % names.length];
-        }); //traverseAndLabel
+        const bigRowIncrement = system.bigRowIncrement;
+        const smallRowIncrement = system.smallRowIncrement;
+        const rightIncrement = system.rightIncrement;
+        keyboardHandler.rows.labelKeys(function (cell) {
+            cell.toneSystem = system;
+            cell.note = currentNoteNumber;
+            cell.tone = currentNoteNumber * 12 / system.names.length;
+            const label = names[currentNoteNumber % names.length];
+            // const label = (cell.row == toneSystemMetrics.middleRow && cell.numberInRow == toneSystemMetrics.middleKey) ?
+            //     currentNoteNumber + "!!!" : currentNoteNumber; 
+        currentRow = cell.row;
+            const rowLength = keyboardHandler.rows[currentRow].length;
+            if (cell.numberInRow == rowLength - 1) {
+                let increment = (rowLength % 2) > 0 ? bigRowIncrement : smallRowIncrement;
+                currentNoteNumber = currentFirst + increment;
+                currentFirst = currentNoteNumber;
+            } else
+                currentNoteNumber += rightIncrement;
+            return label;
+        });
         keyboardHandler.chordSetter(option.chordTable.chordBuilder.build());
         if (!option) return;
         if (!option.chordTable) return;
@@ -102,7 +117,7 @@
         showChordTable(visibleChordTable, false);
         showChordTable(option.chordTable, true);
     } //setTet
-
+    
     elements.radioTet.radio12et.onclick = function (event) {
         if (event.target.checked) {
             setTet(event.target, notes.tet12);

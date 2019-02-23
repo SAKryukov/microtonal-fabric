@@ -91,7 +91,6 @@ const notes = {
             "G", "A♭²", "G♯", "A♭", "G♯²",
             "A", "B♭²", "A♯", "B♭", "A♯²",
             "B", "C♭¹", "B♯¹"],
-        startingMidiNote: 0,
         bigRowIncrement: 18,
         smallRowIncrement: 13,
         rightIncrement: 5
@@ -104,7 +103,6 @@ const notes = {
             "G", "A♭²", "G♯", "A♭", "G♯²",
             "A", "B♭²", "A♯", "B♭", "A♯²",
             "B", "bc"],
-        startingMidiNote: 0,
         bigRowIncrement: 17,
         smallRowIncrement: 12,
         rightIncrement: 5
@@ -118,21 +116,18 @@ const notes = {
             "G", "G♯", "A♭",
             "A", "A♯", "B♭",
             "B", "bc"], //B♯ == C♭
-        startingMidiNote: 0,
         bigRowIncrement: 11,
         smallRowIncrement: 8,
         rightIncrement: 3
     },
     tet12: {
         names: ["C", "C♯", "D", "D♯", "E", "F", "F♯", "G", "G♯", "A", "B♯", "B"],
-        startingMidiNote: 0,
         bigRowIncrement: 7,
         smallRowIncrement: 5,
         rightIncrement: 2
     },
     tet12Janko: {
-        startingMidiNote: 24,
-        bigRowIncrement: 1,
+        bigRowIncrement: 13,
         smallRowIncrement: -1,
         rightIncrement: 2        
     }
@@ -141,8 +136,9 @@ notes.tet12Janko.names = notes.tet12.names;
 
 const definitionSet = {
     copyright: { version: "4.1", years: "2017-2019" },
-    //keyboardSize: { rows: 9, longRowWidth: 25 },
     keyboardSize: {
+        // verticalSizeFactor: 5,         
+        // horizontalSizeFactor: 17,
         verticalSizeFactor: 5,         
         horizontalSizeFactor: 17,
         // do not assign here: 
@@ -157,7 +153,7 @@ const definitionSet = {
         strokeWidth: 0.001
     },
     label: { fontSize: 0.28, paddingLeft: 0.25, paddingTop: 0.1 }, // relative to key size
-    audibleMiddle: { note: "C", frequency: 261.625 },
+    audibleMiddle: { note: "C", midiNote: 60, frequency: 261.625 },
     keyStroke: "darkGray",
     highlightSound: "#ffd0a0",
     highlightChordNote: "yellow",

@@ -71,7 +71,7 @@ const keyboardHandler = (function () {
             key.rectangle = currentRow[keyIndex];
             key.rectangle.key = key;
             key.numberInRow = keyIndex;
-            key.row = rowIndex;
+            key.row = keyboardStructure.rows.length - rowIndex - 1;
             key.activate = function (key, chordMode, doActivate, volumeDynamics, chordNote, text, highlightChords) {
                 if (key.activated && doActivate) return;
                 if (!key.activated && !doActivate) return;
