@@ -1,3 +1,4 @@
+Fix location of middle C note
 Review dynamicAlgorithm (multitouch.js), maybe it has to be more linear
 Review good-browser.js
 

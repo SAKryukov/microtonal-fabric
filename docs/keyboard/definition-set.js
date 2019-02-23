@@ -142,7 +142,13 @@ notes.tet12Janko.names = notes.tet12.names;
 const definitionSet = {
     copyright: { version: "4.1", years: "2017-2019" },
     //keyboardSize: { rows: 9, longRowWidth: 25 },
-    keyboardSize: { rows: 11, longRowWidth: 35 },
+    keyboardSize: {
+        verticalSizeFactor: 5,         
+        horizontalSizeFactor: 17,
+        // do not assign here: 
+        rows: 0, // definitionSet.keyboardSize.rows = 2 * definitionSet.keyboardSize.horizontalSizeFactor + 1
+        longRowWidth: 0 // definitionSet.keyboardSize.longRowWidth = 2 * definitionSet.keyboardSize.horizontalSizeFactor + 1
+    },
     keyboard: {
         width: 128,
         //relative to width:
@@ -184,3 +190,8 @@ const definitionSet = {
     touchValueColor: "black",
     touchValueColorModified: "red"
 }; //definitionSet
+
+( () => {
+    definitionSet.keyboardSize.rows = 2 * definitionSet.keyboardSize.verticalSizeFactor + 1;
+    definitionSet.keyboardSize.longRowWidth = 2 * definitionSet.keyboardSize.horizontalSizeFactor + 1;
+})();

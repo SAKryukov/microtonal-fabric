@@ -159,11 +159,6 @@
     elements.legend31et.style.visibility = "visible";
 
     (function setHardwareKeyboardControl() {
-        if ((definitionSet.keyboardSize.longRowWidth % 2) == 0) {
-            //SA??? good-browser.js to review instead
-            alert("definitionSet.keyboardSize.longRowWidth value ("+ definitionSet.keyboardSize.longRowWidth +") must be odd");
-            throw definitionSet.keyboardSize.longRowWidth;
-        } //if
         let useComputerKeyboard = true;
         elements.showOptions.optionUseComputerKeyboard.checked = true;
         const keyDictionary = {};
