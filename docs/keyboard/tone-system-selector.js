@@ -65,28 +65,9 @@
         showChordTable(selectedTet.chordTable, !visibleChordTable);
     } //elements.buttonShowChordTable.onclick
 
-    // const calculateToneSystemMetrics = (system) => {
-    //     const middleRow = definitionSet.keyboardSize.verticalSizeFactor; // => either big or short row
-    //     let currentToneNumber = 0;
-    //     for (let index = 0; index < middleRow; ++index)
-    //         if (index % 2 > 0)
-    //             currentToneNumber += notes.tet12.bigRowIncrement;
-    //         else
-    //             currentToneNumber += notes.tet12.smallRowIncrement;
-    //     const middleKey = Math.floor(keyboardHandler.rows[middleRow].length / 2); // middle C
-    //     const middleToneNumber = currentToneNumber + middleKey * notes.tet12.rightIncrement;
-    //     return { //SA???
-    //         middleRow: middleRow,
-    //         middleKey: middleKey,
-    //         startingTet12MidiNote: (definitionSet.audibleMiddle.midiNote - middleToneNumber)
-    //     };
-    // }; //calculateToneSystemMetrics
-
     function setTet(option, system) {
-        // toneSystemMetrics = calculateToneSystemMetrics(system);
         let currentRow = 0;
-        let currentNoteNumber = 0;
-        if (system == notes.tet12Janko) currentNoteNumber = 12 * 2;
+        let currentNoteNumber = system.names.length; // 1 octave up, mostly to accommodate Janko which adds -1: notes.tet12Janko.smallRowIncrement: -1
         // we keep C at note #0
         let currentFirst = currentNoteNumber;
         const names = system.names;
@@ -98,8 +79,6 @@
             cell.note = currentNoteNumber;
             cell.tone = currentNoteNumber * 12 / system.names.length;
             const label = names[currentNoteNumber % names.length];
-            // const label = (cell.row == toneSystemMetrics.middleRow && cell.numberInRow == toneSystemMetrics.middleKey) ?
-            //     currentNoteNumber + "!!!" : currentNoteNumber; 
         currentRow = cell.row;
             const rowLength = keyboardHandler.rows[currentRow].length;
             if (cell.numberInRow == rowLength - 1) {

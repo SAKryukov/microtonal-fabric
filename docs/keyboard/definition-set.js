@@ -139,8 +139,8 @@ const definitionSet = {
     keyboardSize: {
         // verticalSizeFactor: 5,         
         // horizontalSizeFactor: 17,
-        verticalSizeFactor: 5,         
-        horizontalSizeFactor: 17,
+        verticalSizeFactor: 4,         
+        horizontalSizeFactor: 15,
         // do not assign here: 
         rows: 0, // definitionSet.keyboardSize.rows = 2 * definitionSet.keyboardSize.horizontalSizeFactor + 1
         longRowWidth: 0 // definitionSet.keyboardSize.longRowWidth = 2 * definitionSet.keyboardSize.horizontalSizeFactor + 1
