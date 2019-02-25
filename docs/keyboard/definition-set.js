@@ -154,7 +154,7 @@ const definitionSet = {
     },
     label: { fontSize: 0.28, paddingLeft: 0.25, paddingTop: 0.1 }, // relative to key size
     audibleMiddle: { note: "C", midiNote: 60, frequency: 261.625 },
-    keyStroke: "darkGray",
+    keyStroke: "#b9c0c0", //"#b9bdc0": navy paint, "Haze gray and underway"
     highlightSound: "#ffd0a0",
     highlightChordNote: "yellow",
     highlightDefault: "white",
@@ -162,7 +162,7 @@ const definitionSet = {
     highlightChord: "yellow",
     labelFontFamily: "sans-serif",
     blocker: {
-        fill: "lightGray",
+        fill: "#b9c0c0", //"#b9bdc0": navy paint, "Haze gray and underway" 
         labelText: "Click, touch or press any key to start"
     },
     presets: [
