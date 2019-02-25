@@ -18,6 +18,7 @@ const elements = {
         spanVersion: document.getElementById("version")
     },
     keyboard: document.getElementById("keyboard"),
+    invitation: document.getElementById("invitation"),
     buttonShowChordTable: document.getElementById("button-show-chord-table"),
     showOptions: {
         optionUseComputerKeyboard: document.getElementById("checkbox-use-computer-keyboard"),
@@ -161,10 +162,7 @@ const definitionSet = {
     highlightHardwareKey: "lightGreen",
     highlightChord: "yellow",
     labelFontFamily: "sans-serif",
-    blocker: {
-        fill: "#b9c0c0", //"#b9bdc0": navy paint, "Haze gray and underway" 
-        labelText: "Click, touch or press any key to start"
-    },
+    blockerFill: "#b9c0c0", //"#b9bdc0": navy paint, "Haze gray and underway" 
     presets: [
         { preset: webAudioFont00, title: "Piano" },
         { preset: webAudioFont14, title: "Bells" },

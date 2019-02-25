@@ -48,21 +48,24 @@ const keyboardStructure = (function() {
     const viewBox = elementCreator("rect");
     const maxY = size * definitionSet.keyboardSize.rows + 2 * margins;
     const blocker = elementCreator("rect");
-    const label = document.createElement("header");
     keyboardStructure.block = () => {
         blocker.x.baseVal.value = 0;
         blocker.y.baseVal.value = 0;
         blocker.width.baseVal.value = width;
         blocker.height.baseVal.value = maxY;
-        blocker.style.fill = definitionSet.blocker.fill;
-        label.textContent = definitionSet.blocker.labelText;
+        blocker.style.fill = definitionSet.blockerFill;
         svg.appendChild(blocker);
-        document.body.appendChild(label);
         svg.style.display = null;
+        elements.invitation.firstElementChild.onmousedown = (ev) => {
+            const image = ev.target;
+            const onImage = image.nextElementSibling;
+            image.style.display = "none";
+            onImage.style.display = "inline";
+        }; //elements.invitation.firstElementChild.onmousedown
     }; //keyboardStructure.block
     keyboardStructure.unblock = () => {
+        document.body.removeChild(elements.invitation);
         svg.removeChild(blocker);
-        document.body.removeChild(label);
     }; //keyboardStructure.unblock
     keyboardStructure.block();
     svg.setAttributeNS(null, "viewBox", "0 0 " + width + " " + maxY);  //SA???

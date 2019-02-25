@@ -238,6 +238,7 @@
         started = true;
     } //unblock
     window.onclick = () => { unblock(); }
+    window.onmouseup = () => { unblock(); }
     window.onkeydown = (keyEvent) => { unblock(keyEvent); }
 
 })();

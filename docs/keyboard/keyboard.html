@@ -44,14 +44,18 @@
     .touchCalibrationPad { padding-top: 0.4em; }
     #button-touch-calibration-done { margin-top: 1em; }
     svg { margin: 0; }
-    header { position: absolute; top: 8em; text-align: center; width: 100%; } /* created on top of blocker, invitation to start */
+    #invitation { position: absolute; top: 8em; text-align: center; width: 100%; }
+    #invitation img { width: 6em; }
+    #invitation img:last-child { display: none; }
 </style>
 </head>
 
 <body>
 
   <svg xmlns:svg="http://www.w3.org/2000/svg" xmlns="http://www.w3.org/2000/svg" id="keyboard" width="100%" shape-rendering="geometricPrecision"
-    version="1.1"></svg>
+		version="1.1"></svg>
+
+  <header id="invitation"><img alt="Start" src="../images/standby.svg"/><img alt="Start" src="../images/standby-on.svg"/></header>
 
 <main>
 
