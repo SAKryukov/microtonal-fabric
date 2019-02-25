@@ -161,6 +161,10 @@ const definitionSet = {
     highlightHardwareKey: "lightGreen",
     highlightChord: "yellow",
     labelFontFamily: "sans-serif",
+    blocker: {
+        fill: "lightGray",
+        labelText: "Click, touch or press any key to start"
+    },
     presets: [
         { preset: webAudioFont00, title: "Piano" },
         { preset: webAudioFont14, title: "Bells" },

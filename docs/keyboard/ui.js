@@ -120,7 +120,7 @@ const keyboardHandler = (function () {
     const notesGroup = document.createElementNS(svgNS, "g");
     keyboard.appendChild(notesGroup);
 
-    (function setupTouch() {
+    const setupTouch = () => {
         let touchDynamicsEnabled = elements.controls.touch.checkboxUseTouchDynamics.checked;
         elements.controls.touch.checkboxUseTouchDynamics.onclick = (ev) => { touchDynamicsEnabled = ev.target.checked; }
         let volumeDivider = definitionSet.initialTouchDynamicsDivider;
@@ -143,7 +143,7 @@ const keyboardHandler = (function () {
                 element.key.activate(element.key, false, on, volume);
             } //elementHandler
         );    
-    })();
+    }; //setupTouch
 
     rows.iterateKeys = function (handler) { // handler(key)
         for (let row of rows)
@@ -172,6 +172,6 @@ const keyboardHandler = (function () {
             } //loop
     }; //rows.labelKeys
 
-    return { rows: rows, soundActionSetter: setSoundActions, chordSetter: assignChord };
+    return { rows: rows, soundActionSetter: setSoundActions, chordSetter: assignChord, setupTouch: setupTouch };
 
 })();

@@ -13,6 +13,7 @@ const svgPreparer = (function (svg) {
 const keyboardStructure = (function() {
     const keyboardStructure = { rows: []};
     const svg = svgPreparer.svg;
+    svg.style.display = "none";
     const elementCreator = svgPreparer.elementCreator;
     const width = definitionSet.keyboard.width;
     const margins = width * definitionSet.keyboard.margins;
@@ -46,6 +47,24 @@ const keyboardStructure = (function() {
     } // loop rows
     const viewBox = elementCreator("rect");
     const maxY = size * definitionSet.keyboardSize.rows + 2 * margins;
+    const blocker = elementCreator("rect");
+    const label = document.createElement("header");
+    keyboardStructure.block = () => {
+        blocker.x.baseVal.value = 0;
+        blocker.y.baseVal.value = 0;
+        blocker.width.baseVal.value = width;
+        blocker.height.baseVal.value = maxY;
+        blocker.style.fill = definitionSet.blocker.fill;
+        label.textContent = definitionSet.blocker.labelText;
+        svg.appendChild(blocker);
+        document.body.appendChild(label);
+        svg.style.display = null;
+    }; //keyboardStructure.block
+    keyboardStructure.unblock = () => {
+        svg.removeChild(blocker);
+        document.body.removeChild(label);
+    }; //keyboardStructure.unblock
+    keyboardStructure.block();
     svg.setAttributeNS(null, "viewBox", "0 0 " + width + " " + maxY);  //SA???
     return keyboardStructure;
 })(); //keyboardStructure

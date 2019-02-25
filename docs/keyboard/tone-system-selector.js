@@ -65,7 +65,7 @@
         showChordTable(selectedTet.chordTable, !visibleChordTable);
     } //elements.buttonShowChordTable.onclick
 
-    function setTet(option, system) {
+    function setTet(option, system, blocking) {
         let currentRow = 0;
         let currentNoteNumber = system.names.length; // 1 octave up, mostly to accommodate Janko which adds -1: notes.tet12Janko.smallRowIncrement: -1
         // we keep C at note #0
@@ -89,6 +89,7 @@
                 currentNoteNumber += rightIncrement;
             return label;
         });
+        if (blocking) keyboardStructure.block();
         keyboardHandler.chordSetter(option.chordTable.chordBuilder.build());
         if (!option) return;
         if (!option.chordTable) return;
@@ -148,9 +149,10 @@
         elements.buttonShowChordTable.disabled = false;
     };
     elements.radioTet.radio31et.checked = true;
-    setTet(elements.radioTet.radio31et, notes.tet31);
+    setTet(elements.radioTet.radio31et, notes.tet31, true);
     selectedTet = elements.radioTet.radio31et;
     elements.legend31et.style.visibility = "visible";
+    keyboardStructure.block();
 
     (function setHardwareKeyboardControl() {
         let useComputerKeyboard = true;
@@ -224,5 +226,18 @@
             keyDictionary[substitutionIndex] = keyDictionary[substitution];
         } //loop hardwareKeyboard.substitutions
     })(); //setHardwareKeyboardControl
+
+    let started = false;
+    const unblock = (keyEvent) => {
+        if (started) return;
+        if (keyEvent && (keyEvent.key.includes("Shift") || keyEvent.key.includes("Alt") || keyEvent.key.includes("Meta") || keyEvent.key.includes("Control")))
+            return;
+        keyboardHandler.setupTouch();
+        keyboardHandler.audioContext.resume();
+        keyboardStructure.unblock();
+        started = true;
+    } //unblock
+    window.onclick = () => { unblock(); }
+    window.onkeydown = (keyEvent) => { unblock(keyEvent); }
 
 })();

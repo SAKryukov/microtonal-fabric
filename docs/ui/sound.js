@@ -14,18 +14,13 @@
 
 (function setupSounds() {
 
-    let audioContext = null;
+    const audioContext = new (window.AudioContext || window.webkitAudioContext)();
+    keyboardHandler.audioContext = audioContext;
     const player = new WebAudioFontPlayer();
 
     const startStopNote = function (object, octave, tone, doStart, volumeDynamics) {
-        if (!audioContext) {
-            audioContext = new (window.AudioContext || window.webkitAudioContext)();
-            // This is a trick needed to resume AudioContext, see 
-            // due to bloody design bug in WebAudio:
-            // "The AudioContext was not allowed to start. It must be resumed (or created) after a user gesture on the page. https://goo.gl/7K7WLu"
-            for (let preset of definitionSet.presets)
-                player.adjustPreset(audioContext, preset.preset);
-        } //if
+        for (let preset of definitionSet.presets)
+            player.adjustPreset(audioContext, preset.preset);
         if (object.audioGraph && !doStart) {
             object.audioGraph.cancel();
             object.audioGraph = null;
