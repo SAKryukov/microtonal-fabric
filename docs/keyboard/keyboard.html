@@ -535,8 +535,8 @@
       "../ui/sound.js"
     ],
     null,
-    function() {
-      incompatibleMessage("Sorry, this browser does not support essential required features", { fontSize: "120%", textAlign: "center" });
+    function(incompatibleMessage) {
+      incompatibleMessage("Sorry, this browser does not support essential required features", { fontSize: "120%", textAlign: "center" }, true);
     });
   </script>
   

@@ -2,14 +2,51 @@
 
 function handleGoodBrowser(scripts, successAction, errorAction) {
 
+    var globalError = {
+        hasError: false,
+        message: null,
+        source: null,
+        line: null,
+        column: null,
+        error: null
+    };
+    var incompatibleMessage = function(message, style, showDiagnostics) {
+        while (document.body.lastChild) document.body.removeChild(document.body.lastChild);
+        document.body.style.padding = "1em";
+        var text = document.createElement("p");
+        text.textContent = message;
+        if (style)
+            for (var styleIndex in style)
+                text.style[styleIndex] = style[styleIndex];
+        document.body.appendChild(text);
+        if (showDiagnostics) {
+            var error = document.createElement("p");
+            error.style.marginTop = "3em";
+            var text = "Diagnostics:<br/><br/>";
+            for (var element in globalError)
+                text += element + ": " + globalError[element] + "<br/>";
+            error.innerHTML = text;
+            document.body.appendChild(error);
+        } // if showDiagnostics
+    }; //incompatibleMessage
+    
     // no "const", "let", lambda-like syntax () => {}, not "for... of Object",
     // no String.prototype.includes -- it won't work with some bad browsers    
 
     var saveWindowErrorHandler = window.onerror;
     var saveBodyLoadHandler = document.body.onload;
     var hasError = false;
-    window.onerror = function (event) {
+    var errorSource = null;
+    var errorLine = null;
+    var errorMessage = null;
+    window.onerror = function (message, source, line, column, error) {
         hasError = true;
+        globalError.hasError = true;
+        globalError.message = message;
+        globalError.source = source;
+        globalError.line = line;
+        globalError.column = column;
+        globalError.error = error;
     };
     var currentOrder = 0;
     function loadScript() {
@@ -29,22 +66,11 @@ function handleGoodBrowser(scripts, successAction, errorAction) {
     loadScript();
     window.onerror = window.onerror;
     document.body.onload = function () {
-        if (hasError && errorAction)
-            errorAction();
-        else if (!hasError && successAction)
+        if (hasError && errorAction) {
+            errorAction(incompatibleMessage);
+        } else if (!hasError && successAction)
             successAction();
         document.body.onload = saveBodyLoadHandler;
     }; //if hasError
 
 } //handleGoodBrowser
-
-function incompatibleMessage(message, style) {
-    while (document.body.lastChild) document.body.removeChild(document.body.lastChild);
-    document.body.style.padding = "1em";
-    var text = document.createElement("p");
-    text.innerHTML = message;
-    if (style)
-        for (styleIndex in style)
-            text.style[styleIndex] = style[styleIndex];
-    document.body.appendChild(text);
-} //incompatibleMessage
