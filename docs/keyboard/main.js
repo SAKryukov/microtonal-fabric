@@ -12,6 +12,11 @@
 
 (function setKeyboardLayoutControl() {
 
+    (function MicrosoftFeatureRejection() {
+        for (let attribute of elements.keyboard.attributes)
+            break;
+    })(); //MicrosoftFeatureRejection
+
     let visibleChordTable;
     let selectedTet;
     let chord;
