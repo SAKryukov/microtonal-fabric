@@ -28,7 +28,7 @@
     const chordLayoutFinder = chordLayout(definitionSet, keyboardStructure);
     const soundControlSet = setSoundControl(definitionSet.elements, commonSettingsSet);
     const soundActions = soundActionSet(commonSettingsSet.presets, commonSettingsSet.defaultOctave, soundControlSet);
-    const keyboardHandler = keyboardHandling(definitionSet, keyboardStructure, chordLayoutFinder, soundActions);
+    const keyboardHandler = keyboardHandling(commonSettingsSet, definitionSet, keyboardStructure, chordLayoutFinder, soundActions);
 
     let visibleChordTable;
     let selectedTet;

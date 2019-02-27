@@ -12,7 +12,7 @@
 
 "use strict";
 
-const keyboardHandling = (definitionSet, keyboardStructure, chordLayoutFinder, soundActions) => {
+const keyboardHandling = (commonSettingsSet, definitionSet, keyboardStructure, chordLayoutFinder, soundActions) => {
 
     const soundAction = soundActions.startStopNote; // soundAction: function(object, octave, tone, doStart)
 
@@ -100,7 +100,7 @@ const keyboardHandling = (definitionSet, keyboardStructure, chordLayoutFinder, s
     const setupTouch = () => {
         let touchDynamicsEnabled = definitionSet.elements.controls.touch.checkboxUseTouchDynamics.checked;
         definitionSet.elements.controls.touch.checkboxUseTouchDynamics.onclick = (ev) => { touchDynamicsEnabled = ev.target.checked; }
-        let volumeDivider = definitionSet.options.initialTouchDynamicsDivider;
+        let volumeDivider = commonSettingsSet.initialTouchDynamicsDivider;
         const calibrationDoneHandler = (value) => {
             volumeDivider = value;
         }; 
