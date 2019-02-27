@@ -12,7 +12,7 @@
 
 "use strict";
 
-const definitionSetter = () => {
+const settings = () => {
 
     const elements = {
         copyright: {
@@ -198,6 +198,4 @@ const definitionSetter = () => {
 
     return { elements: elements, notes: notes, options: options };
 
-}; //definitionSetter
-
-const definitionSet = definitionSetter(); //SA???
+}; //settings

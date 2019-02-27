@@ -12,15 +12,23 @@
 
 (function main() {
 
-    (function setCopyright() {
-        definitionSet.elements.copyright.spanYears.textContent = definitionSet.options.copyright.years;
-        definitionSet.elements.copyright.spanVersion.textContent = definitionSet.options.copyright.version;
-    })(); //setCopyright
+    const definitionSet = settings();
 
     (function MicrosoftFeatureRejection() {
         for (let attribute of definitionSet.elements.keyboard.attributes)
             break;
     })(); //MicrosoftFeatureRejection
+
+    (function setCopyright() {
+        definitionSet.elements.copyright.spanYears.textContent = definitionSet.options.copyright.years;
+        definitionSet.elements.copyright.spanVersion.textContent = definitionSet.options.copyright.version;
+    })(); //setCopyright
+
+    const keyboardStructure = keyboard(definitionSet);
+    const chordLayoutFinder = chordLayout(definitionSet, keyboardStructure);
+    const soundControlSet = setSoundControl(definitionSet);
+    const soundActions = soundActionSet(definitionSet, soundControlSet);
+    const keyboardHandler = keyboardHandling(definitionSet, keyboardStructure, chordLayoutFinder, soundActions);
 
     let visibleChordTable;
     let selectedTet;
@@ -243,7 +251,7 @@
         if (keyEvent && (keyEvent.key.includes("Shift") || keyEvent.key.includes("Alt") || keyEvent.key.includes("Meta") || keyEvent.key.includes("Control")))
             return;
         keyboardHandler.setupTouch();
-        keyboardHandler.audioContext.resume();
+        soundActions.resume();
         keyboardStructure.unblock();
         started = true;
     } //unblock

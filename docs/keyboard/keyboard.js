@@ -1,6 +1,6 @@
 "use strict";
 
-const keyboardStructure = (function() {
+const keyboard = (definitionSet) => {
 
     const svgPreparer = (function (svg) {
         const findNamespace = () => {
@@ -110,4 +110,4 @@ const keyboardStructure = (function() {
 
     return keyboardStructure;
 
-})(); //keyboardStructure
+}; //keyboard

@@ -12,11 +12,12 @@
 
 "use strict";
 
-(function setupSounds() {
+const soundActionSet = (definitionSet, soundControlSet) => {
 
     const audioContext = new (window.AudioContext || window.webkitAudioContext)();
-    keyboardHandler.audioContext = audioContext;
     const player = new WebAudioFontPlayer();
+
+    const resume = () => { audioContext.resume; };
 
     const startStopNote = function (object, octave, tone, doStart, volumeDynamics) {
         for (let preset of definitionSet.options.presets)
@@ -35,15 +36,15 @@
                     soundControlSet.volume * volumeDynamics);
     } //startStopNote
 
-    keyboardHandler.soundActionSetter(function (object, octave, tone, doStart, volumeDynamics) {
-        startStopNote(object, octave, tone, doStart, volumeDynamics);
-    }, function (chord, doStart, volumeDynamics) {
+    const startStopChord = (chord, doStart, volumeDynamics) => {
         for (let chordElement of chord) {
             const object = chordElement.object;
             const octave = chordElement.octave;
             const tone = chordElement.tone;
             startStopNote(object, octave, tone, doStart, volumeDynamics);
         } //loop
-    });
+    }; //startStopChord
 
-})();
+    return { resume: resume, startStopNote: startStopNote, startStopChord: startStopChord };
+
+}; //soundActionSet

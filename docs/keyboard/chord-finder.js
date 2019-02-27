@@ -12,7 +12,7 @@
 
 "use strict";
 
-const chordLayoutFinder = (function() {
+const chordLayout = (definitionSet, keyboardStructure) => {
 
     function ChordOptionSet() {
         this.highlightChords = true;
@@ -86,4 +86,4 @@ const chordLayoutFinder = (function() {
 
     return find;
 
-})();
+}; //chordLayout

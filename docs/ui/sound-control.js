@@ -10,7 +10,7 @@
 // Original publication:
 // https://www.codeproject.com/Articles/1204180/Microtonal-Music-Study-Chromatic-Lattice-Keyboard"use strict";
 
-const soundControlSet = (function setSoundControl() {
+const setSoundControl = (definitionSet) => {
 
     const soundControlSet = {
         volume: 1,
@@ -61,4 +61,4 @@ const soundControlSet = (function setSoundControl() {
 
     return soundControlSet;
 
-})();
+}; //setSoundControl

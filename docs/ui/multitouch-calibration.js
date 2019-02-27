@@ -1,4 +1,5 @@
 const setupMultiTouchCalibration = (
+    definitionSet,
     calibrationProbe,
     calibrationResult,
     buttonDone,

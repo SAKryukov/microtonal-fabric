@@ -10,14 +10,10 @@
 // Original publication:
 // https://www.codeproject.com/Articles/1204180/Microtonal-Music-Study-Chromatic-Lattice-Keyboard"use strict";
 
-const keyboardHandler = (function () {
+const keyboardHandling = (definitionSet, keyboardStructure, chordLayoutFinder, soundActions) => {
 
-    let soundAction = null; // soundAction: function(object, octave, tone, doStart)
-    let chordSoundAction = null; // chordSoundAction: function(chord, doStart), where chord is and array of: {object, octave: element.octave, tone: element.tone}
-    const setSoundActions = function (soundActionInstance, chordSoundActionInstance) {
-        soundAction = soundActionInstance;
-        chordSoundAction = chordSoundActionInstance;
-    }; //setSoundActions
+    const soundAction = soundActions.startStopNote; // soundAction: function(object, octave, tone, doStart)
+    const chordSoundAction = soundActions.startStopChord; // chordSoundAction: function(chord, doStart), where chord is and array of: {object, octave: element.octave, tone: element.tone}
 
     const rows = [];
     let chord;
@@ -108,6 +104,7 @@ const keyboardHandler = (function () {
             volumeDivider = value;
         }; 
         setupMultiTouchCalibration(
+            definitionSet,
             definitionSet.elements.controls.touch.calibrationProbe,
             definitionSet.elements.controls.touch.calibrationResult,
             definitionSet.elements.controls.touch.buttonDone,
@@ -125,6 +122,6 @@ const keyboardHandler = (function () {
         );    
     }; //setupTouch
 
-    return { soundActionSetter: setSoundActions, chordSetter: assignChord, setupTouch: setupTouch };
+    return { chordSetter: assignChord, setupTouch: setupTouch };
 
-})();
+}; //keyboardHandling
