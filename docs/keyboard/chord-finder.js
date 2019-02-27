@@ -29,7 +29,7 @@ const chordLayoutFinder = (function() {
     const chordOptionSet = new ChordOptionSet();
         
     (function setup() {
-        keyboardHandler.rows.iterateKeys(function(key) {
+        keyboardStructure.iterateKeys(function(key) {
             key.rectangle.getAttributeNS(null, "x");
             key.location = { x: key.rectangle.getAttributeNS(null, "x"), y: key.rectangle.getAttributeNS(null, "y") };
         });
@@ -53,7 +53,7 @@ const chordLayoutFinder = (function() {
     function findChordNote(rootNoteKey, chordNote, stepX) {
         let bestNorm = Number.POSITIVE_INFINITY;
         let bestKey = null;
-        for (let row of keyboardHandler.rows) {
+        for (let row of keyboardStructure.rows) {
             const key = findChordNoteInRow(chordNote, row, stepX);
             if (!key) continue;
             const normValue = norm(rootNoteKey, key);

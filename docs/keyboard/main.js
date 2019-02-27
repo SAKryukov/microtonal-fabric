@@ -79,7 +79,7 @@
         const bigRowIncrement = system.bigRowIncrement;
         const smallRowIncrement = system.smallRowIncrement;
         const rightIncrement = system.rightIncrement;
-        keyboardHandler.rows.labelKeys(function (cell) {
+        keyboardStructure.labelKeys(function (cell) {
             cell.toneSystem = system;
             cell.note = currentNoteNumber;
             cell.tone = currentNoteNumber * 12 / system.names.length;

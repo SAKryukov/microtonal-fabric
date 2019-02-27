@@ -115,10 +115,6 @@ const keyboardHandler = (function () {
         } //loop key
     } //loop row
 
-    const svgNS = keyboard.getAttribute("xmlns");
-    const notesGroup = document.createElementNS(svgNS, "g");
-    keyboard.appendChild(notesGroup);
-
     const setupTouch = () => {
         let touchDynamicsEnabled = elements.controls.touch.checkboxUseTouchDynamics.checked;
         elements.controls.touch.checkboxUseTouchDynamics.onclick = (ev) => { touchDynamicsEnabled = ev.target.checked; }
@@ -143,14 +139,6 @@ const keyboardHandler = (function () {
             } //elementHandler
         );    
     }; //setupTouch
-
-    rows.iterateKeys = function (handler) { // handler(key)
-        for (let row of rows)
-            for (let cell of row)
-                handler(cell);
-    }; //rows.iterateKeys
-
-    rows.labelKeys = function (labelMaker) { keyboardStructure.labelKeys(labelMaker); };
 
     return { rows: rows, soundActionSetter: setSoundActions, chordSetter: assignChord, setupTouch: setupTouch };
 

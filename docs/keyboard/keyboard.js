@@ -79,7 +79,7 @@ const keyboardStructure = (function() {
     svg.appendChild(notesGroup);
 
     keyboardStructure.iterateKeys = handler => { // handler(key)
-        for (let row of rows)
+        for (let row of keyboardStructure.rows)
             for (let cell of row)
                 handler(cell);
     }; //rows.iterateKeys
