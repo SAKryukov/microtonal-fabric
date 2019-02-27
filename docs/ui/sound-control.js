@@ -15,49 +15,49 @@ const soundControlSet = (function setSoundControl() {
     const soundControlSet = {
         volume: 1,
         transposition: 0,
-        preset: definitionSet.presets[definitionSet.defaultPreset].preset,
+        preset: definitionSet.options.presets[definitionSet.options.defaultPreset].preset,
         dummy: 0
     } //soundControlSet
 
-    for (let preset of definitionSet.presets) {
+    for (let preset of definitionSet.options.presets) {
         const option = document.createElement("option");
         option.innerHTML = preset.title;
-        elements.controls.instrument.appendChild(option);    
+        definitionSet.elements.controls.instrument.appendChild(option);    
     } //loop presets
-    elements.controls.instrument.onchange = function(event) {
-        soundControlSet.preset = definitionSet.presets[event.target.selectedIndex].preset;
-    }; //elements.controls.instrument.onclick
-    elements.controls.instrument.selectedIndex = definitionSet.defaultPreset;
+    definitionSet.elements.controls.instrument.onchange = function(event) {
+        soundControlSet.preset = definitionSet.options.presets[event.target.selectedIndex].preset;
+    }; //definitionSet.elements.controls.instrument.onclick
+    definitionSet.elements.controls.instrument.selectedIndex = definitionSet.defaultPreset;
 
-    elements.controls.volume.min = definitionSet.minVolume;
-    elements.controls.volume.max = definitionSet.maxVolume;
-    elements.controls.volume.step = definitionSet.volumeStep;
-    elements.controls.volume.oninput = function(event) {
+    definitionSet.elements.controls.volume.min = definitionSet.minVolume;
+    definitionSet.elements.controls.volume.max = definitionSet.maxVolume;
+    definitionSet.elements.controls.volume.step = definitionSet.volumeStep;
+    definitionSet.elements.controls.volume.oninput = function(event) {
         soundControlSet.volume = parseFloat(event.target.value);
-        elements.controls.volumeIndicator.innerHTML = event.target.value;
-    }; //elements.controls.volume.oninput
+        definitionSet.elements.controls.volumeIndicator.innerHTML = event.target.value;
+    }; //definitionSet.elements.controls.volume.oninput
 
-    elements.controls.transposition.min = definitionSet.minTransposition;
-    elements.controls.transposition.max = definitionSet.maxTransposition;
-    elements.controls.transposition.step = definitionSet.transpositionStep;
-    elements.controls.transposition.oninput = function(event) {
+    definitionSet.elements.controls.transposition.min = definitionSet.minTransposition;
+    definitionSet.elements.controls.transposition.max = definitionSet.maxTransposition;
+    definitionSet.elements.controls.transposition.step = definitionSet.transpositionStep;
+    definitionSet.elements.controls.transposition.oninput = function(event) {
         soundControlSet.transposition = parseFloat(event.target.value);
-        elements.controls.transpositionIndicator.innerHTML = event.target.value;
-    }; //elements.controls.transposition.oninput
+        definitionSet.elements.controls.transpositionIndicator.innerHTML = event.target.value;
+    }; //definitionSet.elements.controls.transposition.oninput
 
     const reset = function() {
-        elements.controls.instrument.selectedIndex = definitionSet.defaultPreset;
-        elements.controls.volume.value = definitionSet.initialVolume;
-        elements.controls.transposition.value = 0;
-        elements.controls.volume.oninput({target: elements.controls.volume});
-        elements.controls.transposition.oninput({target: elements.controls.transposition});
-        if (!elements.controls.touch) return;
-        elements.controls.touch.checkboxUseTouchDynamics.checked = true;
-        elements.controls.touch.calibrationResult.value = definitionSet.initialTouchDynamicsDivider;
+        definitionSet.elements.controls.instrument.selectedIndex = definitionSet.defaultPreset;
+        definitionSet.elements.controls.volume.value = definitionSet.initialVolume;
+        definitionSet.elements.controls.transposition.value = 0;
+        definitionSet.elements.controls.volume.oninput({target: definitionSet.elements.controls.volume});
+        definitionSet.elements.controls.transposition.oninput({target: definitionSet.elements.controls.transposition});
+        if (!definitionSet.elements.controls.touch) return;
+        definitionSet.elements.controls.touch.checkboxUseTouchDynamics.checked = true;
+        definitionSet.elements.controls.touch.calibrationResult.value = definitionSet.initialTouchDynamicsDivider;
     } //reset
     reset();
 
-    elements.controls.reset.onclick = reset;
+    definitionSet.elements.controls.reset.onclick = reset;
 
     return soundControlSet;
 

@@ -25,7 +25,7 @@ const keyboardHandler = (function () {
         chord = chordInstance;
     }; //assignChord
 
-    const nodes = elements.keyboard.childNodes;
+    const nodes = definitionSet.elements.keyboard.childNodes;
 
     const visualActivate = function (key, color, text, highlightChords, doActivate) {
         if (doActivate) {
@@ -54,7 +54,7 @@ const keyboardHandler = (function () {
 
     keyboardStructure.iterateKeys(key => {
         key.activated = false;
-        key.currentColor = definitionSet.highlightDefault;
+        key.currentColor = definitionSet.options.highlightDefault;
         key.colorStack = [];
         key.textStack = [];
         key.activate = function (key, chordMode, doActivate, volumeDynamics, chordNote, text, highlightChords) {
@@ -65,7 +65,7 @@ const keyboardHandler = (function () {
             key.activated = doActivate;
             if (soundAction)
                 soundAction(key, 0, key.tone, doActivate, volumeDynamics);
-            const effectiveColor = chordNote ? definitionSet.highlightChordNote : definitionSet.highlightSound;
+            const effectiveColor = chordNote ? definitionSet.options.highlightChordNote : definitionSet.options.highlightSound;
             if (!chordNote) highlightChords = true;
             visualActivate(key, effectiveColor, text, highlightChords, doActivate);
             if (!chordMode && doActivate) return;
@@ -101,20 +101,20 @@ const keyboardHandler = (function () {
     }); //keyboardStructure.iterateKeys
 
     const setupTouch = () => {
-        let touchDynamicsEnabled = elements.controls.touch.checkboxUseTouchDynamics.checked;
-        elements.controls.touch.checkboxUseTouchDynamics.onclick = (ev) => { touchDynamicsEnabled = ev.target.checked; }
-        let volumeDivider = definitionSet.initialTouchDynamicsDivider;
+        let touchDynamicsEnabled = definitionSet.elements.controls.touch.checkboxUseTouchDynamics.checked;
+        definitionSet.elements.controls.touch.checkboxUseTouchDynamics.onclick = (ev) => { touchDynamicsEnabled = ev.target.checked; }
+        let volumeDivider = definitionSet.options.initialTouchDynamicsDivider;
         const calibrationDoneHandler = (value) => {
             volumeDivider = value;
         }; 
         setupMultiTouchCalibration(
-            elements.controls.touch.calibrationProbe,
-            elements.controls.touch.calibrationResult,
-            elements.controls.touch.buttonDone,
+            definitionSet.elements.controls.touch.calibrationProbe,
+            definitionSet.elements.controls.touch.calibrationResult,
+            definitionSet.elements.controls.touch.buttonDone,
             calibrationDoneHandler);
         const dynamicAlgorithm = setMultiTouch().dynamicAlgorithm;
         setMultiTouch(
-            elements.keyboard,
+            definitionSet.elements.keyboard,
             (element) => { return element.dataset.multiTouchTarget; }, //elementSelector
             (element, touch, on) => {
                 let volume = 1;

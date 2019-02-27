@@ -17,14 +17,14 @@ const chordLayoutFinder = (function() {
     function ChordOptionSet() {
         this.highlightChords = true;
         this.showChordNotes = true;
-        elements.showOptions.optionHighlightChords.optionSet = this;
-        elements.showOptions.optionShowChordNotes.optionSet = this;
-        elements.showOptions.optionHighlightChords.onclick = function(event) {
+        definitionSet.elements.showOptions.optionHighlightChords.optionSet = this;
+        definitionSet.elements.showOptions.optionShowChordNotes.optionSet = this;
+        definitionSet.elements.showOptions.optionHighlightChords.onclick = function(event) {
             this.optionSet.highlightChords = event.target.checked;
-        }; //elements.showOptions.optionHighlightChords.onclick
-        elements.showOptions.optionShowChordNotes.onclick = function(event) {
+        }; //definitionSet.elements.showOptions.optionHighlightChords.onclick
+        definitionSet.elements.showOptions.optionShowChordNotes.onclick = function(event) {
             this.optionSet.showChordNotes = event.target.checked;
-        }; //elements.showOptions.optionShowChordNotes.onclick
+        }; //definitionSet.elements.showOptions.optionShowChordNotes.onclick
     } //ChordOptionSet
     const chordOptionSet = new ChordOptionSet();
         

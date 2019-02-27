@@ -13,12 +13,12 @@
 (function main() {
 
     (function setCopyright() {
-        elements.copyright.spanYears.textContent = definitionSet.copyright.years;
-        elements.copyright.spanVersion.textContent = definitionSet.copyright.version;
+        definitionSet.elements.copyright.spanYears.textContent = definitionSet.options.copyright.years;
+        definitionSet.elements.copyright.spanVersion.textContent = definitionSet.options.copyright.version;
     })(); //setCopyright
 
     (function MicrosoftFeatureRejection() {
-        for (let attribute of elements.keyboard.attributes)
+        for (let attribute of definitionSet.elements.keyboard.attributes)
             break;
     })(); //MicrosoftFeatureRejection
 
@@ -27,10 +27,10 @@
     let chord;
 
     (function setupChordTables() {
-        for (let chordSetElement of elements.chordSet) {
+        for (let chordSetElement of definitionSet.elements.chordSet) {
             const table = chordSetElement.table;
             const toneCount = chordSetElement.toneCount;
-            const baseOctave = definitionSet.defaultOctave;
+            const baseOctave = definitionSet.options.defaultOctave;
             const buildButton = chordSetElement.buildButton;
             buildButton.style.visibility = "hidden";
             const resetButton = chordSetElement.resetButton;
@@ -46,8 +46,8 @@
     function optimizeTableLocation(table) {
         const room = { x: window.innerWidth, y: window.innerHeight };
         const x = Math.floor((room.x - table.offsetWidth) / 2);
-        const y = elements.keyboard.clientHeight - table.offsetHeight > 0 ?
-            Math.floor((elements.keyboard.clientHeight - table.offsetHeight) / 2)
+        const y = definitionSet.elements.keyboard.clientHeight - table.offsetHeight > 0 ?
+            Math.floor((definitionSet.elements.keyboard.clientHeight - table.offsetHeight) / 2)
             : 22; //SA???
         return { x: x, y: y };
     } //optimizeTableLocation
@@ -71,13 +71,13 @@
         } //if
     } //showChordTable
 
-    elements.buttonShowChordTable.onclick = function (event) {
+    definitionSet.elements.buttonShowChordTable.onclick = function (event) {
         showChordTable(selectedTet.chordTable, !visibleChordTable);
-    } //elements.buttonShowChordTable.onclick
+    } //definitionSet.elements.buttonShowChordTable.onclick
 
     function setTet(option, system, blocking) {
         let currentRow = 0;
-        let currentNoteNumber = system.names.length; // 1 octave up, mostly to accommodate Janko which adds -1: notes.tet12Janko.smallRowIncrement: -1
+        let currentNoteNumber = system.names.length; // 1 octave up, mostly to accommodate Janko which adds -1: definitionSet.notes.tet12Janko.smallRowIncrement: -1
         // we keep C at note #0
         let currentFirst = currentNoteNumber;
         const names = system.names;
@@ -108,77 +108,77 @@
         showChordTable(option.chordTable, true);
     } //setTet
     
-    elements.radioTet.radio12et.onclick = function (event) {
+    definitionSet.elements.radioTet.radio12et.onclick = function (event) {
         if (event.target.checked) {
-            setTet(event.target, notes.tet12);
+            setTet(event.target, definitionSet.notes.tet12);
             selectedTet = event.target;
         } //if
-        elements.legend19et.style.visibility = "hidden";
-        elements.legend29et.style.visibility = "hidden";
-        elements.legend31et.style.visibility = "hidden";
-        elements.buttonShowChordTable.disabled = false;
+        definitionSet.elements.legend19et.style.visibility = "hidden";
+        definitionSet.elements.legend29et.style.visibility = "hidden";
+        definitionSet.elements.legend31et.style.visibility = "hidden";
+        definitionSet.elements.buttonShowChordTable.disabled = false;
     };
-    elements.radioTet.radio12etJanko.onclick = function (event) {
+    definitionSet.elements.radioTet.radio12etJanko.onclick = function (event) {
         if (event.target.checked) {
-            setTet(event.target, notes.tet12Janko);
+            setTet(event.target, definitionSet.notes.tet12Janko);
             selectedTet = event.target;
         } //if
-        elements.legend19et.style.visibility = "hidden";
-        elements.legend29et.style.visibility = "hidden";
-        elements.legend31et.style.visibility = "hidden";
-        elements.buttonShowChordTable.disabled = false;
+        definitionSet.elements.legend19et.style.visibility = "hidden";
+        definitionSet.elements.legend29et.style.visibility = "hidden";
+        definitionSet.elements.legend31et.style.visibility = "hidden";
+        definitionSet.elements.buttonShowChordTable.disabled = false;
     };
-    elements.radioTet.radio19et.onclick = function (event) {
+    definitionSet.elements.radioTet.radio19et.onclick = function (event) {
         if (event.target.checked) {
-            setTet(event.target, notes.tet19);
+            setTet(event.target, definitionSet.notes.tet19);
             selectedTet = event.target;
         } //if
-        elements.legend31et.style.visibility = "hidden";
-        elements.legend29et.style.visibility = "hidden";
-        elements.legend19et.style.visibility = "visible";
-        elements.buttonShowChordTable.disabled = false;
+        definitionSet.elements.legend31et.style.visibility = "hidden";
+        definitionSet.elements.legend29et.style.visibility = "hidden";
+        definitionSet.elements.legend19et.style.visibility = "visible";
+        definitionSet.elements.buttonShowChordTable.disabled = false;
     };
-    elements.radioTet.radio29et.onclick = function (event) {
+    definitionSet.elements.radioTet.radio29et.onclick = function (event) {
         if (event.target.checked) {
-            setTet(event.target, notes.tet29);
+            setTet(event.target, definitionSet.notes.tet29);
             selectedTet = event.target;
         } //if            33
-        elements.legend19et.style.visibility = "hidden";
-        elements.legend31et.style.visibility = "hidden";
-        elements.legend29et.style.visibility = "visible";
-        elements.buttonShowChordTable.disabled = true;
+        definitionSet.elements.legend19et.style.visibility = "hidden";
+        definitionSet.elements.legend31et.style.visibility = "hidden";
+        definitionSet.elements.legend29et.style.visibility = "visible";
+        definitionSet.elements.buttonShowChordTable.disabled = true;
     };
-    elements.radioTet.radio31et.onclick = function (event) {
+    definitionSet.elements.radioTet.radio31et.onclick = function (event) {
         if (event.target.checked) {
-            setTet(event.target, notes.tet31);
+            setTet(event.target, definitionSet.notes.tet31);
             selectedTet = event.target;
         } //if            
-        elements.legend19et.style.visibility = "hidden";
-        elements.legend29et.style.visibility = "hidden";
-        elements.legend31et.style.visibility = "visible";
-        elements.buttonShowChordTable.disabled = false;
+        definitionSet.elements.legend19et.style.visibility = "hidden";
+        definitionSet.elements.legend29et.style.visibility = "hidden";
+        definitionSet.elements.legend31et.style.visibility = "visible";
+        definitionSet.elements.buttonShowChordTable.disabled = false;
     };
-    elements.radioTet.radio31et.checked = true;
-    setTet(elements.radioTet.radio31et, notes.tet31, true);
-    selectedTet = elements.radioTet.radio31et;
-    elements.legend31et.style.visibility = "visible";
+    definitionSet.elements.radioTet.radio31et.checked = true;
+    setTet(definitionSet.elements.radioTet.radio31et, definitionSet.notes.tet31, true);
+    selectedTet = definitionSet.elements.radioTet.radio31et;
+    definitionSet.elements.legend31et.style.visibility = "visible";
     keyboardStructure.block();
 
     (function setHardwareKeyboardControl() {
         let useComputerKeyboard = true;
-        elements.showOptions.optionUseComputerKeyboard.checked = true;
+        definitionSet.elements.showOptions.optionUseComputerKeyboard.checked = true;
         const keyDictionary = {};
         const markComputerKeyboard = function(doMark) {
             for (let index in keyDictionary) {
                 const cell = keyDictionary[index];
-                cell.currentColor = doMark ? definitionSet.highlightHardwareKey : definitionSet.highlightDefault;
+                cell.currentColor = doMark ? definitionSet.options.highlightHardwareKey : definitionSet.options.highlightDefault;
                 cell.rectangle.style.fill = cell.currentColor;                
             } //loop
         }; //markComputerKeyboard
-        elements.showOptions.optionUseComputerKeyboard.onclick = function (event) {
+        definitionSet.elements.showOptions.optionUseComputerKeyboard.onclick = function (event) {
             useComputerKeyboard = event.target.checked;
             markComputerKeyboard(useComputerKeyboard);
-        }; //elements.showOptions.optionUseComputerKeyboard.onclick
+        }; //definitionSet.elements.showOptions.optionUseComputerKeyboard.onclick
         const keyHandler = function (event, doActivate) {
             if (doActivate && !useComputerKeyboard) return true;
             if (event.altKey) return true;
@@ -204,7 +204,7 @@
                     if (value > rightmost) rightmost = value;
                 } //loop
                 const width = rightmost;
-                const keyShift = Math.round((definitionSet.keyboardSize.longRowWidth - width) / 2);
+                const keyShift = Math.round((definitionSet.options.keyboardSize.longRowWidth - width) / 2);
                 return { startingRow: startingRow, keyShift: keyShift };  
             })();
             const startingRow = location.startingRow;
@@ -223,7 +223,7 @@
                     const cell = keyboardStructure.rows[rowIndex][xIndex];
                     if (!cell) break;
                     keyDictionary[key] = cell;
-                    cell.currentColor = definitionSet.highlightHardwareKey;
+                    cell.currentColor = definitionSet.options.highlightHardwareKey;
                     cell.rectangle.style.fill = cell.currentColor;
                     ++xIndex;
                 } //loop xIndex

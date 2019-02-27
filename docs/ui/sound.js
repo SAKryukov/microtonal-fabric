@@ -19,7 +19,7 @@
     const player = new WebAudioFontPlayer();
 
     const startStopNote = function (object, octave, tone, doStart, volumeDynamics) {
-        for (let preset of definitionSet.presets)
+        for (let preset of definitionSet.options.presets)
             player.adjustPreset(audioContext, preset.preset);
         if (object.audioGraph && !doStart) {
             object.audioGraph.cancel();
@@ -30,7 +30,7 @@
                     audioContext, audioContext.destination,
                     soundControlSet.preset,
                     audioContext.currentTime,
-                    (definitionSet.defaultOctave + octave) * 12 + tone + soundControlSet.transposition,
+                    (definitionSet.options.defaultOctave + octave) * 12 + tone + soundControlSet.transposition,
                     false,
                     soundControlSet.volume * volumeDynamics);
     } //startStopNote

@@ -12,184 +12,192 @@
 
 "use strict";
 
-const elements = {
-    copyright: {
-        spanYears: document.getElementById("years"),
-        spanVersion: document.getElementById("version")
-    },
-    keyboard: document.getElementById("keyboard"),
-    invitation: document.getElementById("invitation"),
-    buttonShowChordTable: document.getElementById("button-show-chord-table"),
-    showOptions: {
-        optionUseComputerKeyboard: document.getElementById("checkbox-use-computer-keyboard"),
-        optionHighlightChords: document.getElementById("checkbox-option-highlight-chords"),
-        optionShowChordNotes: document.getElementById("checkbox-option-chord-notes")
-    },
-    radioTet: {
-        radio12et: document.getElementById("radio-12-et"),
-        radio12etJanko: document.getElementById("radio-12-et-Janko"),
-        radio19et: document.getElementById("radio-19-et"),
-        radio29et: document.getElementById("radio-29-et"),
-        radio31et: document.getElementById("radio-31-et"),
-    },
-    controls: {
-        instrument: document.getElementById("control-instrument"),
-        volume: document.getElementById("control-volume"),
-        volumeIndicator: document.getElementById("control-volume-value"),
-        transposition: document.getElementById("control-transposition"),
-        transpositionIndicator: document.getElementById("control-transposition-value"),
-        touch: {
-            checkboxUseTouchDynamics: document.getElementById("checkbox-use-touch-dynamics"),
-            calibrationProbe: document.getElementById("touch-calibration"),
-            calibrationResult: document.getElementById("touch-calibration-result"),
-            buttonDone: document.getElementById("button-touch-calibration-done")
+const definitionSetter = () => {
+
+    const elements = {
+        copyright: {
+            spanYears: document.getElementById("years"),
+            spanVersion: document.getElementById("version")
         },
-        reset: document.getElementById("control-reset")
-    },
-    legend19et: document.getElementById("radio-19-et-legend"),
-    legend29et: document.getElementById("radio-29-et-legend"),
-    legend31et: document.getElementById("radio-31-et-legend"),
-    chordSet: [
-        {
-            toneCount: 12,
-            table: document.getElementById("tet12-chord-table"),
-            buildButton: document.getElementById("tet12-chord-build"),
-            resetButton: document.getElementById("tet12-chord-reset"),
-            closeButton: document.getElementById("tet12-chord-close")
+        keyboard: document.getElementById("keyboard"),
+        invitation: document.getElementById("invitation"),
+        buttonShowChordTable: document.getElementById("button-show-chord-table"),
+        showOptions: {
+            optionUseComputerKeyboard: document.getElementById("checkbox-use-computer-keyboard"),
+            optionHighlightChords: document.getElementById("checkbox-option-highlight-chords"),
+            optionShowChordNotes: document.getElementById("checkbox-option-chord-notes")
         },
-        {
-            toneCount: 19,
-            table: document.getElementById("tet19-chord-table"),
-            buildButton: document.getElementById("tet19-chord-build"),
-            resetButton: document.getElementById("tet19-chord-reset"),
-            closeButton: document.getElementById("tet19-chord-close")
+        radioTet: {
+            radio12et: document.getElementById("radio-12-et"),
+            radio12etJanko: document.getElementById("radio-12-et-Janko"),
+            radio19et: document.getElementById("radio-19-et"),
+            radio29et: document.getElementById("radio-29-et"),
+            radio31et: document.getElementById("radio-31-et"),
         },
-        {
-            toneCount: 31,
-            table: document.getElementById("tet31-chord-table"),
-            buildButton: document.getElementById("tet31-chord-build"),
-            resetButton: document.getElementById("tet31-chord-reset"),
-            closeButton: document.getElementById("tet31-chord-close")
-        }  
-    ]
-}; //elements
+        controls: {
+            instrument: document.getElementById("control-instrument"),
+            volume: document.getElementById("control-volume"),
+            volumeIndicator: document.getElementById("control-volume-value"),
+            transposition: document.getElementById("control-transposition"),
+            transpositionIndicator: document.getElementById("control-transposition-value"),
+            touch: {
+                checkboxUseTouchDynamics: document.getElementById("checkbox-use-touch-dynamics"),
+                calibrationProbe: document.getElementById("touch-calibration"),
+                calibrationResult: document.getElementById("touch-calibration-result"),
+                buttonDone: document.getElementById("button-touch-calibration-done")
+            },
+            reset: document.getElementById("control-reset")
+        },
+        legend19et: document.getElementById("radio-19-et-legend"),
+        legend29et: document.getElementById("radio-29-et-legend"),
+        legend31et: document.getElementById("radio-31-et-legend"),
+        chordSet: [
+            {
+                toneCount: 12,
+                table: document.getElementById("tet12-chord-table"),
+                buildButton: document.getElementById("tet12-chord-build"),
+                resetButton: document.getElementById("tet12-chord-reset"),
+                closeButton: document.getElementById("tet12-chord-close")
+            },
+            {
+                toneCount: 19,
+                table: document.getElementById("tet19-chord-table"),
+                buildButton: document.getElementById("tet19-chord-build"),
+                resetButton: document.getElementById("tet19-chord-reset"),
+                closeButton: document.getElementById("tet19-chord-close")
+            },
+            {
+                toneCount: 31,
+                table: document.getElementById("tet31-chord-table"),
+                buildButton: document.getElementById("tet31-chord-build"),
+                resetButton: document.getElementById("tet31-chord-reset"),
+                closeButton: document.getElementById("tet31-chord-close")
+            }  
+        ]
+    }; //elements
+    
+    (function associateChordTables() {
+        elements.radioTet.radio12et.chordTable = elements.chordSet[0].table;
+        elements.radioTet.radio12etJanko.chordTable = elements.chordSet[0].table;
+        elements.radioTet.radio19et.chordTable = elements.chordSet[1].table;
+        elements.radioTet.radio29et.chordTable = elements.chordSet[2].table;
+        elements.radioTet.radio31et.chordTable = elements.chordSet[2].table;
+    })();
+    
+    const notes = {
+        tet31: {
+            names: [
+                "C", "D♭²", "C♯", "D♭", "C♯²",
+                "D", "E♭²", "D♯", "E♭", "D♯²",
+                "E", "F♭¹", "E♯¹",
+                "F", "G♭²", "F♯", "G♭", "F♯²",
+                "G", "A♭²", "G♯", "A♭", "G♯²",
+                "A", "B♭²", "A♯", "B♭", "A♯²",
+                "B", "C♭¹", "B♯¹"],
+            bigRowIncrement: 18,
+            smallRowIncrement: 13,
+            rightIncrement: 5
+        },
+        tet29: {
+            names: [
+                "C", "D♭²", "C♯", "D♭", "C♯²",
+                "D", "E♭²", "D♯", "E♭", "D♯²",
+                "E", "ef", "F", "G♭²", "F♯", "G♭", "F♯²",
+                "G", "A♭²", "G♯", "A♭", "G♯²",
+                "A", "B♭²", "A♯", "B♭", "A♯²",
+                "B", "bc"],
+            bigRowIncrement: 17,
+            smallRowIncrement: 12,
+            rightIncrement: 5
+        },
+        tet19: {
+            names: [
+                "C", "C♯", "D♭",
+                "D", "D♯", "E♭",
+                "E", "ef", // E♯ == F♭
+                "F", "F♯", "G♭",
+                "G", "G♯", "A♭",
+                "A", "A♯", "B♭",
+                "B", "bc"], //B♯ == C♭
+            bigRowIncrement: 11,
+            smallRowIncrement: 8,
+            rightIncrement: 3
+        },
+        tet12: {
+            names: ["C", "C♯", "D", "D♯", "E", "F", "F♯", "G", "G♯", "A", "B♯", "B"],
+            bigRowIncrement: 7,
+            smallRowIncrement: 5,
+            rightIncrement: 2
+        },
+        tet12Janko: {
+            bigRowIncrement: 13,
+            smallRowIncrement: -1,
+            rightIncrement: 2        
+        }
+    }; //notation
+    notes.tet12Janko.names = notes.tet12.names;
+    
+    const options = {
+        copyright: { version: "4.1", years: "2017-2019" },
+        keyboardSize: {
+            // verticalSizeFactor: 5,         
+            // horizontalSizeFactor: 17,
+            verticalSizeFactor: 4,         
+            horizontalSizeFactor: 15,
+            // do not assign here: 
+            rows: 0, // definitionSet.keyboardSize.rows = 2 * definitionSet.keyboardSize.horizontalSizeFactor + 1
+            longRowWidth: 0 // definitionSet.keyboardSize.longRowWidth = 2 * definitionSet.keyboardSize.horizontalSizeFactor + 1
+        },
+        keyboard: {
+            width: 128,
+            //relative to width:
+            margins: 0.008,
+            keyRadius: 0.0032,
+            strokeWidth: 0.001
+        },
+        label: { fontSize: 0.28, paddingLeft: 0.25, paddingTop: 0.1 }, // relative to key size
+        audibleMiddle: { note: "C", midiNote: 60, frequency: 261.625 },
+        keyStroke: "#b9c0c0", //"#b9bdc0": navy paint, "Haze gray and underway"
+        highlightSound: "#ffd0a0",
+        highlightChordNote: "yellow",
+        highlightDefault: "white",
+        highlightHardwareKey: "lightGreen",
+        highlightChord: "yellow",
+        labelFontFamily: "sans-serif",
+        blockerFill: "#b9c0c0", //"#b9bdc0": navy paint, "Haze gray and underway" 
+        presets: [
+            { preset: webAudioFont00, title: "Piano" },
+            { preset: webAudioFont14, title: "Bells" },
+            { preset: webAudioFont16, title: "Organ" },
+            { preset: webAudioFont24, title: "Guitar" },
+            { preset: webAudioFont91, title: "Pad 4 Choir" },
+            //"sine", "square", "sawtooth", "triangle":
+            { preset: "sine", title: "Sine" },
+            { preset: "square", title: "Square" },
+            { preset: "sawtooth", title: "Saw Tooth" },
+            { preset: "triangle", title: "Triangle" }
+        ],
+        defaultOctave: 0,
+        defaultPreset: 2,
+        minTransposition: -24,
+        maxTransposition: +24,
+        transpositionStep: 1,
+        minVolume: 0,
+        maxVolume: 1,
+        initialVolume: 0.4,
+        volumeStep: 0.01,
+        initialTouchDynamicsDivider: 500,
+        touchValueColor: "black",
+        touchValueColorModified: "red"
+    }; //options
+    
+    ( () => {
+        options.keyboardSize.rows = 2 * options.keyboardSize.verticalSizeFactor + 1;
+        options.keyboardSize.longRowWidth = 2 * options.keyboardSize.horizontalSizeFactor + 1;
+    })();
 
-(function associateChordTables() {
-    elements.radioTet.radio12et.chordTable = elements.chordSet[0].table;
-    elements.radioTet.radio12etJanko.chordTable = elements.chordSet[0].table;
-    elements.radioTet.radio19et.chordTable = elements.chordSet[1].table;
-    elements.radioTet.radio29et.chordTable = elements.chordSet[2].table;
-    elements.radioTet.radio31et.chordTable = elements.chordSet[2].table;
-})();
+    return { elements: elements, notes: notes, options: options };
 
-const notes = {
-    tet31: {
-        names: [
-            "C", "D♭²", "C♯", "D♭", "C♯²",
-            "D", "E♭²", "D♯", "E♭", "D♯²",
-            "E", "F♭¹", "E♯¹",
-            "F", "G♭²", "F♯", "G♭", "F♯²",
-            "G", "A♭²", "G♯", "A♭", "G♯²",
-            "A", "B♭²", "A♯", "B♭", "A♯²",
-            "B", "C♭¹", "B♯¹"],
-        bigRowIncrement: 18,
-        smallRowIncrement: 13,
-        rightIncrement: 5
-    },
-    tet29: {
-        names: [
-            "C", "D♭²", "C♯", "D♭", "C♯²",
-            "D", "E♭²", "D♯", "E♭", "D♯²",
-            "E", "ef", "F", "G♭²", "F♯", "G♭", "F♯²",
-            "G", "A♭²", "G♯", "A♭", "G♯²",
-            "A", "B♭²", "A♯", "B♭", "A♯²",
-            "B", "bc"],
-        bigRowIncrement: 17,
-        smallRowIncrement: 12,
-        rightIncrement: 5
-    },
-    tet19: {
-        names: [
-            "C", "C♯", "D♭",
-            "D", "D♯", "E♭",
-            "E", "ef", // E♯ == F♭
-            "F", "F♯", "G♭",
-            "G", "G♯", "A♭",
-            "A", "A♯", "B♭",
-            "B", "bc"], //B♯ == C♭
-        bigRowIncrement: 11,
-        smallRowIncrement: 8,
-        rightIncrement: 3
-    },
-    tet12: {
-        names: ["C", "C♯", "D", "D♯", "E", "F", "F♯", "G", "G♯", "A", "B♯", "B"],
-        bigRowIncrement: 7,
-        smallRowIncrement: 5,
-        rightIncrement: 2
-    },
-    tet12Janko: {
-        bigRowIncrement: 13,
-        smallRowIncrement: -1,
-        rightIncrement: 2        
-    }
-}; //notation
-notes.tet12Janko.names = notes.tet12.names;
+}; //definitionSetter
 
-const definitionSet = {
-    copyright: { version: "4.1", years: "2017-2019" },
-    keyboardSize: {
-        // verticalSizeFactor: 5,         
-        // horizontalSizeFactor: 17,
-        verticalSizeFactor: 4,         
-        horizontalSizeFactor: 15,
-        // do not assign here: 
-        rows: 0, // definitionSet.keyboardSize.rows = 2 * definitionSet.keyboardSize.horizontalSizeFactor + 1
-        longRowWidth: 0 // definitionSet.keyboardSize.longRowWidth = 2 * definitionSet.keyboardSize.horizontalSizeFactor + 1
-    },
-    keyboard: {
-        width: 128,
-        //relative to width:
-        margins: 0.008,
-        keyRadius: 0.0032,
-        strokeWidth: 0.001
-    },
-    label: { fontSize: 0.28, paddingLeft: 0.25, paddingTop: 0.1 }, // relative to key size
-    audibleMiddle: { note: "C", midiNote: 60, frequency: 261.625 },
-    keyStroke: "#b9c0c0", //"#b9bdc0": navy paint, "Haze gray and underway"
-    highlightSound: "#ffd0a0",
-    highlightChordNote: "yellow",
-    highlightDefault: "white",
-    highlightHardwareKey: "lightGreen",
-    highlightChord: "yellow",
-    labelFontFamily: "sans-serif",
-    blockerFill: "#b9c0c0", //"#b9bdc0": navy paint, "Haze gray and underway" 
-    presets: [
-        { preset: webAudioFont00, title: "Piano" },
-        { preset: webAudioFont14, title: "Bells" },
-        { preset: webAudioFont16, title: "Organ" },
-        { preset: webAudioFont24, title: "Guitar" },
-        { preset: webAudioFont91, title: "Pad 4 Choir" },
-        //"sine", "square", "sawtooth", "triangle":
-        { preset: "sine", title: "Sine" },
-        { preset: "square", title: "Square" },
-        { preset: "sawtooth", title: "Saw Tooth" },
-        { preset: "triangle", title: "Triangle" }
-    ],
-    defaultOctave: 0,
-    defaultPreset: 2,
-    minTransposition: -24,
-    maxTransposition: +24,
-    transpositionStep: 1,
-    minVolume: 0,
-    maxVolume: 1,
-    initialVolume: 0.4,
-    volumeStep: 0.01,
-    initialTouchDynamicsDivider: 500,
-    touchValueColor: "black",
-    touchValueColorModified: "red"
-}; //definitionSet
-
-( () => {
-    definitionSet.keyboardSize.rows = 2 * definitionSet.keyboardSize.verticalSizeFactor + 1;
-    definitionSet.keyboardSize.longRowWidth = 2 * definitionSet.keyboardSize.horizontalSizeFactor + 1;
-})();
+const definitionSet = definitionSetter(); //SA???
