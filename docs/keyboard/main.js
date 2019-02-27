@@ -15,6 +15,7 @@
 (function main() {
 
     const definitionSet = settings();
+    const commonSettingsSet = commonSettings(); 
 
     (function MicrosoftFeatureRejection() {
         for (let attribute of definitionSet.elements.keyboard.attributes)
@@ -22,14 +23,14 @@
     })(); //MicrosoftFeatureRejection
 
     (function setCopyright() {
-        definitionSet.elements.copyright.spanYears.textContent = definitionSet.options.copyright.years;
-        definitionSet.elements.copyright.spanVersion.textContent = definitionSet.options.copyright.version;
+        definitionSet.elements.copyright.spanYears.textContent = commonSettingsSet.copyright.years;
+        definitionSet.elements.copyright.spanVersion.textContent = commonSettingsSet.copyright.version;
     })(); //setCopyright
 
     const keyboardStructure = keyboard(definitionSet);
     const chordLayoutFinder = chordLayout(definitionSet, keyboardStructure);
-    const soundControlSet = setSoundControl(definitionSet);
-    const soundActions = soundActionSet(definitionSet.options.presets, definitionSet.options.defaultOctave, soundControlSet);
+    const soundControlSet = setSoundControl(definitionSet.elements, commonSettingsSet);
+    const soundActions = soundActionSet(commonSettingsSet.presets, commonSettingsSet.defaultOctave, soundControlSet);
     const keyboardHandler = keyboardHandling(definitionSet, keyboardStructure, chordLayoutFinder, soundActions);
 
     let visibleChordTable;

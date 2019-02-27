@@ -90,30 +90,10 @@ const elements = {
 }; //elements
 
 const definitionSet = {
-    copyright: { version: "4.1", years: "2017-2019" },
     highlightSound: "#ffd0a0",
     highlightChordNote: "yellow",
     highlightDefault: "white",
     highlightChord: "yellow",
     highlightComparer: "lightGreen",
-    presets: [
-        { preset: webAudioFont00, title: "Piano" },
-        { preset: webAudioFont14, title: "Bells" },
-        { preset: webAudioFont16, title: "Organ" },
-        { preset: webAudioFont24, title: "Guitar" },
-        { preset: webAudioFont91, title: "Pad 4 Choir" },
-        //"sine", "square", "sawtooth", "triangle":
-        { preset: "sine", title: "Sine" },
-        { preset: "square", title: "Square" },
-        { preset: "sawtooth", title: "Saw Tooth" },
-        { preset: "triangle", title: "Triangle" }
-    ],
-    defaultOctave: 4, // one octave lower than "middle C"
-    defaultPreset: 2,
-    minTransposition: -12,
-    maxTransposition: +12,
-    transpositionStep: 1,
-    minVolume: 0,
-    maxVolume: 1,
-    volumeStep: 0.01
+    defaultOctave: 4 // overrides common commonSettings defaultOctave of 0
 }; //definitionSet

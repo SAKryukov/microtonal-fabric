@@ -138,7 +138,6 @@ const settings = () => {
     notes.tet12Janko.names = notes.tet12.names;
     
     const options = {
-        copyright: { version: "4.1", years: "2017-2019" },
         keyboardSize: {
             // verticalSizeFactor: 5,         
             // horizontalSizeFactor: 17,
@@ -164,31 +163,7 @@ const settings = () => {
         highlightHardwareKey: "lightGreen",
         highlightChord: "yellow",
         labelFontFamily: "sans-serif",
-        blockerFill: "#b9c0c0", //"#b9bdc0": navy paint, "Haze gray and underway" 
-        presets: [
-            { preset: webAudioFont00, title: "Piano" },
-            { preset: webAudioFont14, title: "Bells" },
-            { preset: webAudioFont16, title: "Organ" },
-            { preset: webAudioFont24, title: "Guitar" },
-            { preset: webAudioFont91, title: "Pad 4 Choir" },
-            //"sine", "square", "sawtooth", "triangle":
-            { preset: "sine", title: "Sine" },
-            { preset: "square", title: "Square" },
-            { preset: "sawtooth", title: "Saw Tooth" },
-            { preset: "triangle", title: "Triangle" }
-        ],
-        defaultOctave: 0,
-        defaultPreset: 2,
-        minTransposition: -24,
-        maxTransposition: +24,
-        transpositionStep: 1,
-        minVolume: 0,
-        maxVolume: 1,
-        initialVolume: 0.4,
-        volumeStep: 0.01,
-        initialTouchDynamicsDivider: 500,
-        touchValueColor: "black",
-        touchValueColorModified: "red"
+        blockerFill: "#b9c0c0" //"#b9bdc0": navy paint, "Haze gray and underway" 
     }; //options
     
     ( () => {

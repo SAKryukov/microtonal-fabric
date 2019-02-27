@@ -14,14 +14,19 @@
 
 (() => { //main
 
+    const commonSettingsSet = commonSettings(); 
+    
     (function setCopyright() {
-        elements.copyright.spanYears.textContent = definitionSet.copyright.years;
-        elements.copyright.spanVersion.textContent = definitionSet.copyright.version;
+        elements.copyright.spanYears.textContent = commonSettingsSet.copyright.years;
+        elements.copyright.spanVersion.textContent = commonSettingsSet.copyright.version;
     })(); //setCopyright
     
-    const soundControlSet = setSoundControl(definitionSet);
+    const soundControlSet = setSoundControl(elements, commonSettingsSet);
     const comparer = setupComparer(elements, definitionSet);
-    const soundActionSetInstance = soundActionSet(definitionSet.presets, definitionSet.defaultOctave, soundControlSet); 
+    const soundActionSetInstance = soundActionSet(
+        commonSettingsSet.presets,
+        definitionSet.defaultOctave, // overrides commonSettingsSet default octave of 0
+        soundControlSet); 
     const soundAction = soundActionSetInstance.startStopNote; // soundAction: (object, octave, tone, doStart) => undefined
     const chordSoundAction = soundActionSetInstance.chordSoundAction; // chordSoundAction: (chord, doStart, volumeDynamics) => undefined
     const audioResume = soundActionSetInstance.resume;
