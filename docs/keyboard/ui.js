@@ -12,11 +12,6 @@
 
 const keyboardHandler = (function () {
 
-    (function setCopyright() {
-        elements.copyright.spanYears.textContent = definitionSet.copyright.years;
-        elements.copyright.spanVersion.textContent = definitionSet.copyright.version;
-    })(); //setCopyright
-
     let soundAction = null; // soundAction: function(object, octave, tone, doStart)
     let chordSoundAction = null; // chordSoundAction: function(chord, doStart), where chord is and array of: {object, octave: element.octave, tone: element.tone}
     const setSoundActions = function (soundActionInstance, chordSoundActionInstance) {
@@ -57,61 +52,53 @@ const keyboardHandler = (function () {
         } //if
     } //visualActivate
 
-    for (let rowIndex = 0; rowIndex < keyboardStructure.rows.length; ++rowIndex) {
-        const currentRow = keyboardStructure.rows[rowIndex];
-        const currentKeyRow = [];
-        rows.push(currentKeyRow); 
-        for (let keyIndex = 0; keyIndex < currentRow.length; ++keyIndex) {
-            const key = currentRow[keyIndex];
-            currentKeyRow.push(key);
-            key.activated = false;
-            key.currentColor = definitionSet.highlightDefault;
-            key.colorStack = [];
-            key.textStack = [];
-            key.rectangle.key = key;
-            key.activate = function (key, chordMode, doActivate, volumeDynamics, chordNote, text, highlightChords) {
-                if (key.activated && doActivate) return;
-                if (!key.activated && !doActivate) return;
-                if (volumeDynamics == undefined)
-                    volumeDynamics = 1.0; 
-                key.activated = doActivate;
-                if (soundAction)
-                    soundAction(key, 0, key.tone, doActivate, volumeDynamics);
-                const effectiveColor = chordNote ? definitionSet.highlightChordNote : definitionSet.highlightSound;
-                if (!chordNote) highlightChords = true;
-                visualActivate(key, effectiveColor, text, highlightChords, doActivate);
-                if (!chordMode && doActivate) return;
-                if (chord && !chordNote) {
-                    const chordLayout = chordLayoutFinder(key, chord);
-                    const highlightChords = chordLayout.highlightChords;
-                    for (let chordElement of chordLayout)
-                        chordElement.key.activate(chordElement.key, chordMode, doActivate, volumeDynamics, true, chordElement.title, highlightChords);
-                } //if
-            }; //key.activate
-            key.rectangle.dataset.multiTouchTarget = true;
-            key.rectangle.onmouseenter = (event) => {
-                if (event.buttons == 1)
-                    event.target.key.activate(event.target.key, event.ctrlKey, true);
-                return false;
-            };
-            key.rectangle.onmouseleave = (event) => {
+    keyboardStructure.iterateKeys(key => {
+        key.activated = false;
+        key.currentColor = definitionSet.highlightDefault;
+        key.colorStack = [];
+        key.textStack = [];
+        key.activate = function (key, chordMode, doActivate, volumeDynamics, chordNote, text, highlightChords) {
+            if (key.activated && doActivate) return;
+            if (!key.activated && !doActivate) return;
+            if (volumeDynamics == undefined)
+                volumeDynamics = 1.0; 
+            key.activated = doActivate;
+            if (soundAction)
+                soundAction(key, 0, key.tone, doActivate, volumeDynamics);
+            const effectiveColor = chordNote ? definitionSet.highlightChordNote : definitionSet.highlightSound;
+            if (!chordNote) highlightChords = true;
+            visualActivate(key, effectiveColor, text, highlightChords, doActivate);
+            if (!chordMode && doActivate) return;
+            if (chord && !chordNote) {
+                const chordLayout = chordLayoutFinder(key, chord);
+                const highlightChords = chordLayout.highlightChords;
+                for (let chordElement of chordLayout)
+                    chordElement.key.activate(chordElement.key, chordMode, doActivate, volumeDynamics, true, chordElement.title, highlightChords);
+            } //if
+        }; //key.activate
+        key.rectangle.dataset.multiTouchTarget = true;
+        key.rectangle.onmouseenter = (event) => {
+            if (event.buttons == 1)
+                event.target.key.activate(event.target.key, event.ctrlKey, true);
+            return false;
+        };
+        key.rectangle.onmouseleave = (event) => {
+            event.target.key.activate(event.target.key, event.ctrlKey, false);
+            return false;
+        };
+        key.rectangle.onmousedown = (event) => {
+            if (event.button == 0)
+                event.target.key.activate(event.target.key, event.ctrlKey, true);
+            else
                 event.target.key.activate(event.target.key, event.ctrlKey, false);
-                return false;
-            };
-            key.rectangle.onmousedown = (event) => {
-                if (event.button == 0)
-                    event.target.key.activate(event.target.key, event.ctrlKey, true);
-                else
-                    event.target.key.activate(event.target.key, event.ctrlKey, false);
-                return false;
-            };
-            key.rectangle.onmouseup = (event) => {
-                if (event.button == 0)
-                    event.target.key.activate(event.target.key, event.ctrlKey, false);
-                return false;
-            };
-        } //loop key
-    } //loop row
+            return false;
+        };
+        key.rectangle.onmouseup = (event) => {
+            if (event.button == 0)
+                event.target.key.activate(event.target.key, event.ctrlKey, false);
+            return false;
+        };
+    }); //keyboardStructure.iterateKeys
 
     const setupTouch = () => {
         let touchDynamicsEnabled = elements.controls.touch.checkboxUseTouchDynamics.checked;
@@ -138,6 +125,6 @@ const keyboardHandler = (function () {
         );    
     }; //setupTouch
 
-    return {soundActionSetter: setSoundActions, chordSetter: assignChord, setupTouch: setupTouch };
+    return { soundActionSetter: setSoundActions, chordSetter: assignChord, setupTouch: setupTouch };
 
 })();

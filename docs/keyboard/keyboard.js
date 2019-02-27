@@ -37,7 +37,8 @@ const keyboardStructure = (function() {
             key.numberInRow = index;
             key.row = row;
             const keyRect = elementCreator("rect");
-            key.rectangle = keyRect; 
+            key.rectangle = keyRect;
+            keyRect.key = key; 
             currentRow.push(key);
             keyRect.width.baseVal.value = size;
             keyRect.height.baseVal.value = size;

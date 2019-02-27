@@ -10,7 +10,12 @@
 // Original publication:
 // https://www.codeproject.com/Articles/1204180/Microtonal-Music-Study-Chromatic-Lattice-Keyboard"use strict";
 
-(function setKeyboardLayoutControl() {
+(function main() {
+
+    (function setCopyright() {
+        elements.copyright.spanYears.textContent = definitionSet.copyright.years;
+        elements.copyright.spanVersion.textContent = definitionSet.copyright.version;
+    })(); //setCopyright
 
     (function MicrosoftFeatureRejection() {
         for (let attribute of elements.keyboard.attributes)
@@ -246,4 +251,4 @@
     window.onmouseup = () => { unblock(); }
     window.onkeydown = (keyEvent) => { unblock(keyEvent); }
 
-})();
+})(); //main
