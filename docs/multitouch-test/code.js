@@ -1,8 +1,10 @@
+"use strict";
+
 document.body.onload = function () {
 
     let useMouse = false;
     const boolUseMouse = document.getElementById("bool-use-mouse");
-    boolUseMouse.onclick = checkMouseOption = (ev) => { useMouse = ev.target.checked; }; 
+    boolUseMouse.onclick = (ev) => { useMouse = ev.target.checked; }; 
 
     const output = document.querySelector("textarea");
     const turn = (target, touch, on) => {
@@ -34,13 +36,13 @@ document.body.onload = function () {
     const container = document.querySelector("body section");
     let current = container.firstElementChild;
 
-    onHandler = (ev) => {
+    const onHandler = (ev) => {
         ev.preventDefault();
         if (!useMouse) return;
         if (ev.buttons == 1)
             turn(ev.target, null, true);
     } //onHandler
-    offHandler = (ev) => {
+    const offHandler = (ev) => {
         ev.preventDefault();
         if (!useMouse) return;
         turn(ev.target, null, false);
