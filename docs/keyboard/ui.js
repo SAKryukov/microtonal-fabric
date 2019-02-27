@@ -60,15 +60,14 @@ const keyboardHandler = (function () {
     for (let rowIndex = 0; rowIndex < keyboardStructure.rows.length; ++rowIndex) {
         const currentRow = keyboardStructure.rows[rowIndex];
         const currentKeyRow = [];
-        rows.unshift(currentKeyRow); 
+        rows.push(currentKeyRow); 
         for (let keyIndex = 0; keyIndex < currentRow.length; ++keyIndex) {
-            const key = {};
+            const key = currentRow[keyIndex];
             currentKeyRow.push(key);
             key.activated = false;
             key.currentColor = definitionSet.highlightDefault;
             key.colorStack = [];
             key.textStack = [];
-            key.rectangle = currentRow[keyIndex];
             key.rectangle.key = key;
             key.numberInRow = keyIndex;
             key.row = keyboardStructure.rows.length - rowIndex - 1;
@@ -151,26 +150,7 @@ const keyboardHandler = (function () {
                 handler(cell);
     }; //rows.iterateKeys
 
-    rows.labelKeys = function (labelMaker) {
-        while (notesGroup.firstChild)
-            notesGroup.removeChild(notesGroup.firstChild);
-        if (!labelMaker) return;
-        for (let row of rows)
-            for (let cell of row) {
-                const label = document.createElementNS(svgNS, "text");
-                const labelText = labelMaker(cell);
-                label.innerHTML = labelText;
-                const width = cell.rectangle.width.baseVal.value * definitionSet.label.fontSize;
-                label.style = "pointer-events:none";
-                label.style.fontFamily = definitionSet.labelFontFamily;
-                label.style.fontSize = width+"px";
-                label.setAttributeNS(null, "x", cell.rectangle.x.baseVal.value + width * definitionSet.label.paddingLeft);
-                label.setAttributeNS(null, "y", cell.rectangle.y.baseVal.value + width + width * definitionSet.label.paddingTop);
-                notesGroup.appendChild(label);
-                cell.label = label;
-                cell.textStack = [labelText];
-            } //loop
-    }; //rows.labelKeys
+    rows.labelKeys = function (labelMaker) { keyboardStructure.labelKeys(labelMaker); };
 
     return { rows: rows, soundActionSetter: setSoundActions, chordSetter: assignChord, setupTouch: setupTouch };
 
