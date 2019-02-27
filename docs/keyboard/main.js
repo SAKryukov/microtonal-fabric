@@ -17,15 +17,12 @@
     const definitionSet = settings();
     const commonSettingsSet = commonSettings(); 
 
-    (function MicrosoftFeatureRejection() {
-        for (let attribute of definitionSet.elements.keyboard.attributes)
-            break;
-    })(); //MicrosoftFeatureRejection
-
     (function setCopyright() {
         definitionSet.elements.copyright.spanYears.textContent = commonSettingsSet.copyright.years;
         definitionSet.elements.copyright.spanVersion.textContent = commonSettingsSet.copyright.version;
     })(); //setCopyright
+
+    (function MicrosoftFeatureRejection() { for (let attribute of definitionSet.elements.keyboard.attributes) break; })();
 
     const keyboardStructure = keyboard(definitionSet);
     const chordLayoutFinder = chordLayout(definitionSet, keyboardStructure);

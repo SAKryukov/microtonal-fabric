@@ -16,10 +16,12 @@ const keyboard = (definitionSet) => {
 
     const svgPreparer = (function (svg) {
         const findNamespace = () => {
-            for (let attribute of svg.attributes)
+            for (let index in svg.attributes) {
+                const attribute = svg.attributes[index];
                 if (attribute.localName == "xmlns:svg")
                     return attribute.value;
-        } //loop
+            } // loop
+        } //findNamespace
         const namespace = findNamespace(svg);
         return { svg: svg, elementCreator: (tagName) => { return document.createElementNS(namespace, tagName); } };
     })(definitionSet.elements.keyboard);
