@@ -16,13 +16,10 @@ const keyboardHandler = (function populate(comparer) {
         elements.copyright.spanYears.textContent = definitionSet.copyright.years;
         elements.copyright.spanVersion.textContent = definitionSet.copyright.version;
     })(); //setCopyright
-
-    let soundAction = null; // soundAction: function(object, octave, tone, doStart)
-    let chordSoundAction = null; // chordSoundAction: function(chord, doStart), where chord is and array of: {object, octave: element.octave, tone: element.tone}
-    const setSoundActions = function (soundActionInstance, chordSoundActionInstance) {
-        soundAction = soundActionInstance;
-        chordSoundAction = chordSoundActionInstance;
-    }; //setSoundActions
+    
+    const soundActionSetInstance = soundActionSet(); 
+    const soundAction = soundActionSetInstance.startStopNote; // soundAction: function(object, octave, tone, doStart)
+    const chordSoundAction = soundActionSetInstance.chordSoundAction;
 
     (function setupComparer() {
         comparer.chordSet = { count: 0 };
@@ -220,7 +217,5 @@ const keyboardHandler = (function populate(comparer) {
 
     for (let keyboard of elements.keyboardSet)
         populateKeyboard(keyboard.keyboard, keyboard.chordActivator, keyboard.tones);
-
-    return { soundActionSetter: setSoundActions };
 
 })(comparer);
