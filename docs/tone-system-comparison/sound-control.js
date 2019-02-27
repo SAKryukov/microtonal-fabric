@@ -8,15 +8,16 @@
 // https://github.com/SAKryukov/microtonal-chromatic-lattice-keyboard
 //
 // Original publication:
-// https://www.codeproject.com/Articles/1204180/Microtonal-Music-Study-Chromatic-Lattice-Keyboard"use strict";
+// https://www.codeproject.com/Articles/1204180/Microtonal-Music-Study-Chromatic-Lattice-Keyboard
+
+"use strict";
 
 const soundControlSet = (function setSoundControl() {
 
-    const soundControlSet = {
+    const soundControlSet = { // common interface for different applications
         volume: 1,
         transposition: 0,
-        preset: definitionSet.presets[definitionSet.defaultPreset].preset,
-        dummy: 0
+        preset: definitionSet.presets[definitionSet.defaultPreset].preset
     } //soundControlSet
 
     for (let preset of definitionSet.presets) {

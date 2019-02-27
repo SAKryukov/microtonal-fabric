@@ -17,9 +17,9 @@ const keyboardHandler = (function populate(comparer) {
         elements.copyright.spanVersion.textContent = definitionSet.copyright.version;
     })(); //setCopyright
     
-    const soundActionSetInstance = soundActionSet(); 
-    const soundAction = soundActionSetInstance.startStopNote; // soundAction: function(object, octave, tone, doStart)
-    const chordSoundAction = soundActionSetInstance.chordSoundAction;
+    const soundActionSetInstance = soundActionSet(definitionSet.presets, definitionSet.defaultOctave, soundControlSet); 
+    const soundAction = soundActionSetInstance.startStopNote; // soundAction: (object, octave, tone, doStart) => undefined
+    const chordSoundAction = soundActionSetInstance.chordSoundAction; // chordSoundAction: (chord, doStart, volumeDynamics) => undefined
 
     (function setupComparer() {
         comparer.chordSet = { count: 0 };

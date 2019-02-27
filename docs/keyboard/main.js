@@ -27,7 +27,7 @@
     const keyboardStructure = keyboard(definitionSet);
     const chordLayoutFinder = chordLayout(definitionSet, keyboardStructure);
     const soundControlSet = setSoundControl(definitionSet);
-    const soundActions = soundActionSet(definitionSet, soundControlSet);
+    const soundActions = soundActionSet(definitionSet.options.presets, definitionSet.options.defaultOctave, soundControlSet);
     const keyboardHandler = keyboardHandling(definitionSet, keyboardStructure, chordLayoutFinder, soundActions);
 
     let visibleChordTable;

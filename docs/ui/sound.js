@@ -12,7 +12,7 @@
 
 "use strict";
 
-const soundActionSet = (definitionSet, soundControlSet) => {
+const soundActionSet = (presets, defaultOctave, soundControlSet) => {
 
     const audioContext = new (window.AudioContext || window.webkitAudioContext)();
     const player = new WebAudioFontPlayer();
@@ -20,7 +20,7 @@ const soundActionSet = (definitionSet, soundControlSet) => {
     const resume = () => { audioContext.resume; };
 
     const startStopNote = function (object, octave, tone, doStart, volumeDynamics) {
-        for (let preset of definitionSet.options.presets)
+        for (let preset of presets)
             player.adjustPreset(audioContext, preset.preset);
         if (object.audioGraph && !doStart) {
             object.audioGraph.cancel();
@@ -31,11 +31,20 @@ const soundActionSet = (definitionSet, soundControlSet) => {
                     audioContext, audioContext.destination,
                     soundControlSet.preset,
                     audioContext.currentTime,
-                    (definitionSet.options.defaultOctave + octave) * 12 + tone + soundControlSet.transposition,
+                    (defaultOctave + octave) * 12 + tone + soundControlSet.transposition,
                     false,
                     soundControlSet.volume * volumeDynamics);
-    } //startStopNote
+    }; //startStopNote
 
-    return { resume: resume, startStopNote: startStopNote };
+    const chordSoundAction = (chord, doStart, volumeDynamics) => {
+        for (let chordElement of chord) {
+            const object = chordElement.object;
+            const octave = chordElement.octave;
+            const tone = chordElement.tone;
+            startStopNote(object, octave, tone, doStart, volumeDynamics);
+        } //loop
+    }; //chordSoundAction
+
+    return { resume: resume, startStopNote: startStopNote, chordSoundAction: chordSoundAction };
 
 }; //soundActionSet
