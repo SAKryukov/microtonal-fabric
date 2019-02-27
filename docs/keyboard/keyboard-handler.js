@@ -13,7 +13,6 @@
 const keyboardHandling = (definitionSet, keyboardStructure, chordLayoutFinder, soundActions) => {
 
     const soundAction = soundActions.startStopNote; // soundAction: function(object, octave, tone, doStart)
-    const chordSoundAction = soundActions.startStopChord; // chordSoundAction: function(chord, doStart), where chord is and array of: {object, octave: element.octave, tone: element.tone}
 
     const rows = [];
     let chord;

@@ -36,15 +36,6 @@ const soundActionSet = (definitionSet, soundControlSet) => {
                     soundControlSet.volume * volumeDynamics);
     } //startStopNote
 
-    const startStopChord = (chord, doStart, volumeDynamics) => {
-        for (let chordElement of chord) {
-            const object = chordElement.object;
-            const octave = chordElement.octave;
-            const tone = chordElement.tone;
-            startStopNote(object, octave, tone, doStart, volumeDynamics);
-        } //loop
-    }; //startStopChord
-
-    return { resume: resume, startStopNote: startStopNote, startStopChord: startStopChord };
+    return { resume: resume, startStopNote: startStopNote };
 
 }; //soundActionSet

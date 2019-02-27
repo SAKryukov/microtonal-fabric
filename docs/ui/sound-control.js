@@ -27,33 +27,33 @@ const setSoundControl = (definitionSet) => {
     definitionSet.elements.controls.instrument.onchange = function(event) {
         soundControlSet.preset = definitionSet.options.presets[event.target.selectedIndex].preset;
     }; //definitionSet.elements.controls.instrument.onclick
-    definitionSet.elements.controls.instrument.selectedIndex = definitionSet.defaultPreset;
+    definitionSet.elements.controls.instrument.selectedIndex = definitionSet.options.defaultPreset;
 
-    definitionSet.elements.controls.volume.min = definitionSet.minVolume;
-    definitionSet.elements.controls.volume.max = definitionSet.maxVolume;
-    definitionSet.elements.controls.volume.step = definitionSet.volumeStep;
+    definitionSet.elements.controls.volume.min = definitionSet.options.minVolume;
+    definitionSet.elements.controls.volume.max = definitionSet.options.maxVolume;
+    definitionSet.elements.controls.volume.step = definitionSet.options.volumeStep;
     definitionSet.elements.controls.volume.oninput = function(event) {
         soundControlSet.volume = parseFloat(event.target.value);
         definitionSet.elements.controls.volumeIndicator.innerHTML = event.target.value;
     }; //definitionSet.elements.controls.volume.oninput
 
-    definitionSet.elements.controls.transposition.min = definitionSet.minTransposition;
-    definitionSet.elements.controls.transposition.max = definitionSet.maxTransposition;
-    definitionSet.elements.controls.transposition.step = definitionSet.transpositionStep;
+    definitionSet.elements.controls.transposition.min = definitionSet.options.minTransposition;
+    definitionSet.elements.controls.transposition.max = definitionSet.options.maxTransposition;
+    definitionSet.elements.controls.transposition.step = definitionSet.options.transpositionStep;
     definitionSet.elements.controls.transposition.oninput = function(event) {
         soundControlSet.transposition = parseFloat(event.target.value);
         definitionSet.elements.controls.transpositionIndicator.innerHTML = event.target.value;
     }; //definitionSet.elements.controls.transposition.oninput
 
     const reset = function() {
-        definitionSet.elements.controls.instrument.selectedIndex = definitionSet.defaultPreset;
-        definitionSet.elements.controls.volume.value = definitionSet.initialVolume;
+        definitionSet.elements.controls.instrument.selectedIndex = definitionSet.options.defaultPreset;
+        definitionSet.elements.controls.volume.value = definitionSet.options.initialVolume;
         definitionSet.elements.controls.transposition.value = 0;
         definitionSet.elements.controls.volume.oninput({target: definitionSet.elements.controls.volume});
         definitionSet.elements.controls.transposition.oninput({target: definitionSet.elements.controls.transposition});
         if (!definitionSet.elements.controls.touch) return;
         definitionSet.elements.controls.touch.checkboxUseTouchDynamics.checked = true;
-        definitionSet.elements.controls.touch.calibrationResult.value = definitionSet.initialTouchDynamicsDivider;
+        definitionSet.elements.controls.touch.calibrationResult.value = definitionSet.options.initialTouchDynamicsDivider;
     } //reset
     reset();
 
