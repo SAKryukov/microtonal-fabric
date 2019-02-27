@@ -8,13 +8,15 @@
 // https://github.com/SAKryukov/microtonal-chromatic-lattice-keyboard
 //
 // Original publication:
-// https://www.codeproject.com/Articles/1204180/Microtonal-Music-Study-Chromatic-Lattice-Keyboard"use strict";
+// https://www.codeproject.com/Articles/1204180/Microtonal-Music-Study-Chromatic-Lattice-Keyboard;
 
 //
 // This unit is based on:
 // https://github.com/surikov/webaudiofont
 // https://github.com/surikov/webaudiofontdata
 // 
+
+"use strict";
 
 function WebAudioFontPlayer() {
 

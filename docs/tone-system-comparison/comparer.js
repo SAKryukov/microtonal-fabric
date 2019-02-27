@@ -8,9 +8,11 @@
 // https://github.com/SAKryukov/microtonal-chromatic-lattice-keyboard
 //
 // Original publication:
-// https://www.codeproject.com/Articles/1204180/Microtonal-Music-Study-Chromatic-Lattice-Keyboard"use strict";
+// https://www.codeproject.com/Articles/1204180/Microtonal-Music-Study-Chromatic-Lattice-Keyboard
 
-const comparer = (function setupComparer() {
+"use strict";
+
+const setupComparer = (elements, definitionSet) => {
 
     const comparer = elements.controls.comparer;
     comparer.left = elements.controls.comparerLeft;
@@ -90,4 +92,4 @@ const comparer = (function setupComparer() {
 
     return comparer;
 
-})();
+}; // setupComparer

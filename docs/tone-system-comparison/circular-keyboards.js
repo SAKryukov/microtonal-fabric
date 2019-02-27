@@ -8,18 +8,23 @@
 // https://github.com/SAKryukov/microtonal-chromatic-lattice-keyboard
 //
 // Original publication:
-// https://www.codeproject.com/Articles/1204180/Microtonal-Music-Study-Chromatic-Lattice-Keyboard"use strict";
+// https://www.codeproject.com/Articles/1204180/Microtonal-Music-Study-Chromatic-Lattice-Keyboard
 
-const keyboardHandler = (function populate(comparer) {
+"use strict";
+
+(() => { //main
 
     (function setCopyright() {
         elements.copyright.spanYears.textContent = definitionSet.copyright.years;
         elements.copyright.spanVersion.textContent = definitionSet.copyright.version;
     })(); //setCopyright
     
+    const soundControlSet = setSoundControl(definitionSet);
+    const comparer = setupComparer(elements, definitionSet);
     const soundActionSetInstance = soundActionSet(definitionSet.presets, definitionSet.defaultOctave, soundControlSet); 
     const soundAction = soundActionSetInstance.startStopNote; // soundAction: (object, octave, tone, doStart) => undefined
     const chordSoundAction = soundActionSetInstance.chordSoundAction; // chordSoundAction: (chord, doStart, volumeDynamics) => undefined
+    const audioResume = soundActionSetInstance.resume;
 
     (function setupComparer() {
         comparer.chordSet = { count: 0 };
@@ -218,4 +223,4 @@ const keyboardHandler = (function populate(comparer) {
     for (let keyboard of elements.keyboardSet)
         populateKeyboard(keyboard.keyboard, keyboard.chordActivator, keyboard.tones);
 
-})(comparer);
+})(); //main
