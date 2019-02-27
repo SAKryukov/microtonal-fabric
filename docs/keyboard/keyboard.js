@@ -34,6 +34,8 @@ const keyboardStructure = (function() {
         }
         for (let index = 0; index < actualColumns; ++index) {
             const key = {};
+            key.numberInRow = index;
+            key.row = row;
             const keyRect = elementCreator("rect");
             key.rectangle = keyRect; 
             currentRow.push(key);

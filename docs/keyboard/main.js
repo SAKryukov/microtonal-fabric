@@ -85,7 +85,7 @@
             cell.tone = currentNoteNumber * 12 / system.names.length;
             const label = names[currentNoteNumber % names.length];
         currentRow = cell.row;
-            const rowLength = keyboardHandler.rows[currentRow].length;
+            const rowLength = keyboardStructure.rows[currentRow].length;
             if (cell.numberInRow == rowLength - 1) {
                 let increment = (rowLength % 2) > 0 ? bigRowIncrement : smallRowIncrement;
                 currentNoteNumber = currentFirst + increment;
@@ -190,7 +190,7 @@
         window.onkeyup = function (event) { keyHandler(event, false); }
         const placeKeys = () => {
             const location = (function test() {
-                const startingRow = Math.round((keyboardHandler.rows.length - hardwareKeyboard.rows.length) / 2)
+                const startingRow = Math.round((keyboardStructure.rows.length - hardwareKeyboard.rows.length) / 2)
                 const leftmost = -hardwareKeyboard.rows.length
                 let rightmost = 0;
                 for (let index = 0; index < hardwareKeyboard.rows.length; ++index) {
@@ -205,17 +205,17 @@
             const startingRow = location.startingRow;
             let rowIndex = startingRow;
             let xShift = 0;
-            const maxRowIndex = keyboardHandler.rows.length - 1;
+            const maxRowIndex = keyboardStructure.rows.length - 1;
             for (let row of hardwareKeyboard.rows) {
                 if (rowIndex > maxRowIndex) break;
                 let xIndex = location.startingRow + 1 + location.keyShift;
-                if (keyboardHandler.rows[rowIndex].length % 2 > 0)
+                if (keyboardStructure.rows[rowIndex].length % 2 > 0)
                     xShift++;
                 xIndex -= rowIndex - xShift;
-                const maxXIndex = keyboardHandler.rows[rowIndex].length - 1; 
+                const maxXIndex = keyboardStructure.rows[rowIndex].length - 1; 
                 for (let key of row) {
                     if (xIndex > maxXIndex) break;
-                    const cell = keyboardHandler.rows[rowIndex][xIndex];
+                    const cell = keyboardStructure.rows[rowIndex][xIndex];
                     if (!cell) break;
                     keyDictionary[key] = cell;
                     cell.currentColor = definitionSet.highlightHardwareKey;

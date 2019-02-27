@@ -69,8 +69,6 @@ const keyboardHandler = (function () {
             key.colorStack = [];
             key.textStack = [];
             key.rectangle.key = key;
-            key.numberInRow = keyIndex;
-            key.row = keyboardStructure.rows.length - rowIndex - 1;
             key.activate = function (key, chordMode, doActivate, volumeDynamics, chordNote, text, highlightChords) {
                 if (key.activated && doActivate) return;
                 if (!key.activated && !doActivate) return;
@@ -140,6 +138,6 @@ const keyboardHandler = (function () {
         );    
     }; //setupTouch
 
-    return { rows: rows, soundActionSetter: setSoundActions, chordSetter: assignChord, setupTouch: setupTouch };
+    return {soundActionSetter: setSoundActions, chordSetter: assignChord, setupTouch: setupTouch };
 
 })();
