@@ -397,6 +397,10 @@ Now the compatible browser is detected as the one which successfully loads all s
 * Markup of the hardware keyboard on a on-screen keyboard (shown in green) is automatically calculated based on on-screen keyboard.
 * Several minor improvements.
 
+#### 4.2.0
+* Major re-factoring performed to improve modularity and untangle dependencies between modules.
+* Unification of keyboard.html and tone-system-comparison.html applications, improved code, reduced unwanted dependencies between applications.
+
 ## Acknowledgments
 
 The application uses 5 JavaScript audio font files developed by [Srgy Surkv (Surikov)](https://github.com/surikov) and offered in his [webaudiofontdata](https://github.com/surikov/webaudiofontdata) project. The core functionality of the player is also based on the project [webaudiofont](https://github.com/surikov/webaudiofont) of the same author, but is heavily modified and upgraded with different feature, as in its current form the code is not suitable for the application. The quality of the audio fonts is also not fully satisfying, so the fonts need replacement or improvements. 
