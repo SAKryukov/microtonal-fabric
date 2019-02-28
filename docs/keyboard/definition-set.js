@@ -156,14 +156,14 @@ const settings = () => {
         },
         label: { fontSize: 0.28, paddingLeft: 0.25, paddingTop: 0.1 }, // relative to key size
         audibleMiddle: { note: "C", midiNote: 60, frequency: 261.625 },
-        keyStroke: "#b9c0c0", //"#b9bdc0": navy paint, "Haze gray and underway"
+        keyStroke: "#a1b0c7", // navy paint, "Haze gray and underway"
         highlightSound: "#ffd0a0",
         highlightChordNote: "yellow",
         highlightDefault: "white",
         highlightHardwareKey: "lightGreen",
         highlightChord: "yellow",
         labelFontFamily: "sans-serif",
-        blockerFill: "#b9c0c0" //"#b9bdc0": navy paint, "Haze gray and underway" 
+        blockerFill: "#a1b0c7" // navy paint, "Haze gray and underway" 
     }; //options
     
     ( () => {
