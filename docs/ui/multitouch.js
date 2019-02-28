@@ -53,6 +53,7 @@ function setMultiTouch(
     }; //addRemoveElement
 
     assignTouchStart(container, (ev) => {
+        ev.preventDefault();
         for (let touch of ev.touches) {
             const element = document.elementFromPoint(touch.clientX, touch.clientY);
             addRemoveElement(touch, element, true);    
