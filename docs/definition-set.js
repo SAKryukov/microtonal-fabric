@@ -15,7 +15,7 @@
 const commonSettings = () => {
 
     return {
-        copyright: { version: "4.1", years: "2017-2019" },
+        copyright: { version: "4.2", years: "2017-2019" },
         audibleMiddle: { note: "C", midiNote: 60, frequency: 261.625 },
         presets: [
             { preset: webAudioFont00, title: "Piano" },
