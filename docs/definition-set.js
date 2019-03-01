@@ -14,10 +14,10 @@
 
 const commonSettings = () => {
 
-    return {
-        copyright: { version: "4.2", years: "2017-2019" },
-        audibleMiddle: { note: "C", midiNote: 60, frequency: 261.625 },
-        presets: [ // cannot set readonly due to presets
+    return setReadonly({
+        copyright: setReadonly({ version: "4.2", years: "2017-2019" }),
+        audibleMiddle: setReadonly({ note: "C", midiNote: 60, frequency: 261.625 }),
+        presets: [ // presets are the only non-recursive things
             { preset: webAudioFont00, title: "Piano" },
             { preset: webAudioFont14, title: "Bells" },
             { preset: webAudioFont16, title: "Organ" },
@@ -38,6 +38,6 @@ const commonSettings = () => {
         initialVolume: 0.4,
         volumeStep: 0.01,
         initialTouchDynamicsDivider: 500
-    };
+    });
 
 }; //commonSettings
