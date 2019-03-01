@@ -170,7 +170,6 @@
     setTet(definitionSet.elements.radioTet.radio31et, definitionSet.notes.tet31, true);
     selectedTet = definitionSet.elements.radioTet.radio31et;
     definitionSet.elements.legend31et.style.visibility = "visible";
-    keyboardStructure.block();
 
     (function setHardwareKeyboardControl() {
         let useComputerKeyboard = true;

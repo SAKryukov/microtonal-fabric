@@ -89,7 +89,6 @@ const keyboard = (definitionSet) => {
         document.body.removeChild(definitionSet.elements.invitation);
         svg.removeChild(blocker);
     }; //keyboardStructure.unblock
-    keyboardStructure.block();
     svg.setAttributeNS(null, "viewBox", "0 0 " + width + " " + maxY);  //SA???
 
     const notesGroup = elementCreator("g");
