@@ -390,7 +390,7 @@ Now the compatible browser is detected as the one which successfully loads all s
 
 #### 4.0.0
 * Touch screen support.
-* Key press dynamic support.
+* Key press dynamic support. (SA???)
 
 #### 4.1.0
 * Keyboard layout is generated dynamically rather then imported from vector graphics image; it helped to make keyboard layout variable.
@@ -401,6 +401,7 @@ Now the compatible browser is detected as the one which successfully loads all s
 * Major re-factoring performed to improve modularity and untangle dependencies between modules.
 * Unification of keyboard.html and tone-system-comparison.html applications, improved code, reduced unwanted dependencies between applications.
 * Developed conversion of objects to read-only, recursive or not, applied to definition sets of applications.
+* Solved the problem of silent first note in file-based instruments, due to the use of futures and a need for defer. (SA???)
 * Fixed and improved the mechanism of detection of incompatible browsers, discriminated Microsoft Edge by its features.
 
 ## Acknowledgments
