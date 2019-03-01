@@ -253,7 +253,6 @@
         keyboardHandler.setupTouch();
         soundActions.resume();
         keyboardStructure.unblock();
-        soundActions.uglyWorkaround(); // work-around of the "empty buffer" problem at first start note; not fixed normally due to the plans to change the synthesizer
         started = true;
     } //unblock
     window.onclick = () => { unblock(); }

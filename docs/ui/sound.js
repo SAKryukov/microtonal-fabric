@@ -16,12 +16,14 @@ const soundActionSet = (presets, defaultOctave, soundControlSet) => {
 
     const audioContext = new (window.AudioContext || window.webkitAudioContext)();
     const player = new WebAudioFontPlayer();
+    ((initializePresets) => {
+        for (let preset of presets)
+            player.adjustPreset(audioContext, preset.preset);
+    })(); //initializePresets
 
     const resume = () => { audioContext.resume; };
 
     const startStopNote = function (object, octave, tone, doStart, volumeDynamics) {
-        for (let preset of presets)
-            player.adjustPreset(audioContext, preset.preset);
         if (object.audioGraph && !doStart) {
             object.audioGraph.cancel();
             object.audioGraph = null;
@@ -45,12 +47,6 @@ const soundActionSet = (presets, defaultOctave, soundControlSet) => {
         } //loop
     }; //chordSoundAction
 
-    const uglyWorkaround = () => { // word-around of the "empty buffer" problem at first start note; not fixed normally due to the plans to change the synthesizer
-        const bindObject = {};
-        startStopNote(bindObject, 1, 1, true, 0.0001);
-        startStopNote(bindObject, 1, 1, false, 0.0001);
-    }; //uglyWorkaround
-
-    return { resume: resume, startStopNote: startStopNote, chordSoundAction: chordSoundAction, uglyWorkaround: uglyWorkaround };
+    return { resume: resume, startStopNote: startStopNote, chordSoundAction: chordSoundAction };
 
 }; //soundActionSet

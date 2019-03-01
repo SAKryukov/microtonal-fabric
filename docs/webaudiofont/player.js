@@ -127,7 +127,7 @@ function WebAudioFontPlayer() {
         const view = new Uint8Array(ab);
         for (let index = 0; index < source.length; index++)
             view[index] = source.charCodeAt(index);
-        audioContext.decodeAudioData(ab).then(function (audioBuffer) {
+        audioContext.decodeAudioData(ab, function (audioBuffer) {
             zone.buffer = audioBuffer;
             if (zone.anchor) {
                 const float32Array = audioBuffer.getChannelData(0);
