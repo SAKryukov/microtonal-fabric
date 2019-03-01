@@ -45,6 +45,12 @@ const soundActionSet = (presets, defaultOctave, soundControlSet) => {
         } //loop
     }; //chordSoundAction
 
-    return { resume: resume, startStopNote: startStopNote, chordSoundAction: chordSoundAction };
+    const uglyWorkaround = () => { // word-around of the "empty buffer" problem at first start note; not fixed normally due to the plans to change the synthesizer
+        const bindObject = {};
+        startStopNote(bindObject, 1, 1, true, 0.0001);
+        startStopNote(bindObject, 1, 1, false, 0.0001);
+    }; //uglyWorkaround
+
+    return { resume: resume, startStopNote: startStopNote, chordSoundAction: chordSoundAction, uglyWorkaround: uglyWorkaround };
 
 }; //soundActionSet
