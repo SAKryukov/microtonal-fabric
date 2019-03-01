@@ -12,7 +12,7 @@
 
 "use strict";
 
-const elements = {
+const elements = setReadonly({
     copyright: {
         spanYears: document.getElementById("years"),
         spanVersion: document.getElementById("version")
@@ -87,13 +87,13 @@ const elements = {
         transpositionIndicator: document.getElementById("control-transposition-value"),
         reset: document.getElementById("control-reset")
     }
-}; //elements
+}, true); //elements
 
-const definitionSet = {
+const definitionSet = setReadonly({
     highlightSound: "#ffd0a0",
     highlightChordNote: "yellow",
     highlightDefault: "white",
     highlightChord: "yellow",
     highlightComparer: "lightGreen",
     defaultOctave: 4 // overrides common commonSettings defaultOctave of 0
-}; //definitionSet
+}); //definitionSet
