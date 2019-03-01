@@ -171,6 +171,6 @@ const settings = () => {
         options.keyboardSize.longRowWidth = 2 * options.keyboardSize.horizontalSizeFactor + 1;
     })();
 
-    return { elements: elements, notes: notes, options: options };
+    return setReadonly({ elements: elements, notes: notes, options: options });
 
 }; //settings
