@@ -386,7 +386,7 @@ The option added is important because some key combinations such as Ctrl+W (usua
 Now the compatible browser is detected as the one which successfully loads all scripts. No criteria related to user agent product names, manufacturers or versions are used.
 
 #### 2.1.0
-* Improved detection of incompatible browsers.
+* Developed detection of incompatible browsers.
 
 #### 4.0.0
 * Touch screen support.
@@ -400,6 +400,8 @@ Now the compatible browser is detected as the one which successfully loads all s
 #### 4.2.0
 * Major re-factoring performed to improve modularity and untangle dependencies between modules.
 * Unification of keyboard.html and tone-system-comparison.html applications, improved code, reduced unwanted dependencies between applications.
+* Developed conversion of objects to read-only, recursive or not, applied to definition sets of applications.
+* Fixed and improved the mechanism of detection of incompatible browsers, discriminated Microsoft Edge by its features.
 
 ## Acknowledgments
 
