@@ -19,29 +19,33 @@
   <title>Microtonal Chromatic Lattice</title>
   <meta charset="utf-8" />
   <style>
+    :root {
+        --thick-border: 2px;
+        --vspace: 0.4em;
+        --hspace: 0.2em;
+    }
     * { margin: 0; padding: 0; box-sizing: border-box; user-select: none; }
     main { padding-left: 1em; padding-right: 1em; }
-    input[type="checkbox"], input[type="radio"] { margin-right: 0.4em; }
+    input[type="checkbox"], input[type="radio"] { margin-right: var(--vspace); }
     button { padding-left: 1em; padding-right: 1em; }
     html, body, svg,
     text { font-family: "Ubuntu", "Verdana", "sans"; }
-    div.control { display: inline-block; margin-left: 0.2em; margin-right: 0.2em; background-color: }
-    div.controlTitleSeparator { margin: 0; margin-bottom: 8px; }
+    div.control { display: inline-block; margin-left: var(--hspace); margin-right: var(--hspace); background-color: }
     #radio-19-et-legend, #radio-29-et-legend, #radio-31-et-legend { visibility: hidden; margin-left: 3em; }
-    div.options { display: table; width: 100%; margin:0; margin-top:0.4em; margin-bottom:0.4em; }
+    div.options { display: table; width: 100%; margin:0; margin-top: var(--vspace); margin-bottom: var(--vspace); }
     div.optionGroup { display: table-row; }
     div.option { display: table-cell; padding-left: 1em; }
     div.option:nth-child(1) { padding:0; width: 1px;  white-space: nowrap; }
     div.option:last-child { text-align: right; white-space: nowrap; }
     div.chordSet { display: none; }
     th, td { border: thin solid black; padding-left: 1em; padding-right: 1em; background-color: white; }
-    th { border-bottom: solid black 2px; }
+    th { border-bottom: solid black var(--thick-border); }
     th { background-color: lightGray; font-weight: normal; font-size: 100%; }
     th > button { margin-left: 1em; float: right; }
-    table { border: solid black 2px; border-collapse: collapse; }
+    table { border: solid black var(--thick-border); border-collapse: collapse; }
     div.touchCalibration { background-color: lightYellow; width: 5em; height: 5em; border: thin solid black; display: inline-block; }
     input.touchCalibration { display: inline-block; vertical-align: top; }
-    .touchCalibrationPad { padding-top: 0.4em; }
+    .touchCalibrationPad { padding-top: var(--vspace); }
     #button-touch-calibration-done { margin-top: 1em; }
     svg { margin: 0; }
     #invitation { position: absolute; top: 8em; text-align: center; width: 100%; }
