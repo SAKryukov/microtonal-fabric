@@ -54,7 +54,7 @@ const setSoundControl = (elements, commonSettings) => {
         elements.controls.volume.oninput({target: elements.controls.volume});
         elements.controls.transposition.oninput({target: elements.controls.transposition});
         if (!elements.controls.touch) return;
-        elements.controls.touch.checkboxUseTouchDynamics.checked = true;
+        elements.controls.touch.checkboxUseTouchDynamics.checked = false;
         elements.controls.touch.calibrationResult.value = commonSettings.initialTouchDynamicsDivider;
     } //reset
     reset();
