@@ -18,9 +18,11 @@ document.body.onload = function () {
     const boolUseMouse = document.getElementById("bool-use-mouse");
     boolUseMouse.onclick = (ev) => { useMouse = ev.target.checked; }; 
 
+    let timer;
     const output = document.querySelector("textarea");
     const turn = (target, touch, on) => {
         if (on) {
+            timer = performance.now();
             output.textContent = "";
             target.style.backgroundColor = "red";
             if (touch)
@@ -34,7 +36,8 @@ document.body.onload = function () {
         if (!touch) return;
         const value = Math.pow(touch.radiusX * touch.radiusY, 2).toPrecision(3);
         target.textContent = target.dataset.index + ": " + value;
-        output.textContent += "Volume change: " + value + "\n";
+        //output.textContent += "Volume change: " + value + "\n";
+        output.textContent += "Time: " + (performance.now() - timer) + " ms\n";
         output.scrollTop = output.scrollHeight;
     }; //handleVolume
 
