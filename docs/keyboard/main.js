@@ -198,8 +198,8 @@
             event.preventDefault();
             return false;
         }; //keyHandler
-        window.onkeydown = function (event) { keyHandler(event, true); }
-        window.onkeyup = function (event) { keyHandler(event, false); }
+        window.onkeydown = function (event) { keyHandler(event, true); };
+        window.onkeyup = function (event) { keyHandler(event, false); };
         const placeKeys = () => {
             const location = (function test() {
                 const startingRow = Math.round((keyboardStructure.rows.length - hardwareKeyboard.rows.length) / 2)
@@ -256,6 +256,7 @@
     } //unblock
     window.onclick = () => { unblock(); }
     window.onmouseup = () => { unblock(); }
-    window.onkeydown = (keyEvent) => { unblock(keyEvent); }
+    const previousOnKeyDown = window.onkeydown;
+    window.onkeydown = (keyEvent) => { previousOnKeyDown(keyEvent); unblock(keyEvent); }
 
 })(); //main
