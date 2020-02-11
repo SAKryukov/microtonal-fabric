@@ -5,9 +5,9 @@
             "type": "chrome",
             "request": "launch",
             "name": "Launch Chrome against localhost",
-            "file": "${workspaceFolder}/index.html"
+            //"file": "${workspaceFolder}/index.html"
             //"file": "${workspaceFolder}/tone-system-comparison/tone-system-comparison.html"
-            //"file": "${workspaceFolder}/keyboard/keyboard.html"
+            "file": "${workspaceFolder}/keyboard/keyboard.html"
         }
     ]
 }

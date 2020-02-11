@@ -186,7 +186,7 @@
             useComputerKeyboard = event.target.checked;
             markComputerKeyboard(useComputerKeyboard);
         }; //definitionSet.elements.showOptions.optionUseComputerKeyboard.onclick
-        const keyHandler = function (event, doActivate) {
+        const keyHandler = (event, doActivate) => {
             if (doActivate && !useComputerKeyboard) return true;
             if (event.altKey) return true;
             if (event.metaKey) return true;
@@ -198,8 +198,8 @@
             event.preventDefault();
             return false;
         }; //keyHandler
-        window.onkeydown = function (event) { keyHandler(event, true); };
-        window.onkeyup = function (event) { keyHandler(event, false); };
+        window.onkeydown = event => keyHandler(event, true);
+        window.onkeyup = event => keyHandler(event, false);
         const placeKeys = () => {
             const location = (function test() {
                 const startingRow = Math.round((keyboardStructure.rows.length - hardwareKeyboard.rows.length) / 2)
@@ -245,7 +245,8 @@
     })(); //setHardwareKeyboardControl
 
     let started = false;
-    const unblock = (keyEvent) => {
+    const previousOnKeyDown = window.onkeydown;
+    const unblock = keyEvent => {
         if (started) return;
         if (keyEvent && (keyEvent.key.includes("Shift") || keyEvent.key.includes("Alt") || keyEvent.key.includes("Meta") || keyEvent.key.includes("Control")))
             return;
@@ -253,10 +254,11 @@
         soundActions.resume();
         keyboardStructure.unblock();
         started = true;
+        keyEvent.preventDefault();
+        window.onkeydown = previousOnKeyDown;    
     } //unblock
-    window.onclick = () => { unblock(); }
-    window.onmouseup = () => { unblock(); }
-    const previousOnKeyDown = window.onkeydown;
-    window.onkeydown = (keyEvent) => { previousOnKeyDown(keyEvent); unblock(keyEvent); }
+    window.onclick = () => unblock();
+    window.onmouseup = () => unblock();
+    window.onkeydown = keyEvent => unblock(keyEvent);
 
 })(); //main
