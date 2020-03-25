@@ -248,8 +248,9 @@
     const previousOnKeyDown = window.onkeydown;
     const unblock = keyEvent => {
         if (started) return;
-        if (keyEvent && (keyEvent.key.includes("Shift") || keyEvent.key.includes("Alt") || keyEvent.key.includes("Meta") || keyEvent.key.includes("Control")))
-            return;
+        if (keyEvent.constructor == KeyboardEvent)
+            if (keyEvent && (keyEvent.key.includes("Shift") || keyEvent.key.includes("Alt") || keyEvent.key.includes("Meta") || keyEvent.key.includes("Control")))
+                return;
         keyboardHandler.setupTouch();
         soundActions.resume();
         keyboardStructure.unblock();
@@ -257,8 +258,8 @@
         keyEvent.preventDefault();
         window.onkeydown = previousOnKeyDown;    
     } //unblock
-    window.onclick = () => unblock();
-    window.onmouseup = () => unblock();
+    window.onclick = keyEvent => unblock(keyEvent);
+    window.onmouseup = keyEvent => unblock(keyEvent);
     window.onkeydown = keyEvent => unblock(keyEvent);
 
 })(); //main
