@@ -52,15 +52,15 @@ function setMultiTouch(
             delete elementDictionary[touch.identifier];
     }; //addRemoveElement
 
-    assignTouchStart(container, (ev) => {
+    assignTouchStart(container, ev => {
         ev.preventDefault();
-        for (let touch of ev.touches) {
-            const element = document.elementFromPoint(touch.clientX, touch.clientY);
-            addRemoveElement(touch, element, true);    
-        } //loop
+        if (ev.changedTouches.length < 1) return;
+        const touch = ev.changedTouches[ev.changedTouches.length - 1];
+        const element = document.elementFromPoint(touch.clientX, touch.clientY);
+        addRemoveElement(touch, element, true);    
     }); //assignTouchStart
     
-    assignTouchMove(container, (ev) => {
+    assignTouchMove(container, ev => {
         ev.preventDefault();
         for (let touch of ev.touches) {
             let element = document.elementFromPoint(touch.clientX, touch.clientY);
@@ -83,7 +83,7 @@ function setMultiTouch(
         } //loop
     }); //assignTouchMove
     
-    assignTouchEnd(container, (ev) => {
+    assignTouchEnd(container, ev => {
         ev.preventDefault();
         for (let touch of ev.changedTouches) {
             const element = document.elementFromPoint(touch.clientX, touch.clientY);
