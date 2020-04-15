@@ -67,18 +67,16 @@ class FourierTable extends VariableTable {
         return oscillator;
     } //get values
 
-    set data(oscillatorData) {
-        if (!oscillatorData) return;
-        super.setData(oscillator => {
-            this.#derivedImplementation.typeSelector.value = oscillator.type;
-            const values = oscillator.Fourier; 
-            for (let index = 0; index < values.length; ++index) {
-                if (index > this.metrics.rowLast)
-                    this.addRow();
-                this.getMapValue(this.getCell(index, 1)).value = values[index].amplitude;
-                this.getMapValue(this.getCell(index, 2)).value = values[index].phase;
-            } //loop    
-        }, oscillatorData);
+    set data(oscillator) {
+        if (!oscillator) return;
+        this.#derivedImplementation.typeSelector.value = oscillator.type;
+        const values = oscillator.Fourier;
+        for (let index = 0; index < values.length; ++index) {
+            if (index > this.metrics.rowLast)
+                this.addRow();
+            this.getMapValue(this.getCell(index, 1)).value = values[index].amplitude;
+            this.getMapValue(this.getCell(index, 2)).value = values[index].phase;
+        } //loop    
     } //set data
 
 } //class FourierTable

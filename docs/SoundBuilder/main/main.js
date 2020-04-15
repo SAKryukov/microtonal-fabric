@@ -102,12 +102,19 @@ window.onload = () => {
                     setExceptionMessage(`Error loading file: ${ex.message}`);
                     return;
                 } //exception
-                singleton.modelToView();
-                setTimeout(() => apply(), 0);
+                (() => { //resetTables:
+                    for (let tableIndex in controls.tables)
+                    if (controls.tables[tableIndex].reset)
+                        controls.tables[tableIndex].reset();
+                })(); 
+                setTimeout( () => {
+                    singleton.modelToView();
+                    setTimeout(() => apply(), 0);    
+                });
             }; //reader.onload
             reader.readAsText(file);
             singleton.lastFileName = file.name; 
-        };
+        }; //controls.fileIO.inputFile.onchange
         controls.fileIO.buttonLoad.onclick = event => {
             clearException();
             controls.fileIO.inputFile.value = null;

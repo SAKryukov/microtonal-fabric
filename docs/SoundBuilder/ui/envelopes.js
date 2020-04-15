@@ -85,22 +85,20 @@ class EnvelopeTable extends VariableTable {
 
     set data(dataset) {
         if (!dataset) return;
-        super.setData( dataset => {
-            const goodElement = element => element != undefined && element != null;
-            for (let index = 0; index < dataset.stages.length; ++index) {
-                if (index > this.metrics.rowLast)
-                    this.addRow();
-                const dataElement = dataset.stages[index];
-                if (!dataElement) return;
-                if (goodElement(dataElement.duration))
-                    this.getMapValue(this.getCell(index, 0)).value = dataElement.duration;
-                if (goodElement(dataElement.gain))
-                    this.getMapValue(this.getCell(index, 2)).value = dataElement.gain;
-                if (goodElement(dataElement.functionIndex))
-                    this.getMapValue(this.getCell(index, 1)).selectedIndex = dataElement.functionIndex;
-            } //loop
-            this.#derivedImplementation.dampingSustainSlider.value = dataset.dampingSustain;    
-        }, dataset);
+        const goodElement = element => element != undefined && element != null;
+        for (let index = 0; index < dataset.stages.length; ++index) {
+            if (index > this.metrics.rowLast)
+                this.addRow();
+            const dataElement = dataset.stages[index];
+            if (!dataElement) return;
+            if (goodElement(dataElement.duration))
+                this.getMapValue(this.getCell(index, 0)).value = dataElement.duration;
+            if (goodElement(dataElement.gain))
+                this.getMapValue(this.getCell(index, 2)).value = dataElement.gain;
+            if (goodElement(dataElement.functionIndex))
+                this.getMapValue(this.getCell(index, 1)).selectedIndex = dataElement.functionIndex;
+        } //loop
+        this.#derivedImplementation.dampingSustainSlider.value = dataset.dampingSustain;
     } //set data
 
 }; //class DemoTable
