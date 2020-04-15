@@ -39,22 +39,22 @@ class Synthesizer {
         } //this.#implementation.setWaveform
     } //constructor
 
-    set IsFilterUsed(on) {
+    set isFilterUsed(on) {
         const node = on ? this.#implementation.filter : this.#implementation.masterVolume;
         for (let tone of this.#implementation.tones)
             tone.disconnect().connect(node);
-    } //set IsFilterUsed
+    } //set isFilterUsed
 
-    set IsFrequencyModulationUsed(on) {
-        //SA???
-    } //set IsFrequencyModulationUsed
+    // set IsFrequencyModulationUsed(on) {
+    //     //SA???
+    // } //set IsFrequencyModulationUsed
 
-    Play(on, index) { this.#implementation.tones[index].Play(on); }
+    play(on, index) { this.#implementation.tones[index].Play(on); }
 
-    set Sustain(value) {
+    set sustain(value) {
         for (let tone of this.#implementation.tones)
             tone.Sustain = value;
-    }  //set Sustain
+    }  //set sustain
 
     set data(value) {
         this.#implementation.setWaveform(value.oscillator);
@@ -62,6 +62,6 @@ class Synthesizer {
             tone.gainEnvelope = value.gainEnvelope;
     } //set data
 
-    set Volume(value) { this.#implementation.masterVolume.gain.value = value; }
+    set volume(value) { this.#implementation.masterVolume.gain.value = value; }
 
 } //class Synthesizer

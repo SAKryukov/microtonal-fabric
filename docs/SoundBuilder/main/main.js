@@ -18,12 +18,12 @@ window.onload = () => {
     controls.keyboard.isVisible = false;
     const synthesizer = new Synthesizer(controls.keyboard.first, controls.keyboard.last, controls.keyboard.firstFrequency, controls.keyboard.tonalSystem);
     controls.keyboard.setAction((down, index) => {
-        synthesizer.Play(down, index);
+        synthesizer.play(down, index);
     }); //kbd.setAction
     
-    controls.usage.Filter.handler = value => synthesizer.IsFilterUsed = value;
-    controls.playControl.sustain.onchange = (self, value) => synthesizer.Sustain = value;
-    controls.playControl.volume.onchange = (self, value) => synthesizer.Volume = value;
+    controls.usage.Filter.handler = value => synthesizer.isFilterUsed = value;
+    controls.playControl.sustain.onchange = (self, value) => synthesizer.sustain = value;
+    controls.playControl.volume.onchange = (self, value) => synthesizer.volume = value;
             
     const singleton = {
         model: undefined,
