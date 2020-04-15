@@ -8,7 +8,7 @@ const DefinitionSet = {
     copyright: "Copyright &copy; 2018-2020 by S A Kryukov",
 
     EnvelopeElementType: new Enumeration(["exponential", "linear", "Heaviside"]),
-    OscillatorType: new Enumeration(["Fourier", "square", "sawtooth", "triangle"]),
+    OscillatorType: new Enumeration(["Fourier", "square", "sawtooth", "triangle"]), // "Fourier" should always come first, this is a default corresponding to Web Audio "custom" oscillator type
     FilterType: new Enumeration([
         { name: "lowpass", humanReadableName: "Low-pass" },
         { name: "highpass", humanReadableName: "High-pass" },

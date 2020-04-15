@@ -17,9 +17,10 @@ class Synthesizer {
         for (let index = first; index <= last; ++index)
             this.#implementation.tones[index] = new ToneGraph(audioContext, firstFrequency * Math.pow(2, index / tonalSystem))
                 .connect(this.#implementation.filter);
+        const oscillatorTypeFourier = DefinitionSet.OscillatorType.getValue(0).name; //default
         this.#implementation.setWaveform = (oscillator) => {
             let wave;
-            if (oscillator.type == "Fourier") { //SA???
+            if (!oscillator.type || oscillator.type == oscillatorTypeFourier) {
                 const harmonics = oscillator.Fourier;
                 const re = new Float32Array(harmonics.length + 1);
                 const im = new Float32Array(harmonics.length + 1);

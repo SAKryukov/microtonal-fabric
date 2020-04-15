@@ -17,6 +17,8 @@ window.onload = () => {
     
     controls.keyboard.isVisible = false;
     const synthesizer = new Synthesizer(controls.keyboard.first, controls.keyboard.last, controls.keyboard.firstFrequency, controls.keyboard.tonalSystem);
+    //SA??? new version:
+    const instrument = new Instrument(controls.keyboard.first, controls.keyboard.last, controls.keyboard.firstFrequency, controls.keyboard.tonalSystem);
     controls.keyboard.setAction((down, index) => {
         synthesizer.play(down, index);
     }); //kbd.setAction
@@ -83,6 +85,8 @@ window.onload = () => {
                 singleton.vewToModel();
             synthesizer.data = singleton.model;
             controls.fileIO.buttonApply.disabled = true;
+            //SA??? new version:
+            instrument.data = singleton.model;
         }; //appy
         apply(true);
         const onChangeHanler = () => { controls.fileIO.buttonApply.disabled = false; clearException(); };
