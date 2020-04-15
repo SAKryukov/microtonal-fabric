@@ -1,4 +1,4 @@
-﻿const kbd = ScrollableKeyboard.makeGrandPiano(document.querySelector("section.keyboard"));
+const kbd = ScrollableKeyboard.makeGrandPiano(document.querySelector("section.keyboard"));
 const first = kbd.first;
 const last = kbd.last;
 let balance = 0;

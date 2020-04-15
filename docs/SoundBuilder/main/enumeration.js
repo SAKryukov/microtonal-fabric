@@ -1,4 +1,4 @@
-﻿class Enumeration {
+class Enumeration {
 
     #implementation = {};
 
