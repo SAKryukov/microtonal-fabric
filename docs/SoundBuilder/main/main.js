@@ -77,13 +77,14 @@ window.onload = () => {
             controls.exception.textContent = msg; controls.exception.title = detail;
         }
         const clearException = () => setExceptionMessage(undefined);
-        const apply = () => {
+        const apply = (fromView) => {
             clearException();
-            singleton.vewToModel();
+            if (fromView)
+                singleton.vewToModel();
             synthesizer.data = singleton.model;
             controls.fileIO.buttonApply.disabled = true;
         }; //appy
-        apply();
+        apply(true);
         const onChangeHanler = () => { controls.fileIO.buttonApply.disabled = false; clearException(); };
         controls.fileIO.buttonApply.disabled = true;
         controls.fileIO.instrumentName.onkeydown = onChangeHanler;
@@ -109,7 +110,7 @@ window.onload = () => {
                 })(); 
                 setTimeout( () => {
                     singleton.modelToView();
-                    setTimeout(() => apply(), 0);    
+                    apply();    
                 });
             }; //reader.onload
             reader.readAsText(file);
@@ -120,11 +121,11 @@ window.onload = () => {
             controls.fileIO.inputFile.value = null;
             controls.fileIO.inputFile.click();
         }; //controls.fileIO.buttonLoad.onclick
-        controls.fileIO.buttonApply.onclick = event => apply();
+        controls.fileIO.buttonApply.onclick = event => apply(true);
         controls.fileIO.buttonStore.onclick = (ev) => {
             clearException();
             const link = document.createElement('a');
-            apply();
+            apply(true);
             link.href = `${DefinitionSet.FileStorage.linkHrefMime},${JSON.stringify(singleton.model, null, DefinitionSet.FileStorage.tabSizeJSON)}`;
             if (!singleton.lastFileName)
                 link.download = DefinitionSet.FileStorage.initialFileName;

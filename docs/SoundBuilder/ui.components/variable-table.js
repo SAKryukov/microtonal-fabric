@@ -108,6 +108,6 @@ class VariableTable {
         while (this.#implementation.tableBody.childElementCount > 3)
             this.#implementation.tableBody.removeChild(this.#implementation.tableBody.children[2]);
         this.#implementation.updateLastRow();
-    } //reset
+        } //reset
 
 } //class VariableTable
