@@ -1,0 +1,266 @@
+{
+    "header": {
+        "format": "Sound Builder",
+        "version": "0.1.0",
+        "formatVersion": "2.0.0",
+        "author": "",
+        "instrumentName": "Chior aahs"
+    },
+    "oscillator": {
+        "type": "triangle",
+        "Fourier": [
+            {
+                "harmonic": 1,
+                "amplitude": 1,
+                "phase": 15
+            },
+            {
+                "harmonic": 2,
+                "amplitude": 6,
+                "phase": 74
+            },
+            {
+                "harmonic": 3,
+                "amplitude": 36,
+                "phase": 56
+            },
+            {
+                "harmonic": 4,
+                "amplitude": 20,
+                "phase": -148
+            },
+            {
+                "harmonic": 5,
+                "amplitude": 7,
+                "phase": -176
+            },
+            {
+                "harmonic": 6,
+                "amplitude": 3,
+                "phase": 142
+            },
+            {
+                "harmonic": 7,
+                "amplitude": 3,
+                "phase": 74
+            },
+            {
+                "harmonic": 8,
+                "amplitude": 5,
+                "phase": 22
+            },
+            {
+                "harmonic": 9,
+                "amplitude": 7,
+                "phase": -21
+            },
+            {
+                "harmonic": 10,
+                "amplitude": 9,
+                "phase": -64
+            },
+            {
+                "harmonic": 11,
+                "amplitude": 11,
+                "phase": -113
+            },
+            {
+                "harmonic": 12,
+                "amplitude": 15,
+                "phase": -165
+            },
+            {
+                "harmonic": 13,
+                "amplitude": 23,
+                "phase": 145
+            },
+            {
+                "harmonic": 14,
+                "amplitude": 39,
+                "phase": 100
+            },
+            {
+                "harmonic": 15,
+                "amplitude": 100,
+                "phase": 61
+            },
+            {
+                "harmonic": 16,
+                "amplitude": 76,
+                "phase": -154
+            },
+            {
+                "harmonic": 17,
+                "amplitude": 8,
+                "phase": -171
+            },
+            {
+                "harmonic": 18,
+                "amplitude": 6,
+                "phase": -56
+            },
+            {
+                "harmonic": 19,
+                "amplitude": 11,
+                "phase": -76
+            },
+            {
+                "harmonic": 20,
+                "amplitude": 12,
+                "phase": -101
+            },
+            {
+                "harmonic": 21,
+                "amplitude": 10,
+                "phase": -125
+            },
+            {
+                "harmonic": 22,
+                "amplitude": 7,
+                "phase": -143
+            },
+            {
+                "harmonic": 23,
+                "amplitude": 4,
+                "phase": -142
+            },
+            {
+                "harmonic": 24,
+                "amplitude": 4,
+                "phase": -103
+            },
+            {
+                "harmonic": 25,
+                "amplitude": 6,
+                "phase": -94
+            },
+            {
+                "harmonic": 26,
+                "amplitude": 10,
+                "phase": -106
+            },
+            {
+                "harmonic": 27,
+                "amplitude": 19,
+                "phase": -123
+            },
+            {
+                "harmonic": 28,
+                "amplitude": 26,
+                "phase": 32
+            },
+            {
+                "harmonic": 29,
+                "amplitude": 1,
+                "phase": -136
+            }
+        ]
+    },
+    "gainEnvelope": {
+        "stages": [],
+        "dampingSustain": 0.02
+    },
+    "detuneEnvelope": {
+        "stages": [],
+        "dampingSustain": 0.02
+    },
+    "frequencyModulation": {
+        "absoluteFrequency": [
+            {
+                "frequency": 4.39,
+                "depth": 39.48,
+                "useEnvelope": false
+            }
+        ],
+        "relativeFrequency": [
+            {
+                "frequency": 17.1,
+                "depth": 50.69,
+                "useEnvelope": false
+            }
+        ],
+        "envelope": {
+            "stages": [],
+            "dampingSustain": 0.02
+        }
+    },
+    "amplitudeModulation": {
+        "absoluteFrequency": [
+            {
+                "frequency": 24.07,
+                "depth": 65.74,
+                "useEnvelope": false
+            }
+        ],
+        "relativeFrequency": [
+            {
+                "frequency": 34.28,
+                "depth": 87.94,
+                "useEnvelope": false
+            }
+        ],
+        "envelope": {
+            "stages": [],
+            "dampingSustain": 0.02
+        }
+    },
+    "filter": [
+        {
+            "present": true,
+            "index": 0,
+            "type": "lowpass",
+            "frequency": 350,
+            "Q": 1
+        },
+        {
+            "present": false,
+            "index": 1,
+            "type": "highpass",
+            "frequency": 350,
+            "Q": 1
+        },
+        {
+            "present": false,
+            "index": 2,
+            "type": "bandpass",
+            "frequency": 350,
+            "Q": 1
+        },
+        {
+            "present": false,
+            "index": 3,
+            "type": "lowshelf",
+            "frequency": 350,
+            "gain": 1
+        },
+        {
+            "present": false,
+            "index": 4,
+            "type": "highshelf",
+            "frequency": 350,
+            "gain": 1
+        },
+        {
+            "present": false,
+            "index": 5,
+            "type": "peaking",
+            "frequency": 350,
+            "Q": 1,
+            "gain": 1
+        },
+        {
+            "present": false,
+            "index": 6,
+            "type": "notch",
+            "frequency": 350,
+            "Q": 1
+        },
+        {
+            "present": false,
+            "index": 7,
+            "type": "allpass",
+            "frequency": 350,
+            "Q": 1
+        }
+    ]
+}

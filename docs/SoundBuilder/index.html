@@ -1,0 +1,209 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Sound Builder</title>
+    <meta charset="utf-8"/>
+    <script src="main/test-js-engine.js"></script>
+    <script src="main/enumeration.js"></script>
+    <script src="main/definition-set.js"></script>
+    <script src="ui.components/multitouch.js"></script>
+    <script src="ui.components/keyboard.js"></script>
+    <script src="ui.components/button.js"></script>
+    <script src="ui.components/variable-table.js"></script>
+    <script src="ui.components/slider.js"></script>
+    <script src="ui/Fourier.js"></script>
+    <script src="ui/modulation.js"></script>
+    <script src="ui/envelopes.js"></script>
+    <script src="ui/filter.js"></script>
+    <script src="ui/controls.js"></script>
+    <script src="sound/chain-node.js"></script>
+    <script src="sound/envelope.js"></script>
+    <script src="sound/modulator.js"></script>
+    <script src="sound/tone-graph.js"></script>
+    <script src="sound/synthesizer.js"></script>
+    <script src="main/main.js"></script>
+    <style>
+        :root {
+            --vertical-gap: 0.2em;
+            --horizontal-gap: 0.6em;
+            --big-vertical-gap: 0.4em;
+            --big-horizontal-gap: 1.6em;
+            --small-horizontal-gap: 0.4em;
+            --frame: 0.2em 0.6em 0.2em 0.6em;
+            --light-title-background: lightsteelblue;
+            --title-background: steelblue;
+        }
+        * { margin: 0; padding: 0; font-family: sans-serif; box-sizing: content-box; touch-action: none; user-select: none; }
+        h1 { color: red; margin: var(--frame); font-size: 110%; user-select: all; } /* critical error: bad JavaScript engine */
+        small { font-size: 60%; }
+        html, body, main { height: 100%; max-height: 100%; }
+        body { display: flex; overflow: hidden; flex-direction: column; }
+        header, main, footer { padding: var(--frame); }
+        main { background-color: azure; }
+        header { background-color: moccasin; }
+        footer { background-color: moccasin; }
+        footer, main { border-top: thin solid darkgray; }
+        footer { display: flex; flex-direction: row; justify-content:space-between; align-items: center; }
+        footer div { margin-left: auto; }
+        footer button:nth-child(2) {  margin-left: var(--big-horizontal-gap); margin-right: var(--big-horizontal-gap); }
+        footer p:nth-child(2) { color: red; margin-left: var(--big-horizontal-gap); margin-right: var(--big-horizontal-gap);  overflow-x:auto; white-space: nowrap; user-select: all; }
+        footer, footer * { white-space: nowrap; }
+        main { overflow-y: auto; }
+        label { display: flex; align-items: center; }
+        #sound-control {  display: grid; grid-template-columns: min-content 4fr min-content 1fr; margin-top: var(--vertical-gap); }
+        #sound-control label { margin-right: var(--horizontal-gap); }
+        #sound-control label:nth-child(3) { margin-left: 3em; }
+        header > aside { display: grid; padding-bottom: var(--vertical-gap); grid-template-columns: repeat(8, min-content) 1fr; grid-gap: 0.3em; align-items: center; }
+        header > aside * { white-space: nowrap; }
+        header > aside p { text-align: right; }
+        header > aside label:nth-child(2) { margin-left: 1em; }
+        summary { padding-left: var(--small-horizontal-gap); }
+        details[open] { border-left: var(--small-horizontal-gap) solid var(--title-background); padding-left: var(--small-horizontal-gap); }
+        details[open] summary { background-color: var(--title-background); color: white; }
+        details, table { margin-top: var(--big-vertical-gap); }
+        table { width: 100%; border: solid thick black; border-collapse: collapse ; }
+        td, th, tr { border: solid thin black; font-weight: normal; white-space: nowrap; }
+        td, th { padding-top: var(--vertical-gap); padding-bottom: var(--vertical-gap); }
+        td { background-color: white; }
+        tr:first-child { border-width: 2px; }
+        th:not(:last-child), td:not(:last-child), #aspect-filter td:last-child { padding-left: var(--small-horizontal-gap); padding-right: var(--small-horizontal-gap); }
+        tr:last-child { border-top-width: 2px; }
+        tr:last-child td { border: none; }
+        th { background-color: var(--light-title-background); }
+        th button { margin-left: var(--small-horizontal-gap); }
+        #aspect-oscillator table tr:not(:last-child) td:first-child { text-align: right; }
+        #aspect-oscillator label select { margin-left: var(--horizontal-gap); }
+        #aspect-oscillator p { margin-top: var(--big-vertical-gap); }
+        #aspect-filter tr, #aspect-filter td { border: solid thin black; }
+        #aspect-filter td:first-child { width: 0.1em; }
+        #aspect-filter table label { display: flex; align-items: center;  }
+        #aspect-filter table label input { margin-right: var(--horizontal-gap); }
+        details section { display: grid; grid-template-columns: min-content 1fr; grid-gap:var(--small-horizontal-gap); align-items: center; white-space: nowrap; margin-top:var(--big-vertical-gap); }
+        tr td:nth-child(3) { text-align: center; }
+        input[type=file] { display: none; }
+        button {
+            outline: none;
+            border: solid 2px;
+            border-radius: 0.6em;
+            padding: var(--frame);
+        }
+        button[disabled] { border-color: silver; color: silver; border-style: double; }
+        button:active { background-color: var(--light-title-background); filter: brightness(116%); }
+        button:focus {
+            border-style: double dotted double dotted;
+        }
+        button.st {
+            background: lightgray;
+            padding-bottom: 0.3em;
+            border-color: slategray;
+        }
+        button.st.down {
+            background: darkslategray;
+            color: white;
+            border-color: lightgreen;
+        }
+        button span { opacity: 0.2; }
+        button.st.down span { color: lightgreen; font-weight: normal; opacity: 1; };
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <aside>
+            <button class="st down"><span>&#x2B24;</span> Fit <big>&downarrow;</big></button>
+            <label>Play with:</label>
+            <button class="st down"><span>&#x2B24;</span> FM</button>
+            <button class="st down"><span>&#x2B24;</span> AM</button>
+            <button class="st down"><span>&#x2B24;</span> Gain Envelope</button>
+            <button class="st down"><span>&#x2B24;</span> FM Envelope</button>
+            <button class="st down"><span>&#x2B24;</span> AM Envelope</button>
+            <button class="st down"><span>&#x2B24;</span> Filter</button>
+            <p>Instrument: <input type="text"/></p>
+        </aside>
+        <section class="keyboard"></section>
+        <section id="sound-control">
+            <label>Volume:</label><div></div><label>Sustain:</label><div></div>
+        </section>
+    </header>
+
+    <main>
+        <details id="aspect-oscillator"><summary>Oscillator</summary>
+            <p>
+                <label>Type:
+                <select>
+                    <option selected="true">Fourier</option>
+                    <option>square</option>
+                    <option>sawtooth</option>
+                    <option>triangle</option>
+                </select>
+            </label> 
+            </p>
+            <table>
+                <tr data-button-name="Reset"><th>Harmonic</th><th>Amplitude*</th><th>Phase*</th></tr>
+            </table>
+        </details>
+        <details id="aspect-fm-absolute"><summary>Frequency Modulation, Absolute Frequency</summary>
+            <section><label>Master Depth:</label><div></div></section>
+            <table>
+                <tr data-button-name="Reset"><th>Frequency*</th><th>Depth*</th><th>Envelope</th></tr>
+            </table>
+        </details>
+        <details id="aspect-fm-relative"><summary>Frequency Modulation, Relative Frequency</summary>
+            <section><label>Master Depth:</label><div></div></section>
+            <table>
+                <tr data-button-name="Reset"><th>Relative Frequency*</th><th>Depth*</th><th>Envelope</th></tr>
+            </table>
+        </details>
+        <details id="aspect-am-absolute"><summary>Amplitude Modulation, Absolute Frequency</summary>
+            <section><label>Master Depth:</label><div></div></section>
+            <table>
+                <tr data-button-name="Reset"><th>Frequency*</th><th>Depth*</th><th>Envelope</th></tr>
+            </table>
+        </details>
+        <details id="aspect-am-relative"><summary>Amplitude Modulation, Relative Frequency</summary>
+            <section><label>Master Depth:</label><div></div></section>
+            <table>
+                <tr data-button-name="Reset"><th>Relative Frequency*</th><th>Depth*</th><th>Envelope</th></tr>
+            </table>
+        </details>
+        <details id="aspect-gain-envelope"><summary>Gain Envelope</summary>
+            <table>
+                <tr data-button-name="Reset"><th>Duration*</th><th>Function</th><th>Gain*</th></tr>
+            </table>
+            <section><label>Damping Sustain:</label><div></div></section>
+        </details>
+        <details id="aspect-detune-envelope"><summary>Detune Envelope</summary>
+            <table>
+                <tr data-button-name="Reset"><th>Duration*</th><th>Function</th><th>Detune*</th></tr>
+            </table>
+            <section><label>Damping Sustain:</label><div></div></section>
+        </details>
+        <details id="aspect-fm-envelope"><summary>Frequency Modulation Envelope</summary>
+            <table>
+                <tr data-button-name="Reset"><th>Duration*</th><th>Function</th><th>Depth*</th></tr>
+            </table>
+            <section><label>Damping Sustain:</label><div></div></section>
+        </details>
+        <details id="aspect-am-envelope"><summary>Amplitude Modulation Envelope</summary>
+            <table>
+                <tr data-button-name="Reset"><th>Duration*</th><th>Function</th><th>Depth*</th></tr>
+            </table>
+            <section><label>Damping Sustain:</label><div></div></section>
+        </details>
+        <details id="aspect-filter"><summary>Filter</summary>
+            <table>
+                <tr data-button-name="Reset"><th>Type</th><th>Frequency</th><th>Log₁₀(Q)</th><th>Gain</th></tr>
+            </table>
+        </details>
+    </main>
+
+    <footer>
+        <p><small></small></p>
+        <p></p>
+        <div><button accesskey="L"><u>L</u>oad Instrument</button><button accesskey="A" disabled="true"><u>A</u>pply</button><button accesskey="S"><u>S</u>tore Instrument</button></div></p>
+        <input type="file"/>
+    </footer>
+
+</body>
+</html>

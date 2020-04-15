@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <style>
+        * { font-family: sans-serif; }
+        details > section {
+            display: grid;
+            align-items:stretch;
+            grid-template-columns: min-content 2fr min-content 1fr;
+        }
+        article { display: grid; align-items: center; grid-template-columns: 1fr 2fr; grid-gap: 3em; }
+        detail section label { display: flex; align-items: center; }
+        details > section *, details > section label, details > section label * { white-space: nowrap; }
+    </style>
+</head>
+
+<body>
+    <article>
+    <section id="test">
+    </section>
+    <section id="test2">
+    </section>
+    <p>sss</p><p>ddd</p>
+    </article>
+
+    <article>
+        <script src="../ui.components/slider.js"></script>
+        <script src="slider-test.js"></script>    
+    </article>
+
+</html>

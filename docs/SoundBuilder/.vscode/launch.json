@@ -1,0 +1,11 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "edge",
+            "request": "launch",
+            "name": "Edge, index.htm",
+            "file":"${workspaceFolder}/index.html"
+        }
+    ]
+}

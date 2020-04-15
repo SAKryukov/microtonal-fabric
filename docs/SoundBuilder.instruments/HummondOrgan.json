@@ -1,0 +1,152 @@
+{
+    "header": {
+        "format": "Sound Builder",
+        "version": "0.1.0",
+        "formatVersion": "2.0.0",
+        "author": "",
+        "instrumentName": ""
+    },
+    "oscillator": {
+        "type": "Fourier",
+        "Fourier": [
+            {
+                "harmonic": 1,
+                "amplitude": 19,
+                "phase": -40
+            },
+            {
+                "harmonic": 2,
+                "amplitude": 53,
+                "phase": 18
+            },
+            {
+                "harmonic": 3,
+                "amplitude": 26,
+                "phase": 69
+            },
+            {
+                "harmonic": 4,
+                "amplitude": 27,
+                "phase": 87
+            },
+            {
+                "harmonic": 5,
+                "amplitude": 0,
+                "phase": 0
+            },
+            {
+                "harmonic": 6,
+                "amplitude": 35,
+                "phase": -29
+            },
+            {
+                "harmonic": 7,
+                "amplitude": 50,
+                "phase": 39
+            },
+            {
+                "harmonic": 8,
+                "amplitude": 72,
+                "phase": 56
+            },
+            {
+                "harmonic": 9,
+                "amplitude": 82,
+                "phase": 118
+            },
+            {
+                "harmonic": 10,
+                "amplitude": 51,
+                "phase": 141
+            },
+            {
+                "harmonic": 11,
+                "amplitude": 51,
+                "phase": -171
+            }
+        ]
+    },
+    "gainEnvelope": {
+        "stages": [],
+        "dampingSustain": 0.02
+    },
+    "detuneEnvelope": {
+        "stages": [],
+        "dampingSustain": 0.02
+    },
+    "frequencyModulation": {
+        "absoluteFrequency": [],
+        "relativeFrequency": [],
+        "envelope": {
+            "stages": [],
+            "dampingSustain": 0.02
+        }
+    },
+    "amplitudeModulation": {
+        "absoluteFrequency": [],
+        "relativeFrequency": [],
+        "envelope": {
+            "stages": [],
+            "dampingSustain": 0.02
+        }
+    },
+    "filter": [
+        {
+            "present": true,
+            "index": 0,
+            "type": "lowpass",
+            "frequency": 350,
+            "Q": 1
+        },
+        {
+            "present": false,
+            "index": 1,
+            "type": "highpass",
+            "frequency": 350,
+            "Q": 1
+        },
+        {
+            "present": false,
+            "index": 2,
+            "type": "bandpass",
+            "frequency": 350,
+            "Q": 1
+        },
+        {
+            "present": false,
+            "index": 3,
+            "type": "lowshelf",
+            "frequency": 350,
+            "gain": 1
+        },
+        {
+            "present": false,
+            "index": 4,
+            "type": "highshelf",
+            "frequency": 350,
+            "gain": 1
+        },
+        {
+            "present": false,
+            "index": 5,
+            "type": "peaking",
+            "frequency": 350,
+            "Q": 1,
+            "gain": 1
+        },
+        {
+            "present": false,
+            "index": 6,
+            "type": "notch",
+            "frequency": 350,
+            "Q": 1
+        },
+        {
+            "present": false,
+            "index": 7,
+            "type": "allpass",
+            "frequency": 350,
+            "Q": 1
+        }
+    ]
+}
