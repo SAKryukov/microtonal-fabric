@@ -19,7 +19,10 @@ class Envelope {
         let currentTime = context.currentTime;
         audioParameter.cancelScheduledValues(0);
         if ((!on) || (!this.#implementation.isEnabled) || (!this.#implementation.data) || (this.#implementation.data.length < 2)) {
-            const sustain = Math.max(this.#implementation.sustain, this.#implementation.dampingSustain);
+            const sustain = this.#implementation.isEnabled ? 
+                    Math.max(this.#implementation.sustain, this.#implementation.dampingSustain)
+                    :
+                    DefinitionSet.PlayControl.minimalSustain;
             const gain =  on ? 1 : 0; 
             const timeConstant = on ? DefinitionSet.PlayControl.minimalAttack : sustain;
             audioParameter.setTargetAtTime(gain, currentTime, timeConstant);
