@@ -1,6 +1,6 @@
 class Tone extends ModulatorSet {
 
-    #implementation = {};
+    #implementation = { isFmEnabled: true, isAmEnabled: true };
 
     constructor(audioContext, frequency) {
         super(frequency);
@@ -51,5 +51,22 @@ class Tone extends ModulatorSet {
     } //set data
 
     connect(audioNode) { return this.#implementation.gainEnvelopeNode.connect(audioNode); } 
+
+    set gainEnvelopeEnable(enable) { this.#implementation.gainEnvelope.enable = enable; }    
+    get gainEnvelopeEnable() { return this.#implementation.gainEnvelope.enable; }    
+    set detuneEnvelopeEnable(enable) { this.#implementation.detuneEnvelope.enable = enable; }    
+    get detuneEnvelopeEnable() { return this.#implementation.detuneEnvelope.enable; }    
+    set frequencyModulationEnvelopeEnable(enable) {
+        this.#implementation.absoluteFrequencyModulationEnvelope.enable = enable;
+        this.#implementation.relativeAmplitudeModulationEnvelope.enable = enable;
+        this.#implementation.isFmEnabled = enable;
+    } //set frequencyModulationEnvelopeEnable
+    get frequencyModulationEnvelopeEnable() { return this.#implementation.isFmEnabled; }
+    set amplitudeModulationEnvelopeEnable(enable) {
+        this.#implementation.absoluteAmplitudeModulationEnvelope.enable = enable;
+        this.#implementation.relativeAmplitudeModulationEnvelope.enable = enable;
+        this.#implementation.isAmEnabled = enable;
+    }  //set amplitudeModulationEnvelopeEnable
+    get amplitudeModulationEnvelopeEnable() { return this.#implementation.isAmEnabled; }
 
 } //class Tone

@@ -57,10 +57,22 @@ class Instrument extends ModulatorSet {
         switch (usage) {
             case DefinitionSet.PlayControl.usage.frequencyModulation: return;
             case DefinitionSet.PlayControl.usage.amplitudeModulation: return;
-            case DefinitionSet.PlayControl.usage.gainEnvelope: return;
-            case DefinitionSet.PlayControl.usage.frequencyModulationEnvelope: return;
-            case DefinitionSet.PlayControl.usage.amplitudeModulationEnvelope: return;
-            case DefinitionSet.PlayControl.usage.detuneEnvelope: return;
+            case DefinitionSet.PlayControl.usage.gainEnvelope:
+                for (let [_, tone] of this.#implementation.tones)
+                    tone.gainEnvelopeEnable = enable;
+                return;
+            case DefinitionSet.PlayControl.usage.detuneEnvelope:
+                for (let [_, tone] of this.#implementation.tones)
+                    tone.detuneEnvelopeEnable = enable;
+                return;
+            case DefinitionSet.PlayControl.usage.frequencyModulationEnvelope:
+                for (let [_, tone] of this.#implementation.tones)
+                    tone.frequencyModulationEnvelopeEnable = enable;
+                return;
+            case DefinitionSet.PlayControl.usage.amplitudeModulationEnvelope:
+                for (let [_, tone] of this.#implementation.tones)
+                    tone.amplitudeModulationEnvelopeEnable = enable;
+                return;
             case DefinitionSet.PlayControl.usage.filters: return this.#implementation.setFilterUsage(enable);
             default: return;
         } //switch
