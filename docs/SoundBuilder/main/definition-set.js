@@ -19,7 +19,7 @@ const DefinitionSet = {
         { name: "notch", humanReadableName: "Notch" },
         { name: "allpass", humanReadableName: "All-pass" },
     ]),
-    
+
     EnvelopeElementIndex: {
         exponential: 0,
         linear: 1,
@@ -28,7 +28,16 @@ const DefinitionSet = {
 
     PlayControl: {
         minimalAttack: 0.02, 
-        minimalSustain: 0.02,     
+        minimalSustain: 0.02,
+        usage: {
+            frequencyModulation: 1,
+            amplitudeModulation: 2,
+            gainEnvelope: 4,
+            frequencyModulationEnvelope: 8,
+            amplitudeModulationEnvelope: 16,
+            detuneEnvelope: 32,
+            filters: 64
+        }     
     },
 
     FileStorage: {

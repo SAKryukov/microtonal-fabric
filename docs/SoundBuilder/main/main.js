@@ -16,16 +16,16 @@ window.onload = () => {
     controls.usage.FitKeyboard.handler = value => controls.keyboard.fitView = value;
     
     controls.keyboard.isVisible = false;
-    const synthesizer = new Synthesizer(controls.keyboard.first, controls.keyboard.last, controls.keyboard.firstFrequency, controls.keyboard.tonalSystem);
-    //SA??? new version:
     const instrument = new Instrument(controls.keyboard.first, controls.keyboard.last, controls.keyboard.firstFrequency, controls.keyboard.tonalSystem);
     controls.keyboard.setAction((down, index) => {
-        synthesizer.play(down, index);
+        instrument.play(down, index);
     }); //kbd.setAction
     
-    controls.usage.Filter.handler = value => synthesizer.isFilterUsed = value;
-    controls.playControl.sustain.onchange = (self, value) => synthesizer.sustain = value;
-    controls.playControl.volume.onchange = (self, value) => synthesizer.volume = value;
+    controls.usage.Filter.handler = value => {
+        instrument.playWith(DefinitionSet.PlayControl.usage.filters, value);
+    }
+    controls.playControl.sustain.onchange = (self, value) => instrument.sustain = value;
+    controls.playControl.volume.onchange = (self, value) => instrument.volume = value;
             
     const singleton = {
         model: undefined,
@@ -83,10 +83,8 @@ window.onload = () => {
             clearException();
             if (fromView)
                 singleton.vewToModel();
-            synthesizer.data = singleton.model;
-            controls.fileIO.buttonApply.disabled = true;
-            //SA??? new version:
             instrument.data = singleton.model;
+            controls.fileIO.buttonApply.disabled = true;
         }; //appy
         apply(true);
         const onChangeHanler = () => { controls.fileIO.buttonApply.disabled = false; clearException(); };

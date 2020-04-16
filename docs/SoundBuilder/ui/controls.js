@@ -10,8 +10,8 @@ const findControls = () => {
         stateButtons[0].isDown = false;
         return {
             FitKeyboard: stateButtons[0], FM: stateButtons[1], AM: stateButtons[2],
-            GainEnvelope: stateButtons[3], FMEnvelope: stateButtons[4], AMEnvelope: stateButtons[5],
-            Filter: stateButtons[6],
+            GainEnvelope: stateButtons[3],DetuneEnvelope: stateButtons[4], FMEnvelope: stateButtons[5], AMEnvelope: stateButtons[6],
+            Filter: stateButtons[7],
         };
     })(); // usage
 

@@ -19,8 +19,6 @@
     <script src="sound/chain-node.js"></script>
     <script src="sound/envelope.js"></script>
     <script src="sound/modulator.js"></script>
-    <script src="sound/tone-graph.js"></script>
-    <script src="sound/synthesizer.js"></script>
     <script src="sound/modulator-set.js"></script>
     <script src="sound/tone.js"></script>
     <script src="sound/instrument.js"></script>
@@ -56,7 +54,7 @@
         #sound-control {  display: grid; grid-template-columns: min-content 4fr min-content 1fr; margin-top: var(--vertical-gap); }
         #sound-control label { margin-right: var(--horizontal-gap); }
         #sound-control label:nth-child(3) { margin-left: 3em; }
-        header > aside { display: grid; padding-bottom: var(--vertical-gap); grid-template-columns: repeat(8, min-content) 1fr; grid-gap: 0.3em; align-items: center; }
+        header > aside { display: grid; padding-bottom: var(--vertical-gap); grid-template-columns: repeat(9, min-content) 1fr; grid-gap: 0.3em; align-items: center; }
         header > aside * { white-space: nowrap; }
         header > aside p { text-align: right; }
         header > aside label:nth-child(2) { margin-left: 1em; }
@@ -119,6 +117,7 @@
             <button class="st down"><span>&#x2B24;</span> FM</button>
             <button class="st down"><span>&#x2B24;</span> AM</button>
             <button class="st down"><span>&#x2B24;</span> Gain Envelope</button>
+            <button class="st down"><span>&#x2B24;</span> Detune Envelope</button>
             <button class="st down"><span>&#x2B24;</span> FM Envelope</button>
             <button class="st down"><span>&#x2B24;</span> AM Envelope</button>
             <button class="st down"><span>&#x2B24;</span> Filter</button>

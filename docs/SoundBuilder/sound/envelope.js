@@ -12,16 +12,9 @@ class Envelope {
 
     connect() {}
     disconnect() {}
-    play(gainNode, oscillatorNode, on) {
+    play(gainNode, on) {
         let currentTime = gainNode.context.currentTime;
         gainNode.gain.cancelScheduledValues(0);
-        // oscillatorNode.detune.cancelScheduledValues(0);
-        // if (oscillatorNode && on) {
-        //     oscillatorNode.detune.setTargetAtTime(4, currentTime + 0.2, 0.2);
-        //     oscillatorNode.detune.setTargetAtTime(0, currentTime + 0.4, 0.2);
-        //     oscillatorNode.detune.setTargetAtTime(-4, currentTime + 0.42, 0.2);
-        //     oscillatorNode.detune.setTargetAtTime(0, currentTime + 1.4, 0.2);
-        // } //if
         if ((!on) || (!this.#implementation.usage) || (!this.#implementation.data) || (this.#implementation.data.length < 2)) {
             const sustain = Math.max(this.#implementation.sustain, this.#implementation.dampingSustain);
             const gain =  on ? 1 : 0; 
