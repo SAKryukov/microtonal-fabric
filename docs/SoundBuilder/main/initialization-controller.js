@@ -1,0 +1,38 @@
+"use strict";
+
+const initializationController = {
+    badJavaScriptEngine: () => {
+        if (!goodJavaScriptEngine) {
+            const title = `This application requires JavaScript engine better conforming to the standard`;
+            const advice =
+                `Browsers based on V8 engine are recommended, such as ` +
+                `Chromium, Chrome, Opera, Vivaldi, Microsoft Edge v. 80.0.361.111 or later, and more`;
+            document.body.style.padding = "1em";
+            document.body.innerHTML = `<h1>${title}.<br/><br/>${advice}&hellip;</h1><br/>`; // last <br/> facilitates selection (enabled)
+            return true;
+        } //goodJavaScriptEngine                    
+    }, //badJavaScriptEngine
+    initialize: function (hiddenControls, startControl, startControlParent, startHandler) {
+        document.body.style.cursor = "wait";
+        for (let control of hiddenControls) {
+            const style = window.getComputedStyle(control);
+            const display = style.getPropertyValue("display");
+            this.hiddenControlMap.set(control, display);
+            control.style.display = "none";
+        } //loop
+        startControl.focus();
+        const restore = () => {
+            startControlParent.style.display = "none";
+            for (let control of hiddenControls) {
+                control.style.visibility = "visible";
+                control.style.display = this.hiddenControlMap.get(control);
+            } //loop
+        }; //restore
+        startControl.onclick = event => {
+            startHandler();
+            restore();
+            document.body.style.cursor = "auto";
+        } //startControl.onclick
+    }, //initalize
+    hiddenControlMap: new Map()
+}; //initializationController

@@ -1,46 +1,21 @@
 "use strict";
 
+const debug = false;
+
 window.onload = () => {
 
-    if (!goodJavaScriptEngine) {
-        const title = `This application requires JavaScript engine better conforming to the standard`; 
-        const advice =
-            `Browsers based on V8 engine are recommended, such as ` +
-            `Chromium, Chrome, Opera, Vivaldi, Microsoft Edge v. 80.0.361.111 or later, and more`;
-        document.body.style.padding = "1em";
-        document.body.innerHTML = `<h1>${title}.<br/><br/>${advice}&hellip;</h1><br/>`; // last <br/> facilitates selection (enabled)
-        return;
-    } //goodJavaScriptEngine
-
+    if (initializationController.badJavaScriptEngine()) return;
     const controls = findControls();
-    controls.keyboard.isVisible = false;
-
-    const hiddenControlMap = new Map();
-    (function collectHiddenControls() {
-        for (let control of controls.playControl.hiddenBeforeStart) {
-            const style = window.getComputedStyle(control);
-            const display = style.getPropertyValue("display");
-            hiddenControlMap.set(control, display);
-            control.style.display = "none";
-        }
-    })();
-    const showAfterStart = () => {
-        controls.playControl.globalStartButtonParent.style.display = "none";
-        for (let control of controls.playControl.hiddenBeforeStart) {
-            control.style.visibility = "visible";
-            control.style.display = hiddenControlMap.get(control); 
-        }
-        controls.keyboard.isVisible = true;
-    }; //showAfterStart
-
-    controls.playControl.globalStartButton.onclick = StartAll;
-    controls.playControl.globalStartButton.focus();
+    initializationController.initialize(
+        controls.playControl.hiddenBeforeStart,
+        controls.playControl.globalStartButton,
+        controls.playControl.globalStartButtonParent,
+        startApplication
+    );
     
-    controls.usage.FitKeyboard.handler = value => controls.keyboard.fitView = value;
+    if (debug) { StartAll(); return; }
     
-    controls.keyboard.isVisible = false;
-    
-    function StartAll() {
+    function startApplication() {
 
         const instrument = new Instrument(controls.keyboard.first, controls.keyboard.last, controls.keyboard.firstFrequency, controls.keyboard.tonalSystem);
         controls.keyboard.setAction((down, index) => {
@@ -169,13 +144,12 @@ window.onload = () => {
             }; //controls.fileIO.buttonStore.onclick
         })(); //setup IO
 
-        showAfterStart();
+        //showAfterStart();
         controls.usage.FitKeyboard.focus();
 
         controls.copyright.innerHTML = DefinitionSet.copyright;
         controls.copyright.title = `${DefinitionSet.title} v.${DefinitionSet.version}`;
 
-    } //StartAll
+    } //startApplication
     
 }; //window.onload
-
