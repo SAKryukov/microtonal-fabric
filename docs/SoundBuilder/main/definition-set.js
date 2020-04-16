@@ -33,9 +33,9 @@ const DefinitionSet = {
             frequencyModulation: 1,
             amplitudeModulation: 2,
             gainEnvelope: 4,
-            frequencyModulationEnvelope: 8,
-            amplitudeModulationEnvelope: 16,
-            detuneEnvelope: 32,
+            detuneEnvelope: 8,
+            frequencyModulationEnvelope: 16,
+            amplitudeModulationEnvelope: 32,
             filters: 64
         }     
     },

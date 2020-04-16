@@ -1,6 +1,6 @@
 class Modulator {
 
-    #implementation = {};
+    #implementation = { isEnabled: true };
 
     constructor(audioContext) {
         this.#implementation.oscillator = new OscillatorNode(audioContext);
@@ -10,6 +10,9 @@ class Modulator {
         this.#implementation.output = this.#implementation.oscillator
             .connect(this.#implementation.depthNode).connect(this.#implementation.onOffNode);
     } //constuctor
+
+    set enable(boolValue) { this.#implementation.onOffNode.value = boolValue ? 1 : 0;  }
+    get enable() { return  this.#implementation.onOffNode.value == 1; }
 
     get frequency() { return this.#implementation.oscillator.frequency.value; }
     set frequency(value) { this.#implementation.oscillator.frequency.value = value; }

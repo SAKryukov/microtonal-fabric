@@ -54,14 +54,24 @@ class Instrument extends ModulatorSet {
     play(on, index) { this.#implementation.tones.get(index).play(on); }
 
     playWith(usage, enable) {
-        if (usage != DefinitionSet.PlayControl.usage.filters) return; //SA???
-        this.#implementation.setFilterUsage(enable);
-    } //playWith
+        switch (usage) {
+            case DefinitionSet.PlayControl.usage.frequencyModulation: return;
+            case DefinitionSet.PlayControl.usage.amplitudeModulation: return;
+            case DefinitionSet.PlayControl.usage.gainEnvelope: return;
+            case DefinitionSet.PlayControl.usage.frequencyModulationEnvelope: return;
+            case DefinitionSet.PlayControl.usage.amplitudeModulationEnvelope: return;
+            case DefinitionSet.PlayControl.usage.detuneEnvelope: return;
+            case DefinitionSet.PlayControl.usage.filters: return this.#implementation.setFilterUsage(enable);
+            default: return;
+        } //switch
+    } //playWithFilters
 
     set data(dataset) {
         this.#implementation.setWaveform(dataset.oscillator);
-        for (let [_, tone] of this.#implementation.tones)
+        for (let [_, tone] of this.#implementation.tones) {
             tone.gainEnvelope = dataset.gainEnvelope;    
+            tone.detuneEnvelope = dataset.detuneEnvelope;    
+        }
         super.frequencyModulationData = dataset.frequencyModulation.absoluteFrequency;
         super.amplitudeModulationData = dataset.amplitudeModulation.absoluteFrequency;
     } //set data

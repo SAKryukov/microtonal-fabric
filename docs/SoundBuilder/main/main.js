@@ -21,9 +21,14 @@ window.onload = () => {
         instrument.play(down, index);
     }); //kbd.setAction
     
-    controls.usage.Filter.handler = value => {
-        instrument.playWith(DefinitionSet.PlayControl.usage.filters, value);
-    }
+    controls.usage.FM.handler = value => instrument.playWith(DefinitionSet.PlayControl.usage.frequencyModulation, value);
+    controls.usage.AM.handler = value => instrument.playWith(DefinitionSet.PlayControl.usage.amplitudeModulation, value);
+    controls.usage.GainEnvelope.handler = value => instrument.playWith(DefinitionSet.PlayControl.usage.gainEnvelope, value);
+    controls.usage.DetuneEnvelope.handler = value => instrument.playWith(DefinitionSet.PlayControl.usage.detuneEnvelope, value);
+    controls.usage.FMEnvelope.handler = value => instrument.playWith(DefinitionSet.PlayControl.usage.frequencyModulationEnvelope, value);
+    controls.usage.AMEnvelope.handler = value => instrument.playWith(DefinitionSet.PlayControl.usage.amplitudeModulationEnvelope, value);
+    controls.usage.Filter.handler = value => instrument.playWith(DefinitionSet.PlayControl.usage.filters, value);
+
     controls.playControl.sustain.onchange = (self, value) => instrument.sustain = value;
     controls.playControl.volume.onchange = (self, value) => instrument.volume = value;
             
