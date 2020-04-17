@@ -33,25 +33,8 @@ class Instrument extends ModulatorSet {
             for (let [_, tone] of this.#implementation.tones)
                 tone.waveform = wave;    
         } //this.#implementation.setWaveform
-        // SA???
-        this.#implementation.filterChain = new ChainNode();
-        const defaultFilter = (() => {
-            const filter = new BiquadFilterNode(context);
-            filter.type = "lowpass";
-            //this.#implementation.filter.type = "allpass";
-            filter.Q.value = 0.01;
-            filter.frequency.value = 1000;
-            return filter;    
-        })();
-        this.#implementation.filterChain.populate([defaultFilter]);
-        this.#implementation.filterChain.connect(context.destination);
-        this.#implementation.filterChain.connectFrom(this.#implementation.masterGain);
-        this.#implementation.setFilterUsage = enable => {
-            if (enable)
-                this.#implementation.filterChain.reconnect();
-            else
-                this.#implementation.filterChain.disconnect();
-        } //this.#implementation.setFilterUsage
+        this.#implementation.filterChain = new ChainNode(this.#implementation.masterGain, context.destination);
+        this.#implementation.setFilterUsage = enable => this.#implementation.filterChain.isEnabled = enable;
         this.#implementation.setFilterChain = filterData => {
             const filterSet = [];
             for (let filterElement of filterData) {
@@ -65,6 +48,7 @@ class Instrument extends ModulatorSet {
             } //loop
             this.#implementation.filterChain.populate(filterSet);
         } //this.#implementation.setFilterChain
+        this.#implementation.setFilterChain(DefinitionSet.defaultFilterSet);
     } //constructor
 
     play(on, index) { this.#implementation.tones.get(index).play(on); }

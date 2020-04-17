@@ -20,6 +20,14 @@ const DefinitionSet = {
         { name: "allpass", humanReadableName: "All-pass" },
     ]),
 
+    defaultFilterSet: [{
+        present: true,
+        index: 0,
+        type: "lowpass",
+        frequency: 350,
+        Q: 1
+    }],
+
     EnvelopeElementIndex: {
         exponential: 0,
         linear: 1,
