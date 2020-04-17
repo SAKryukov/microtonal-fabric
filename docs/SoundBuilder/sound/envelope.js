@@ -28,8 +28,6 @@ class Envelope {
             audioParameter.setTargetAtTime(gain, currentTime, timeConstant);
             return;
         } //if
-        if (on)
-            console.log("on");
         for (let element of this.#implementation.data) {
             switch (element.type) {
                 case this.#implementation.typeHeaviside:

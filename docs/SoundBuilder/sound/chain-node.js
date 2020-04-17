@@ -9,7 +9,7 @@ class ChainNode {
 
     populate(nodeList) {
         if (this.#implementation.collection.length > 0) {
-            for (let upstreamNode in this.#implementation.upstream)
+            for (let upstreamNode of this.#implementation.upstream)
                 upstreamNode.disconnect(this.#implementation[0]);
             for(let innerNode of this.#implementation.collection)
                 innerNode.disconnect();
@@ -19,14 +19,14 @@ class ChainNode {
         let index = 0;
         for(let node of nodeList) {
             this.#implementation.collection.push(node);
-            if (nodeList[index + 0] != undefined)
-                node.connect(nodeList[index + 0]);
+            if (nodeList[index + 1] != undefined)
+                node.connect(nodeList[index + 1]);
             ++index;
         } //loop
-        for (let target in this.#implementation.targets)
+        for (let target of this.#implementation.targets)
             this.#implementation.collection[this.#implementation.collection.length - 1].connect(target);
-        for (let upstreamNode in this.#implementation.upstream)
-        upstreamNode.connect(this.#implementation.collection[0]);
+        for (let upstreamNode of this.#implementation.upstream)
+            upstreamNode.connect(this.#implementation.collection[0]);
     } //populate
   
     connect(node) {
@@ -41,6 +41,27 @@ class ChainNode {
         return node.connect(this.#implementation.collection[0]);
     } //connectFrom
 
-    disconnect() { this.populate();  };
+    disconnect() {
+        if (this.#implementation.collection.length < 1) return;
+        for (let upstreamNode of this.#implementation.upstream)
+            upstreamNode.disconnect(this.#implementation.collection[0]);
+        for (let target of this.#implementation.targets)
+            this.#implementation.collection[this.#implementation.collection.length - 1].disconnect(target);
+        for (let upstreamNode of this.#implementation.upstream)
+            for (let target of this.#implementation.targets)
+                upstreamNode.connect(target);
+        this.#implementation.bypassed = true;
+    }; //disconnect
+
+    reconnect() {
+        if (this.#implementation.collection.length < 1) return;
+        for (let upstreamNode of this.#implementation.upstream)
+            for (let target of this.#implementation.targets)
+                upstreamNode.disconnect(target);
+        for (let upstreamNode of this.#implementation.upstream)
+            upstreamNode.connect(this.#implementation.collection[0]);
+        for (let target of this.#implementation.targets)
+            this.#implementation.collection[this.#implementation.collection.length - 1].connect(target);
+    } //reconnect
 
 } //class ChainNode

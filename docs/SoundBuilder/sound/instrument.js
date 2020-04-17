@@ -34,21 +34,37 @@ class Instrument extends ModulatorSet {
                 tone.waveform = wave;    
         } //this.#implementation.setWaveform
         // SA???
-        this.#implementation.filter = context.createBiquadFilter();
-        this.#implementation.filter.type = "lowpass";
-        //this.#implementation.filter.type = "allpass";
-        this.#implementation.filter.Q.value = 0.01;
-        this.#implementation.filter.frequency.value = 1000;
-        // SA???
-        this.#implementation.masterGain.connect(this.#implementation.filter).connect(context.destination);
+        this.#implementation.filterChain = new ChainNode();
+        const defaultFilter = (() => {
+            const filter = new BiquadFilterNode(context);
+            filter.type = "lowpass";
+            //this.#implementation.filter.type = "allpass";
+            filter.Q.value = 0.01;
+            filter.frequency.value = 1000;
+            return filter;    
+        })();
+        this.#implementation.filterChain.populate([defaultFilter]);
+        this.#implementation.filterChain.connect(context.destination);
+        this.#implementation.filterChain.connectFrom(this.#implementation.masterGain);
         this.#implementation.setFilterUsage = enable => {
-            this.#implementation.filter.disconnect();
-            this.#implementation.masterGain.disconnect();
             if (enable)
-                this.#implementation.masterGain.connect(this.#implementation.filter).connect(context.destination);                
+                this.#implementation.filterChain.reconnect();
             else
-                this.#implementation.masterGain.connect(context.destination);
+                this.#implementation.filterChain.disconnect();
         } //this.#implementation.setFilterUsage
+        this.#implementation.setFilterChain = filterData => {
+            const filterSet = [];
+            for (let filterElement of filterData) {
+                if (!filterElement.present) continue;
+                const filter = new BiquadFilterNode(context);
+                filterSet.push(filter);
+                filter.type = filterElement.type;
+                filter.frequency.value = filterElement.frequency;
+                if (filterElement.Q != undefined) filter.Q.value = filterElement.Q;
+                if (filterElement.gain != undefined) filter.gain.value = filterElement.gain;
+            } //loop
+            this.#implementation.filterChain.populate(filterSet);
+        } //this.#implementation.setFilterChain
     } //constructor
 
     play(on, index) { this.#implementation.tones.get(index).play(on); }
@@ -76,7 +92,7 @@ class Instrument extends ModulatorSet {
             case DefinitionSet.PlayControl.usage.filters: return this.#implementation.setFilterUsage(enable);
             default: return;
         } //switch
-    } //playWithFilters
+    } //playWith
 
     set data(dataset) {
         this.#implementation.setWaveform(dataset.oscillator);
@@ -86,6 +102,7 @@ class Instrument extends ModulatorSet {
         }
         super.frequencyModulationData = dataset.frequencyModulation.absoluteFrequency;
         super.amplitudeModulationData = dataset.amplitudeModulation.absoluteFrequency;
+        this.#implementation.setFilterChain(dataset.filter);
     } //set data
 
     get volume() { return this.#implementation.masterGain.gain.value; }
