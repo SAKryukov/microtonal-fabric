@@ -647,32 +647,7 @@
         ]
     },
     "gainEnvelope": {
-        "stages": [
-            {
-                "functionIndex": 0,
-                "function": "exponential",
-                "duration": 0.001,
-                "gain": 0.195
-            },
-            {
-                "functionIndex": 0,
-                "function": "exponential",
-                "duration": 0.004,
-                "gain": 1
-            },
-            {
-                "functionIndex": 0,
-                "function": "exponential",
-                "duration": 0.002,
-                "gain": 0.743
-            },
-            {
-                "functionIndex": 0,
-                "function": "exponential",
-                "duration": 0.4,
-                "gain": 0
-            }
-        ],
+        "stages": [],
         "dampingSustain": 0.114
     },
     "detuneEnvelope": {

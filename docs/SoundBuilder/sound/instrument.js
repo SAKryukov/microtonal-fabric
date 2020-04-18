@@ -6,12 +6,12 @@ class Instrument extends ModulatorSet {
         super();
         this.#implementation.tones = new Map();
         const context = new AudioContext();
+        this.context = context;
         this.#implementation.masterGain = new GainNode(context, { gain: 1 });
         for (let index = first; index <= last; ++index) {
             const tone = new Tone(context, firstFrequency * Math.pow(2, index / tonalSystem));
             this.#implementation.tones.set(index, tone);
             tone.connect(this.#implementation.masterGain);
-            super.connect(tone.absoluteFrequencyModulatorTarget, tone.absoluteAmplitudeModulatorTarget);
         } //loop tones
         const oscillatorTypeFourier = DefinitionSet.OscillatorType.getValue(0).name; //default
         this.#implementation.setWaveform = (oscillator) => {
@@ -87,6 +87,12 @@ class Instrument extends ModulatorSet {
         }
         super.frequencyModulationData = dataset.frequencyModulation.absoluteFrequency;
         super.amplitudeModulationData = dataset.amplitudeModulation.absoluteFrequency;
+        for (let [_, tone] of this.#implementation.tones) {
+            tone.data = dataset;
+            tone.frequencyModulationData = dataset.frequencyModulation.relativeFrequency;
+            tone.amplitudeModulationData = dataset.amplitudeModulation.relativeFrequency;
+            super.connectToAudioParameters(tone.absoluteFrequencyModulatorTarget, tone.absoluteAmplitudeModulatorTarget);
+        }
         this.#implementation.setFilterChain(dataset.filter);
     } //set data
 

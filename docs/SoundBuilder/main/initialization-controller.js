@@ -13,7 +13,6 @@ const initializationController = {
         } //goodJavaScriptEngine                    
     }, //badJavaScriptEngine
     initialize: function (hiddenControls, startControl, startControlParent, startHandler) {
-        document.body.style.cursor = "wait";
         for (let control of hiddenControls) {
             const style = window.getComputedStyle(control);
             const display = style.getPropertyValue("display");
@@ -29,6 +28,7 @@ const initializationController = {
             } //loop
         }; //restore
         startControl.onclick = event => {
+            document.body.style.cursor = "wait";
             startHandler();
             restore();
             document.body.style.cursor = "auto";

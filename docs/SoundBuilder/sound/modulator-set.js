@@ -2,7 +2,9 @@ class ModulatorSet {
 
     #implementation = {};
 
-    constructor(soundSourceFrequency) {
+    constructor(audioContext, soundSourceFrequency) {
+        if (audioContext)
+            this.context = audioContext;
         this.#implementation.soundSourceFrequency == soundSourceFrequency; // undefined for absolute-frequency modulator
         this.#implementation.frequencyModulatorList = [];
         this.#implementation.amplitudeModulatorList = [];
@@ -11,13 +13,14 @@ class ModulatorSet {
         this.#implementation.populate = (modulatorList, modulationData, ) => {
             for (let modulator of modulatorList)
                 modulator.disconnect();
+            modulatorList.splice(0);
             for (let dataElement of modulationData) {
-                const modulator = new Modulator();
+                let frequency = dataElement.frequency;
                 if (soundSourceFrequency)
-                    modulator.frequency = dataElement.frequency * soundSourceFrequency;
-                else
-                    modulator.frequency = dataElement.frequency;
+                    frequency *= soundSourceFrequency;
+                const modulator = new Modulator(this.context);  
                 modulator.depth = dataElement.depth;
+                modulator.frequency = dataElement.frequency;
                 modulatorList.push(modulator);
             } //loop
         } //this.#implementation.populate
@@ -28,13 +31,17 @@ class ModulatorSet {
     set frequencyModulationData(dataset) { this.#implementation.populate(this.#implementation.frequencyModulatorList, dataset); }
     set amplitudeModulationData(dataset) { this.#implementation.populate(this.#implementation.amplitudeModulatorList, dataset); }
 
-    connect(frequencyAudioParameter, amplitudeAudioParameter) {
+    connectToAudioParameters(frequencyAudioParameter, amplitudeAudioParameter) {
+        this.#implementation.frequencyAudioParameter = frequencyAudioParameter;
+        this.#implementation.amplitudeAudioParameter = amplitudeAudioParameter;
         const connectTo = (list, audioParameter) => {
             for (let modulator of list)
                 modulator.connect(audioParameter);
         } //connectTo
-        connectTo(this.#implementation.frequencyModulatorList, frequencyAudioParameter);
-        connectTo(this.#implementation.amplitudeModulatorList, amplitudeAudioParameter);
-    } //connect
+        if (frequencyAudioParameter)
+            connectTo(this.#implementation.frequencyModulatorList, frequencyAudioParameter);
+        if (amplitudeAudioParameter)
+            connectTo(this.#implementation.amplitudeModulatorList, amplitudeAudioParameter);
+    } //connectToAudioParameters
 
 } //class ModulatorSet

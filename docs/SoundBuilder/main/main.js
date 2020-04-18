@@ -1,6 +1,6 @@
 "use strict";
 
-const debug = false;
+const debug = true; //SA???
 
 window.onload = () => {
 
@@ -13,7 +13,7 @@ window.onload = () => {
         startApplication
     );
     
-    if (debug) { StartAll(); return; }
+    if (debug) { startApplication(); return; }
     
     function startApplication() {
 
