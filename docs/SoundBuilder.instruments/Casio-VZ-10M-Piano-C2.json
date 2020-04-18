@@ -1,0 +1,287 @@
+{
+    "header": {
+        "format": "Sound Builder",
+        "version": "0.1.0",
+        "formatVersion": "2.0.0",
+        "author": "",
+        "instrumentName": "Accordion"
+    },
+    "oscillator": {
+        "type": "Fourier",
+        "Fourier": [
+            {
+                "harmonic": 1,
+                "amplitude": 78.22944896115628,
+                "phase": -98.1073703366697
+            },
+            {
+                "harmonic": 2,
+                "amplitude": 69.55736224028907,
+                "phase": -80.74613284804367
+            },
+            {
+                "harmonic": 3,
+                "amplitude": 60.97560975609756,
+                "phase": -62.729754322111006
+            },
+            {
+                "harmonic": 4,
+                "amplitude": 52.30352303523035,
+                "phase": -51.264786169244786
+            },
+            {
+                "harmonic": 5,
+                "amplitude": 44.26377597109305,
+                "phase": -38.48953594176524
+            },
+            {
+                "harmonic": 6,
+                "amplitude": 35.86269196025293,
+                "phase": -24.731574158325742
+            },
+            {
+                "harmonic": 7,
+                "amplitude": 29.268292682926827,
+                "phase": -13.921747042766157
+            },
+            {
+                "harmonic": 8,
+                "amplitude": 25.835591689250226,
+                "phase": -6.71519563239309
+            },
+            {
+                "harmonic": 9,
+                "amplitude": 22.22222222222222,
+                "phase": 10.973612374886272
+            },
+            {
+                "harmonic": 10,
+                "amplitude": 19.873532068654022,
+                "phase": 18.835304822565945
+            },
+            {
+                "harmonic": 11,
+                "amplitude": 18.428184281842817,
+                "phase": 25.05914467697906
+            },
+            {
+                "harmonic": 12,
+                "amplitude": 17.52484191508582,
+                "phase": 31.61055505004549
+            },
+            {
+                "harmonic": 13,
+                "amplitude": 16.802168021680217,
+                "phase": 36.851683348498625
+            },
+            {
+                "harmonic": 14,
+                "amplitude": 16.260162601626014,
+                "phase": 43.403093721565085
+            },
+            {
+                "harmonic": 15,
+                "amplitude": 15.718157181571815,
+                "phase": 47.33393994540492
+            },
+            {
+                "harmonic": 16,
+                "amplitude": 15.176151761517614,
+                "phase": 50.93721565059144
+            },
+            {
+                "harmonic": 17,
+                "amplitude": 14.634146341463413,
+                "phase": 52.90263876251137
+            },
+            {
+                "harmonic": 18,
+                "amplitude": 13.911472448057813,
+                "phase": 53.23020928116469
+            },
+            {
+                "harmonic": 19,
+                "amplitude": 13.279132791327914,
+                "phase": 49.95450409463149
+            },
+            {
+                "harmonic": 20,
+                "amplitude": 12.646793134598013,
+                "phase": 40.78252957233849
+            },
+            {
+                "harmonic": 21,
+                "amplitude": 12.104787714543813,
+                "phase": 29.64513193812556
+            },
+            {
+                "harmonic": 22,
+                "amplitude": 11.8,
+                "phase": 21.128298453139195
+            },
+            {
+                "harmonic": 23,
+                "amplitude": 10.749774164408311,
+                "phase": 14.57688808007282
+            },
+            {
+                "harmonic": 24,
+                "amplitude": 10.3,
+                "phase": 8.680618744313023
+            },
+            {
+                "harmonic": 25,
+                "amplitude": 8.85275519421861,
+                "phase": 4.749772520473158
+            },
+            {
+                "harmonic": 26,
+                "amplitude": 8.310749774164409,
+                "phase": -2.4567788898999083
+            },
+            {
+                "harmonic": 27,
+                "amplitude": 8.039747064137307,
+                "phase": -7.370336669699725
+            },
+            {
+                "harmonic": 28,
+                "amplitude": 7.588075880758807,
+                "phase": -12.611464968152859
+            },
+            {
+                "harmonic": 29,
+                "amplitude": 7.226738934056007,
+                "phase": -18.507734303912656
+            },
+            {
+                "harmonic": 30,
+                "amplitude": 7.2,
+                "phase": -25.386715195632405
+            },
+            {
+                "harmonic": 31,
+                "amplitude": 6.323396567299007,
+                "phase": -31.282984531392174
+            },
+            {
+                "harmonic": 32,
+                "amplitude": 6.233062330623306,
+                "phase": -36.851683348498625
+            },
+            {
+                "harmonic": 33,
+                "amplitude": 5.871725383920506,
+                "phase": -44.38580527752504
+            }
+        ]
+    },
+    "gainEnvelope": {
+        "stages": [
+            {
+                "functionIndex": 0,
+                "function": "exponential",
+                "duration": 0.001,
+                "gain": 0.104
+            },
+            {
+                "functionIndex": 0,
+                "function": "exponential",
+                "duration": 0.001,
+                "gain": 0.93
+            },
+            {
+                "functionIndex": 0,
+                "function": "exponential",
+                "duration": 0.006,
+                "gain": 1.0161691542288558
+            },
+            {
+                "functionIndex": 0,
+                "function": "exponential",
+                "duration": 0.75,
+                "gain": 0
+            }
+        ],
+        "dampingSustain": 0.141
+    },
+    "detuneEnvelope": {
+        "stages": [],
+        "dampingSustain": 0.02
+    },
+    "frequencyModulation": {
+        "absoluteFrequency": [],
+        "relativeFrequency": [],
+        "envelope": {
+            "stages": [],
+            "dampingSustain": 0.02
+        }
+    },
+    "amplitudeModulation": {
+        "absoluteFrequency": [],
+        "relativeFrequency": [],
+        "envelope": {
+            "stages": [],
+            "dampingSustain": 0.02
+        }
+    },
+    "filter": [
+        {
+            "present": true,
+            "index": 0,
+            "type": "lowpass",
+            "frequency": 2388,
+            "Q": 1.4131804750651318
+        },
+        {
+            "present": false,
+            "index": 1,
+            "type": "highpass",
+            "frequency": 350,
+            "Q": 1
+        },
+        {
+            "present": false,
+            "index": 2,
+            "type": "bandpass",
+            "frequency": 350,
+            "Q": 1
+        },
+        {
+            "present": false,
+            "index": 3,
+            "type": "lowshelf",
+            "frequency": 350,
+            "gain": 1
+        },
+        {
+            "present": false,
+            "index": 4,
+            "type": "highshelf",
+            "frequency": 350,
+            "gain": 1
+        },
+        {
+            "present": false,
+            "index": 5,
+            "type": "peaking",
+            "frequency": 350,
+            "Q": 1,
+            "gain": 1
+        },
+        {
+            "present": false,
+            "index": 6,
+            "type": "notch",
+            "frequency": 350,
+            "Q": 1
+        },
+        {
+            "present": false,
+            "index": 7,
+            "type": "allpass",
+            "frequency": 350,
+            "Q": 1
+        }
+    ]
+}

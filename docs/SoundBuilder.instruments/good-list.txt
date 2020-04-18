@@ -1,3 +1,5 @@
+Alesis-Sanctuary-QCard-Wave-Organ-C2.json
+Casio-VZ-10M-Piano-C2.json
 YamahaTX81ZTubeBells.json
 HummondOrgan.json
 Metal.json
