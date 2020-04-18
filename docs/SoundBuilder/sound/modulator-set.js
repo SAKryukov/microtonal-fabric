@@ -29,7 +29,7 @@ class ModulatorSet {
     set amplitudeModulationData(dataset) { this.#implementation.populate(this.#implementation.amplitudeModulatorList, dataset); }
 
     connect(frequencyAudioParameter, amplitudeAudioParameter) {
-        connectTo = (list, audioParameter) => {
+        const connectTo = (list, audioParameter) => {
             for (let modulator of list)
                 modulator.connect(audioParameter);
         } //connectTo

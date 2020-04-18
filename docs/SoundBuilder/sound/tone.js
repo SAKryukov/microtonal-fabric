@@ -69,4 +69,7 @@ class Tone extends ModulatorSet {
     }  //set amplitudeModulationEnvelopeEnable
     get amplitudeModulationEnvelopeEnable() { return this.#implementation.isAmEnabled; }
 
+    get absoluteFrequencyModulatorTarget() { return this.#implementation.absoluteFrequencyModulationEnvelopeNode.gain; }
+    get absoluteAmplitudeModulatorTarget() { return this.#implementation.absoluteAmplitudeModulationEnvelopeNode.gain; }
+
 } //class Tone

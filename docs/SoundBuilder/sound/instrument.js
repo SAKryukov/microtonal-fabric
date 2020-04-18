@@ -11,6 +11,7 @@ class Instrument extends ModulatorSet {
             const tone = new Tone(context, firstFrequency * Math.pow(2, index / tonalSystem));
             this.#implementation.tones.set(index, tone);
             tone.connect(this.#implementation.masterGain);
+            super.connect(tone.absoluteFrequencyModulatorTarget, tone.absoluteAmplitudeModulatorTarget);
         } //loop tones
         const oscillatorTypeFourier = DefinitionSet.OscillatorType.getValue(0).name; //default
         this.#implementation.setWaveform = (oscillator) => {
