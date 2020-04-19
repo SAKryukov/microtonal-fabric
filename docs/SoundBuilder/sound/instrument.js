@@ -7,12 +7,14 @@ class Instrument extends ModulatorSet {
         this.#implementation.tones = new Map();
         const context = new AudioContext();
         this.context = context;
+        this.#implementation.compensationGain = new GainNode(context, { gain: 1 });
         this.#implementation.masterGain = new GainNode(context, { gain: 1 });
         for (let index = first; index <= last; ++index) {
             const tone = new Tone(context, firstFrequency * Math.pow(2, index / tonalSystem));
             this.#implementation.tones.set(index, tone);
-            tone.connect(this.#implementation.masterGain);
+            tone.connect(this.#implementation.compensationGain);
         } //loop tones
+        this.#implementation.compensationGain.connect(this.#implementation.masterGain);
         const oscillatorTypeFourier = DefinitionSet.OscillatorType.getValue(0).name; //default
         this.#implementation.setWaveform = (oscillator) => {
             let wave;
@@ -80,6 +82,8 @@ class Instrument extends ModulatorSet {
     } //playWith
 
     set data(dataset) {
+        const compensationGain = dataset.compensationGain == undefined ? 1 : dataset.compensationGain;
+        this.#implementation.compensationGain.gain.value = compensationGain; 
         this.#implementation.setWaveform(dataset.oscillator);
         for (let [_, tone] of this.#implementation.tones) {
             tone.gainEnvelope = dataset.gainEnvelope;    

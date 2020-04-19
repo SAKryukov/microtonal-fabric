@@ -35,6 +35,7 @@ const findControls = () => {
             volume: new Slider({ value: 1, min: 0, max: 1, step: 0.01, indicatorWidth: "2.5em" }, parentVolume),
             sustain: new Slider({ value: 0, min: DefinitionSet.PlayControl.minimalSustain, max: 1, step: 0.01, indicatorWidth: "3.2em", indicatorSuffix: " s" }, parentSustain),
         },
+        compensationGain: new Slider({value: 1, min: 0.5, max: 20.5, step: 0.1, indicatorWidth: "2.5em"}, document.querySelector("#aspect-compensation-gain div")),
         tables: {
             tableFourier: new FourierTable(
                 document.querySelector("#aspect-oscillator > table"),

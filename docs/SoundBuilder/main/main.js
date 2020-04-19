@@ -33,6 +33,8 @@ window.onload = () => {
             model: undefined,
             lastFileName: undefined,
             modelToView: function () {
+                if (this.model.compensationGain != undefined)
+                    controls.compensationGain.value = this.model.compensationGain;
                 controls.fileIO.instrumentName.value = this.model.header.instrumentName;
                 controls.tables.tableFourier.data = this.model.oscillator;
                 controls.tables.filter.data = this.model.filter;
@@ -49,7 +51,7 @@ window.onload = () => {
                 controls.tables.gainEnvelope.data = this.model.gainEnvelope;
                 controls.tables.detuneEnvelope.data = this.model.detuneEnvelope;
             }, //modelToView
-            vewToModel: function () {
+            viewToModel: function () {
                 this.model = {
                     header: {
                         format: DefinitionSet.title,
@@ -58,6 +60,7 @@ window.onload = () => {
                         author: "",
                         instrumentName: controls.fileIO.instrumentName.value,
                     },
+                    compensationGain: controls.compensationGain.value,
                     oscillator: controls.tables.tableFourier.data,
                     gainEnvelope: controls.tables.gainEnvelope.data,
                     detuneEnvelope: controls.tables.detuneEnvelope.data,
@@ -84,7 +87,7 @@ window.onload = () => {
             const apply = (fromView) => {
                 clearException();
                 if (fromView)
-                    singleton.vewToModel();
+                    singleton.viewToModel();
                 instrument.data = singleton.model;
                 controls.fileIO.buttonApply.disabled = true;
             }; //appy
@@ -94,6 +97,7 @@ window.onload = () => {
             controls.fileIO.instrumentName.onkeydown = onChangeHanler;
             for (let index in controls.tables)
                 controls.tables[index].onchange = onChangeHanler;
+            controls.compensationGain.onchange = onChangeHanler;
             controls.fileIO.inputFile.onchange = (ev) => {
                 const file = ev.target.files[0];
                 if (!file) return;
