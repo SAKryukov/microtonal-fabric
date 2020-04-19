@@ -88,16 +88,16 @@ class Instrument extends ModulatorSet {
         for (let [_, tone] of this.#implementation.tones) {
             tone.gainEnvelope = dataset.gainEnvelope;    
             tone.detuneEnvelope = dataset.detuneEnvelope;    
-        }
+        } //loop
         super.frequencyModulationData = dataset.frequencyModulation.absoluteFrequency;
         super.amplitudeModulationData = dataset.amplitudeModulation.absoluteFrequency;
         for (let [_, tone] of this.#implementation.tones) {
             tone.data = dataset;
             tone.frequencyModulationData = dataset.frequencyModulation.relativeFrequency;
             tone.amplitudeModulationData = dataset.amplitudeModulation.relativeFrequency;
-            tone.connectToAudioParameters(tone.absoluteFrequencyModulatorTarget, tone.absoluteAmplitudeModulatorTarget);
-            super.connectToAudioParameters(tone.absoluteFrequencyModulatorTarget, tone.absoluteAmplitudeModulatorTarget);
-        }
+            tone.connectToAudioParameters(tone.frequencyModulatorTarget, tone.amplitudeModulatorTarget);
+            super.connectToAudioParameters(tone.frequencyModulatorTarget, tone.amplitudeModulatorTarget);
+        } //loop
         this.#implementation.setFilterChain(dataset.filter);
     } //set data
 

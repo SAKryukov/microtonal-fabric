@@ -69,7 +69,7 @@ class ModulationTable extends VariableTable {
 
     set data(dataset) {
         if (!dataset) return;
-        const modes = dataset.masterDepth;
+        const modes = dataset.modes;
         this.#derivedImplementation.masterDepth.value = dataset.masterDepth;
         const goodElement = element => element != undefined && element != null;
         for (let index = 0; index < modes.length; ++index) {

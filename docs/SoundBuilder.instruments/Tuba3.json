@@ -6,6 +6,7 @@
         "author": "",
         "instrumentName": "Tuba"
     },
+    "compensationGain": 0.7,
     "oscillator": {
         "type": "Fourier",
         "Fourier": [
@@ -534,49 +535,50 @@
     "frequencyModulation": {
         "absoluteFrequency": {
             "masterDepth": 1,
-            "modes": [
-                {
-                    "frequency": 4.39,
-                    "depth": 39.48,
-                    "useEnvelope": false
-                }
-            ]
+            "modes": []
         },
         "relativeFrequency": {
             "masterDepth": 1,
             "modes": [
                 {
-                    "frequency": 17.1,
-                    "depth": 50.69,
+                    "frequency": 12.35,
+                    "depth": 19.95,
                     "useEnvelope": false
                 }
             ]
         },
         "envelope": {
-            "stages": [],
+            "stages": [
+                {
+                    "functionIndex": 0,
+                    "function": "exponential",
+                    "duration": 0.001,
+                    "gain": 0.628
+                },
+                {
+                    "functionIndex": 0,
+                    "function": "exponential",
+                    "duration": 0.002,
+                    "gain": 1.0730253353204173
+                },
+                {
+                    "functionIndex": 0,
+                    "function": "exponential",
+                    "duration": 0.182,
+                    "gain": 0.019374068554396422
+                }
+            ],
             "dampingSustain": 0.02
         }
     },
     "amplitudeModulation": {
         "absoluteFrequency": {
             "masterDepth": 1,
-            "modes": [
-                {
-                    "frequency": 24.07,
-                    "depth": 65.74,
-                    "useEnvelope": false
-                }
-            ]
+            "modes": []
         },
         "relativeFrequency": {
             "masterDepth": 1,
-            "modes": [
-                {
-                    "frequency": 34.28,
-                    "depth": 87.94,
-                    "useEnvelope": false
-                }
-            ]
+            "modes": []
         },
         "envelope": {
             "stages": [],

@@ -64,10 +64,10 @@ const findControls = () => {
                 { minGain: -100, maxGain: 100, gainSuffix: ` ${String.fromCodePoint(0xA2)}`, dampingSustainParent: document.querySelector("#aspect-detune-envelope div") }),
             fmEnvelope: new EnvelopeTable(
                 document.querySelector("#aspect-fm-envelope > table"),
-                { minGain: 0, maxGain: 100, gainSuffix: "%", dampingSustainParent: document.querySelector("#aspect-fm-envelope div") }),
+                { minGain: 0, maxGain: 1, dampingSustainParent: document.querySelector("#aspect-fm-envelope div") }),
             amEnvelope: new EnvelopeTable(
                 document.querySelector("#aspect-am-envelope > table"),
-                { minGain: 0, maxGain: 100, gainSuffix: "%", dampingSustainParent: document.querySelector("#aspect-fm-envelope div") }),
+                { minGain: 0, maxGain: 1, dampingSustainParent: document.querySelector("#aspect-am-envelope div") }),
             filter: new Filter(document.querySelector("#aspect-filter > table")),    
         },
         fileIO: {
