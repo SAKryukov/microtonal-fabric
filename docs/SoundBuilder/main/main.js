@@ -87,8 +87,10 @@ window.onload = () => {
                 controls.exception.textContent = msg; controls.exception.title = detail;
             }
             const clearException = () => setExceptionMessage(undefined);
-            const apply = () => {
+            const apply = (fromView) => {
                 clearException();
+                if (fromView)
+                    singleton.viewToModel();
                 instrument.data = singleton.model;
                 controls.fileIO.buttonApply.disabled = true;
             }; //appy
@@ -98,6 +100,7 @@ window.onload = () => {
                 singleton.modelToView();
                 apply();    
             })();
+            apply(true);
             const onChangeHanler = () => { controls.fileIO.buttonApply.disabled = false; clearException(); };
             controls.fileIO.buttonApply.disabled = true;
             controls.fileIO.instrumentName.onkeydown = onChangeHanler;
