@@ -6,6 +6,7 @@
         "author": "",
         "instrumentName": "Accordion"
     },
+    "compensationGain": 1,
     "oscillator": {
         "type": "Fourier",
         "Fourier": [

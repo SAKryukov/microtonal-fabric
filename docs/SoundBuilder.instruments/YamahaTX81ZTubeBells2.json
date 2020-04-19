@@ -6,6 +6,7 @@
         "author": "",
         "instrumentName": "Yamaha TX81Z Tube Bells"
     },
+    "compensationGain": 2,
     "oscillator": {
         "type": "Fourier",
         "Fourier": [
