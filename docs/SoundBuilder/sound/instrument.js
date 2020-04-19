@@ -91,6 +91,7 @@ class Instrument extends ModulatorSet {
             tone.data = dataset;
             tone.frequencyModulationData = dataset.frequencyModulation.relativeFrequency;
             tone.amplitudeModulationData = dataset.amplitudeModulation.relativeFrequency;
+            tone.connectToAudioParameters(tone.absoluteFrequencyModulatorTarget, tone.absoluteAmplitudeModulatorTarget);
             super.connectToAudioParameters(tone.absoluteFrequencyModulatorTarget, tone.absoluteAmplitudeModulatorTarget);
         }
         this.#implementation.setFilterChain(dataset.filter);

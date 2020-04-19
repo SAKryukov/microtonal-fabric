@@ -3,7 +3,7 @@
 const DefinitionSet = {
 
     version: "0.1.0",
-    formatVersion: "2.0.0",
+    formatVersion: "2.1.0",
     title: "Sound Builder",
     copyright: "Copyright &copy; 2018-2020 by S A Kryukov",
 

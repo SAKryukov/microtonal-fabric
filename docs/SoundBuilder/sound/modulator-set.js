@@ -10,11 +10,11 @@ class ModulatorSet {
         this.#implementation.amplitudeModulatorList = [];
         this.#implementation.frequencyModulatatioMasterDepth = 100;
         this.#implementation.amplitudeModulatatioMasterDepth = 100;
-        this.#implementation.populate = (modulatorList, modulationData, ) => {
+        this.#implementation.populate = (modulatorList, modulationData) => {
             for (let modulator of modulatorList)
                 modulator.disconnect();
             modulatorList.splice(0);
-            for (let dataElement of modulationData) {
+            for (let dataElement of modulationData.modes) {
                 let frequency = dataElement.frequency;
                 if (soundSourceFrequency)
                     frequency *= soundSourceFrequency;
