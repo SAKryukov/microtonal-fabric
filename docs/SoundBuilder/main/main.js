@@ -1,7 +1,5 @@
 "use strict";
 
-const debug = true; //SA???
-
 window.onload = () => {
 
     if (initializationController.badJavaScriptEngine()) return;
@@ -12,8 +10,6 @@ window.onload = () => {
         controls.playControl.globalStartButtonParent,
         startApplication
     );
-    
-    if (debug) { startApplication(); return; }
     
     function startApplication() {
 
