@@ -51,15 +51,18 @@ window.onload = () => {
                 controls.tables.gainEnvelope.data = this.model.gainEnvelope;
                 controls.tables.detuneEnvelope.data = this.model.detuneEnvelope;
             }, //modelToView
+            createHeader: () => {
+                return {
+                    format: DefinitionSet.title,
+                    version: DefinitionSet.version,
+                    formatVersion: DefinitionSet.formatVersion,
+                    author: "",
+                    instrumentName: controls.fileIO.instrumentName.value,
+                }
+            }, //createHeader
             viewToModel: function () {
                 this.model = {
-                    header: {
-                        format: DefinitionSet.title,
-                        version: DefinitionSet.version,
-                        formatVersion: DefinitionSet.formatVersion,
-                        author: "",
-                        instrumentName: controls.fileIO.instrumentName.value,
-                    },
+                    header: this.createHeader(),
                     compensationGain: controls.compensationGain.value,
                     oscillator: controls.tables.tableFourier.data,
                     gainEnvelope: controls.tables.gainEnvelope.data,
@@ -84,14 +87,17 @@ window.onload = () => {
                 controls.exception.textContent = msg; controls.exception.title = detail;
             }
             const clearException = () => setExceptionMessage(undefined);
-            const apply = (fromView) => {
+            const apply = () => {
                 clearException();
-                if (fromView)
-                    singleton.viewToModel();
                 instrument.data = singleton.model;
                 controls.fileIO.buttonApply.disabled = true;
             }; //appy
-            apply(true);
+            (() => { // setup default instrument
+                singleton.model = defaultInstrument;
+                singleton.model.header = singleton.createHeader(); 
+                singleton.modelToView();
+                apply();    
+            })();
             const onChangeHanler = () => { controls.fileIO.buttonApply.disabled = false; clearException(); };
             controls.fileIO.buttonApply.disabled = true;
             controls.fileIO.instrumentName.onkeydown = onChangeHanler;
