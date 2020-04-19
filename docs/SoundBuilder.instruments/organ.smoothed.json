@@ -2,7 +2,7 @@
     "header": {
         "format": "Sound Builder",
         "version": "0.1.0",
-        "formatVersion": "2.0.0",
+        "formatVersion": "2.1.0",
         "author": "",
         "instrumentName": "Organ"
     },
@@ -425,16 +425,28 @@
         "dampingSustain": 0.02
     },
     "frequencyModulation": {
-        "absoluteFrequency": [],
-        "relativeFrequency": [],
+        "absoluteFrequency": {
+            "masterDepth": 1,
+            "modes": []
+        },
+        "relativeFrequency": {
+            "masterDepth": 1,
+            "modes": []
+        },
         "envelope": {
             "stages": [],
             "dampingSustain": 0.02
         }
     },
     "amplitudeModulation": {
-        "absoluteFrequency": [],
-        "relativeFrequency": [],
+        "absoluteFrequency": {
+            "masterDepth": 1,
+            "modes": []
+        },
+        "relativeFrequency": {
+            "masterDepth": 1,
+            "modes": []
+        },
         "envelope": {
             "stages": [],
             "dampingSustain": 0.02

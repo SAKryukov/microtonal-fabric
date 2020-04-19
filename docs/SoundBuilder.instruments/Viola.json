@@ -2,7 +2,7 @@
     "header": {
         "format": "Sound Builder",
         "version": "0.1.0",
-        "formatVersion": "2.0.0",
+        "formatVersion": "2.1.0",
         "author": "",
         "instrumentName": "Viola"
     },
@@ -417,7 +417,14 @@
         ]
     },
     "gainEnvelope": {
-        "stages": [],
+        "stages": [
+            {
+                "functionIndex": 0,
+                "function": "exponential",
+                "duration": 0.01,
+                "gain": 0.1
+            }
+        ],
         "dampingSustain": 0.02
     },
     "detuneEnvelope": {
@@ -425,16 +432,52 @@
         "dampingSustain": 0.02
     },
     "frequencyModulation": {
-        "absoluteFrequency": [],
-        "relativeFrequency": [],
+        "absoluteFrequency": {
+            "masterDepth": 1,
+            "modes": [
+                {
+                    "frequency": 4.39,
+                    "depth": 39.48,
+                    "useEnvelope": false
+                }
+            ]
+        },
+        "relativeFrequency": {
+            "masterDepth": 1,
+            "modes": [
+                {
+                    "frequency": 17.1,
+                    "depth": 50.69,
+                    "useEnvelope": false
+                }
+            ]
+        },
         "envelope": {
             "stages": [],
             "dampingSustain": 0.02
         }
     },
     "amplitudeModulation": {
-        "absoluteFrequency": [],
-        "relativeFrequency": [],
+        "absoluteFrequency": {
+            "masterDepth": 1,
+            "modes": [
+                {
+                    "frequency": 24.07,
+                    "depth": 65.74,
+                    "useEnvelope": false
+                }
+            ]
+        },
+        "relativeFrequency": {
+            "masterDepth": 1,
+            "modes": [
+                {
+                    "frequency": 34.28,
+                    "depth": 87.94,
+                    "useEnvelope": false
+                }
+            ]
+        },
         "envelope": {
             "stages": [],
             "dampingSustain": 0.02
