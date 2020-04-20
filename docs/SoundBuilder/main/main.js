@@ -124,6 +124,16 @@ window.onload = () => {
                     try {
                         const text = readEvent.target.result;
                         singleton.model = JSON.parse(text);
+                        if (!singleton.model.header)
+                            throw new Error(`header should be specified`);
+                        const loadedFormatVersion = parseFloat(singleton.model.header.formatVersion);
+                        if (Number.isNaN(loadedFormatVersion))
+                            throw new Error(`invalid format version: "${singleton.model.header.formatVersion}"`);
+                        const currentFormatVersion = parseFloat(DefinitionSet.formatVersion);
+                        if ((currentFormatVersion >= loadedFormatVersion) != true) //sic!
+                            throw new Error(
+                                `File format version should be lower or equal to ${DefinitionSet.formatVersion}, ` +
+                                `otherwise newer version of the application might be required`); 
                     } catch (ex) {
                         setExceptionMessage(`Error loading file: ${ex.message}`);
                         return;
