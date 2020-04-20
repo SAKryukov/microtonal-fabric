@@ -1,6 +1,6 @@
 class ModulatorSet {
 
-    #implementation = {};
+    #implementation = { isFmEnabled: true, isAmEnabled: true };
 
     constructor(audioContext, soundSourceFrequency) {
         if (audioContext)
@@ -54,5 +54,19 @@ class ModulatorSet {
             connectTo(this.#implementation.amplitudeModulatorList, this.#implementation.amplitudeModulatatioMasterDepth, amplitudeAudioParameter);
         } //if
     } //connectToAudioParameters
+
+    set frequencyModulationEnable(enable) {
+        if (!enable || !this.#implementation.preservedFmMasterGain)
+            this.#implementation.preservedFmMasterGain = this.#implementation.frequencyModulatatioMasterDepth.gain.value;
+        this.#implementation.frequencyModulatatioMasterDepth.gain.value = enable ? this.#implementation.preservedFmMasterGain : 0;
+    } //set frequencyModulationEnable
+    get frequencyModulationEnable() { return this.#implementation.isFmEnabled; }
+    
+    set amplitudeModulationEnable(enable) {
+        if (!enable || !this.#implementation.preservedAmMasterGain)
+            this.#implementation.preservedAmMasterGain = this.#implementation.amplitudeModulatatioMasterDepth.gain.value;
+        this.#implementation.amplitudeModulatatioMasterDepth.gain.value = enable ? this.#implementation.preservedAmMasterGain : 0;
+    } //set amplitudeModulationEnable
+    get amplitudeModulationEnable() { return this.#implementation.isAmEnabled; }
 
 } //class ModulatorSet

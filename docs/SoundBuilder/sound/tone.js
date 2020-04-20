@@ -1,6 +1,6 @@
 class Tone extends ModulatorSet {
 
-    #implementation = { isFmEnabled: true, isAmEnabled: true };
+    #implementation = { isFmEnvelopеEnabled: true, isAmEnvelopеEnabled: true };
 
     constructor(audioContext, frequency) {
         super(audioContext, frequency);
@@ -54,19 +54,19 @@ class Tone extends ModulatorSet {
     set detuneEnvelopeEnable(enable) { this.#implementation.detuneEnvelope.enable = enable; }
     get detuneEnvelopeEnable() { return this.#implementation.detuneEnvelope.enable; }    
     set frequencyModulationEnvelopeEnable(enable) {
-        this.#implementation.absoluteFrequencyModulationEnvelope.enable = enable;
-        this.#implementation.relativeAmplitudeModulationEnvelope.enable = enable;
-        this.#implementation.isFmEnabled = enable;
+        this.#implementation.frequencyModulationEnvelope.enable = enable;
+        this.#implementation.isFmEnvelopеEnabled = enable;
     } //set frequencyModulationEnvelopeEnable
-    get frequencyModulationEnvelopeEnable() { return this.#implementation.isFmEnabled; }
+    get frequencyModulationEnvelopeEnable() { return this.#implementation.isFmEnvelopеEnabled; }
     set amplitudeModulationEnvelopeEnable(enable) {
-        this.#implementation.absoluteAmplitudeModulationEnvelope.enable = enable;
-        this.#implementation.relativeAmplitudeModulationEnvelope.enable = enable;
-        this.#implementation.isAmEnabled = enable;
+        this.#implementation.amplitudeModulationEnvelope.enable = enable;
+        this.#implementation.isAmEnvelopеEnabled = enable;
     }  //set amplitudeModulationEnvelopeEnable
-    get amplitudeModulationEnvelopeEnable() { return this.#implementation.isAmEnabled; }
+    get amplitudeModulationEnvelopeEnable() { return this.#implementation.isAmEnvelopеEnabled; }
 
     get frequencyModulatorTarget() { return this.#implementation.frequencyModulationEnvelopeNode; }
     get amplitudeModulatorTarget() { return this.#implementation.amplitudeModulationEnvelopeNode; }
+
+    set sustain(value) { this.#implementation.gainEnvelope.sustain = value; }
 
 } //class Tone

@@ -73,7 +73,9 @@ class Slider {
         this.#implementation.setValue(theValue);
         this.#implementation.setFocus = () => slider.focus();
         this.#implementation.getParent = () => theParent;
-        this.#implementation.setHandler = (value) => handler = value;
+        this.#implementation.setHandler = value => handler = value;
+        this.#implementation.setDisabled = value => slider.disabled = value;
+        this.#implementation.getDisabled = () => { return slider.disabled; }
     } //constructor
 
     get value() { return this.#implementation.getValue(); }
@@ -90,5 +92,8 @@ class Slider {
     focus() { this.#implementation.setFocus(); }
 
     set onchange(aHandler) { this.#implementation.setHandler(aHandler); } // handler(this, value)
+
+    get disabled() { return this.#implementation.getDisabled(); }
+    set disabled(value) { this.#implementation.setDisabled(value); }
 
 } //class Slider

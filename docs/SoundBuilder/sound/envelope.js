@@ -19,7 +19,7 @@ class Envelope {
         let currentTime = context.currentTime;
         audioParameter.cancelScheduledValues(0);
         if ((!on) || (!this.#implementation.isEnabled) || (!this.#implementation.data) || (this.#implementation.data.length < 2)) {
-            const sustain = this.#implementation.isEnabled ? 
+            const sustain = this.#implementation.isEnabled && this.#implementation.sustain != undefined ? 
                     Math.max(this.#implementation.sustain, this.#implementation.dampingSustain)
                     :
                     DefinitionSet.PlayControl.minimalSustain;
@@ -61,7 +61,7 @@ class Envelope {
     get enable() { return this.#implementation.isEnabled; }
     
     set sustain(value) {
-        if (value < DefinitionSet.PlayControl.minimalSustain) value = DefinitionSet.PlayControl.minimalSustain;
+        if (value != undefined && value < DefinitionSet.PlayControl.minimalSustain) value = DefinitionSet.PlayControl.minimalSustain;
         this.#implementation.sustain = value;
     } //set sustain
     get sustain()  { return this.#implementation.sustain; }

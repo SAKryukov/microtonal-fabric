@@ -44,7 +44,7 @@ const DefinitionSet = {
             detuneEnvelope: 8,
             frequencyModulationEnvelope: 16,
             amplitudeModulationEnvelope: 32,
-            filters: 64
+            filters: 64,
         }     
     },
 

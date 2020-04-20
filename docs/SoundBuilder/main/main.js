@@ -18,16 +18,24 @@ window.onload = () => {
             instrument.play(down, index);
         }); //kbd.setAction
 
-        controls.usage.FM.handler = value => instrument.playWith(DefinitionSet.PlayControl.usage.frequencyModulation, value);
-        controls.usage.AM.handler = value => instrument.playWith(DefinitionSet.PlayControl.usage.amplitudeModulation, value);
-        controls.usage.GainEnvelope.handler = value => instrument.playWith(DefinitionSet.PlayControl.usage.gainEnvelope, value);
-        controls.usage.DetuneEnvelope.handler = value => instrument.playWith(DefinitionSet.PlayControl.usage.detuneEnvelope, value);
-        controls.usage.FMEnvelope.handler = value => instrument.playWith(DefinitionSet.PlayControl.usage.frequencyModulationEnvelope, value);
-        controls.usage.AMEnvelope.handler = value => instrument.playWith(DefinitionSet.PlayControl.usage.amplitudeModulationEnvelope, value);
-        controls.usage.Filter.handler = value => instrument.playWith(DefinitionSet.PlayControl.usage.filters, value);
-
-        controls.playControl.sustain.onchange = (self, value) => instrument.sustain = value;
-        controls.playControl.volume.onchange = (self, value) => instrument.volume = value;
+        (function setupPlayControl() {
+            const setSustain = () =>
+                instrument.sustain = controls.playControl.sustain.disabled ? undefined : controls.playControl.sustain.value; 
+            controls.playControl.sustain.onchange = (self, value) => setSustain();
+            controls.playControl.volume.onchange = (self, value) => instrument.volume = value;
+            // usage:
+            controls.usage.FM.handler = value => instrument.playWith(DefinitionSet.PlayControl.usage.frequencyModulation, value);
+            controls.usage.AM.handler = value => instrument.playWith(DefinitionSet.PlayControl.usage.amplitudeModulation, value);
+            controls.usage.GainEnvelope.handler = value => instrument.playWith(DefinitionSet.PlayControl.usage.gainEnvelope, value);
+            controls.usage.DetuneEnvelope.handler = value => instrument.playWith(DefinitionSet.PlayControl.usage.detuneEnvelope, value);
+            controls.usage.FMEnvelope.handler = value => instrument.playWith(DefinitionSet.PlayControl.usage.frequencyModulationEnvelope, value);
+            controls.usage.AMEnvelope.handler = value => instrument.playWith(DefinitionSet.PlayControl.usage.amplitudeModulationEnvelope, value);
+            controls.usage.Filter.handler = value => instrument.playWith(DefinitionSet.PlayControl.usage.filters, value);
+            controls.usage.Sustain.handler = value => {
+                controls.playControl.sustain.disabled = !value;
+                setSustain();
+            };    
+        })(); //setupPlayControl
 
         const singleton = {
             model: undefined,

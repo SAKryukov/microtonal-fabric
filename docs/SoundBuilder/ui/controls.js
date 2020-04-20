@@ -12,6 +12,7 @@ const findControls = () => {
             FitKeyboard: stateButtons[0], FM: stateButtons[1], AM: stateButtons[2],
             GainEnvelope: stateButtons[3],DetuneEnvelope: stateButtons[4], FMEnvelope: stateButtons[5], AMEnvelope: stateButtons[6],
             Filter: stateButtons[7],
+            Sustain: new TwoStateButton(document.querySelector("#sound-control button")),
         };
     })(); // usage
 

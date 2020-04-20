@@ -1,6 +1,6 @@
 class Instrument extends ModulatorSet {
 
-    #implementation = { playControlUsage: 0xFF };
+    #implementation = { sustain: DefinitionSet.PlayControl.minimalSustain };
 
     constructor(first, last, firstFrequency, tonalSystem) {
         super();
@@ -58,8 +58,14 @@ class Instrument extends ModulatorSet {
 
     playWith(usage, enable) {
         switch (usage) {
-            case DefinitionSet.PlayControl.usage.frequencyModulation: return;
-            case DefinitionSet.PlayControl.usage.amplitudeModulation: return;
+            case DefinitionSet.PlayControl.usage.frequencyModulation:
+                for (let [_, tone] of this.#implementation.tones)
+                    tone.frequencyModulationEnable = enable;
+                return;
+            case DefinitionSet.PlayControl.usage.amplitudeModulation:
+                for (let [_, tone] of this.#implementation.tones)
+                    tone.amplitudeModulationEnable = enable;
+                return;
             case DefinitionSet.PlayControl.usage.gainEnvelope:
                 for (let [_, tone] of this.#implementation.tones)
                     tone.gainEnvelopeEnable = enable;
@@ -104,7 +110,11 @@ class Instrument extends ModulatorSet {
     get volume() { return this.#implementation.masterGain.gain.value; }
     set volume(value) { this.#implementation.masterGain.gain.value = value; }
 
-    get sustain() { }
-    set sustain(value) {  }
+    get sustain() { return this.#implementation.sustain; }
+    set sustain(value) {
+        for (let [_, tone] of this.#implementation.tones)
+            tone.sustain = value;
+        this.#implementation.sustain = value;
+    } //set sustain
 
 } //class Instrument
