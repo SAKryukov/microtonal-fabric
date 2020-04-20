@@ -42,6 +42,22 @@ class Slider {
         }; //mouseToValue
         slider.onmouseenter = mouseToValue;
         slider.onmousemove = mouseToValue;
+        slider.onkeydown = event => {
+            const sign = event.key == "ArrowLeft" ? -1 : (event.key == "ArrowRight" ? 1 : 0);
+            if (!sign) return;
+            let factor;
+            if (event.ctrlKey && event.shiftKey)
+                factor = 1000;
+            else if (event.shiftKey)
+                factor = 100;
+            else if (event.ctrlKey)
+                factor = 10;
+            else
+                return;
+            this.value += sign * factor * properties.step;
+            event.preventDefault();
+        }; //slider.onkeydown
+        slider.title = `Ctrl+${String.fromCodePoint(0x2b82)} 10x step, Shift+${String.fromCodePoint(0x2b82)} 100x step, Ctrl+Shift+${String.fromCodePoint(0x2b82)} 1000x step`
         slider.onchange = event => {
             theValue = parseFloat(event.target.value);
             indicator.value = properties.indicatorSuffix ? slider.value + properties.indicatorSuffix : slider.value;

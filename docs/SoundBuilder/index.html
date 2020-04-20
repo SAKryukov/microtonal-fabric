@@ -55,9 +55,9 @@
         footer, footer * { white-space: nowrap; }
         main { overflow-y: auto; }
         label { display: flex; align-items: center; }
-        #sound-control {  display: grid; grid-template-columns: min-content 4fr min-content 1fr; margin-top: var(--vertical-gap); }
+        #sound-control {  display: grid; grid-template-columns: min-content 3fr min-content 1fr; margin-top: var(--vertical-gap); }
         #sound-control label { margin-right: var(--horizontal-gap); }
-        #sound-control label:nth-child(3) { margin-left: 3em; }
+        #sound-control button { white-space: nowrap; margin-left: 3em; margin-right: var(--small-horizontal-gap); }
         header > aside { display: grid; padding-bottom: var(--vertical-gap); grid-template-columns: repeat(9, min-content) 1fr; grid-gap: 0.3em; align-items: center; }
         header > aside * { white-space: nowrap; }
         header > aside p { text-align: right; }
@@ -131,7 +131,7 @@
         </aside>
         <section class="keyboard"></section>
         <section id="sound-control">
-            <label>Volume:</label><div></div><label>Sustain:</label><div></div>
+            <label>Volume:</label><div></div><button class="st down"><span>&#x2B24;</span> Play with sustain:</button><div></div>
         </section>
     </header>
 
@@ -179,18 +179,6 @@
                     <tr data-button-name="Reset"><th>Relative Frequency*</th><th>Depth*</th><th>Envelope</th></tr>
                 </table>
             </details>
-            <details id="aspect-gain-envelope"><summary>Gain Envelope</summary>
-                <table>
-                    <tr data-button-name="Reset"><th>Duration*</th><th>Function</th><th>Gain*</th></tr>
-                </table>
-                <section><label>Damping Sustain:</label><div></div></section>
-            </details>
-            <details id="aspect-detune-envelope"><summary>Detune Envelope</summary>
-                <table>
-                    <tr data-button-name="Reset"><th>Duration*</th><th>Function</th><th>Detune*</th></tr>
-                </table>
-                <section><label>Damping Sustain:</label><div></div></section>
-            </details>
             <details id="aspect-fm-envelope"><summary>Frequency Modulation Envelope</summary>
                 <table>
                     <tr data-button-name="Reset"><th>Duration*</th><th>Function</th><th>Depth*</th></tr>
@@ -200,6 +188,18 @@
             <details id="aspect-am-envelope"><summary>Amplitude Modulation Envelope</summary>
                 <table>
                     <tr data-button-name="Reset"><th>Duration*</th><th>Function</th><th>Depth*</th></tr>
+                </table>
+                <section><label>Damping Sustain:</label><div></div></section>
+            </details>
+            <details id="aspect-gain-envelope"><summary>Gain Envelope</summary>
+                <table>
+                    <tr data-button-name="Reset"><th>Duration*</th><th>Function</th><th>Gain*</th></tr>
+                </table>
+                <section><label>Damping Sustain:</label><div></div></section>
+            </details>
+            <details id="aspect-detune-envelope"><summary>Detune Envelope</summary>
+                <table>
+                    <tr data-button-name="Reset"><th>Duration*</th><th>Function</th><th>Detune*</th></tr>
                 </table>
                 <section><label>Damping Sustain:</label><div></div></section>
             </details>
