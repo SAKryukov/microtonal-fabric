@@ -1,0 +1,425 @@
+{
+    "header": {
+        "format": "Sound Builder",
+        "version": "0.1.0",
+        "formatVersion": "2.1.0",
+        "author": "",
+        "instrumentName": ""
+    },
+    "compensationGain": 0.7,
+    "oscillator": {
+        "type": "Fourier",
+        "Fourier": [
+            {
+                "harmonic": 1,
+                "amplitude": 113.49782293178518,
+                "phase": 162.55506607929516
+            },
+            {
+                "harmonic": 2,
+                "amplitude": 91.8722786647315,
+                "phase": 162.55506607929516
+            },
+            {
+                "harmonic": 3,
+                "amplitude": 85.05079825834542,
+                "phase": 162.55506607929516
+            },
+            {
+                "harmonic": 4,
+                "amplitude": 76.0522496371553,
+                "phase": 159.91189427312776
+            },
+            {
+                "harmonic": 5,
+                "amplitude": 72.13352685050798,
+                "phase": 155
+            },
+            {
+                "harmonic": 6,
+                "amplitude": 67.9245283018868,
+                "phase": 149
+            },
+            {
+                "harmonic": 7,
+                "amplitude": 63.28011611030478,
+                "phase": 141
+            },
+            {
+                "harmonic": 8,
+                "amplitude": 59.21625544267054,
+                "phase": 149
+            },
+            {
+                "harmonic": 9,
+                "amplitude": 55.152394775036285,
+                "phase": 163
+            },
+            {
+                "harmonic": 10,
+                "amplitude": 51.088534107402026,
+                "phase": 103
+            },
+            {
+                "harmonic": 11,
+                "amplitude": 46.73439767779391,
+                "phase": 140
+            },
+            {
+                "harmonic": 12,
+                "amplitude": 38.75181422351234,
+                "phase": -67
+            },
+            {
+                "harmonic": 13,
+                "amplitude": 32.65602322206096,
+                "phase": -12
+            },
+            {
+                "harmonic": 14,
+                "amplitude": 26.56023222060958,
+                "phase": 99
+            },
+            {
+                "harmonic": 15,
+                "amplitude": 21.8,
+                "phase": -126
+            },
+            {
+                "harmonic": 16,
+                "amplitude": 12.772133526850507,
+                "phase": 36
+            },
+            {
+                "harmonic": 17,
+                "amplitude": 7,
+                "phase": 166
+            },
+            {
+                "harmonic": 18,
+                "amplitude": 3,
+                "phase": -110
+            },
+            {
+                "harmonic": 19,
+                "amplitude": 4,
+                "phase": -135
+            },
+            {
+                "harmonic": 20,
+                "amplitude": 11,
+                "phase": 175
+            },
+            {
+                "harmonic": 21,
+                "amplitude": 10,
+                "phase": -81
+            },
+            {
+                "harmonic": 22,
+                "amplitude": 20,
+                "phase": -65
+            },
+            {
+                "harmonic": 23,
+                "amplitude": 18,
+                "phase": 66
+            },
+            {
+                "harmonic": 24,
+                "amplitude": 25,
+                "phase": 54
+            },
+            {
+                "harmonic": 25,
+                "amplitude": 21,
+                "phase": -23
+            },
+            {
+                "harmonic": 26,
+                "amplitude": 34,
+                "phase": -103
+            },
+            {
+                "harmonic": 27,
+                "amplitude": 8,
+                "phase": -118
+            },
+            {
+                "harmonic": 28,
+                "amplitude": 61,
+                "phase": -89
+            },
+            {
+                "harmonic": 29,
+                "amplitude": 29,
+                "phase": 124
+            },
+            {
+                "harmonic": 30,
+                "amplitude": 71,
+                "phase": 153
+            },
+            {
+                "harmonic": 31,
+                "amplitude": 31,
+                "phase": -149
+            },
+            {
+                "harmonic": 32,
+                "amplitude": 45,
+                "phase": 41
+            },
+            {
+                "harmonic": 33,
+                "amplitude": 33,
+                "phase": -90
+            },
+            {
+                "harmonic": 34,
+                "amplitude": 45,
+                "phase": 139
+            },
+            {
+                "harmonic": 35,
+                "amplitude": 31,
+                "phase": -31
+            },
+            {
+                "harmonic": 36,
+                "amplitude": 71,
+                "phase": 27
+            },
+            {
+                "harmonic": 37,
+                "amplitude": 29,
+                "phase": 56
+            },
+            {
+                "harmonic": 38,
+                "amplitude": 61,
+                "phase": -91
+            },
+            {
+                "harmonic": 39,
+                "amplitude": 8,
+                "phase": -62
+            },
+            {
+                "harmonic": 40,
+                "amplitude": 34,
+                "phase": -77
+            },
+            {
+                "harmonic": 41,
+                "amplitude": 21,
+                "phase": -157
+            },
+            {
+                "harmonic": 42,
+                "amplitude": 25,
+                "phase": 126
+            },
+            {
+                "harmonic": 43,
+                "amplitude": 18,
+                "phase": 114
+            },
+            {
+                "harmonic": 44,
+                "amplitude": 20,
+                "phase": -115
+            },
+            {
+                "harmonic": 45,
+                "amplitude": 10,
+                "phase": -99
+            },
+            {
+                "harmonic": 46,
+                "amplitude": 11,
+                "phase": 5
+            },
+            {
+                "harmonic": 47,
+                "amplitude": 4,
+                "phase": -45
+            },
+            {
+                "harmonic": 48,
+                "amplitude": 3,
+                "phase": -70
+            },
+            {
+                "harmonic": 49,
+                "amplitude": 7,
+                "phase": 14
+            },
+            {
+                "harmonic": 50,
+                "amplitude": 3,
+                "phase": 144
+            },
+            {
+                "harmonic": 51,
+                "amplitude": 10,
+                "phase": -54
+            },
+            {
+                "harmonic": 52,
+                "amplitude": 3,
+                "phase": 81
+            },
+            {
+                "harmonic": 53,
+                "amplitude": 2,
+                "phase": -168
+            },
+            {
+                "harmonic": 54,
+                "amplitude": 4,
+                "phase": -113
+            },
+            {
+                "harmonic": 55,
+                "amplitude": 4,
+                "phase": 40
+            },
+            {
+                "harmonic": 56,
+                "amplitude": 6,
+                "phase": 77
+            },
+            {
+                "harmonic": 57,
+                "amplitude": 5,
+                "phase": 17
+            },
+            {
+                "harmonic": 58,
+                "amplitude": 3,
+                "phase": 31
+            },
+            {
+                "harmonic": 59,
+                "amplitude": 2,
+                "phase": 39
+            },
+            {
+                "harmonic": 60,
+                "amplitude": 2,
+                "phase": 31
+            },
+            {
+                "harmonic": 61,
+                "amplitude": 2,
+                "phase": 25
+            },
+            {
+                "harmonic": 62,
+                "amplitude": 3,
+                "phase": 12
+            },
+            {
+                "harmonic": 63,
+                "amplitude": 4,
+                "phase": 0
+            }
+        ]
+    },
+    "gainEnvelope": {
+        "stages": [],
+        "dampingSustain": 0.114
+    },
+    "detuneEnvelope": {
+        "stages": [],
+        "dampingSustain": 0.02
+    },
+    "frequencyModulation": {
+        "absoluteFrequency": {
+            "masterDepth": 1,
+            "modes": []
+        },
+        "relativeFrequency": {
+            "masterDepth": 1,
+            "modes": []
+        },
+        "envelope": {
+            "stages": [],
+            "dampingSustain": 0.02
+        }
+    },
+    "amplitudeModulation": {
+        "absoluteFrequency": {
+            "masterDepth": 1,
+            "modes": []
+        },
+        "relativeFrequency": {
+            "masterDepth": 1,
+            "modes": []
+        },
+        "envelope": {
+            "stages": [],
+            "dampingSustain": 0.02
+        }
+    },
+    "filter": [
+        {
+            "present": true,
+            "index": 0,
+            "type": "lowpass",
+            "frequency": 974,
+            "Q": 2.6302679918953817
+        },
+        {
+            "present": false,
+            "index": 1,
+            "type": "highpass",
+            "frequency": 350,
+            "Q": 1
+        },
+        {
+            "present": false,
+            "index": 2,
+            "type": "bandpass",
+            "frequency": 350,
+            "Q": 1
+        },
+        {
+            "present": false,
+            "index": 3,
+            "type": "lowshelf",
+            "frequency": 350,
+            "gain": 1
+        },
+        {
+            "present": false,
+            "index": 4,
+            "type": "highshelf",
+            "frequency": 350,
+            "gain": 1
+        },
+        {
+            "present": false,
+            "index": 5,
+            "type": "peaking",
+            "frequency": 350,
+            "Q": 1,
+            "gain": 1
+        },
+        {
+            "present": false,
+            "index": 6,
+            "type": "notch",
+            "frequency": 350,
+            "Q": 1
+        },
+        {
+            "present": false,
+            "index": 7,
+            "type": "allpass",
+            "frequency": 350,
+            "Q": 1
+        }
+    ]
+}
