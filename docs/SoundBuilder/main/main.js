@@ -129,10 +129,7 @@ window.onload = () => {
                         const loadedFormatVersion = parseFloat(singleton.model.header.formatVersion);
                         if (Number.isNaN(loadedFormatVersion))
                             throw new Error(`invalid format version: "${singleton.model.header.formatVersion}"`);
-<<<<<<< HEAD
                         const currentFormatVersion = parseFloat(DefinitionSet.formatVersion);
-=======
->>>>>>> 23c9132296b0767e6434262d1131c19f1c432149
                         if ((currentFormatVersion >= loadedFormatVersion) != true) //sic!
                             throw new Error(
                                 `File format version should be lower or equal to ${DefinitionSet.formatVersion}, ` +
