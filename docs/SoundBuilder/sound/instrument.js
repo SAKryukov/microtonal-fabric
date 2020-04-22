@@ -13,8 +13,9 @@ class Instrument extends ModulatorSet {
         const loFrequency = firstFrequency * Math.pow(2, first / tonalSystem);
         const hiFrequency = firstFrequency * Math.pow(2, last / tonalSystem)
         const compensation = (f) => {
-            return 1;
-            let factor = f/hiFrequency;
+            //return 1;
+            let degree = 1.2;
+            let factor = Math.pow(f, degree)/Math.pow(hiFrequency, degree);
             return factor;
         } //compensation
         for (let index = first; index <= last; ++index) {
