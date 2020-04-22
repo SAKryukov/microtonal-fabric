@@ -10262,8 +10262,8 @@
                 "gain": 1
             },
             {
-                "functionIndex": 2,
-                "function": "Heaviside",
+                "functionIndex": 1,
+                "function": "linear",
                 "duration": 0.006,
                 "gain": 0.303
             },
@@ -10313,7 +10313,7 @@
             "present": true,
             "index": 0,
             "type": "lowpass",
-            "frequency": 350,
+            "frequency": 5835,
             "Q": 1
         },
         {

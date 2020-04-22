@@ -9,10 +9,19 @@ class Instrument extends ModulatorSet {
         this.context = context;
         this.#implementation.compensationGain = new GainNode(context, { gain: 1 });
         this.#implementation.masterGain = new GainNode(context, { gain: 1 });
+        //compensation: 
+        const loFrequency = firstFrequency * Math.pow(2, first / tonalSystem);
+        const hiFrequency = firstFrequency * Math.pow(2, last / tonalSystem)
+        const compensation = (f) => {
+            return 1;
+            let factor = f/hiFrequency;
+            return factor;
+        } //compensation
         for (let index = first; index <= last; ++index) {
-            const tone = new Tone(context, firstFrequency * Math.pow(2, index / tonalSystem));
+            const frequency = firstFrequency * Math.pow(2, index / tonalSystem);
+            const tone = new Tone(context, frequency, compensation(frequency));
             this.#implementation.tones.set(index, tone);
-            tone.connect(this.#implementation.compensationGain);
+            tone.connect(this.#implementation.compensationGain, 1);
         } //loop tones
         this.#implementation.compensationGain.connect(this.#implementation.masterGain);
         const oscillatorTypeFourier = DefinitionSet.OscillatorType.getValue(0).name; //default

@@ -2,11 +2,12 @@ class Tone extends ModulatorSet {
 
     #implementation = { isFmEnvelopеEnabled: true, isAmEnvelopеEnabled: true };
 
-    constructor(audioContext, frequency) {
+    constructor(audioContext, frequency, frequencyCompensationGain) {
         super(audioContext, frequency);
         const context = audioContext;
         this.#implementation.context = context;
         this.#implementation.mainOscillator = new OscillatorNode(context, { frequency: frequency });
+        this.#implementation.frequencyCompensationGainNode = new GainNode(context, { gain: frequencyCompensationGain });
         this.#implementation.gainEnvelopeNode = new GainNode(context, { gain: 0 });
         this.#implementation.detuneEnvelopeNode = new GainNode(context, { gain: 0 });
         this.#implementation.amplitudeModulationNode = new GainNode(context, { gain: 1 });
@@ -18,12 +19,14 @@ class Tone extends ModulatorSet {
         this.#implementation.detuneEnvelope = new Envelope();
         this.#implementation.frequencyModulationEnvelope = new Envelope();
         this.#implementation.amplitudeModulationEnvelope = new Envelope();
-        this.#implementation.mainOscillator.connect(this.#implementation.amplitudeModulationNode);
+        this.#implementation.mainOscillator.connect(this.#implementation.frequencyCompensationGainNode);
+        this.#implementation.frequencyCompensationGainNode.connect(this.#implementation.amplitudeModulationNode);
         this.#implementation.amplitudeModulationNode.connect(this.#implementation.gainEnvelopeNode);
         this.#implementation.mainOscillator.start();
     } //constructor
 
     play(on) {
+        console.log(this.#implementation.mainOscillator.frequency.value);
         this.#implementation.gainEnvelope.play(this.#implementation.context, this.#implementation.gainEnvelopeNode.gain, on);
         this.#implementation.detuneEnvelope.play(this.#implementation.context, this.#implementation.mainOscillator.detune, on);
         this.#implementation.frequencyModulationEnvelope.play(this.#implementation.context, this.#implementation.frequencyModulationEnvelopeNode.gain, on);

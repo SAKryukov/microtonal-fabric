@@ -461,21 +461,10 @@
         "absoluteFrequency": {
             "masterDepth": 1,
             "modes": [
-                {
-                    "frequency": 24.07,
-                    "depth": 65.74,
-                    "useEnvelope": false
-                }
             ]
         },
         "relativeFrequency": {
             "masterDepth": 1,
-            "modes": [
-                {
-                    "frequency": 34.28,
-                    "depth": 87.94,
-                    "useEnvelope": false
-                }
             ]
         },
         "envelope": {

@@ -3535,21 +3535,11 @@
         "absoluteFrequency": {
             "masterDepth": 1,
             "modes": [
-                {
-                    "frequency": 4.39,
-                    "depth": 39.48,
-                    "useEnvelope": false
-                }
             ]
         },
         "relativeFrequency": {
             "masterDepth": 1,
             "modes": [
-                {
-                    "frequency": 17.1,
-                    "depth": 50.69,
-                    "useEnvelope": false
-                }
             ]
         },
         "envelope": {
@@ -3561,21 +3551,10 @@
         "absoluteFrequency": {
             "masterDepth": 1,
             "modes": [
-                {
-                    "frequency": 24.07,
-                    "depth": 65.74,
-                    "useEnvelope": false
-                }
             ]
         },
         "relativeFrequency": {
             "masterDepth": 1,
-            "modes": [
-                {
-                    "frequency": 34.28,
-                    "depth": 87.94,
-                    "useEnvelope": false
-                }
             ]
         },
         "envelope": {
