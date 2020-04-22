@@ -18,6 +18,8 @@ window.onload = () => {
             instrument.play(down, index);
         }); //kbd.setAction
 
+        controls.usage.FitKeyboard.handler = value => controls.keyboard.fitView = value;
+
         (function setupPlayControl() {
             const setSustain = () =>
                 instrument.sustain = controls.playControl.sustain.disabled ? undefined : controls.playControl.sustain.value; 
