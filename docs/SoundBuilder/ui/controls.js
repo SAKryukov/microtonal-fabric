@@ -36,7 +36,6 @@ const findControls = () => {
             volume: new Slider({ value: 1, min: 0, max: 1, step: 0.01, indicatorWidth: "2.5em" }, parentVolume),
             sustain: new Slider({ value: 0, min: DefinitionSet.PlayControl.minimalSustain, max: 1, step: 0.01, indicatorWidth: "3.2em", indicatorSuffix: " s" }, parentSustain),
         },
-        compensationGain: new Slider({value: 1, min: 0.5, max: 20.5, step: 0.1, indicatorWidth: "2.5em"}, document.querySelector("#aspect-compensation-gain div")),
         tables: {
             tableFourier: new FourierTable(
                 document.querySelector("#aspect-oscillator > table"),
@@ -69,7 +68,18 @@ const findControls = () => {
             amEnvelope: new EnvelopeTable(
                 document.querySelector("#aspect-am-envelope > table"),
                 { minGain: 0, maxGain: 1, dampingSustainParent: document.querySelector("#aspect-am-envelope div") }),
-            filter: new Filter(document.querySelector("#aspect-filter > table")),    
+            filter: new Filter(document.querySelector("#aspect-filter > table")),
+            compensation: {
+                middleFrequency: new Slider(
+                    {min: 20, max: 8000, step: 1, indicatorWidth: "4.5em", indicatorSuffix: " Hz"},
+                    document.querySelector("#aspect-gain-compensation tr td:nth-child(1) div")),
+                lowFrequencyCompensationGain: new Slider(
+                    {min: 0.0001, max: 10000, step: 0.00001, indicatorWidth: "6em"},
+                    document.querySelector("#aspect-gain-compensation tr td:nth-child(2) div")),
+                highFrequencyCompensationGain: new Slider(
+                    {min: 0.0001, max: 10000, step: 0.0001, indicatorWidth: "6em"},
+                    document.querySelector("#aspect-gain-compensation tr td:nth-child(3) div")),
+            },
         },
         fileIO: {
             instrumentName: document.querySelector("header aside p input"),

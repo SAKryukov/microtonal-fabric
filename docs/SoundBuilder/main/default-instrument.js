@@ -1,5 +1,4 @@
 const defaultInstrument = {
-    compensationGain: 0.7,
     oscillator: {
         type: "Fourier",
         Fourier: [

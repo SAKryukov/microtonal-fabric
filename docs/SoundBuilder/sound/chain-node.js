@@ -11,7 +11,6 @@ class ChainNode {
                 this.#implementation.collection[this.#implementation.collection.length - 1].disconnect();
                 this.#implementation.upstream.connect(this.#implementation.collection[0]);
                 this.#implementation.collection[this.#implementation.collection.length - 1].connect(this.#implementation.target);
-    
             } else
                 this.#implementation.upstream.connect(this.#implementation.target);
         } //this.#implementation.connect

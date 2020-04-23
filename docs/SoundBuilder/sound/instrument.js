@@ -1,36 +1,45 @@
 class Instrument extends ModulatorSet {
 
-    #implementation = { sustain: DefinitionSet.PlayControl.minimalSustain };
+    #implementation = {
+        sustain: DefinitionSet.PlayControl.minimalSustain,
+        gainCompensation: { middleFrequency: 400, lowFrequencyCompensationGain: 0.0001, highFrequencyCompensationGain: 130 }
+    };
 
     constructor(first, last, firstFrequency, tonalSystem) {
         super();
         this.#implementation.tones = new Map();
         const context = new AudioContext();
         this.context = context;
-        this.#implementation.compensationGain = new GainNode(context, { gain: 1 });
+        this.#implementation.compensationGainNode = new GainNode(context, { gain: 1 }); //SA??? SA!!! unused!
         this.#implementation.masterGain = new GainNode(context, { gain: 1 });
-        //compensation: 
-        const loFrequency = firstFrequency * Math.pow(2, first / tonalSystem);
-        const hiFrequency = firstFrequency * Math.pow(2, last / tonalSystem)
-        const compensation = (f) => {
-            const shift = 400;
-            const ff = f - shift;
-            const f0 = loFrequency;
-            const f1 = hiFrequency;
-            const g0 = 0.0001;
-            const g1 = 1000000; //SA???
-            const p = (Math.log(g1) - Math.log(g0)) / (2.0 * Math.log(f1));
-            const loga = Math.log(g0) - (2.0 * p * Math.log(f0));
-            const a = Math.exp(loga);
-            return a * Math.pow(Math.pow(ff, 2), p) + 1.0;
-        } //compensation
+        //compensation:
+        const compensation = (() => {
+            const f0 = firstFrequency * Math.pow(2, first / tonalSystem);
+            const f1 = firstFrequency * Math.pow(2, last / tonalSystem)
+            const compensation = (f) => {
+                if (!this.#implementation.gainCompensation.middleFrequency) return 1;
+                const shift = this.#implementation.gainCompensation.middleFrequency;
+                const ff = f - shift;
+                const g0 = this.#implementation.gainCompensation.lowFrequencyCompensationGain;
+                const g1 = this.#implementation.gainCompensation.highFrequencyCompensationGain;
+                const p = (Math.log(g1) - Math.log(g0)) / (2.0 * (Math.log(f1) - Math.log(f0)));
+                const loga = Math.log(g1) - (2.0 * p * Math.log(f1));
+                const a = Math.exp(loga);
+                return a * Math.pow(Math.pow(ff, 2), p) + 1.0;
+            } //compensation
+            return compensation;
+        })(); //setupGain
+        this.#implementation.compensateToneGains = () => {
+            for (let [_, tone] of this.#implementation.tones)
+                tone.gainCompensation = compensation(tone.frequency); 
+        }; //this.#implementation.compensateToneGains
         for (let index = first; index <= last; ++index) {
             const frequency = firstFrequency * Math.pow(2, index / tonalSystem);
             const tone = new Tone(context, frequency, compensation(frequency));
             this.#implementation.tones.set(index, tone);
-            tone.connect(this.#implementation.compensationGain, 1);
+            tone.connect(this.#implementation.compensationGainNode, 1); //SA??? SA!!! unused!
         } //loop tones
-        this.#implementation.compensationGain.connect(this.#implementation.masterGain);
+        this.#implementation.compensationGainNode.connect(this.#implementation.masterGain); //SA??? SA!!! unused!
         const oscillatorTypeFourier = DefinitionSet.OscillatorType.getValue(0).name; //default
         this.#implementation.setWaveform = (oscillator) => {
             let wave;
@@ -104,8 +113,10 @@ class Instrument extends ModulatorSet {
     } //playWith
 
     set data(dataset) {
-        const compensationGain = dataset.compensationGain == undefined ? 1 : dataset.compensationGain;
-        this.#implementation.compensationGain.gain.value = compensationGain; 
+        if (dataset.gainCompensation && dataset.gainCompensation.middleFrequency) {
+            this.#implementation.gainCompensation = dataset.gainCompensation;
+            this.#implementation.compensateToneGains();
+        } //if dataset.gainCompensation
         this.#implementation.setWaveform(dataset.oscillator);
         for (let [_, tone] of this.#implementation.tones) {
             tone.gainEnvelope = dataset.gainEnvelope;    

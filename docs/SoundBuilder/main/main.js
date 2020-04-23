@@ -43,8 +43,11 @@ window.onload = () => {
             model: undefined,
             lastFileName: undefined,
             modelToView: function () {
-                if (this.model.compensationGain != undefined)
-                    controls.compensationGain.value = this.model.compensationGain;
+                if (this.model.gainCompensation && this.model.gainCompensation.middleFrequency != undefined) {
+                    controls.tables.compensation.middleFrequency.value = this.model.gainCompensation.middleFrequency;
+                    controls.tables.compensation.lowFrequencyCompensationGain.value = this.model.gainCompensation.lowFrequencyCompensationGain;
+                    controls.tables.compensation.highFrequencyCompensationGain.value = his.model.gainCompensation.highFrequencyCompensationGain;    
+                } //if compensationGain
                 controls.fileIO.instrumentName.value = this.model.header.instrumentName;
                 controls.tables.tableFourier.data = this.model.oscillator;
                 controls.tables.filter.data = this.model.filter;
@@ -73,7 +76,11 @@ window.onload = () => {
             viewToModel: function () {
                 this.model = {
                     header: this.createHeader(),
-                    compensationGain: controls.compensationGain.value,
+                    gainCompensation: {
+                        middleFrequency: controls.tables.compensation.middleFrequency.value,
+                        lowFrequencyCompensationGain: controls.tables.compensation.lowFrequencyCompensationGain.value,
+                        highFrequencyCompensationGain: controls.tables.compensation.highFrequencyCompensationGain.value,
+                    },
                     oscillator: controls.tables.tableFourier.data,
                     gainEnvelope: controls.tables.gainEnvelope.data,
                     detuneEnvelope: controls.tables.detuneEnvelope.data,
@@ -116,7 +123,8 @@ window.onload = () => {
             controls.fileIO.instrumentName.onkeydown = onChangeHanler;
             for (let index in controls.tables)
                 controls.tables[index].onchange = onChangeHanler;
-            controls.compensationGain.onchange = onChangeHanler;
+            for (let index in controls.tables.compensation)
+                controls.tables.compensation[index].onchange = onChangeHanler;
             controls.fileIO.inputFile.onchange = (ev) => {
                 const file = ev.target.files[0];
                 if (!file) return;
