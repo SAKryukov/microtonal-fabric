@@ -1,9 +1,6 @@
 class Instrument extends ModulatorSet {
 
-    #implementation = {
-        sustain: DefinitionSet.PlayControl.minimalSustain,
-        gainCompensation: { middleFrequency: 400, lowFrequencyCompensationGain: 0.0001, highFrequencyCompensationGain: 130 }
-    };
+    #implementation = { sustain: DefinitionSet.PlayControl.minimalSustain, gainCompensation: { } };
 
     constructor(first, last, firstFrequency, tonalSystem) {
         super();
@@ -17,15 +14,16 @@ class Instrument extends ModulatorSet {
             const f0 = firstFrequency * Math.pow(2, first / tonalSystem);
             const f1 = firstFrequency * Math.pow(2, last / tonalSystem)
             const compensation = (f) => {
-                if (!this.#implementation.gainCompensation.middleFrequency) return 1;
-                const shift = this.#implementation.gainCompensation.middleFrequency;
-                const ff = f - shift;
+                if (!this.#implementation.gainCompensation || !this.#implementation.gainCompensation.middleFrequency) return 1;
+                const shift = f - this.#implementation.gainCompensation.middleFrequency;
                 const g0 = this.#implementation.gainCompensation.lowFrequencyCompensationGain;
                 const g1 = this.#implementation.gainCompensation.highFrequencyCompensationGain;
-                const p = (Math.log(g1) - Math.log(g0)) / (2.0 * (Math.log(f1) - Math.log(f0)));
-                const loga = Math.log(g1) - (2.0 * p * Math.log(f1));
-                const a = Math.exp(loga);
-                return a * Math.pow(Math.pow(ff, 2), p) + 1.0;
+                const factor0 = (g0 - 1) / Math.pow(f0 - this.#implementation.gainCompensation.middleFrequency, 2);
+                const factor1 = (g1 - 1) / Math.pow(f1 - this.#implementation.gainCompensation.middleFrequency, 2);
+                if (shift < 0)
+                    return 1 + factor0 * Math.pow(shift, 2);
+                else                
+                    return 1 + factor1 * Math.pow(shift, 2);
             } //compensation
             return compensation;
         })(); //setupGain

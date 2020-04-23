@@ -71,13 +71,13 @@ const findControls = () => {
             filter: new Filter(document.querySelector("#aspect-filter > table")),
             compensation: {
                 middleFrequency: new Slider(
-                    {min: 20, max: 8000, step: 1, indicatorWidth: "4.5em", indicatorSuffix: " Hz"},
+                    { value: 400, min: 20, max: 8000, step: 1, indicatorWidth: "4.5em", indicatorSuffix: " Hz" },
                     document.querySelector("#aspect-gain-compensation tr td:nth-child(1) div")),
                 lowFrequencyCompensationGain: new Slider(
-                    {min: 0.0001, max: 10000, step: 0.00001, indicatorWidth: "6em"},
+                    {value: 1, min: 0.0001, max: 100000, step: 0.00001, indicatorWidth: "6em"},
                     document.querySelector("#aspect-gain-compensation tr td:nth-child(2) div")),
                 highFrequencyCompensationGain: new Slider(
-                    {min: 0.0001, max: 10000, step: 0.0001, indicatorWidth: "6em"},
+                    {value: 1, min: 0.0001, max: 100000, step: 0.0001, indicatorWidth: "6em"},
                     document.querySelector("#aspect-gain-compensation tr td:nth-child(3) div")),
             },
         },
