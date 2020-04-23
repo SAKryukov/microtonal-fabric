@@ -7,9 +7,10 @@
         "instrumentName": "Electric piano"
     },
     "gainCompensation": {
+        "masterGain": 1,
         "middleFrequency": 400,
-        "lowFrequencyCompensationGain": 0.1999999999999993,
-        "highFrequencyCompensationGain": 99.9999999999986
+        "lowFrequencyCompensationGain": 0.2,
+        "highFrequencyCompensationGain": 100
     },
     "oscillator": {
         "type": "Fourier",

@@ -42,19 +42,19 @@ const findControls = () => {
                 document.querySelector("#aspect-oscillator p select")),
             fmModulationAbsolute: new ModulationTable(
                 document.querySelector("#aspect-fm-absolute > table"),
-                { isRelative: false, slider:  document.querySelector("#aspect-fm-absolute div") }
+                { isRelative: false, slider: document.querySelector("#aspect-fm-absolute div") }
             ),
             fmModulationRelative: new ModulationTable(
                 document.querySelector("#aspect-fm-relative > table"),
-                { isRelative: true, slider:  document.querySelector("#aspect-fm-relative div") }
+                { isRelative: true, slider: document.querySelector("#aspect-fm-relative div") }
             ),
             amModulationAbsolute: new ModulationTable(
                 document.querySelector("#aspect-am-absolute > table"),
-                { isRelative: false, slider:  document.querySelector("#aspect-am-absolute div") }
+                { isRelative: false, slider: document.querySelector("#aspect-am-absolute div") }
             ),
             amModulationRelative: new ModulationTable(
                 document.querySelector("#aspect-am-relative > table"),
-                { isRelative: true, slider:  document.querySelector("#aspect-am-relative div")  }
+                { isRelative: true, slider: document.querySelector("#aspect-am-relative div")  }
             ),
             gainEnvelope: new EnvelopeTable(
                 document.querySelector("#aspect-gain-envelope > table"),
@@ -70,8 +70,10 @@ const findControls = () => {
                 { minGain: 0, maxGain: 1, dampingSustainParent: document.querySelector("#aspect-am-envelope div") }),
             filter: new Filter(document.querySelector("#aspect-filter > table")),
             compensation: {
+                masterGain: new Slider({ value: 400, min: 0, max: 10, step: 0.0001, indicatorWidth: "4.5em" },
+                    document.querySelector("#aspect-gain-compensation div")),
                 middleFrequency: new Slider(
-                    { value: 400, min: 20, max: 8000, step: 1, indicatorWidth: "4.5em", indicatorSuffix: " Hz" },
+                    { value: 400, min: 20, max: 8000, step: 0.1, indicatorWidth: "4.5em", indicatorSuffix: " Hz" },
                     document.querySelector("#aspect-gain-compensation tr td:nth-child(1) div")),
                 lowFrequencyCompensationGain: new Slider(
                     {value: 1, min: 0.0001, max: 100000, step: 0.00001, indicatorWidth: "6em"},

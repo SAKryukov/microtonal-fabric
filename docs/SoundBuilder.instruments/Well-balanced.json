@@ -9,7 +9,7 @@
     "gainCompensation": {
         "middleFrequency": 437,
         "lowFrequencyCompensationGain": 0.0002,
-        "highFrequencyCompensationGain": 20.00000000000002
+        "highFrequencyCompensationGain": 20
     },
     "oscillator": {
         "type": "Fourier",

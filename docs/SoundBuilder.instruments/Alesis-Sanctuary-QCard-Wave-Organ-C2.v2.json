@@ -7,9 +7,10 @@
         "instrumentName": "e"
     },
     "gainCompensation": {
+        "masterGain": 1,
         "middleFrequency": 400,
         "lowFrequencyCompensationGain": 0.2,
-        "highFrequencyCompensationGain": 20.00000000000002
+        "highFrequencyCompensationGain": 20
     },
     "oscillator": {
         "type": "Fourier",

@@ -7,9 +7,10 @@
         "instrumentName": "Accordion"
     },
     "gainCompensation": {
+        "masterGain": 1,
         "middleFrequency": 400,
         "lowFrequencyCompensationGain": 1,
-        "highFrequencyCompensationGain": 3.0000000000000013
+        "highFrequencyCompensationGain": 3
     },
     "oscillator": {
         "type": "Fourier",

@@ -7,8 +7,11 @@
         "instrumentName": "Yamaha TX81Z Tube Bells"
     },
     "gainCompensation": {
+        "masterGain": 1,
         "middleFrequency": 384,
+        "lowFrequency": 27.5,
         "lowFrequencyCompensationGain": 0.5000000000000002,
+        "highFrequency": 3951.066410048994,
         "highFrequencyCompensationGain": 10.000099999999982
     },
     "oscillator": {

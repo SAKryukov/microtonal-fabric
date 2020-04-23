@@ -11,13 +11,13 @@ class Instrument extends ModulatorSet {
         this.#implementation.masterGain = new GainNode(context, { gain: 1 });
         //compensation:
         const compensation = (() => {
-            const f0 = firstFrequency * Math.pow(2, first / tonalSystem);
-            const f1 = firstFrequency * Math.pow(2, last / tonalSystem)
             const compensation = (f) => {
                 if (!this.#implementation.gainCompensation || !this.#implementation.gainCompensation.middleFrequency) return 1;
                 const shift = f - this.#implementation.gainCompensation.middleFrequency;
                 const g0 = this.#implementation.gainCompensation.lowFrequencyCompensationGain;
                 const g1 = this.#implementation.gainCompensation.highFrequencyCompensationGain;
+                const f0 = this.#implementation.gainCompensation.lowFrequency;
+                const f1 = this.#implementation.gainCompensation.lowFrequency;
                 const factor0 = (g0 - 1) / Math.pow(f0 - this.#implementation.gainCompensation.middleFrequency, 2);
                 const factor1 = (g1 - 1) / Math.pow(f1 - this.#implementation.gainCompensation.middleFrequency, 2);
                 if (shift < 0)

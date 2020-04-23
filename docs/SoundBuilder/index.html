@@ -71,7 +71,9 @@
         td, th { padding-top: var(--vertical-gap); padding-bottom: var(--vertical-gap); }
         td { background-color: white; }
         tr:first-child { border-width: 2px; }
-        th:not(:last-child), td:not(:last-child), #aspect-filter td:last-child { padding-left: var(--small-horizontal-gap); padding-right: var(--small-horizontal-gap); }
+        th:not(:last-child), td:not(:last-child),
+        #aspect-filter td:last-child, #aspect-gain-compensation td:last-child
+            { padding-left: var(--small-horizontal-gap); padding-right: var(--small-horizontal-gap); }
         tr:last-child { border-top-width: 2px; }
         tr:last-child td { border: none; }
         th { background-color: var(--light-title-background); }
@@ -209,8 +211,9 @@
                 </table>
             </details>
             <details id="aspect-gain-compensation"><summary>Gain Compensation</summary>
+                <section><label>Master Compensation Gain:</label><div></div></section>
                 <table>
-                    <tr><th>Medium Frequency</th><th>Low-Frequency Gain Compensation</th><th>Hi-Frequency Gain Compensation</th></tr>
+                    <tr><th>Middle Frequency</th><th>Low-Frequency Gain Compensation</th><th>Hi-Frequency Gain Compensation</th></tr>
                     <tr><td><div></div></td><td><div></div></td><td><div></div></td></tr>
                 </table>
                 <section><label></label><div></div></section>

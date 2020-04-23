@@ -6,7 +6,12 @@
         "author": "",
         "instrumentName": ""
     },
-    "compensationGain": {},
+    "gainCompensation": {
+        "masterGain": 1,
+        "middleFrequency": 400,
+        "lowFrequencyCompensationGain": 0.2,
+        "highFrequencyCompensationGain": 20
+    },
     "oscillator": {
         "type": "Fourier",
         "Fourier": [

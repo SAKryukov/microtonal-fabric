@@ -26,7 +26,6 @@ class Tone extends ModulatorSet {
     } //constructor
 
     play(on) {
-        console.log(this.#implementation.mainOscillator.frequency.value);
         this.#implementation.gainEnvelope.play(this.#implementation.context, this.#implementation.gainEnvelopeNode.gain, on);
         this.#implementation.detuneEnvelope.play(this.#implementation.context, this.#implementation.mainOscillator.detune, on);
         this.#implementation.frequencyModulationEnvelope.play(this.#implementation.context, this.#implementation.frequencyModulationEnvelopeNode.gain, on);
@@ -73,6 +72,8 @@ class Tone extends ModulatorSet {
     set sustain(value) { this.#implementation.gainEnvelope.sustain = value; }
 
     get frequency() { return this.#implementation.mainOscillator.frequency.value; }
-    set gainCompensation(value) { this.#implementation.frequencyCompensationGainNode.gain.value = value; }
+    set gainCompensation(value) {
+        this.#implementation.frequencyCompensationGainNode.gain.value = value;
+    }
 
 } //class Tone

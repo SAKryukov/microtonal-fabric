@@ -13,7 +13,17 @@ window.onload = () => {
     
     function startApplication() {
 
-        const instrument = new Instrument(controls.keyboard.first, controls.keyboard.last, controls.keyboard.firstFrequency, controls.keyboard.tonalSystem);
+        const keyboardProperties = (() => {
+            const result = {
+                first: controls.keyboard.first,
+                last: controls.keyboard.last,
+                firstFrequency: controls.keyboard.firstFrequency,
+                tonalSystem: controls.keyboard.tonalSystem,
+            };
+            result.lastFrequency = result.firstFrequency * Math.pow(2, result.last / result.tonalSystem);
+            return result;
+        })(); //keyboardProperties
+        const instrument = new Instrument(keyboardProperties.first, keyboardProperties.last, keyboardProperties.firstFrequency, keyboardProperties.tonalSystem);
         controls.keyboard.setAction((down, index) => {
             instrument.play(down, index);
         }); //kbd.setAction
@@ -44,6 +54,7 @@ window.onload = () => {
             lastFileName: undefined,
             modelToView: function () {
                 if (this.model.gainCompensation && this.model.gainCompensation.middleFrequency != undefined) {
+                    controls.tables.compensation.masterGain.value = this.model.gainCompensation.masterGain;
                     controls.tables.compensation.middleFrequency.value = this.model.gainCompensation.middleFrequency;
                     controls.tables.compensation.lowFrequencyCompensationGain.value = this.model.gainCompensation.lowFrequencyCompensationGain;
                     controls.tables.compensation.highFrequencyCompensationGain.value = this.model.gainCompensation.highFrequencyCompensationGain;    
@@ -77,8 +88,11 @@ window.onload = () => {
                 this.model = {
                     header: this.createHeader(),
                     gainCompensation: {
+                        masterGain: controls.tables.compensation.masterGain.value,
                         middleFrequency: controls.tables.compensation.middleFrequency.value,
+                        lowFrequency: keyboardProperties.firstFrequency,
                         lowFrequencyCompensationGain: controls.tables.compensation.lowFrequencyCompensationGain.value,
+                        highFrequency: keyboardProperties.lastFrequency,
                         highFrequencyCompensationGain: controls.tables.compensation.highFrequencyCompensationGain.value,
                     },
                     oscillator: controls.tables.tableFourier.data,

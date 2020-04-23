@@ -1,4 +1,12 @@
 const defaultInstrument = {
+    gainCompensation: {
+        masterGain: 1,
+        middleFrequency: 329.628, // middle e', real middle key of the keyboard (#44), between middle C and middle A = 440 Hz
+        lowFrequency: 27.5,
+        lowFrequencyCompensationGain: 1,
+        highFrequency: 3951.066410048994,
+        highFrequencyCompensationGain: 1
+    },
     oscillator: {
         type: "Fourier",
         Fourier: [
