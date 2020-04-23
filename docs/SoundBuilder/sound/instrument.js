@@ -7,7 +7,7 @@ class Instrument extends ModulatorSet {
         this.#implementation.tones = new Map();
         const context = new AudioContext();
         this.context = context;
-        this.#implementation.compensationGainNode = new GainNode(context, { gain: 1 }); //SA??? SA!!! unused!
+        this.#implementation.compensationMasterGainNode = new GainNode(context, { gain: 1 });
         this.#implementation.masterGain = new GainNode(context, { gain: 1 });
         //compensation:
         const compensation = (() => {
@@ -35,9 +35,9 @@ class Instrument extends ModulatorSet {
             const frequency = firstFrequency * Math.pow(2, index / tonalSystem);
             const tone = new Tone(context, frequency, compensation(frequency));
             this.#implementation.tones.set(index, tone);
-            tone.connect(this.#implementation.compensationGainNode, 1); //SA??? SA!!! unused!
+            tone.connect(this.#implementation.compensationMasterGainNode, 1);
         } //loop tones
-        this.#implementation.compensationGainNode.connect(this.#implementation.masterGain); //SA??? SA!!! unused!
+        this.#implementation.compensationMasterGainNode.connect(this.#implementation.masterGain);
         const oscillatorTypeFourier = DefinitionSet.OscillatorType.getValue(0).name; //default
         this.#implementation.setWaveform = (oscillator) => {
             let wave;
@@ -113,6 +113,7 @@ class Instrument extends ModulatorSet {
     set data(dataset) {
         if (dataset.gainCompensation && dataset.gainCompensation.middleFrequency) {
             this.#implementation.gainCompensation = dataset.gainCompensation;
+            this.#implementation.compensationMasterGainNode.gain.value = dataset.gainCompensation.masterGain;
             this.#implementation.compensateToneGains();
         } //if dataset.gainCompensation
         this.#implementation.setWaveform(dataset.oscillator);
