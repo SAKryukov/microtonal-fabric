@@ -2,9 +2,14 @@
     "header": {
         "format": "Sound Builder",
         "version": "0.1.0",
-        "formatVersion": "2.1.0",
+        "formatVersion": "3.0.0",
         "author": "",
         "instrumentName": "Bass Saxophone?"
+    },
+    "gainCompensation": {
+        "middleFrequency": 400,
+        "lowFrequencyCompensationGain": 0.2999999999999998,
+        "highFrequencyCompensationGain": 178.89097638640428
     },
     "oscillator": {
         "type": "Fourier",
@@ -434,23 +439,11 @@
     "frequencyModulation": {
         "absoluteFrequency": {
             "masterDepth": 1,
-            "modes": [
-                {
-                    "frequency": 4.39,
-                    "depth": 39.48,
-                    "useEnvelope": false
-                }
-            ]
+            "modes": []
         },
         "relativeFrequency": {
             "masterDepth": 1,
-            "modes": [
-                {
-                    "frequency": 17.1,
-                    "depth": 50.69,
-                    "useEnvelope": false
-                }
-            ]
+            "modes": []
         },
         "envelope": {
             "stages": [],
@@ -460,23 +453,11 @@
     "amplitudeModulation": {
         "absoluteFrequency": {
             "masterDepth": 1,
-            "modes": [
-                {
-                    "frequency": 24.07,
-                    "depth": 65.74,
-                    "useEnvelope": false
-                }
-            ]
+            "modes": []
         },
         "relativeFrequency": {
             "masterDepth": 1,
-            "modes": [
-                {
-                    "frequency": 34.28,
-                    "depth": 87.94,
-                    "useEnvelope": false
-                }
-            ]
+            "modes": []
         },
         "envelope": {
             "stages": [],

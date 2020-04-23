@@ -6,6 +6,7 @@
         "author": "",
         "instrumentName": "Mental"
     },
+    "compensationGain": {},
     "oscillator": {
         "type": "Fourier",
         "Fourier": [

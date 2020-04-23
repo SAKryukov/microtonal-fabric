@@ -26,6 +26,7 @@ class Tone extends ModulatorSet {
     } //constructor
 
     play(on) {
+        console.log(this.#implementation.mainOscillator.frequency.value);
         this.#implementation.gainEnvelope.play(this.#implementation.context, this.#implementation.gainEnvelopeNode.gain, on);
         this.#implementation.detuneEnvelope.play(this.#implementation.context, this.#implementation.mainOscillator.detune, on);
         this.#implementation.frequencyModulationEnvelope.play(this.#implementation.context, this.#implementation.frequencyModulationEnvelopeNode.gain, on);

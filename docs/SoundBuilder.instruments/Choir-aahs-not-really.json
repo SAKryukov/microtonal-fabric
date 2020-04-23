@@ -6,6 +6,7 @@
         "author": "",
         "instrumentName": "Chior aahs"
     },
+    "compensationGain": {},
     "oscillator": {
         "type": "triangle",
         "Fourier": [

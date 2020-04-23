@@ -9,6 +9,7 @@ class Instrument extends ModulatorSet {
         this.context = context;
         this.#implementation.compensationGainNode = new GainNode(context, { gain: 1 }); //SA??? SA!!! unused!
         this.#implementation.masterGain = new GainNode(context, { gain: 1 });
+<<<<<<< HEAD
         //compensation:
         const compensation = (() => {
             const f0 = firstFrequency * Math.pow(2, first / tonalSystem);
@@ -31,11 +32,25 @@ class Instrument extends ModulatorSet {
             for (let [_, tone] of this.#implementation.tones)
                 tone.gainCompensation = compensation(tone.frequency); 
         }; //this.#implementation.compensateToneGains
+=======
+        //compensation: 
+        const loFrequency = firstFrequency * Math.pow(2, first / tonalSystem);
+        const hiFrequency = firstFrequency * Math.pow(2, last / tonalSystem)
+        const compensation = (f) => {
+            return 1;
+            let factor = f/hiFrequency;
+            return factor;
+        } //compensation
+>>>>>>> c18bbdeb8aef717263fbdbe60e342aedaa1de9da
         for (let index = first; index <= last; ++index) {
             const frequency = firstFrequency * Math.pow(2, index / tonalSystem);
             const tone = new Tone(context, frequency, compensation(frequency));
             this.#implementation.tones.set(index, tone);
+<<<<<<< HEAD
             tone.connect(this.#implementation.compensationGainNode, 1); //SA??? SA!!! unused!
+=======
+            tone.connect(this.#implementation.compensationGain, 1);
+>>>>>>> c18bbdeb8aef717263fbdbe60e342aedaa1de9da
         } //loop tones
         this.#implementation.compensationGainNode.connect(this.#implementation.masterGain); //SA??? SA!!! unused!
         const oscillatorTypeFourier = DefinitionSet.OscillatorType.getValue(0).name; //default

@@ -6,6 +6,7 @@
         "author": "",
         "instrumentName": ""
     },
+    "compensationGain": {},
     "oscillator": {
         "type": "Fourier",
         "Fourier": [

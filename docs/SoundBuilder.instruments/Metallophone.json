@@ -2,9 +2,14 @@
     "header": {
         "format": "Sound Builder",
         "version": "0.1.0",
-        "formatVersion": "2.1.0",
+        "formatVersion": "3.0.0",
         "author": "",
         "instrumentName": "Metallophone"
+    },
+    "gainCompensation": {
+        "middleFrequency": 400,
+        "lowFrequencyCompensationGain": 1,
+        "highFrequencyCompensationGain": 30
     },
     "oscillator": {
         "type": "Fourier",

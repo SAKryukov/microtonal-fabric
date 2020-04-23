@@ -2,11 +2,15 @@
     "header": {
         "format": "Sound Builder",
         "version": "0.1.0",
-        "formatVersion": "2.1.0",
+        "formatVersion": "3.0.0",
         "author": "",
         "instrumentName": "Electric piano"
     },
-    "compensationGain": 0.7,
+    "gainCompensation": {
+        "middleFrequency": 400,
+        "lowFrequencyCompensationGain": 0.1999999999999993,
+        "highFrequencyCompensationGain": 99.9999999999986
+    },
     "oscillator": {
         "type": "Fourier",
         "Fourier": [
@@ -422,7 +426,7 @@
             {
                 "functionIndex": 0,
                 "function": "exponential",
-                "duration": 0.01,
+                "duration": 0.004,
                 "gain": 0.112
             },
             {
@@ -432,8 +436,8 @@
                 "gain": 0.9583333333333334
             },
             {
-                "functionIndex": 2,
-                "function": "Heaviside",
+                "functionIndex": 1,
+                "function": "linear",
                 "duration": 0.006,
                 "gain": 1.0977564102564104
             },
@@ -444,7 +448,7 @@
                 "gain": 0
             }
         ],
-        "dampingSustain": 0.1
+        "dampingSustain": 0.266
     },
     "detuneEnvelope": {
         "stages": [],

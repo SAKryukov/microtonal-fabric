@@ -6,7 +6,7 @@
         "author": "",
         "instrumentName": "Tuba"
     },
-    "compensationGain": 0.7,
+    "compensationGain": {},
     "oscillator": {
         "type": "Fourier",
         "Fourier": [

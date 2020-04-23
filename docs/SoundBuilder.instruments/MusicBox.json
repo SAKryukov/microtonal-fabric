@@ -6,6 +6,7 @@
         "author": "",
         "instrumentName": "Music Box"
     },
+    "compensationGain": {},
     "oscillator": {
         "type": "Fourier",
         "Fourier": [

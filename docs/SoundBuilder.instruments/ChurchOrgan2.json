@@ -6,6 +6,7 @@
         "author": "",
         "instrumentName": "Church organ"
     },
+    "compensationGain": {},
     "oscillator": {
         "type": "Fourier",
         "Fourier": [

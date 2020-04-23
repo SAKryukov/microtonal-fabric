@@ -6,6 +6,7 @@
         "author": "",
         "instrumentName": "Woodblocks"
     },
+    "compensationGain": {},
     "oscillator": {
         "type": "Fourier",
         "Fourier": [

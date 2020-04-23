@@ -4,7 +4,7 @@
         "version": "0.1.0",
         "formatVersion": "2.1.0",
         "author": "",
-        "instrumentName": "Simple organ"
+        "instrumentName": ""
     },
     "compensationGain": {},
     "oscillator": {
@@ -12,82 +12,48 @@
         "Fourier": [
             {
                 "harmonic": 1,
-                "amplitude": 104.11361410381978,
-                "phase": -111.93386053199137
+                "amplitude": 81.5,
+                "phase": 42.26086956521738
             },
             {
                 "harmonic": 2,
-                "amplitude": 79.91422444603288,
-                "phase": -98.73472322070452
+                "amplitude": 98.85222381635582,
+                "phase": 17.739130434782595
             },
             {
                 "harmonic": 3,
-                "amplitude": 30.01412429378531,
-                "phase": -87.86484543493889
+                "amplitude": 97.41750358680056,
+                "phase": -3.1304347826086882
             },
             {
                 "harmonic": 4,
-                "amplitude": 23.940677966101696,
-                "phase": -78.03019410496046
-            },
-            {
-                "harmonic": 5,
-                "amplitude": 65.5,
-                "phase": -161.6
-            },
-            {
-                "harmonic": 6,
-                "amplitude": 11.511299435028247,
-                "phase": -61.98418404025881
-            },
-            {
-                "harmonic": 7,
-                "amplitude": 80.7,
-                "phase": -151.6
-            },
-            {
-                "harmonic": 8,
-                "amplitude": 2.5,
-                "phase": -57.01704545454545
-            },
-            {
-                "harmonic": 9,
-                "amplitude": 94.2,
-                "phase": -157.4
-            },
-            {
-                "harmonic": 10,
-                "amplitude": 1.6826923076923077,
-                "phase": -51.39204545454547
-            },
-            {
-                "harmonic": 11,
-                "amplitude": 97.5,
-                "phase": -143.6
-            },
-            {
-                "harmonic": 12,
-                "amplitude": 0.2,
-                "phase": 0
+                "amplitude": 95.1219512195122,
+                "phase": -28.69565217391306
             }
         ]
     },
     "gainEnvelope": {
         "stages": [
             {
+                "functionIndex": 0,
+                "function": "exponential",
+                "duration": 0.002,
+                "gain": 0.491
+            },
+            {
                 "functionIndex": 1,
                 "function": "linear",
-                "duration": 0.35,
-                "gain": 0.914
+                "duration": 0.001,
+                "gain": 1.1071428571428572
             },
             {
                 "functionIndex": 0,
                 "function": "exponential",
-                "duration": 2.516,
-                "gain": 1
+                "duration": 0.343,
+                "gain": -0.017241379310344827
             }
         ],
-        "dampingSustain": 0.1
+        "dampingSustain": 0.14
     },
     "detuneEnvelope": {
         "stages": [],
@@ -96,23 +62,11 @@
     "frequencyModulation": {
         "absoluteFrequency": {
             "masterDepth": 1,
-            "modes": [
-                {
-                    "frequency": 4.39,
-                    "depth": 39.48,
-                    "useEnvelope": false
-                }
-            ]
+            "modes": []
         },
         "relativeFrequency": {
             "masterDepth": 1,
-            "modes": [
-                {
-                    "frequency": 17.1,
-                    "depth": 50.69,
-                    "useEnvelope": false
-                }
-            ]
+            "modes": []
         },
         "envelope": {
             "stages": [],
@@ -122,23 +76,11 @@
     "amplitudeModulation": {
         "absoluteFrequency": {
             "masterDepth": 1,
-            "modes": [
-                {
-                    "frequency": 24.07,
-                    "depth": 65.74,
-                    "useEnvelope": false
-                }
-            ]
+            "modes": []
         },
         "relativeFrequency": {
             "masterDepth": 1,
-            "modes": [
-                {
-                    "frequency": 34.28,
-                    "depth": 87.94,
-                    "useEnvelope": false
-                }
-            ]
+            "modes": []
         },
         "envelope": {
             "stages": [],
@@ -150,7 +92,7 @@
             "present": true,
             "index": 0,
             "type": "lowpass",
-            "frequency": 350,
+            "frequency": 1500,
             "Q": 1
         },
         {

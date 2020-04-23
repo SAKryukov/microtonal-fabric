@@ -2,9 +2,14 @@
     "header": {
         "format": "Sound Builder",
         "version": "0.1.0",
-        "formatVersion": "2.1.0",
+        "formatVersion": "3.0.0",
         "author": "",
         "instrumentName": "Accordion"
+    },
+    "gainCompensation": {
+        "middleFrequency": 400,
+        "lowFrequencyCompensationGain": 1,
+        "highFrequencyCompensationGain": 3.0000000000000013
     },
     "oscillator": {
         "type": "Fourier",

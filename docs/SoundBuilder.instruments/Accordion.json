@@ -2,11 +2,15 @@
     "header": {
         "format": "Sound Builder",
         "version": "0.1.0",
-        "formatVersion": "2.1.0",
+        "formatVersion": "3.0.0",
         "author": "",
         "instrumentName": "Accordion"
     },
-    "compensationGain": 1,
+    "gainCompensation": {
+        "middleFrequency": 400,
+        "lowFrequencyCompensationGain": 1,
+        "highFrequencyCompensationGain": 50.00000000000044
+    },
     "oscillator": {
         "type": "Fourier",
         "Fourier": [
@@ -178,7 +182,14 @@
         ]
     },
     "gainEnvelope": {
-        "stages": [],
+        "stages": [
+            {
+                "functionIndex": 0,
+                "function": "exponential",
+                "duration": 0.001,
+                "gain": 0.104
+            }
+        ],
         "dampingSustain": 0.02
     },
     "detuneEnvelope": {

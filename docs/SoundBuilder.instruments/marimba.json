@@ -6,6 +6,7 @@
         "author": "",
         "instrumentName": "Marimba"
     },
+    "compensationGain": {},
     "oscillator": {
         "type": "Fourier",
         "Fourier": [

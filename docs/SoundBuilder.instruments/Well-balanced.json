@@ -1,0 +1,219 @@
+{
+    "header": {
+        "format": "Sound Builder",
+        "version": "0.1.0",
+        "formatVersion": "2.1.0",
+        "author": "",
+        "instrumentName": ""
+    },
+    "gainCompensation": {
+        "middleFrequency": 437,
+        "lowFrequencyCompensationGain": 0.0002,
+        "highFrequencyCompensationGain": 20.00000000000002
+    },
+    "oscillator": {
+        "type": "Fourier",
+        "Fourier": [
+            {
+                "harmonic": 1,
+                "amplitude": 17.46987951807229,
+                "phase": -67.5820170109356
+            },
+            {
+                "harmonic": 2,
+                "amplitude": 20.96385542168675,
+                "phase": -79.39246658566222
+            },
+            {
+                "harmonic": 3,
+                "amplitude": 25.421686746987955,
+                "phase": -94.26488456865127
+            },
+            {
+                "harmonic": 4,
+                "amplitude": 30.120481927710845,
+                "phase": -105.63791008505468
+            },
+            {
+                "harmonic": 5,
+                "amplitude": 35.66265060240964,
+                "phase": -115.69866342648845
+            },
+            {
+                "harmonic": 6,
+                "amplitude": 42.53012048192771,
+                "phase": -124.44714459295261
+            },
+            {
+                "harmonic": 7,
+                "amplitude": 52.40963855421686,
+                "phase": -125.75941676792223
+            },
+            {
+                "harmonic": 8,
+                "amplitude": 68.07228915662651,
+                "phase": -125.75941676792223
+            },
+            {
+                "harmonic": 9,
+                "amplitude": 86.62650602409639,
+                "phase": -124.00972053462941
+            },
+            {
+                "harmonic": 10,
+                "amplitude": 99.03614457831326,
+                "phase": -121.38517618469015
+            },
+            {
+                "harmonic": 11,
+                "amplitude": 79.39759036144578,
+                "phase": -113.94896719319563
+            },
+            {
+                "harmonic": 12,
+                "amplitude": 48.674698795180724,
+                "phase": -103.88821385176185
+            },
+            {
+                "harmonic": 13,
+                "amplitude": 34.33734939759036,
+                "phase": -95.13973268529769
+            },
+            {
+                "harmonic": 14,
+                "amplitude": 19.638554216867472,
+                "phase": -83.76670716889429
+            },
+            {
+                "harmonic": 15,
+                "amplitude": 9.879518072289157,
+                "phase": -73.70595382746052
+            },
+            {
+                "harmonic": 16,
+                "amplitude": 6.506024096385541,
+                "phase": -61.8955042527339
+            },
+            {
+                "harmonic": 17,
+                "amplitude": 4.819277108433735,
+                "phase": -50.5224787363305
+            },
+            {
+                "harmonic": 18,
+                "amplitude": 3.2530120481927707,
+                "phase": -48.77278250303766
+            },
+            {
+                "harmonic": 19,
+                "amplitude": 2.5301204819277108,
+                "phase": -50.08505467800728
+            },
+            {
+                "harmonic": 20,
+                "amplitude": 1.9277108433734942,
+                "phase": -50.5224787363305
+            },
+            {
+                "harmonic": 21,
+                "amplitude": 0.6024096385542169,
+                "phase": -54.459295261239376
+            }
+        ]
+    },
+    "gainEnvelope": {
+        "stages": [],
+        "dampingSustain": 0.02
+    },
+    "detuneEnvelope": {
+        "stages": [],
+        "dampingSustain": 0.02
+    },
+    "frequencyModulation": {
+        "absoluteFrequency": {
+            "masterDepth": 1,
+            "modes": []
+        },
+        "relativeFrequency": {
+            "masterDepth": 1,
+            "modes": []
+        },
+        "envelope": {
+            "stages": [],
+            "dampingSustain": 0.02
+        }
+    },
+    "amplitudeModulation": {
+        "absoluteFrequency": {
+            "masterDepth": 1,
+            "modes": []
+        },
+        "relativeFrequency": {
+            "masterDepth": 1,
+            "modes": []
+        },
+        "envelope": {
+            "stages": [],
+            "dampingSustain": 0.02
+        }
+    },
+    "filter": [
+        {
+            "present": true,
+            "index": 0,
+            "type": "lowpass",
+            "frequency": 350,
+            "Q": 1
+        },
+        {
+            "present": false,
+            "index": 1,
+            "type": "highpass",
+            "frequency": 350,
+            "Q": 1
+        },
+        {
+            "present": false,
+            "index": 2,
+            "type": "bandpass",
+            "frequency": 350,
+            "Q": 1
+        },
+        {
+            "present": false,
+            "index": 3,
+            "type": "lowshelf",
+            "frequency": 350,
+            "gain": 1
+        },
+        {
+            "present": false,
+            "index": 4,
+            "type": "highshelf",
+            "frequency": 350,
+            "gain": 1
+        },
+        {
+            "present": false,
+            "index": 5,
+            "type": "peaking",
+            "frequency": 350,
+            "Q": 1,
+            "gain": 1
+        },
+        {
+            "present": false,
+            "index": 6,
+            "type": "notch",
+            "frequency": 350,
+            "Q": 1
+        },
+        {
+            "present": false,
+            "index": 7,
+            "type": "allpass",
+            "frequency": 350,
+            "Q": 1
+        }
+    ]
+}

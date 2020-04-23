@@ -2,11 +2,15 @@
     "header": {
         "format": "Sound Builder",
         "version": "0.1.0",
-        "formatVersion": "2.1.0",
+        "formatVersion": "3.0.0",
         "author": "",
         "instrumentName": "Yamaha TX81Z Tube Bells"
     },
-    "compensationGain": 2,
+    "gainCompensation": {
+        "middleFrequency": 384,
+        "lowFrequencyCompensationGain": 0.5000000000000002,
+        "highFrequencyCompensationGain": 10.000099999999982
+    },
     "oscillator": {
         "type": "Fourier",
         "Fourier": [
