@@ -46,7 +46,7 @@ window.onload = () => {
                 if (this.model.gainCompensation && this.model.gainCompensation.middleFrequency != undefined) {
                     controls.tables.compensation.middleFrequency.value = this.model.gainCompensation.middleFrequency;
                     controls.tables.compensation.lowFrequencyCompensationGain.value = this.model.gainCompensation.lowFrequencyCompensationGain;
-                    controls.tables.compensation.highFrequencyCompensationGain.value = his.model.gainCompensation.highFrequencyCompensationGain;    
+                    controls.tables.compensation.highFrequencyCompensationGain.value = this.model.gainCompensation.highFrequencyCompensationGain;    
                 } //if compensationGain
                 controls.fileIO.instrumentName.value = this.model.header.instrumentName;
                 controls.tables.tableFourier.data = this.model.oscillator;
