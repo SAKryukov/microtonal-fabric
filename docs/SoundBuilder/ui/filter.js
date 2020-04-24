@@ -6,7 +6,7 @@ class Filter {
         this.#implementation.element = tableElement;
         this.#implementation.tableBody = tableElement.firstElementChild;
         this.#implementation.filters = [];
-        DefinitionSet.FilterType.forEach(member => {
+        definitionSet.FilterType.forEach(member => {
             // cells:
             const row = document.createElement("tr");
             const typeCell = document.createElement("td");
@@ -45,12 +45,12 @@ class Filter {
             for (let cell of [typeCell, frequencyCell, qCell, gainCell]) row.appendChild(cell);
             this.#implementation.tableBody.appendChild(row);
             member.ui = { presence: presence, frequency: frequencySlider, Q: qSlider, gain: gainSlider };
-        }); //DefinitionSet.FilterType.forEach
+        }); //definitionSet.FilterType.forEach
     } //constructor
 
     get data() {
         const result = [];
-        DefinitionSet.FilterType.forEach(member => {
+        definitionSet.FilterType.forEach(member => {
             const filterData = {
                 present: member.ui.presence.checked,
                 index: member.index,
@@ -60,13 +60,13 @@ class Filter {
                 gain: member.ui.gain ? member.ui.gain.value: undefined,
             };
             result.push(filterData);
-        }); //DefinitionSet.FilterType.forEach
+        }); //definitionSet.FilterType.forEach
         return result;
     } //get data
     set data(dataset) {
         if (!dataset) return;
         const goodElement = element => element != undefined && element != null;
-        DefinitionSet.FilterType.forEach(member => {
+        definitionSet.FilterType.forEach(member => {
             const filterData = dataset[member.index];
             if (!filterData) return;
             if (goodElement(member.ui.presence) && goodElement(filterData.present))
@@ -77,7 +77,7 @@ class Filter {
                 member.ui.Q.value = Math.log10(filterData.Q);
             if (goodElement(member.ui.gain) && goodElement(filterData.gain))
                 member.ui.gain.value = filterData.gain;
-        }); //DefinitionSet.FilterType.forEach
+        }); //definitionSet.FilterType.forEach
     } //set data
 
     set onchange(aHandler) { this.#implementation.onchange = aHandler; } // handler(control, value)

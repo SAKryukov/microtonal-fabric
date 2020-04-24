@@ -1,6 +1,6 @@
 class Instrument extends ModulatorSet {
 
-    #implementation = { sustain: DefinitionSet.PlayControl.minimalSustain, gainCompensation: { } };
+    #implementation = { sustain: definitionSet.playControl.minimalSustain, gainCompensation: { } };
 
     constructor(first, last, firstFrequency, tonalSystem) {
         super();
@@ -38,7 +38,7 @@ class Instrument extends ModulatorSet {
             tone.connect(this.#implementation.compensationMasterGainNode, 1);
         } //loop tones
         this.#implementation.compensationMasterGainNode.connect(this.#implementation.masterGain);
-        const oscillatorTypeFourier = DefinitionSet.OscillatorType.getValue(0).name; //default
+        const oscillatorTypeFourier = definitionSet.OscillatorType.getValue(0).name; //default
         this.#implementation.setWaveform = (oscillator) => {
             let wave;
             if (!oscillator.type || oscillator.type == oscillatorTypeFourier) {
@@ -74,38 +74,38 @@ class Instrument extends ModulatorSet {
             } //loop
             this.#implementation.filterChain.populate(filterSet);
         } //this.#implementation.setFilterChain
-        this.#implementation.setFilterChain(DefinitionSet.defaultFilterSet);
+        this.#implementation.setFilterChain(definitionSet.defaultFilterSet);
     } //constructor
 
     play(on, index) { this.#implementation.tones.get(index).play(on); }
 
     playWith(usage, enable) {
         switch (usage) {
-            case DefinitionSet.PlayControl.usage.frequencyModulation:
+            case definitionSet.playControl.usage.frequencyModulation:
                 for (let [_, tone] of this.#implementation.tones)
                     tone.frequencyModulationEnable = enable;
                 return;
-            case DefinitionSet.PlayControl.usage.amplitudeModulation:
+            case definitionSet.playControl.usage.amplitudeModulation:
                 for (let [_, tone] of this.#implementation.tones)
                     tone.amplitudeModulationEnable = enable;
                 return;
-            case DefinitionSet.PlayControl.usage.gainEnvelope:
+            case definitionSet.playControl.usage.gainEnvelope:
                 for (let [_, tone] of this.#implementation.tones)
                     tone.gainEnvelopeEnable = enable;
                 return;
-            case DefinitionSet.PlayControl.usage.detuneEnvelope:
+            case definitionSet.playControl.usage.detuneEnvelope:
                 for (let [_, tone] of this.#implementation.tones)
                     tone.detuneEnvelopeEnable = enable;
                 return;
-            case DefinitionSet.PlayControl.usage.frequencyModulationEnvelope:
+            case definitionSet.playControl.usage.frequencyModulationEnvelope:
                 for (let [_, tone] of this.#implementation.tones)
                     tone.frequencyModulationEnvelopeEnable = enable;
                 return;
-            case DefinitionSet.PlayControl.usage.amplitudeModulationEnvelope:
+            case definitionSet.playControl.usage.amplitudeModulationEnvelope:
                 for (let [_, tone] of this.#implementation.tones)
                     tone.amplitudeModulationEnvelopeEnable = enable;
                 return;
-            case DefinitionSet.PlayControl.usage.filters: return this.#implementation.setFilterUsage(enable);
+            case definitionSet.playControl.usage.filters: return this.#implementation.setFilterUsage(enable);
             default: return;
         } //switch
     } //playWith

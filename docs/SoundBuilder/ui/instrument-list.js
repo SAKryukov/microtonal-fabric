@@ -9,7 +9,6 @@ class InstrumentListException extends Error {
 
 const instrumentList = {
 
-
     initialize: function(controls, exceptionHandler, clearExceptionHandler) { //exceptionHandler(exception, customPrefix, customTitle), clearExceptionHandler()
         this.lastFileName = null;
         this.map = new Map();
@@ -67,9 +66,9 @@ const instrumentList = {
                     data[mapIndex] = this.map.get(controls.list.children[mapIndex]);
                 ++mapIndex;
             } //loop
-            const text = JSON.stringify(data, null, DefinitionSet.FileStorage.tabSizeJSON);
-            const fileName = this.lastFileName ? this.lastFileName : DefinitionSet.FileStorage.initialInstrumentListFileName;
-            const constantName = DefinitionSet.FileStorage.instrumentListFileObjectName;
+            const text = JSON.stringify(data, null, definitionSet.fileStorage.tabSizeJSON);
+            const fileName = this.lastFileName ? this.lastFileName : definitionSet.fileStorage.initialInstrumentListFileName;
+            const constantName = definitionSet.fileStorage.instrumentListFileObjectName;
             fileIO.storeFile(fileName, `const ${constantName} = ${text}; //${constantName}`);
         }; //controls.save.onclick
     }, //initialize

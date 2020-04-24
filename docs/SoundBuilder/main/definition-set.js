@@ -1,6 +1,6 @@
 "use strict";
 
-const DefinitionSet = {
+const definitionSet = {
 
     version: "0.1.0",
     formatVersion: "3.1.0",
@@ -28,13 +28,13 @@ const DefinitionSet = {
         Q: 1
     }],
 
-    EnvelopeElementIndex: {
+    envelopeElementIndex: {
         exponential: 0,
         linear: 1,
         Heaviside: 2,
     }, //EnvelopeElement
 
-    PlayControl: {
+    playControl: {
         minimalAttack: 0.02, 
         minimalSustain: 0.02,
         usage: {
@@ -48,11 +48,11 @@ const DefinitionSet = {
         }     
     },
 
-    FileStorage: {
+    fileStorage: {
         initialInstrumentFileName: "instrument.json",
         initialInstrumentListFileName: "instrumentList.js",
         instrumentListFileObjectName: "instrumentList",
         tabSizeJSON: 4,     
     },
 
-} //class DefinitionSet
+} //class definitionSet

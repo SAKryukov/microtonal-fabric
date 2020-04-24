@@ -36,13 +36,13 @@ window.onload = () => {
             controls.playControl.sustain.onchange = (self, value) => setSustain();
             controls.playControl.volume.onchange = (self, value) => instrument.volume = value;
             // usage:
-            controls.usage.FM.handler = value => instrument.playWith(DefinitionSet.PlayControl.usage.frequencyModulation, value);
-            controls.usage.AM.handler = value => instrument.playWith(DefinitionSet.PlayControl.usage.amplitudeModulation, value);
-            controls.usage.GainEnvelope.handler = value => instrument.playWith(DefinitionSet.PlayControl.usage.gainEnvelope, value);
-            controls.usage.DetuneEnvelope.handler = value => instrument.playWith(DefinitionSet.PlayControl.usage.detuneEnvelope, value);
-            controls.usage.FMEnvelope.handler = value => instrument.playWith(DefinitionSet.PlayControl.usage.frequencyModulationEnvelope, value);
-            controls.usage.AMEnvelope.handler = value => instrument.playWith(DefinitionSet.PlayControl.usage.amplitudeModulationEnvelope, value);
-            controls.usage.Filter.handler = value => instrument.playWith(DefinitionSet.PlayControl.usage.filters, value);
+            controls.usage.FM.handler = value => instrument.playWith(definitionSet.playControl.usage.frequencyModulation, value);
+            controls.usage.AM.handler = value => instrument.playWith(definitionSet.playControl.usage.amplitudeModulation, value);
+            controls.usage.GainEnvelope.handler = value => instrument.playWith(definitionSet.playControl.usage.gainEnvelope, value);
+            controls.usage.DetuneEnvelope.handler = value => instrument.playWith(definitionSet.playControl.usage.detuneEnvelope, value);
+            controls.usage.FMEnvelope.handler = value => instrument.playWith(definitionSet.playControl.usage.frequencyModulationEnvelope, value);
+            controls.usage.AMEnvelope.handler = value => instrument.playWith(definitionSet.playControl.usage.amplitudeModulationEnvelope, value);
+            controls.usage.Filter.handler = value => instrument.playWith(definitionSet.playControl.usage.filters, value);
             controls.usage.Sustain.handler = value => {
                 controls.playControl.sustain.disabled = !value;
                 setSustain();
@@ -77,9 +77,9 @@ window.onload = () => {
             }, //modelToView
             createHeader: () => {
                 return {
-                    format: DefinitionSet.title,
-                    version: DefinitionSet.version,
-                    formatVersion: DefinitionSet.formatVersion,
+                    format: definitionSet.title,
+                    version: definitionSet.version,
+                    formatVersion: definitionSet.formatVersion,
                     author: "",
                     instrumentName: controls.fileIO.instrumentName.value,
                 }
@@ -151,10 +151,10 @@ window.onload = () => {
                     const loadedFormatVersion = parseFloat(singleton.model.header.formatVersion);
                     if (Number.isNaN(loadedFormatVersion))
                         throw new Error(`invalid format version: "${singleton.model.header.formatVersion}"`);
-                    const currentFormatVersion = parseFloat(DefinitionSet.formatVersion);
+                    const currentFormatVersion = parseFloat(definitionSet.formatVersion);
                     if ((currentFormatVersion >= loadedFormatVersion) != true) //sic!
                         throw new Error(
-                            `File format version should be lower or equal to ${DefinitionSet.formatVersion}, ` +
+                            `File format version should be lower or equal to ${definitionSet.formatVersion}, ` +
                             `otherwise newer version of the application might be required`);
                 } catch (ex) {
                     setExceptionMessage(ex, "Error loading file");
@@ -174,10 +174,10 @@ window.onload = () => {
             const storeModel = () => {
                 clearException();
                 apply(true);
-                const fileName = singleton.lastFileName ? singleton.lastFileName : DefinitionSet.FileStorage.initialInstrumentFileName;
+                const fileName = singleton.lastFileName ? singleton.lastFileName : definitionSet.fileStorage.initialInstrumentFileName;
                 fileIO.storeFile(
                     fileName,
-                    JSON.stringify(singleton.model, null, DefinitionSet.FileStorage.tabSizeJSON));
+                    JSON.stringify(singleton.model, null, definitionSet.fileStorage.tabSizeJSON));
             }; //storeModel
             //
             controls.fileIO.buttonLoad.onclick = _ => {
@@ -191,8 +191,8 @@ window.onload = () => {
 
         controls.usage.FitKeyboard.focus();
 
-        controls.copyright.innerHTML = DefinitionSet.copyright;
-        controls.copyright.title = `${DefinitionSet.title} v.${DefinitionSet.version}`;
+        controls.copyright.innerHTML = definitionSet.copyright;
+        controls.copyright.title = `${definitionSet.title} v.${definitionSet.version}`;
 
     } //startApplication
     
