@@ -139,6 +139,7 @@ window.onload = () => {
                 controls.tables[index].onchange = onChangeHanler;
             for (let index in controls.tables.compensation)
                 controls.tables.compensation[index].onchange = onChangeHanler;
+            //
             const loadModel = file => {
                 if (!file) return;
                 const reader = new FileReader();
@@ -174,31 +175,24 @@ window.onload = () => {
                 reader.readAsText(file);
                 singleton.lastFileName = file.name;
             }; //loadModel
+            //
             const storeModel = () => {
                 clearException();
-                const link = document.createElement('a');
                 apply(true);
-                link.href = `${DefinitionSet.FileStorage.linkHrefMime},${JSON.stringify(singleton.model, null, DefinitionSet.FileStorage.tabSizeJSON)}`;
-                if (!singleton.lastFileName)
-                    link.download = DefinitionSet.FileStorage.initialFileName;
-                else
-                    link.download = singleton.lastFileName;
-                link.click();
+                const fileName = singleton.lastFileName ? singleton.lastFileName : DefinitionSet.FileStorage.initialFileName;
+                fileIO.storeFile(
+                    fileName,
+                    JSON.stringify(singleton.model, null, DefinitionSet.FileStorage.tabSizeJSON));
             }; //storeModel
             controls.fileIO.buttonLoad.onclick = _ => {
                 clearException();
-                const input = document.createElement("input");
-                input.setAttribute("type", "file");
-                input.value = null;
-                input.onchange = event => loadModel(event.target.files[0]);
-                input.click();
+                fileIO.loadFile(loadModel, ".json");
             }; //controls.fileIO.buttonLoad.onclick
             controls.fileIO.buttonApply.onclick = _ => apply(true);
             controls.fileIO.buttonStore.onclick = _ => storeModel();
             instrumentList.initialize(controls.instrumentList);
         })(); //setup IO
 
-        //showAfterStart();
         controls.usage.FitKeyboard.focus();
 
         controls.copyright.innerHTML = DefinitionSet.copyright;
