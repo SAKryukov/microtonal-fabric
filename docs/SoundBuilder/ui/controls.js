@@ -85,7 +85,6 @@ const findControls = () => {
         },
         fileIO: {
             instrumentName: document.querySelector("header aside p input"),
-            inputFile: document.querySelector("footer input"),
             buttonLoad: document.querySelector("footer button:first-child"),
             buttonApply: document.querySelector("footer div button:nth-child(2)"),
             buttonStore: document.querySelector("footer button:last-child"),

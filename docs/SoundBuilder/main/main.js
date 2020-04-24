@@ -118,7 +118,7 @@ window.onload = () => {
                 controls.exception.textContent = msg; controls.exception.title = detail;
             }
             const clearException = () => setExceptionMessage(undefined);
-            const apply = (fromView) => {
+            const apply = fromView => {
                 clearException();
                 if (fromView)
                     singleton.viewToModel();
@@ -139,11 +139,10 @@ window.onload = () => {
                 controls.tables[index].onchange = onChangeHanler;
             for (let index in controls.tables.compensation)
                 controls.tables.compensation[index].onchange = onChangeHanler;
-            controls.fileIO.inputFile.onchange = event => {
-                const file = event.target.files[0];
+            const loadModel = file => {
                 if (!file) return;
                 const reader = new FileReader();
-                reader.onload = (readEvent) => {
+                reader.onload = readEvent => {
                     clearException();
                     try {
                         const text = readEvent.target.result;
@@ -174,14 +173,8 @@ window.onload = () => {
                 }; //reader.onload
                 reader.readAsText(file);
                 singleton.lastFileName = file.name;
-            }; //controls.fileIO.inputFile.onchange
-            controls.fileIO.buttonLoad.onclick = _ => {
-                clearException();
-                controls.fileIO.inputFile.value = null;
-                controls.fileIO.inputFile.click();
-            }; //controls.fileIO.buttonLoad.onclick
-            controls.fileIO.buttonApply.onclick = _ => apply(true);
-            controls.fileIO.buttonStore.onclick = _ => {
+            }; //loadModel
+            const storeModel = () => {
                 clearException();
                 const link = document.createElement('a');
                 apply(true);
@@ -190,10 +183,18 @@ window.onload = () => {
                     link.download = DefinitionSet.FileStorage.initialFileName;
                 else
                     link.download = singleton.lastFileName;
-                document.body.appendChild(link);
                 link.click();
-                document.body.removeChild(link);
-            }; //controls.fileIO.buttonStore.onclick
+            }; //storeModel
+            controls.fileIO.buttonLoad.onclick = _ => {
+                clearException();
+                const input = document.createElement("input");
+                input.setAttribute("type", "file");
+                input.value = null;
+                input.onchange = event => loadModel(event.target.files[0]);
+                input.click();
+            }; //controls.fileIO.buttonLoad.onclick
+            controls.fileIO.buttonApply.onclick = _ => apply(true);
+            controls.fileIO.buttonStore.onclick = _ => storeModel();
             instrumentList.initialize(controls.instrumentList);
         })(); //setup IO
 
