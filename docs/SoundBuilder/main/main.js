@@ -114,9 +114,11 @@ window.onload = () => {
         }; //singleton
 
         (function setupIO() {
-            const setExceptionMessage = (msg, detail) => {
-                controls.exception.textContent = msg; controls.exception.title = detail;
-            }
+            const setExceptionMessage = (exception, customPrefix, customTitle) => {
+                const prefix = customPrefix ? `${customPrefix}: ` : "";
+                controls.exception.textContent = exception ? `${prefix}${exception.message}` : "";
+                controls.exception.title = customTitle;
+            }; //setExceptionMessage
             const clearException = () => setExceptionMessage(undefined);
             const apply = fromView => {
                 clearException();
@@ -140,7 +142,7 @@ window.onload = () => {
             for (let index in controls.tables.compensation)
                 controls.tables.compensation[index].onchange = onChangeHanler;
             //
-            const loadModel = (file, text) => {
+            const loadModel = (fileName, text) => {
                 clearException();
                 try {
                     singleton.model = JSON.parse(text);
@@ -155,7 +157,7 @@ window.onload = () => {
                             `File format version should be lower or equal to ${DefinitionSet.formatVersion}, ` +
                             `otherwise newer version of the application might be required`);
                 } catch (ex) {
-                    setExceptionMessage(`Error loading file: ${ex.message}`);
+                    setExceptionMessage(ex, "Error loading file");
                     return;
                 } //exception
                 (() => { //resetTables:
@@ -167,7 +169,7 @@ window.onload = () => {
                     singleton.modelToView();
                     apply();
                 });
-                singleton.lastFileName = file.name;
+                singleton.lastFileName = fileName;
             }; //loadModel
             const storeModel = () => {
                 clearException();

@@ -1,8 +1,16 @@
 "use strict";
 
+class InstrumentListException extends Error {
+    constructor(message, fileName, lineNumber, isWarning) {
+        super(message, fileName, lineNumber);
+        this.isWarning = isWarning;
+    }
+} //class InstrumentListException
+
 const instrumentList = {
 
-    initialize: function(controls, exceptionHandler, clearExceptionHandler) { //exceptionHandler(Exception), clearExceptionHandler()
+
+    initialize: function(controls, exceptionHandler, clearExceptionHandler) { //exceptionHandler(exception, customPrefix, customTitle), clearExceptionHandler()
         this.lastFileName = null;
         this.map = new Map();
         this.controls = controls;
@@ -16,12 +24,17 @@ const instrumentList = {
                 try {
                     data = JSON.parse(text);
                     if (!data.header)
-                        throw new Error(`header should be specified`);
-                    if (!data.header.instrumentName)
-                        throw new Error(`instrumentName should be specified`);
+                        throw new InstrumentListException(`header should be specified`);
+                    if (!data.header.instrumentName) { //just warning:
+                        data.header.instrumentName = fileName;
+                        throw new InstrumentListException(`header.instrumentName should be specified`, null, null, true); 
+                    } else
+                        data.header.fileName = fileName;
                 } catch (ex) {
-                    exceptionHandler(ex)
-                    return;
+                    const prefix = ex.isWarning ? "Warning" : "Error";
+                    exceptionHandler(ex, prefix);
+                    if (!ex.isWarning)
+                        return;
                 } //exception
                 const option = document.createElement("option");
                 option.textContent = `${data.header.instrumentName}`;

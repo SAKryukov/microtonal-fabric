@@ -16,11 +16,11 @@ const fileIO = {
         input.value = null;
         if (fileHandler)
             input.onchange = event => {
-                const fileName = event.target.files[0];
-                if (!fileName) return;
+                const file = event.target.files[0];
+                if (!file) return;
                 const reader = new FileReader();
-                reader.readAsText(fileName);
-                reader.onload = readEvent => fileHandler(fileName, readEvent.target.result);
+                reader.readAsText(file);
+                reader.onload = readEvent => fileHandler(file.name, readEvent.target.result);
             }; //input.onchange
         input.click();
     }, //loadTextFile
