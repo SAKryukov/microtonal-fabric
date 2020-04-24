@@ -49,7 +49,9 @@ const DefinitionSet = {
     },
 
     FileStorage: {
-        initialFileName: "instrument.json",
+        initialInstrumentFileName: "instrument.json",
+        initialInstrumentListFileName: "instrumentList.js",
+        instrumentListFileObjectName: "instrumentList",
         tabSizeJSON: 4,     
     },
 

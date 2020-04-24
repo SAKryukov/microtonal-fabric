@@ -93,7 +93,7 @@ const findControls = () => {
             list: document.querySelector("details:last-child section select"),
             add: document.querySelector("details:last-child button:first-of-type"),
             remove: document.querySelector("details:last-child button:nth-of-type(2)"),
-            save: document.querySelector("details:last-child button:first-of-type"),
+            save: document.querySelector("details:last-child button:last-of-type"),
         },
     };
 

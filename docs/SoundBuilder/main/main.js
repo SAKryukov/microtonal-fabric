@@ -172,7 +172,7 @@ window.onload = () => {
             const storeModel = () => {
                 clearException();
                 apply(true);
-                const fileName = singleton.lastFileName ? singleton.lastFileName : DefinitionSet.FileStorage.initialFileName;
+                const fileName = singleton.lastFileName ? singleton.lastFileName : DefinitionSet.FileStorage.initialInstrumentFileName;
                 fileIO.storeFile(
                     fileName,
                     JSON.stringify(singleton.model, null, DefinitionSet.FileStorage.tabSizeJSON));
@@ -184,7 +184,7 @@ window.onload = () => {
             }; //controls.fileIO.buttonLoad.onclick
             controls.fileIO.buttonApply.onclick = _ => apply(true);
             controls.fileIO.buttonStore.onclick = _ => storeModel();
-            instrumentList.initialize(controls.instrumentList);
+            instrumentList.initialize(controls.instrumentList, setExceptionMessage, clearException);
         })(); //setup IO
 
         controls.usage.FitKeyboard.focus();
