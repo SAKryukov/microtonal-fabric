@@ -10,7 +10,7 @@ const findControls = () => {
         stateButtons[0].isDown = false;
         return {
             FitKeyboard: stateButtons[0], FM: stateButtons[1], AM: stateButtons[2],
-            GainEnvelope: stateButtons[3],DetuneEnvelope: stateButtons[4], FMEnvelope: stateButtons[5], AMEnvelope: stateButtons[6],
+            GainEnvelope: stateButtons[3], DetuneEnvelope: stateButtons[4], FMEnvelope: stateButtons[5], AMEnvelope: stateButtons[6],
             Filter: stateButtons[7],
             Sustain: new TwoStateButton(document.querySelector("#sound-control button")),
         };
@@ -89,7 +89,13 @@ const findControls = () => {
             buttonLoad: document.querySelector("footer button:first-child"),
             buttonApply: document.querySelector("footer div button:nth-child(2)"),
             buttonStore: document.querySelector("footer button:last-child"),
-        }
+        },
+        instrumentList: {
+            list: document.querySelector("details:last-child section select"),
+            add: document.querySelector("details:last-child button:first-of-type"),
+            remove: document.querySelector("details:last-child button:nth-of-type(2)"),
+            save: document.querySelector("details:last-child button:first-of-type"),
+        },
     };
 
 };

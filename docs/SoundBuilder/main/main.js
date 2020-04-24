@@ -139,8 +139,8 @@ window.onload = () => {
                 controls.tables[index].onchange = onChangeHanler;
             for (let index in controls.tables.compensation)
                 controls.tables.compensation[index].onchange = onChangeHanler;
-            controls.fileIO.inputFile.onchange = (ev) => {
-                const file = ev.target.files[0];
+            controls.fileIO.inputFile.onchange = event => {
+                const file = event.target.files[0];
                 if (!file) return;
                 const reader = new FileReader();
                 reader.onload = (readEvent) => {
@@ -175,13 +175,13 @@ window.onload = () => {
                 reader.readAsText(file);
                 singleton.lastFileName = file.name;
             }; //controls.fileIO.inputFile.onchange
-            controls.fileIO.buttonLoad.onclick = event => {
+            controls.fileIO.buttonLoad.onclick = _ => {
                 clearException();
                 controls.fileIO.inputFile.value = null;
                 controls.fileIO.inputFile.click();
             }; //controls.fileIO.buttonLoad.onclick
-            controls.fileIO.buttonApply.onclick = event => apply(true);
-            controls.fileIO.buttonStore.onclick = (ev) => {
+            controls.fileIO.buttonApply.onclick = _ => apply(true);
+            controls.fileIO.buttonStore.onclick = _ => {
                 clearException();
                 const link = document.createElement('a');
                 apply(true);
@@ -192,7 +192,9 @@ window.onload = () => {
                     link.download = singleton.lastFileName;
                 document.body.appendChild(link);
                 link.click();
+                document.body.removeChild(link);
             }; //controls.fileIO.buttonStore.onclick
+            instrumentList.initialize(controls.instrumentList);
         })(); //setup IO
 
         //showAfterStart();

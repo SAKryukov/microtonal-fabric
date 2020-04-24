@@ -16,6 +16,7 @@
     <script src="ui/modulation.js"></script>
     <script src="ui/envelopes.js"></script>
     <script src="ui/filter.js"></script>
+    <script src="ui/instrument-list.js"></script>
     <script src="ui/controls.js"></script>
     <script src="sound/chain-node.js"></script>
     <script src="sound/envelope.js"></script>
@@ -85,9 +86,20 @@
         #aspect-filter td:first-child { width: 0.1em; }
         #aspect-filter table label { display: flex; align-items: center;  }
         #aspect-filter table label input { margin-right: var(--horizontal-gap); }
-        details section { display: grid; grid-template-columns: min-content 1fr; grid-gap:var(--small-horizontal-gap); align-items: center; white-space: nowrap; margin-top:var(--big-vertical-gap); }
+        details section { display: grid; grid-template-columns: min-content 1fr; grid-gap: var(--small-horizontal-gap); align-items: center; white-space: nowrap; margin-top:var(--big-vertical-gap); }
         tr td:nth-child(3) { text-align: center; }
         input[type=file] { display: none; }
+        article details:last-child { border-top: gray thin; margin-top: 2em; }
+        article details:last-child section {
+            margin-top: var(--big-vertical-gap);
+            display: grid;
+            grid-template-columns: min-content min-content;
+            grid-template-rows: min-content min-content min-content;
+        }
+        article details:last-child section select {
+            grid-row-start: 1; grid-row-end: 4; grid-column-start: 1; grid-column-end: 1; align-self: stretch; visibility: hidden;
+            padding: var(--horizontal-gap); padding-top: 0; padding-bottom: 0;
+        }
         button {
             outline: none;
             border: solid 2px;
@@ -218,14 +230,19 @@
                 </table>
                 <section><label></label><div></div></section>
             </details>
+            <details><summary>Instrument List</summary>
+                <section>
+                    <select size="4"></select>                
+                    <button>Add&hellip;</button><button>Remove<button>Save&hellip;</button>
+                <section>
+            </details>
         </article>
-
     </main>
 
     <footer>
         <p><small></small></p>
         <p></p>
-        <div><button accesskey="L"><u>L</u>oad Instrument</button><button accesskey="A" disabled="true"><u>A</u>pply</button><button accesskey="S"><u>S</u>tore Instrument</button></div></p>
+        <div><button accesskey="L"><u>L</u>oad Instrument&hellip;</button><button accesskey="A" disabled="true"><u>A</u>pply</button><button accesskey="S"><u>S</u>tore Instrument&hellip;</button></div></p>
         <input type="file"/>
     </footer>
 
