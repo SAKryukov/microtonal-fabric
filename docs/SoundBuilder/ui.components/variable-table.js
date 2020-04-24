@@ -9,7 +9,7 @@ class VariableTable {
         const implementationClosure = this.#implementation;
         this.#implementation.tableBody = element.firstElementChild;
         this.#implementation.focusPlusButton = () => setTimeout(function(){ implementationClosure.tableBody.lastElementChild.firstElementChild.firstElementChild.focus(); }, 0);
-        this.#implementation.updateLastRow = () => setTimeout(function(){ implementationClosure.metrics.rowLast = implementationClosure.tableBody.childElementCount - 3;  }, 0); //SA???
+        this.#implementation.updateLastRow = () => setTimeout(function(){ implementationClosure.metrics.rowLast = implementationClosure.tableBody.childElementCount - 3;  }, 0);
         const headerRow = this.#implementation.tableBody.firstElementChild;
         (function adjustWidths() {
             const autoWidthIndices = [];

@@ -5,7 +5,7 @@ class Modulator {
     constructor(audioContext) {
         this.#implementation.oscillator = new OscillatorNode(audioContext);
         this.#implementation.depthNode = new GainNode(audioContext);
-        this.#implementation.depthNode.gain.value = 100; //SA???
+        this.#implementation.depthNode.gain.value = 100;
         this.#implementation.oscillator.connect(this.#implementation.depthNode);
         this.#implementation.oscillator.start();
         this.#implementation.output = this.#implementation.depthNode;

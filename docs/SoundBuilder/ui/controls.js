@@ -21,7 +21,7 @@ const findControls = () => {
 
     return {
         copyright: document.querySelector("footer small"),
-        keyboard: ScrollableKeyboard.makeGrandPiano(document.querySelector("section.keyboard")),
+        keyboard: ScrollableKeyboard.makeGrandPiano(document.querySelector("section.keyboard"), definitionSet.keyboardKeyColors),
         usage: usage,
         exception: document.querySelector("footer p:nth-child(2)"),
         playControl: {

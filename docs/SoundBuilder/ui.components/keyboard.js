@@ -1,8 +1,14 @@
 ﻿class ScrollableKeyboard {
 
-    constructor(element, keyWidth, keyHeight, number) {
-        const keyColor = "white"; //SA???
-        const keyColorHighlight = "greenYellow"; //SA???
+    constructor(element, keyWidth, keyHeight, number, keyColors) {
+        if (!keyColors) keyColors = {
+            background: undefined,
+            hightlight: undefined,
+            border: undefined,
+            label: undefined
+        };
+        const keyColor = keyColors.background; //undefined; //"white"; //SA???
+        const keyColorHighlight = keyColors.hightlight; //undefined //"greenYellow"; //SA???
         const keyHandler = (target, on) => {
             const index = this.map.get(target);
             target.style.backgroundColor = on ? keyColorHighlight : keyColor;
@@ -18,7 +24,7 @@
         }; //downEventHandler
         this.action = undefined;
         this.map = new Map();
-        const color = "darkGray";
+        const color = keyColors.border; //undefined; //"red"; //SA???
         const borderProperty = `solid 1px ${color}`;
         element.style.display = "grid";
         element.style.paddingBottom = "0.3em";
@@ -74,7 +80,7 @@
                     key.style.backgroundColor = "transparent";
                 }
                 element.appendChild(key);
-                key.style.color = color;
+                key.style.color = keyColors.label; //; color; //SA???
                 key.style.padding = "0.1em 0.3em";
                 if (!dummy) {
                     keyArray[counter] = key;
@@ -112,8 +118,8 @@
         this.action = handler; // handler(bool down, integer keyIndex);
     } //setAction
 
-    static makeGrandPiano(element) {
-        const kbd = new ScrollableKeyboard(element, "2.6em", "2.6em", 44);
+    static makeGrandPiano(element, keyColors) {
+        const kbd = new ScrollableKeyboard(element, "2.6em", "2.6em", 44, keyColors);
         kbd.label(["C", "C♯", "D", "D♯", "E", "F", "F♯", "G", "G♯", "A", "A♯", "B"], 9); // start from A
         kbd.firstFrequency = 440/2/2/2/2; // lowest A
         kbd.tonalSystem = 12; // 12-TET

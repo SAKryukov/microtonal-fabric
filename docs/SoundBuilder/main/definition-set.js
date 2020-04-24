@@ -20,6 +20,13 @@ const definitionSet = {
         { name: "allpass", humanReadableName: "All-pass" },
     ]),
 
+    keyboardKeyColors: {
+        background: "white",
+        hightlight: "Chartreuse",
+        border: "lightGray",
+        label: "gray",
+    },
+
     defaultFilterSet: [{
         present: true,
         index: 0,
