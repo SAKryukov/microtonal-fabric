@@ -49,7 +49,6 @@ const DefinitionSet = {
     },
 
     FileStorage: {
-        linkHrefMime: "data:text/plain;charset=utf-8", 
         initialFileName: "instrument.json",
         tabSizeJSON: 4,     
     },

@@ -9,11 +9,13 @@ const instrumentList = {
         this.updateStates();
         controls.list.onselectionchange = event => this.updateStates();
         controls.add.onclick = event => {
-            const option = document.createElement("option");
-            option.textContent = `Noname instrument ${this.__debugCount++}`;
-            controls.list.appendChild(option);
-            controls.list.selectedIndex = controls.list.childElementCount - 1;
-            this.updateStates();
+            fileIO.loadFile((fileName => {
+                const option = document.createElement("option");
+                option.textContent = `Noname instrument ${this.__debugCount++}`;
+                controls.list.appendChild(option);
+                controls.list.selectedIndex = controls.list.childElementCount - 1;
+                this.updateStates();    
+            }), ".json");
         }; //controls.add.onclick
         controls.remove.onclick = event => {
             const currentSelection = controls.list.selectedIndex;

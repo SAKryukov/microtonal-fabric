@@ -140,42 +140,35 @@ window.onload = () => {
             for (let index in controls.tables.compensation)
                 controls.tables.compensation[index].onchange = onChangeHanler;
             //
-            const loadModel = file => {
-                if (!file) return;
-                const reader = new FileReader();
-                reader.onload = readEvent => {
-                    clearException();
-                    try {
-                        const text = readEvent.target.result;
-                        singleton.model = JSON.parse(text);
-                        if (!singleton.model.header)
-                            throw new Error(`header should be specified`);
-                        const loadedFormatVersion = parseFloat(singleton.model.header.formatVersion);
-                        if (Number.isNaN(loadedFormatVersion))
-                            throw new Error(`invalid format version: "${singleton.model.header.formatVersion}"`);
-                        const currentFormatVersion = parseFloat(DefinitionSet.formatVersion);
-                        if ((currentFormatVersion >= loadedFormatVersion) != true) //sic!
-                            throw new Error(
-                                `File format version should be lower or equal to ${DefinitionSet.formatVersion}, ` +
-                                `otherwise newer version of the application might be required`); 
-                    } catch (ex) {
-                        setExceptionMessage(`Error loading file: ${ex.message}`);
-                        return;
-                    } //exception
-                    (() => { //resetTables:
-                        for (let tableIndex in controls.tables)
-                            if (controls.tables[tableIndex].reset)
-                                controls.tables[tableIndex].reset();
-                    })();
-                    setTimeout(() => {
-                        singleton.modelToView();
-                        apply();
-                    });
-                }; //reader.onload
-                reader.readAsText(file);
+            const loadModel = (file, text) => {
+                clearException();
+                try {
+                    singleton.model = JSON.parse(text);
+                    if (!singleton.model.header)
+                        throw new Error(`header should be specified`);
+                    const loadedFormatVersion = parseFloat(singleton.model.header.formatVersion);
+                    if (Number.isNaN(loadedFormatVersion))
+                        throw new Error(`invalid format version: "${singleton.model.header.formatVersion}"`);
+                    const currentFormatVersion = parseFloat(DefinitionSet.formatVersion);
+                    if ((currentFormatVersion >= loadedFormatVersion) != true) //sic!
+                        throw new Error(
+                            `File format version should be lower or equal to ${DefinitionSet.formatVersion}, ` +
+                            `otherwise newer version of the application might be required`);
+                } catch (ex) {
+                    setExceptionMessage(`Error loading file: ${ex.message}`);
+                    return;
+                } //exception
+                (() => { //resetTables:
+                    for (let tableIndex in controls.tables)
+                        if (controls.tables[tableIndex].reset)
+                            controls.tables[tableIndex].reset();
+                })();
+                setTimeout(() => {
+                    singleton.modelToView();
+                    apply();
+                });
                 singleton.lastFileName = file.name;
             }; //loadModel
-            //
             const storeModel = () => {
                 clearException();
                 apply(true);
@@ -184,9 +177,10 @@ window.onload = () => {
                     fileName,
                     JSON.stringify(singleton.model, null, DefinitionSet.FileStorage.tabSizeJSON));
             }; //storeModel
+            //
             controls.fileIO.buttonLoad.onclick = _ => {
                 clearException();
-                fileIO.loadFile(loadModel, ".json");
+                fileIO.loadTextFile(loadModel, ".json");
             }; //controls.fileIO.buttonLoad.onclick
             controls.fileIO.buttonApply.onclick = _ => apply(true);
             controls.fileIO.buttonStore.onclick = _ => storeModel();
