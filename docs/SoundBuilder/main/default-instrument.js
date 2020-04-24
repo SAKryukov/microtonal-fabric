@@ -8,28 +8,8 @@ const defaultInstrument = {
         highFrequencyCompensationGain: 1
     },
     oscillator: {
-        type: "Fourier",
+        type: "triangle",
         Fourier: [
-            {
-                harmonic: 1,
-                amplitude: 81.5,
-                phase: 42.26086956521738
-            },
-            {
-                harmonic: 2,
-                amplitude: 98.85222381635582,
-                phase: 17.739130434782595
-            },
-            {
-                harmonic: 3,
-                amplitude: 97.41750358680056,
-                phase: -3.1304347826086882
-            },
-            {
-                harmonic: 4,
-                amplitude: 95.1219512195122,
-                phase: -28.69565217391306
-            }
         ]
     },
     gainEnvelope: {
