@@ -26,10 +26,16 @@ class Slider {
             else
                 event.target.value = properties.indicatorSuffix ? closureThis.value + properties.indicatorSuffix : closureThis.value;
         }; //indicator.onkeydown
-        indicator.onblur = event => event.target.value = properties.indicatorSuffix ? closureThis.value + properties.indicatorSuffix : closureThis.value;
+        const focusedBackgroundColor = window.getComputedStyle(indicator).getPropertyValue("background-color");
+        const unfocusedBackgroundColor = "transparent";
+        indicator.style.backgroundColor = unfocusedBackgroundColor;
+        indicator.onfocus = _ => event.target.style.backgroundColor = focusedBackgroundColor;
+        indicator.onblur = event => {
+            event.target.style.backgroundColor = unfocusedBackgroundColor;
+            event.target.value = properties.indicatorSuffix ? closureThis.value + properties.indicatorSuffix : closureThis.value;
+        }; //indicator.onblur
         indicator.style.border = "none";
         indicator.style.textAlign = "right";
-        indicator.style.backgroundColor = "transparent";
         if (properties.indicatorWidth) indicator.style.width = properties.indicatorWidth;
         if (properties.label) {
             const label = document.createElement("label");
@@ -91,12 +97,6 @@ class Slider {
     set value(floatValue) { this.#implementation.setValue(floatValue); }
     
     get element() { return this.#implementation.getParent(); }
-
-    parseAccessKey(html) {
-        const match = html.match(/\<u\>(.)\<\/u\>/, "g");
-        if (!match) return;
-        return match[1];
-     } //parseAccessKey
 
     focus() { this.#implementation.setFocus(); }
 
