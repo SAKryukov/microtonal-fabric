@@ -6,7 +6,7 @@ const initializationController = {
             const title = `This application requires JavaScript engine better conforming to the standard`;
             const advice =
                 `Browsers based on V8 engine are recommended, such as ` +
-                `Chromium, Chrome, Opera, Vivaldi, Microsoft Edge v. 80.0.361.111 or later, and more`;
+                `Chromium, Chrome, Opera, Vivaldi, Microsoft Edge v.&thinsp;80.0.361.111 or later, and more`;
             document.body.style.padding = "1em";
             document.body.innerHTML = `<h1>${title}.<br/><br/>${advice}&hellip;</h1><br/>`; // last <br/> facilitates selection (enabled)
             return true;
