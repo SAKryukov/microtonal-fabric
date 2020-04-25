@@ -73,14 +73,17 @@ const findControls = () => {
                 masterGain: new Slider({ value: 400, min: 0, max: 10, step: 0.0001, indicatorWidth: "4.5em" },
                     document.querySelector("#aspect-gain-compensation div")),
                 middleFrequency: new Slider(
-                    { value: 400, min: 20, max: 8000, step: 0.1, indicatorWidth: "4.5em", indicatorSuffix: " Hz" },
+                    { value: defaultInstrument.gainCompensation.middleFrequency, min: 20, max: 8000, step: 0.1, indicatorWidth: "4.5em", indicatorSuffix: " Hz" },
                     document.querySelector("#aspect-gain-compensation tr td:nth-child(1) div")),
+                middleFrequencyReset: document.querySelector("#aspect-gain-compensation table tr th:first-child button"),
                 lowFrequencyCompensationGain: new Slider(
-                    {value: 1, min: 0.0001, max: 100000, step: 0.00001, indicatorWidth: "6em"},
+                    {value: defaultInstrument.gainCompensation.lowFrequencyCompensationGain, min: 0, max: 100000, step: 0.00001, indicatorWidth: "6em"},
                     document.querySelector("#aspect-gain-compensation tr td:nth-child(2) div")),
+                lowFrequencyCompensationGainReset: document.querySelector("#aspect-gain-compensation table tr th:nth-child(2) button"),
                 highFrequencyCompensationGain: new Slider(
-                    {value: 1, min: 0.0001, max: 100000, step: 0.0001, indicatorWidth: "6em"},
+                    {value: defaultInstrument.gainCompensation.highFrequencyCompensationGain, min: 0, max: 100000, step: 0.0001, indicatorWidth: "6em"},
                     document.querySelector("#aspect-gain-compensation tr td:nth-child(3) div")),
+                highFrequencyCompensationGainReset: document.querySelector("#aspect-gain-compensation table tr th:last-child button"),
             },
         },
         fileIO: {

@@ -49,6 +49,8 @@ window.onload = () => {
             };    
         })(); //setupPlayControl
 
+        setupGainCompensation(controls);
+
         const singleton = {
             model: undefined,
             lastFileName: undefined,
@@ -121,11 +123,15 @@ window.onload = () => {
             }; //setExceptionMessage
             const clearException = () => setExceptionMessage(undefined);
             const apply = fromView => {
-                clearException();
-                if (fromView)
-                    singleton.viewToModel();
-                instrument.data = singleton.model;
-                controls.fileIO.buttonApply.disabled = true;
+                try {
+                    clearException();
+                    if (fromView)
+                        singleton.viewToModel();
+                    instrument.data = singleton.model;
+                    controls.fileIO.buttonApply.disabled = true;    
+                } catch (ex) {
+                    setExceptionMessage(ex, "Failed to interpret instrument data, might need upgrate to newer format version");
+                } //exception
             }; //appy
             (() => { // setup default instrument
                 singleton.model = defaultInstrument;
