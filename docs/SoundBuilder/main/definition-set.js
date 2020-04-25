@@ -52,6 +52,7 @@ const definitionSet = {
             frequencyModulationEnvelope: 16,
             amplitudeModulationEnvelope: 32,
             filters: 64,
+            gainCompensation: 128,
         }     
     },
 

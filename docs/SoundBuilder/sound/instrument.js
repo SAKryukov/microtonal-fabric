@@ -61,6 +61,19 @@ class Instrument extends ModulatorSet {
         } //this.#implementation.setWaveform
         this.#implementation.filterChain = new ChainNode(this.#implementation.masterGain, context.destination);
         this.#implementation.setFilterUsage = enable => this.#implementation.filterChain.isEnabled = enable;
+        this.#implementation.setGainCompensation = (gainCompensation, saveValues) => {
+            this.#implementation.gainCompensation = gainCompensation;
+            this.#implementation.compensationMasterGainNode.gain.value = gainCompensation.masterGain;
+            this.#implementation.compensateToneGains();
+            if (saveValues)
+                this.#implementation.savedGainCompensationValues = gainCompensation;
+        } //this.#implementation.setGainCompensation
+        this.#implementation.setGainCompensationUsage = enable => {
+            if (enable && this.#implementation.savedGainCompensationValues)
+                this.#implementation.setGainCompensation(this.#implementation.savedGainCompensationValues, false);
+            else // now disable:
+                this.#implementation.setGainCompensation(defaultInstrument.gainCompensation, false);
+        }; //this.#implementation.setGainCompensationUsage
         this.#implementation.setFilterChain = filterData => {
             const filterSet = [];
             for (let filterElement of filterData) {
@@ -106,16 +119,14 @@ class Instrument extends ModulatorSet {
                     tone.amplitudeModulationEnvelopeEnable = enable;
                 return;
             case definitionSet.playControl.usage.filters: return this.#implementation.setFilterUsage(enable);
+            case definitionSet.playControl.usage.gainCompensation: return this.#implementation.setGainCompensationUsage(enable);
             default: return;
         } //switch
     } //playWith
 
     set data(dataset) {
-        if (dataset.gainCompensation && dataset.gainCompensation.middleFrequency) {
-            this.#implementation.gainCompensation = dataset.gainCompensation;
-            this.#implementation.compensationMasterGainNode.gain.value = dataset.gainCompensation.masterGain;
-            this.#implementation.compensateToneGains();
-        } //if dataset.gainCompensation
+        if (dataset.gainCompensation && dataset.gainCompensation.middleFrequency)
+            this.#implementation.setGainCompensation(dataset.gainCompensation, true);
         this.#implementation.setWaveform(dataset.oscillator);
         for (let [_, tone] of this.#implementation.tones) {
             tone.gainEnvelope = dataset.gainEnvelope;    

@@ -43,6 +43,7 @@ window.onload = () => {
             controls.usage.FMEnvelope.handler = value => instrument.playWith(definitionSet.playControl.usage.frequencyModulationEnvelope, value);
             controls.usage.AMEnvelope.handler = value => instrument.playWith(definitionSet.playControl.usage.amplitudeModulationEnvelope, value);
             controls.usage.Filter.handler = value => instrument.playWith(definitionSet.playControl.usage.filters, value);
+            controls.usage.GainCompensation.handler = value => instrument.playWith(definitionSet.playControl.usage.gainCompensation, value);
             controls.usage.Sustain.handler = value => {
                 controls.playControl.sustain.disabled = !value;
                 setSustain();
