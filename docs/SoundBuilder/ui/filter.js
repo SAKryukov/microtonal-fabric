@@ -6,6 +6,23 @@ class Filter {
         this.#implementation.element = tableElement;
         this.#implementation.tableBody = tableElement.firstElementChild;
         this.#implementation.filters = [];
+        const resetMap = new Map();
+        const headerRow = tableElement.firstElementChild.firstElementChild;
+        const createReset = index => {
+            const button = document.createElement("button");
+            button.textContent = headerRow.dataset.buttonName;
+            headerRow.children[index].appendChild(button);
+            resetMap.set(button, []);
+            button.onclick = () => {
+                const list = resetMap.get(event.target);
+                for (let element of list)
+                    element.slider.value = element.value;
+            }; //button.onclick;
+            return button;
+        }; //createReset
+        const resetFrequency = createReset(1);
+        const resetQ = createReset(2);
+        const resetGain = createReset(3);
         definitionSet.FilterType.forEach(member => {
             // cells:
             const row = document.createElement("tr");
@@ -28,12 +45,14 @@ class Filter {
             const frequencySlider = new Slider({ value: 350, min: 20, max: 20000, step: 1, indicatorWidth: "5.5em", indicatorSuffix: " Hz"  });
             frequencySlider.onchange = (ptr, value) => { if (this.#implementation.onchange) this.#implementation.onchange(ptr, value); }
             frequencyCell.appendChild(frequencySlider.element);
+            resetMap.get(resetFrequency).push({ slider: frequencySlider, value: frequencySlider.value });
             // Q:
             let qSlider = undefined;
             if (member.index != 3 && member.index != 4) {
                 qSlider = new Slider({ value: Math.log10(1), min: -4, max: 3, step: 0.01, indicatorWidth: "2.5em"  });
                 qSlider.onchange = (ptr, value) => { if (this.#implementation.onchange) this.#implementation.onchange(ptr, value); }
                 qCell.appendChild(qSlider.element);
+                resetMap.get(resetQ).push({ slider: qSlider, value: qSlider.value });
             } //if Q
             // gain:
             let gainSlider = undefined;
@@ -41,6 +60,7 @@ class Filter {
                 gainSlider = new Slider({ value: 1, min: 0, max: 2, step: 0.1, indicatorWidth: "2em"});
                 gainSlider.onchange = (ptr, value) => { if (this.#implementation.onchange) this.#implementation.onchange(ptr, value); }
                 gainCell.appendChild(gainSlider.element);    
+                resetMap.get(resetGain).push({ slider: gainSlider, value: gainSlider.value });
             } //if gain
             for (let cell of [typeCell, frequencyCell, qCell, gainCell]) row.appendChild(cell);
             this.#implementation.tableBody.appendChild(row);
