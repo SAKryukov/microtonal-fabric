@@ -2,15 +2,17 @@
     "header": {
         "format": "Sound Builder",
         "version": "0.1.0",
-        "formatVersion": "2.1.0",
+        "formatVersion": "3.1.0",
         "author": "",
-        "instrumentName": ""
+        "instrumentName": "Organ"
     },
     "gainCompensation": {
         "masterGain": 1,
-        "middleFrequency": 400,
-        "lowFrequencyCompensationGain": 0.2,
-        "highFrequencyCompensationGain": 20
+        "middleFrequency": 1600.0434782608697,
+        "lowFrequency": 27.5,
+        "lowFrequencyCompensationGain": 0.5000000000000002,
+        "highFrequency": 3951.066410048994,
+        "highFrequencyCompensationGain": 0.004000000000000139
     },
     "oscillator": {
         "type": "Fourier",

@@ -1,0 +1,1 @@
+@start c:\sa\papers\My\CodeProject\WebAudio\Fourier\output.Release.AnyCPU\WavFft.exe %CD%

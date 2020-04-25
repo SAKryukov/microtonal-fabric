@@ -8,3 +8,14 @@ Electric-piano.json
 Electric-piano2.json
 Tuba*
 
+Fully converted:
+
+Accordion.json: nearly finalized
+YamahaTX81ZTubeBells.json
+YamahaTX81ZTubeBells2.json
+Alesis-Sanctuary-QCard-Wave-Organ-C2.v2.json
+Alesis-Sanctuary-QCard-Wave-Organ-C2.json -- under compensation balance
+
+Piano-mid*
+Piano-mid2.json seems best
+Casio-VZ-10M-Piano-C2.json: restored, maybe even better

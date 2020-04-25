@@ -2,15 +2,17 @@
     "header": {
         "format": "Sound Builder",
         "version": "0.1.0",
-        "formatVersion": "3.0.0",
+        "formatVersion": "3.1.0",
         "author": "",
         "instrumentName": "Accordion"
     },
     "gainCompensation": {
         "masterGain": 1,
         "middleFrequency": 400,
+        "lowFrequency": 27.5,
         "lowFrequencyCompensationGain": 1,
-        "highFrequencyCompensationGain": 3
+        "highFrequency": 3951.066410048994,
+        "highFrequencyCompensationGain": 1.9999999999999991
     },
     "oscillator": {
         "type": "Fourier",
@@ -248,7 +250,7 @@
             "present": true,
             "index": 0,
             "type": "lowpass",
-            "frequency": 2388,
+            "frequency": 350,
             "Q": 1.4131804750651318
         },
         {
