@@ -6,6 +6,7 @@ class Slider {
         if (!parent) parent = document.createElement("div");
         if (!properties) properties = {};
         const theParent = parent;
+        const closureThis = this;
         theParent.style.display = "grid";
         theParent.style.alignItems = "center";
         theParent.style.gridTemplateColumns = properties.label ? "min-content 1fr min-content" : "1fr min-content";
@@ -17,7 +18,15 @@ class Slider {
         if (properties.step) slider.step = properties.step;
         const indicator = document.createElement("input");
         indicator.setAttribute("type", "text");
-        indicator.setAttribute("readonly", "true");
+        indicator.onkeydown = event => {
+            if (event.key != "Enter") return;
+            const value = parseFloat(event.target.value);
+            if (isFinite(value))
+                closureThis.value = value;
+            else
+                event.target.value = properties.indicatorSuffix ? closureThis.value + properties.indicatorSuffix : closureThis.value;
+        }; //indicator.onkeydown
+        indicator.onblur = event => event.target.value = properties.indicatorSuffix ? closureThis.value + properties.indicatorSuffix : closureThis.value;
         indicator.style.border = "none";
         indicator.style.textAlign = "right";
         indicator.style.backgroundColor = "transparent";
