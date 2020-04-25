@@ -2,41 +2,49 @@
     "header": {
         "format": "Sound Builder",
         "version": "0.1.0",
-        "formatVersion": "2.1.0",
+        "formatVersion": "3.1.0",
         "author": "",
-        "instrumentName": "Marimba"
+        "instrumentName": "Yamaha TX81Z Tube Bells"
+    },
+    "gainCompensation": {
+        "masterGain": 0.1602959309494451,
+        "middleFrequency": 384,
+        "lowFrequency": 27.5,
+        "lowFrequencyCompensationGain": 0.5,
+        "highFrequency": 3951.066410048994,
+        "highFrequencyCompensationGain": 1.1082024432809816
     },
     "oscillator": {
         "type": "Fourier",
         "Fourier": [
             {
                 "harmonic": 1,
-                "amplitude": 1,
+                "amplitude": 100,
                 "phase": 77
             },
             {
                 "harmonic": 2,
-                "amplitude": 1,
+                "amplitude": 48.1,
                 "phase": 71
             },
             {
                 "harmonic": 3,
-                "amplitude": 1,
+                "amplitude": 16.4,
                 "phase": 58
             },
             {
                 "harmonic": 4,
-                "amplitude": 1,
+                "amplitude": 4.3,
                 "phase": 48
             },
             {
                 "harmonic": 5,
-                "amplitude": 1,
+                "amplitude": 27.2,
                 "phase": 46
             },
             {
                 "harmonic": 6,
-                "amplitude": 1,
+                "amplitude": 3,
                 "phase": 31
             },
             {
@@ -46,7 +54,7 @@
             },
             {
                 "harmonic": 8,
-                "amplitude": 1,
+                "amplitude": 0.2,
                 "phase": 10
             },
             {
@@ -56,7 +64,7 @@
             },
             {
                 "harmonic": 10,
-                "amplitude": 1,
+                "amplitude": 52.7,
                 "phase": -15
             },
             {
@@ -86,7 +94,7 @@
             },
             {
                 "harmonic": 16,
-                "amplitude": 0,
+                "amplitude": 9.6,
                 "phase": -157
             },
             {
@@ -121,7 +129,7 @@
             },
             {
                 "harmonic": 23,
-                "amplitude": 2,
+                "amplitude": 22.1,
                 "phase": 104
             },
             {
@@ -331,7 +339,7 @@
             },
             {
                 "harmonic": 65,
-                "amplitude": 1,
+                "amplitude": 1.2,
                 "phase": 24
             },
             {
@@ -366,7 +374,7 @@
             },
             {
                 "harmonic": 72,
-                "amplitude": 2,
+                "amplitude": 1.5,
                 "phase": -65
             },
             {
@@ -381,7 +389,7 @@
             },
             {
                 "harmonic": 75,
-                "amplitude": 2,
+                "amplitude": 3.6,
                 "phase": -94
             },
             {
@@ -421,11 +429,29 @@
             {
                 "functionIndex": 0,
                 "function": "exponential",
-                "duration": 0.01,
-                "gain": 0.112
+                "duration": 0.001,
+                "gain": 0.623
+            },
+            {
+                "functionIndex": 0,
+                "function": "exponential",
+                "duration": 0.001,
+                "gain": 1
+            },
+            {
+                "functionIndex": 0,
+                "function": "exponential",
+                "duration": 0.001,
+                "gain": 0.958
+            },
+            {
+                "functionIndex": 0,
+                "function": "exponential",
+                "duration": 0.41714947856315177,
+                "gain": 0
             }
         ],
-        "dampingSustain": 0.02
+        "dampingSustain": 0.132
     },
     "detuneEnvelope": {
         "stages": [],
@@ -434,20 +460,14 @@
     "frequencyModulation": {
         "absoluteFrequency": {
             "masterDepth": 1,
-            "modes": [
-                {
-                    "frequency": 4.39,
-                    "depth": 39.48,
-                    "useEnvelope": false
-                }
-            ]
+            "modes": []
         },
         "relativeFrequency": {
             "masterDepth": 1,
             "modes": [
                 {
-                    "frequency": 17.1,
-                    "depth": 50.69,
+                    "frequency": 13.4,
+                    "depth": 0.5,
                     "useEnvelope": false
                 }
             ]
@@ -460,23 +480,11 @@
     "amplitudeModulation": {
         "absoluteFrequency": {
             "masterDepth": 1,
-            "modes": [
-                {
-                    "frequency": 24.07,
-                    "depth": 65.74,
-                    "useEnvelope": false
-                }
-            ]
+            "modes": []
         },
         "relativeFrequency": {
             "masterDepth": 1,
-            "modes": [
-                {
-                    "frequency": 34.28,
-                    "depth": 87.94,
-                    "useEnvelope": false
-                }
-            ]
+            "modes": []
         },
         "envelope": {
             "stages": [],

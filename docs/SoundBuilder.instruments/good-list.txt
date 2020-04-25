@@ -19,3 +19,5 @@ Alesis-Sanctuary-QCard-Wave-Organ-C2.json -- under compensation balance
 Piano-mid*
 Piano-mid2.json seems best
 Casio-VZ-10M-Piano-C2.json: restored, maybe even better
+
+marimba.json: fixed
