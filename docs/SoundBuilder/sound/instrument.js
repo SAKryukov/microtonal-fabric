@@ -154,4 +154,11 @@ class Instrument extends ModulatorSet {
         this.#implementation.sustain = value;
     } //set sustain
 
+    get frequencies() {
+        const result = [];
+        for (let [_, tone] of this.#implementation.tones)
+            result.push(Math.round(tone.frequency * 10) / 10);
+        return result;
+    } //get frequencies
+
 } //class Instrument

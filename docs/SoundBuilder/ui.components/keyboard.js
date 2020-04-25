@@ -7,8 +7,8 @@
             border: undefined,
             label: undefined
         };
-        const keyColor = keyColors.background; //undefined; //"white"; //SA???
-        const keyColorHighlight = keyColors.hightlight; //undefined //"greenYellow"; //SA???
+        const keyColor = keyColors.background;
+        const keyColorHighlight = keyColors.hightlight;
         const keyHandler = (target, on) => {
             const index = this.map.get(target);
             target.style.backgroundColor = on ? keyColorHighlight : keyColor;
@@ -24,7 +24,7 @@
         }; //downEventHandler
         this.action = undefined;
         this.map = new Map();
-        const color = keyColors.border; //undefined; //"red"; //SA???
+        const color = keyColors.border;
         const borderProperty = `solid 1px ${color}`;
         element.style.display = "grid";
         element.style.paddingBottom = "0.3em";
@@ -80,7 +80,7 @@
                     key.style.backgroundColor = "transparent";
                 }
                 element.appendChild(key);
-                key.style.color = keyColors.label; //; color; //SA???
+                key.style.color = keyColors.label;
                 key.style.padding = "0.1em 0.3em";
                 if (!dummy) {
                     keyArray[counter] = key;
@@ -130,6 +130,11 @@
     get last() {
         const array = Array.from(this.map.values());
         return array[array.length - 1];
-    }
+    } //get last
+
+    showFrequencies(frequencies, prefix, suffix) {
+        for (let [key, value] of this.map)
+            key.title = `${key.parentElement.title}${prefix} ${frequencies[value]} ${suffix}`;
+    } //showFrequencies
 
 } //class ScrollableKeyboard

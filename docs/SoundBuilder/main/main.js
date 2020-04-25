@@ -27,6 +27,7 @@ window.onload = () => {
         controls.keyboard.setAction((down, index) => {
             instrument.play(down, index);
         }); //kbd.setAction
+        controls.keyboard.showFrequencies(instrument.frequencies, "\n\nKey frequency:", "Hz");
 
         controls.usage.FitKeyboard.handler = value => controls.keyboard.fitView = value;
 
