@@ -90,7 +90,8 @@ class Slider {
         this.#implementation.getParent = () => theParent;
         this.#implementation.setHandler = value => handler = value;
         this.#implementation.setDisabled = value => slider.disabled = value;
-        this.#implementation.getDisabled = () => { return slider.disabled; }
+        this.#implementation.getDisabled = () => slider.disabled;
+        this.#implementation.setLabel = aLabel => { if (aLabel && aLabel.htmlFor) slider.id = aLabel.htmlFor; };
     } //constructor
 
     get value() { return this.#implementation.getValue(); }
@@ -104,5 +105,7 @@ class Slider {
 
     get disabled() { return this.#implementation.getDisabled(); }
     set disabled(value) { this.#implementation.setDisabled(value); }
+
+    set label(aLabel) { this.#implementation.setLabel(aLabel); }
 
 } //class Slider
