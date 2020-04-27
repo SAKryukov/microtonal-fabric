@@ -19,7 +19,6 @@ window.onload = () => {
         const keyboards = [];
         for (let svg of controls.keyboards)
             keyboards.push(new Keyboard(svg));
-        const keyboard = new Keyboard(controls.keyboard, controls.keyArray);
         // A: key 68, 110/220/440/880 Hz        // F: 43.65353 ?
         // F: 87.30706 ?
         const faOgolevets = 800 * Math.pow(2, -68/29);
