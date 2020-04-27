@@ -5,7 +5,7 @@ const instrumentList = [
             "version": "0.1.0",
             "formatVersion": "3.1.0",
             "author": "",
-            "instrumentName": "Yamaha TX81Z Tube Bells",
+            "instrumentName": "Tube Bells",
             "fileName": "YamahaTX81ZTubeBells2.json"
         },
         "gainCompensation": {

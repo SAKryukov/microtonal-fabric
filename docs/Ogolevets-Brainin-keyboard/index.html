@@ -15,7 +15,7 @@
    <script src="../SoundBuilder/sound/modulator.js"></script>
    <script src="../SoundBuilder/sound/modulator-set.js"></script>
    <script src="../SoundBuilder/sound/tone.js"></script>
-   <script src="../SoundBuilder/sound/instrument.js"></script>  
+   <script src="../SoundBuilder/sound/instrument.js"></script>
    <script src="../SoundBuilder/main/initialization-controller.js"></script>
    <script src="sound/instrument-list.js"></script>
    <script src="main.js"></script>
@@ -31,6 +31,9 @@
      }
      body aside button:hover { background-color: lightgoldenrodyellow; }
      article { margin-left: 2em; margin-right: 2em; }
+     article section { display: inline-block; margin-top: 2em; }
+     article section:first-of-type { margin-right: 2em; }
+     article section select { margin-left: 0.6em; }
   </style>
 </head>
 <body>
@@ -876,6 +879,15 @@
    <br/>
    <label for="slider-sustain-control" accesskey="U">S<u>u</u>stain:</label>
    <div id="slider-sustain"></div>
+   <section><label accesskey="K" for="select-layout"><u>K</u>eyboard:</label>
+      <select id="select-layout">
+         <option selected="true">Ogolevets Layout</option>
+         <option>Brainin Layout</option>
+      </select>
+   </section>
+   <section><label accesskey="I" for="select-instrument"><u>I</u>nstrument:</label>
+      <select id="select-instrument"></select>
+   </section>
 </article>
 
 </body>

@@ -23,6 +23,8 @@ const findControls = () => {
             sustainLabel: document.querySelector("body article label:last-of-type"),
             sustain: new Slider( { value: 0, min: 0, max: 10, step: 0.1, indicatorWidth: indicatorWidth, indicatorSuffix: " s" }, document.querySelector("#slider-sustain")),
         },
+        keyboardLayout: document.querySelector("#select-layout"),
+        instrument: document.querySelector("#select-instrument"),
         debugOutput: document.querySelector("h1"),
     };
     controls.playControl.volume.label = controls.playControl.volumeLabel;
@@ -49,12 +51,28 @@ window.onload = () => {
         const controls = findControls();
 
         let instrument;
-        const playHandler = (index, on) => instrument.play(on, index);
+        const playHandler = (index, on) => {
+            instrument.play(on, index);
+            //alert(index);
+            //controls.debugOutput.textContent = index;
+        }
         const keyboardProperties = setupKeyboard(controls, playHandler);
-        // F: 43.65353 
-        // F: 87.30706 
-        instrument = new Instrument(keyboardProperties.first, keyboardProperties.last, 87.30706, 29);
+        // A: key 68, 110/220/440/880 Hz
+        // F: 43.65353 ?
+        // F: 87.30706 ?
+        const fa = 800 * Math.pow(2, -68/29);
+        instrument = new Instrument(keyboardProperties.first, keyboardProperties.last, fa, 29);
+        
         instrument.data = instrumentList[0];
+        for (let index in instrumentList) {
+            const instrument = instrumentList[index];
+            const option = document.createElement("option");
+            if (index == 0) option.selected = true;
+            option.textContent = instrument.header.instrumentName;
+            controls.instrument.appendChild(option);
+        } //loop
+        controls.instrument.onselectionchange = event => instrument.data = instrumentList[event.target.SelectedIndex];
+
         setupKeyboard(controls, playHandler);
 
         controls.playControl.volume.onchange = (self, value) => instrument.volume = value;
