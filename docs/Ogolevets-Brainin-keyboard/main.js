@@ -25,7 +25,6 @@ const findControls = () => {
         },
         keyboardLayout: document.querySelector("#select-layout"),
         instrument: document.querySelector("#select-instrument"),
-        debugOutput: document.querySelector("h1"),
     };
     controls.playControl.volume.label = controls.playControl.volumeLabel;
     controls.playControl.sustain.label = controls.playControl.sustainLabel;
@@ -54,7 +53,6 @@ window.onload = () => {
         const playHandler = (index, on) => {
             instrument.play(on, index);
             //alert(index);
-            //controls.debugOutput.textContent = index;
         }
         const keyboardProperties = setupKeyboard(controls, playHandler);
         // A: key 68, 110/220/440/880 Hz
@@ -71,7 +69,9 @@ window.onload = () => {
             option.textContent = instrument.header.instrumentName;
             controls.instrument.appendChild(option);
         } //loop
-        controls.instrument.onselectionchange = event => instrument.data = instrumentList[event.target.SelectedIndex];
+        controls.instrument.onchange = event => {
+            instrument.data = instrumentList[event.target.selectedIndex];
+        };
 
         setupKeyboard(controls, playHandler);
 

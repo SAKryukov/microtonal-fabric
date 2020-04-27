@@ -6,7 +6,7 @@ const instrumentList = [
             "formatVersion": "3.1.0",
             "author": "",
             "instrumentName": "Tube Bells",
-            "fileName": "YamahaTX81ZTubeBells2.json"
+            "fileName": "YamahaTX81ZTubeBells.json"
         },
         "gainCompensation": {
             "masterGain": 2,
@@ -487,6 +487,201 @@ const instrumentList = [
             "relativeFrequency": {
                 "masterDepth": 1,
                 "modes": []
+            },
+            "envelope": {
+                "stages": [],
+                "dampingSustain": 0.02
+            }
+        },
+        "filter": [
+            {
+                "present": true,
+                "index": 0,
+                "type": "lowpass",
+                "frequency": 350,
+                "Q": 1
+            },
+            {
+                "present": false,
+                "index": 1,
+                "type": "highpass",
+                "frequency": 350,
+                "Q": 1
+            },
+            {
+                "present": false,
+                "index": 2,
+                "type": "bandpass",
+                "frequency": 350,
+                "Q": 1
+            },
+            {
+                "present": false,
+                "index": 3,
+                "type": "lowshelf",
+                "frequency": 350,
+                "gain": 1
+            },
+            {
+                "present": false,
+                "index": 4,
+                "type": "highshelf",
+                "frequency": 350,
+                "gain": 1
+            },
+            {
+                "present": false,
+                "index": 5,
+                "type": "peaking",
+                "frequency": 350,
+                "Q": 1,
+                "gain": 1
+            },
+            {
+                "present": false,
+                "index": 6,
+                "type": "notch",
+                "frequency": 350,
+                "Q": 1
+            },
+            {
+                "present": false,
+                "index": 7,
+                "type": "allpass",
+                "frequency": 350,
+                "Q": 1
+            }
+        ]
+    },
+    {
+        "header": {
+            "format": "Sound Builder",
+            "version": "0.1.0",
+            "formatVersion": "3.1.0",
+            "author": "",
+            "instrumentName": "Electric Organ",
+            "fileName": "SimpleOrgan.json"
+        },
+        "gainCompensation": {
+            "masterGain": 1,
+            "middleFrequency": 400,
+            "lowFrequency": 27.5,
+            "lowFrequencyCompensationGain": 1,
+            "highFrequency": 3951.07,
+            "highFrequencyCompensationGain": 1
+        },
+        "oscillator": {
+            "type": "Fourier",
+            "Fourier": [
+                {
+                    "harmonic": 1,
+                    "amplitude": 104.11361410381978,
+                    "phase": -111.93386053199137
+                },
+                {
+                    "harmonic": 2,
+                    "amplitude": 79.91422444603288,
+                    "phase": -98.73472322070452
+                },
+                {
+                    "harmonic": 3,
+                    "amplitude": 30.01412429378531,
+                    "phase": -87.86484543493889
+                },
+                {
+                    "harmonic": 4,
+                    "amplitude": 23.940677966101696,
+                    "phase": -78.03019410496046
+                },
+                {
+                    "harmonic": 5,
+                    "amplitude": 65.5,
+                    "phase": -161.6
+                },
+                {
+                    "harmonic": 6,
+                    "amplitude": 11.511299435028247,
+                    "phase": -61.98418404025881
+                },
+                {
+                    "harmonic": 7,
+                    "amplitude": 80.7,
+                    "phase": -151.6
+                },
+                {
+                    "harmonic": 8,
+                    "amplitude": 2.5,
+                    "phase": -57.01704545454545
+                },
+                {
+                    "harmonic": 9,
+                    "amplitude": 94.2,
+                    "phase": -157.4
+                },
+                {
+                    "harmonic": 10,
+                    "amplitude": 1.6826923076923077,
+                    "phase": -51.39204545454547
+                },
+                {
+                    "harmonic": 11,
+                    "amplitude": 97.5,
+                    "phase": -143.6
+                },
+                {
+                    "harmonic": 12,
+                    "amplitude": 0.2,
+                    "phase": 0
+                }
+            ]
+        },
+        "gainEnvelope": {
+            "stages": [
+                {
+                    "functionIndex": 1,
+                    "function": "linear",
+                    "duration": 0.35,
+                    "gain": 0.914
+                },
+                {
+                    "functionIndex": 0,
+                    "function": "exponential",
+                    "duration": 2.516,
+                    "gain": 1
+                }
+            ],
+            "dampingSustain": 0.1
+        },
+        "detuneEnvelope": {
+            "stages": [],
+            "dampingSustain": 0.02
+        },
+        "frequencyModulation": {
+            "absoluteFrequency": {
+                "masterDepth": 1,
+                "modes": [
+                ]
+            },
+            "relativeFrequency": {
+                "masterDepth": 1,
+                "modes": [
+                ]
+            },
+            "envelope": {
+                "stages": [],
+                "dampingSustain": 0.02
+            }
+        },
+        "amplitudeModulation": {
+            "absoluteFrequency": {
+                "masterDepth": 1,
+                "modes": [
+                ]
+            },
+            "relativeFrequency": {
+                "masterDepth": 1,
+                "modes": [
+                ]
             },
             "envelope": {
                 "stages": [],
