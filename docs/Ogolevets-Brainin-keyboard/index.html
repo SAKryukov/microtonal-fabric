@@ -9,7 +9,6 @@
    <script src="../SoundBuilder/ui.components/multitouch.js"></script>
    <script src="../SoundBuilder/ui.components/keyboard.js"></script>
    <script src="../SoundBuilder/ui.components/slider.js"></script>
-   <script src="ui/keyboard.js"></script>
    <script src="../SoundBuilder/sound/chain-node.js"></script>
    <script src="../SoundBuilder/sound/envelope.js"></script>
    <script src="../SoundBuilder/sound/modulator.js"></script>
@@ -18,10 +17,13 @@
    <script src="../SoundBuilder/sound/instrument.js"></script>
    <script src="../SoundBuilder/main/initialization-controller.js"></script>
    <script src="sound/instrument-list.js"></script>
+   <script src="ui/keyboard.js"></script>
+   <script src="ui/controls.js"></script>
    <script src="main.js"></script>
    <style>
      * { font-family: sans-serif; }
      * { margin: 0; padding: 0; }
+     * { box-sizing: content-box; touch-action: none; user-select: none; }
      body main { margin-left: 0.4em; margin-right: 0.4em; visibility: hidden; }
      body aside { text-align: center; }
      body aside button {
@@ -33,7 +35,7 @@
      article { margin-left: 2em; margin-right: 2em; }
      article section { display: inline-block; margin-top: 2em; }
      article section:first-of-type { margin-right: 2em; }
-     article section select { margin-left: 0.6em; }
+     article section select { margin-left: 0.2em; }
   </style>
 </head>
 <body>
