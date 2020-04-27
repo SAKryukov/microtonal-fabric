@@ -4,7 +4,7 @@ class Keyboard {
 
     #implementation = {};
 
-    constructor(controls) {
+    constructor(keyboard, keyArray) {
         const keyMap = new Map();
         const handler = (element, on) => {
             const elementData = keyMap.get(element);
@@ -13,10 +13,10 @@ class Keyboard {
             element.style.fill = on ? "Chartreuse" : elementData.originalColor;
         }; //handler
         setMultiTouch(
-            controls.keyboard,
+            keyboard,
             element => element.constructor == SVGRectElement,
             (element, _, on) => { handler(element, on); });
-        const keys = controls.keyArray;
+        const keys = keyArray;
         let parseKeyNumberSlice = undefined;
         const parseKeyNumber = id => {
             if (parseKeyNumberSlice == undefined) {

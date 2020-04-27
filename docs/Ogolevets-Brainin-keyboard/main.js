@@ -16,7 +16,7 @@ window.onload = () => {
 
         const controls = findControls();
 
-        const keyboard = new Keyboard(controls);
+        const keyboard = new Keyboard(controls.keyboard, controls.keyArray);
         // A: key 68, 110/220/440/880 Hz
         // F: 43.65353 ?
         // F: 87.30706 ?
