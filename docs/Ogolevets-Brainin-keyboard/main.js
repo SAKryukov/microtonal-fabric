@@ -16,17 +16,39 @@ window.onload = () => {
 
         const controls = findControls();
 
-        const keyboard = new Keyboard(controls);
+        const keyboards = [];
+        for (let svg of controls.keyboards)
+            keyboards.push(new Keyboard(svg));
         // A: key 68, 110/220/440/880 Hz
         // F: 43.65353 ?
         // F: 87.30706 ?
-        const fa = 400 * Math.pow(2, -68/29);
-        const instrument = new Instrument(keyboard.first, keyboard.last, fa, 29);
+        const faOgolevets = 800 * Math.pow(2, -68/29);
+        const startBrainin = 800 * Math.pow(2, -40/29);
+        let instrument;
+        const startingFrequecies = [
+            faOgolevets,
+            startBrainin
+        ]
+        const setupInstrument = keyboardIndex => {
+            instrument = new Instrument(keyboards[keyboardIndex].first, keyboards[keyboardIndex].last, startingFrequecies[keyboardIndex], 29);
+            const instrumentIndex = controls.instrument.selectedIndex >=0 ? controls.instrument.selectedIndex : 0;
+            instrument.data = instrumentList[instrumentIndex];
+            for (let aKeyboard of keyboards)
+                aKeyboard.hide();
+            keyboards[keyboardIndex].show();
+        } //setupInstrument
+        setupInstrument(0);
+
+        controls.keyboardLayout.onchange = event => {
+            setupInstrument(event.target.selectedIndex);
+        }; //controls.keyboardLayout.onchange
+
         const playHandler = (index, on) => {
             instrument.play(on, index);
             //alert(index);
         }
-        keyboard.keyHandler = playHandler;
+        for (let aKeyboard of keyboards)
+            aKeyboard.keyHandler = playHandler;
         
         instrument.data = instrumentList[0];
         for (let index in instrumentList) {

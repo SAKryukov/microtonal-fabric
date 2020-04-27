@@ -15,8 +15,7 @@ const findControls = () => {
     const indicatorWidth = "3em";
     const controls = {
         main: document.querySelector("body main"),
-        keyboard: document.querySelector("body main > svg"),
-        keyArray: document.querySelectorAll("body main > svg rect"),
+        keyboards: document.querySelectorAll("body main > svg"),
         playControl: {
             volumeLabel: document.querySelector("body article label:first-of-type"),
             volume: new Slider( { value: 1, min: 0, max: 1, step: 0.01, indicatorWidth: indicatorWidth }, document.querySelector("#slider-volume")),
