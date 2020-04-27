@@ -11,7 +11,11 @@ class Keyboard {
             if (this.#implementation.keyHandler)
                 this.#implementation.keyHandler(elementData.index, on);
             element.style.fill = on ? "Chartreuse" : elementData.originalColor;
-        }
+        }; //handler
+        setMultiTouch(
+            controls.keyboard,
+            element => element.constructor == SVGRectElement,
+            (element, _, on) => { handler(element, on); });
         const keys = controls.keyArray;
         let parseKeyNumberSlice = undefined;
         const parseKeyNumber = id => {
