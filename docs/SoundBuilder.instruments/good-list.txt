@@ -21,3 +21,6 @@ Piano-mid2.json seems best
 Casio-VZ-10M-Piano-C2.json: restored, maybe even better
 
 marimba.json: fixed
+Agogo.json: fixed, not bad
+Metal.json: fixed, not bad
+Metallophone.json

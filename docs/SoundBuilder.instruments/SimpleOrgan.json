@@ -2,11 +2,18 @@
     "header": {
         "format": "Sound Builder",
         "version": "0.1.0",
-        "formatVersion": "2.1.0",
+        "formatVersion": "3.1.0",
         "author": "",
-        "instrumentName": "Simple organ"
+        "instrumentName": "Accordion"
     },
-    "compensationGain": {},
+    "gainCompensation": {
+        "masterGain": 1,
+        "middleFrequency": 400,
+        "lowFrequency": 27.5,
+        "lowFrequencyCompensationGain": 1,
+        "highFrequency": 3951.07,
+        "highFrequencyCompensationGain": 1
+    },
     "oscillator": {
         "type": "Fourier",
         "Fourier": [

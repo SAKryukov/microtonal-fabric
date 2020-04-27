@@ -2,14 +2,17 @@
     "header": {
         "format": "Sound Builder",
         "version": "0.1.0",
-        "formatVersion": "3.0.0",
+        "formatVersion": "3.1.0",
         "author": "",
-        "instrumentName": "Metal"
+        "instrumentName": ""
     },
     "gainCompensation": {
-        "middleFrequency": 400,
-        "lowFrequencyCompensationGain": 1,
-        "highFrequencyCompensationGain": 200,
+        "masterGain": 1,
+        "middleFrequency": 155,
+        "lowFrequency": 27.5,
+        "lowFrequencyCompensationGain": 0.05,
+        "highFrequency": 3951.066410048994,
+        "highFrequencyCompensationGain": 1.3
     },
     "oscillator": {
         "type": "Fourier",
@@ -111,29 +114,35 @@
             {
                 "functionIndex": 0,
                 "function": "exponential",
-                "duration": 0.01,
-                "gain": 0.1
+                "duration": 0.001,
+                "gain": 0.578
             },
             {
                 "functionIndex": 0,
                 "function": "exponential",
                 "duration": 0.001,
-                "gain": 0.5
-            },
-            {
-                "functionIndex": 2,
-                "function": "Heaviside",
-                "duration": 0.01,
                 "gain": 1
             },
             {
                 "functionIndex": 0,
                 "function": "exponential",
-                "duration": 0.001,
-                "gain": 0.4
+                "duration": 0.002,
+                "gain": 0.901
+            },
+            {
+                "functionIndex": 0,
+                "function": "exponential",
+                "duration": 0.09,
+                "gain": 0.438
+            },
+            {
+                "functionIndex": 0,
+                "function": "exponential",
+                "duration": 27.669,
+                "gain": 0
             }
         ],
-        "dampingSustain": 0.02
+        "dampingSustain": 0.084
     },
     "detuneEnvelope": {
         "stages": [],
