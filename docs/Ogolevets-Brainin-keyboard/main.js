@@ -20,7 +20,7 @@ window.onload = () => {
         // A: key 68, 110/220/440/880 Hz
         // F: 43.65353 ?
         // F: 87.30706 ?
-        const fa = 800 * Math.pow(2, -68/29);
+        const fa = 400 * Math.pow(2, -68/29);
         const instrument = new Instrument(keyboard.first, keyboard.last, fa, 29);
         const playHandler = (index, on) => {
             instrument.play(on, index);
