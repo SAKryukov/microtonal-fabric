@@ -59,7 +59,6 @@ class ModulationTable extends VariableTable {
                 zero = false;
             else
                 continue;
-            const useEnvelope = this.getMapValue(this.getCell(index, 2)).checked;
             result.push({ frequency: frequency, depth: depth, useEnvelope: useEnvelope });
         } //loop
         const masterDepth = this.#derivedImplementation.masterDepth.value;
@@ -81,8 +80,6 @@ class ModulationTable extends VariableTable {
                 this.getMapValue(this.getCell(index, 0)).value = dataElement.frequency;
             if (goodElement(dataElement.depth))
                 this.getMapValue(this.getCell(index, 1)).value = dataElement.depth;
-            if (goodElement(dataElement.useEnvelope))
-                this.getMapValue(this.getCell(index, 2)).checked = dataElement.useEnvelope;
         } //loop
     } //set data
 
