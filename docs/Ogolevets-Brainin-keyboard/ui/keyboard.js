@@ -7,9 +7,10 @@ class Keyboard {
     constructor(controls) {
         const keyMap = new Map();
         const handler = (element, on) => {
+            const elementData = keyMap.get(element);
             if (this.#implementation.keyHandler)
-            this.#implementation.keyHandler(keyMap.get(element), on);
-            element.style.fill = on ? "Chartreuse" : "white";
+                this.#implementation.keyHandler(elementData.index, on);
+            element.style.fill = on ? "Chartreuse" : elementData.originalColor;
         }
         const keys = controls.keyArray;
         let parseKeyNumberSlice = undefined;
@@ -26,7 +27,7 @@ class Keyboard {
         } //parseKeyNumber
         for (let key of keys) {
             const index = parseKeyNumber(key.id);
-            keyMap.set(key, index);
+            keyMap.set(key, { index: index, originalColor: key.style.fill });
             key.onmousedown = event => handler(event.target, true);
             key.onmouseup = event => handler(event.target, false);
             key.onmouseenter = event => { if (event.buttons == 1) handler(event.target, true); }
