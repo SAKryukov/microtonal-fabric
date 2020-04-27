@@ -4,11 +4,15 @@ class Keyboard {
 
     #implementation = {};
 
+<<<<<<< HEAD
     constructor(keyboard) {
         const keyList = keyboard.firstElementChild.children;
         this.#implementation.setVisibility = on => {
             keyboard.style.display = on ? "block" : "none";
         }; //this.#implementation.setVisibility
+=======
+    constructor(keyboard, keyArray) {
+>>>>>>> f733429f0d858509212bb8df33682629192ea2f3
         const keyMap = new Map();
         const handler = (element, on) => {
             const elementData = keyMap.get(element);
@@ -20,6 +24,7 @@ class Keyboard {
             keyboard,
             element => element.constructor == SVGRectElement,
             (element, _, on) => { handler(element, on); });
+<<<<<<< HEAD
         const keys = Array.prototype.slice.call(keyList);
         keys.sort((a, b) => {
             if (b.x.baseVal.value == a.x.baseVal.value && b.y.baseVal.value == a.y.baseVal.value)
@@ -34,6 +39,9 @@ class Keyboard {
             else
                 return 1;
         });
+=======
+        const keys = keyArray;
+>>>>>>> f733429f0d858509212bb8df33682629192ea2f3
         let parseKeyNumberSlice = undefined;
         const parseKeyNumber = id => {
             if (parseKeyNumberSlice == undefined) {
