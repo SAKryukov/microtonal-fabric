@@ -1,833 +1,748 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
    xmlns:svg="http://www.w3.org/2000/svg"
    xmlns="http://www.w3.org/2000/svg"
-   version="1.1"
-   viewBox="0 0 794.74969 149.16667"
-   height="149.16667mm"
-   width="100%">
+   id="svg105"
+   width="210.27753mm"
+   height="39.467014mm"
+   viewBox="0 0 794.7497 39.467014"
+   version="1.1">
+  <metadata
+     id="metadata111">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <defs
+     id="defs109" />
   <rect
-     id="key-0"
-     style="fill:white;stroke:black"
-     width="31.75"
+     y="-54.349831"
+     x="0.5"
      height="148.16667"
-     x="0.50000101"
-     y="-41.083344"
-  />
+     width="31.75"
+     style="fill:#ffffff;stroke:#000000"
+     id="key-0" />
   <rect
-     id="key-5"
-     style="fill:white;stroke:black"
-     width="31.75"
-     height="148.16667"
+     y="-54.349831"
      x="32.249939"
-     y="-41.083344"
-  />
-  <rect
-     id="key-10"
-     style="fill:white;stroke:black"
-     width="31.75"
      height="148.16667"
+     width="31.75"
+     style="fill:#ffffff;stroke:#000000"
+     id="key-5" />
+  <rect
+     y="-54.349831"
      x="63.999893"
-     y="-41.083344"
-  />
-  <rect
-     id="key-15"
-     style="fill:white;stroke:black"
-     width="31.75"
      height="148.16667"
+     width="31.75"
+     style="fill:#ffffff;stroke:#000000"
+     id="key-10" />
+  <rect
+     y="-54.349831"
      x="95.749924"
-     y="-41.083344"
-  />
-  <rect
-     id="key-17"
-     style="fill:white;stroke:black"
-     width="31.75"
      height="148.16667"
+     width="31.75"
+     style="fill:#ffffff;stroke:#000000"
+     id="key-15" />
+  <rect
+     y="-54.349831"
      x="127.49995"
-     y="-41.083344"
-  />
-  <rect
-     id="key-22"
-     style="fill:white;stroke:black"
-     width="31.75"
      height="148.16667"
+     width="31.75"
+     style="fill:#ffffff;stroke:#000000"
+     id="key-17" />
+  <rect
+     y="-54.349831"
      x="159.24998"
-     y="-41.083344"
-  />
-  <rect
-     id="key-27"
-     style="fill:white;stroke:black"
-     width="31.75"
      height="148.16667"
+     width="31.75"
+     style="fill:#ffffff;stroke:#000000"
+     id="key-22" />
+  <rect
+     y="-54.349831"
      x="191.00002"
-     y="-41.083344"
-  />
-  <rect
-     id="key-29"
-     style="fill:white;stroke:black"
-     width="31.75"
      height="148.16667"
+     width="31.75"
+     style="fill:#ffffff;stroke:#000000"
+     id="key-27" />
+  <rect
+     y="-54.349831"
      x="222.74998"
-     y="-41.083344"
-  />
-  <rect
-     id="key-34"
-     style="fill:white;stroke:black"
-     width="31.75"
      height="148.16667"
+     width="31.75"
+     style="fill:#ffffff;stroke:#000000"
+     id="key-29" />
+  <rect
+     y="-54.349831"
      x="254.49997"
-     y="-41.083344"
-  />
-  <rect
-     style="fill:white;stroke:black"
-     id="key-39"
-     width="31.75"
      height="148.16667"
+     width="31.75"
+     style="fill:#ffffff;stroke:#000000"
+     id="key-34" />
+  <rect
+     y="-54.349831"
      x="286.25"
-     y="-41.083344"
-  />
-  <rect
-     style="fill:white;stroke:black"
-     id="key-44"
-     width="31.75"
      height="148.16667"
+     width="31.75"
+     id="key-39"
+     style="fill:#ffffff;stroke:#000000" />
+  <rect
+     y="-54.349831"
      x="318"
-     y="-41.083344"
-  />
-  <rect
-     style="fill:white;stroke:black"
-     id="key-46"
-     width="31.75"
      height="148.16667"
+     width="31.75"
+     id="key-44"
+     style="fill:#ffffff;stroke:#000000" />
+  <rect
+     y="-54.349831"
      x="349.74997"
-     y="-41.083344"
-  />
-  <rect
-     style="fill:white;stroke:black"
-     id="key-51"
-     width="31.75"
      height="148.16667"
+     width="31.75"
+     id="key-46"
+     style="fill:#ffffff;stroke:#000000" />
+  <rect
+     y="-54.349831"
      x="381.49997"
-     y="-41.083344"
-  />
-  <rect
-     style="fill:white;stroke:black"
-     id="key-56"
-     width="31.75"
      height="148.16667"
+     width="31.75"
+     id="key-51"
+     style="fill:#ffffff;stroke:#000000" />
+  <rect
+     y="-54.349831"
      x="413.24997"
-     y="-41.083344"
-  />
-  <rect
-     style="fill:white;stroke:black"
-     id="key-58"
-     width="31.75"
      height="148.16667"
+     width="31.75"
+     id="key-56"
+     style="fill:#ffffff;stroke:#000000" />
+  <rect
+     y="-54.349831"
      x="444.99997"
-     y="-41.083344"
-  />
-  <rect
-     style="fill:white;stroke:black"
-     id="key-63"
-     width="31.75"
      height="148.16667"
+     width="31.75"
+     id="key-58"
+     style="fill:#ffffff;stroke:#000000" />
+  <rect
+     y="-54.349831"
      x="476.75"
-     y="-41.083344"
-  />
-  <rect
-     style="fill:white;stroke:black"
-     id="key-68"
-     width="31.75"
      height="148.16667"
+     width="31.75"
+     id="key-63"
+     style="fill:#ffffff;stroke:#000000" />
+  <rect
+     y="-54.349831"
      x="508.5"
-     y="-41.083344"
-  />
-  <rect
-     style="fill:white;stroke:black"
-     id="key-73"
-     width="31.75"
      height="148.16667"
+     width="31.75"
+     id="key-68"
+     style="fill:#ffffff;stroke:#000000" />
+  <rect
+     y="-54.349831"
      x="540.25006"
-     y="-41.083344"
-  />
-  <rect
-     style="fill:white;stroke:black"
-     id="key-75"
-     width="31.75"
      height="148.16667"
+     width="31.75"
+     id="key-73"
+     style="fill:#ffffff;stroke:#000000" />
+  <rect
+     y="-54.349831"
      x="572.00006"
-     y="-41.083344"
-  />
-  <rect
-     style="fill:white;stroke:black"
-     id="key-80"
-     width="31.75"
      height="148.16667"
+     width="31.75"
+     id="key-75"
+     style="fill:#ffffff;stroke:#000000" />
+  <rect
+     y="-54.349831"
      x="603.75006"
-     y="-41.083344"
-  />
-  <rect
-     style="fill:white;stroke:black"
-     id="key-85"
-     width="31.75"
      height="148.16667"
+     width="31.75"
+     id="key-80"
+     style="fill:#ffffff;stroke:#000000" />
+  <rect
+     y="-54.349831"
      x="635.5"
-     y="-41.083344"
-  />
-  <rect
-     style="fill:white;stroke:black"
-     id="key-87"
-     width="31.75"
      height="148.16667"
+     width="31.75"
+     id="key-85"
+     style="fill:#ffffff;stroke:#000000" />
+  <rect
+     y="-54.349831"
      x="667.24994"
-     y="-41.083344"
-  />
-  <rect
-     style="fill:white;stroke:black"
-     id="key-92"
-     width="31.75"
      height="148.16667"
+     width="31.75"
+     id="key-87"
+     style="fill:#ffffff;stroke:#000000" />
+  <rect
+     y="-54.349831"
      x="698.99988"
-     y="-41.083344"
-  />
-  <rect
-     style="fill:white;stroke:black"
-     id="key-97"
-     width="31.75"
      height="148.16667"
+     width="31.75"
+     id="key-92"
+     style="fill:#ffffff;stroke:#000000" />
+  <rect
+     y="-54.349831"
      x="730.74982"
-     y="-41.083344"
-  />
-  <rect
-     style="fill:white;stroke:black"
-     id="key-102"
-     width="31.75"
      height="148.16667"
+     width="31.75"
+     id="key-97"
+     style="fill:#ffffff;stroke:#000000" />
+  <rect
+     y="-54.349831"
      x="762.49969"
-     y="-41.083344"
-  />
+     height="148.16667"
+     width="31.75"
+     id="key-102"
+     style="fill:#ffffff;stroke:#000000" />
   <rect
-     style="fill:lightGray;stroke:black"
+     y="-54.349831"
+     x="21.666595"
+     height="21.166666"
+     width="21.166666"
      id="key-4"
-     width="21.166666"
-     height="21.166666"
-     x="21.666597"
-     y="-41.083344"
-  />
+     style="fill:#d3d3d3;stroke:#000000" />
   <rect
-     style="fill:white;stroke:black"
+     y="-33.183174"
+     x="21.666595"
+     height="21.166666"
+     width="21.166666"
      id="key-3"
-     width="21.166666"
-     height="21.166666"
-     x="21.666597"
-     y="-19.916683"
-  />
+     style="fill:#ffffff;stroke:#000000" />
   <rect
-     style="fill:white;stroke:black"
+     y="-12.016517"
+     x="21.666595"
+     height="21.166666"
+     width="21.166666"
      id="key-2"
-     width="21.166666"
-     height="21.166666"
-     x="21.666597"
-     y="1.2499838"
-  />
+     style="fill:#ffffff;stroke:#000000" />
   <rect
-     style="fill:lightGray;stroke:black"
+     y="9.1501551"
+     x="21.666595"
+     height="21.166666"
+     width="21.166666"
      id="key-1"
-     width="21.166666"
-     height="21.166666"
-     x="21.666597"
-     y="22.416649"
-  />
+     style="fill:#d3d3d3;stroke:#000000" />
   <rect
-     style="fill:lightGray;stroke:black"
+     y="-54.349831"
+     x="53.416595"
+     height="21.166666"
+     width="21.166666"
      id="key-9"
-     width="21.166666"
-     height="21.166666"
-     x="53.416595"
-     y="-41.083344"
-  />
+     style="fill:#d3d3d3;stroke:#000000" />
   <rect
-     style="fill:white;stroke:black"
+     y="-33.183174"
+     x="53.416595"
+     height="21.166666"
+     width="21.166666"
      id="key-8"
-     width="21.166666"
-     height="21.166666"
-     x="53.416595"
-     y="-19.916683"
-  />
+     style="fill:#ffffff;stroke:#000000" />
   <rect
-     style="fill:white;stroke:black"
+     y="-12.016517"
+     x="53.416595"
+     height="21.166666"
+     width="21.166666"
      id="key-7"
-     width="21.166666"
-     height="21.166666"
-     x="53.416595"
-     y="1.2499838"
-  />
+     style="fill:#ffffff;stroke:#000000" />
   <rect
-     style="fill:lightGray;stroke:black"
+     y="9.1501551"
+     x="53.416595"
+     height="21.166666"
+     width="21.166666"
      id="key-6"
-     width="21.166666"
-     height="21.166666"
-     x="53.416595"
-     y="22.416649"
-  />
+     style="fill:#d3d3d3;stroke:#000000" />
   <rect
-     style="fill:lightGray;stroke:black"
+     y="-54.349831"
+     x="85.166595"
+     height="21.166666"
+     width="21.166666"
      id="key-14"
-     width="21.166666"
-     height="21.166666"
-     x="85.166595"
-     y="-41.083344"
-  />
+     style="fill:#d3d3d3;stroke:#000000" />
   <rect
-     style="fill:white;stroke:black"
+     y="-33.183174"
+     x="85.166595"
+     height="21.166666"
+     width="21.166666"
      id="key-13"
-     width="21.166666"
-     height="21.166666"
-     x="85.166595"
-     y="-19.916683"
-  />
+     style="fill:#ffffff;stroke:#000000" />
   <rect
-     style="fill:white;stroke:black"
+     y="-12.016517"
+     x="85.166595"
+     height="21.166666"
+     width="21.166666"
      id="key-12"
-     width="21.166666"
-     height="21.166666"
-     x="85.166595"
-     y="1.2499838"
-  />
+     style="fill:#ffffff;stroke:#000000" />
   <rect
-     style="fill:lightGray;stroke:black"
+     y="9.1501551"
+     x="85.166595"
+     height="21.166666"
+     width="21.166666"
      id="key-11"
-     width="21.166666"
-     height="21.166666"
-     x="85.166595"
-     y="22.416649"
-  />
+     style="fill:#d3d3d3;stroke:#000000" />
   <rect
-     style="fill:lightGray;stroke:black"
+     y="-54.349831"
+     x="148.66661"
+     height="21.166666"
+     width="21.166666"
      id="key-21"
-     width="21.166666"
-     height="21.166666"
-     x="148.66661"
-     y="-41.083344"
-  />
+     style="fill:#d3d3d3;stroke:#000000" />
   <rect
-     style="fill:white;stroke:black"
+     y="-33.183174"
+     x="148.66661"
+     height="21.166666"
+     width="21.166666"
      id="key-20"
-     width="21.166666"
-     height="21.166666"
-     x="148.66661"
-     y="-19.916683"
-  />
+     style="fill:#ffffff;stroke:#000000" />
   <rect
-     style="fill:white;stroke:black"
+     y="-12.016517"
+     x="148.66661"
+     height="21.166666"
+     width="21.166666"
      id="key-19"
-     width="21.166666"
-     height="21.166666"
-     x="148.66661"
-     y="1.2499838"
-  />
+     style="fill:#ffffff;stroke:#000000" />
   <rect
-     style="fill:lightGray;stroke:black"
+     y="9.1501551"
+     x="148.66661"
+     height="21.166666"
+     width="21.166666"
      id="key-18"
-     width="21.166666"
-     height="21.166666"
-     x="148.66661"
-     y="22.416649"
-  />
+     style="fill:#d3d3d3;stroke:#000000" />
   <rect
-     style="fill:lightGray;stroke:black"
+     y="-54.349831"
+     x="180.41664"
+     height="21.166666"
+     width="21.166666"
      id="key-26"
-     width="21.166666"
-     height="21.166666"
-     x="180.41664"
-     y="-41.083344"
-  />
+     style="fill:#d3d3d3;stroke:#000000" />
   <rect
-     style="fill:white;stroke:black"
+     y="-33.183174"
+     x="180.41664"
+     height="21.166666"
+     width="21.166666"
      id="key-25"
-     width="21.166666"
-     height="21.166666"
-     x="180.41664"
-     y="-19.916683"
-  />
+     style="fill:#ffffff;stroke:#000000" />
   <rect
-     style="fill:white;stroke:black"
+     y="-12.016517"
+     x="180.41664"
+     height="21.166666"
+     width="21.166666"
      id="key-24"
-     width="21.166666"
-     height="21.166666"
-     x="180.41664"
-     y="1.2499838"
-  />
+     style="fill:#ffffff;stroke:#000000" />
   <rect
-     style="fill:lightGray;stroke:black"
+     y="9.1501551"
+     x="180.41664"
+     height="21.166666"
+     width="21.166666"
      id="key-23"
-     width="21.166666"
-     height="21.166666"
-     x="180.41664"
-     y="22.416649"
-  />
+     style="fill:#d3d3d3;stroke:#000000" />
   <rect
-     style="fill:lightGray;stroke:black"
-     y="-41.083344"
-     x="116.91655"
-     height="21.166666"
-     width="21.166666"
      id="key-16"
-  />
-  <rect
-     style="fill:lightGray;stroke:black"
-     y="-41.083344"
-     x="212.16661"
-     height="21.166666"
      width="21.166666"
+     height="21.166666"
+     x="116.91655"
+     y="-54.349831"
+     style="fill:#d3d3d3;stroke:#000000" />
+  <rect
      id="key-28"
-  />
-  <rect
-     style="fill:lightGray;stroke:black"
-     y="-41.083344"
-     x="339.1666"
-     height="21.166666"
      width="21.166666"
+     height="21.166666"
+     x="212.16661"
+     y="-54.349831"
+     style="fill:#d3d3d3;stroke:#000000" />
+  <rect
      id="key-45"
-  />
+     width="21.166666"
+     height="21.166666"
+     x="339.1666"
+     y="-54.349831"
+     style="fill:#d3d3d3;stroke:#000000" />
   <rect
-     style="fill:lightGray;stroke:black"
+     y="-54.349831"
+     x="243.91667"
+     height="21.166666"
+     width="21.166666"
      id="key-33"
-     width="21.166666"
-     height="21.166666"
-     x="243.91667"
-     y="-41.083344"
-  />
+     style="fill:#d3d3d3;stroke:#000000" />
   <rect
-     style="fill:white;stroke:black"
+     y="-33.183174"
+     x="243.91667"
+     height="21.166666"
+     width="21.166666"
      id="key-32"
-     width="21.166666"
-     height="21.166666"
-     x="243.91667"
-     y="-19.916683"
-  />
+     style="fill:#ffffff;stroke:#000000" />
   <rect
-     style="fill:white;stroke:black"
+     y="-12.016517"
+     x="243.91667"
+     height="21.166666"
+     width="21.166666"
      id="key-31"
-     width="21.166666"
-     height="21.166666"
-     x="243.91667"
-     y="1.2499838"
-  />
+     style="fill:#ffffff;stroke:#000000" />
   <rect
-     style="fill:lightGray;stroke:black"
+     y="9.1501551"
+     x="243.91667"
+     height="21.166666"
+     width="21.166666"
      id="key-30"
-     width="21.166666"
-     height="21.166666"
-     x="243.91667"
-     y="22.416649"
-  />
+     style="fill:#d3d3d3;stroke:#000000" />
   <rect
-     style="fill:lightGray;stroke:black"
+     y="-54.349831"
+     x="275.66672"
+     height="21.166666"
+     width="21.166666"
      id="key-38"
-     width="21.166666"
-     height="21.166666"
-     x="275.66672"
-     y="-41.083344"
-  />
+     style="fill:#d3d3d3;stroke:#000000" />
   <rect
-     style="fill:white;stroke:black"
+     y="-33.183174"
+     x="275.66672"
+     height="21.166666"
+     width="21.166666"
      id="key-37"
-     width="21.166666"
-     height="21.166666"
-     x="275.66672"
-     y="-19.916683"
-  />
+     style="fill:#ffffff;stroke:#000000" />
   <rect
-     style="fill:white;stroke:black"
+     y="-12.016517"
+     x="275.66672"
+     height="21.166666"
+     width="21.166666"
      id="key-36"
-     width="21.166666"
-     height="21.166666"
-     x="275.66672"
-     y="1.2499838"
-  />
+     style="fill:#ffffff;stroke:#000000" />
   <rect
-     style="fill:lightGray;stroke:black"
+     y="9.1501551"
+     x="275.66672"
+     height="21.166666"
+     width="21.166666"
      id="key-35"
-     width="21.166666"
-     height="21.166666"
-     x="275.66672"
-     y="22.416649"
-  />
+     style="fill:#d3d3d3;stroke:#000000" />
   <rect
-     style="fill:lightGray;stroke:black"
+     y="-54.349831"
+     x="307.41675"
+     height="21.166666"
+     width="21.166666"
      id="key-43"
-     width="21.166666"
-     height="21.166666"
-     x="307.41675"
-     y="-41.083344"
-  />
+     style="fill:#d3d3d3;stroke:#000000" />
   <rect
-     style="fill:white;stroke:black"
+     y="-33.183174"
+     x="307.41675"
+     height="21.166666"
+     width="21.166666"
      id="key-42"
-     width="21.166666"
-     height="21.166666"
-     x="307.41675"
-     y="-19.916683"
-  />
+     style="fill:#ffffff;stroke:#000000" />
   <rect
-     style="fill:white;stroke:black"
+     y="-12.016517"
+     x="307.41675"
+     height="21.166666"
+     width="21.166666"
      id="key-41"
-     width="21.166666"
-     height="21.166666"
-     x="307.41675"
-     y="1.2499838"
-  />
+     style="fill:#ffffff;stroke:#000000" />
   <rect
-     style="fill:lightGray;stroke:black"
+     y="9.1501551"
+     x="307.41675"
+     height="21.166666"
+     width="21.166666"
      id="key-40"
-     width="21.166666"
-     height="21.166666"
-     x="307.41675"
-     y="22.416649"
-  />
+     style="fill:#d3d3d3;stroke:#000000" />
   <rect
-     style="fill:lightGray;stroke:black"
+     y="-54.349831"
+     x="466.16681"
+     height="21.166666"
+     width="21.166666"
      id="key-62"
-     width="21.166666"
-     height="21.166666"
-     x="466.16681"
-     y="-41.083344"
-  />
+     style="fill:#d3d3d3;stroke:#000000" />
   <rect
-     style="fill:white;stroke:black"
+     y="-33.183174"
+     x="466.16681"
+     height="21.166666"
+     width="21.166666"
      id="key-61"
-     width="21.166666"
-     height="21.166666"
-     x="466.16681"
-     y="-19.916683"
-  />
+     style="fill:#ffffff;stroke:#000000" />
   <rect
-     style="fill:white;stroke:black"
+     y="-12.016517"
+     x="466.16681"
+     height="21.166666"
+     width="21.166666"
      id="key-60"
-     width="21.166666"
-     height="21.166666"
-     x="466.16681"
-     y="1.2499838"
-  />
+     style="fill:#ffffff;stroke:#000000" />
   <rect
-     style="fill:lightGray;stroke:black"
+     y="9.1501551"
+     x="466.16681"
+     height="21.166666"
+     width="21.166666"
      id="key-59"
-     width="21.166666"
-     height="21.166666"
-     x="466.16681"
-     y="22.416649"
-  />
+     style="fill:#d3d3d3;stroke:#000000" />
   <rect
-     style="fill:lightGray;stroke:black"
+     y="-54.349831"
+     x="497.91684"
+     height="21.166666"
+     width="21.166666"
      id="key-67"
-     width="21.166666"
-     height="21.166666"
-     x="497.91684"
-     y="-41.083344"
-  />
+     style="fill:#d3d3d3;stroke:#000000" />
   <rect
-     style="fill:white;stroke:black"
+     y="-33.183174"
+     x="497.91684"
+     height="21.166666"
+     width="21.166666"
      id="key-66"
-     width="21.166666"
-     height="21.166666"
-     x="497.91684"
-     y="-19.916683"
-  />
+     style="fill:#ffffff;stroke:#000000" />
   <rect
-     style="fill:white;stroke:black"
+     y="-12.016517"
+     x="497.91684"
+     height="21.166666"
+     width="21.166666"
      id="key-65"
-     width="21.166666"
-     height="21.166666"
-     x="497.91684"
-     y="1.2499838"
-  />
+     style="fill:#ffffff;stroke:#000000" />
   <rect
-     style="fill:lightGray;stroke:black"
+     y="9.1501551"
+     x="497.91684"
+     height="21.166666"
+     width="21.166666"
      id="key-64"
-     width="21.166666"
-     height="21.166666"
-     x="497.91684"
-     y="22.416649"
-  />
+     style="fill:#d3d3d3;stroke:#000000" />
   <rect
-     style="fill:lightGray;stroke:black"
+     y="-54.349831"
+     x="529.66687"
+     height="21.166666"
+     width="21.166666"
      id="key-72"
-     width="21.166666"
-     height="21.166666"
-     x="529.66687"
-     y="-41.083344"
-  />
+     style="fill:#d3d3d3;stroke:#000000" />
   <rect
-     style="fill:white;stroke:black"
+     y="-33.183174"
+     x="529.66687"
+     height="21.166666"
+     width="21.166666"
      id="key-71"
-     width="21.166666"
-     height="21.166666"
-     x="529.66687"
-     y="-19.916683"
-  />
+     style="fill:#ffffff;stroke:#000000" />
   <rect
-     style="fill:lightGray;stroke:black"
+     y="7.9834838"
+     x="529.66687"
+     height="21.166666"
+     width="21.166666"
      id="key-69"
-     width="21.166666"
-     height="21.166666"
-     x="529.66687"
-     y="21.249981"
-  />
+     style="fill:#d3d3d3;stroke:#000000" />
   <rect
-     style="fill:white;stroke:black"
+     y="-12.016517"
+     x="529.66687"
+     height="21.166666"
+     width="21.166666"
      id="key-70"
-     width="21.166666"
-     height="21.166666"
-     x="529.66687"
-     y="1.2499838"
-  />
+     style="fill:#ffffff;stroke:#000000" />
   <rect
-     style="fill:lightGray;stroke:black"
+     y="-54.349831"
+     x="370.91675"
+     height="21.166666"
+     width="21.166666"
      id="key-50"
-     width="21.166666"
-     height="21.166666"
-     x="370.91675"
-     y="-41.083344"
-  />
+     style="fill:#d3d3d3;stroke:#000000" />
   <rect
-     style="fill:white;stroke:black"
+     y="-33.183174"
+     x="370.91675"
+     height="21.166666"
+     width="21.166666"
      id="key-49"
-     width="21.166666"
-     height="21.166666"
-     x="370.91675"
-     y="-19.916683"
-  />
+     style="fill:#ffffff;stroke:#000000" />
   <rect
-     style="fill:white;stroke:black"
+     y="-12.016517"
+     x="370.91675"
+     height="21.166666"
+     width="21.166666"
      id="key-48"
-     width="21.166666"
-     height="21.166666"
-     x="370.91675"
-     y="1.2499838"
-  />
+     style="fill:#ffffff;stroke:#000000" />
   <rect
-     style="fill:lightGray;stroke:black"
+     y="9.1501551"
+     x="370.91675"
+     height="21.166666"
+     width="21.166666"
      id="key-47"
-     width="21.166666"
-     height="21.166666"
-     x="370.91675"
-     y="22.416649"
-  />
+     style="fill:#d3d3d3;stroke:#000000" />
   <rect
-     style="fill:lightGray;stroke:black"
+     y="-54.349831"
+     x="402.66678"
+     height="21.166666"
+     width="21.166666"
      id="key-55"
-     width="21.166666"
-     height="21.166666"
-     x="402.66678"
-     y="-41.083344"
-  />
+     style="fill:#d3d3d3;stroke:#000000" />
   <rect
-     style="fill:white;stroke:black"
+     y="-33.183174"
+     x="402.66678"
+     height="21.166666"
+     width="21.166666"
      id="key-54"
-     width="21.166666"
-     height="21.166666"
-     x="402.66678"
-     y="-19.916683"
-  />
+     style="fill:#ffffff;stroke:#000000" />
   <rect
-     style="fill:white;stroke:black"
+     y="-12.016517"
+     x="402.66678"
+     height="21.166666"
+     width="21.166666"
      id="key-53"
-     width="21.166666"
-     height="21.166666"
-     x="402.66678"
-     y="1.2499838"
-  />
+     style="fill:#ffffff;stroke:#000000" />
   <rect
-     style="fill:lightGray;stroke:black"
+     y="9.1501551"
+     x="402.66678"
+     height="21.166666"
+     width="21.166666"
      id="key-52"
-     width="21.166666"
-     height="21.166666"
-     x="402.66678"
-     y="22.416649"
-  />
+     style="fill:#d3d3d3;stroke:#000000" />
   <rect
-     style="fill:lightGray;stroke:black"
-     y="-41.083344"
-     x="434.4166"
-     height="21.166666"
-     width="21.166666"
      id="key-57"
-  />
-  <rect
-     style="fill:lightGray;stroke:black"
-     y="-41.083344"
-     x="561.41669"
-     height="21.166666"
      width="21.166666"
+     height="21.166666"
+     x="434.4166"
+     y="-54.349831"
+     style="fill:#d3d3d3;stroke:#000000" />
+  <rect
      id="key-74"
-  />
+     width="21.166666"
+     height="21.166666"
+     x="561.41669"
+     y="-54.349831"
+     style="fill:#d3d3d3;stroke:#000000" />
   <rect
-     style="fill:lightGray;stroke:black"
+     y="-54.349831"
+     x="688.41675"
+     height="21.166666"
+     width="21.166666"
      id="key-91"
-     width="21.166666"
-     height="21.166666"
-     x="688.41675"
-     y="-41.083336"
-  />
+     style="fill:#d3d3d3;stroke:#000000" />
   <rect
-     style="fill:white;stroke:black"
+     y="-33.183189"
+     x="688.41675"
+     height="21.166666"
+     width="21.166666"
      id="key-90"
-     width="21.166666"
-     height="21.166666"
-     x="688.41675"
-     y="-19.916691"
-  />
+     style="fill:#ffffff;stroke:#000000" />
   <rect
-     style="fill:white;stroke:black"
+     y="-12.016517"
+     x="688.41675"
+     height="21.166666"
+     width="21.166666"
      id="key-89"
-     width="21.166666"
-     height="21.166666"
-     x="688.41675"
-     y="1.2499838"
-  />
+     style="fill:#ffffff;stroke:#000000" />
   <rect
-     style="fill:lightGray;stroke:black"
+     y="9.1501551"
+     x="688.41675"
+     height="21.166666"
+     width="21.166666"
      id="key-88"
-     width="21.166666"
-     height="21.166666"
-     x="688.41675"
-     y="22.416649"
-  />
+     style="fill:#d3d3d3;stroke:#000000" />
   <rect
-     style="fill:lightGray;stroke:black"
+     y="-54.349831"
+     x="720.16675"
+     height="21.166666"
+     width="21.166666"
      id="key-96"
-     width="21.166666"
-     height="21.166666"
-     x="720.16675"
-     y="-41.083336"
-  />
+     style="fill:#d3d3d3;stroke:#000000" />
   <rect
-     style="fill:white;stroke:black"
+     y="-33.183189"
+     x="720.16675"
+     height="21.166666"
+     width="21.166666"
      id="key-95"
-     width="21.166666"
-     height="21.166666"
-     x="720.16675"
-     y="-19.916691"
-  />
+     style="fill:#ffffff;stroke:#000000" />
   <rect
-     style="fill:white;stroke:black"
+     y="-12.016517"
+     x="720.16675"
+     height="21.166666"
+     width="21.166666"
      id="key-94"
-     width="21.166666"
-     height="21.166666"
-     x="720.16675"
-     y="1.2499838"
-  />
+     style="fill:#ffffff;stroke:#000000" />
   <rect
-     style="fill:lightGray;stroke:black"
+     y="9.1501551"
+     x="720.16675"
+     height="21.166666"
+     width="21.166666"
      id="key-93"
-     width="21.166666"
-     height="21.166666"
-     x="720.16675"
-     y="22.416649"
-  />
+     style="fill:#d3d3d3;stroke:#000000" />
   <rect
-     style="fill:lightGray;stroke:black"
+     y="-54.349831"
+     x="751.91681"
+     height="21.166666"
+     width="21.166666"
      id="key-101"
-     width="21.166666"
-     height="21.166666"
-     x="751.91681"
-     y="-41.083336"
-  />
+     style="fill:#d3d3d3;stroke:#000000" />
   <rect
-     style="fill:white;stroke:black"
+     y="-33.183189"
+     x="751.91681"
+     height="21.166666"
+     width="21.166666"
      id="key-100"
-     width="21.166666"
-     height="21.166666"
-     x="751.91681"
-     y="-19.916691"
-  />
+     style="fill:#ffffff;stroke:#000000" />
   <rect
-     style="fill:white;stroke:black"
+     y="-12.016517"
+     x="751.91681"
+     height="21.166666"
+     width="21.166666"
      id="key-99"
-     width="21.166666"
-     height="21.166666"
-     x="751.91681"
-     y="1.2499838"
-  />
+     style="fill:#ffffff;stroke:#000000" />
   <rect
-     style="fill:lightGray;stroke:black"
+     y="9.1501551"
+     x="751.91681"
+     height="21.166666"
+     width="21.166666"
      id="key-98"
-     width="21.166666"
-     height="21.166666"
-     x="751.91681"
-     y="22.416649"
-  />
+     style="fill:#d3d3d3;stroke:#000000" />
   <rect
-     style="fill:lightGray;stroke:black"
-     y="-41.083344"
-     x="656.66656"
-     height="21.166666"
-     width="21.166666"
      id="key-86"
-  />
+     width="21.166666"
+     height="21.166666"
+     x="656.66656"
+     y="-54.349831"
+     style="fill:#d3d3d3;stroke:#000000" />
   <rect
-     style="fill:lightGray;stroke:black"
+     y="-54.349831"
+     x="593.16724"
+     height="21.166666"
+     width="21.166666"
      id="key-79"
-     width="21.166666"
-     height="21.166666"
-     x="593.16724"
-     y="-41.083344"
-  />
+     style="fill:#d3d3d3;stroke:#000000" />
   <rect
-     style="fill:white;stroke:black"
+     y="-33.183174"
+     x="593.16724"
+     height="21.166666"
+     width="21.166666"
      id="key-78"
-     width="21.166666"
-     height="21.166666"
-     x="593.16724"
-     y="-19.916683"
-  />
+     style="fill:#ffffff;stroke:#000000" />
   <rect
-     style="fill:white;stroke:black"
+     y="-12.016517"
+     x="593.16724"
+     height="21.166666"
+     width="21.166666"
      id="key-77"
-     width="21.166666"
-     height="21.166666"
-     x="593.16724"
-     y="1.2499838"
-  />
+     style="fill:#ffffff;stroke:#000000" />
   <rect
-     style="fill:lightGray;stroke:black"
+     y="9.1501551"
+     x="593.16724"
+     height="21.166666"
+     width="21.166666"
      id="key-76"
-     width="21.166666"
-     height="21.166666"
-     x="593.16724"
-     y="22.416649"
-  />
+     style="fill:#d3d3d3;stroke:#000000" />
   <rect
-     style="fill:lightGray;stroke:black"
+     y="-54.349831"
+     x="624.91724"
+     height="21.166666"
+     width="21.166666"
      id="key-84"
-     width="21.166666"
-     height="21.166666"
-     x="624.91724"
-     y="-41.083344"
-  />
+     style="fill:#d3d3d3;stroke:#000000" />
   <rect
-     style="fill:white;stroke:black"
+     y="-33.183174"
+     x="624.91724"
+     height="21.166666"
+     width="21.166666"
      id="key-83"
-     width="21.166666"
-     height="21.166666"
-     x="624.91724"
-     y="-19.916683"
-  />
+     style="fill:#ffffff;stroke:#000000" />
   <rect
-     style="fill:white;stroke:black"
+     y="-12.016517"
+     x="624.91724"
+     height="21.166666"
+     width="21.166666"
      id="key-82"
-     width="21.166666"
-     height="21.166666"
-     x="624.91724"
-     y="1.2499838"
-  />
+     style="fill:#ffffff;stroke:#000000" />
   <rect
-     style="fill:lightGray;stroke:black"
-     id="key-81"
-     width="21.166666"
-     height="21.166666"
+     y="9.1501551"
      x="624.91724"
-     y="22.416649"
-  />
+     height="21.166666"
+     width="21.166666"
+     id="key-81"
+     style="fill:#d3d3d3;stroke:#000000" />
 </svg>
