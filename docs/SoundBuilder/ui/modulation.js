@@ -59,7 +59,7 @@ class ModulationTable extends VariableTable {
                 zero = false;
             else
                 continue;
-            result.push({ frequency: frequency, depth: depth, useEnvelope: useEnvelope });
+            result.push({ frequency: frequency, depth: depth });
         } //loop
         const masterDepth = this.#derivedImplementation.masterDepth.value;
         if (zero) result.splice(0);
