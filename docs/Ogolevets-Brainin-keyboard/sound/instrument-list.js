@@ -14,7 +14,7 @@ const instrumentList = [
             "lowFrequency": 27.5,
             "lowFrequencyCompensationGain": 0.5,
             "highFrequency": 3951.066,
-            "highFrequencyCompensationGain": 1.9
+            "highFrequencyCompensationGain": 3
         },
         "oscillator": {
             "type": "Fourier",
