@@ -79,6 +79,7 @@ window.onload = () => {
             controls.playMode.chord.onchange = event => { keyboardModeChangedHandler(event, keyboardMode.chord); }
             controls.playMode.chordSet.onchange = event => { keyboardModeChangedHandler(event, keyboardMode.chordSet); }
             const windowUpDownKeyHandler = (event, down) => {
+                if (event.repeat) return;
                 const isControl = event.key == "Control";
                 const isShift = event.key == "Shift";
                 if (!(isControl || isShift)) return;
