@@ -4,7 +4,7 @@ class Keyboard {
 
     #implementation = {};
 
-    constructor(keyboard) {
+    constructor(keyboard, options) { //options: definitionSet.keyboardOptions
         const keyList = keyboard.firstElementChild.children;
         this.#implementation.setVisibility = on => {
             keyboard.style.display = on ? "block" : "none";
@@ -14,7 +14,7 @@ class Keyboard {
             const elementData = keyMap.get(element);
             if (this.#implementation.keyHandler)
                 this.#implementation.keyHandler(elementData.index, on);
-            element.style.fill = on ? "Chartreuse" : elementData.originalColor;
+            element.style.fill = on ? options.highlightColor : elementData.originalColor;
         }; //handler
         setMultiTouch(
             keyboard,

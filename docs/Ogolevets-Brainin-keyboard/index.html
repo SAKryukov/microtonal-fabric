@@ -19,7 +19,8 @@
    <script src="sound/instrument-list.js"></script>
    <script src="ui/keyboard.js"></script>
    <script src="ui/controls.js"></script>
-   <script src="main.js"></script>
+   <script src="main/definition-set.js"></script>
+   <script src="main/main.js"></script>
    <style>
      * { font-family: sans-serif; }
      * { margin: 0; padding: 0; }
@@ -37,6 +38,8 @@
      article section { display: inline-block; margin-top: 2em; }
      article section:first-of-type { margin-right: 2em; }
      article section select { margin-left: 0.2em; }
+     article p:first-of-type { margin-top: 1em; }
+     article input[type=radio] { margin-right: 0.2em; }
   </style>
 </head>
 <body>
@@ -1236,6 +1239,11 @@
    <section><label accesskey="I" for="select-instrument"><u>I</u>nstrument:</label>
       <select id="select-instrument"></select>
    </section>
+   <!--
+   <p><input type="radio" name="mode" checked="true"/>Play Mode</p>
+   <p><input type="radio" name="mode"/>Chord Play Mode: Ctrl+key</p>
+   <p><input type="radio" name="mode"/>Chord Set Mode: Shift down: view, Shift+key: include/exclude, Ctrl+Shift+key: move/add tonic</p>
+   -->
 </article>
 
 </body>

@@ -1,3 +1,5 @@
+"use strict";
+
 window.onload = () => {
     
     (function Initialize() {
@@ -18,21 +20,11 @@ window.onload = () => {
 
         const keyboards = [];
         for (let svg of controls.keyboards)
-            keyboards.push(new Keyboard(svg));
+            keyboards.push(new Keyboard(svg, applicationDefinitionSet.keyboardOptions));
 
-        const temperament = (() => {
-            const system = 29;
-            const faOgolevets = 800 * Math.pow(2, -68/system);
-            const startBrainin = 800 * Math.pow(2, -40/system);
-            let instrument;
-            return {
-                system: system,
-                startingFrequencies: [
-                    faOgolevets,
-                    startBrainin
-            ]};
-        })(); //temperament
+        let instrument;
         const setupInstrument = keyboardIndex => {
+            const temperament = applicationDefinitionSet.temperament;
             instrument = new Instrument(
                 keyboards[keyboardIndex].first, keyboards[keyboardIndex].last,
                 temperament.startingFrequencies[keyboardIndex], temperament.system);
