@@ -18,6 +18,8 @@ window.onload = () => {
 
         const controls = findControls();
 
+        controls.version.textContent = applicationDefinitionSet.version;
+
         const keyboards = [];
         (function setupKeyboards() {
             let index = 0;
@@ -98,7 +100,7 @@ window.onload = () => {
                 setKeyboardMode(mode, true);
             }; //windowUpDownKeyHandler
             window.onkeydown = event => { windowUpDownKeyHandler(event, true); }
-            window.onkeyup = event => { windowUpDownKeyHandler(event, false); }    
+            window.onkeyup = event => { windowUpDownKeyHandler(event, false); }
         })();
     
     } //startApplication

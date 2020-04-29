@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-   <title>Ogolevets Microtonal Keyboard</title>
+   <title>Microtonal Keyboards, Ogolevets and Brainin Layouts</title>
    <meta charset="utf-8"/>
    <script src="../SoundBuilder/main/test-js-engine.js"></script>
    <script src="../SoundBuilder/main/enumeration.js"></script>
@@ -24,9 +24,12 @@
    <style>
      * { font-family: sans-serif; }
      * { margin: 0; padding: 0; }
-     * { box-sizing: content-box; touch-action: none; user-select: none; }
+     * { box-sizing: context-box; touch-action: none; user-select: none; }
+     html, body, svg { height: 100%; }
+     body { display: flex; flex-flow: column; }
+     main { width: 96%; flex: auto; overflow: auto; }
      svg { margin-top: 1em; margin-bottom: 1.6em; width: 100%; display: none; }
-     body main { margin-left: 0.4em; margin-right: 0.4em; visibility: hidden; }
+     body header { margin-left: 0.4em; margin-right: 0.4em; visibility: hidden; }
      body aside { text-align: center; }
      body aside button {
         margin-top: 3em;
@@ -34,20 +37,20 @@
         font-size: 120%; background-color: yellow; border: solid thin black; border-radius: 3px;
      }
      body aside button:hover { background-color: lightgoldenrodyellow; }
-     article { margin-left: 2em; margin-right: 2em; }
-     article section { display: inline-block; margin-top: 2em; }
-     article section:first-of-type { margin-right: 2em; }
-     article section select { margin-left: 0.2em; }
-     article p:first-of-type { margin-top: 1.8em; }
-     article input[type=radio] { margin-right: 0.2em; }
+     main { margin-left: 2em; margin-right: 2em; }
+     main section { display: inline-block; margin-top: 2em; }
+     main section:first-of-type { margin-right: 2em; }
+     main section select { margin-left: 0.2em; }
+     main, main p:first-of-type { margin-top: 1.8em; }
+     main input[type=radio] { margin-right: 0.2em; }
+     footer { background: oldlace; padding-left: 0.4rem; border-top: solid gray thin; font-size: 60%; }
   </style>
 </head>
 <body>
 
 <aside><button>Start</button></aside>
 
-<main>
-<svg
+<header><svg title = "Microtonal keyboard, Ogolevets layout"
    xmlns:svg="http://www.w3.org/2000/svg"
    xmlns="http://www.w3.org/2000/svg"
    width="100%"
@@ -676,7 +679,7 @@
        style="stroke-width:0.2;fill:lightGray;stroke:black"/>
   </g>
 </svg>
-<svg
+<svg  title = "Microtonal keyboard, Brainin layout"
    xmlns:svg="http://www.w3.org/2000/svg"
    xmlns="http://www.w3.org/2000/svg"
    version="1.1"
@@ -1118,10 +1121,9 @@
        width="21.034323"
        style="fill:black;stroke:black"/>
   </g>
-</svg>
-</main>
+</svg></header>
 
-<article>
+<main>
    <label for="slider-volume-control" accesskey="V"><u>V</u>olume:</label>
    <div id="slider-volume"></div>
    <br/>
@@ -1139,7 +1141,9 @@
    <section><label accesskey="I" for="select-instrument"><u>I</u>nstrument:</label>
       <select id="select-instrument"></select>
    </section>
-</article>
+</main>
+
+<footer>Microtonal Keyboard v&thinsp;<span></span></footer>
 
 </body>
 </html>

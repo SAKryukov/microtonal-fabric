@@ -5,8 +5,9 @@ const findInitializerControls = () => {
         initializer: document.querySelector("body > aside"),
         initializerButton: document.querySelector("body > aside > button"),
         hidden: [
+            document.querySelector("body header"),
             document.querySelector("body main"),
-            document.querySelector("body article"),
+            document.querySelector("footer"),
         ],
     };
 }; //findInitializerControls
@@ -14,8 +15,7 @@ const findInitializerControls = () => {
 const findControls = () => {
     const indicatorWidth = "3em";
     const controls = {
-        main: document.querySelector("body main"),
-        keyboards: document.querySelectorAll("body main > svg"),
+        keyboards: document.querySelectorAll("body header > svg"),
         playControl: {
             volumeLabel: document.querySelector("body article label:first-of-type"),
             volume: new Slider( { value: 1, min: 0, max: 10, step: 0.1, indicatorWidth: indicatorWidth }, document.querySelector("#slider-volume")),
@@ -29,6 +29,7 @@ const findControls = () => {
             chord: document.querySelector("#radio-mode-chord"),
             chordSet: document.querySelector("#radio-mode-chord-set"),
         },
+        version: document.querySelector("footer span"),
     };
     controls.playControl.volume.label = controls.playControl.volumeLabel;
     controls.playControl.sustain.label = controls.playControl.sustainLabel;
