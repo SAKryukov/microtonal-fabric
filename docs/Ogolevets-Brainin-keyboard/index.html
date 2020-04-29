@@ -38,7 +38,7 @@
      article section { display: inline-block; margin-top: 2em; }
      article section:first-of-type { margin-right: 2em; }
      article section select { margin-left: 0.2em; }
-     article p:first-of-type { margin-top: 1em; }
+     article p:first-of-type { margin-top: 1.8em; }
      article input[type=radio] { margin-right: 0.2em; }
   </style>
 </head>
@@ -1127,6 +1127,9 @@
    <br/>
    <label for="slider-sustain-control" accesskey="U">S<u>u</u>stain:</label>
    <div id="slider-sustain"></div>
+   <p><label><input id="radio-mode-normal" type="radio" name="mode" checked="true"/>Play Mode</label></p>
+   <p><label><input id="radio-mode-chord-set" type="radio" name="mode"/>Chord Set Mode: Shift down: view, Shift+key: include/exclude, Ctrl+Shift+key: move/add tonic</label></p>
+   <p><label><input id="radio-mode-chord" type="radio" name="mode"/>Chord Play Mode: Ctrl+key</label></p>
    <section><label accesskey="K" for="select-layout"><u>K</u>eyboard:</label>
       <select id="select-layout">
          <option selected="true">Ogolevets Layout</option>
@@ -1136,9 +1139,6 @@
    <section><label accesskey="I" for="select-instrument"><u>I</u>nstrument:</label>
       <select id="select-instrument"></select>
    </section>
-   <p><label><input id="radio-mode-normal" type="radio" name="mode" checked="true"/>Play Mode</label></p>
-   <p><label><input id="radio-mode-chord-set" type="radio" name="mode"/>Chord Set Mode: Shift down: view, Shift+key: include/exclude, Ctrl+Shift+key: move/add tonic</label></p>
-   <p><label><input id="radio-mode-chord" type="radio" name="mode"/>Chord Play Mode: Ctrl+key</label></p>
 </article>
 
 </body>
