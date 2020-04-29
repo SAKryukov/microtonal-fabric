@@ -15,7 +15,7 @@ const applicationDefinitionSet = (() => {
             ],
             defaultChords: [
                 [46, 56, 63],
-                [40, 43, 45]
+                [40, 50, 57]
             ]
     }   ;
     })(); //temperament
