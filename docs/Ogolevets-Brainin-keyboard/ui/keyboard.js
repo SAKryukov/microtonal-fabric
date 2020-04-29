@@ -34,14 +34,15 @@ class Keyboard {
 
         const handler = (element, on) => {
             const elementData = keyMap.get(element);
-            if (this.#implementation.mode == keyboardMode.chord && this.#implementation.chord.size > 0) {
-                if (this.#implementation.chordTonic < 0) return handleElement(element, elementData, on);
+            if (this.#implementation.mode == keyboardMode.chord) {
+                if (this.#implementation.chordTonic < 0 || this.#implementation.chord.size < 0)
+                    return handleElement(element, elementData, on);
                 const delta = elementData.index - this.#implementation.chordTonic;
                 for (let chordIndex of this.#implementation.chord) {
                     const shiftedChordIndex = chordIndex + delta;
                     if (shiftedChordIndex < 0 || shiftedChordIndex >= this.#implementation.keyList.length) continue;
                     const chordElement = this.#implementation.keyList[shiftedChordIndex];
-                    handleElement(chordElement, elementData, on);
+                    handleElement(chordElement, keyMap.get(chordElement), on);
                 } //loop
             } else if (on && this.#implementation.mode & keyboardMode.chordSet) {
                 this.#implementation.chordTonic = -1;
@@ -62,6 +63,19 @@ class Keyboard {
                     (elementData.isChordTonic ? options.chordTonicColor : options.chordColor)
                     :
                     elementData.originalColor;
+                if (!this.#implementation.chord.has(this.#implementation.chordTonic)) {
+                    this.#implementation.chordTonic = -1;
+                    let first = this.#implementation.keyList.length + 1;
+                    for (let chordIndex of this.#implementation.chord) {
+                        if (chordIndex < first)
+                            first = chordIndex;
+                        keyMap.get(this.#implementation.keyList[chordIndex]).isChordTonic = false;
+                    } //loop
+                    if (first < this.#implementation.keyList.length) {
+                        this.#implementation.chordTonic = first;
+                        keyMap.get(this.#implementation.keyList[first]).isChordTonic = true;
+                    } //if
+                } //if
                 refreshChordColors(this.#implementation.mode);
             } else if (this.#implementation.mode == keyboardMode.normal)
                 handleElement(element, elementData, on);
