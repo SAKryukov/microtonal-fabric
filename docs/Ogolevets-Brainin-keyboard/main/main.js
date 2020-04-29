@@ -18,6 +18,8 @@ window.onload = () => {
 
         const controls = findControls();
 
+        controls.version.textContent = applicationDefinitionSet.version;
+
         const keyboards = [];
         (function setupKeyboards() {
             let index = 0;
@@ -28,10 +30,9 @@ window.onload = () => {
         let instrument;
         const setupInstrument = keyboardIndex => {
             const temperament = applicationDefinitionSet.temperament;
-            instrument = new Instrument(
-                keyboards[keyboardIndex].first, keyboards[keyboardIndex].last,
-                temperament.startingFrequencies[keyboardIndex], temperament.system);
             const instrumentIndex = controls.instrument.selectedIndex >=0 ? controls.instrument.selectedIndex : 0;
+            let startingFrequency = temperament.startingFrequencies[keyboardIndex];
+            instrument = new Instrument(keyboards[keyboardIndex].first, keyboards[keyboardIndex].last, startingFrequency, temperament.system);
             instrument.data = instrumentList[instrumentIndex];
             for (let aKeyboard of keyboards)
                 aKeyboard.hide();
@@ -98,7 +99,7 @@ window.onload = () => {
                 setKeyboardMode(mode, true);
             }; //windowUpDownKeyHandler
             window.onkeydown = event => { windowUpDownKeyHandler(event, true); }
-            window.onkeyup = event => { windowUpDownKeyHandler(event, false); }    
+            window.onkeyup = event => { windowUpDownKeyHandler(event, false); }
         })();
     
     } //startApplication
