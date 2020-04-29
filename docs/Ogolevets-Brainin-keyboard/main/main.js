@@ -63,14 +63,6 @@ window.onload = () => {
         controls.playControl.sustain.onchange = (self, value) => instrument.sustain = value;
 
         (function setupModeKeyboardModeControl() {
-
-            if ((function disableIt(doDisable) {
-                if (!doDisable) return doDisable;
-                for (let element of document.querySelectorAll("p"))
-                    element.style.visibility = "collapse";
-                return doDisable;
-            })(true)) return; // false to enable, true to disable
-            
             const setKeyboardMode = (mode, toView) => {
                 for (let keyboard of keyboards)
                     keyboard.mode = mode;
@@ -93,12 +85,12 @@ window.onload = () => {
                 let mode;
                 if (isShift) {
                     if (event.ctrlKey)
-                        mode = down ? keyboardMode.chordSetTonic : keyboardMode.chord;
+                        mode = down ? keyboardMode.chordSet | keyboardMode.chordSetTonic : keyboardMode.chord;
                     else
                         mode = down ? keyboardMode.chordSet : keyboardMode.normal;
                 } else if (isControl) {
                     if (event.shiftKey)
-                        mode = down ? keyboardMode.chordSetTonic : keyboardMode.chordSet;
+                        mode = down ? keyboardMode.chordSet | keyboardMode.chordSetTonic : keyboardMode.chordSet;
                     else
                         mode = down ? keyboardMode.chord : keyboardMode.normal;
                 } //if
