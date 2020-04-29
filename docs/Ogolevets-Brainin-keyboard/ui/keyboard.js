@@ -51,8 +51,12 @@ class Keyboard {
         let index = 0;
         for (let key of keys) {
             const inDefaultChord = defaultChord.includes(index);
+            const isChordTonic = index == defaultChord[0];
+
             if (inDefaultChord) this.#implementation.chord.push(key);
-            keyMap.set(key, { index: index, originalColor: key.style.fill, inChord: inDefaultChord });
+            keyMap.set(key, {
+                index: index, originalColor: key.style.fill,
+                inChord: inDefaultChord, isChordTonic: isChordTonic });
             key.onmousedown = event => handler(event.target, true);
             key.onmouseup = event => handler(event.target, false);
             key.onmouseenter = event => { if (event.buttons == 1) handler(event.target, true); }
@@ -65,7 +69,10 @@ class Keyboard {
             this.#implementation.mode = mode;
             if (mode & keyboardMode.chordSet)
                 for (let key of this.#implementation.chord)
-                    key.style.fill = options.chordColor;
+                    key.style.fill = keyMap.get(key).isChordTonic ? options.chordTonicColor : options.chordColor;
+            else
+                for (let key of this.#implementation.chord)
+                    key.style.fill = keyMap.get(key).originalColor;
         }; //this.#implementation.setMode
     } //constructor
 

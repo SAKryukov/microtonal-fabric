@@ -24,8 +24,8 @@ const applicationDefinitionSet = (() => {
         temperament: temperament,
         keyboardOptions: {
             highlightColor: "Chartreuse",
-            chordColor: "yellow",
-            chordTonicColor: "red",
+            chordColor: "LemonChiffon",
+            chordTonicColor: "yellow",
         },
     }; //result
 
