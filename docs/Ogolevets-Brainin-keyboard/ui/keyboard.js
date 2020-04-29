@@ -1,10 +1,12 @@
 "use strict";
 
+const keyboardMode = { normal: 0, chord: 1, chordSet: 2, chordSetTonic: 6 };
+
 class Keyboard {
 
-    #implementation = {};
+    #implementation = { mode: 0, chord: [] };
 
-    constructor(keyboard, options) { //options: definitionSet.keyboardOptions
+    constructor(keyboard, options, defaultChord) { //options: definitionSet.keyboardOptions
         const keyList = keyboard.firstElementChild.children;
         this.#implementation.setVisibility = on => {
             keyboard.style.display = on ? "block" : "none";
@@ -48,7 +50,9 @@ class Keyboard {
         } //parseKeyNumber
         let index = 0;
         for (let key of keys) {
-            keyMap.set(key, { index: index, originalColor: key.style.fill });
+            const inDefaultChord = defaultChord.includes(index);
+            if (inDefaultChord) this.#implementation.chord.push(key);
+            keyMap.set(key, { index: index, originalColor: key.style.fill, inChord: inDefaultChord });
             key.onmousedown = event => handler(event.target, true);
             key.onmouseup = event => handler(event.target, false);
             key.onmouseenter = event => { if (event.buttons == 1) handler(event.target, true); }
@@ -57,6 +61,12 @@ class Keyboard {
         } //loop
         this.#implementation.getFirst = _ => { return 0; }
         this.#implementation.getLast = _ => { return keys.length - 1; }
+        this.#implementation.setMode = mode => {
+            this.#implementation.mode = mode;
+            if (mode & keyboardMode.chordSet)
+                for (let key of this.#implementation.chord)
+                    key.style.fill = options.chordColor;
+        }; //this.#implementation.setMode
     } //constructor
 
     set keyHandler(aHandler) { this.#implementation.keyHandler = aHandler; }
@@ -66,5 +76,8 @@ class Keyboard {
     
     hide() { this.#implementation.setVisibility(false); }
     show() { this.#implementation.setVisibility(true); }
+
+    set mode(value) { this.#implementation.setMode(value); }
+    get mode() { return this.#implementation.mode; }
 
 } //class Keyboard

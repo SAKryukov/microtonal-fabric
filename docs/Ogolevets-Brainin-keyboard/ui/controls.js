@@ -25,9 +25,9 @@ const findControls = () => {
         keyboardLayout: document.querySelector("#select-layout"),
         instrument: document.querySelector("#select-instrument"),
         playMode: {
-            normal: document.querySelector("article input:first-of-type"),
-            chord: document.querySelector("article input:nth-of-type(2)"),
-            chordSet: document.querySelector("article input:last-of-type"),
+            normal: document.querySelector("#radio-mode-normal"),
+            chord: document.querySelector("#radio-mode-chord"),
+            chordSet: document.querySelector("#radio-mode-chord-set"),
         },
     };
     controls.playControl.volume.label = controls.playControl.volumeLabel;

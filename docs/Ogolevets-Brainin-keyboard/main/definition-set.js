@@ -12,7 +12,12 @@ const applicationDefinitionSet = (() => {
             startingFrequencies: [
                 faOgolevets,
                 startBrainin
-        ]};
+            ],
+            defaultChords: [
+                [46, 56, 63],
+                [40, 43, 45]
+            ]
+    }   ;
     })(); //temperament
 
     const result = {

@@ -19,8 +19,11 @@ window.onload = () => {
         const controls = findControls();
 
         const keyboards = [];
-        for (let svg of controls.keyboards)
-            keyboards.push(new Keyboard(svg, applicationDefinitionSet.keyboardOptions));
+        (function setupKeyboards() {
+            let index = 0;
+            for (let svg of controls.keyboards)
+                keyboards.push(new Keyboard(svg, applicationDefinitionSet.keyboardOptions, applicationDefinitionSet.temperament.defaultChords[index++]));
+        })(); //setupKeyboards
 
         let instrument;
         const setupInstrument = keyboardIndex => {
@@ -54,12 +57,56 @@ window.onload = () => {
             option.textContent = instrument.header.instrumentName;
             controls.instrument.appendChild(option);
         } //loop
-        controls.instrument.onchange = event => {
-            instrument.data = instrumentList[event.target.selectedIndex];
-        };
+        controls.instrument.onchange = event => { instrument.data = instrumentList[event.target.selectedIndex]; };
 
         controls.playControl.volume.onchange = (self, value) => instrument.volume = value;
         controls.playControl.sustain.onchange = (self, value) => instrument.sustain = value;
+
+        (function setupModeKeyboardModeControl() {
+
+            if ((function disableIt(doDisable) {
+                if (!doDisable) return doDisable;
+                for (let element of document.querySelectorAll("p"))
+                    element.style.visibility = "collapse";
+                return doDisable;
+            })(true)) return; // false to enable, true to disable
+            
+            const setKeyboardMode = (mode, toView) => {
+                for (let keyboard of keyboards)
+                    keyboard.mode = mode;
+                if (!toView) return;
+                switch (mode) {
+                    case keyboardMode.normal: return controls.playMode.normal.checked = true;
+                    case keyboardMode.chord: return controls.playMode.chord.checked = true;
+                    case keyboardMode.chordSetTonic:
+                    case keyboardMode.chordSet: return controls.playMode.chordSet.checked = true;
+                } //switch
+            } //setKeyboardMode
+            const keyboardModeChangedHandler = (event, mode) => { if (event.target.checked) setKeyboardMode(mode); }
+            controls.playMode.normal.onchange = event => { keyboardModeChangedHandler(event, keyboardMode.normal); }
+            controls.playMode.chord.onchange = event => { keyboardModeChangedHandler(event, keyboardMode.chord); }
+            controls.playMode.chordSet.onchange = event => { keyboardModeChangedHandler(event, keyboardMode.chordSet); }
+            const windowUpDownKeyHandler = (event, down) => {
+                const isControl = event.key == "Control";
+                const isShift = event.key == "Shift";
+                if (!(isControl || isShift)) return;
+                let mode;
+                if (isShift) {
+                    if (event.ctrlKey)
+                        mode = down ? keyboardMode.chordSetTonic : keyboardMode.chord;
+                    else
+                        mode = down ? keyboardMode.chordSet : keyboardMode.normal;
+                } else if (isControl) {
+                    if (event.shiftKey)
+                        mode = down ? keyboardMode.chordSetTonic : keyboardMode.chordSet;
+                    else
+                        mode = down ? keyboardMode.chord : keyboardMode.normal;
+                } //if
+                setKeyboardMode(mode, true);
+            }; //windowUpDownKeyHandler
+            window.onkeydown = event => { windowUpDownKeyHandler(event, true); }
+            window.onkeyup = event => { windowUpDownKeyHandler(event, false); }    
+        })();
     
     } //startApplication
 
