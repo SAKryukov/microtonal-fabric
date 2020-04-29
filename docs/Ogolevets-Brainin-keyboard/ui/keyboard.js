@@ -12,17 +12,32 @@ class Keyboard {
             keyboard.style.display = on ? "block" : "none";
         }; //this.#implementation.setVisibility
         const keyMap = new Map();
-        const handler = (element, on) => {
+        const handleElement = (element, on) => {
             const elementData = keyMap.get(element);
             if (this.#implementation.keyHandler)
                 this.#implementation.keyHandler(elementData.index, on);
             element.style.fill = on ? options.highlightColor : elementData.originalColor;
+
+        }; //handleElement
+        const handler = (element, on) => {
+            if (this.#implementation.mode == keyboardMode.chord && this.#implementation.chord.length > 0) {
+                const elementData = keyMap.get(element);
+                const delta = elementData.index - this.#implementation.chord[0];
+                for (let chordIndex of this.#implementation.chord) {
+                    const shiftedChordIndex = chordIndex + delta;
+                    if (shiftedChordIndex < 0 || shiftedChordIndex >= this.#implementation.keyList.length) continue;
+                    const chordElement = this.#implementation.keyList[shiftedChordIndex];
+                    handleElement(chordElement, on);
+                } //loop
+            } else if (this.#implementation.mode == keyboardMode.normal)
+                handleElement(element, on);
         }; //handler
         setMultiTouch(
             keyboard,
             element => element.constructor == SVGRectElement,
             (element, _, on) => { handler(element, on); });
         const keys = Array.prototype.slice.call(keyList);
+        this.#implementation.keyList = keys;
         keys.sort((a, b) => {
             if (b.x.baseVal.value == a.x.baseVal.value && b.y.baseVal.value == a.y.baseVal.value)
                 return 0;
@@ -36,24 +51,11 @@ class Keyboard {
             else
                 return 1;
         });
-        let parseKeyNumberSlice = undefined;
-        const parseKeyNumber = id => {
-            if (parseKeyNumberSlice == undefined) {
-                let index = 0;
-                while (parseKeyNumberSlice == undefined) {
-                    if (!isNaN(parseInt(id[index]))) break;
-                    ++index;
-                } //loop
-                parseKeyNumberSlice = index;
-            } //if
-            return parseInt(id.slice(parseKeyNumberSlice));
-        } //parseKeyNumber
         let index = 0;
         for (let key of keys) {
             const inDefaultChord = defaultChord.includes(index);
             const isChordTonic = index == defaultChord[0];
-
-            if (inDefaultChord) this.#implementation.chord.push(key);
+            if (inDefaultChord) this.#implementation.chord.push(index);
             keyMap.set(key, {
                 index: index, originalColor: key.style.fill,
                 inChord: inDefaultChord, isChordTonic: isChordTonic });
@@ -67,12 +69,14 @@ class Keyboard {
         this.#implementation.getLast = _ => { return keys.length - 1; }
         this.#implementation.setMode = mode => {
             this.#implementation.mode = mode;
-            if (mode & keyboardMode.chordSet)
-                for (let key of this.#implementation.chord)
-                    key.style.fill = keyMap.get(key).isChordTonic ? options.chordTonicColor : options.chordColor;
-            else
-                for (let key of this.#implementation.chord)
-                    key.style.fill = keyMap.get(key).originalColor;
+            for (let keyIndex of this.#implementation.chord) {
+                const chordKey = this.#implementation.keyList[keyIndex];
+                const chordKeyData = keyMap.get(chordKey);
+                chordKey.style.fill = mode & keyboardMode.chordSet ?
+                    (chordKeyData.isChordTonic ? options.chordTonicColor : options.chordColor)
+                    :
+                    chordKeyData.originalColor;
+            } //loop
         }; //this.#implementation.setMode
     } //constructor
 
