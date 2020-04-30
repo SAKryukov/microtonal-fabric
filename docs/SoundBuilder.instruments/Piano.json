@@ -1,45 +1,45 @@
 {
     "header": {
         "format": "Sound Builder",
-        "version": "0.2.0",
+        "version": "0.2.2",
         "formatVersion": "3.1.0",
-        "author": "Sergey A Kryukov",
+        "author": "",
         "instrumentName": "Piano"
     },
     "gainCompensation": {
-        "masterGain": 7.2318,
+        "masterGain": 2,
         "middleFrequency": 350,
         "lowFrequency": 27.5,
-        "lowFrequencyCompensationGain": 0.04,
+        "lowFrequencyCompensationGain": 0.4,
         "highFrequency": 3951.066410048994,
-        "highFrequencyCompensationGain": 3
+        "highFrequencyCompensationGain": 1.4
     },
     "oscillator": {
         "type": "Fourier",
         "Fourier": [
             {
                 "harmonic": 1,
-                "amplitude": 2,
-                "phase": 90
+                "amplitude": 103.73493975903614,
+                "phase": -92.1
             },
             {
                 "harmonic": 2,
-                "amplitude": 7,
+                "amplitude": 93.6,
                 "phase": -64
             },
             {
                 "harmonic": 3,
-                "amplitude": 7,
+                "amplitude": 59.8,
                 "phase": -61
             },
             {
                 "harmonic": 4,
-                "amplitude": 7,
+                "amplitude": 22.5,
                 "phase": -56
             },
             {
                 "harmonic": 5,
-                "amplitude": 9,
+                "amplitude": 16.6,
                 "phase": -51
             },
             {
@@ -54,12 +54,12 @@
             },
             {
                 "harmonic": 8,
-                "amplitude": 52,
+                "amplitude": 30.2,
                 "phase": -37
             },
             {
                 "harmonic": 9,
-                "amplitude": 100,
+                "amplitude": 61,
                 "phase": 146
             },
             {
@@ -10287,7 +10287,7 @@
                 "gain": 0
             }
         ],
-        "dampingSustain": 0.4
+        "dampingSustain": 0.16
     },
     "detuneEnvelope": {
         "stages": [],
