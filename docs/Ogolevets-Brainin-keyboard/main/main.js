@@ -18,18 +18,18 @@ window.onload = () => {
 
         const controls = findControls();
 
-        controls.version.textContent = applicationDefinitionSet.version;
+        controls.version.textContent = definitionSet.version;
 
         const keyboards = [];
         (function setupKeyboards() {
             let index = 0;
             for (let svg of controls.keyboards)
-                keyboards.push(new Keyboard(svg, applicationDefinitionSet.keyboardOptions, applicationDefinitionSet.temperament.defaultChords[index++]));
+                keyboards.push(new Keyboard(svg, definitionSet.keyboardOptions, definitionSet.temperament.defaultChords[index++]));
         })(); //setupKeyboards
 
         let instrument;
         const setupInstrument = keyboardIndex => {
-            const temperament = applicationDefinitionSet.temperament;
+            const temperament = definitionSet.temperament;
             const instrumentIndex = controls.instrument.selectedIndex >=0 ? controls.instrument.selectedIndex : 0;
             let startingFrequency = temperament.startingFrequencies[keyboardIndex];
             instrument = new Instrument(keyboards[keyboardIndex].first, keyboards[keyboardIndex].last, startingFrequency, temperament.system);

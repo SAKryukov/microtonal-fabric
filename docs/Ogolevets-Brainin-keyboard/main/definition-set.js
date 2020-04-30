@@ -1,6 +1,6 @@
 "use strict";
 
-const applicationDefinitionSet = (() => {
+const definitionSet = (() => {
 
     const version = "0.1.0";
 
@@ -34,4 +34,4 @@ const applicationDefinitionSet = (() => {
 
     return result;
 
-})(); //applicationDefinitionSet
+})(); //definitionSet
