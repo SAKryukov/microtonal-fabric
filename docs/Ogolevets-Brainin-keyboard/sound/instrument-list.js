@@ -5,7 +5,7 @@ const instrumentList = [
             "version": "0.2.0",
             "formatVersion": "3.1.0",
             "author": "S A Kryukov",
-            "instrumentName": "Piano.json"
+            "instrumentName": "Piano"
         },
         "gainCompensation": {
             "masterGain": 7.2318,
