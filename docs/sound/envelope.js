@@ -1,16 +1,16 @@
 class Envelope {
 
     #implementation = {
-        sustain: definitionSet.playControl.minimalSustain,
-        dampingSustain: definitionSet.playControl.minimalSustain,
+        sustain: soundDefinitionSet.playControl.minimalSustain,
+        dampingSustain: soundDefinitionSet.playControl.minimalSustain,
         isEnabled: true,
     };
     
     constructor() {
         // to speed-up calculations:
-        this.#implementation.typeExponential = definitionSet.envelopeElementIndex.exponential;
-        this.#implementation.typeLinear = definitionSet.envelopeElementIndex.linear;
-        this.#implementation.typeHeaviside = definitionSet.envelopeElementIndex.Heaviside;
+        this.#implementation.typeExponential = soundDefinitionSet.envelopeElementIndex.exponential;
+        this.#implementation.typeLinear = soundDefinitionSet.envelopeElementIndex.linear;
+        this.#implementation.typeHeaviside = soundDefinitionSet.envelopeElementIndex.Heaviside;
     } //constructor
 
     connect() {}
@@ -22,9 +22,9 @@ class Envelope {
             const sustain = this.#implementation.isEnabled && this.#implementation.sustain != undefined ? 
                     Math.max(this.#implementation.sustain, this.#implementation.dampingSustain)
                     :
-                    definitionSet.playControl.minimalSustain;
+                    soundDefinitionSet.playControl.minimalSustain;
             const gain =  on ? 1 : 0; 
-            const timeConstant = on ? definitionSet.playControl.minimalAttack : sustain;
+            const timeConstant = on ? soundDefinitionSet.playControl.minimalAttack : sustain;
             audioParameter.setTargetAtTime(gain, currentTime, timeConstant);
             return;
         } //if
@@ -61,7 +61,7 @@ class Envelope {
     get enable() { return this.#implementation.isEnabled; }
     
     set sustain(value) {
-        if (value != undefined && value < definitionSet.playControl.minimalSustain) value = definitionSet.playControl.minimalSustain;
+        if (value != undefined && value < soundDefinitionSet.playControl.minimalSustain) value = soundDefinitionSet.playControl.minimalSustain;
         this.#implementation.sustain = value;
     } //set sustain
     get sustain()  { return this.#implementation.sustain; }

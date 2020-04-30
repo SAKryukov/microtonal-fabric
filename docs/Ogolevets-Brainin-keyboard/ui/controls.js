@@ -15,6 +15,7 @@ const findInitializerControls = () => {
 const findControls = () => {
     const indicatorWidth = "3em";
     const controls = {
+        diagnostics:  document.querySelector("footer span:last-child"),
         keyboards: document.querySelectorAll("body header > svg"),
         playControl: {
             volumeLabel: document.querySelector("body article label:first-of-type"),

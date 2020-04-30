@@ -35,7 +35,7 @@ const findControls = () => {
                 ],
             globalStartButton: document.querySelector("#initialize-system > button"),
             volume: new Slider({ value: 1, min: 0, max: 1, step: 0.01, indicatorWidth: "2.5em" }, parentVolume),
-            sustain: new Slider({ value: 0, min: definitionSet.playControl.minimalSustain, max: 1, step: 0.01, indicatorWidth: "3.2em", indicatorSuffix: " s" }, parentSustain),
+            sustain: new Slider({ value: 0, min: soundDefinitionSet.playControl.minimalSustain, max: 1, step: 0.01, indicatorWidth: "3.2em", indicatorSuffix: " s" }, parentSustain),
         },
         tables: {
             tableFourier: new FourierTable(

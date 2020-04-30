@@ -37,14 +37,14 @@ window.onload = () => {
             controls.playControl.sustain.onchange = (self, value) => setSustain();
             controls.playControl.volume.onchange = (self, value) => instrument.volume = value;
             // usage:
-            controls.usage.FM.handler = value => instrument.playWith(definitionSet.playControl.usage.frequencyModulation, value);
-            controls.usage.AM.handler = value => instrument.playWith(definitionSet.playControl.usage.amplitudeModulation, value);
-            controls.usage.GainEnvelope.handler = value => instrument.playWith(definitionSet.playControl.usage.gainEnvelope, value);
-            controls.usage.DetuneEnvelope.handler = value => instrument.playWith(definitionSet.playControl.usage.detuneEnvelope, value);
-            controls.usage.FMEnvelope.handler = value => instrument.playWith(definitionSet.playControl.usage.frequencyModulationEnvelope, value);
-            controls.usage.AMEnvelope.handler = value => instrument.playWith(definitionSet.playControl.usage.amplitudeModulationEnvelope, value);
-            controls.usage.Filter.handler = value => instrument.playWith(definitionSet.playControl.usage.filters, value);
-            controls.usage.GainCompensation.handler = value => instrument.playWith(definitionSet.playControl.usage.gainCompensation, value);
+            controls.usage.FM.handler = value => instrument.playWith(soundDefinitionSet.playControl.usage.frequencyModulation, value);
+            controls.usage.AM.handler = value => instrument.playWith(soundDefinitionSet.playControl.usage.amplitudeModulation, value);
+            controls.usage.GainEnvelope.handler = value => instrument.playWith(soundDefinitionSet.playControl.usage.gainEnvelope, value);
+            controls.usage.DetuneEnvelope.handler = value => instrument.playWith(soundDefinitionSet.playControl.usage.detuneEnvelope, value);
+            controls.usage.FMEnvelope.handler = value => instrument.playWith(soundDefinitionSet.playControl.usage.frequencyModulationEnvelope, value);
+            controls.usage.AMEnvelope.handler = value => instrument.playWith(soundDefinitionSet.playControl.usage.amplitudeModulationEnvelope, value);
+            controls.usage.Filter.handler = value => instrument.playWith(soundDefinitionSet.playControl.usage.filters, value);
+            controls.usage.GainCompensation.handler = value => instrument.playWith(soundDefinitionSet.playControl.usage.gainCompensation, value);
             controls.usage.Sustain.handler = value => {
                 controls.playControl.sustain.disabled = !value;
                 setSustain();

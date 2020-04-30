@@ -5,16 +5,16 @@
    <meta charset="utf-8"/>
    <script src="../SoundBuilder/main/test-js-engine.js"></script>
    <script src="../SoundBuilder/main/enumeration.js"></script>
-   <script src="../SoundBuilder/main/definition-set.js"></script>
-   <script src="../SoundBuilder/ui.components/multitouch.js"></script>
-   <script src="../SoundBuilder/ui.components/keyboard.js"></script>
-   <script src="../SoundBuilder/ui.components/slider.js"></script>
-   <script src="../SoundBuilder/sound/chain-node.js"></script>
-   <script src="../SoundBuilder/sound/envelope.js"></script>
-   <script src="../SoundBuilder/sound/modulator.js"></script>
-   <script src="../SoundBuilder/sound/modulator-set.js"></script>
-   <script src="../SoundBuilder/sound/tone.js"></script>
-   <script src="../SoundBuilder/sound/instrument.js"></script>
+   <script src="../sound/definition-set.js"></script>
+   <script src="../ui.components/multitouch.js"></script>
+   <script src="../ui.components/keyboard.js"></script>
+   <script src="../ui.components/slider.js"></script>
+   <script src="../sound/chain-node.js"></script>
+   <script src="../sound/envelope.js"></script>
+   <script src="../sound/modulator.js"></script>
+   <script src="../sound/modulator-set.js"></script>
+   <script src="../sound/tone.js"></script>
+   <script src="../sound/instrument.js"></script>
    <script src="../SoundBuilder/main/initialization-controller.js"></script>
    <script src="sound/instrument-list.js"></script>
    <script src="ui/keyboard.js"></script>
@@ -44,7 +44,8 @@
      main, main p:first-of-type { margin-top: 1.8em; }
      main input[type=radio] { margin-right: 0.2em; }
      footer { background: oldlace; padding: 0.2em; padding-bottom; 0.4em; padding-left: 0.4rem; padding-right: 0.4rem; border-top: solid gray thin; font-size: 60%; }
-     footer a { margin-left: 2em; }
+     footer a, footer span:last-child { margin-left: 2em; }
+     footer span:last-child { color: red; overflow: auto; }
   </style>
 </head>
 <body>
@@ -1135,7 +1136,7 @@
    <p><label><input id="radio-mode-chord" type="radio" name="mode"/>Chord Play Mode: Ctrl+key</label></p>
    <section><label accesskey="K" for="select-layout"><u>K</u>eyboard:</label>
       <select id="select-layout">
-         <option selected="true">Ogolevets Layout</option>
+         <option selected="true">Ogolevets-Brainin Layout</option>
          <option>Brainin Layout</option>
       </select>
    </section>
@@ -1144,7 +1145,7 @@
    </section>
 </main>
 
-<footer>26-TET Microtonal Keyboard v&thinsp;<span></span><a href="authors.html">Authors</a></footer>
+<footer>26-TET Microtonal Keyboard v&thinsp;<span></span><a href="authors.html">Authors</a><span></span></footer>
 
 </body>
 </html>

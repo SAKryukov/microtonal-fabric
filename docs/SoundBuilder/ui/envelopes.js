@@ -5,7 +5,7 @@ class EnvelopeTable extends VariableTable {
     constructor(table, custom) {
         super(table, custom);
         this.#derivedImplementation.dampingSustainSlider =
-            new Slider({ value: definitionSet.playControl.minimalSustain, min: definitionSet.playControl.minimalSustain, max: 10, step: 0.001, indicatorWidth: "4em", indicatorSuffix: " s" }, custom.dampingSustainParent);
+            new Slider({ value: soundDefinitionSet.playControl.minimalSustain, min: soundDefinitionSet.playControl.minimalSustain, max: 10, step: 0.001, indicatorWidth: "4em", indicatorSuffix: " s" }, custom.dampingSustainParent);
         this.#derivedImplementation.dampingSustainSlider.onchange = (ptr, value) => { if (this.onchangeHandler) this.onchangeHandler(ptr, value); }
     } //constructor
 
@@ -23,7 +23,7 @@ class EnvelopeTable extends VariableTable {
         switch (column) {
             case 1:
                 const element = document.createElement("select");
-                definitionSet.EnvelopeElementType.forEach(value => {
+                soundDefinitionSet.EnvelopeElementType.forEach(value => {
                     addOption(element, value.name, value.index, value.index == 0);
                 })
                 this.setMapValue(cell, element);
@@ -55,7 +55,7 @@ class EnvelopeTable extends VariableTable {
         const maxGain = this.derivedClassData;
         timeResetter.onclick = ev => {
             for (let index = this.metrics.rowFirst; index <= this.metrics.rowLast; ++index)
-                this.getMapValue(this.getCell(index, 0)).value = definitionSet.playControl.minimalAttack;
+                this.getMapValue(this.getCell(index, 0)).value = soundDefinitionSet.playControl.minimalAttack;
         }; //timeResetter.onclick
         gainResetter.onclick = ev => {
             for (let index = this.metrics.rowFirst; index <= this.metrics.rowLast; ++index)
@@ -75,7 +75,7 @@ class EnvelopeTable extends VariableTable {
                 continue;
             const functionElement = this.getMapValue(this.getCell(index, 1));
             const functionTypeIndex = functionElement.selectedIndex;
-            const functionType = definitionSet.EnvelopeElementType.getValue(functionTypeIndex).name;
+            const functionType = soundDefinitionSet.EnvelopeElementType.getValue(functionTypeIndex).name;
             result.push({ functionIndex: functionTypeIndex, function: functionType, duration: duration, gain: gain });
         } //loop
         const dampingSustain = this.#derivedImplementation.dampingSustainSlider.value; 
