@@ -38,6 +38,7 @@ class Keyboard {
                 if (this.#implementation.chordTonic < 0 || this.#implementation.chord.size < 0)
                     return handleElement(element, elementData, on);
                 const delta = elementData.index - this.#implementation.chordTonic;
+                const list = [];
                 for (let chordIndex of this.#implementation.chord) {
                     const shiftedChordIndex = chordIndex + delta;
                     if (shiftedChordIndex < 0 || shiftedChordIndex >= this.#implementation.keyList.length) continue;
@@ -122,7 +123,11 @@ class Keyboard {
         this.#implementation.getLast = _ => { return keys.length - 1; }
 
         this.#implementation.setMode = mode => {
+            const doRelease = (mode != keyboardMode.chord && this.#implementation.mode == keyboardMode.chord);
             this.#implementation.mode = mode;
+            if (doRelease)
+                for (let key of this.#implementation.keyList)
+                    handleElement(key, keyMap.get(key), false);
             refreshChordColors(mode);
         }; //this.#implementation.setMode
 

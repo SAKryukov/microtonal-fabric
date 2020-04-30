@@ -249,7 +249,7 @@ const instrumentList = [
         },
         "filter": [
             {
-                "present": true,
+                "present": false,
                 "index": 0,
                 "type": "lowpass",
                 "frequency": 350,
