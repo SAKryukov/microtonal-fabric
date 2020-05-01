@@ -1,0 +1,1693 @@
+﻿<!DOCTYPE html>
+<html lang="en-us">
+<head>
+   <title>26 EDO Microtonal Keyboard, Ogolevets and Brainin Layouts</title>
+   <meta charset="utf-8"/>
+   <script src="../agnostic/test-js-engine.js"></script>
+   <script src="../ui.components/multitouch.js"></script>
+   <script src="../ui.components/keyboard.js"></script>
+   <script src="../ui.components/slider.js"></script>
+   <script src="../agnostic/initialization-controller.js"></script>
+   <script src="../agnostic/enumeration.js"></script>
+   <script src="../sound/definition-set.js"></script>
+   <script src="../sound/chain-node.js"></script>
+   <script src="../sound/envelope.js"></script>
+   <script src="../sound/modulator.js"></script>
+   <script src="../sound/modulator-set.js"></script>
+   <script src="../sound/tone.js"></script>
+   <script src="../sound/instrument.js"></script>
+   <script src="sound/instrument-list.js"></script>
+   <script src="ui/keyboard.js"></script>
+   <script src="ui/controls.js"></script>
+   <script src="main/definition-set.js"></script>
+   <script src="main/main.js"></script>
+   <style>
+     * { font-family: sans-serif; }
+     * { margin: 0; padding: 0; }
+     * { box-sizing: context-box; touch-action: none; user-select: none; }
+     svg rect { stroke: gray; }
+     svg:first-child rect { fill: white; stroke-width: 0.2; }
+     svg:nth-child(2) rect { fill: white; stroke-width: 1px; }
+     svg:last-child rect { fill: lightGray; stroke-width: 2px; }
+     html, body, svg { height: 100%; }
+     body { display: flex; flex-flow: column; }
+     main { width: 96%; flex: auto; overflow: auto; }
+     svg { margin-top: 1em; margin-bottom: 1.6em; width: 100%; display: none; }
+     body header { margin-left: 0.4em; margin-right: 0.4em; visibility: hidden; }
+     body aside { text-align: center; }
+     body aside button {
+        margin-top: 3em;
+        padding: 2em; padding-top: 0.2em; padding-bottom: 0.2em;
+        font-size: 120%; background-color: yellow; border: solid thin black; border-radius: 3px;
+     }
+     body aside button:hover { background-color: lightgoldenrodyellow; }
+     main { margin-left: 2em; margin-right: 2em; }
+     main section { display: inline-block; margin-top: 2em; }
+     main section:first-of-type { margin-right: 2em; }
+     main section select { margin-left: 0.2em; }
+     main, main p:first-of-type { margin-top: 1.8em; }
+     main input[type=radio] { margin-right: 0.2em; }
+     footer { background: oldlace; padding: 0.2em; padding-bottom: 0.4em; padding-left: 0.4rem; padding-right: 0.4rem; border-top: solid gray thin; font-size: 60%; }
+     footer a, footer span:last-child { margin-left: 2em; }
+     footer span:last-child { color: red; overflow: auto; }
+  </style>
+</head>
+<body>
+
+<aside><button>Start</button></aside>
+
+<header><svg title = "29 EDO keyboard, Ogolevets layout"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   width="100%"
+   height="18.7690142787507%"
+   viewBox="0 0 210.2775 39.467014"
+   version="1.1">
+  <g
+     transform="translate(508.06137,-82.986735)">
+    <rect
+       y="83.119026"
+       x="-507.92908"
+       height="39.202431"
+       width="8.4005213"/>
+    <rect
+       y="83.119026"
+       x="-499.52859"
+       height="39.202431"
+       width="8.4005213"/>
+    <rect
+       y="83.119026"
+       x="-491.12808"
+       height="39.202431"
+       width="8.4005213"/>
+    <rect
+       y="83.119026"
+       x="-482.72754"
+       height="39.202431"
+       width="8.4005213"/>
+    <rect
+       y="83.119026"
+       x="-474.32703"
+       height="39.202431"
+       width="8.4005213"/>
+    <rect
+       y="83.119026"
+       x="-465.92648"
+       height="39.202431"
+       width="8.4005213"/>
+    <rect
+       y="83.119026"
+       x="-457.52597"
+       height="39.202431"
+       width="8.4005213"/>
+    <rect
+       y="83.119026"
+       x="-449.12546"
+       height="39.202431"
+       width="8.4005213"/>
+    <rect
+       y="83.119026"
+       x="-440.72491"
+       height="39.202431"
+       width="8.4005213"/>
+    <rect
+       y="83.119026"
+       x="-432.3244"
+       height="39.202431"
+       width="8.4005213"/>
+    <rect
+       y="83.119026"
+       x="-423.92389"
+       height="39.202431"
+       width="8.4005213"/>
+    <rect
+       y="83.119026"
+       x="-415.52338"
+       height="39.202431"
+       width="8.4005213"/>
+    <rect
+       y="83.119026"
+       x="-407.12283"
+       height="39.202431"
+       width="8.4005213"/>
+    <rect
+       y="83.119026"
+       x="-398.72232"
+       height="39.202431"
+       width="8.4005213"/>
+    <rect
+       y="83.119026"
+       x="-390.32181"
+       height="39.202431"
+       width="8.4005213"/>
+    <rect
+       y="83.119026"
+       x="-381.92126"
+       height="39.202431"
+       width="8.4005213"/>
+    <rect
+       y="83.119026"
+       x="-373.52075"
+       height="39.202431"
+       width="8.4005213"
+       style="fill:azure"/>
+    <rect
+       y="83.119026"
+       x="-365.12021"
+       height="39.202431"
+       width="8.4005213"/>
+    <rect
+       y="83.119026"
+       x="-356.7197"
+       height="39.202431"
+       width="8.4005213"/>
+    <rect
+       y="83.119026"
+       x="-348.31918"
+       height="39.202431"
+       width="8.4005213"/>
+    <rect
+       y="83.119026"
+       x="-339.91867"
+       height="39.202431"
+       width="8.4005213"/>
+    <rect
+       y="83.119026"
+       x="-331.51816"
+       height="39.202431"
+       width="8.4005213"/>
+    <rect
+       y="83.119026"
+       x="-323.11768"
+       height="39.202431"
+       width="8.4005213"/>
+    <rect
+       y="83.119026"
+       x="-314.71716"
+       height="39.202431"
+       width="8.4005213"/>
+    <rect
+       y="83.119026"
+       x="-306.31668"
+       height="39.202431"
+       width="8.4005213"/>
+    <rect
+       y="83.119026"
+       x="-502.32877"
+       height="5.600347"
+       width="5.600347"
+       style="fill:lightGray"/>
+    <rect
+       y="88.719368"
+       x="-502.32877"
+       height="5.600347"
+       width="5.600347"/>
+    <rect
+       y="94.31971"
+       x="-502.32877"
+       height="5.600347"
+       width="5.600347"/>
+    <rect
+       y="99.920059"
+       x="-502.32877"
+       height="5.600347"
+       width="5.600347"
+       style="fill:lightGray"/>
+    <rect
+       y="83.119026"
+       x="-493.92822"
+       height="5.600347"
+       width="5.600347"
+       style="fill:lightGray"/>
+    <rect
+       y="88.719368"
+       x="-493.92822"
+       height="5.600347"
+       width="5.600347"/>
+    <rect
+       y="94.31971"
+       x="-493.92822"
+       height="5.600347"
+       width="5.600347"/>
+    <rect
+       y="99.920059"
+       x="-493.92822"
+       height="5.600347"
+       width="5.600347"
+       style="fill:lightGray"/>
+    <rect
+       y="83.119026"
+       x="-485.52771"
+       height="5.600347"
+       width="5.600347"
+       style="fill:lightGray"/>
+    <rect
+       y="88.719368"
+       x="-485.52771"
+       height="5.600347"
+       width="5.600347"/>
+    <rect
+       y="94.31971"
+       x="-485.52771"
+       height="5.600347"
+       width="5.600347"/>
+    <rect
+       y="99.920059"
+       x="-485.52771"
+       height="5.600347"
+       width="5.600347"
+       style="fill:lightGray"/>
+    <rect
+       y="83.119026"
+       x="-468.72665"
+       height="5.600347"
+       width="5.600347"
+       style="fill:lightGray"/>
+    <rect
+       y="88.719368"
+       x="-468.72665"
+       height="5.600347"
+       width="5.600347"/>
+    <rect
+       y="94.31971"
+       x="-468.72665"
+       height="5.600347"
+       width="5.600347"/>
+    <rect
+       y="99.920059"
+       x="-468.72665"
+       height="5.600347"
+       width="5.600347"
+       style="fill:lightGray"/>
+    <rect
+       y="83.119026"
+       x="-460.32614"
+       height="5.600347"
+       width="5.600347"
+       style="fill:lightGray"/>
+    <rect
+       y="88.719368"
+       x="-460.32614"
+       height="5.600347"
+       width="5.600347"/>
+    <rect
+       y="94.31971"
+       x="-460.32614"
+       height="5.600347"
+       width="5.600347"/>
+    <rect
+       y="99.920059"
+       x="-460.32614"
+       height="5.600347"
+       width="5.600347"
+       style="fill:lightGray"/>
+    <rect
+       width="5.600347"
+       height="5.600347"
+       x="-477.1272"
+       y="83.119026"
+       style="fill:lightGray"/>
+    <rect
+       width="5.600347"
+       height="5.600347"
+       x="-451.92563"
+       y="83.119026"
+       style="fill:lightGray"/>
+    <rect
+       width="5.600347"
+       height="5.600347"
+       x="-418.32355"
+       y="83.119026"
+       style="fill:lightGray"/>
+    <rect
+       y="83.119026"
+       x="-443.52509"
+       height="5.600347"
+       width="5.600347"
+       style="fill:lightGray"/>
+    <rect
+       y="88.719368"
+       x="-443.52509"
+       height="5.600347"
+       width="5.600347"/>
+    <rect
+       y="94.31971"
+       x="-443.52509"
+       height="5.600347"
+       width="5.600347"/>
+    <rect
+       y="99.920059"
+       x="-443.52509"
+       height="5.600347"
+       width="5.600347"
+       style="fill:lightGray"/>
+    <rect
+       y="83.119026"
+       x="-435.12454"
+       height="5.600347"
+       width="5.600347"
+       style="fill:lightGray"/>
+    <rect
+       y="88.719368"
+       x="-435.12454"
+       height="5.600347"
+       width="5.600347"/>
+    <rect
+       y="94.31971"
+       x="-435.12454"
+       height="5.600347"
+       width="5.600347"/>
+    <rect
+       y="99.920059"
+       x="-435.12454"
+       height="5.600347"
+       width="5.600347"
+       style="fill:lightGray"/>
+    <rect
+       y="83.119026"
+       x="-426.72403"
+       height="5.600347"
+       width="5.600347"
+       style="fill:lightGray"/>
+    <rect
+       y="88.719368"
+       x="-426.72403"
+       height="5.600347"
+       width="5.600347"/>
+    <rect
+       y="94.31971"
+       x="-426.72403"
+       height="5.600347"
+       width="5.600347"/>
+    <rect
+       y="99.920059"
+       x="-426.72403"
+       height="5.600347"
+       width="5.600347"
+       style="fill:lightGray"/>
+    <rect
+       y="83.119026"
+       x="-384.72141"
+       height="5.600347"
+       width="5.600347"
+       style="fill:lightGray"/>
+    <rect
+       y="88.719368"
+       x="-384.72141"
+       height="5.600347"
+       width="5.600347"/>
+    <rect
+       y="94.31971"
+       x="-384.72141"
+       height="5.600347"
+       width="5.600347"/>
+    <rect
+       y="99.920059"
+       x="-384.72141"
+       height="5.600347"
+       width="5.600347"
+       style="fill:lightGray"/>
+    <rect
+       y="83.119026"
+       x="-376.32089"
+       height="5.600347"
+       width="5.600347"
+       style="fill:lightGray"/>
+    <rect
+       y="88.719368"
+       x="-376.32089"
+       height="5.600347"
+       width="5.600347"/>
+    <rect
+       y="94.31971"
+       x="-376.32089"
+       height="5.600347"
+       width="5.600347"/>
+    <rect
+       y="99.920059"
+       x="-376.32089"
+       height="5.600347"
+       width="5.600347"
+       style="fill:lightGray"/>
+    <rect
+       y="83.119026"
+       x="-367.92035"
+       height="5.600347"
+       width="5.600347"
+       style="fill:lightGray"/>
+    <rect
+       y="88.719368"
+       x="-367.92035"
+       height="5.600347"
+       width="5.600347"/>
+    <rect
+       y="99.611382"
+       x="-367.92035"
+       height="5.600347"
+       width="5.600347"
+       style="fill:lightGray"/>
+    <rect
+       y="94.31971"
+       x="-367.92035"
+       height="5.600347"
+       width="5.600347"/>
+    <rect
+       y="83.119026"
+       x="-409.92297"
+       height="5.600347"
+       width="5.600347"
+       style="fill:lightGray"/>
+    <rect
+       y="88.719368"
+       x="-409.92297"
+       height="5.600347"
+       width="5.600347"/>
+    <rect
+       y="94.31971"
+       x="-409.92297"
+       height="5.600347"
+       width="5.600347"/>
+    <rect
+       y="99.920059"
+       x="-409.92297"
+       height="5.600347"
+       width="5.600347"
+       style="fill:lightGray"/>
+    <rect
+       y="83.119026"
+       x="-401.52246"
+       height="5.600347"
+       width="5.600347"
+       style="fill:lightGray"/>
+    <rect
+       y="88.719368"
+       x="-401.52246"
+       height="5.600347"
+       width="5.600347"/>
+    <rect
+       y="94.31971"
+       x="-401.52246"
+       height="5.600347"
+       width="5.600347"/>
+    <rect
+       y="99.920059"
+       x="-401.52246"
+       height="5.600347"
+       width="5.600347"
+       style="fill:lightGray"/>
+    <rect
+       width="5.600347"
+       height="5.600347"
+       x="-393.12198"
+       y="83.119026"
+       style="fill:lightGray"/>
+    <rect
+       width="5.600347"
+       height="5.600347"
+       x="-359.51987"
+       y="83.119026"
+       style="fill:lightGray"/>
+    <rect
+       y="83.119026"
+       x="-325.91779"
+       height="5.600347"
+       width="5.600347"
+       style="fill:lightGray"/>
+    <rect
+       y="88.71936"
+       x="-325.91779"
+       height="5.600347"
+       width="5.600347"/>
+    <rect
+       y="94.31971"
+       x="-325.91779"
+       height="5.600347"
+       width="5.600347"/>
+    <rect
+       y="99.920059"
+       x="-325.91779"
+       height="5.600347"
+       width="5.600347"
+       style="fill:lightGray"/>
+    <rect
+       y="83.119026"
+       x="-317.51727"
+       height="5.600347"
+       width="5.600347"
+       style="fill:lightGray"/>
+    <rect
+       y="88.71936"
+       x="-317.51727"
+       height="5.600347"
+       width="5.600347"/>
+    <rect
+       y="94.31971"
+       x="-317.51727"
+       height="5.600347"
+       width="5.600347"/>
+    <rect
+       y="99.920059"
+       x="-317.51727"
+       height="5.600347"
+       width="5.600347"
+       style="fill:lightGray"/>
+    <rect
+       y="83.119026"
+       x="-309.11673"
+       height="5.600347"
+       width="5.600347"
+       style="fill:lightGray"/>
+    <rect
+       y="88.71936"
+       x="-309.11673"
+       height="5.600347"
+       width="5.600347"/>
+    <rect
+       y="94.31971"
+       x="-309.11673"
+       height="5.600347"
+       width="5.600347"/>
+    <rect
+       y="99.920059"
+       x="-309.11673"
+       height="5.600347"
+       width="5.600347"
+       style="fill:lightGray"/>
+    <rect
+       width="5.600347"
+       height="5.600347"
+       x="-334.31836"
+       y="83.119026"
+       style="fill:lightGray"/>
+    <rect
+       y="83.119026"
+       x="-351.1192"
+       height="5.600347"
+       width="5.600347"
+       style="fill:lightGray"/>
+    <rect
+       y="88.719368"
+       x="-351.1192"
+       height="5.600347"
+       width="5.600347"/>
+    <rect
+       y="94.31971"
+       x="-351.1192"
+       height="5.600347"
+       width="5.600347"/>
+    <rect
+       y="99.920059"
+       x="-351.1192"
+       height="5.600347"
+       width="5.600347"
+       style="fill:lightGray"/>
+    <rect
+       y="83.119026"
+       x="-342.71869"
+       height="5.600347"
+       width="5.600347"
+       style="fill:lightGray"/>
+    <rect
+       y="88.719368"
+       x="-342.71869"
+       height="5.600347"
+       width="5.600347"/>
+    <rect
+       y="94.31971"
+       x="-342.71869"
+       height="5.600347"
+       width="5.600347"/>
+    <rect
+       y="99.920059"
+       x="-342.71869"
+       height="5.600347"
+       width="5.600347"
+       style="fill:lightGray"/>
+  </g>
+</svg>
+<svg  title="29 EDO keyboard, Brainin layout"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   version="1.1"
+   viewBox="0 0 1334.368 148.52023"
+   height="100%"
+   width="11.130380075061751%">
+  <g
+     transform="translate(196.22563,-106.32321)">
+    <rect
+       y="106.82322"
+       x="-5.2259116"
+       height="147.52023"
+       width="31.617575"/>
+    <rect
+       y="106.82322"
+       x="-36.975849"
+       height="147.52023"
+       width="31.617575"/>
+    <rect
+       y="106.82322"
+       x="-100.47572"
+       height="147.52023"
+       width="31.617575"/>
+    <rect
+       y="106.82322"
+       x="-132.22566"
+       height="147.52023"
+       width="31.617575"/>
+    <rect
+       y="106.82322"
+       x="-163.9756"
+       height="147.52023"
+       width="31.617575"/>
+    <rect
+       y="106.82322"
+       x="-195.72563"
+       height="147.52023"
+       width="31.617575"/>
+    <rect
+       y="106.82327"
+       x="-174.55888"
+       height="84.020187"
+       width="21.034323"
+       style="fill:black"/>
+    <rect
+       y="106.82327"
+       x="-142.80894"
+       height="84.020187"
+       width="21.034323"
+       style="fill:black"/>
+    <rect
+       y="106.82327"
+       x="-111.05901"
+       height="84.020187"
+       width="21.034323"
+       style="fill:black"/>
+    <rect
+       y="106.82322"
+       x="-68.725792"
+       height="147.52023"
+       width="31.617575"/>
+    <rect
+       y="106.82327"
+       x="-47.559132"
+       height="84.020187"
+       width="21.034323"
+       style="fill:black"/>
+    <rect
+       y="106.82327"
+       x="-15.809195"
+       height="84.020187"
+       width="21.034323"
+       style="fill:black"/>
+    <rect
+       y="106.82321"
+       x="217.02403"
+       height="147.52023"
+       width="31.617575"/>
+    <rect
+       y="106.82321"
+       x="185.27403"
+       height="147.52023"
+       width="31.617575"/>
+    <rect
+       y="106.82321"
+       x="121.77396"
+       height="147.52023"
+       width="31.617575"/>
+    <rect
+       y="106.82321"
+       x="90.023933"
+       height="147.52023"
+       width="31.617575"/>
+    <rect
+       y="106.82321"
+       x="58.273968"
+       height="147.52023"
+       width="31.617575"/>
+    <rect
+       y="106.82321"
+       x="26.524027"
+       height="147.52023"
+       width="31.617575"/>
+    <rect
+       y="106.82326"
+       x="47.690701"
+       height="84.020187"
+       width="21.034323"
+       style="fill:black"/>
+    <rect
+       y="106.82326"
+       x="79.440651"
+       height="84.020187"
+       width="21.034323"
+       style="fill:black"/>
+    <rect
+       y="106.82326"
+       x="111.19068"
+       height="84.020187"
+       width="21.034323"
+       style="fill:black"/>
+    <rect
+       y="106.82321"
+       x="153.524"
+       height="147.52023"
+       width="31.617575"/>
+    <rect
+       y="106.82326"
+       x="174.69075"
+       height="84.020187"
+       width="21.034323"
+       style="fill:black"/>
+    <rect
+       y="106.82326"
+       x="206.44075"
+       height="84.020187"
+       width="21.034323"
+       style="fill:black"/>
+    <rect
+       y="106.82321"
+       x="439.27399"
+       height="147.52023"
+       width="31.617575"/>
+    <rect
+       y="106.82321"
+       x="407.52399"
+       height="147.52023"
+       width="31.617575"/>
+    <rect
+       y="106.82321"
+       x="344.02405"
+       height="147.52023"
+       width="31.617575"/>
+    <rect
+       y="106.82321"
+       x="312.27402"
+       height="147.52023"
+       width="31.617575"/>
+    <rect
+       y="106.82321"
+       x="280.52402"
+       height="147.52023"
+       width="31.617575"/>
+    <rect
+       y="106.82321"
+       x="248.77403"
+       height="147.52023"
+       width="31.617575"/>
+    <rect
+       y="106.82326"
+       x="269.94073"
+       height="84.020187"
+       width="21.034323"
+       style="fill:black"/>
+    <rect
+       y="106.82326"
+       x="301.69073"
+       height="84.020187"
+       width="21.034323"
+       style="fill:black"/>
+    <rect
+       y="106.82326"
+       x="333.44073"
+       height="84.020187"
+       width="21.034323"
+       style="fill:black"/>
+    <rect
+       y="106.82321"
+       x="375.77399"
+       height="147.52023"
+       width="31.617575"/>
+    <rect
+       y="106.82326"
+       x="396.94073"
+       height="84.020187"
+       width="21.034323"
+       style="fill:black"/>
+    <rect
+       y="106.82326"
+       x="428.69073"
+       height="84.020187"
+       width="21.034323"
+       style="fill:black"/>
+    <rect
+       y="106.82321"
+       x="661.52399"
+       height="147.52023"
+       width="31.617575"/>
+    <rect
+       y="106.82321"
+       x="629.77405"
+       height="147.52023"
+       width="31.617575"/>
+    <rect
+       y="106.82321"
+       x="566.27411"
+       height="147.52023"
+       width="31.617575"/>
+    <rect
+       y="106.82321"
+       x="534.52405"
+       height="147.52023"
+       width="31.617575"
+       style="fill:azure"/>
+    <rect
+       y="106.82321"
+       x="502.77405"
+       height="147.52023"
+       width="31.617575"/>
+    <rect
+       y="106.82321"
+       x="471.02399"
+       height="147.52023"
+       width="31.617575"/>
+    <rect
+       y="106.82326"
+       x="492.19073"
+       height="84.020187"
+       width="21.034323"
+       style="fill:black"/>
+    <rect
+       y="106.82326"
+       x="523.9408"
+       height="84.020187"
+       width="21.034323"
+       style="fill:black"/>
+    <rect
+       y="106.82326"
+       x="555.6908"
+       height="84.020187"
+       width="21.034323"
+       style="fill:black"/>
+    <rect
+       y="106.82321"
+       x="598.02411"
+       height="147.52023"
+       width="31.617575"/>
+    <rect
+       y="106.82326"
+       x="619.1908"
+       height="84.020187"
+       width="21.034323"
+       style="fill:black"/>
+    <rect
+       y="106.82326"
+       x="650.94073"
+       height="84.020187"
+       width="21.034323"
+       style="fill:black"/>
+    <rect
+       y="106.82322"
+       x="883.77386"
+       height="147.52023"
+       width="31.617575"/>
+    <rect
+       y="106.82322"
+       x="852.02362"
+       height="147.52023"
+       width="31.617575"/>
+    <rect
+       y="106.82322"
+       x="788.52374"
+       height="147.52023"
+       width="31.617575"/>
+    <rect
+       y="106.82322"
+       x="756.7738"
+       height="147.52023"
+       width="31.617575"/>
+    <rect
+       y="106.82322"
+       x="725.02386"
+       height="147.52023"
+       width="31.617575"/>
+    <rect
+       y="106.82322"
+       x="693.27393"
+       height="147.52023"
+       width="31.617575"/>
+    <rect
+       y="106.82327"
+       x="714.44061"
+       height="84.020187"
+       width="21.034323"
+       style="fill:black"/>
+    <rect
+       y="106.82327"
+       x="746.19055"
+       height="84.020187"
+       width="21.034323"
+       style="fill:black"/>
+    <rect
+       y="106.82327"
+       x="777.94049"
+       height="84.020187"
+       width="21.034323"
+       style="fill:black"/>
+    <rect
+       y="106.82322"
+       x="820.27368"
+       height="147.52023"
+       width="31.617575"/>
+    <rect
+       y="106.82327"
+       x="841.44037"
+       height="84.020187"
+       width="21.034323"
+       style="fill:black"/>
+    <rect
+       y="106.82327"
+       x="873.19049"
+       height="84.020187"
+       width="21.034323"
+       style="fill:black"/>
+    <rect
+       y="106.82322"
+       x="1106.0248"
+       height="147.52023"
+       width="31.617575"/>
+    <rect
+       y="106.82322"
+       x="1074.2747"
+       height="147.52023"
+       width="31.617575"/>
+    <rect
+       y="106.82322"
+       x="1010.7744"
+       height="147.52023"
+       width="31.617575"/>
+    <rect
+       y="106.82322"
+       x="979.02423"
+       height="147.52023"
+       width="31.617575"/>
+    <rect
+       y="106.82322"
+       x="947.27411"
+       height="147.52023"
+       width="31.617575"/>
+    <rect
+       y="106.82322"
+       x="915.52399"
+       height="147.52023"
+       width="31.617575"/>
+    <rect
+       y="106.82327"
+       x="936.69073"
+       height="84.020187"
+       width="21.034323"
+       style="fill:black"/>
+    <rect
+       y="106.82327"
+       x="968.44086"
+       height="84.020187"
+       width="21.034323"
+       style="fill:black"/>
+    <rect
+       y="106.82327"
+       x="1000.191"
+       height="84.020187"
+       width="21.034323"
+       style="fill:black"/>
+    <rect
+       y="106.82322"
+       x="1042.5245"
+       height="147.52023"
+       width="31.617575"/>
+    <rect
+       y="106.82327"
+       x="1063.6912"
+       height="84.020187"
+       width="21.034323"
+       style="fill:black"/>
+    <rect
+       y="106.82327"
+       x="1095.4413"
+       height="84.020187"
+       width="21.034323"
+       style="fill:black"/>
+  </g>
+</svg>
+<svg title="29 EDO keyboard, Kryukov layout"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   version="1.1"
+   viewBox="0 0 2075.1973 635.35315"
+   height="635.35315mm"
+   width="2075.1973mm">
+  <g>
+    <rect rx="16"
+       y="508.35321"
+       x="1355.1616"
+       height="126.49998"
+       width="84.534668"/>
+    <rect rx="16"
+       y="381.35315"
+       x="1365.745"
+       height="126.50004"
+       width="84.534668"/>
+    <rect rx="16"
+       y="254.35318"
+       x="1376.3284"
+       height="126.49994"
+       width="84.534668"
+       style="fill:azure"/>
+    <rect rx="16"
+       y="127.35342"
+       x="1386.9117"
+       height="126.49995"
+       width="84.534668"/>
+    <rect rx="16"
+       y="0.49999997"
+       x="1397.4951"
+       height="126.85326"
+       width="84.534668"/>
+    <rect rx="16"
+       y="508.35321"
+       x="1439.8286"
+       height="126.49998"
+       width="84.534668"/>
+    <rect rx="16"
+       y="381.35321"
+       x="1450.412"
+       height="126.50004"
+       width="84.534668"/>
+    <rect rx="16"
+       y="254.35318"
+       x="1460.9954"
+       height="126.49994"
+       width="84.534668"
+       style="fill:white"/>
+    <rect rx="16"
+       y="127.35342"
+       x="1471.5787"
+       height="126.49995"
+       width="84.534668"/>
+    <rect rx="16"
+       y="0.49999997"
+       x="1482.1621"
+       height="126.85326"
+       width="84.534668"/>
+    <rect rx="16"
+       y="508.35321"
+       x="1524.4956"
+       height="126.49998"
+       width="84.534668"
+       style="fill:white"/>
+    <rect rx="16"
+       y="381.35321"
+       x="1535.079"
+       height="126.50004"
+       width="84.534668"/>
+    <rect rx="16"
+       y="254.35318"
+       x="1545.6624"
+       height="126.49994"
+       width="84.534668"/>
+    <rect rx="16"
+       y="127.35342"
+       x="1556.2457"
+       height="126.49995"
+       width="84.534668"/>
+    <rect rx="16"
+       y="0.49999997"
+       x="1566.8291"
+       height="126.85326"
+       width="84.534668"/>
+    <rect rx="16"
+       y="508.35321"
+       x="1609.1626"
+       height="126.49998"
+       width="84.534668"
+       style="fill:white"/>
+    <rect rx="16"
+       y="381.35321"
+       x="1619.746"
+       height="126.50004"
+       width="84.534668"/>
+    <rect rx="16"
+       y="254.35318"
+       x="1630.3293"
+       height="126.49994"
+       width="84.534668"/>
+    <rect rx="16"
+       y="127.35342"
+       x="1640.9127"
+       height="126.49995"
+       width="84.534668"/>
+    <rect rx="16"
+       y="0.49999997"
+       x="1651.4961"
+       height="126.85326"
+       width="84.534668"/>
+    <rect rx="16"
+       y="508.35321"
+       x="1693.8296"
+       height="126.49998"
+       width="84.534668"
+       style="fill:white"/>
+    <rect rx="16"
+       y="381.35321"
+       x="1704.413"
+       height="126.50004"
+       width="84.534668"/>
+    <rect rx="16"
+       y="254.35318"
+       x="1714.9962"
+       height="126.49994"
+       width="84.534668"
+       style="fill:white"/> <!-- SA??? -->
+    <rect rx="16"
+       y="127.35342"
+       x="1725.5796"
+       height="126.49995"
+       width="84.534668"/>
+    <rect rx="16"
+       y="0.49999997"
+       x="1736.1628"
+       height="126.85326"
+       width="84.534668"/>
+    <rect rx="16"
+       y="508.35321"
+       x="1778.4961"
+       height="126.49998"
+       width="84.534668"/>
+    <rect rx="16"
+       y="381.35321"
+       x="1789.0795"
+       height="126.50004"
+       width="84.534668"/>
+    <rect rx="16"
+       y="254.35318"
+       x="1799.6627"
+       height="126.49994"
+       width="84.534668"
+       style="fill:white"/> <!-- SA??? -->
+    <rect rx="16"
+       y="127.35342"
+       x="1810.2461"
+       height="126.49995"
+       width="84.534668"/>
+    <rect rx="16"
+       y="0.49999997"
+       x="1820.8293"
+       height="126.85326"
+       width="84.534668"/>
+    <rect rx="16"
+       y="508.35321"
+       x="1863.1626"
+       height="126.49998"
+       width="84.534668"/>
+    <rect rx="16"
+       y="381.35321"
+       x="1873.746"
+       height="126.50004"
+       width="84.534668"/>
+    <rect rx="16"
+       y="254.35318"
+       x="1884.3292"
+       height="126.49994"
+       width="84.534668"
+       style="fill:white"/>
+    <rect rx="16"
+       y="127.35342"
+       x="1894.9126"
+       height="126.49995"
+       width="84.534668"/>
+    <rect rx="16"
+       y="0.49999997"
+       x="1905.4958"
+       height="126.85326"
+       width="84.534668"/>
+    <rect rx="16"
+       y="508.35321"
+       x="1947.8291"
+       height="126.49998"
+       width="84.534668"/>
+    <rect rx="16"
+       y="381.35321"
+       x="1958.4125"
+       height="126.50004"
+       width="84.534668"/>
+    <rect rx="16"
+       y="254.35318"
+       x="1968.9958"
+       height="126.49994"
+       width="84.534668"
+       style="fill:white"/>
+    <rect rx="16"
+       y="127.35342"
+       x="1979.5791"
+       height="126.49995"
+       width="84.534668"/>
+    <rect rx="16"
+       y="0.49999997"
+       x="1990.1625"
+       height="126.85326"
+       width="84.534668"/>
+    <rect rx="16"
+       y="508.35321"
+       x="677.83154"
+       height="126.49998"
+       width="84.534668"
+       style="fill:white"/>
+    <rect rx="16"
+       y="381.35321"
+       x="688.41479"
+       height="126.50004"
+       width="84.534668"/>
+    <rect rx="16"
+       y="254.35318"
+       x="698.99805"
+       height="126.49994"
+       width="84.534668" 
+       style="fill:white"/> <!-- SA??? -->
+    <rect rx="16"
+       y="127.35342"
+       x="709.5813"
+       height="126.49995"
+       width="84.534668"/>
+    <rect rx="16"
+       y="0.49999997"
+       x="720.16455"
+       height="126.85326"
+       width="84.534668"/>
+    <rect rx="16"
+       y="508.35321"
+       x="762.49756"
+       height="126.49998"
+       width="84.534668"/>
+    <rect rx="16"
+       y="381.35321"
+       x="773.08081"
+       height="126.50004"
+       width="84.534668"/>
+    <rect rx="16"
+       y="254.35318"
+       x="783.66406"
+       height="126.49994"
+       width="84.534668"
+       style="fill:white"/> <!-- SA??? -->
+    <rect rx="16"
+       y="127.35342"
+       x="794.24731"
+       height="126.49995"
+       width="84.534668"/>
+    <rect rx="16"
+       y="0.49999997"
+       x="804.83057"
+       height="126.85326"
+       width="84.534668"/>
+    <rect rx="16"
+       y="508.35321"
+       x="847.16357"
+       height="126.49998"
+       width="84.534668"/>
+    <rect rx="16"
+       y="381.35321"
+       x="857.74683"
+       height="126.50004"
+       width="84.534668"/>
+    <rect rx="16"
+       y="254.35318"
+       x="868.33008"
+       height="126.49994"
+       width="84.534668"
+       style="fill:white"/>
+    <rect rx="16"
+       y="127.35342"
+       x="878.91333"
+       height="126.49995"
+       width="84.534668"/>
+    <rect rx="16"
+       y="0.49999997"
+       x="889.49658"
+       height="126.85326"
+       width="84.534668"/>
+    <rect rx="16"
+       y="508.35321"
+       x="931.82959"
+       height="126.49998"
+       width="84.534668"/>
+    <rect rx="16"
+       y="381.35321"
+       x="942.41284"
+       height="126.50004"
+       width="84.534668"/>
+    <rect rx="16"
+       y="254.35318"
+       x="952.99609"
+       height="126.49994"
+       width="84.534668"
+       style="fill:white"/>
+    <rect rx="16"
+       y="127.35342"
+       x="963.57935"
+       height="126.49995"
+       width="84.534668"/>
+    <rect rx="16"
+       y="0.49999997"
+       x="974.1626"
+       height="126.85326"
+       width="84.534668"/>
+    <rect rx="16"
+       y="508.35321"
+       x="1016.4956"
+       height="126.49998"
+       width="84.534668"
+       style="fill:white"/>
+    <rect rx="16"
+       y="381.35321"
+       x="1027.0789"
+       height="126.50004"
+       width="84.534668"/>
+    <rect rx="16"
+       y="254.35318"
+       x="1037.6621"
+       height="126.49994"
+       width="84.534668"/>
+    <rect rx="16"
+       y="127.35342"
+       x="1048.2454"
+       height="126.49995"
+       width="84.534668"/>
+    <rect rx="16"
+       y="0.49999997"
+       x="1058.8286"
+       height="126.85326"
+       width="84.534668"/>
+    <rect rx="16"
+       y="508.35321"
+       x="1101.1616"
+       height="126.49998"
+       width="84.534668"
+       style="fill:white"/>
+    <rect rx="16"
+       y="381.35321"
+       x="1111.7449"
+       height="126.50004"
+       width="84.534668"/>
+    <rect rx="16"
+       y="254.35318"
+       x="1122.3281"
+       height="126.49994"
+       width="84.534668"/>
+    <rect rx="16"
+       y="127.35342"
+       x="1132.9114"
+       height="126.49995"
+       width="84.534668"/>
+    <rect rx="16"
+       y="0.49999997"
+       x="1143.4946"
+       height="126.85326"
+       width="84.534668"/>
+    <rect rx="16"
+       y="508.35321"
+       x="1185.8278"
+       height="126.49998"
+       width="84.534668"
+       style="fill:white"/>
+    <rect rx="16"
+       y="381.35321"
+       x="1196.4111"
+       height="126.50004"
+       width="84.534668"/>
+    <rect rx="16"
+       y="254.35318"
+       x="1206.9945"
+       height="126.49994"
+       width="84.534668"
+       style="fill:white"/> <!-- SA??? -->
+    <rect rx="16"
+       y="127.35342"
+       x="1217.5779"
+       height="126.49995"
+       width="84.534668"/>
+    <rect rx="16"
+       y="0.49999997"
+       x="1228.1613"
+       height="126.85326"
+       width="84.534668"/>
+    <rect rx="16"
+       y="508.35321"
+       x="1270.4948"
+       height="126.49998"
+       width="84.534668"/>
+    <rect rx="16"
+       y="381.35321"
+       x="1281.0781"
+       height="126.50004"
+       width="84.534668"/>
+    <rect rx="16"
+       y="254.35318"
+       x="1291.6615"
+       height="126.49994"
+       width="84.534668"
+       style="fill:white"/> <!-- SA??? -->
+    <rect rx="16"
+       y="127.35342"
+       x="1302.2449"
+       height="126.49995"
+       width="84.534668"/>
+    <rect rx="16"
+       y="0.49999997"
+       x="1312.8282"
+       height="126.85326"
+       width="84.534668"/>
+    <rect rx="16"
+       y="508.35321"
+       x="0.49999997"
+       height="126.49998"
+       width="84.534668"
+       style="fill:white"/>
+    <rect rx="16"
+       y="381.35321"
+       x="11.083496"
+       height="126.50004"
+       width="84.534668"/>
+    <rect rx="16"
+       y="254.35318"
+       x="21.666992"
+       height="126.49994"
+       width="84.534668"/>
+    <rect rx="16"
+       y="127.35342"
+       x="32.250488"
+       height="126.49995"
+       width="84.534668"/>
+    <rect rx="16"
+       y="0.49999997"
+       x="42.833984"
+       height="126.85326"
+       width="84.534668"/>
+    <rect rx="16"
+       y="508.35321"
+       x="85.167969"
+       height="126.49998"
+       width="84.534668"
+       style="fill:white"/>
+    <rect rx="16"
+       y="381.35321"
+       x="95.751465"
+       height="126.50004"
+       width="84.534668"/>
+    <rect rx="16"
+       y="254.35318"
+       x="106.33496"
+       height="126.49994"
+       width="84.534668"/>
+    <rect rx="16"
+       y="127.35342"
+       x="116.91845"
+       height="126.49995"
+       width="84.534668"/>
+    <rect rx="16"
+       y="0.49999997"
+       x="127.50195"
+       height="126.85326"
+       width="84.534668"/>
+    <rect rx="16"
+       y="508.35321"
+       x="169.83545"
+       height="126.49998"
+       width="84.534668"
+       style="fill:white"/>
+    <rect rx="16"
+       y="381.35321"
+       x="180.4187"
+       height="126.50004"
+       width="84.534668"/>
+    <rect rx="16"
+       y="254.35318"
+       x="191.00195"
+       height="126.49994"
+       width="84.534668"
+       style="fill:white"/> <!-- SA??? -->
+    <rect rx="16"
+       y="127.35342"
+       x="201.58521"
+       height="126.49995"
+       width="84.534668"/>
+    <rect rx="16"
+       y="0.49999997"
+       x="212.16846"
+       height="126.85326"
+       width="84.534668"/>
+    <rect rx="16"
+       y="508.35321"
+       x="254.50146"
+       height="126.49998"
+       width="84.534668"/>
+    <rect rx="16"
+       y="381.35321"
+       x="265.08472"
+       height="126.50004"
+       width="84.534668"/>
+    <rect rx="16"
+       y="254.35318"
+       x="275.66797"
+       height="126.49994"
+       width="84.534668"
+       style="fill:white"/> <!-- SA??? -->
+    <rect rx="16"
+       y="127.35342"
+       x="286.25122"
+       height="126.49995"
+       width="84.534668"/>
+    <rect rx="16"
+       y="0.49999997"
+       x="296.83447"
+       height="126.85326"
+       width="84.534668"/>
+    <rect rx="16"
+       y="508.35321"
+       x="339.16748"
+       height="126.49998"
+       width="84.534668"/>
+    <rect rx="16"
+       y="381.35321"
+       x="349.75073"
+       height="126.50004"
+       width="84.534668"/>
+    <rect rx="16"
+       y="254.35318"
+       x="360.33398"
+       height="126.49994"
+       width="84.534668"
+       style="fill:white"/>
+    <rect rx="16"
+       y="127.35342"
+       x="370.91724"
+       height="126.49995"
+       width="84.534668"/>
+    <rect rx="16"
+       y="0.49999997"
+       x="381.50049"
+       height="126.85326"
+       width="84.534668"/>
+    <rect rx="16"
+       y="508.35321"
+       x="423.8335"
+       height="126.49998"
+       width="84.534668"/>
+    <rect rx="16"
+       y="381.35321"
+       x="434.41675"
+       height="126.50004"
+       width="84.534668"/>
+    <rect rx="16"
+       y="254.35318"
+       x="445"
+       height="126.49994"
+       width="84.534668"
+       style="fill:white"/>
+    <rect rx="16"
+       y="127.35342"
+       x="455.58325"
+       height="126.49995"
+       width="84.534668"/>
+    <rect rx="16"
+       y="0.49999997"
+       x="466.1665"
+       height="126.85326"
+       width="84.534668"/>
+    <rect rx="16"
+       y="508.35321"
+       x="508.49951"
+       height="126.49998"
+       width="84.534668"
+       style="fill:white"/>
+    <rect rx="16"
+       y="381.35321"
+       x="519.08276"
+       height="126.50004"
+       width="84.534668"/>
+    <rect rx="16"
+       y="254.35318"
+       x="529.66602"
+       height="126.49994"
+       width="84.534668"/>
+    <rect rx="16"
+       y="127.35342"
+       x="540.24927"
+       height="126.49995"
+       width="84.534668"/>
+    <rect rx="16"
+       y="0.49999997"
+       x="550.83252"
+       height="126.85326"
+       width="84.534668"/>
+    <rect rx="16"
+       y="508.35321"
+       x="593.16553"
+       height="126.49998"
+       width="84.534668"
+       style="fill:white"/>
+    <rect rx="16"
+       y="381.35321"
+       x="603.74878"
+       height="126.50004"
+       width="84.534668"/>
+    <rect rx="16"
+       y="254.35318"
+       x="614.33203"
+       height="126.49994"
+       width="84.534668"/>
+    <rect rx="16"
+       y="127.35342"
+       x="624.91528"
+       height="126.49995"
+       width="84.534668"/>
+    <rect rx="16"
+       y="0.49999997"
+       x="635.49854"
+       height="126.85326"
+       width="84.534668"/>
+  </g>
+</svg></header>
+
+<main>
+   <label for="slider-volume-control" accesskey="V"><u>V</u>olume:</label>
+   <div id="slider-volume"></div>
+   <br/>
+   <label for="slider-sustain-control" accesskey="U">S<u>u</u>stain:</label>
+   <div id="slider-sustain"></div>
+   <p><label><input id="radio-mode-normal" type="radio" name="mode" checked="true"/>Play Mode</label></p>
+   <p><label><input id="radio-mode-chord-set" type="radio" name="mode"/>Chord Set Mode: Shift down: view, Shift+key: include/exclude, Ctrl+Shift+key: move/add tonic</label></p>
+   <p><label><input id="radio-mode-chord" type="radio" name="mode"/>Chord Play Mode: Ctrl+key</label></p>
+   <section><label accesskey="K" for="select-layout"><u>K</u>eyboard:</label>
+      <select id="select-layout">
+         <option selected="true">Ogolevets-Brainin Layout</option>
+         <option>Brainin Layout</option>
+         <option>Kryukov Layout</option>
+      </select>
+   </section>
+   <section><label accesskey="I" for="select-instrument"><u>I</u>nstrument:</label>
+      <select id="select-instrument"></select>
+   </section>
+</main>
+
+<footer>26 EDO Microtonal Keyboard v&thinsp;<span></span><a href="authors.html">Authors</a><span></span></footer>
+
+</body>
+</html>с
