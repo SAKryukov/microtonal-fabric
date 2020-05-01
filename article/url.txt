@@ -1,2 +1,3 @@
 http://huygens-fokker.org/docs/terp31.html
-http://xenharmonic.wikispaces.com
+https://en.xen.wiki/w/29edo
+https://en.xen.wiki/w/29edo_solfege
