@@ -1,15 +1,19 @@
 {
     "header": {
         "format": "Sound Builder",
-        "version": "0.1.0",
-        "formatVersion": "2.1.0",
-        "author": "",
-        "instrumentName": "Bass Saxophone?"
+        "version": "0.2.3",
+        "formatVersion": "3.1.0",
+        "author": "Sergey A Kryukov",
+        "instrumentName": "Bass Saxophone"
     },
-<<<<<<< HEAD
-    "compensationGain": {},
-=======
->>>>>>> c18bbdeb8aef717263fbdbe60e342aedaa1de9da
+    "gainCompensation": {
+        "masterGain": 5.9556,
+        "middleFrequency": 350,
+        "lowFrequency": 27.5,
+        "lowFrequencyCompensationGain": 0.03,
+        "highFrequency": 3951.066410048994,
+        "highFrequencyCompensationGain": 2
+    },
     "oscillator": {
         "type": "Fourier",
         "Fourier": [
@@ -135,12 +139,12 @@
             },
             {
                 "harmonic": 25,
-                "amplitude": 0.7,
+                "amplitude": 1.5,
                 "phase": 12.2
             },
             {
                 "harmonic": 26,
-                "amplitude": 0.1,
+                "amplitude": 2.5,
                 "phase": 15.1
             },
             {
@@ -440,9 +444,8 @@
             "masterDepth": 1,
             "modes": [
                 {
-                    "frequency": 4.39,
-                    "depth": 39.48,
-                    "useEnvelope": false
+                    "frequency": 10,
+                    "depth": 16.97
                 }
             ]
         },
@@ -450,26 +453,43 @@
             "masterDepth": 1,
             "modes": [
                 {
-                    "frequency": 17.1,
-                    "depth": 50.69,
-                    "useEnvelope": false
+                    "frequency": 19.79,
+                    "depth": 10.39
                 }
             ]
         },
         "envelope": {
-            "stages": [],
+            "stages": [
+                {
+                    "functionIndex": 0,
+                    "function": "exponential",
+                    "duration": 0.002,
+                    "gain": 0.181
+                },
+                {
+                    "functionIndex": 0,
+                    "function": "exponential",
+                    "duration": 0.002,
+                    "gain": 0.565
+                },
+                {
+                    "functionIndex": 0,
+                    "function": "exponential",
+                    "duration": 0.2,
+                    "gain": 0.033
+                }
+            ],
             "dampingSustain": 0.02
         }
     },
     "amplitudeModulation": {
         "absoluteFrequency": {
             "masterDepth": 1,
-            "modes": [
-            ]
+            "modes": []
         },
         "relativeFrequency": {
             "masterDepth": 1,
-            ]
+            "modes": []
         },
         "envelope": {
             "stages": [],

@@ -16,11 +16,15 @@ YamahaTX81ZTubeBells2.json
 Alesis-Sanctuary-QCard-Wave-Organ-C2.v2.json
 Alesis-Sanctuary-QCard-Wave-Organ-C2.json -- under compensation balance
 
-Piano-mid*
-Piano-mid2.json seems best
-Casio-VZ-10M-Piano-C2.json: restored, maybe even better
+Casio-VZ-10M-Piano-C2.json: restored, maybe even better, but! filter failure problem
+new are good:
+Piano.json
+Electric-Piano.json
+Electric-Piano0.json
 
-marimba.json: fixed
+Marimba.json: good
 Agogo.json: fixed, not bad
 Metal.json: fixed, not bad
 Metallophone.json
+
+Tuba.json good, all modulations
