@@ -1,14 +1,12 @@
 "use strict";
 
-const keyboardMode = { normal: 0, chord: 1, chordSet: 2, chordSetTonic: 4 };
+const keyboardMode = { normal: 0, chord: 1, chordSet: 2, chordRootSet: 4 };
 
 class Keyboard {
 
-    #implementation = { mode: 0, chord: new Set(), chordTonic: -1 };
+    #implementation = { mode: 0, chord: new Set(), chordRoot: -1 };
 
     constructor(keyboard, options, defaultChord) { //options: definitionSet.keyboardOptions
-
-        const keyList = keyboard.firstElementChild.children;
 
         this.#implementation.setVisibility = on => {
             keyboard.style.display = on ? "block" : "none";
@@ -20,7 +18,7 @@ class Keyboard {
                 const chordKey = this.#implementation.keyList[keyIndex];
                 const chordKeyData = keyMap.get(chordKey);
                 chordKey.style.fill = mode & keyboardMode.chordSet ?
-                    (chordKeyData.isChordTonic ? options.chordTonicColor : options.chordColor)
+                    (chordKeyData.isChordRoot ? options.chordRootColor : options.chordColor)
                     :
                     chordKeyData.originalColor;
             } //loop
@@ -35,10 +33,9 @@ class Keyboard {
         const handler = (element, on) => {
             const elementData = keyMap.get(element);
             if (this.#implementation.mode == keyboardMode.chord) {
-                if (this.#implementation.chordTonic < 0 || this.#implementation.chord.size < 0)
+                if (this.#implementation.chordRoot < 0 || this.#implementation.chord.size < 0)
                     return handleElement(element, elementData, on);
-                const delta = elementData.index - this.#implementation.chordTonic;
-                const list = [];
+                const delta = elementData.index - this.#implementation.chordRoot;
                 for (let chordIndex of this.#implementation.chord) {
                     const shiftedChordIndex = chordIndex + delta;
                     if (shiftedChordIndex < 0 || shiftedChordIndex >= this.#implementation.keyList.length) continue;
@@ -46,12 +43,12 @@ class Keyboard {
                     handleElement(chordElement, keyMap.get(chordElement), on);
                 } //loop
             } else if (on && this.#implementation.mode & keyboardMode.chordSet) {
-                this.#implementation.chordTonic = -1;
-                if ((this.#implementation.mode & keyboardMode.chordSetTonic) && elementData.chordMember) {
-                    this.#implementation.chordTonic = elementData.index;
+                this.#implementation.chordRoot = -1;
+                if ((this.#implementation.mode & keyboardMode.chordRootSet) && elementData.chordMember) {
+                    this.#implementation.chordRoot = elementData.index;
                     for (let chordIndex of this.#implementation.chord)
-                        keyMap.get(this.#implementation.keyList[chordIndex]).isChordTonic = false;
-                    elementData.isChordTonic = true;
+                        keyMap.get(this.#implementation.keyList[chordIndex]).isChordRoot = false;
+                    elementData.isChordRoot = true;
                 } else {
                     const chordMember = elementData.chordMember;
                     elementData.chordMember = !chordMember;
@@ -59,22 +56,22 @@ class Keyboard {
                         this.#implementation.chord.add(elementData.index);
                     else
                         this.#implementation.chord.delete(elementData.index);    
-                } //if tonic
+                } //if chord root
                 element.style.fill = elementData.chordMember ?
-                    (elementData.isChordTonic ? options.chordTonicColor : options.chordColor)
+                    (elementData.isChordRoot ? options.chordRootColor : options.chordColor)
                     :
                     elementData.originalColor;
-                if (!this.#implementation.chord.has(this.#implementation.chordTonic)) {
-                    this.#implementation.chordTonic = -1;
+                if (!this.#implementation.chord.has(this.#implementation.chordRoot)) {
+                    this.#implementation.chordRoot = -1;
                     let first = this.#implementation.keyList.length + 1;
                     for (let chordIndex of this.#implementation.chord) {
                         if (chordIndex < first)
                             first = chordIndex;
-                        keyMap.get(this.#implementation.keyList[chordIndex]).isChordTonic = false;
+                        keyMap.get(this.#implementation.keyList[chordIndex]).isChordRoot = false;
                     } //loop
                     if (first < this.#implementation.keyList.length) {
-                        this.#implementation.chordTonic = first;
-                        keyMap.get(this.#implementation.keyList[first]).isChordTonic = true;
+                        this.#implementation.chordRoot = first;
+                        keyMap.get(this.#implementation.keyList[first]).isChordRoot = true;
                     } //if
                 } //if
                 refreshChordColors(this.#implementation.mode);
@@ -86,7 +83,7 @@ class Keyboard {
             keyboard,
             element => element.constructor == SVGRectElement,
             (element, _, on) => { handler(element, on); });
-        const keys = Array.prototype.slice.call(keyList);
+        const keys = Array.prototype.slice.call(keyboard.firstElementChild.children);
 
         this.#implementation.keyList = keys;
         keys.sort((a, b) => {
@@ -106,12 +103,12 @@ class Keyboard {
         let index = 0;
         for (let key of keys) {
             const inDefaultChord = defaultChord.includes(index);
-            const isChordTonic = index == defaultChord[0];
-            if (isChordTonic) this.#implementation.chordTonic = index;
+            const isChordRoot = index == defaultChord[0];
+            if (isChordRoot) this.#implementation.chordRoot = index;
             if (inDefaultChord) this.#implementation.chord.add(index);
             keyMap.set(key, {
                 index: index, originalColor: key.style.fill,
-                chordMember: inDefaultChord, isChordTonic: isChordTonic });
+                chordMember: inDefaultChord, isChordRoot: isChordRoot });
             key.onmousedown = event => handler(event.target, true);
             key.onmouseup = event => handler(event.target, false);
             key.onmouseenter = event => { if (event.buttons == 1) handler(event.target, true); }

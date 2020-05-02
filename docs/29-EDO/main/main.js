@@ -27,8 +27,10 @@ window.onload = () => {
                 keyboards.push(new Keyboard(svg, definitionSet.keyboardOptions, definitionSet.temperament.defaultChords[index++]));
         })(); //setupKeyboards
 
+        let activeInstrumentIndex = 0;
         let instrument;
         const setupInstrument = keyboardIndex => {
+            activeInstrumentIndex = keyboardIndex;
             const temperament = definitionSet.temperament;
             const instrumentIndex = controls.instrument.selectedIndex >=0 ? controls.instrument.selectedIndex : 0;
             let startingFrequency = temperament.startingFrequencies[keyboardIndex];
@@ -44,12 +46,9 @@ window.onload = () => {
             setupInstrument(event.target.selectedIndex);
         }; //controls.keyboardLayout.onchange
 
-        const playHandler = (index, on) => {
-            instrument.play(on, index);
-        }
+        const playHandler = (index, on) => { instrument.play(on, index); };
         for (let aKeyboard of keyboards)
             aKeyboard.keyHandler = playHandler;
-        
         instrument.data = instrumentList[0];
         for (let index in instrumentList) {
             const instrument = instrumentList[index];
@@ -65,13 +64,12 @@ window.onload = () => {
 
         (function setupModeKeyboardModeControl() {
             const setKeyboardMode = (mode, toView) => {
-                for (let keyboard of keyboards)
-                    keyboard.mode = mode;
+                keyboards[activeInstrumentIndex].mode = mode;
                 if (!toView) return;
                 switch (mode) {
                     case keyboardMode.normal: return controls.playMode.normal.checked = true;
                     case keyboardMode.chord: return controls.playMode.chord.checked = true;
-                    case keyboardMode.chordSetTonic:
+                    case keyboardMode.chordRootSet:
                     case keyboardMode.chordSet: return controls.playMode.chordSet.checked = true;
                 } //switch
             } //setKeyboardMode
@@ -87,12 +85,12 @@ window.onload = () => {
                 let mode;
                 if (isShift) {
                     if (event.ctrlKey)
-                        mode = down ? keyboardMode.chordSet | keyboardMode.chordSetTonic : keyboardMode.chord;
+                        mode = down ? keyboardMode.chordSet | keyboardMode.chordRootSet : keyboardMode.chord;
                     else
                         mode = down ? keyboardMode.chordSet : keyboardMode.normal;
                 } else if (isControl) {
                     if (event.shiftKey)
-                        mode = down ? keyboardMode.chordSet | keyboardMode.chordSetTonic : keyboardMode.chordSet;
+                        mode = down ? keyboardMode.chordSet | keyboardMode.chordRootSet : keyboardMode.chordSet;
                     else
                         mode = down ? keyboardMode.chord : keyboardMode.normal;
                 } //if

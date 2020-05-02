@@ -2,13 +2,13 @@
 
 const definitionSet = (() => {
 
-    const version = "0.3.1";
+    const version = "0.3.2";
 
     const temperament = (() => {
         const system = 29;
         const faOgolevets = 400 * Math.pow(2, -68/system);
         const startBrainin = 400 * Math.pow(2, -40/system);
-        const startSA = 400 * Math.pow(2, -82/system);
+        const startSA = 400 * Math.pow(2, -81/system);
         let instrument;
         return {
             system: system,
@@ -31,7 +31,7 @@ const definitionSet = (() => {
         keyboardOptions: {
             highlightColor: "Chartreuse",
             chordColor: "LemonChiffon",
-            chordTonicColor: "yellow",
+            chordRootColor: "yellow",
         },
     }; //result
 
