@@ -33,7 +33,7 @@ class Keyboard {
         const handler = (element, on) => {
             const elementData = keyMap.get(element);
             if (this.#implementation.mode == keyboardMode.chord) {
-                if (this.#implementation.chordRoot < 0 || this.#implementation.chord.size < 0)
+                if (this.#implementation.chordRoot < 0 || this.#implementation.chord.size <= 0)
                     return handleElement(element, elementData, on);
                 const delta = elementData.index - this.#implementation.chordRoot;
                 for (let chordIndex of this.#implementation.chord) {
@@ -43,6 +43,7 @@ class Keyboard {
                     handleElement(chordElement, keyMap.get(chordElement), on);
                 } //loop
             } else if (on && this.#implementation.mode & keyboardMode.chordSet) {
+                if (!on) return;
                 this.#implementation.chordRoot = -1;
                 if ((this.#implementation.mode & keyboardMode.chordRootSet) && elementData.chordMember) {
                     this.#implementation.chordRoot = elementData.index;
@@ -128,9 +129,18 @@ class Keyboard {
             refreshChordColors(mode);
         }; //this.#implementation.setMode
 
+        this.#implementation.clearChord = _ => {
+            this.#implementation.chord.clear();
+            this.#implementation.chord.chordRoot = -1;
+            for (let key of this.#implementation.keyList)
+                key.style.fill = keyMap.get(key).originalColor;
+        }; //this.#implementation.clearChord
+
     } //constructor
 
     set keyHandler(aHandler) { this.#implementation.keyHandler = aHandler; }
+
+    clearChord() { this.#implementation.clearChord(); }
     
     get first() { return this.#implementation.getFirst(); }
     get last() { return this.#implementation.getLast(); }

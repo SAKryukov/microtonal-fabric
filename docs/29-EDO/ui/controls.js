@@ -22,6 +22,7 @@ const findControls = () => {
             volume: new Slider( { value: 1, min: 0, max: 10, step: 0.1, indicatorWidth: indicatorWidth }, document.querySelector("#slider-volume")),
             sustainLabel: document.querySelector("body article label:last-of-type"),
             sustain: new Slider( { value: 0, min: 0, max: 10, step: 0.1, indicatorWidth: indicatorWidth, indicatorSuffix: " s" }, document.querySelector("#slider-sustain")),
+            clearChord: document.querySelector("main button"),
         },
         keyboardLayout: document.querySelector("#select-layout"),
         instrument: document.querySelector("#select-instrument"),

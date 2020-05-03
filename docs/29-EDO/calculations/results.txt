@@ -1,0 +1,7 @@
+C  do: harmonic ratio:  1/1, offset in microtones: 0
+D  re: harmonic ratio:  9/8, offset in microtones: 5
+E  me: harmonic ratio:  5/4, offset in microtones: 9
+F  fa: harmonic ratio:  4/3, offset in microtones: 12
+G sol: harmonic ratio:  3/2, offset in microtones: 17
+A  la: harmonic ratio:  5/3, offset in microtones: 21
+B  ti: harmonic ratio: 15/8, offset in microtones: 26

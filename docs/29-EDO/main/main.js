@@ -61,10 +61,12 @@ window.onload = () => {
 
         controls.playControl.volume.onchange = (self, value) => instrument.volume = value;
         controls.playControl.sustain.onchange = (self, value) => instrument.sustain = value;
+        controls.playControl.clearChord.onclick = _ => { keyboards[activeInstrumentIndex].clearChord(); }
 
         (function setupModeKeyboardModeControl() {
             const setKeyboardMode = (mode, toView) => {
                 keyboards[activeInstrumentIndex].mode = mode;
+                controls.playControl.clearChord.disabled = mode == keyboardMode.chord;
                 if (!toView) return;
                 switch (mode) {
                     case keyboardMode.normal: return controls.playMode.normal.checked = true;
