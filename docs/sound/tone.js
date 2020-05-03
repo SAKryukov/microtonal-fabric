@@ -74,7 +74,7 @@ class Tone extends ModulatorSet {
     get frequency() { return this.#implementation.mainOscillator.frequency.value; } 
     
     transpose(frequency, frequencyCompensationGain) {
-        this.#implementation.mainOscillator.frequency.value = value;
+        this.#implementation.mainOscillator.frequency.value = frequency;
         this.#implementation.frequencyCompensationGainNode.gain.value = frequencyCompensationGain;
     } //transpose
 

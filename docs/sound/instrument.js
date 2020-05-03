@@ -42,7 +42,7 @@ class Instrument extends ModulatorSet {
             if (!this.#implementation.lastDataset) return;
             let index = 0;
             for (let [_, tone] of this.#implementation.tones) {
-                const frequency = firstFrequency * Math.pow(2, (index + transposition) / tonalSystem);
+                const frequency = firstFrequency * Math.pow(2, (index + value) / tonalSystem);
                 tone.transpose(frequency, compensation(frequency));
                 ++index;
             } //loop
