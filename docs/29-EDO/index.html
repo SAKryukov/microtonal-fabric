@@ -31,7 +31,7 @@
      svg:last-child rect { fill: lightGray; stroke-width: 2px; }
      html, body, svg { height: 100%; }
      body { display: flex; flex-flow: column; }
-     main { width: 96%; flex: auto; overflow: auto; }
+     main { width: 100%; flex: auto; overflow-y: auto; }
      svg { margin-top: 1em; margin-bottom: 1.6em; width: 100%; display: none; }
      body header { margin-left: 0.4em; margin-right: 0.4em; visibility: hidden; }
      body aside { text-align: center; }
@@ -41,8 +41,8 @@
         font-size: 120%; background-color: yellow; border: solid thin black; border-radius: 3px;
      }
      body aside button:hover { background-color: lightgoldenrodyellow; }
-     main { margin-left: 2em; margin-right: 2em; }
      main section { display: inline-block; margin-top: 2em; }
+     main > * { margin-left: 1em; margin-right: 1em; }
      main section:first-of-type { margin-right: 2em; }
      main section select { margin-left: 0.2em; }
      main, main p:first-of-type { margin-top: 1.8em; }
