@@ -1,6 +1,6 @@
 class Instrument extends ModulatorSet {
 
-    #implementation = { sustain: soundDefinitionSet.playControl.minimalSustain, gainCompensation: { } };
+    #implementation = { sustain: soundDefinitionSet.playControl.minimalSustain, gainCompensation: { }, transposition: 0 };
 
     constructor(first, last, firstFrequency, tonalSystem) {
         super();
@@ -37,6 +37,17 @@ class Instrument extends ModulatorSet {
             this.#implementation.tones.set(index, tone);
             tone.connect(this.#implementation.compensationMasterGainNode, 1);
         } //loop tones
+        this.#implementation.transpose = value => {
+            this.#implementation.transposition = value;
+            if (!this.#implementation.lastDataset) return;
+            let index = 0;
+            for (let [_, tone] of this.#implementation.tones) {
+                const frequency = firstFrequency * Math.pow(2, (index + transposition) / tonalSystem);
+                tone.transpose(frequency, compensation(frequency));
+                ++index;
+            } //loop
+            this.data = this.#implementation.lastDataset;
+        }; //this.#implementation.transpose
         this.#implementation.compensationMasterGainNode.connect(this.#implementation.masterGain);
         const oscillatorTypeFourier = soundDefinitionSet.OscillatorType.getValue(0).name; //default
         this.#implementation.setWaveform = (oscillator) => {
@@ -125,6 +136,7 @@ class Instrument extends ModulatorSet {
     } //playWith
 
     set data(dataset) {
+        this.#implementation.lastDataset = dataset;
         if (dataset.gainCompensation && dataset.gainCompensation.middleFrequency)
             this.#implementation.setGainCompensation(dataset.gainCompensation, true);
         this.#implementation.setWaveform(dataset.oscillator);
@@ -160,5 +172,8 @@ class Instrument extends ModulatorSet {
             result.push(Math.round(tone.frequency * 10) / 10);
         return result;
     } //get frequencies
+
+    get transposition() { return this.#implementation.value; }
+    set transposition(value) { this.#implementation.transpose(value); }
 
 } //class Instrument
