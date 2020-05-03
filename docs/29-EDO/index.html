@@ -22,6 +22,12 @@
    <script src="main/definition-set.js"></script>
    <script src="main/main.js"></script>
    <style>
+      :root {
+         --vertical-gap: 0.2em;
+         --big-vertical-gap: 1em;
+         --small-horizontal-gap: 0.2em;
+         --horizontal-gap: 1em;
+     }
      * { font-family: sans-serif; }
      * { margin: 0; padding: 0; }
      * { box-sizing: context-box; touch-action: none; user-select: none; }
@@ -37,23 +43,23 @@
      body aside { text-align: center; }
      body aside button {
         margin-top: 3em;
-        padding: 2em; padding-top: 0.2em; padding-bottom: 0.2em;
+        padding: var(--horizontal-gap); padding-top: var(--vertical-gap); padding-bottom: var(--vertical-gap);
         font-size: 120%; background-color: yellow; border: solid thin black; border-radius: 3px;
      }
      body aside button:hover { background-color: lightgoldenrodyellow; }
-     main > * { margin-left: 1em; margin-right: 1em; }
+     main > * { margin-left: var(--horizontal-gap); margin-right: var(--horizontal-gap); }
      main article { margin: 0; display: flex; white-space: nowrap; width: 100%; }
      main article div { white-space: nowrap; width: 100%; }
-     main article label:first-of-type { margin-left: 1em; }
-     main article label { margin-right: 0.2em; }
-     main article div:last-of-type { margin-right: 1em; }
+     main article label:first-of-type { margin-left: var(--horizontal-gap); }
+     main article label { margin-right: var(--small-horizontal-gap); }
+     main article div:last-of-type { margin-right: var(--horizontal-gap); }
      main article:first-of-type label:last-of-type { margin-left: 4em; }
-     main section { display: inline-block; margin-top: 2em; }
-     main section:first-of-type { margin-right: 2em; }
-     main section select { margin-left: 0.2em; }
-     main, main p:first-of-type { margin-top: 1.8em; }
-     main input[type=radio] { margin-right: 0.2em; }
-     main button { margin-left: 1em; padding-left: 1em; padding-right: 1em; }
+     main section { display: inline-block; margin-top: var(--vertical-gap); }
+     main section:first-of-type { margin-right: var(--small-horizontal-gap); }
+     main section select { margin-left: var(--small-horizontal-gap); margin-top: var(--big-vertical-gap); }
+     main, main p:first-of-type { margin-top: var(--big-vertical-gap); }
+     main input[type=radio] { margin-right: var(--small-horizontal-gap); }
+     main button { margin-left: var(--horizontal-gap); padding-left: var(--horizontal-gap); padding-right: var(--horizontal-gap); }
      footer { background: oldlace; padding: 0.2em; padding-bottom: 0.4em; padding-left: 0.4rem; padding-right: 0.4rem; border-top: solid gray thin; font-size: 60%; }
      footer a, footer span:last-child { margin-left: 2em; }
      footer span:last-child { color: red; overflow: auto; }

@@ -14,6 +14,9 @@ const findInitializerControls = () => {
 
 const findControls = () => {
     const indicatorWidth = "3em";
+    const defaultVolume = 1;
+    const defaultSustain = 0;
+    const defaultTransposition = 0;
     const controls = {
         diagnostics:  document.querySelector("footer span:last-child"),
         keyboards: document.querySelectorAll("body header > svg"),
@@ -23,7 +26,7 @@ const findControls = () => {
             sustainLabel: document.querySelector("main article:first-child label:first-of-type"),
             sustain: new Slider( { value: 0, min: 0, max: 10, step: 0.1, indicatorWidth: indicatorWidth, indicatorSuffix: " s" }, document.querySelector("#slider-sustain")),
             traspositionLabel: document.querySelector("main article:first-child label:last-of-type"),
-            transposition: new Slider( { value: 0, min: -100, max: 100, step: 1, indicatorWidth: "3em" }, document.querySelector("#slider-transposition")),
+            transposition: new Slider( { value: 0, min: -100, max: 100, step: 1, indicatorWidth: indicatorWidth }, document.querySelector("#slider-transposition")),
             clearChord: document.querySelector("main button"),
         },
         keyboardLayout: document.querySelector("#select-layout"),
@@ -38,5 +41,8 @@ const findControls = () => {
     controls.playControl.volume.label = controls.playControl.volumeLabel;
     controls.playControl.sustain.label = controls.playControl.sustainLabel;
     controls.playControl.transposition.label = controls.playControl.traspositionLabel;
+    controls.playControl.volumeLabel.ondblclick = _ => controls.playControl.volume.value = defaultVolume;
+    controls.playControl.sustainLabel.ondblclick = _ => controls.playControl.sustain.value = defaultSustain;
+    controls.playControl.traspositionLabel.ondblclick = _ => controls.playControl.transposition.value = defaultTransposition;
     return controls;
-}; //findControls
+}; //findControlsb
