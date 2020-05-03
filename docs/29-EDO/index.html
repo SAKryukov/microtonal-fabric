@@ -41,8 +41,14 @@
         font-size: 120%; background-color: yellow; border: solid thin black; border-radius: 3px;
      }
      body aside button:hover { background-color: lightgoldenrodyellow; }
-     main section { display: inline-block; margin-top: 2em; }
      main > * { margin-left: 1em; margin-right: 1em; }
+     main article { margin: 0; display: flex; white-space: nowrap; width: 100%; }
+     main article div { white-space: nowrap; width: 100%; }
+     main article label:first-of-type { margin-left: 1em; }
+     main article label { margin-right: 0.2em; }
+     main article div:last-of-type { margin-right: 1em; }
+     main article:first-of-type label:last-of-type { margin-left: 4em; }
+     main section { display: inline-block; margin-top: 2em; }
      main section:first-of-type { margin-right: 2em; }
      main section select { margin-left: 0.2em; }
      main, main p:first-of-type { margin-top: 1.8em; }
@@ -1789,11 +1795,17 @@
 </svg></header>
 
 <main>
-   <label for="slider-volume-control" accesskey="V"><u>V</u>olume:</label>
-   <div id="slider-volume"></div>
+   <article>
+      <label for="slider-sustain-control" accesskey="U">S<u>u</u>stain:</label>
+      <div id="slider-sustain"></div>
+      <label for="slider-transposition-control" accesskey="T"><u>T</u>ransposition:</label>
+      <div id="slider-transposition"></div>
+   </article>
    <br/>
-   <label for="slider-sustain-control" accesskey="U">S<u>u</u>stain:</label>
-   <div id="slider-sustain"></div>
+   <article>
+      <label for="slider-volume-control" accesskey="V"><u>V</u>olume:</label>
+      <div id="slider-volume"></div>
+   </article>
    <p><label><input id="radio-mode-normal" type="radio" name="mode" checked="true"/>Play Mode</label></p>
    <p><label><input id="radio-mode-chord-set" type="radio" name="mode"/>Chord Set Mode: Shift down: view, Shift+key: include/exclude, Ctrl+Shift+key: move/add chord root</label>
       <button accesskey="H">Clear C<u>h</u>ord</button></p>

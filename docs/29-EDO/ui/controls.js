@@ -18,10 +18,12 @@ const findControls = () => {
         diagnostics:  document.querySelector("footer span:last-child"),
         keyboards: document.querySelectorAll("body header > svg"),
         playControl: {
-            volumeLabel: document.querySelector("body article label:first-of-type"),
+            volumeLabel: document.querySelector("main article:last-of-type label"),
             volume: new Slider( { value: 1, min: 0, max: 10, step: 0.1, indicatorWidth: indicatorWidth }, document.querySelector("#slider-volume")),
-            sustainLabel: document.querySelector("body article label:last-of-type"),
+            sustainLabel: document.querySelector("main article:first-child label:first-of-type"),
             sustain: new Slider( { value: 0, min: 0, max: 10, step: 0.1, indicatorWidth: indicatorWidth, indicatorSuffix: " s" }, document.querySelector("#slider-sustain")),
+            traspositionLabel: document.querySelector("main article:first-child label:last-of-type"),
+            transposition: new Slider( { value: 0, min: -100, max: 100, step: 1, indicatorWidth: "3em" }, document.querySelector("#slider-transposition")),
             clearChord: document.querySelector("main button"),
         },
         keyboardLayout: document.querySelector("#select-layout"),
@@ -35,5 +37,6 @@ const findControls = () => {
     };
     controls.playControl.volume.label = controls.playControl.volumeLabel;
     controls.playControl.sustain.label = controls.playControl.sustainLabel;
+    controls.playControl.transposition.label = controls.playControl.traspositionLabel;
     return controls;
 }; //findControls

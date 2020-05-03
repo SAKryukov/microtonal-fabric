@@ -61,6 +61,7 @@ window.onload = () => {
 
         controls.playControl.volume.onchange = (self, value) => instrument.volume = value;
         controls.playControl.sustain.onchange = (self, value) => instrument.sustain = value;
+        controls.playControl.transposition.onchange = (self, value) => instrument.transposition = value;
         controls.playControl.clearChord.onclick = _ => { keyboards[activeInstrumentIndex].clearChord(); }
 
         (function setupModeKeyboardModeControl() {
