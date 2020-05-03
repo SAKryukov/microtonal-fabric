@@ -2,7 +2,7 @@
 
 const definitionSet = (() => {
 
-    const version = "0.3.7";
+    const version = "0.3.8";
 
     const temperament = (() => {
         const system = 29;
