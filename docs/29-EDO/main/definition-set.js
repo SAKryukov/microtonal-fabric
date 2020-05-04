@@ -2,13 +2,13 @@
 
 const definitionSet = (() => {
 
-    const version = "0.3.8";
+    const version = "0.3.9";
 
     const temperament = (() => {
         const system = 29;
-        const faOgolevets = 400 * Math.pow(2, -68/system);
-        const startBrainin = 400 * Math.pow(2, -40/system);
-        const startSA = 400 * Math.pow(2, -81/system);
+        const faOgolevets = 440 * Math.pow(2, -68/system);
+        const startBrainin = 440 * Math.pow(2, -40/system);
+        const startSA = 440 * Math.pow(2, -81/system);
         let instrument;
         return {
             system: system,
