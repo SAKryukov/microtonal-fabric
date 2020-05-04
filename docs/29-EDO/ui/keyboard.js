@@ -131,9 +131,13 @@ class Keyboard {
 
         this.#implementation.clearChord = _ => {
             this.#implementation.chord.clear();
-            this.#implementation.chord.chordRoot = -1;
-            for (let key of this.#implementation.keyList)
-                key.style.fill = keyMap.get(key).originalColor;
+            this.#implementation.chordRoot = -1;
+            for (let key of this.#implementation.keyList) {
+                const keyData = keyMap.get(key);
+                key.style.fill = keyData.originalColor;
+                keyData.isChordRoot = false;
+                keyData.chordMember = false;
+            } //loop
         }; //this.#implementation.clearChord
 
     } //constructor
