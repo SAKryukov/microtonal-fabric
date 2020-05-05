@@ -1,7 +1,7 @@
 // see also: https://en.xen.wiki/w/29edo
 const tonalSystem = 29;
 const frequencies = [];
-const firstFrequency = 27.5;
+const firstFrequency = 1; //27.5;
 
 const justIntonation = [
     { note: "C  do", ratioHumanReadable: " 1/1", min: Number.POSITIVE_INFINITY },
@@ -11,9 +11,10 @@ const justIntonation = [
     { note: "G sol", ratioHumanReadable: " 3/2", min: Number.POSITIVE_INFINITY },
     { note: "A  la", ratioHumanReadable: " 5/3", min: Number.POSITIVE_INFINITY },
     { note: "B  ti", ratioHumanReadable: "15/8", min: Number.POSITIVE_INFINITY },
+    { note: "c  do", ratioHumanReadable: " 2/1", min: Number.POSITIVE_INFINITY },
 ];
 
-for (let index = 0; index < tonalSystem; ++index) {
+for (let index = 0; index <= tonalSystem; ++index) {
     const frequency = firstFrequency * Math.pow(2, index / tonalSystem);
     frequencies.push({ index: index, frequency: frequency });
 }
@@ -22,7 +23,7 @@ for (let just of justIntonation) {
     just.ratio = eval(just.ratioHumanReadable);
     let microtone = 0;
     for (let f of frequencies) {
-        let min = Math.log(just.ratio) - Math.log(f.frequency/firstFrequency);
+        let min = Math.abs(1 - (just.ratio)/(f.frequency/firstFrequency)); //Math.log(just.ratio) - Math.log(f.frequency/firstFrequency);
         min *= min;
         if (min < just.min) {
             just.min = min;
@@ -34,10 +35,6 @@ for (let just of justIntonation) {
 
 for (let just of justIntonation)
    console.log(`${just.note}: harmonic ratio: ${just.ratioHumanReadable}, offset in microtones: ${just.microtone}`);
-
-/*
-0 do, 1 di, 2 rih, 3 ra, 4 ru, 5 re, 6 raw, 7 meh, 8 me, 9 mi, 10 maa, 11 maw, 12 fa, 13 fu, 14 fi, 15 se, 16 su, 17 so/sol, 18 saw, 19 leh, 20 le, 21 la, 22 laa, 23 law, 24 teh, 25 te, 26 ti, 27 taa, 28 da, 29 do.|
- */
 
 const harmonicE = 5/4;
 

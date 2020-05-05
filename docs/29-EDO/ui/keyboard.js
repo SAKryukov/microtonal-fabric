@@ -6,7 +6,7 @@ class Keyboard {
 
     #implementation = { mode: 0, chord: new Set(), chordRoot: -1 };
 
-    constructor(keyboard, options, defaultChord) { //options: definitionSet.keyboardOptions
+    constructor(keyboard, temperament, options) { //options: definitionSet.keyboardOptions
 
         this.#implementation.setVisibility = on => {
             keyboard.style.display = on ? "block" : "none";
@@ -103,8 +103,8 @@ class Keyboard {
 
         let index = 0;
         for (let key of keys) {
-            const inDefaultChord = defaultChord.includes(index);
-            const isChordRoot = index == defaultChord[0];
+            const inDefaultChord = temperament.defaultChord.includes(index);
+            const isChordRoot = index == temperament.defaultChord[0];
             if (isChordRoot) this.#implementation.chordRoot = index;
             if (inDefaultChord) this.#implementation.chord.add(index);
             keyMap.set(key, {
@@ -114,6 +114,8 @@ class Keyboard {
             key.onmouseup = event => handler(event.target, false);
             key.onmouseenter = event => { if (event.buttons == 1) handler(event.target, true); }
             key.onmouseleave = event => { if (event.buttons == 1) handler(event.target, false); }
+            if (index == temperament.shiftA)
+                key.style.fill = options.standardColorA;
             ++index;
         } //loop
 
