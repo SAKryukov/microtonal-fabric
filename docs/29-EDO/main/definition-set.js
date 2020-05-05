@@ -26,6 +26,7 @@ const definitionSet = (() => {
                 shiftBraininA,
                 shiftKryukovA
             ],
+            autoWhiteColors: [ true, false, true, ],
             defaultChords: [
                 [46, 56, 63],
                 [40, 50, 57],
@@ -33,6 +34,7 @@ const definitionSet = (() => {
             ],
             byIndex: function(index) {
                 return {
+                    autoWhiteColor: this.autoWhiteColors[index],
                     startingFrequency: this.startingFrequencies[index],
                     shiftA: this.shiftsA[index],
                     defaultChord: this.defaultChords[index],
@@ -45,6 +47,7 @@ const definitionSet = (() => {
         version: version,
         temperament: temperament,
         keyboardOptions: {
+            whiteKeyColor: "white",
             standardColorA: "Azure", // 440 Hz
             highlightColor: "Chartreuse",
             chordColor: "LemonChiffon",

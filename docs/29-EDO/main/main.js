@@ -24,7 +24,11 @@ window.onload = () => {
         (function setupKeyboards() {
             let index = 0;
             for (let svg of controls.keyboards)
-                keyboards.push(new Keyboard(svg, definitionSet.temperament.byIndex(index++), definitionSet.keyboardOptions));
+                keyboards.push(new Keyboard(
+                    svg,
+                    definitionSet.temperament.system,
+                    definitionSet.temperament.byIndex(index++),
+                    definitionSet.keyboardOptions));
         })(); //setupKeyboards
 
         let activeInstrumentIndex = 0;

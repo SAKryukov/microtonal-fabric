@@ -6,7 +6,7 @@ class Keyboard {
 
     #implementation = { mode: 0, chord: new Set(), chordRoot: -1 };
 
-    constructor(keyboard, temperament, options) { //options: definitionSet.keyboardOptions
+    constructor(keyboard, system, temperament, options) { //options: definitionSet.keyboardOptions
 
         this.#implementation.setVisibility = on => {
             keyboard.style.display = on ? "block" : "none";
@@ -102,20 +102,28 @@ class Keyboard {
         });
 
         let index = 0;
+        const noteNames = soundDefinitionSet.noteNames.edo29;
+        const locationA = noteNames.indexOf("A");
         for (let key of keys) {
             const inDefaultChord = temperament.defaultChord.includes(index);
             const isChordRoot = index == temperament.defaultChord[0];
             if (isChordRoot) this.#implementation.chordRoot = index;
             if (inDefaultChord) this.#implementation.chord.add(index);
+            const note = noteNames[(index + system - (temperament.shiftA % system) + locationA) % noteNames.length];
+            const whiteNote = note.length == 1;
+            const originalColor = index == temperament.shiftA
+                ?
+                options.standardColorA
+                :
+                (whiteNote && temperament.autoWhiteColor ? options.whiteKeyColor : key.style.fill);
+            key.style.fill = originalColor;    
             keyMap.set(key, {
-                index: index, originalColor: key.style.fill,
+                index: index, originalColor: originalColor,
                 chordMember: inDefaultChord, isChordRoot: isChordRoot });
             key.onmousedown = event => handler(event.target, true);
             key.onmouseup = event => handler(event.target, false);
             key.onmouseenter = event => { if (event.buttons == 1) handler(event.target, true); }
             key.onmouseleave = event => { if (event.buttons == 1) handler(event.target, false); }
-            if (index == temperament.shiftA)
-                key.style.fill = options.standardColorA;
             ++index;
         } //loop
 
