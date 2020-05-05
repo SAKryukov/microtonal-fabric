@@ -1,4 +1,4 @@
-"use strict";
+﻿"use strict";
 
 const soundDefinitionSet = {
 
@@ -45,7 +45,7 @@ const soundDefinitionSet = {
     },
 
     noteNames: {
-        tet31: [
+        edo31: [
                 "C", "D♭²", "C♯", "D♭", "C♯²",
                 "D", "E♭²", "D♯", "E♭", "D♯²",
                 "E", "F♭¹", "E♯¹",
@@ -53,14 +53,14 @@ const soundDefinitionSet = {
                 "G", "A♭²", "G♯", "A♭", "G♯²",
                 "A", "B♭²", "A♯", "B♭", "A♯²",
                 "B", "C♭¹", "B♯¹"],
-        tet29: [
+        edo29: [
                 "C", "D♭²", "C♯", "D♭", "C♯²",
                 "D", "E♭²", "D♯", "E♭", "D♯²",
                 "E", "ef", "F", "G♭²", "F♯", "G♭", "F♯²",
                 "G", "A♭²", "G♯", "A♭", "G♯²",
                 "A", "B♭²", "A♯", "B♭", "A♯²",
                 "B", "bc"],
-        tet19: [
+        edo19: [
                 "C", "C♯", "D♭",
                 "D", "D♯", "E♭",
                 "E", "ef", // E♯ == F♭
@@ -68,7 +68,7 @@ const soundDefinitionSet = {
                 "G", "G♯", "A♭",
                 "A", "A♯", "B♭",
                 "B", "bc"], //B♯ == C♭
-        tet12: ["C", "C♯", "D", "D♯", "E", "F", "F♯", "G", "G♯", "A", "B♯", "B"],
+        edo12: ["C", "C♯", "D", "D♯", "E", "F", "F♯", "G", "G♯", "A", "B♯", "B"],
     },
 
 }; //soundDefinitionSet
