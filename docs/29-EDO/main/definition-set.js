@@ -2,10 +2,10 @@
 
 const definitionSet = (() => {
 
-    const version = "0.3.10";
+    const version = sharedDefinitionSet.version;
+    const years = sharedDefinitionSet.years;
 
     const temperament = (() => {
-
         const standardA = 440;
         const system = 29;
         const shiftOgolevetsA = 68;
@@ -45,6 +45,7 @@ const definitionSet = (() => {
 
     const result = {
         version: version,
+        years: years,
         temperament: temperament,
         keyboardOptions: {
             whiteKeyColor: "white",

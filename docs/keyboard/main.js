@@ -18,8 +18,8 @@
     const commonSettingsSet = commonSettings(); 
 
     (function setCopyright() {
-        definitionSet.elements.copyright.spanYears.textContent = commonSettingsSet.copyright.years;
-        definitionSet.elements.copyright.spanVersion.textContent = commonSettingsSet.copyright.version;
+        definitionSet.elements.copyright.spanYears.textContent = sharedDefinitionSet.years;
+        definitionSet.elements.copyright.spanVersion.textContent = sharedDefinitionSet.version;
     })(); //setCopyright
 
     (function MicrosoftFeatureRejection() { for (let attribute of definitionSet.elements.keyboard.attributes) break; })();

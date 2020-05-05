@@ -1,8 +1,8 @@
 ﻿<!DOCTYPE html>
 <html lang="en-us">
 <head>
+  <script src="../definition-set.js"></script>
   <title>Authors: 29 EDO Microtonal Keyboard</title>
-  <script src="main/definition-set.js"></script>
   <style>
     * { font-family: sans-serif; background-color: beige; }
     body { padding-left: 2em; padding-right: 2em; }
@@ -15,7 +15,7 @@
 
 <body>
 
-  <h1>29 EDO Microtonal Keyboard, v.&thinsp;<span>0 (some version, filled-in automatically)</span></h1>
+  <h1>29 EDO Microtonal Keyboard, v.&thinsp;<span></span></h1>
   <h2>Authors:</h2>
 
   <article>
@@ -30,7 +30,7 @@
     <br/>
     <p>Valeri B Brainin: <a href="http://brainin.org/Method/method_pro_de/publications_en1.html">Web site</a>
     <hr/>
-    <p>Copyright &copy; Sergey A Kryukov, 2017-2020</p>
+    <p>Copyright &copy; Sergey A Kryukov, <span id="years"></span></p>
     <p>Third party copyrights are property of their respective owners</p>  
   </article>
 
@@ -38,7 +38,9 @@
 
   <script>
     const version = document.querySelector("h1 span:last-child");
-    version.textContent = definitionSet.version;
+    const years = document.querySelector("#years");
+    version.textContent = sharedDefinitionSet.version;
+    years.textContent = sharedDefinitionSet.years;
   </script>
 
 </html>

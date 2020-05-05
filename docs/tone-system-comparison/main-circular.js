@@ -17,8 +17,8 @@
     const commonSettingsSet = commonSettings(); 
     
     (function setCopyright() {
-        elements.copyright.spanYears.textContent = commonSettingsSet.copyright.years;
-        elements.copyright.spanVersion.textContent = commonSettingsSet.copyright.version;
+        elements.copyright.spanYears.textContent = sharedDefinitionSet.years;
+        elements.copyright.spanVersion.textContent = sharedDefinitionSet.version;
     })(); //setCopyright
     
     const soundControlSet = setSoundControl(elements, commonSettingsSet);

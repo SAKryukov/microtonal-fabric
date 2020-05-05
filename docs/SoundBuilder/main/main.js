@@ -82,7 +82,7 @@ window.onload = () => {
             createHeader: () => {
                 return {
                     format: definitionSet.title,
-                    version: definitionSet.version,
+                    version: sharedDefinitionSet.version,
                     formatVersion: definitionSet.formatVersion,
                     author: "",
                     instrumentName: controls.fileIO.instrumentName.value,
@@ -199,8 +199,8 @@ window.onload = () => {
 
         controls.usage.FitKeyboard.focus();
 
-        controls.copyright.innerHTML = definitionSet.copyright;
-        controls.copyright.title = `${definitionSet.title} v.${definitionSet.version}`;
+        controls.copyright.innerHTML = definitionSet.copyright(sharedDefinitionSet.years);
+        controls.copyright.title = `${definitionSet.title} v. ${sharedDefinitionSet.version}`;
 
     } //startApplication
     
