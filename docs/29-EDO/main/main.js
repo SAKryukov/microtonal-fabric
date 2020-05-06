@@ -38,7 +38,9 @@ window.onload = () => {
             const temperament = definitionSet.temperament;
             const instrumentIndex = controls.instrument.selectedIndex >=0 ? controls.instrument.selectedIndex : 0;
             let startingFrequency = temperament.startingFrequencies[keyboardIndex];
-            instrument = new Instrument(keyboards[keyboardIndex].first, keyboards[keyboardIndex].last, startingFrequency, temperament.system);
+            instrument = new Instrument(
+                { first: keyboards[keyboardIndex].first, last: keyboards[keyboardIndex].last, startingFrequency: startingFrequency },
+                temperament.system);
             instrument.data = instrumentList[instrumentIndex];
             for (let aKeyboard of keyboards)
                 aKeyboard.hide();

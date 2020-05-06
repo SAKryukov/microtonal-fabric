@@ -2,8 +2,9 @@ class Instrument extends ModulatorSet {
 
     #implementation = { sustain: soundDefinitionSet.playControl.minimalSustain, gainCompensation: { }, transposition: 0 };
 
-    constructor(first, last, firstFrequency, tonalSystem) {
+    constructor(frequencySet, tonalSystem) { // frequencySet = { first, last, startingFrequency }
         super();
+        const isFrequencySetArray = frequencySet.constructor == Array
         this.#implementation.tones = new Map();
         const context = new AudioContext();
         this.context = context;
@@ -31,8 +32,9 @@ class Instrument extends ModulatorSet {
             for (let [_, tone] of this.#implementation.tones)
                 tone.gainCompensation = compensation(tone.frequency); 
         }; //this.#implementation.compensateToneGains
-        for (let index = first; index <= last; ++index) {
-            const frequency = firstFrequency * Math.pow(2, index / tonalSystem);
+        for (let index = frequencySet.first; index <= frequencySet.last; ++index) {
+            const frequency = isFrequencySetArray ? isFrequencySetArray[index] :
+                frequencySet.startingFrequency * Math.pow(2, index / tonalSystem);
             const tone = new Tone(context, frequency, compensation(frequency));
             this.#implementation.tones.set(index, tone);
             tone.connect(this.#implementation.compensationMasterGainNode, 1);
@@ -42,7 +44,8 @@ class Instrument extends ModulatorSet {
             if (!this.#implementation.lastDataset) return;
             let index = 0;
             for (let [_, tone] of this.#implementation.tones) {
-                const frequency = firstFrequency * Math.pow(2, (index + value) / tonalSystem);
+                const frequency = isFrequencySetArray ? isFrequencySetArray[index] :
+                    frequencySet.startingFrequency * Math.pow(2, (index + value) / tonalSystem);
                 tone.transpose(frequency, compensation(frequency));
                 ++index;
             } //loop
