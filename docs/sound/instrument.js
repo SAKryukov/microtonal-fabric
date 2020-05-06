@@ -32,19 +32,27 @@ class Instrument extends ModulatorSet {
             for (let [_, tone] of this.#implementation.tones)
                 tone.gainCompensation = compensation(tone.frequency); 
         }; //this.#implementation.compensateToneGains
-        for (let index = frequencySet.first; index <= frequencySet.last; ++index) {
-            const frequency = isFrequencySetArray ? isFrequencySetArray[index] :
-                frequencySet.startingFrequency * Math.pow(2, index / tonalSystem);
-            const tone = new Tone(context, frequency, compensation(frequency));
-            this.#implementation.tones.set(index, tone);
-            tone.connect(this.#implementation.compensationMasterGainNode, 1);
-        } //loop tones
+        if (isFrequencySetArray) {
+            let index = 0;
+            for (let frequency of frequencySet) {
+                const tone = new Tone(context, frequency, compensation(frequency));
+                this.#implementation.tones.set(index, tone);
+                tone.connect(this.#implementation.compensationMasterGainNode, 1);
+                ++index;
+            } //loop tones
+        } else
+            for (let index = frequencySet.first; index <= frequencySet.last; ++index) {
+                const frequency = frequencySet.startingFrequency * Math.pow(2, index / tonalSystem);
+                const tone = new Tone(context, frequency, compensation(frequency));
+                this.#implementation.tones.set(index, tone);
+                tone.connect(this.#implementation.compensationMasterGainNode, 1);
+            } //loop tones
         this.#implementation.transpose = value => {
             this.#implementation.transposition = value;
             if (!this.#implementation.lastDataset) return;
             let index = 0;
             for (let [_, tone] of this.#implementation.tones) {
-                const frequency = isFrequencySetArray ? isFrequencySetArray[index] :
+                const frequency = isFrequencySetArray ? frequencySet[index] * Math.pow(2, value / tonalSystem):
                     frequencySet.startingFrequency * Math.pow(2, (index + value) / tonalSystem);
                 tone.transpose(frequency, compensation(frequency));
                 ++index;
