@@ -23,8 +23,11 @@ window.onload = () => {
             result.lastFrequency = result.firstFrequency * Math.pow(2, result.last / result.tonalSystem);
             return result;
         })(); //keyboardProperties
-        const instrument = new Instrument(keyboardProperties.first, keyboardProperties.last, keyboardProperties.firstFrequency, keyboardProperties.tonalSystem);
-        controls.keyboard.setAction((down, index) => {
+
+        const instrument = new Instrument(
+            { first: keyboardProperties.first, last: keyboardProperties.last, startingFrequency: keyboardProperties.firstFrequency },
+                keyboardProperties.tonalSystem);
+            controls.keyboard.setAction((down, index) => {
             instrument.play(down, index);
         }); //kbd.setAction
         controls.keyboard.showFrequencies(instrument.frequencies, "\n\nKey frequency:", "Hz");
