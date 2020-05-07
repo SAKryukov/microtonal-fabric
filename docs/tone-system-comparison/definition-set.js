@@ -86,7 +86,12 @@ const elements = setReadonly({
         transposition: document.getElementById("control-transposition"),
         transpositionIndicator: document.getElementById("control-transposition-value"),
         reset: document.getElementById("control-reset")
-    }
+    },
+    initializationControllerData: {
+        hiddenControls: document.getElementsByClassName("hiddenBefore"),
+        startControl: document.querySelector("body main:first-child button"),
+        startControlParent: document.querySelector("body main:first-child"),
+    },
 }, true); //elements
 
 const definitionSet = setReadonly({

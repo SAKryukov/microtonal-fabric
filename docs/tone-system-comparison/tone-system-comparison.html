@@ -38,12 +38,16 @@
     th { background-color: lightGray; font-weight: normal; font-size: 100%; }
     table { border: solid black 2px; border-collapse: collapse; }
     div.chordSet { display: none; }
+    body main:first-child { text-align: center; }
+    body main:first-child button { background-color: yellow; margin-top: 3em; padding-left: 2em; padding-right: 2em; font-size: 110%; }
   </style>
 </head>
 
 <body>
 
-<div class="keyboard">
+<main><button>Start</button></main>
+
+<div class="keyboard hiddenBefore">
 <p><a href="https://en.wikipedia.org/wiki/Just_intonation">Just Intonation</a></p>
 <!-- SVG JUST-->
 <svg
@@ -484,7 +488,7 @@
 <!-- END SVG JUST-->
 </div>
 
-<div class="keyboard">
+<div class="keyboard hiddenBefore">
 <p><a href="https://en.wikipedia.org/wiki/Common_practice_period">Common-practice</a> <a href="https://en.wikipedia.org/wiki/Equal_temperament">12-TET</a></p>
 <!-- SVG 12-TET-->
 <svg
@@ -999,7 +1003,7 @@
 <!-- END SVG 12-TET-->
 </div>
 
-<div class="keyboard">
+<div class="keyboard hiddenBefore">
 <p><a href="https://en.wikipedia.org/wiki/12_equal_temperament">19-TET</a></p>
 <!-- SVG 19-TET-->
 <svg
@@ -1821,7 +1825,7 @@
 
 </div>
 
-<div class="keyboard">
+<div class="keyboard hiddenBefore">
 <p><a href="https://en.wikipedia.org/wiki/31_equal_temperament">31-TET</a></p>
 
 <!-- SVG 31-TET-->
@@ -3052,26 +3056,26 @@
 
 </div>
 
-<div class="control">
+<div class="control hiddenBefore">
 <u>I</u>nstrument:<div class="controlTitleSeparator"></div>
   <select id="control-instrument" accesskey="I" size="5">
   </select>
 </p>
 </div>
 
-<div class="control">
+<div class="control hiddenBefore">
 <u>V</u>olume: <span id="control-volume-value">?</span><div class="controlTitleSeparator"></div>
   <input id="control-volume" accesskey="V" type="range">
 </p>
 </div>
 
-<div class="control">
+<div class="control hiddenBefore">
 <u>T</u>ransposition: <span id="control-transposition-value">000</span><div class="controlTitleSeparator"></div>
   <input id="control-transposition" accesskey="T" type="range">
 </p>
 </div>
 
-<div class="comparer">
+<div class="comparer hiddenBefore">
 <u>C</u>ompare (Ctrl+ &larr; &rarr;):<div class="controlTitleSeparator"></div>
 <!-- SVG COMPARER -->
 <svg
@@ -3160,7 +3164,7 @@
 <!-- ENG SVG COMPARER-->
 </div>
 
-<div class="control">
+<div class="control hiddenBefore">
   <button accesskey="R" id="control-reset"><u>R</u>eset</button>
   <div class="controlTitleSeparator"></div>
 </div>
@@ -3567,18 +3571,20 @@
   <script>
     handleGoodBrowser([
       "../agnostic/utility.js",
-      "../webaudiofont/00-acoustic-grand-piano.js",
-      "../webaudiofont/14-tubular-bells.js",
-      "../webaudiofont/16-drawbar-organ.js",
-      "../webaudiofont/24-acoustic-guitar-nylon.js",
-      "../webaudiofont/91-pad4-choir.js",
-      "../webaudiofont/player.js",
       "../definition-set.js",
-      "../deprecated-definition-set.js",
       "definition-set.js",
-      "../ui/sound.js",
       "comparer.js",
       "sound-control.js",
+      "../agnostic/initialization-controller.js",
+      "../agnostic/enumeration.js",
+      "../sound/definition-set.js",
+      "../sound/chain-node.js",
+      "../sound/envelope.js",
+      "../sound/modulator.js",
+      "../sound/modulator-set.js",
+      "../sound/tone.js",
+      "../sound/instrument.js",
+      "../instruments/instrument-list.js",
       "main-circular.js"
     ],
     null,

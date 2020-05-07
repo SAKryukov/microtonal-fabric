@@ -13,6 +13,20 @@
 "use strict";
 
 const sharedDefinitionSet = {
+
     version: "4.2.1",
     years: "2017-2020",
+
+    soundControl: {
+        audibleMiddle: { note: "C", midiNote: 60, frequency: 261.625 },
+        defaultOctave: 0,
+        minTransposition: -24,
+        maxTransposition: +24,
+        transpositionStep: 1,
+        minVolume: 0,
+        maxVolume: 1,
+        initialVolume: 0.4,
+        volumeStep: 0.01,
+    },
+
 }; //sharedDefinitionSet

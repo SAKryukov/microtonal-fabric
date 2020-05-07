@@ -12,24 +12,20 @@
 
 "use strict";
 
-(() => { //main
+initializationController.initialize(
+    elements.initializationControllerData.hiddenControls,
+    elements.initializationControllerData.startControl,
+    elements.initializationControllerData.startControlParent,
+    main);
 
-    const commonSettingsSet = commonSettings(); 
-    
+function main () {
+
     (function setCopyright() {
         elements.copyright.spanYears.textContent = sharedDefinitionSet.years;
         elements.copyright.spanVersion.textContent = sharedDefinitionSet.version;
     })(); //setCopyright
     
-    const soundControlSet = setSoundControl(elements, commonSettingsSet);
     const comparer = setupComparer(elements, definitionSet);
-    const soundActionSetInstance = soundActionSet(
-        commonSettingsSet.presets,
-        definitionSet.defaultOctave, // overrides commonSettingsSet default octave of 0
-        soundControlSet); 
-    const soundAction = soundActionSetInstance.startStopNote; // soundAction: (object, octave, tone, doStart) => undefined
-    const chordSoundAction = soundActionSetInstance.chordSoundAction; // chordSoundAction: (chord, doStart, volumeDynamics) => undefined
-    const audioResume = soundActionSetInstance.resume;
 
     (function setupComparer() {
         comparer.chordSet = { count: 0 };
@@ -47,7 +43,15 @@
         }; //comparer.addChord
     })();
 
-    const populateKeyboard = function (keyboard, chordActivator, toneSet) {
+    const populateKeyboard = function (keyboard, chordActivator, toneSet, tonalSystem) {
+
+        const frequencyArray = [];
+        const keyMap = new Map();
+
+        let instrument;
+        const soundHandler = (key, on) => {
+            instrument.play(on, keyMap.get(key).index);
+        }; //soundHandler
 
         chordActivator.chord = { count: 0 };
 
@@ -76,12 +80,12 @@
                 key.style.fill = definitionSet.highlightChordNote;
             else
                 key.style.fill = definitionSet.highlightDefault;
-            if (soundAction) {
+            if (soundHandler) {
                 if (key.state == keyStates.sound && value == keyStates.none)
-                    soundAction(key, key.octave, key.tone, false, 1);
+                    soundHandler(key, false); //soundAction(key, key.octave, key.tone, false, 1);
                 else if (key.state == keyStates.none && value == keyStates.sound)
-                    soundAction(key, key.octave, key.tone, true, 1);
-            } //soundAction
+                soundHandler(key, true); //soundAction(key, key.octave, key.tone, true, 1);
+            } //if soundHandler
             key.state = value;
             const chordKeyKey = getKeyChordKey(key);
             if (value == keyStates.chord) {
@@ -113,6 +117,7 @@
             } //loop chordClone
         } //keyboard.clearChord
 
+        const firstFrequency = sharedDefinitionSet.soundControl.audibleMiddle.frequency/2/8; //SA???
         let octaveNumber = octaveGroups.length - 1;
         for (let octaveGroup of octaveGroups) {
             let currentNote = octaveGroup.length - 1;
@@ -121,9 +126,9 @@
                 circle.octave = octaveNumber;
                 circle.note = currentNote--;
                 if (toneSet)
-                    circle.tone = Math.log2(toneSet[circle.note]);
+                    circle.tone = firstFrequency * toneSet[circle.note];
                 else
-                    circle.tone = circle.note / octaveGroup.length;
+                    circle.tone = firstFrequency * Math.pow(2, circle.note/tonalSystem);
                 circle.tone *= 12; // in Web Audio Font system, tones are expressed in 12-TET semitones
                 circle.clearChord = function () { keyboard.clearChord(); };
                 circle.activate = function (key, prefixed, doActivate) {
@@ -167,20 +172,26 @@
                         event.target.clearChord();
                     return false;
                 };
+                const keyMapValue = { index: circle.note + (circle.octave * tonalSystem), frequency: circle.tone * (1 << circle.octave) };
+                keyMap.set(circle, keyMapValue);
+                frequencyArray[keyMapValue.index] = keyMapValue.frequency;
             } //loop
             octaveNumber--;
         } //loop octaveGroups
 
+        instrument = new Instrument(frequencyArray, tonalSystem);
+
         const triggerChordSoundAction = function (chordOwner, doActivate, volumeDynamics) {
             if (!chordOwner.chord) return;
-            if (chordSoundAction) {
+            if (soundHandler) {
                 const exposeChord = [];
                 for (let index in chordOwner.chord) {
                     const element = chordOwner.chord[index];
                     if (element.constructor == Number) continue;
                     exposeChord.push({ object: element, octave: element.octave, tone: element.tone });
                 } //loop
-                chordSoundAction(exposeChord, doActivate, volumeDynamics);
+                for (let key of exposeChord)
+                    soundHandler(key.object, doActivate);
             } //if
         }; //triggerChordSoundAction
 
@@ -223,9 +234,43 @@
             return false;
         };
 
+        return instrument;
+
     }; //populateKeyboard
 
+    const instrumentSet = [];
     for (let keyboard of elements.keyboardSet)
-        populateKeyboard(keyboard.keyboard, keyboard.chordActivator, keyboard.tones);
+        instrumentSet.push(populateKeyboard(keyboard.keyboard, keyboard.chordActivator, keyboard.tones, keyboard.toneCount));
 
-})(); //main
+    const setInstrumentData = index => {
+        for (let instrument of instrumentSet)
+            instrument.data = instrumentList[index];
+    };
+    const setTransposition = value => {
+        for (let instrument of instrumentSet)
+            instrument.transposition = value;
+    };
+    const setVolume = value => {
+        for (let instrument of instrumentSet)
+            instrument.volume = value;
+    };
+
+    (function setupInstrumentSelector() {
+        for (let instrument of instrumentList) {
+            const option = document.createElement("option");
+            option.textContent = instrument.header.instrumentName;
+            elements.controls.instrument.appendChild(option);
+        }
+        elements.controls.instrument.selectedIndex = 0;
+        elements.controls.instrument.onchange = event => {
+            setInstrumentData(event.target.selectedIndex);
+        }    
+    })(); //setupInstrumentSelector
+
+    setSoundControl(elements, sharedDefinitionSet.soundControl, setVolume, setTransposition);
+
+    setInstrumentData(0);
+    setVolume(1);
+    setTransposition(0);
+
+} //main
