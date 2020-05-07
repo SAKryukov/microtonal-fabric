@@ -22,6 +22,7 @@
     :root {
         --thick-border: 2px;
         --vspace: 0.4em;
+        --big-vspace: 0.6em;
         --hspace: 0.2em;
     }
     * { margin: 0; padding: 0; box-sizing: border-box; user-select: none; }
@@ -30,7 +31,7 @@
     button { padding-left: 1em; padding-right: 1em; }
     html, body, svg,
     text { font-family: "Ubuntu", "Verdana", "sans"; }
-    div.control { display: inline-block; margin-left: var(--hspace); margin-right: var(--hspace); background-color: }
+    div.control { display: inline-block; margin-left: var(--hspace); margin-right: var(--hspace); margin-top: var(--big-vspace); margin-bottom: var(--big-vspace); }
     #radio-19-et-legend, #radio-29-et-legend, #radio-31-et-legend { visibility: hidden; margin-left: 3em; }
     div.options { display: table; width: 100%; margin:0; margin-top: var(--vspace); margin-bottom: var(--vspace); }
     div.optionGroup { display: table-row; }
@@ -43,14 +44,14 @@
     th { background-color: lightGray; font-weight: normal; font-size: 100%; }
     th > button { margin-left: 1em; float: right; }
     table { border: solid black var(--thick-border); border-collapse: collapse; }
-    div.touchCalibration { background-color: lightYellow; width: 5em; height: 5em; border: thin solid black; display: inline-block; }
-    input.touchCalibration { display: inline-block; vertical-align: top; }
-    .touchCalibrationPad { padding-top: var(--vspace); }
     #button-touch-calibration-done { margin-top: 1em; }
     svg { margin: 0; }
     #invitation { position: absolute; top: 8em; text-align: center; width: 100%; }
     #invitation img { width: 6em; }
     #invitation img:last-child { display: none; }
+    #control-instrument { padding-left: var(--hspace); padding-right: var(--hspace); }
+    input[type=range] { width: 30em; }
+    hr { margin-top: var(--vspace); }
 </style>
 </head>
 
@@ -140,23 +141,9 @@
 </div>
 
 <div class="control">
-  <label for="checkbox-use-touch-dynamics"><input type="checkbox" id="checkbox-use-touch-dynamics"/>Use Touch Screen Volume Dynamics</label>
-  <details><summary>Calibration</summary>
-    <div class="touchCalibrationPad">
-    	<div class="touchCalibration" id="touch-calibration"></div>
-    	<input type="text" class="touchCalibration" id="touch-calibration-result"></input>
-    </div>
-    Hit this light yellow rectangle with a finger several times with different force.<br/>Maximum strength will be recorded.
-    <br/>
-    <button id="button-touch-calibration-done">Done</button>
-  </details>
-</div>
-
-<div class="control">
   <button accesskey="R" id="control-reset"><u>R</u>eset</button>
   <div class="controlTitleSeparator"></div>
 </div>
-
 
 </details>
 
@@ -520,25 +507,26 @@
   <script>
     handleGoodBrowser([
       "../agnostic/utility.js",
-      "../webaudiofont/00-acoustic-grand-piano.js",
-      "../webaudiofont/14-tubular-bells.js",
-      "../webaudiofont/16-drawbar-organ.js",
-      "../webaudiofont/24-acoustic-guitar-nylon.js",
-      "../webaudiofont/91-pad4-choir.js",
-      "../webaudiofont/player.js",
       "../definition-set.js",
-      "../deprecated-definition-set.js",
       "definition-set.js",
       "keyboard.js",
-      "../ui/multitouch.js",
-      "../ui/multitouch-calibration.js",
+      "../ui.components/multitouch.js",
       "hardware-keyboard.js",
       "sound-control.js",
       "keyboard-handler.js",
       "../ui/chord-builder.js",
       "../ui/chord-table.js",
       "chord-finder.js",
-      "../ui/sound.js",
+      "../agnostic/initialization-controller.js",
+      "../agnostic/enumeration.js",
+      "../sound/definition-set.js",
+      "../sound/chain-node.js",
+      "../sound/envelope.js",
+      "../sound/modulator.js",
+      "../sound/modulator-set.js",
+      "../sound/tone.js",
+      "../sound/instrument.js",
+      "../instruments/instrument-list.js",
       "main.js"
     ],
     null,

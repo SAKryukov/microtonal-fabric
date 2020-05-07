@@ -24,6 +24,12 @@ class ModulatorSet {
                 modulatorList.push(modulator);
             } //loop
         } //this.#implementation.populate
+        this.#implementation.baseDeactivate = _ => {
+            for (let modulator of this.#implementation.frequencyModulatorList) {
+                modulator.disconnect();
+                modulator.deactivate();
+            } //loop
+        }; //baseDeactivate
     } //constructor
 
     // interface:
@@ -68,5 +74,7 @@ class ModulatorSet {
         this.#implementation.amplitudeModulatatioMasterDepth.gain.value = enable ? this.#implementation.preservedAmMasterGain : 0;
     } //set amplitudeModulationEnable
     get amplitudeModulationEnable() { return this.#implementation.isAmEnabled; }
+
+    baseDeactivate() { this.#implementation.baseDeactivate(); }
 
 } //class ModulatorSet

@@ -179,9 +179,12 @@ function main () {
             octaveNumber--;
         } //loop octaveGroups
 
+        if (instrument)
+            instrument.deactivate();
+
         instrument = new Instrument(frequencyArray, tonalSystem);
 
-        const triggerChordSoundAction = function (chordOwner, doActivate, volumeDynamics) {
+        const triggerChordSoundAction = function (chordOwner, doActivate) {
             if (!chordOwner.chord) return;
             if (soundHandler) {
                 const exposeChord = [];
@@ -195,8 +198,8 @@ function main () {
             } //if
         }; //triggerChordSoundAction
 
-        chordActivator.activate = function (key, doActivate, volumeDynamics) {
-            triggerChordSoundAction(chordActivator, doActivate, volumeDynamics);
+        chordActivator.activate = function (key, doActivate) {
+            triggerChordSoundAction(chordActivator, doActivate);
             if (doActivate)
                 key.style.fill = definitionSet.highlightChord;
             else

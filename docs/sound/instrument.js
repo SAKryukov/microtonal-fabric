@@ -110,6 +110,14 @@ class Instrument extends ModulatorSet {
             this.#implementation.filterChain.populate(filterSet);
         } //this.#implementation.setFilterChain
         this.#implementation.setFilterChain(soundDefinitionSet.defaultFilterSet);
+        this.#implementation.deactivate = _ => {
+            for (let [_, tone] of this.#implementation.tones)
+                tone.deactivate();
+            super.baseDeactivate();
+            this.#implementation.filterChain.deactivate();
+            this.#implementation.compensationMasterGainNode.disconnect();
+            this.#implementation.masterGain.disconnect();
+        }; //this.#implementation.deactivate
     } //constructor
 
     play(on, index) { this.#implementation.tones.get(index).play(on); }
@@ -186,5 +194,7 @@ class Instrument extends ModulatorSet {
 
     get transposition() { return this.#implementation.value; }
     set transposition(value) { this.#implementation.transpose(value); }
+
+    deactivate() { this.#implementation.deactivate(); }
 
 } //class Instrument

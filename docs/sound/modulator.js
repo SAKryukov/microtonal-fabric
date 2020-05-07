@@ -9,6 +9,11 @@ class Modulator {
         this.#implementation.oscillator.connect(this.#implementation.depthNode);
         this.#implementation.oscillator.start();
         this.#implementation.output = this.#implementation.depthNode;
+        this.#implementation.deactivate = _ => {
+            this.#implementation.oscillator.stop();
+            this.#implementation.oscillator.disconnect();
+            this.#implementation.depthNode.disconnect();
+        }; //this.#implementation.deactivate
     } //constuctor
 
     get frequency() { return this.#implementation.oscillator.frequency.value; }
@@ -22,5 +27,7 @@ class Modulator {
         return this;
     } //connect
     disconnect() { this.#implementation.output.disconnect(); return this; }
+
+    deactivate() { this.#implementation.deactivate(); }
 
 } //class Modulator

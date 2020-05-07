@@ -40,12 +40,6 @@ const settings = () => {
             volumeIndicator: document.getElementById("control-volume-value"),
             transposition: document.getElementById("control-transposition"),
             transpositionIndicator: document.getElementById("control-transposition-value"),
-            touch: {
-                checkboxUseTouchDynamics: document.getElementById("checkbox-use-touch-dynamics"),
-                calibrationProbe: document.getElementById("touch-calibration"),
-                calibrationResult: document.getElementById("touch-calibration-result"),
-                buttonDone: document.getElementById("button-touch-calibration-done")
-            },
             reset: document.getElementById("control-reset")
         },
         legend19et: document.getElementById("radio-19-et-legend"),
@@ -141,8 +135,8 @@ const settings = () => {
         keyboardSize: {
             // verticalSizeFactor: 5,         
             // horizontalSizeFactor: 17,
-            verticalSizeFactor: 4,         
-            horizontalSizeFactor: 15,
+            verticalSizeFactor: 3,         
+            horizontalSizeFactor: 12,
             // do not assign here: 
             rows: 0, // definitionSet.keyboardSize.rows = 2 * definitionSet.keyboardSize.horizontalSizeFactor + 1
             longRowWidth: 0 // definitionSet.keyboardSize.longRowWidth = 2 * definitionSet.keyboardSize.horizontalSizeFactor + 1

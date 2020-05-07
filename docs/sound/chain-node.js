@@ -24,6 +24,11 @@ class ChainNode {
                 this.#implementation.connect();
             this.#implementation.isEnabled = doEnable;
         }; //this.#implementation.setEnabled
+        this.#implementation.deactivate = _ => {
+            for (let node of this.#implementation.collection)
+                node.disconnect();
+        }; //this.#implementation.deactivate
+
     } //constructor
 
     populate(nodeList) {
@@ -46,4 +51,6 @@ class ChainNode {
     get isEnabled() { return this.#implementation.isEnabled; }
     set isEnabled(value) { this.#implementation.setEnabled(value); }
   
+    deactivate() { this.#implementation.deactivate(); }
+
 } //class ChainNode

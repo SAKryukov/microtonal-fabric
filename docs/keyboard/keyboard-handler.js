@@ -12,9 +12,7 @@
 
 "use strict";
 
-const keyboardHandling = (commonSettingsSet, definitionSet, keyboardStructure, chordLayoutFinder, soundActions) => {
-
-    const soundAction = soundActions.startStopNote; // soundAction: function(object, octave, tone, doStart)
+const keyboardHandling = (definitionSet, keyboardStructure, chordLayoutFinder, soundAction) => {
 
     const rows = [];
     let chord;
@@ -54,14 +52,12 @@ const keyboardHandling = (commonSettingsSet, definitionSet, keyboardStructure, c
         key.currentColor = definitionSet.options.highlightDefault;
         key.colorStack = [];
         key.textStack = [];
-        key.activate = function (key, chordMode, doActivate, volumeDynamics, chordNote, text, highlightChords) {
+        key.activate = function (key, chordMode, doActivate, chordNote, text, highlightChords) {
             if (key.activated && doActivate) return;
             if (!key.activated && !doActivate) return;
-            if (volumeDynamics == undefined)
-                volumeDynamics = 1.0; 
             key.activated = doActivate;
             if (soundAction)
-                soundAction(key, 0, key.tone, doActivate, volumeDynamics);
+                soundAction(key, doActivate);
             const effectiveColor = chordNote ? definitionSet.options.highlightChordNote : definitionSet.options.highlightSound;
             if (!chordNote) highlightChords = true;
             visualActivate(key, effectiveColor, text, highlightChords, doActivate);
@@ -70,7 +66,7 @@ const keyboardHandling = (commonSettingsSet, definitionSet, keyboardStructure, c
                 const chordLayout = chordLayoutFinder(key, chord);
                 const highlightChords = chordLayout.highlightChords;
                 for (let chordElement of chordLayout)
-                    chordElement.key.activate(chordElement.key, chordMode, doActivate, volumeDynamics, true, chordElement.title, highlightChords);
+                    chordElement.key.activate(chordElement.key, chordMode, doActivate, true, chordElement.title, highlightChords);
             } //if
         }; //key.activate
         key.rectangle.dataset.multiTouchTarget = true;
@@ -98,26 +94,14 @@ const keyboardHandling = (commonSettingsSet, definitionSet, keyboardStructure, c
     }); //keyboardStructure.iterateKeys
 
     const setupTouch = () => {
-        let touchDynamicsEnabled = definitionSet.elements.controls.touch.checkboxUseTouchDynamics.checked;
-        definitionSet.elements.controls.touch.checkboxUseTouchDynamics.onclick = (ev) => { touchDynamicsEnabled = ev.target.checked; }
-        let volumeDivider = commonSettingsSet.initialTouchDynamicsDivider;
         const calibrationDoneHandler = (value) => {
             volumeDivider = value;
         }; 
-        setupMultiTouchCalibration(
-            definitionSet,
-            definitionSet.elements.controls.touch.calibrationProbe,
-            definitionSet.elements.controls.touch.calibrationResult,
-            definitionSet.elements.controls.touch.buttonDone,
-            calibrationDoneHandler);
-        const dynamicAlgorithm = setMultiTouch().dynamicAlgorithm;
         setMultiTouch(
             definitionSet.elements.keyboard,
             (element) => { return element.dataset.multiTouchTarget; }, //elementSelector
             (element, touch, on) => {
                 let volume = 1;
-                if (touchDynamicsEnabled)
-                    volume = dynamicAlgorithm(touch, volumeDivider);
                 element.key.activate(element.key, false, on, volume);
             } //elementHandler
         );    

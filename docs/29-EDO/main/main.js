@@ -38,6 +38,8 @@ window.onload = () => {
             const temperament = definitionSet.temperament;
             const instrumentIndex = controls.instrument.selectedIndex >=0 ? controls.instrument.selectedIndex : 0;
             let startingFrequency = temperament.startingFrequencies[keyboardIndex];
+            if (instrument)
+                instrument.deactivate();
             instrument = new Instrument(
                 { first: keyboards[keyboardIndex].first, last: keyboards[keyboardIndex].last, startingFrequency: startingFrequency },
                 temperament.system);

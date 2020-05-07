@@ -23,6 +23,17 @@ class Tone extends ModulatorSet {
         this.#implementation.frequencyCompensationGainNode.connect(this.#implementation.amplitudeModulationNode);
         this.#implementation.amplitudeModulationNode.connect(this.#implementation.gainEnvelopeNode);
         this.#implementation.mainOscillator.start();
+        this.#implementation.deactivate = _ => {
+            super.baseDeactivate();
+            this.#implementation.mainOscillator.stop();
+            this.#implementation.mainOscillator.disconnect();
+            this.#implementation.frequencyCompensationGainNode.disconnect();
+            this.#implementation.gainEnvelopeNode.disconnect();
+            this.#implementation.detuneEnvelopeNode.disconnect();
+            this.#implementation.amplitudeModulationNode.disconnect();
+            this.#implementation.frequencyModulationEnvelopeNode.disconnect();
+            this.#implementation.amplitudeModulationEnvelopeNode.disconnect();
+        }; //this.#implementation.deactivate
     } //constructor
 
     play(on) {
@@ -79,5 +90,7 @@ class Tone extends ModulatorSet {
     } //transpose
 
     set gainCompensation(value) { this.#implementation.frequencyCompensationGainNode.gain.value = value; }
+
+    deactivate() { this.#implementation.deactivate(); }
 
 } //class Tone

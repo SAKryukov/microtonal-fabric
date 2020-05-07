@@ -15,7 +15,6 @@
 (function main() {
 
     const definitionSet = settings();
-    const commonSettingsSet = commonSettings(); 
 
     (function setCopyright() {
         definitionSet.elements.copyright.spanYears.textContent = sharedDefinitionSet.years;
@@ -26,13 +25,12 @@
 
     const keyboardStructure = keyboard(definitionSet);
     const chordLayoutFinder = chordLayout(definitionSet, keyboardStructure);
-    const soundControlSet = setSoundControl(definitionSet.elements, commonSettingsSet);
-    const soundActions = soundActionSet(commonSettingsSet.presets, commonSettingsSet.defaultOctave, soundControlSet);
-    const keyboardHandler = keyboardHandling(commonSettingsSet, definitionSet, keyboardStructure, chordLayoutFinder, soundActions);
+    const playSet = { instrument: null, keyMap: null }
+    const keyboardHandler = keyboardHandling(definitionSet, keyboardStructure, chordLayoutFinder,
+        (key, on) => playSet.instrument.play(on, playSet.keyMap.get(key).index));
 
     let visibleChordTable;
     let selectedTet;
-    let chord;
 
     (function setupChordTables() {
         for (let chordSetElement of definitionSet.elements.chordSet) {
@@ -84,6 +82,8 @@
     } //definitionSet.elements.buttonShowChordTable.onclick
 
     function setTet(option, system, blocking) {
+        const keyMap = new Map();
+        const frequencies = [];
         let currentRow = 0;
         let currentNoteNumber = system.names.length; // 1 octave up, mostly to accommodate Janko which adds -1: definitionSet.notes.tet12Janko.smallRowIncrement: -1
         // we keep C at note #0
@@ -96,6 +96,9 @@
             cell.toneSystem = system;
             cell.note = currentNoteNumber;
             cell.tone = currentNoteNumber * 12 / system.names.length;
+            const frequency = 27.5 * Math.pow(2, currentNoteNumber/system.names.length); //SA???
+            keyMap.set(cell, { index: frequencies.length, frequency: frequency });
+            frequencies.push(frequency);
             const label = names[currentNoteNumber % names.length];
         currentRow = cell.row;
             const rowLength = keyboardStructure.rows[currentRow].length;
@@ -109,6 +112,13 @@
         });
         if (blocking) keyboardStructure.block();
         keyboardHandler.chordSetter(option.chordTable.chordBuilder.build());
+        if (playSet.instrument)
+            playSet.instrument.deactivate();
+        if (!blocking) {
+            const instrument = new Instrument(frequencies, system.names.length);
+            playSet.instrument = instrument;
+            playSet.keyMap = keyMap;    
+        } //if not blocking
         if (!option) return;
         if (!option.chordTable) return;
         if (!visibleChordTable) return;
@@ -167,7 +177,8 @@
         definitionSet.elements.buttonShowChordTable.disabled = false;
     };
     definitionSet.elements.radioTet.radio31et.checked = true;
-    setTet(definitionSet.elements.radioTet.radio31et, definitionSet.notes.tet31, true);
+    const initializeTet = blocking => setTet(definitionSet.elements.radioTet.radio31et, definitionSet.notes.tet31, blocking);
+    initializeTet(true);
     selectedTet = definitionSet.elements.radioTet.radio31et;
     definitionSet.elements.legend31et.style.visibility = "visible";
 
@@ -252,14 +263,40 @@
             if (keyEvent && (keyEvent.key.includes("Shift") || keyEvent.key.includes("Alt") || keyEvent.key.includes("Meta") || keyEvent.key.includes("Control")))
                 return;
         keyboardHandler.setupTouch();
-        soundActions.resume();
         keyboardStructure.unblock();
         started = true;
         keyEvent.preventDefault();
-        window.onkeydown = previousOnKeyDown;    
+        window.onkeydown = previousOnKeyDown;
+        initializeTet(false);
+        playSet.instrument.data = instrumentList[0];
     } //unblock
     window.onclick = keyEvent => unblock(keyEvent);
     window.onmouseup = keyEvent => unblock(keyEvent);
     window.onkeydown = keyEvent => unblock(keyEvent);
+
+    const setInstrumentData = index => {
+        if (playSet.instrument)
+            playSet.instrument.data = instrumentList[index];
+    }; //setInstrumentData
+
+    setSoundControl(definitionSet.elements, sharedDefinitionSet.soundControl, value => {
+        if (playSet.instrument)
+            playSet.instrument.volume = value;
+    }, value => {
+        if (playSet.instrument)
+            playSet.instrument.transposition = value;
+    }); //setSoundControl
+
+    (function setupInstrumentSelector(instrumentControl) {
+        for (let instrument of instrumentList) {
+            const option = document.createElement("option");
+            option.textContent = instrument.header.instrumentName;
+            instrumentControl.appendChild(option);
+        }
+        instrumentControl.selectedIndex = 0;
+        instrumentControl.onchange = event => {
+            setInstrumentData(event.target.selectedIndex);
+        }    
+    })(definitionSet.elements.controls.instrument); //setupInstrumentSelector
 
 })(); //main
