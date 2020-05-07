@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   version="1.0"
+   width="1080"
+   height="580"
+   id="sine"
+   sodipodi:docname="nodes.svg"
+   inkscape:version="0.92.5 (2060ec1f9f, 2020-04-08)">
+  <metadata
+     id="metadata60">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title>Sine_one_period.svg - a nice plot of the sine function</dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <sodipodi:namedview
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1"
+     objecttolerance="10"
+     gridtolerance="10"
+     guidetolerance="10"
+     inkscape:pageopacity="0"
+     inkscape:pageshadow="2"
+     inkscape:window-width="1920"
+     inkscape:window-height="1027"
+     id="namedview58"
+     showgrid="true"
+     inkscape:zoom="1.4142136"
+     inkscape:cx="-349.32052"
+     inkscape:cy="373.71167"
+     inkscape:window-x="-8"
+     inkscape:window-y="-8"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="sine">
+    <inkscape:grid
+       type="xygrid"
+       id="grid915" />
+  </sodipodi:namedview>
+  <title
+     id="title3516">Sine_one_period.svg - a nice plot of the sine function</title>
+  <desc
+     id="desc3518">
+     Sine(sin)-function
+     from Wikimedia Commons
+     plot-range: 0 to 2pi
+     plotted with three different cubic bezier-curves
+     the bezier-controll-points are calculated to give a very accurate result.
+     symbols in &quot;Computer Modern&quot; (TeX) font embedded
+     created with a plain text editor using GNU/Linux
+
+     about: http://commons.wikimedia.org/wiki/Image:Sine_one_period.svg
+     source: http://commons.wikimedia.org/
+     rights: GNU Free Documentation license,
+             Creative Commons Attribution ShareAlike license
+  </desc>
+  <defs
+     id="defs3520">
+    <marker
+       markerUnits="strokeWidth"
+       refX="2.52"
+       refY="2.25"
+       markerWidth="6"
+       markerHeight="4.5"
+       orient="auto"
+       id="Arrow">
+      <path
+         d="M 2.52,2.25 L 0,4.5 L 6,2.25 L 0,0 L 2.52,2.25 z"
+         id="path3523" />
+    </marker>
+    <path
+       d="M 460,320 C 460,400 455,480 420,554 C 374,650 292,666 250,666 C 190,666 117,640 76,547 C 44,478 39,400 39,320 C 39,245 43,155 84,79 C 127,-2 200,-22 249,-22 C 303,-22 379,-1 423,94 C 455,163 460,241 460,320 z M 249,0 C 210,0 151,25 133,121 C 122,181 122,273 122,332 C 122,396 122,462 130,516 C 149,635 224,644 249,644 C 282,644 348,626 367,527 C 377,471 377,395 377,332 C 377,257 377,189 366,125 C 351,30 294,0 249,0 z"
+       id="zero" />
+  </defs>
+  <rect
+     style="opacity:1;fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:2;stroke-linecap:square;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:stroke fill markers"
+     id="rect968"
+     width="90"
+     height="90"
+     x="-290"
+     y="40"
+     rx="4.7558601e-06"
+     ry="48.202599" />
+  <path
+     style="fill:none;stroke:#ff0000;stroke-width:1.98940015;stroke-linecap:butt;stroke-miterlimit:4;stroke-dasharray:none"
+     d="m -493.68941,152.26321 c 0.41207,-7.63068 0.82415,-15.25203 1.24443,-21.62337 0.33827,-5.15864 0.68064,-9.45439 1.03326,-12.31823 0.30751,-2.50936 0.61709,-3.85265 0.93076,-3.85265 0.31367,0 0.62118,1.34329 0.93075,3.85265 0.35263,2.86384 0.69294,7.15959 1.03327,12.31823 0.42027,6.37134 0.83234,13.99269 1.24442,21.62337 0.41207,7.63068 0.82414,15.24737 1.24442,21.62804 0.34033,5.15863 0.68065,9.45439 1.03326,12.31823 0.30957,2.50935 0.6171,3.85265 0.93076,3.85265 0.31572,0 0.62324,-1.3433 0.93076,-3.85265 0.35262,-2.86384 0.69499,-7.1596 1.03531,-12.31823 0.41822,-6.38067 0.83235,-13.99736 1.24237,-21.62804"
+     id="path901"
+     inkscape:connector-curvature="0"
+     sodipodi:nodetypes="cccsccsccsccc" />
+  <path
+     style="fill:none;stroke:#ff0000;stroke-width:1.98940015;stroke-linecap:butt;stroke-miterlimit:4;stroke-dasharray:none"
+     d="m -506.52318,152.26321 c 0.41207,-7.63068 0.82415,-15.25203 1.24442,-21.62337 0.33827,-5.15864 0.68064,-9.45439 1.03327,-12.31823 0.30751,-2.50936 0.61708,-3.85265 0.93075,-3.85265 0.31366,0 0.62119,1.34329 0.93076,3.85265 0.35261,2.86384 0.69293,7.15959 1.03326,12.31823 0.42027,6.37134 0.83235,13.99269 1.24443,21.62337 0.41207,7.63068 0.82414,15.24737 1.24441,21.62804 0.34032,5.15863 0.68064,9.45439 1.03327,12.31823 0.30957,2.50935 0.61708,3.85265 0.93075,3.85265 0.31572,0 0.62325,-1.3433 0.93076,-3.85265 0.35262,-2.86384 0.69499,-7.1596 1.03531,-12.31823 0.41823,-6.38067 0.83236,-13.99736 1.24238,-21.62804"
+     id="path899"
+     inkscape:connector-curvature="0"
+     sodipodi:nodetypes="cccsccsccsccc" />
+  <path
+     style="fill:none;stroke:#ff0000;stroke-width:1.98940015;stroke-linecap:butt;stroke-miterlimit:4;stroke-dasharray:none"
+     d="m -519.35716,152.26321 c 0.41207,-7.63068 0.82415,-15.25203 1.24401,-21.62337 0.33991,-5.15864 0.68228,-9.45439 1.03387,-12.31823 0.30856,-2.50936 0.61628,-3.85265 0.93056,-3.85265 0.31469,0 0.62241,1.34329 0.93116,3.85265 0.3514,2.86384 0.69356,7.15959 1.03367,12.31823 0.41987,6.37134 0.83174,13.99269 1.24443,21.62337 0.41208,7.63068 0.82395,15.24737 1.24402,21.62804 0.33929,5.15863 0.68146,9.45439 1.03388,12.31823 0.30854,2.50935 0.61626,3.85265 0.93075,3.85265 0.31449,0 0.62201,-1.3433 0.93035,-3.85265 0.35139,-2.86384 0.69376,-7.1596 1.03408,-12.31823 0.42007,-6.38067 0.83317,-13.99736 1.2432,-21.62804"
+     id="sine-curve"
+     inkscape:connector-curvature="0"
+     sodipodi:nodetypes="cccscccccsccc" />
+  <g
+     id="g932"
+     transform="matrix(0.375,0,0,0.375,-125,21.25)"
+     style="stroke-width:2.66666675">
+    <rect
+       ry="128.54027"
+       rx="1.2682292e-05"
+       y="115"
+       x="-405"
+       height="110"
+       width="170"
+       id="rect917"
+       style="opacity:1;fill:none;fill-opacity:1;stroke:#000000;stroke-width:5.33333349;stroke-linecap:square;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:markers stroke fill" />
+    <path
+       sodipodi:nodetypes="ccccc"
+       inkscape:connector-curvature="0"
+       id="path927"
+       d="m -405,217 85,-62 85,62 v 8 h -170"
+       style="fill:none;stroke:#000000;stroke-width:5.33333349;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+    <path
+       inkscape:connector-curvature="0"
+       id="path923"
+       d="m -325,170 h 10 l 80,-45 v -10 h -170 v 10 l 80,45 v 0"
+       style="fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:5.33333349;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+  </g>
+</svg>
