@@ -25,7 +25,7 @@
 
     const keyboardStructure = keyboard(definitionSet);
     const chordLayoutFinder = chordLayout(definitionSet, keyboardStructure);
-    const playSet = { instrument: null, keyMap: null }
+    const playSet = { instrument: null, keyMap: null, instrumentDataIndex: 0 }
     const keyboardHandler = keyboardHandling(definitionSet, keyboardStructure, chordLayoutFinder,
         (key, on) => playSet.instrument.play(on, playSet.keyMap.get(key).index));
 
@@ -96,10 +96,10 @@
             cell.toneSystem = system;
             cell.note = currentNoteNumber;
             cell.tone = currentNoteNumber * 12 / system.names.length;
-            const frequency = 27.5 * Math.pow(2, currentNoteNumber/system.names.length); //SA???
+            const frequency = definitionSet.standardA * Math.pow(2, currentNoteNumber/system.names.length); //SA???
             keyMap.set(cell, { index: frequencies.length, frequency: frequency });
             frequencies.push(frequency);
-            const label = names[currentNoteNumber % names.length];
+            const label = names[(currentNoteNumber + system.shiftA) % names.length];
         currentRow = cell.row;
             const rowLength = keyboardStructure.rows[currentRow].length;
             if (cell.numberInRow == rowLength - 1) {
@@ -117,6 +117,7 @@
         if (!blocking) {
             const instrument = new Instrument(frequencies, system.names.length);
             playSet.instrument = instrument;
+            instrument.data = instrumentList[playSet.instrumentDataIndex];
             playSet.keyMap = keyMap;    
         } //if not blocking
         if (!option) return;
@@ -296,7 +297,8 @@
         instrumentControl.selectedIndex = 0;
         instrumentControl.onchange = event => {
             setInstrumentData(event.target.selectedIndex);
-        }    
+            playSet.instrumentDataIndex = event.target.selectedIndex;
+        }; //instrumentControl.onchange
     })(definitionSet.elements.controls.instrument); //setupInstrumentSelector
 
 })(); //main

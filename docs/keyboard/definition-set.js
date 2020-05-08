@@ -88,6 +88,7 @@ const settings = () => {
                 "G", "A♭²", "G♯", "A♭", "G♯²",
                 "A", "B♭²", "A♯", "B♭", "A♯²",
                 "B", "C♭¹", "B♯¹"],
+            shiftA: 23,
             bigRowIncrement: 18,
             smallRowIncrement: 13,
             rightIncrement: 5
@@ -100,6 +101,7 @@ const settings = () => {
                 "G", "A♭²", "G♯", "A♭", "G♯²",
                 "A", "B♭²", "A♯", "B♭", "A♯²",
                 "B", "bc"],
+            shiftA: 22,
             bigRowIncrement: 17,
             smallRowIncrement: 12,
             rightIncrement: 5
@@ -113,17 +115,20 @@ const settings = () => {
                 "G", "G♯", "A♭",
                 "A", "A♯", "B♭",
                 "B", "bc"], //B♯ == C♭
+            shiftA: 14,
             bigRowIncrement: 11,
             smallRowIncrement: 8,
             rightIncrement: 3
         },
         tet12: {
             names: ["C", "C♯", "D", "D♯", "E", "F", "F♯", "G", "G♯", "A", "B♯", "B"],
+            shiftA: 9,
             bigRowIncrement: 7,
             smallRowIncrement: 5,
             rightIncrement: 2
         },
         tet12Janko: {
+            shiftA: 9,
             bigRowIncrement: 13,
             smallRowIncrement: -1,
             rightIncrement: 2        
@@ -165,6 +170,6 @@ const settings = () => {
         options.keyboardSize.longRowWidth = 2 * options.keyboardSize.horizontalSizeFactor + 1;
     })();
 
-    return setReadonly({ elements: elements, notes: notes, options: options }, true);
+    return setReadonly({ elements: elements, notes: notes, options: options, standardA: 27.5 }, true);
 
 }; //settings
