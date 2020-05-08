@@ -1,7 +1,7 @@
 {
     "header": {
         "format": "Sound Builder",
-        "version": "0.1.0",
+        "version": "4.4.0",
         "formatVersion": "3.1.0",
         "author": "",
         "instrumentName": "Accordion"
@@ -11,7 +11,7 @@
         "middleFrequency": 400,
         "lowFrequency": 27.5,
         "lowFrequencyCompensationGain": 1,
-        "highFrequency": 3951.07,
+        "highFrequency": 3951,
         "highFrequencyCompensationGain": 1.4
     },
     "oscillator": {
