@@ -1,7 +1,7 @@
 {
     "header": {
         "format": "Sound Builder",
-        "version": "0.2.3",
+        "version": "4.5.0",
         "formatVersion": "3.1.0",
         "author": "",
         "instrumentName": "Tuba"
@@ -10,9 +10,9 @@
         "masterGain": 1,
         "middleFrequency": 329.628,
         "lowFrequency": 27.5,
-        "lowFrequencyCompensationGain": 0.6,
+        "lowFrequencyCompensationGain": 0.3,
         "highFrequency": 3951.066410048994,
-        "highFrequencyCompensationGain": 4
+        "highFrequencyCompensationGain": 2
     },
     "oscillator": {
         "type": "Fourier",
@@ -584,7 +584,7 @@
                     "functionIndex": 0,
                     "function": "exponential",
                     "duration": 0.1,
-                    "gain": 0.138
+                    "gain": 0.07
                 }
             ],
             "dampingSustain": 0.02

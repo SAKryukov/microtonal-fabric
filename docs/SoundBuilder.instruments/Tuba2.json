@@ -6,7 +6,14 @@
         "author": "",
         "instrumentName": "Tuba"
     },
-    "compensationGain": {},
+    "gainCompensation": {
+        "masterGain": 1,
+        "middleFrequency": 329.628,
+        "lowFrequency": 27.5,
+        "lowFrequencyCompensationGain": 0.6,
+        "highFrequency": 3951.066410048994,
+        "highFrequencyCompensationGain": 4
+    },
     "oscillator": {
         "type": "Fourier",
         "Fourier": [

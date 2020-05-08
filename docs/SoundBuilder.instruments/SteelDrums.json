@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 {
     "header": {
         "format": "Sound Builder",
@@ -7,7 +6,14 @@
         "author": "",
         "instrumentName": ""
     },
-    "compensationGain": {},
+    "gainCompensation": {
+        "masterGain": 1,
+        "middleFrequency": 400,
+        "lowFrequency": 27.5,
+        "lowFrequencyCompensationGain": 1,
+        "highFrequency": 3951.07,
+        "highFrequencyCompensationGain": 1
+    },
     "oscillator": {
         "type": "Fourier",
         "Fourier": [
@@ -20738,5 +20744,4 @@
             "Q": 1
         }
     ]
->>>>>>> c18bbdeb8aef717263fbdbe60e342aedaa1de9da
 }

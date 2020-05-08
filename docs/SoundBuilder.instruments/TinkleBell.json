@@ -1,12 +1,19 @@
 {
     "header": {
         "format": "Sound Builder",
-        "version": "0.1.0",
-        "formatVersion": "2.1.0",
+        "version": "4.5.0",
+        "formatVersion": "3.1.0",
         "author": "",
         "instrumentName": ""
     },
-    "compensationGain": {},
+    "gainCompensation": {
+        "masterGain": 0.1603,
+        "middleFrequency": 492,
+        "lowFrequency": 27.5,
+        "lowFrequencyCompensationGain": 2,
+        "highFrequency": 3951.066410048994,
+        "highFrequencyCompensationGain": 0.8
+    },
     "oscillator": {
         "type": "Fourier",
         "Fourier": [

@@ -28,3 +28,5 @@ Metal.json: fixed, not bad
 Metallophone.json
 
 Tuba.json good, all modulations
+
+Vibraphone.json better

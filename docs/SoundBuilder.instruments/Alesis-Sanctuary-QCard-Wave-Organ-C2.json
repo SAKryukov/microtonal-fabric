@@ -10,9 +10,9 @@
         "masterGain": 1,
         "middleFrequency": 1600.0434782608697,
         "lowFrequency": 27.5,
-        "lowFrequencyCompensationGain": 0.5000000000000002,
+        "lowFrequencyCompensationGain": 0.5,
         "highFrequency": 3951.066410048994,
-        "highFrequencyCompensationGain": 0.004000000000000139
+        "highFrequencyCompensationGain": 0.004
     },
     "oscillator": {
         "type": "Fourier",

@@ -1,12 +1,19 @@
 {
     "header": {
         "format": "Sound Builder",
-        "version": "0.1.0",
-        "formatVersion": "2.1.0",
+        "version": "4.5.0",
+        "formatVersion": "3.1.0",
         "author": "",
         "instrumentName": ""
     },
-    "compensationGain": {},
+    "gainCompensation": {
+        "masterGain": 1,
+        "middleFrequency": 400,
+        "lowFrequency": 27.5,
+        "lowFrequencyCompensationGain": 0.4,
+        "highFrequency": 3951,
+        "highFrequencyCompensationGain": 2
+    },
     "oscillator": {
         "type": "Fourier",
         "Fourier": [
@@ -85,23 +92,11 @@
     "frequencyModulation": {
         "absoluteFrequency": {
             "masterDepth": 1,
-            "modes": [
-                {
-                    "frequency": 4.39,
-                    "depth": 39.48,
-                    "useEnvelope": false
-                }
-            ]
+            "modes": []
         },
         "relativeFrequency": {
             "masterDepth": 1,
-            "modes": [
-                {
-                    "frequency": 17.1,
-                    "depth": 50.69,
-                    "useEnvelope": false
-                }
-            ]
+            "modes": []
         },
         "envelope": {
             "stages": [],
@@ -111,23 +106,11 @@
     "amplitudeModulation": {
         "absoluteFrequency": {
             "masterDepth": 1,
-            "modes": [
-                {
-                    "frequency": 24.07,
-                    "depth": 65.74,
-                    "useEnvelope": false
-                }
-            ]
+            "modes": []
         },
         "relativeFrequency": {
             "masterDepth": 1,
-            "modes": [
-                {
-                    "frequency": 34.28,
-                    "depth": 87.94,
-                    "useEnvelope": false
-                }
-            ]
+            "modes": []
         },
         "envelope": {
             "stages": [],

@@ -1,15 +1,18 @@
 {
     "header": {
         "format": "Sound Builder",
-        "version": "0.1.0",
-        "formatVersion": "3.0.0",
+        "version": "4.5.0",
+        "formatVersion": "3.1.0",
         "author": "",
-        "instrumentName": ""
+        "instrumentName": "Tuba"
     },
     "gainCompensation": {
-        "middleFrequency": 400,
-        "lowFrequencyCompensationGain": 1,
-        "highFrequencyCompensationGain": 80
+        "masterGain": 1,
+        "middleFrequency": 329.628,
+        "lowFrequency": 27.5,
+        "lowFrequencyCompensationGain": 0.6,
+        "highFrequency": 3951,
+        "highFrequencyCompensationGain": 4
     },
     "oscillator": {
         "type": "Fourier",
@@ -10252,35 +10255,76 @@
         ]
     },
     "gainEnvelope": {
-        "stages": [],
+        "stages": [
+            {
+                "functionIndex": 1,
+                "function": "linear",
+                "duration": 0.35,
+                "gain": 0.914
+            }
+        ],
         "dampingSustain": 0.02
     },
     "detuneEnvelope": {
-        "stages": [],
+        "stages": [
+            {
+                "functionIndex": 0,
+                "function": "exponential",
+                "duration": 0.4,
+                "gain": -19
+            }
+        ],
         "dampingSustain": 0.02
     },
     "frequencyModulation": {
         "absoluteFrequency": {
             "masterDepth": 1,
-            "modes": []
+            "modes": [
+                {
+                    "frequency": 4.39,
+                    "depth": 39.48
+                }
+            ]
         },
         "relativeFrequency": {
             "masterDepth": 1,
-            "modes": []
+            "modes": [
+                {
+                    "frequency": 17.1,
+                    "depth": 50.69
+                }
+            ]
         },
         "envelope": {
-            "stages": [],
+            "stages": [
+                {
+                    "functionIndex": 0,
+                    "function": "exponential",
+                    "duration": 0.001,
+                    "gain": 0.445
+                }
+            ],
             "dampingSustain": 0.02
         }
     },
     "amplitudeModulation": {
         "absoluteFrequency": {
             "masterDepth": 1,
-            "modes": []
+            "modes": [
+                {
+                    "frequency": 24.07,
+                    "depth": 65.74
+                }
+            ]
         },
         "relativeFrequency": {
             "masterDepth": 1,
-            "modes": []
+            "modes": [
+                {
+                    "frequency": 34.28,
+                    "depth": 87.94
+                }
+            ]
         },
         "envelope": {
             "stages": [],
