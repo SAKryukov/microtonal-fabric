@@ -1,0 +1,42 @@
+// cSpell Settings
+{
+    // Version of the setting file.  Always 0.1
+    "version": "0.1",
+    // language - current active spelling language
+    "language": "en",
+    // words - list of words to be always considered correct
+    "words": [
+        "ADSR",
+        "Affine",
+        "Anamorphic",
+        "blockquote",
+        "Changelog",
+        "detuned",
+        "digitizers",
+        "Dirname",
+        "Helvetica",
+        "Intelli",
+        "Kryukov",
+        "lexem",
+        "lexeme",
+        "lexemes",
+        "microchromatic",
+        "microtonal",
+        "nbsp",
+        "Neue",
+        "Pan",
+        "Pandoc",
+        "Sergey",
+        "toolchain",
+        "unembraceable",
+        "Verdana",
+        "yzhang"
+    ],
+    // flagWords - list of words to be always considered incorrect
+    // This is useful for offensive words and common spelling errors.
+    // For example "hte" should be "the"
+    "flagWords": [
+        "hte",
+        "teh"
+    ]
+}

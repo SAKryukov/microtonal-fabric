@@ -1,0 +1,16 @@
+{
+    "git.enabled": false,
+    "cSpell.enabled": true,
+    "cSpell.words": [
+        "Affine",
+        "Anamorphic",
+        "digitizers",
+        "lexem",
+        "lexeme",
+        "lexemes",
+        "unembraceable"
+    ],
+    "markdown.styles": [
+        "smoothly-sized-styles.css"
+    ],
+}
