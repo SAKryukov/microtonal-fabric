@@ -1,10 +1,10 @@
 {
     "header": {
         "format": "Sound Builder",
-        "version": "0.2.0",
+        "version": "4.5.0",
         "formatVersion": "3.1.0",
         "author": "",
-        "instrumentName": ""
+        "instrumentName": "Piano"
     },
     "gainCompensation": {
         "masterGain": 2.2321,
@@ -10254,35 +10254,39 @@
             }
         ]
     },
-        "gainEnvelope": {
-            "stages": [
-                {
-                    "functionIndex": 0,
-                    "function": "exponential",
-                    "duration": 0.001,
-                    "gain": 0.104
-                },
-                {
-                    "functionIndex": 0,
-                    "function": "exponential",
-                    "duration": 0.004,
-                    "gain": 0.93
-                },
-                {
-                    "functionIndex": 0,
-                    "function": "exponential",
-                    "duration": 0.006,
-                    "gain": 1
-                },
-                {
-                    "functionIndex": 0,
-                    "function": "exponential",
-                    "duration": 0.75,
-                    "gain": 0
-                }
-            ],
-            "dampingSustain": 0.16
-        },
+    "gainEnvelope": {
+        "stages": [
+            {
+                "functionIndex": 0,
+                "function": "exponential",
+                "duration": 0.001,
+                "gain": 0.104
+            },
+            {
+                "functionIndex": 0,
+                "function": "exponential",
+                "duration": 0.004,
+                "gain": 0.93
+            },
+            {
+                "functionIndex": 0,
+                "function": "exponential",
+                "duration": 0.006,
+                "gain": 1
+            },
+            {
+                "functionIndex": 0,
+                "function": "exponential",
+                "duration": 0.75,
+                "gain": 0
+            }
+        ],
+        "dampingSustain": 0.16
+    },
+    "detuneEnvelope": {
+        "stages": [],
+        "dampingSustain": 0.02
+    },
     "frequencyModulation": {
         "absoluteFrequency": {
             "masterDepth": 1,

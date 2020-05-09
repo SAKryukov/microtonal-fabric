@@ -1,12 +1,19 @@
 {
     "header": {
         "format": "Sound Builder",
-        "version": "0.1.0",
-        "formatVersion": "2.1.0",
+        "version": "4.5.0",
+        "formatVersion": "3.1.0",
         "author": "",
         "instrumentName": "Mental"
     },
-    "compensationGain": {},
+    "gainCompensation": {
+        "masterGain": 0.1602959309494451,
+        "middleFrequency": 384,
+        "lowFrequency": 27.5,
+        "lowFrequencyCompensationGain": 0.5,
+        "highFrequency": 3951.066410048994,
+        "highFrequencyCompensationGain": 1.1082024432809816
+    },
     "oscillator": {
         "type": "Fourier",
         "Fourier": [
@@ -438,8 +445,7 @@
             "modes": [
                 {
                     "frequency": 4.39,
-                    "depth": 39.48,
-                    "useEnvelope": false
+                    "depth": 39.48
                 }
             ]
         },
@@ -447,9 +453,8 @@
             "masterDepth": 1,
             "modes": [
                 {
-                    "frequency": 17.1,
-                    "depth": 50.69,
-                    "useEnvelope": false
+                    "frequency": 9.26,
+                    "depth": 1.27
                 }
             ]
         },
@@ -463,21 +468,14 @@
             "masterDepth": 1,
             "modes": [
                 {
-                    "frequency": 24.07,
-                    "depth": 65.74,
-                    "useEnvelope": false
+                    "frequency": 4.17,
+                    "depth": 4.85
                 }
             ]
         },
         "relativeFrequency": {
             "masterDepth": 1,
-            "modes": [
-                {
-                    "frequency": 34.28,
-                    "depth": 87.94,
-                    "useEnvelope": false
-                }
-            ]
+            "modes": []
         },
         "envelope": {
             "stages": [],
