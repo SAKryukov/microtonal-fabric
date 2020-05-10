@@ -5,6 +5,8 @@ class Instrument extends ModulatorSet {
     constructor(frequencySet, tonalSystem) { // frequencySet = { first, last, startingFrequency }
         super();
         const isFrequencySetArray = frequencySet.constructor == Array
+        if (isFrequencySetArray && !tonalSystem)
+            tonalSystem = frequencySet.length;
         this.#implementation.tones = new Map();
         const context = new AudioContext();
         this.context = context;
