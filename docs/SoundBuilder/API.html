@@ -1,0 +1,66 @@
+﻿<!DOCTYPE html>
+<html lang="en-us">
+<head>
+  <title>Sound Builder APO</title>
+  <style>
+    * { font-family: sans-serif; background-color: beige; }
+    body { padding-left: 2em; padding-right: 2em; }
+    p { margin: 0.4em; margin-left: 1em; }
+    h1, p:first-child, hr { margin-top: 2em; }
+    pre, code { color: darkGreen; font-family: monospace; font-size: 1.4em; }
+    h1 { font-size: 128%; text-align: center; }
+    h2 { font-size: 105%; margin-top: 2em; margin-bottom: 0.1em; }
+  </style>
+</head>
+
+<body>
+
+  <h1>Sound Builder API</h1>
+
+<p>The <code>Instrument</code> constructor expects 2 arguments: <code>constructor(frequencySet, tonalSystem)</code>.</p>
+<p>First of all, one needs to define a set of fundamental frequencies for the generated sounds. This is either an array of frequencies in Hertz units, or an object <code>{first, last, startingFrequency}</code>, where <code>first</code> is always zero (reserved for advanced features), <code>last</code> is the last index of the frequency array, and <code>startingFrequency</code> is the lowest absolute frequency in Hertz units (27.5 for standard 88-key piano). Second parameter should specify a tonal system, which is the number of tones in octave. In this case, the tone set will be automatically populated with <a href="https://en.wikipedia.org/wiki/Equal_temperament" data-href="https://en.wikipedia.org/wiki/Equal_temperament">Equal Division of the Octave (EDO)</a> frequencies.</p>
+<p>For example:</p>
+<p><code>const piano = new Instrument({ first: 0, last: 87, 25.7 }, 12)</code> will create a standard 88-key piano tuning, and typical microtonal systems could use 19, 29, 31, 41, etc., for the second argument.</p>
+<p><code>const perfect = new Instrument([100, 133.333, 150])</code> will create an instrument with only 3 tones, 100 Hz and two more tones, perfect fourth and perfect fifth in <a href="https://en.wikipedia.org/wiki/Just_intonation" data-href="https://en.wikipedia.org/wiki/Just_intonation">just intonation</a>.</p>
+<p>Second parameter, <code>tonalSystem</code>, is used even when an array of fixed frequency values — for the implementation of the property <code>transposition</code>. If this argument is not specified, it is assumed to the length of this array.</p>
+<p>Method <code>play(on, index)</code> starts (if <code>on==true</code>) or stops (if <code>on==false</code>) the damps of a tone of specified <code>index</code>. Starting of damping is never instantaneous, it is defined by the gain envelope and damping sustain parameter. The timing is limited by some minimal values.</p>
+<p>Properties: <code>volume</code> (0 to 1), <code>sustain</code> (time in seconds) and <code>transposition</code> (in the units of logarithmic equal divisions of octave, depending on the <code>tonalSystem</code> argument of the <code>Instrument</code> constructor). The property <code>frequencies</code> is read-only, returns the array representing current frequency set.</p>
+
+<h2>Steps:</h2>
+
+<ol>
+<li>Produce some set of instruments, test and save them, each instrument is a separate JSON file;</li>
+<li>Use the element “Instrument List”, button “Load” to load created instruments, “Save” all of them in a single .js file;</li>
+<li>Include the API, all sound/*.js files in the application;</li>
+<li>Also include .js file generated before;</li>
+<li>In the application, create in instance of <code>Instrument</code>;</li>
+<li>To apply instrument data, assign <code>instrumentInstance.data = instrumentList[someIndex]</code>;</li>
+<li>To play a single sound, call <code>instrument.play</code> ;</li>
+<li>Enjoy :-).</li>
+</ol>
+
+<h2>To include the API, use this code sample:</h2>
+<pre>
+&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+&lt;head&gt;
+    &lt;meta charset="utf-8"/&gt;
+    &lt;script src="../sound/definition-set.js"&gt;&lt;/script&gt;
+    &lt;script src="../sound/chain-node.js"&gt;&lt;/script&gt;
+    &lt;script src="../sound/envelope.js"&gt;&lt;/script&gt;
+    &lt;script src="../sound/modulator.js"&gt;&lt;/script&gt;
+    &lt;script src="../sound/modulator-set.js"&gt;&lt;/script&gt;
+    &lt;script src="../sound/tone.js"&gt;&lt;/script&gt;
+    &lt;script src="../sound/instrument.js"&gt;&lt;/script&gt;
+    &lt;!-- ... ---&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+
+    &lt;!-- ... ---&gt;
+
+&lt;/body&gt;
+&lt;/html&gt;</pre>
+
+</body>
+</html>
