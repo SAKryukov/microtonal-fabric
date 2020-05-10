@@ -1,4 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
 <svg
    xmlns:dc="http://purl.org/dc/elements/1.1/"
    xmlns:cc="http://creativecommons.org/ns#"
@@ -7,15 +9,556 @@
    xmlns="http://www.w3.org/2000/svg"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
-   id="comparer-main"
-   width="84.64315"
-   viewBox="0 0 84.643151 84.643151"
+   width="82.550018mm"
+   height="206.90417mm"
+   viewBox="0 0 82.550018 206.90417"
    version="1.1"
-   sodipodi:docname="comparer.svg"
-   inkscape:version="0.92.1 r15371"
-   height="84.64315">
+   id="svg4922"
+   inkscape:version="0.92.5 (2060ec1f9f, 2020-04-08)"
+   sodipodi:docname="graph.svg">
+  <defs
+     id="defs4916">
+    <marker
+       inkscape:stockid="Arrow2Lend"
+       orient="auto"
+       refY="0"
+       refX="0"
+       id="marker5771"
+       style="overflow:visible"
+       inkscape:isstock="true">
+      <path
+         id="path5769"
+         style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:0.625;stroke-linejoin:round;stroke-opacity:1"
+         d="M 8.7185878,4.0337352 -2.2072895,0.01601326 8.7185884,-4.0017078 c -1.7454984,2.3720609 -1.7354408,5.6174519 -6e-7,8.035443 z"
+         transform="matrix(-1.1,0,0,-1.1,-1.1,0)"
+         inkscape:connector-curvature="0" />
+    </marker>
+    <marker
+       inkscape:stockid="Arrow2Lend"
+       orient="auto"
+       refY="0"
+       refX="0"
+       id="Arrow2Lend"
+       style="overflow:visible"
+       inkscape:isstock="true">
+      <path
+         id="path952"
+         style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:0.625;stroke-linejoin:round;stroke-opacity:1"
+         d="M 8.7185878,4.0337352 -2.2072895,0.01601326 8.7185884,-4.0017078 c -1.7454984,2.3720609 -1.7354408,5.6174519 -6e-7,8.035443 z"
+         transform="matrix(-1.1,0,0,-1.1,-1.1,0)"
+         inkscape:connector-curvature="0" />
+    </marker>
+    <marker
+       inkscape:isstock="true"
+       style="overflow:visible"
+       id="marker5631"
+       refX="0"
+       refY="0"
+       orient="auto"
+       inkscape:stockid="Arrow1Mend">
+      <path
+         transform="matrix(-0.4,0,0,-0.4,-4,0)"
+         style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:1.00000003pt;stroke-opacity:1"
+         d="M 0,0 5,-5 -12.5,0 5,5 Z"
+         id="path5629"
+         inkscape:connector-curvature="0" />
+    </marker>
+    <marker
+       inkscape:stockid="Arrow1Mend"
+       orient="auto"
+       refY="0"
+       refX="0"
+       id="Arrow1Mend-0-9-6"
+       style="overflow:visible"
+       inkscape:isstock="true">
+      <path
+         inkscape:connector-curvature="0"
+         id="path940-4-0-6"
+         d="M 0,0 5,-5 -12.5,0 5,5 Z"
+         style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:1.00000003pt;stroke-opacity:1"
+         transform="matrix(-0.4,0,0,-0.4,-4,0)" />
+    </marker>
+    <marker
+       inkscape:stockid="Arrow1Mend"
+       orient="auto"
+       refY="0"
+       refX="0"
+       id="Arrow1Mend-0-9-0"
+       style="overflow:visible"
+       inkscape:isstock="true">
+      <path
+         inkscape:connector-curvature="0"
+         id="path940-4-0-1"
+         d="M 0,0 5,-5 -12.5,0 5,5 Z"
+         style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:1.00000003pt;stroke-opacity:1"
+         transform="matrix(-0.4,0,0,-0.4,-4,0)" />
+    </marker>
+    <marker
+       inkscape:stockid="Arrow1Mend"
+       orient="auto"
+       refY="0"
+       refX="0"
+       id="Arrow1Mend-0-9-0-0"
+       style="overflow:visible"
+       inkscape:isstock="true">
+      <path
+         inkscape:connector-curvature="0"
+         id="path940-4-0-1-2"
+         d="M 0,0 5,-5 -12.5,0 5,5 Z"
+         style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:1.00000003pt;stroke-opacity:1"
+         transform="matrix(-0.4,0,0,-0.4,-4,0)" />
+    </marker>
+    <marker
+       inkscape:stockid="Arrow1Mend"
+       orient="auto"
+       refY="0"
+       refX="0"
+       id="Arrow1Mend-0"
+       style="overflow:visible"
+       inkscape:isstock="true">
+      <path
+         inkscape:connector-curvature="0"
+         id="path940-4"
+         d="M 0,0 5,-5 -12.5,0 5,5 Z"
+         style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:1.00000003pt;stroke-opacity:1"
+         transform="matrix(-0.4,0,0,-0.4,-4,0)" />
+    </marker>
+    <marker
+       inkscape:stockid="Arrow1Mend"
+       orient="auto"
+       refY="0"
+       refX="0"
+       id="Arrow1Mend-0-5"
+       style="overflow:visible"
+       inkscape:isstock="true">
+      <path
+         inkscape:connector-curvature="0"
+         id="path940-4-6"
+         d="M 0,0 5,-5 -12.5,0 5,5 Z"
+         style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:1.00000003pt;stroke-opacity:1"
+         transform="matrix(-0.4,0,0,-0.4,-4,0)" />
+    </marker>
+    <marker
+       inkscape:stockid="Arrow1Mend"
+       orient="auto"
+       refY="0"
+       refX="0"
+       id="Arrow1Mend-0-5-9"
+       style="overflow:visible"
+       inkscape:isstock="true">
+      <path
+         inkscape:connector-curvature="0"
+         id="path940-4-6-7"
+         d="M 0,0 5,-5 -12.5,0 5,5 Z"
+         style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:1.00000003pt;stroke-opacity:1"
+         transform="matrix(-0.4,0,0,-0.4,-4,0)" />
+    </marker>
+    <marker
+       inkscape:stockid="Arrow1Mend"
+       orient="auto"
+       refY="0"
+       refX="0"
+       id="Arrow1Mend-0-5-8"
+       style="overflow:visible"
+       inkscape:isstock="true">
+      <path
+         inkscape:connector-curvature="0"
+         id="path940-4-6-2"
+         d="M 0,0 5,-5 -12.5,0 5,5 Z"
+         style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:1.00000003pt;stroke-opacity:1"
+         transform="matrix(-0.4,0,0,-0.4,-4,0)" />
+    </marker>
+    <marker
+       inkscape:stockid="Arrow1Mend"
+       orient="auto"
+       refY="0"
+       refX="0"
+       id="Arrow1Mend-0-5-8-8"
+       style="overflow:visible"
+       inkscape:isstock="true">
+      <path
+         inkscape:connector-curvature="0"
+         id="path940-4-6-2-2"
+         d="M 0,0 5,-5 -12.5,0 5,5 Z"
+         style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:1.00000003pt;stroke-opacity:1"
+         transform="matrix(-0.4,0,0,-0.4,-4,0)" />
+    </marker>
+    <marker
+       inkscape:stockid="Arrow1Mend"
+       orient="auto"
+       refY="0"
+       refX="0"
+       id="Arrow1Mend-0-96-40-5"
+       style="overflow:visible"
+       inkscape:isstock="true">
+      <path
+         inkscape:connector-curvature="0"
+         id="path940-4-3-4-4"
+         d="M 0,0 5,-5 -12.5,0 5,5 Z"
+         style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:1.00000003pt;stroke-opacity:1"
+         transform="matrix(-0.4,0,0,-0.4,-4,0)" />
+    </marker>
+    <marker
+       inkscape:stockid="Arrow1Mend"
+       orient="auto"
+       refY="0"
+       refX="0"
+       id="Arrow1Mend-0-96-40-2"
+       style="overflow:visible"
+       inkscape:isstock="true">
+      <path
+         inkscape:connector-curvature="0"
+         id="path940-4-3-4-1"
+         d="M 0,0 5,-5 -12.5,0 5,5 Z"
+         style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:1.00000003pt;stroke-opacity:1"
+         transform="matrix(-0.4,0,0,-0.4,-4,0)" />
+    </marker>
+    <marker
+       inkscape:stockid="Arrow1Mend"
+       orient="auto"
+       refY="0"
+       refX="0"
+       id="Arrow1Mend-0-96-40"
+       style="overflow:visible"
+       inkscape:isstock="true">
+      <path
+         inkscape:connector-curvature="0"
+         id="path940-4-3-4"
+         d="M 0,0 5,-5 -12.5,0 5,5 Z"
+         style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:1.00000003pt;stroke-opacity:1"
+         transform="matrix(-0.4,0,0,-0.4,-4,0)" />
+    </marker>
+    <marker
+       inkscape:stockid="Arrow1Mend"
+       orient="auto"
+       refY="0"
+       refX="0"
+       id="Arrow1Mend-0-96-40-5-5"
+       style="overflow:visible"
+       inkscape:isstock="true">
+      <path
+         inkscape:connector-curvature="0"
+         id="path940-4-3-4-4-5"
+         d="M 0,0 5,-5 -12.5,0 5,5 Z"
+         style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:1.00000003pt;stroke-opacity:1"
+         transform="matrix(-0.4,0,0,-0.4,-4,0)" />
+    </marker>
+    <marker
+       inkscape:stockid="Arrow1Mend"
+       orient="auto"
+       refY="0"
+       refX="0"
+       id="Arrow1Mend-0-96-40-2-2"
+       style="overflow:visible"
+       inkscape:isstock="true">
+      <path
+         inkscape:connector-curvature="0"
+         id="path940-4-3-4-1-1"
+         d="M 0,0 5,-5 -12.5,0 5,5 Z"
+         style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:1.00000003pt;stroke-opacity:1"
+         transform="matrix(-0.4,0,0,-0.4,-4,0)" />
+    </marker>
+    <marker
+       inkscape:stockid="Arrow1Mend"
+       orient="auto"
+       refY="0"
+       refX="0"
+       id="Arrow1Mend-0-96-40-57"
+       style="overflow:visible"
+       inkscape:isstock="true">
+      <path
+         inkscape:connector-curvature="0"
+         id="path940-4-3-4-48"
+         d="M 0,0 5,-5 -12.5,0 5,5 Z"
+         style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:1.00000003pt;stroke-opacity:1"
+         transform="matrix(-0.4,0,0,-0.4,-4,0)" />
+    </marker>
+    <marker
+       inkscape:stockid="Arrow1Mend"
+       orient="auto"
+       refY="0"
+       refX="0"
+       id="Arrow1Mend-0-96-40-5-8"
+       style="overflow:visible"
+       inkscape:isstock="true">
+      <path
+         inkscape:connector-curvature="0"
+         id="path940-4-3-4-4-57"
+         d="M 0,0 5,-5 -12.5,0 5,5 Z"
+         style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:1.00000003pt;stroke-opacity:1"
+         transform="matrix(-0.4,0,0,-0.4,-4,0)" />
+    </marker>
+    <marker
+       inkscape:stockid="Arrow1Mend"
+       orient="auto"
+       refY="0"
+       refX="0"
+       id="Arrow1Mend-0-96-40-2-9"
+       style="overflow:visible"
+       inkscape:isstock="true">
+      <path
+         inkscape:connector-curvature="0"
+         id="path940-4-3-4-1-4"
+         d="M 0,0 5,-5 -12.5,0 5,5 Z"
+         style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:1.00000003pt;stroke-opacity:1"
+         transform="matrix(-0.4,0,0,-0.4,-4,0)" />
+    </marker>
+    <marker
+       inkscape:stockid="Arrow1Mend"
+       orient="auto"
+       refY="0"
+       refX="0"
+       id="Arrow1Mend-0-96-40-4"
+       style="overflow:visible"
+       inkscape:isstock="true">
+      <path
+         inkscape:connector-curvature="0"
+         id="path940-4-3-4-2"
+         d="M 0,0 5,-5 -12.5,0 5,5 Z"
+         style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:1.00000003pt;stroke-opacity:1"
+         transform="matrix(-0.4,0,0,-0.4,-4,0)" />
+    </marker>
+    <marker
+       inkscape:stockid="Arrow1Mend"
+       orient="auto"
+       refY="0"
+       refX="0"
+       id="Arrow1Mend-0-9-6-9"
+       style="overflow:visible"
+       inkscape:isstock="true">
+      <path
+         inkscape:connector-curvature="0"
+         id="path940-4-0-6-2"
+         d="M 0,0 5,-5 -12.5,0 5,5 Z"
+         style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:1.00000003pt;stroke-opacity:1"
+         transform="matrix(-0.4,0,0,-0.4,-4,0)" />
+    </marker>
+    <marker
+       inkscape:stockid="Arrow1Mend"
+       orient="auto"
+       refY="0"
+       refX="0"
+       id="Arrow1Mend-0-9-6-7"
+       style="overflow:visible"
+       inkscape:isstock="true">
+      <path
+         inkscape:connector-curvature="0"
+         id="path940-4-0-6-0"
+         d="M 0,0 5,-5 -12.5,0 5,5 Z"
+         style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:1.00000003pt;stroke-opacity:1"
+         transform="matrix(-0.4,0,0,-0.4,-4,0)" />
+    </marker>
+    <marker
+       inkscape:stockid="Arrow1Mend"
+       orient="auto"
+       refY="0"
+       refX="0"
+       id="Arrow1Mend-0-5-8-8-9"
+       style="overflow:visible"
+       inkscape:isstock="true">
+      <path
+         inkscape:connector-curvature="0"
+         id="path940-4-6-2-2-7"
+         d="M 0,0 5,-5 -12.5,0 5,5 Z"
+         style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:1.00000003pt;stroke-opacity:1"
+         transform="matrix(-0.4,0,0,-0.4,-4,0)" />
+    </marker>
+    <marker
+       inkscape:stockid="Arrow1Mend"
+       orient="auto"
+       refY="0"
+       refX="0"
+       id="Arrow1Mend-0-5-8-8-9-3"
+       style="overflow:visible"
+       inkscape:isstock="true">
+      <path
+         inkscape:connector-curvature="0"
+         id="path940-4-6-2-2-7-3"
+         d="M 0,0 5,-5 -12.5,0 5,5 Z"
+         style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:1.00000003pt;stroke-opacity:1"
+         transform="matrix(-0.4,0,0,-0.4,-4,0)" />
+    </marker>
+    <marker
+       inkscape:stockid="Arrow1Mend"
+       orient="auto"
+       refY="0"
+       refX="0"
+       id="Arrow1Mend-0-5-8-8-9-1"
+       style="overflow:visible"
+       inkscape:isstock="true">
+      <path
+         inkscape:connector-curvature="0"
+         id="path940-4-6-2-2-7-5"
+         d="M 0,0 5,-5 -12.5,0 5,5 Z"
+         style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:1.00000003pt;stroke-opacity:1"
+         transform="matrix(-0.4,0,0,-0.4,-4,0)" />
+    </marker>
+    <marker
+       inkscape:stockid="Arrow1Mend"
+       orient="auto"
+       refY="0"
+       refX="0"
+       id="Arrow1Mend-0-5-8-8-9-1-4"
+       style="overflow:visible"
+       inkscape:isstock="true">
+      <path
+         inkscape:connector-curvature="0"
+         id="path940-4-6-2-2-7-5-1"
+         d="M 0,0 5,-5 -12.5,0 5,5 Z"
+         style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:1.00000003pt;stroke-opacity:1"
+         transform="matrix(-0.4,0,0,-0.4,-4,0)" />
+    </marker>
+    <marker
+       inkscape:stockid="Arrow1Mend"
+       orient="auto"
+       refY="0"
+       refX="0"
+       id="Arrow1Mend-0-5-8-8-9-1-41"
+       style="overflow:visible"
+       inkscape:isstock="true">
+      <path
+         inkscape:connector-curvature="0"
+         id="path940-4-6-2-2-7-5-9"
+         d="M 0,0 5,-5 -12.5,0 5,5 Z"
+         style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:1.00000003pt;stroke-opacity:1"
+         transform="matrix(-0.4,0,0,-0.4,-4,0)" />
+    </marker>
+    <marker
+       inkscape:stockid="Arrow1Mend"
+       orient="auto"
+       refY="0"
+       refX="0"
+       id="Arrow1Mend-0-5-8-8-9-1-41-4"
+       style="overflow:visible"
+       inkscape:isstock="true">
+      <path
+         inkscape:connector-curvature="0"
+         id="path940-4-6-2-2-7-5-9-8"
+         d="M 0,0 5,-5 -12.5,0 5,5 Z"
+         style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:1.00000003pt;stroke-opacity:1"
+         transform="matrix(-0.4,0,0,-0.4,-4,0)" />
+    </marker>
+    <marker
+       inkscape:stockid="Arrow1Mend"
+       orient="auto"
+       refY="0"
+       refX="0"
+       id="Arrow1Mend-0-5-8-8-9-1-41-4-2"
+       style="overflow:visible"
+       inkscape:isstock="true">
+      <path
+         inkscape:connector-curvature="0"
+         id="path940-4-6-2-2-7-5-9-8-4"
+         d="M 0,0 5,-5 -12.5,0 5,5 Z"
+         style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:1.00000003pt;stroke-opacity:1"
+         transform="matrix(-0.4,0,0,-0.4,-4,0)" />
+    </marker>
+    <marker
+       inkscape:stockid="Arrow1Mend"
+       orient="auto"
+       refY="0"
+       refX="0"
+       id="Arrow1Mend-0-5-8-8-9-1-41-4-2-5"
+       style="overflow:visible"
+       inkscape:isstock="true">
+      <path
+         inkscape:connector-curvature="0"
+         id="path940-4-6-2-2-7-5-9-8-4-0"
+         d="M 0,0 5,-5 -12.5,0 5,5 Z"
+         style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:1.00000003pt;stroke-opacity:1"
+         transform="matrix(-0.4,0,0,-0.4,-4,0)" />
+    </marker>
+    <marker
+       inkscape:stockid="Arrow1Mend"
+       orient="auto"
+       refY="0"
+       refX="0"
+       id="Arrow1Mend-0-5-8-8-9-1-41-4-2-5-0"
+       style="overflow:visible"
+       inkscape:isstock="true">
+      <path
+         inkscape:connector-curvature="0"
+         id="path940-4-6-2-2-7-5-9-8-4-0-1"
+         d="M 0,0 5,-5 -12.5,0 5,5 Z"
+         style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:1.00000003pt;stroke-opacity:1"
+         transform="matrix(-0.4,0,0,-0.4,-4,0)" />
+    </marker>
+    <marker
+       inkscape:stockid="Arrow1Mend"
+       orient="auto"
+       refY="0"
+       refX="0"
+       id="Arrow1Mend-0-5-8-8-9-1-41-4-2-5-0-5"
+       style="overflow:visible"
+       inkscape:isstock="true">
+      <path
+         inkscape:connector-curvature="0"
+         id="path940-4-6-2-2-7-5-9-8-4-0-1-6"
+         d="M 0,0 5,-5 -12.5,0 5,5 Z"
+         style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:1.00000003pt;stroke-opacity:1"
+         transform="matrix(-0.4,0,0,-0.4,-4,0)" />
+    </marker>
+    <marker
+       inkscape:stockid="Arrow1Mend"
+       orient="auto"
+       refY="0"
+       refX="0"
+       id="Arrow1Mend-0-5-8-8-9-1-41-4-2-5-0-5-2"
+       style="overflow:visible"
+       inkscape:isstock="true">
+      <path
+         inkscape:connector-curvature="0"
+         id="path940-4-6-2-2-7-5-9-8-4-0-1-6-0"
+         d="M 0,0 5,-5 -12.5,0 5,5 Z"
+         style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:1.00000003pt;stroke-opacity:1"
+         transform="matrix(-0.4,0,0,-0.4,-4,0)" />
+    </marker>
+    <marker
+       inkscape:stockid="Arrow1Mend"
+       orient="auto"
+       refY="0"
+       refX="0"
+       id="Arrow1Mend-0-5-8-8-9-3-3"
+       style="overflow:visible"
+       inkscape:isstock="true">
+      <path
+         inkscape:connector-curvature="0"
+         id="path940-4-6-2-2-7-3-4"
+         d="M 0,0 5,-5 -12.5,0 5,5 Z"
+         style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:1.00000003pt;stroke-opacity:1"
+         transform="matrix(-0.4,0,0,-0.4,-4,0)" />
+    </marker>
+  </defs>
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="0.98994949"
+     inkscape:cx="279.947"
+     inkscape:cy="380.77482"
+     inkscape:document-units="mm"
+     inkscape:current-layer="layer1"
+     showgrid="true"
+     fit-margin-top="0"
+     fit-margin-left="0"
+     fit-margin-right="0"
+     fit-margin-bottom="0"
+     inkscape:window-width="1920"
+     inkscape:window-height="1027"
+     inkscape:window-x="-8"
+     inkscape:window-y="-8"
+     inkscape:window-maximized="1">
+    <inkscape:grid
+       type="xygrid"
+       id="grid5467"
+       originx="-12.964642"
+       originy="-177.00621" />
+  </sodipodi:namedview>
   <metadata
-     id="comparer-metadata13">
+     id="metadata4919">
     <rdf:RDF>
       <cc:Work
          rdf:about="">
@@ -26,102 +569,811 @@
       </cc:Work>
     </rdf:RDF>
   </metadata>
-  <defs
-     id="comparer-tet-12-defs11">
-    <marker
-       inkscape:stockid="comparer-Arrow1Lend"
-       orient="auto"
-       refY="0"
-       refX="0"
-       id="comparer-Arrow1Lend"
-       style="overflow:visible"
-       inkscape:isstock="true">
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(-12.964643,86.910421)">
+    <g
+       transform="matrix(0.26458333,0,0,0.26458333,346.60427,-94.054171)"
+       id="g2572"
+       inkscape:export-filename="c:\sa\papers\My\CodeProject\WebAudio\ChromaticKeyboard.GitHub\microtonal-chromatic-lattice-keyboard\article\SoundBuilder\graph.png"
+       inkscape:export-xdpi="60.240002"
+       inkscape:export-ydpi="60.240002">
+      <g
+         transform="translate(460)"
+         id="g1904-6">
+        <rect
+           style="opacity:1;fill:none;fill-opacity:1;stroke:#000000;stroke-width:2;stroke-linecap:square;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:markers stroke fill"
+           id="rect1368-1-1-4-8"
+           width="100"
+           height="100"
+           x="-890"
+           y="30" />
+        <g
+           id="g1305-3"
+           transform="translate(-275.35355,-125.24265)">
+          <rect
+             rx="16.4"
+             ry="10"
+             y="200.24265"
+             x="-545.65674"
+             height="10"
+             width="10"
+             id="rect1244-20"
+             style="opacity:1;fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:2;stroke-linecap:square;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:markers stroke fill" />
+          <rect
+             rx="16.4"
+             ry="10"
+             y="200.24265"
+             x="-593.63617"
+             height="10"
+             width="10"
+             id="rect1244-2-0"
+             style="opacity:1;fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:2;stroke-linecap:square;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:markers stroke fill" />
+          <rect
+             rx="16.4"
+             ry="10"
+             y="200.24265"
+             x="-569.64648"
+             height="10"
+             width="10"
+             id="rect1244-2-1-3"
+             style="opacity:1;fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:2;stroke-linecap:square;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:markers stroke fill" />
+        </g>
+      </g>
+      <g
+         transform="translate(360,-240)"
+         id="g1921-9-2">
+        <rect
+           style="opacity:1;fill:none;fill-opacity:1;stroke:#000000;stroke-width:2;stroke-linecap:square;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:markers stroke fill"
+           id="rect1368-1-1-4-7-4-4"
+           width="100"
+           height="100"
+           x="-890"
+           y="270" />
+        <path
+           style="fill:none;stroke:#000000;stroke-width:2;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;marker-end:url(#Arrow1Mend-0-9-0)"
+           d="m -876.03993,356.03993 c 70,-70 70,-70 70,-70"
+           id="path929-9-3"
+           inkscape:connector-curvature="0" />
+      </g>
+      <g
+         transform="translate(260,-120)"
+         id="g1911-5">
+        <g
+           id="g1507-2"
+           transform="translate(5.0000028,7)">
+          <path
+             sodipodi:nodetypes="cccsccsccsccc"
+             inkscape:connector-curvature="0"
+             id="path901-8"
+             d="m -838.58302,192.99766 c 0.41207,-7.63067 0.82415,-15.25203 1.24443,-21.62337 0.33827,-5.15864 0.68064,-9.45438 1.03326,-12.31822 0.30751,-2.50936 0.61709,-3.85265 0.93076,-3.85265 0.31367,0 0.62118,1.34329 0.93075,3.85265 0.35263,2.86384 0.69294,7.15958 1.03327,12.31822 0.42027,6.37134 0.83234,13.99269 1.24442,21.62337 0.41207,7.63068 0.82414,15.24737 1.24442,21.62804 0.34033,5.15863 0.68065,9.45439 1.03326,12.31823 0.30957,2.50935 0.6171,3.85265 0.93076,3.85265 0.31572,0 0.62324,-1.3433 0.93076,-3.85265 0.35262,-2.86384 0.69499,-7.1596 1.03531,-12.31823 0.41822,-6.38067 0.83235,-13.99736 1.24237,-21.62804"
+             style="fill:none;stroke:#000000;stroke-width:1.98940015;stroke-linecap:butt;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+          <path
+             sodipodi:nodetypes="cccsccsccsccc"
+             inkscape:connector-curvature="0"
+             id="path899-5"
+             d="m -851.41679,192.99766 c 0.41207,-7.63067 0.82415,-15.25203 1.24442,-21.62337 0.33827,-5.15864 0.68064,-9.45438 1.03327,-12.31822 0.30751,-2.50936 0.61708,-3.85265 0.93075,-3.85265 0.31366,0 0.62119,1.34329 0.93076,3.85265 0.35261,2.86384 0.69293,7.15958 1.03326,12.31822 0.42027,6.37134 0.83235,13.99269 1.24443,21.62337 0.41207,7.63068 0.82414,15.24737 1.24441,21.62804 0.34032,5.15863 0.68064,9.45439 1.03327,12.31823 0.30957,2.50935 0.61708,3.85265 0.93075,3.85265 0.31572,0 0.62325,-1.3433 0.93076,-3.85265 0.35262,-2.86384 0.69499,-7.1596 1.03531,-12.31823 0.41823,-6.38067 0.83236,-13.99736 1.24238,-21.62804"
+             style="fill:none;stroke:#000000;stroke-width:1.98940015;stroke-linecap:butt;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+          <path
+             sodipodi:nodetypes="cccscccccsccc"
+             inkscape:connector-curvature="0"
+             id="sine-curve-8"
+             d="m -864.25077,192.99766 c 0.41207,-7.63067 0.82415,-15.25203 1.24401,-21.62337 0.33991,-5.15864 0.68228,-9.45438 1.03387,-12.31822 0.30856,-2.50936 0.61628,-3.85265 0.93056,-3.85265 0.31469,0 0.62241,1.34329 0.93116,3.85265 0.3514,2.86384 0.69356,7.15958 1.03367,12.31822 0.41987,6.37134 0.83174,13.99269 1.24443,21.62337 0.41208,7.63068 0.82395,15.24737 1.24402,21.62804 0.33929,5.15863 0.68146,9.45439 1.03388,12.31823 0.30854,2.50935 0.61626,3.85265 0.93075,3.85265 0.31449,0 0.62201,-1.3433 0.93035,-3.85265 0.35139,-2.86384 0.69376,-7.1596 1.03408,-12.31823 0.42007,-6.38067 0.83317,-13.99736 1.2432,-21.62804"
+             style="fill:none;stroke:#000000;stroke-width:1.98940015;stroke-linecap:butt;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+        </g>
+        <rect
+           style="opacity:1;fill:none;fill-opacity:1;stroke:#000000;stroke-width:2;stroke-linecap:square;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:markers stroke fill"
+           id="rect1368-1-1-4-5-6"
+           width="100"
+           height="100"
+           x="-890"
+           y="150" />
+      </g>
+    </g>
+    <g
+       transform="matrix(0.26458333,0,0,0.26458333,346.60427,85.86251)"
+       id="g2572-1"
+       inkscape:export-filename="c:\sa\papers\My\CodeProject\WebAudio\ChromaticKeyboard.GitHub\microtonal-chromatic-lattice-keyboard\article\SoundBuilder\graph.png"
+       inkscape:export-xdpi="60.240002"
+       inkscape:export-ydpi="60.240002">
+      <g
+         transform="translate(460)"
+         id="g1904-6-4">
+        <rect
+           style="opacity:1;fill:none;fill-opacity:1;stroke:#000000;stroke-width:2;stroke-linecap:square;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:markers stroke fill"
+           id="rect1368-1-1-4-8-6"
+           width="100"
+           height="100"
+           x="-890"
+           y="30" />
+        <g
+           id="g1305-3-0"
+           transform="translate(-275.35355,-125.24265)">
+          <rect
+             rx="16.4"
+             ry="10"
+             y="200.24265"
+             x="-545.65674"
+             height="10"
+             width="10"
+             id="rect1244-20-1"
+             style="opacity:1;fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:2;stroke-linecap:square;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:markers stroke fill" />
+          <rect
+             rx="16.4"
+             ry="10"
+             y="200.24265"
+             x="-593.63617"
+             height="10"
+             width="10"
+             id="rect1244-2-0-1"
+             style="opacity:1;fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:2;stroke-linecap:square;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:markers stroke fill" />
+          <rect
+             rx="16.4"
+             ry="10"
+             y="200.24265"
+             x="-569.64648"
+             height="10"
+             width="10"
+             id="rect1244-2-1-3-4"
+             style="opacity:1;fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:2;stroke-linecap:square;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:markers stroke fill" />
+        </g>
+      </g>
+      <g
+         transform="translate(360,-240)"
+         id="g1921-9-2-5">
+        <rect
+           style="opacity:1;fill:none;fill-opacity:1;stroke:#000000;stroke-width:2;stroke-linecap:square;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:markers stroke fill"
+           id="rect1368-1-1-4-7-4-4-3"
+           width="100"
+           height="100"
+           x="-890"
+           y="270" />
+        <path
+           style="fill:none;stroke:#000000;stroke-width:2;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;marker-end:url(#Arrow1Mend-0-9-0-0)"
+           d="m -876.03993,356.03993 c 70,-70 70,-70 70,-70"
+           id="path929-9-3-0"
+           inkscape:connector-curvature="0" />
+      </g>
+      <g
+         transform="translate(260,-120)"
+         id="g1911-5-0">
+        <g
+           id="g1507-2-7"
+           transform="translate(5.0000028,7)">
+          <path
+             sodipodi:nodetypes="cccsccsccsccc"
+             inkscape:connector-curvature="0"
+             id="path901-8-9"
+             d="m -838.58302,192.99766 c 0.41207,-7.63067 0.82415,-15.25203 1.24443,-21.62337 0.33827,-5.15864 0.68064,-9.45438 1.03326,-12.31822 0.30751,-2.50936 0.61709,-3.85265 0.93076,-3.85265 0.31367,0 0.62118,1.34329 0.93075,3.85265 0.35263,2.86384 0.69294,7.15958 1.03327,12.31822 0.42027,6.37134 0.83234,13.99269 1.24442,21.62337 0.41207,7.63068 0.82414,15.24737 1.24442,21.62804 0.34033,5.15863 0.68065,9.45439 1.03326,12.31823 0.30957,2.50935 0.6171,3.85265 0.93076,3.85265 0.31572,0 0.62324,-1.3433 0.93076,-3.85265 0.35262,-2.86384 0.69499,-7.1596 1.03531,-12.31823 0.41822,-6.38067 0.83235,-13.99736 1.24237,-21.62804"
+             style="fill:none;stroke:#000000;stroke-width:1.98940015;stroke-linecap:butt;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+          <path
+             sodipodi:nodetypes="cccsccsccsccc"
+             inkscape:connector-curvature="0"
+             id="path899-5-1"
+             d="m -851.41679,192.99766 c 0.41207,-7.63067 0.82415,-15.25203 1.24442,-21.62337 0.33827,-5.15864 0.68064,-9.45438 1.03327,-12.31822 0.30751,-2.50936 0.61708,-3.85265 0.93075,-3.85265 0.31366,0 0.62119,1.34329 0.93076,3.85265 0.35261,2.86384 0.69293,7.15958 1.03326,12.31822 0.42027,6.37134 0.83235,13.99269 1.24443,21.62337 0.41207,7.63068 0.82414,15.24737 1.24441,21.62804 0.34032,5.15863 0.68064,9.45439 1.03327,12.31823 0.30957,2.50935 0.61708,3.85265 0.93075,3.85265 0.31572,0 0.62325,-1.3433 0.93076,-3.85265 0.35262,-2.86384 0.69499,-7.1596 1.03531,-12.31823 0.41823,-6.38067 0.83236,-13.99736 1.24238,-21.62804"
+             style="fill:none;stroke:#000000;stroke-width:1.98940015;stroke-linecap:butt;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+          <path
+             sodipodi:nodetypes="cccscccccsccc"
+             inkscape:connector-curvature="0"
+             id="sine-curve-8-1"
+             d="m -864.25077,192.99766 c 0.41207,-7.63067 0.82415,-15.25203 1.24401,-21.62337 0.33991,-5.15864 0.68228,-9.45438 1.03387,-12.31822 0.30856,-2.50936 0.61628,-3.85265 0.93056,-3.85265 0.31469,0 0.62241,1.34329 0.93116,3.85265 0.3514,2.86384 0.69356,7.15958 1.03367,12.31822 0.41987,6.37134 0.83174,13.99269 1.24443,21.62337 0.41208,7.63068 0.82395,15.24737 1.24402,21.62804 0.33929,5.15863 0.68146,9.45439 1.03388,12.31823 0.30854,2.50935 0.61626,3.85265 0.93075,3.85265 0.31449,0 0.62201,-1.3433 0.93035,-3.85265 0.35139,-2.86384 0.69376,-7.1596 1.03408,-12.31823 0.42007,-6.38067 0.83317,-13.99736 1.2432,-21.62804"
+             style="fill:none;stroke:#000000;stroke-width:1.98940015;stroke-linecap:butt;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+        </g>
+        <rect
+           style="opacity:1;fill:none;fill-opacity:1;stroke:#000000;stroke-width:2;stroke-linecap:square;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:markers stroke fill"
+           id="rect1368-1-1-4-5-6-8"
+           width="100"
+           height="100"
+           x="-890"
+           y="150" />
+      </g>
+    </g>
+    <g
+       transform="matrix(0.26458333,0,0,0.26458333,468.31267,-41.137498)"
+       id="g1911"
+       inkscape:export-xdpi="60.240002"
+       inkscape:export-ydpi="60.240002"
+       inkscape:export-filename="c:\sa\papers\My\CodeProject\WebAudio\ChromaticKeyboard.GitHub\microtonal-chromatic-lattice-keyboard\article\SoundBuilder\graph.png">
+      <g
+         transform="translate(5.0000028,7)"
+         id="g1507">
+        <path
+           style="fill:none;stroke:#000000;stroke-width:1.98940015;stroke-linecap:butt;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+           d="m -838.58302,192.99766 c 0.41207,-7.63067 0.82415,-15.25203 1.24443,-21.62337 0.33827,-5.15864 0.68064,-9.45438 1.03326,-12.31822 0.30751,-2.50936 0.61709,-3.85265 0.93076,-3.85265 0.31367,0 0.62118,1.34329 0.93075,3.85265 0.35263,2.86384 0.69294,7.15958 1.03327,12.31822 0.42027,6.37134 0.83234,13.99269 1.24442,21.62337 0.41207,7.63068 0.82414,15.24737 1.24442,21.62804 0.34033,5.15863 0.68065,9.45439 1.03326,12.31823 0.30957,2.50935 0.6171,3.85265 0.93076,3.85265 0.31572,0 0.62324,-1.3433 0.93076,-3.85265 0.35262,-2.86384 0.69499,-7.1596 1.03531,-12.31823 0.41822,-6.38067 0.83235,-13.99736 1.24237,-21.62804"
+           id="path901"
+           inkscape:connector-curvature="0"
+           sodipodi:nodetypes="cccsccsccsccc" />
+        <path
+           style="fill:none;stroke:#000000;stroke-width:1.98940015;stroke-linecap:butt;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+           d="m -851.41679,192.99766 c 0.41207,-7.63067 0.82415,-15.25203 1.24442,-21.62337 0.33827,-5.15864 0.68064,-9.45438 1.03327,-12.31822 0.30751,-2.50936 0.61708,-3.85265 0.93075,-3.85265 0.31366,0 0.62119,1.34329 0.93076,3.85265 0.35261,2.86384 0.69293,7.15958 1.03326,12.31822 0.42027,6.37134 0.83235,13.99269 1.24443,21.62337 0.41207,7.63068 0.82414,15.24737 1.24441,21.62804 0.34032,5.15863 0.68064,9.45439 1.03327,12.31823 0.30957,2.50935 0.61708,3.85265 0.93075,3.85265 0.31572,0 0.62325,-1.3433 0.93076,-3.85265 0.35262,-2.86384 0.69499,-7.1596 1.03531,-12.31823 0.41823,-6.38067 0.83236,-13.99736 1.24238,-21.62804"
+           id="path899"
+           inkscape:connector-curvature="0"
+           sodipodi:nodetypes="cccsccsccsccc" />
+        <path
+           style="fill:none;stroke:#000000;stroke-width:1.98940015;stroke-linecap:butt;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+           d="m -864.25077,192.99766 c 0.41207,-7.63067 0.82415,-15.25203 1.24401,-21.62337 0.33991,-5.15864 0.68228,-9.45438 1.03387,-12.31822 0.30856,-2.50936 0.61628,-3.85265 0.93056,-3.85265 0.31469,0 0.62241,1.34329 0.93116,3.85265 0.3514,2.86384 0.69356,7.15958 1.03367,12.31822 0.41987,6.37134 0.83174,13.99269 1.24443,21.62337 0.41208,7.63068 0.82395,15.24737 1.24402,21.62804 0.33929,5.15863 0.68146,9.45439 1.03388,12.31823 0.30854,2.50935 0.61626,3.85265 0.93075,3.85265 0.31449,0 0.62201,-1.3433 0.93035,-3.85265 0.35139,-2.86384 0.69376,-7.1596 1.03408,-12.31823 0.42007,-6.38067 0.83317,-13.99736 1.2432,-21.62804"
+           id="sine-curve"
+           inkscape:connector-curvature="0"
+           sodipodi:nodetypes="cccscccccsccc" />
+      </g>
+      <rect
+         y="150"
+         x="-890"
+         height="100"
+         width="100"
+         id="rect1368-1-1-4-5"
+         style="opacity:1;fill:none;fill-opacity:1;stroke:#000000;stroke-width:2;stroke-linecap:square;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:markers stroke fill" />
+    </g>
+    <g
+       transform="matrix(0.26458333,0,0,0.26458333,-10.583336,132.95833)"
+       id="g1921"
+       inkscape:export-filename="c:\sa\papers\My\CodeProject\WebAudio\ChromaticKeyboard.GitHub\microtonal-chromatic-lattice-keyboard\article\SoundBuilder\gain.png"
+       inkscape:export-xdpi="60.240002"
+       inkscape:export-ydpi="60.240002">
+      <rect
+         y="270"
+         x="-890"
+         height="100"
+         width="100"
+         id="rect1368-1-1-4-7"
+         style="opacity:1;fill:none;fill-opacity:1;stroke:#000000;stroke-width:2;stroke-linecap:square;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:markers stroke fill" />
       <path
-         id="comparer-path4594"
-         d="M 0,0 5,-5 -12.5,0 5,5 Z"
-         style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:1.00000003pt;stroke-opacity:1"
-         transform="matrix(-0.8,0,0,-0.8,-10,0)"
-         inkscape:connector-curvature="0" />
-    </marker>
-    <marker
-       inkscape:stockid="comparer-Arrow1Lstart"
-       orient="auto"
-       refY="0"
-       refX="0"
-       id="comparer-Arrow1Lstart"
-       style="overflow:visible"
-       inkscape:isstock="true">
+         inkscape:connector-curvature="0"
+         id="path929"
+         d="m -876.03993,356.03993 c 70,-70 70,-70 70,-70"
+         style="fill:none;stroke:#000000;stroke-width:2;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;marker-end:url(#Arrow1Mend-0)" />
+    </g>
+    <g
+       transform="matrix(0.26458333,0,0,0.26458333,-10.583336,132.95833)"
+       id="g1928"
+       inkscape:export-filename="c:\sa\papers\My\CodeProject\WebAudio\ChromaticKeyboard.GitHub\microtonal-chromatic-lattice-keyboard\article\SoundBuilder\envelope.png"
+       inkscape:export-xdpi="60.240002"
+       inkscape:export-ydpi="60.240002">
+      <rect
+         y="390"
+         x="-890"
+         height="100"
+         width="100"
+         id="rect1368-1-1-4-7-6"
+         style="opacity:1;fill:none;fill-opacity:1;stroke:#000000;stroke-width:2;stroke-linecap:square;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:markers stroke fill" />
+      <g
+         style="stroke-width:2.66666675"
+         transform="matrix(0.375,0,0,0.375,-720,376.25)"
+         id="g932">
+        <rect
+           style="opacity:1;fill:none;fill-opacity:1;stroke:#000000;stroke-width:5.33333349;stroke-linecap:square;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:markers stroke fill"
+           id="rect917"
+           width="170"
+           height="110"
+           x="-405"
+           y="115"
+           rx="1.2682292e-05"
+           ry="128.54027" />
+        <path
+           style="fill:none;stroke:#000000;stroke-width:5.33333349;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+           d="m -405,217 85,-62 85,62 v 8 h -170"
+           id="path927"
+           inkscape:connector-curvature="0"
+           sodipodi:nodetypes="ccccc" />
+        <path
+           style="fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:5.33333349;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+           d="m -325,170 h 10 l 80,-45 v -10 h -170 v 10 l 80,45 v 0"
+           id="path923"
+           inkscape:connector-curvature="0" />
+      </g>
+    </g>
+    <g
+       transform="matrix(0.26458333,0,0,0.26458333,468.31268,-123.15832)"
+       id="g1921-1"
+       inkscape:export-filename="c:\sa\papers\My\CodeProject\WebAudio\ChromaticKeyboard.GitHub\microtonal-chromatic-lattice-keyboard\article\SoundBuilder\graph.png"
+       inkscape:export-xdpi="60.240002"
+       inkscape:export-ydpi="60.240002">
+      <rect
+         y="270"
+         x="-890"
+         height="100"
+         width="100"
+         id="rect1368-1-1-4-7-0"
+         style="opacity:1;fill:none;fill-opacity:1;stroke:#000000;stroke-width:2;stroke-linecap:square;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:markers stroke fill" />
       <path
-         id="comparer-path4591"
-         d="M 0,0 5,-5 -12.5,0 5,5 Z"
-         style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:1.00000003pt;stroke-opacity:1"
-         transform="matrix(0.8,0,0,0.8,10,0)"
-         inkscape:connector-curvature="0" />
-    </marker>
-  </defs>
-  <sodipodi:namedview
-     pagecolor="#ffffff"
-     bordercolor="#666666"
-     borderopacity="1"
-     objecttolerance="10"
-     gridtolerance="10"
-     guidetolerance="10"
-     inkscape:pageopacity="0"
-     inkscape:pageshadow="2"
-     inkscape:window-width="1366"
-     inkscape:window-height="716"
-     id="comparer-namedview9"
-     showgrid="true"
-     inkscape:zoom="2.8284272"
-     inkscape:cx="-36.455576"
-     inkscape:cy="30.852048"
-     inkscape:window-x="-8"
-     inkscape:window-y="-8"
-     inkscape:window-maximized="1"
-     inkscape:current-layer="comparer-main"
-     fit-margin-top="0"
-     fit-margin-left="0"
-     fit-margin-right="0"
-     fit-margin-bottom="0"
-     showguides="false">
-    <inkscape:grid
-       type="xygrid"
-       originx="922.32162"
-       originy="-157.67843"
-       id="comparer-grid4" />
-  </sodipodi:namedview>
-  <circle
-     style="opacity:1;vector-effect:none;fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:0.30000001;stroke-linecap:square;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:0;paint-order:fill markers stroke"
-     id="path4503"
-     cx="42.321575"
-     cy="42.321575"
-     r="42.171574" />
-  <text
-     xml:space="preserve"
-     style="font-style:normal;font-weight:normal;font-size:18.66666603px;line-height:0%;font-family:Sans;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-     x="382.32156"
-     y="-67.678436"
-     id="comparer-text8"><tspan
-       sodipodi:role="line"
-       x="382.32156"
-       y="-62.314938"
-       id="comparer-tspan6" /></text>
-  <path
-     style="opacity:1;vector-effect:none;fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:1;stroke-linecap:square;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:fill markers stroke"
-     d="M 42.221556,2.3211294 A 40,40 0 0 0 2.2215577,42.321128 a 40,40 0 0 0 39.9999983,40 40,40 0 0 0 0.0996,-0.004 V 2.3268894 a 40,40 0 0 0 -0.0996,-0.006 z"
-     id="comparer-left"
-     inkscape:connector-curvature="0"
-     inkscape:label="comparer-left" />
-  <path
-     style="opacity:1;vector-effect:none;fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:1;stroke-linecap:square;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:fill markers stroke"
-     d="m 42.321156,2.3211294 a 40,40 0 0 1 40,39.9999986 40,40 0 0 1 -40,40 40,40 0 0 1 -0.0996,-0.004 V 2.3268894 a 40,40 0 0 1 0.0996,-0.006 z"
-     id="comparer-right"
-     inkscape:connector-curvature="0"
-     inkscape:label="comparer-right" />
-  <path
-     style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-start:url(#comparer-Arrow1Lstart);marker-end:url(#comparer-Arrow1Lend)"
-     d="m 15.250506,42.321568 h 54.14212"
-     id="comparer-path4589"
-     inkscape:connector-curvature="0"
-     sodipodi:nodetypes="cc" />
+         inkscape:connector-curvature="0"
+         id="path929-9"
+         d="m -876.03993,356.03993 c 70,-70 70,-70 70,-70"
+         style="fill:none;stroke:#000000;stroke-width:2;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;marker-end:url(#Arrow1Mend-0-5)" />
+    </g>
+    <g
+       transform="matrix(0.26458333,0,0,0.26458333,412.75016,-104.63749)"
+       id="g1928-9"
+       inkscape:export-filename="c:\sa\papers\My\CodeProject\WebAudio\ChromaticKeyboard.GitHub\microtonal-chromatic-lattice-keyboard\article\SoundBuilder\graph.png"
+       inkscape:export-xdpi="60.240002"
+       inkscape:export-ydpi="60.240002">
+      <rect
+         y="390"
+         x="-890"
+         height="100"
+         width="100"
+         id="rect1368-1-1-4-7-6-4"
+         style="opacity:1;fill:none;fill-opacity:1;stroke:#000000;stroke-width:2;stroke-linecap:square;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:markers stroke fill" />
+      <g
+         style="stroke-width:2.66666675"
+         transform="matrix(0.375,0,0,0.375,-720,376.25)"
+         id="g932-4">
+        <rect
+           style="opacity:1;fill:none;fill-opacity:1;stroke:#000000;stroke-width:5.33333349;stroke-linecap:square;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:markers stroke fill"
+           id="rect917-5"
+           width="170"
+           height="110"
+           x="-405"
+           y="115"
+           rx="1.2682292e-05"
+           ry="128.54027" />
+        <path
+           style="fill:none;stroke:#000000;stroke-width:5.33333349;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+           d="m -405,217 85,-62 85,62 v 8 h -170"
+           id="path927-7"
+           inkscape:connector-curvature="0"
+           sodipodi:nodetypes="ccccc" />
+        <path
+           style="fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:5.33333349;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+           d="m -325,170 h 10 l 80,-45 v -10 h -170 v 10 l 80,45 v 0"
+           id="path923-6"
+           inkscape:connector-curvature="0" />
+      </g>
+    </g>
+    <g
+       transform="matrix(0.26458333,0,0,0.26458333,468.31268,-12.033314)"
+       id="g1921-1-9"
+       inkscape:export-filename="c:\sa\papers\My\CodeProject\WebAudio\ChromaticKeyboard.GitHub\microtonal-chromatic-lattice-keyboard\article\SoundBuilder\graph.png"
+       inkscape:export-xdpi="60.240002"
+       inkscape:export-ydpi="60.240002">
+      <rect
+         y="270"
+         x="-890"
+         height="100"
+         width="100"
+         id="rect1368-1-1-4-7-0-9"
+         style="opacity:1;fill:none;fill-opacity:1;stroke:#000000;stroke-width:2;stroke-linecap:square;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:markers stroke fill" />
+      <path
+         inkscape:connector-curvature="0"
+         id="path929-9-5"
+         d="m -876.03993,356.03993 c 70,-70 70,-70 70,-70"
+         style="fill:none;stroke:#000000;stroke-width:2;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;marker-end:url(#Arrow1Mend-0-5-9)" />
+    </g>
+    <g
+       transform="matrix(0.26458333,0,0,0.26458333,412.75016,-54.36665)"
+       id="g1928-9-7"
+       inkscape:export-filename="c:\sa\papers\My\CodeProject\WebAudio\ChromaticKeyboard.GitHub\microtonal-chromatic-lattice-keyboard\article\SoundBuilder\graph.png"
+       inkscape:export-xdpi="60.240002"
+       inkscape:export-ydpi="60.240002">
+      <rect
+         y="390"
+         x="-890"
+         height="100"
+         width="100"
+         id="rect1368-1-1-4-7-6-4-5"
+         style="opacity:1;fill:none;fill-opacity:1;stroke:#000000;stroke-width:2;stroke-linecap:square;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:markers stroke fill" />
+      <g
+         style="stroke-width:2.66666675"
+         transform="matrix(0.375,0,0,0.375,-720,376.25)"
+         id="g932-4-3">
+        <rect
+           style="opacity:1;fill:none;fill-opacity:1;stroke:#000000;stroke-width:5.33333349;stroke-linecap:square;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:markers stroke fill"
+           id="rect917-5-1"
+           width="170"
+           height="110"
+           x="-405"
+           y="115"
+           rx="1.2682292e-05"
+           ry="128.54027" />
+        <path
+           style="fill:none;stroke:#000000;stroke-width:5.33333349;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+           d="m -405,217 85,-62 85,62 v 8 h -170"
+           id="path927-7-6"
+           inkscape:connector-curvature="0"
+           sodipodi:nodetypes="ccccc" />
+        <path
+           style="fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:5.33333349;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+           d="m -325,170 h 10 l 80,-45 v -10 h -170 v 10 l 80,45 v 0"
+           id="path923-6-3"
+           inkscape:connector-curvature="0" />
+      </g>
+    </g>
+    <g
+       transform="matrix(0.26458333,0,0,0.26458333,230.18486,0.93125263)"
+       id="g1921-1-0"
+       inkscape:export-filename="c:\sa\papers\My\CodeProject\WebAudio\ChromaticKeyboard.GitHub\microtonal-chromatic-lattice-keyboard\article\SoundBuilder\graph.png"
+       inkscape:export-xdpi="60.240002"
+       inkscape:export-ydpi="60.240002">
+      <rect
+         y="270"
+         x="-890"
+         height="100"
+         width="100"
+         id="rect1368-1-1-4-7-0-4"
+         style="opacity:1;fill:none;fill-opacity:1;stroke:#000000;stroke-width:2;stroke-linecap:square;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:markers stroke fill" />
+      <path
+         inkscape:connector-curvature="0"
+         id="path929-9-33"
+         d="m -876.03993,356.03993 c 70,-70 70,-70 70,-70"
+         style="fill:none;stroke:#000000;stroke-width:2;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;marker-end:url(#Arrow1Mend-0-5-8)" />
+    </g>
+    <path
+       style="fill:none;stroke:#000000;stroke-width:0.52916664;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       d="M 21.431307,106.76459 H 16.13964 v 5.29167 h 5.291667 l 5.291667,5.29167 v -15.87501 l -5.291667,5.29167"
+       id="path6505"
+       inkscape:connector-curvature="0"
+       inkscape:export-filename="c:\sa\papers\My\CodeProject\WebAudio\ChromaticKeyboard.GitHub\microtonal-chromatic-lattice-keyboard\article\SoundBuilder\graph.png"
+       inkscape:export-xdpi="60.240002"
+       inkscape:export-ydpi="60.240002" />
+    <g
+       transform="matrix(0.26458333,0,0,0.26458333,230.18486,-33.464574)"
+       id="g1921-1-0-7"
+       inkscape:export-filename="c:\sa\papers\My\CodeProject\WebAudio\ChromaticKeyboard.GitHub\microtonal-chromatic-lattice-keyboard\article\SoundBuilder\graph.png"
+       inkscape:export-xdpi="60.240002"
+       inkscape:export-ydpi="60.240002">
+      <rect
+         y="270"
+         x="-890"
+         height="100"
+         width="100"
+         id="rect1368-1-1-4-7-0-4-9"
+         style="opacity:1;fill:none;fill-opacity:1;stroke:#000000;stroke-width:2;stroke-linecap:square;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:markers stroke fill" />
+      <path
+         inkscape:connector-curvature="0"
+         id="path929-9-33-2"
+         d="m -876.03993,356.03993 c 70,-70 70,-70 70,-70"
+         style="fill:none;stroke:#000000;stroke-width:2;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;marker-end:url(#Arrow1Mend-0-5-8-8)" />
+    </g>
+    <rect
+       style="opacity:1;fill:none;fill-opacity:1;stroke:#000000;stroke-width:0.52916664;stroke-linecap:square;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:markers stroke fill"
+       id="rect1368-4"
+       width="26.458334"
+       height="26.458334"
+       x="74.080696"
+       y="0.9312517"
+       inkscape:export-filename="c:\sa\papers\My\CodeProject\WebAudio\ChromaticKeyboard.GitHub\microtonal-chromatic-lattice-keyboard\article\SoundBuilder\graph.png"
+       inkscape:export-xdpi="60.240002"
+       inkscape:export-ydpi="60.240002" />
+    <rect
+       style="opacity:1;fill:none;fill-opacity:1;stroke:#000000;stroke-width:0.52916664;stroke-linecap:square;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:markers stroke fill"
+       id="rect1368-5"
+       width="26.458334"
+       height="26.458334"
+       x="47.622341"
+       y="0.9312517"
+       inkscape:export-filename="c:\sa\papers\My\CodeProject\WebAudio\ChromaticKeyboard.GitHub\microtonal-chromatic-lattice-keyboard\article\SoundBuilder\graph.png"
+       inkscape:export-xdpi="60.240002"
+       inkscape:export-ydpi="60.240002" />
+    <g
+       id="g1904-7"
+       transform="matrix(0.26458333,0,0,0.26458333,256.64328,-7.0062483)"
+       inkscape:export-filename="c:\sa\papers\My\CodeProject\WebAudio\ChromaticKeyboard.GitHub\microtonal-chromatic-lattice-keyboard\article\SoundBuilder\graph.png"
+       inkscape:export-xdpi="60.240002"
+       inkscape:export-ydpi="60.240002">
+      <rect
+         y="30"
+         x="-890"
+         height="100"
+         width="100"
+         id="rect1368-1-1-4-4"
+         style="opacity:1;fill:none;fill-opacity:1;stroke:#000000;stroke-width:2;stroke-linecap:square;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:markers stroke fill" />
+      <g
+         transform="translate(-275.35355,-125.24265)"
+         id="g1305-1">
+        <rect
+           style="opacity:1;fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:2;stroke-linecap:square;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:markers stroke fill"
+           id="rect1244-0"
+           width="10"
+           height="10"
+           x="-545.65674"
+           y="200.24265"
+           ry="10"
+           rx="16.4" />
+        <rect
+           style="opacity:1;fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:2;stroke-linecap:square;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:markers stroke fill"
+           id="rect1244-2-8"
+           width="10"
+           height="10"
+           x="-593.63617"
+           y="200.24265"
+           ry="10"
+           rx="16.4" />
+        <rect
+           style="opacity:1;fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:2;stroke-linecap:square;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:markers stroke fill"
+           id="rect1244-2-1-0"
+           width="10"
+           height="10"
+           x="-569.64648"
+           y="200.24265"
+           ry="10"
+           rx="16.4" />
+      </g>
+    </g>
+    <path
+       style="fill:none;stroke:#000000;stroke-width:0.52916664;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;marker-end:url(#Arrow1Mend-0-96-40)"
+       d="M 79.356871,14.160417 H 68.773537"
+       id="path929-1-4"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="cc"
+       inkscape:export-filename="c:\sa\papers\My\CodeProject\WebAudio\ChromaticKeyboard.GitHub\microtonal-chromatic-lattice-keyboard\article\SoundBuilder\graph.png"
+       inkscape:export-xdpi="60.240002"
+       inkscape:export-ydpi="60.240002" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:0.52916664;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;marker-end:url(#Arrow1Mend-0-96-40-2)"
+       d="M 23.500523,14.160417 H 12.917193"
+       id="path929-1-4-4"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="cc"
+       inkscape:export-filename="c:\sa\papers\My\CodeProject\WebAudio\ChromaticKeyboard.GitHub\microtonal-chromatic-lattice-keyboard\article\SoundBuilder\graph.png"
+       inkscape:export-xdpi="60.240002"
+       inkscape:export-ydpi="60.240002" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:0.52916664;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;marker-end:url(#Arrow1Mend-0-96-40-5)"
+       d="M 56.506396,14.160417 H 45.923062"
+       id="path929-1-4-7"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="cc"
+       inkscape:export-filename="c:\sa\papers\My\CodeProject\WebAudio\ChromaticKeyboard.GitHub\microtonal-chromatic-lattice-keyboard\article\SoundBuilder\graph.png"
+       inkscape:export-xdpi="60.240002"
+       inkscape:export-ydpi="60.240002" />
+    <rect
+       style="opacity:1;fill:none;fill-opacity:1;stroke:#000000;stroke-width:0.52916664;stroke-linecap:square;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:markers stroke fill"
+       id="rect1368-1-77"
+       width="26.458334"
+       height="26.458334"
+       x="-5.2943115"
+       y="0.9312517"
+       inkscape:export-filename="c:\sa\papers\My\CodeProject\WebAudio\ChromaticKeyboard.GitHub\microtonal-chromatic-lattice-keyboard\article\SoundBuilder\graph.png"
+       inkscape:export-xdpi="60.240002"
+       inkscape:export-ydpi="60.240002" />
+    <g
+       transform="matrix(0.26458333,0,0,0.26458333,44.976542,-94.318751)"
+       id="g2687"
+       inkscape:export-filename="c:\sa\papers\My\CodeProject\WebAudio\ChromaticKeyboard.GitHub\microtonal-chromatic-lattice-keyboard\article\SoundBuilder\graph.png"
+       inkscape:export-xdpi="60.240002"
+       inkscape:export-ydpi="60.240002">
+      <g
+         id="g2623">
+        <g
+           id="g1921-9-8"
+           transform="translate(700,-140)">
+          <rect
+             y="270"
+             x="-890"
+             height="100"
+             width="100"
+             id="rect1368-1-1-4-7-4-0"
+             style="opacity:1;fill:none;fill-opacity:1;stroke:#000000;stroke-width:2;stroke-linecap:square;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:markers stroke fill" />
+          <path
+             inkscape:connector-curvature="0"
+             id="path929-9-0"
+             d="m -876.03993,356.03993 c 70,-70 70,-70 70,-70"
+             style="fill:none;stroke:#000000;stroke-width:2;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;marker-end:url(#Arrow1Mend-0-9-6-9)" />
+        </g>
+        <g
+           id="g1904-6-0-8"
+           transform="translate(700,200)">
+          <rect
+             y="30"
+             x="-890"
+             height="100"
+             width="100"
+             id="rect1368-1-1-4-8-3-9"
+             style="opacity:1;fill:none;fill-opacity:1;stroke:#000000;stroke-width:2;stroke-linecap:square;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:markers stroke fill" />
+          <g
+             transform="translate(-275.35355,-125.24265)"
+             id="g1305-3-2-4">
+            <rect
+               style="opacity:1;fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:2;stroke-linecap:square;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:markers stroke fill"
+               id="rect1244-20-8-5"
+               width="10"
+               height="10"
+               x="-545.65674"
+               y="200.24265"
+               ry="10"
+               rx="16.4" />
+            <rect
+               style="opacity:1;fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:2;stroke-linecap:square;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:markers stroke fill"
+               id="rect1244-2-0-0-5"
+               width="10"
+               height="10"
+               x="-593.63617"
+               y="200.24265"
+               ry="10"
+               rx="16.4" />
+            <rect
+               style="opacity:1;fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:2;stroke-linecap:square;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:markers stroke fill"
+               id="rect1244-2-1-3-0-1"
+               width="10"
+               height="10"
+               x="-569.64648"
+               y="200.24265"
+               ry="10"
+               rx="16.4" />
+          </g>
+        </g>
+        <g
+           id="g1911-5-8-0"
+           transform="translate(700,-120)">
+          <g
+             transform="translate(5.0000028,7)"
+             id="g1507-2-5-2">
+            <path
+               style="fill:none;stroke:#000000;stroke-width:1.98940015;stroke-linecap:butt;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+               d="m -838.58302,192.99766 c 0.41207,-7.63067 0.82415,-15.25203 1.24443,-21.62337 0.33827,-5.15864 0.68064,-9.45438 1.03326,-12.31822 0.30751,-2.50936 0.61709,-3.85265 0.93076,-3.85265 0.31367,0 0.62118,1.34329 0.93075,3.85265 0.35263,2.86384 0.69294,7.15958 1.03327,12.31822 0.42027,6.37134 0.83234,13.99269 1.24442,21.62337 0.41207,7.63068 0.82414,15.24737 1.24442,21.62804 0.34033,5.15863 0.68065,9.45439 1.03326,12.31823 0.30957,2.50935 0.6171,3.85265 0.93076,3.85265 0.31572,0 0.62324,-1.3433 0.93076,-3.85265 0.35262,-2.86384 0.69499,-7.1596 1.03531,-12.31823 0.41822,-6.38067 0.83235,-13.99736 1.24237,-21.62804"
+               id="path901-8-8-3"
+               inkscape:connector-curvature="0"
+               sodipodi:nodetypes="cccsccsccsccc" />
+            <path
+               style="fill:none;stroke:#000000;stroke-width:1.98940015;stroke-linecap:butt;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+               d="m -851.41679,192.99766 c 0.41207,-7.63067 0.82415,-15.25203 1.24442,-21.62337 0.33827,-5.15864 0.68064,-9.45438 1.03327,-12.31822 0.30751,-2.50936 0.61708,-3.85265 0.93075,-3.85265 0.31366,0 0.62119,1.34329 0.93076,3.85265 0.35261,2.86384 0.69293,7.15958 1.03326,12.31822 0.42027,6.37134 0.83235,13.99269 1.24443,21.62337 0.41207,7.63068 0.82414,15.24737 1.24441,21.62804 0.34032,5.15863 0.68064,9.45439 1.03327,12.31823 0.30957,2.50935 0.61708,3.85265 0.93075,3.85265 0.31572,0 0.62325,-1.3433 0.93076,-3.85265 0.35262,-2.86384 0.69499,-7.1596 1.03531,-12.31823 0.41823,-6.38067 0.83236,-13.99736 1.24238,-21.62804"
+               id="path899-5-6-0"
+               inkscape:connector-curvature="0"
+               sodipodi:nodetypes="cccsccsccsccc" />
+            <path
+               style="fill:none;stroke:#000000;stroke-width:1.98940015;stroke-linecap:butt;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+               d="m -864.25077,192.99766 c 0.41207,-7.63067 0.82415,-15.25203 1.24401,-21.62337 0.33991,-5.15864 0.68228,-9.45438 1.03387,-12.31822 0.30856,-2.50936 0.61628,-3.85265 0.93056,-3.85265 0.31469,0 0.62241,1.34329 0.93116,3.85265 0.3514,2.86384 0.69356,7.15958 1.03367,12.31822 0.41987,6.37134 0.83174,13.99269 1.24443,21.62337 0.41208,7.63068 0.82395,15.24737 1.24402,21.62804 0.33929,5.15863 0.68146,9.45439 1.03388,12.31823 0.30854,2.50935 0.61626,3.85265 0.93075,3.85265 0.31449,0 0.62201,-1.3433 0.93035,-3.85265 0.35139,-2.86384 0.69376,-7.1596 1.03408,-12.31823 0.42007,-6.38067 0.83317,-13.99736 1.2432,-21.62804"
+               id="sine-curve-8-1-1"
+               inkscape:connector-curvature="0"
+               sodipodi:nodetypes="cccscccccsccc" />
+          </g>
+          <rect
+             y="150"
+             x="-890"
+             height="100"
+             width="100"
+             id="rect1368-1-1-4-5-6-0-2"
+             style="opacity:1;fill:none;fill-opacity:1;stroke:#000000;stroke-width:2;stroke-linecap:square;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:markers stroke fill" />
+        </g>
+      </g>
+    </g>
+    <g
+       transform="matrix(0.26458333,0,0,0.26458333,118.79799,30.035423)"
+       id="g2705"
+       inkscape:export-filename="c:\sa\papers\My\CodeProject\WebAudio\ChromaticKeyboard.GitHub\microtonal-chromatic-lattice-keyboard\article\SoundBuilder\graph.png"
+       inkscape:export-xdpi="60.240002"
+       inkscape:export-ydpi="60.240002">
+      <g
+         id="g2606">
+        <g
+           id="g1921-9-8-4"
+           transform="translate(580,-140)">
+          <rect
+             y="270"
+             x="-890"
+             height="100"
+             width="100"
+             id="rect1368-1-1-4-7-4-0-2"
+             style="opacity:1;fill:none;fill-opacity:1;stroke:#000000;stroke-width:2;stroke-linecap:square;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:markers stroke fill" />
+          <path
+             inkscape:connector-curvature="0"
+             id="path929-9-0-6"
+             d="m -876.03993,356.03993 c 70,-70 70,-70 70,-70"
+             style="fill:none;stroke:#000000;stroke-width:2;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;marker-end:url(#Arrow1Mend-0-9-6-7)" />
+        </g>
+        <g
+           id="g1904-6-0"
+           transform="translate(580)">
+          <rect
+             y="30"
+             x="-890"
+             height="100"
+             width="100"
+             id="rect1368-1-1-4-8-3"
+             style="opacity:1;fill:none;fill-opacity:1;stroke:#000000;stroke-width:2;stroke-linecap:square;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:markers stroke fill" />
+          <g
+             transform="translate(-275.35355,-125.24265)"
+             id="g1305-3-2">
+            <rect
+               style="opacity:1;fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:2;stroke-linecap:square;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:markers stroke fill"
+               id="rect1244-20-8"
+               width="10"
+               height="10"
+               x="-545.65674"
+               y="200.24265"
+               ry="10"
+               rx="16.4" />
+            <rect
+               style="opacity:1;fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:2;stroke-linecap:square;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:markers stroke fill"
+               id="rect1244-2-0-0"
+               width="10"
+               height="10"
+               x="-593.63617"
+               y="200.24265"
+               ry="10"
+               rx="16.4" />
+            <rect
+               style="opacity:1;fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:2;stroke-linecap:square;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:markers stroke fill"
+               id="rect1244-2-1-3-0"
+               width="10"
+               height="10"
+               x="-569.64648"
+               y="200.24265"
+               ry="10"
+               rx="16.4" />
+          </g>
+        </g>
+        <g
+           id="g1911-5-8-1"
+           transform="translate(580,80)">
+          <g
+             transform="translate(5.0000028,7)"
+             id="g1507-2-5-1">
+            <path
+               style="fill:none;stroke:#000000;stroke-width:1.98940015;stroke-linecap:butt;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+               d="m -838.58302,192.99766 c 0.41207,-7.63067 0.82415,-15.25203 1.24443,-21.62337 0.33827,-5.15864 0.68064,-9.45438 1.03326,-12.31822 0.30751,-2.50936 0.61709,-3.85265 0.93076,-3.85265 0.31367,0 0.62118,1.34329 0.93075,3.85265 0.35263,2.86384 0.69294,7.15958 1.03327,12.31822 0.42027,6.37134 0.83234,13.99269 1.24442,21.62337 0.41207,7.63068 0.82414,15.24737 1.24442,21.62804 0.34033,5.15863 0.68065,9.45439 1.03326,12.31823 0.30957,2.50935 0.6171,3.85265 0.93076,3.85265 0.31572,0 0.62324,-1.3433 0.93076,-3.85265 0.35262,-2.86384 0.69499,-7.1596 1.03531,-12.31823 0.41822,-6.38067 0.83235,-13.99736 1.24237,-21.62804"
+               id="path901-8-8-1"
+               inkscape:connector-curvature="0"
+               sodipodi:nodetypes="cccsccsccsccc" />
+            <path
+               style="fill:none;stroke:#000000;stroke-width:1.98940015;stroke-linecap:butt;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+               d="m -851.41679,192.99766 c 0.41207,-7.63067 0.82415,-15.25203 1.24442,-21.62337 0.33827,-5.15864 0.68064,-9.45438 1.03327,-12.31822 0.30751,-2.50936 0.61708,-3.85265 0.93075,-3.85265 0.31366,0 0.62119,1.34329 0.93076,3.85265 0.35261,2.86384 0.69293,7.15958 1.03326,12.31822 0.42027,6.37134 0.83235,13.99269 1.24443,21.62337 0.41207,7.63068 0.82414,15.24737 1.24441,21.62804 0.34032,5.15863 0.68064,9.45439 1.03327,12.31823 0.30957,2.50935 0.61708,3.85265 0.93075,3.85265 0.31572,0 0.62325,-1.3433 0.93076,-3.85265 0.35262,-2.86384 0.69499,-7.1596 1.03531,-12.31823 0.41823,-6.38067 0.83236,-13.99736 1.24238,-21.62804"
+               id="path899-5-6-4"
+               inkscape:connector-curvature="0"
+               sodipodi:nodetypes="cccsccsccsccc" />
+            <path
+               style="fill:none;stroke:#000000;stroke-width:1.98940015;stroke-linecap:butt;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+               d="m -864.25077,192.99766 c 0.41207,-7.63067 0.82415,-15.25203 1.24401,-21.62337 0.33991,-5.15864 0.68228,-9.45438 1.03387,-12.31822 0.30856,-2.50936 0.61628,-3.85265 0.93056,-3.85265 0.31469,0 0.62241,1.34329 0.93116,3.85265 0.3514,2.86384 0.69356,7.15958 1.03367,12.31822 0.41987,6.37134 0.83174,13.99269 1.24443,21.62337 0.41208,7.63068 0.82395,15.24737 1.24402,21.62804 0.33929,5.15863 0.68146,9.45439 1.03388,12.31823 0.30854,2.50935 0.61626,3.85265 0.93075,3.85265 0.31449,0 0.62201,-1.3433 0.93035,-3.85265 0.35139,-2.86384 0.69376,-7.1596 1.03408,-12.31823 0.42007,-6.38067 0.83317,-13.99736 1.2432,-21.62804"
+               id="sine-curve-8-1-9"
+               inkscape:connector-curvature="0"
+               sodipodi:nodetypes="cccscccccsccc" />
+          </g>
+          <rect
+             y="150"
+             x="-890"
+             height="100"
+             width="100"
+             id="rect1368-1-1-4-5-6-0-8"
+             style="opacity:1;fill:none;fill-opacity:1;stroke:#000000;stroke-width:2;stroke-linecap:square;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:markers stroke fill" />
+        </g>
+      </g>
+    </g>
+    <g
+       transform="matrix(0.26458333,0,0,0.26458333,309.29805,-33.464569)"
+       id="g1921-1-0-7-7-7"
+       inkscape:export-filename="c:\sa\papers\My\CodeProject\WebAudio\ChromaticKeyboard.GitHub\microtonal-chromatic-lattice-keyboard\article\SoundBuilder\graph.png"
+       inkscape:export-xdpi="60.240002"
+       inkscape:export-ydpi="60.240002">
+      <rect
+         y="270"
+         x="-890"
+         height="100"
+         width="100"
+         id="rect1368-1-1-4-7-0-4-9-7-2"
+         style="opacity:1;fill:none;fill-opacity:1;stroke:#000000;stroke-width:2;stroke-linecap:square;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:markers stroke fill" />
+      <path
+         inkscape:connector-curvature="0"
+         id="path929-9-33-2-6-9"
+         d="m -876.03993,356.03993 c 70,-70 70,-70 70,-70"
+         style="fill:none;stroke:#000000;stroke-width:2;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;marker-end:url(#Arrow1Mend-0-5-8-8-9-3)" />
+    </g>
+    <g
+       transform="matrix(0.26458333,0,0,0.26458333,309.29805,-104.90207)"
+       id="g1921-1-0-7-7-7-6"
+       inkscape:export-filename="c:\sa\papers\My\CodeProject\WebAudio\ChromaticKeyboard.GitHub\microtonal-chromatic-lattice-keyboard\article\SoundBuilder\graph.png"
+       inkscape:export-xdpi="60.240002"
+       inkscape:export-ydpi="60.240002">
+      <rect
+         y="270"
+         x="-890"
+         height="100"
+         width="100"
+         id="rect1368-1-1-4-7-0-4-9-7-2-6"
+         style="opacity:1;fill:none;fill-opacity:1;stroke:#000000;stroke-width:2;stroke-linecap:square;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:markers stroke fill" />
+      <path
+         inkscape:connector-curvature="0"
+         id="path929-9-33-2-6-9-6"
+         d="m -876.03993,356.03993 c 70,-70 70,-70 70,-70"
+         style="fill:none;stroke:#000000;stroke-width:2;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;marker-end:url(#Arrow1Mend-0-5-8-8-9-3-3)" />
+    </g>
+    <path
+       style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="m 14.634855,98.827085 3.885979,7.672885"
+       id="path10875"
+       inkscape:connector-type="polyline"
+       inkscape:connector-curvature="0"
+       inkscape:connection-start="#g1921-1-0" />
+  </g>
 </svg>

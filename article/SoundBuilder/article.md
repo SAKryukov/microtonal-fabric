@@ -80,16 +80,20 @@ Therefore, both `Instrument` and `Tone` are based on the same type named `Modula
 Another per-tone part of the graph is a set of gain nodes used as targets for _envelopes_. An envelope is a mechanism used to program the dynamic behavior of a tone in its attack and damping. Customary synthesis technology usually implements only the envelope controlling volume, with fixed number of stages. The usual envelope is called [ADSR](https://en.wikipedia.org/wiki/Envelope_(music)) (Attack, Decay, Sustain and Release), but I don't even want to discuss it here, because it cannot satisfy me. Sound Builder has unified system of authoring envelopes of several types which makes possible creation of an envelope with unlimited number of stages, each stage characterized with its time, gain, and a choice of one of three functions. There are four characteristics of a node which can be envelope-programmed: volume, detune, AM and FM.
 
 Now, we are ready to present a graph, starting with a tone part of it. First, let's introduce some graphical conventions.
-Oscillator node
-Gain node
-Envelope, gain node with gain controlled by an envelope functions
-Chain of nodes
-Modulator set
-Output
 
-### Tone
+![Oscillator node](oscillator.png) Oscillator node
+
+![Gain node](gain.png) Gain node
+
+![Envelope](envelope.png) Envelope, gain node with gain controlled by envelope functions
+
+![Modulator set](modulatorSet.png) Modulator set
+
+![Node chain](nodeChain.png) Chain of nodes
 
 ### Instrument
+
+![Graph](graph.png)
 
 ## Fourier-Defined Oscillator
 
