@@ -1,0 +1,17 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "chrome",
+            "request": "launch",
+            "name": "Chrome SoundBuilder",
+            "file":"${workspaceFolder}/tone-system-comparison.html"
+        },
+        {
+            "type": "edge",
+            "request": "launch",
+            "name": "Edge, index.htm",
+            "file":"${workspaceFolder}/tone-system-comparison.html"
+        }
+    ]
+}
