@@ -91,6 +91,8 @@ Now, we are ready to present a graph, starting with a tone part of it. First, le
 
 ![Node chain](nodeChain.png) Chain of nodes
 
+![Output mode](output.png) Output node
+
 ### Instrument
 
 ![Graph](graph.png)
