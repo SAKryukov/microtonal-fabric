@@ -9,7 +9,6 @@ class Tone extends ModulatorSet {
         this.#implementation.mainOscillator = new OscillatorNode(context, { frequency: frequency });
         this.#implementation.frequencyCompensationGainNode = new GainNode(context, { gain: frequencyCompensationGain });
         this.#implementation.gainEnvelopeNode = new GainNode(context, { gain: 0 });
-        this.#implementation.detuneEnvelopeNode = new GainNode(context, { gain: 0 });
         this.#implementation.amplitudeModulationNode = new GainNode(context, { gain: 1 });
         this.#implementation.frequencyModulationEnvelopeNode = new GainNode(context, { gain: 0 });
         this.#implementation.amplitudeModulationEnvelopeNode = new GainNode(context, { gain: 0 });
@@ -29,7 +28,6 @@ class Tone extends ModulatorSet {
             this.#implementation.mainOscillator.disconnect();
             this.#implementation.frequencyCompensationGainNode.disconnect();
             this.#implementation.gainEnvelopeNode.disconnect();
-            this.#implementation.detuneEnvelopeNode.disconnect();
             this.#implementation.amplitudeModulationNode.disconnect();
             this.#implementation.frequencyModulationEnvelopeNode.disconnect();
             this.#implementation.amplitudeModulationEnvelopeNode.disconnect();
