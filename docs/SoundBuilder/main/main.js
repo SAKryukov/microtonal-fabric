@@ -135,9 +135,9 @@ window.onload = () => {
                     instrument.data = singleton.model;
                     controls.fileIO.buttonApply.disabled = true;    
                 } catch (ex) {
-                    setExceptionMessage(ex, "Failed to interpret instrument data, might need upgrate to newer format version");
+                    setExceptionMessage(ex, "Failed to interpret instrument data, might need upgrade to newer format version");
                 } //exception
-            }; //appy
+            }; //apply
             (() => { // setup default instrument
                 singleton.model = defaultInstrument;
                 singleton.model.header = singleton.createHeader(); 
@@ -145,13 +145,13 @@ window.onload = () => {
                 apply();    
             })();
             apply(true);
-            const onChangeHanler = () => { controls.fileIO.buttonApply.disabled = false; clearException(); };
+            const onChangeHandler = () => { controls.fileIO.buttonApply.disabled = false; clearException(); };
             controls.fileIO.buttonApply.disabled = true;
-            controls.fileIO.instrumentName.onkeydown = onChangeHanler;
+            controls.fileIO.instrumentName.onkeydown = onChangeHandler;
             for (let index in controls.tables)
-                controls.tables[index].onchange = onChangeHanler;
+                controls.tables[index].onchange = onChangeHandler;
             for (let index in controls.tables.compensation)
-                controls.tables.compensation[index].onchange = onChangeHanler;
+                controls.tables.compensation[index].onchange = onChangeHandler;
             //
             const loadModel = (fileName, text) => {
                 clearException();
