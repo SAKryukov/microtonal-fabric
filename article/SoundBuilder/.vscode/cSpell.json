@@ -9,6 +9,7 @@
         "ADSR",
         "Affine",
         "Anamorphic",
+        "Biquad",
         "blockquote",
         "Changelog",
         "detuned",

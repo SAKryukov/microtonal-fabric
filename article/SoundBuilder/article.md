@@ -6,7 +6,7 @@
 
 [*Sergey A Kryukov*](https://www.SAKryukov.org){.author}
 
-*What works with Microsoft pen computing and what not? How to handle and recognize ink input for any supported language?*
+*In-browser synthesizer creates instruments to be used in musical applications, offers advanced additive and subtractive synthesis techniques*
 
 <!-- <h2>Contents</h2> is not Markdown element, just to avoid adding it to TOC -->
 <!-- change style in next line <ul> to <ul style="list-style-type: none"> -->
@@ -23,7 +23,7 @@ https://www.codeproject.com/Articles/1278552/Anamorphic-Drawing-for-the-Cheaters
 
 <!-- copy to CodeProject from here ------------------------------------------->
 
-![Sound Builder](main.png){id=picture.main}
+![Sound Builder](main.png){id=picture-main}
 
 <blockquote id="epigraph" class="FQ"><div class="FQA">Epigraph:</div>
 
@@ -45,12 +45,14 @@ The second keyboard is _microchromatic_, very innovative, works in a Web browser
 
 ## Advanced features
 
-The tool is a synthesizer synthesizer, or a generator of the instrument instances which can be exported in a form of an single JSON file, embedded in some other JavaScript code and used for implementation of an in-browser musical instrument based on Web Audio API, or some other tool for generation of music on a Web page. No part of the code uses any server-site operation, so any part of the code can be played locally on a wide range of devices, even without connection to Internet.
+The tool is a synthesizer synthesizer, or a generator of the instrument instances which can be [exported](#heading-using-api-and-generated-instruments-in-applications) in a form of an single JSON file, [embedded](#heading-using-api-and-generated-instruments-in-applications) in some other JavaScript code and [used](#heading-using-api-and-generated-instruments-in-applications) for implementation of an in-browser musical instrument based on Web Audio API, or some other tool for generation of music on a Web page. The tool is oriented to both common-practice and [microtonal](https://en.wikipedia.org/wiki/Microtonal_music) or [xenharmonic](https://en.xen.wiki) musical applications.
 
-Some features of the tool are somewhat innovating. Overall, it helps to generate near-realistic instrument sound, in certain limited scope, using very interesting effect in a graphically manner using reasonably convenient UI. The user is not required to be able to work with audio nodes, to draw any graphics or understand Web Audio API. Instead, the procedure of the design of an instrument is based on filling data in several tables, possibly trial-and-error approach with listening the results of the synthesis advances.
+No part of the code uses any server-site operation, so any part of the code can be played locally on a wide range of devices, even without connection to Internet.
 
-The procedure of instrument authoring is started from a single oscillator defined be a Fourier spectrum. Such spectrum can be imported from a spectral analyser of an available code sample, but usually additional edition is required. Alternatively, traditional signal waveforms, such as sawtooth or triangle, are also available, but I personally don't use them.
-n
+Some features of the tool are somewhat innovating. Overall, it helps to generate near-realistic instrument sound, defining advanced effects in a graphical manner using convenient UI. The user is not required to be able to work with audio nodes, to draw any graphics or to understand Web Audio API. Instead, the procedure of the design of an instrument is based on filling data in several tables, possibly trial-and-error approach with listening to intermediate results of the synthesis.
+
+The procedure of instrument authoring is started from a single oscillator defined be a Fourier spectrum. Such spectrum can be imported from a spectral analyser of an available code sample, but usually additional edition is required. Alternatively, traditional signal waveforms, such as sawtooth or triangle, are also available, but more realistic sounds require Fourier approach.
+
 On top of this the user can define unlimited number of modulators. A modulator can be used for frequency or amplitude modulation, and each of them can be either absolute-frequency or relative-frequency modulator. For absolute modulations, the user can define a fixed frequency for each one, but for relative-frequency modulations the frequency of the modulation signal depends on the fundamental frequency of each tone.
 
 On top of this, the result of synthesis can be shaped using an envelope. Unlike conventional synthesis systems, in addition to a usual volume enveloped, there are three additional kinds of envelope: one for temporary detune, and two for modulations, separately for frequency and amplitude modulation.
@@ -93,13 +95,68 @@ Now, we are ready to present a graph, starting with a tone part of it. First, le
 
 ![Output mode](output.png) Output node
 
-### Instrument
+The graph is shown schematically in two parts, left on right. On left, there is a singleton instance of `Instrument` connected with a set of `Tone` instances show as only one on left. Let's remember that there is an entire set of `Tone` instances, with its own fundamental frequency each. Every `Tone` instance is connected to the instance of the instrument in three ways. An `Instrument` instance supplies two signals from the sets of FM and AM modulators, which are common to all tones, and receives fully-shaped sound signal from each tone, modulated and controlled by the functions of the envelopes.
 
-![Graph](graph.png)
+![Graph](graph.png){id=picture-graph}
 
-## Fourier-Defined Oscillator
+There are four kinds of oscillators. First one provides a signal of a fundamental frequency for each tone. Two sets of oscillators in each tone graph supply FM and AM signals of frequencies depending on the fundamental frequency, and two more sets of oscillators supply FM and AM signals of fixed frequencies to all tone graphs.
+
+At the very beginning of the operation, as soon as the entire graph is populated and connected, all oscillators starts and provide their signals permanently, even when no sounds are emitted. The sound signals from the tone graphs are blocked by their gain envelopes. The oscillators stop only when the graph needs to be re-populated according to new instrument data.
+
+Let's first consider the main kind of the oscillator, the one supplying the base of the sound. Naturally, in absolutely all cases, it provides entire spectrum of frequencies based on its fundamental frequency.
+
+## Main Oscillator
+
+This node is created by the Web Audio [constructor](https://developer.mozilla.org/en-US/docs/Web/API/OscillatorNode/OscillatorNode) `OscillatorNode`.
+
+The user selects the spectrum of the node by assigning a value to the property`type`, this is either a string value, "sawtooth", "triangle", or custom. In the case of "custom", this string should not be assigned. Instead, the method [setPeriodicWave](https://developer.mozilla.org/en-US/docs/Web/API/OscillatorNode/setPeriodicWave) is called. In the Sound Builder UI, [it corresponds to the choice "Fourier"](#picture-main).
+
+This call is a working horse of synthesis. The data for the wave is supplied by the instance of `Instrument` and is shared by all tones, because the component of the Fourier spectrum are relative to the fundamental frequency.
+
+In the Sound Builder UI, the spectrum is represented not by an array or complex number, but by an equivalent array of amplitudes and phases, which the user can "draw" by a mouse on a table of sliders. Each slider is an input element with `type="range"` with modified behavior which allowed drawing-like mouse action.
+
+Alternative way of entering data is using a separate application "WavFFT.exe" (WAV file to Fast Fourier Transform). It can load a WAV file, observe its waveform, select a fragment of the the sample sequence (FFT support number of samples equal to natural power of 2, this is supported by the UI), perform FFT, observe resulting spectrum and save this data in the format of Sound Builder instrument data file.
+
+Typically, the data file created with WavFFT serves as a starting point. Another way to start is to use some sample files downloadable with this article.
+
+[OscillatorNode](https://developer.mozilla.org/en-US/docs/Web/API/OscillatorNode/OscillatorNode) has two [a-rate](https://developer.mozilla.org/en-US/docs/Web/API/AudioParam#a-rate) properties, supporting the interface [AudioParam](https://developer.mozilla.org/en-US/docs/Web/API/AudioParam): [frequency](https://developer.mozilla.org/en-US/docs/Web/API/OscillatorNode/frequency) and [detune](https://developer.mozilla.org/en-US/docs/Web/API/OscillatorNode/detune).
+
+Frequency [AudioParam](https://developer.mozilla.org/en-US/docs/Web/API/AudioParam) input can be used for FM, which, optionally, can be enveloped. The same can be done to detune, but modulation of detune would make little sense. Instead, it can modified through an envelope.
+
+First, we need to understand the operation of envelopes.
 
 ## Envelopes
+
+The operation of envelopes relies on the functionality of [AudioParam](https://developer.mozilla.org/en-US/docs/Web/API/AudioParam). Each instance of `AudioParam` can be programmed to change the value automatically at future time. When a performer press a key on some instrument keyboard, the gain and some other audio parameters are programmed to implement some dynamics.
+
+Envelope defines a function of time, controlling the value of an `AudioParam` instance. This is a piecewise-smooth function, composed of the function of 3 types: exponential, linear and, with some degree of conventionality, less usable [Heaviside function](https://en.wikipedia.org/wiki/Heaviside_step_function). For each piece, the user adds a line to an envelope table and defines the duration of each step and a target value.
+
+This is the core of the implementation of envelope from "sound/envelope.js":
+```{lang=JavaScript}{id=code-envelope}
+for (let element of this.#implementation.data) {
+    switch (element.type) {
+        case this.#implementation.typeHeaviside:
+            audioParameter.setValueAtTime(element.gain, currentTime + element.time);
+            break;
+        case this.#implementation.typeExponential:
+            if (element.gain == 0 || element.isLast)
+                audioParameter.setTargetAtTime(element.gain, currentTime,  element.time);
+            else
+                audioParameter.exponentialRampToValueAtTime(element.gain, currentTime + element.time);
+            break;
+        case this.#implementation.typeLinear:
+            audioParameter.linearRampToValueAtTime(element.gain, currentTime + element.time);
+            break;
+    } //switch
+    currentTime += element.time;
+}
+```
+
+It's important to note, that exponential function is implemented in two different ways: via [setTargetAtTime](https://developer.mozilla.org/en-US/docs/Web/API/AudioParam/setTargetAtTime) or [exponentialRampToValueAtTime](https://developer.mozilla.org/en-US/docs/Web/API/AudioParam/linearRampToValueAtTime). First case is used when a target value is zero, the the stage is very last. It is done so, because, by obvious mathematical reasons, target value cannot be zero for the exponent. Then the function represents "infinite" approach of a `AudioParam` value to the target value. Naturally, for the last stage, such behavior represents natural damping or of an instrument sound, or growing of the parameter to the values corresponding to the stabilized sound, zero or not. In both cases, "infinite" exponential behavior is the most suitable.
+
+With Sound Builder, the envelopes can optionally be applied to three characteristics of a sound: volume, detune, FM and AM.
+
+Let's discuss the application of these techniques.
 
 ### Volume Envelope
 
@@ -111,15 +168,115 @@ In this case, the behavior is defined by the last stage of an envelope. We can d
 
 It is pretty typical that an instrument plays somewhat detuned tone during limited period of time, especially during attack. For example, it happens in loud finger style guitar playing. At the first phase of plucking of the string, it is considerably elongated and hence sounds sharper then the tone it is tuned to. Besides, at first moment, a string can be pressed against the fret stronger. This effect can be achieved by controlling some detune value of the oscillator. Naturally, unlike the case of the volume, the detune value of the last stage should be zero.
 
+Detune envelope is the only envelope not represented on the [audio graph](#picture-graph) as an envelope-controlled gain mode. Its target is the [detune](https://developer.mozilla.org/en-US/docs/Web/API/OscillatorNode/detune) [AudioParam](https://developer.mozilla.org/en-US/docs/Web/API/AudioParam) of each main oscillator of a tone. No gain node is required for this functionality. The master gain of the effect is simply a numerical factor; all target values all envelope stages are multiplied by this factor.
+
 ### Modulation Envelopes
 
 Two remaining envelopes are those separately controlling AM and FM, but I don't make distinction between absolute-frequency FM/AM and relative-frequency FM/AM. Instead, one envelope controls all AM and one --- all FM. Let's consider a typical case of such envelope. A tuba or a saxophone, as well as many other wind instruments, show extremely strong vibration when a performer starts to blow a sound, but the vibration becomes barely perceivable as the sound stabilizes. This can be achieved with these two kinds of envelope.
+
+## Filters
+
+Subtractive part of the synthesis is represented by a set of biquadratic low-order filters.
+Some filtering is required in most cases.
+
+Filter parameters are filled in in a table with the help of sliders. Each of the provided filter types can be included in the instrument graph, or excluded. In most cases, only one low-pass filter is sufficient.
+
+To learn filter tuning, a good starting point could be [BiquadFilterNode documentation](https://developer.mozilla.org/en-US/docs/Web/API/BiquadFilterNode).
 
 ## Gain Compensation
 
 Both kinds of design features of the instrument synthesis, additive synthesis based on Fourier spectrum, and subtractive synthesis based of filters, make the final volume of each tone hard to predict. Worst thing is: all tones produce very different subjective levels of volume, depending on the frequency. Overall volume of an instrument also can differ dramatic. Hence, some frequency-dependent gain compensation is badly needed. I've tried a good deal of research using different "clever" functions, but finally ended up with the simplest approach: quadratic spline defined by three points: some low frequency and compensation level for this frequency, some high frequency and compensation level for this frequency and some medium frequency point where the compensation is considered to be equal to 1. Naturally, two quadratic functions are stitched at this point. This simple function has the following benefit: one can compensate for part of the spectrum on right of this point, then, separately, on left part of the spectrum. When left or right part is done, compensation for another part won't spoil previous work.
 
 This procedure requires a table of three parameters: low-frequency and high-frequency compensation and the position of the middle frequency, plus a value for overall compensation factor. Two values for low and high frequencies themselves are not presented in the table, because they rarely, if ever, need to be modified; they correspond to highest of lowers frequencies of a standard 88-key piano. However, they are prescribed in the data files (where the are written based on the code's definition set) and can be modified by some overly smart users. :-)
+
+This is the implementation of this simple spline function:
+
+```{lang=JavaScript}{id=code-envelope}
+const compensation = (() =&gt; {
+    const compensation = (f) =&gt; {
+        const shift = f - this.#implementation.gainCompensation.middleFrequency;
+        const g0 = this.#implementation.gainCompensation.lowFrequencyCompensationGain;
+        const g1 = this.#implementation.gainCompensation.highFrequencyCompensationGain;
+        const f0 = this.#implementation.gainCompensation.lowFrequency;
+        const f1 = this.#implementation.gainCompensation.lowFrequency;
+        const factor0 = (g0 - 1) / Math.pow(f0 - this.#implementation.gainCompensation.middleFrequency, 2);
+        const factor1 = (g1 - 1) / Math.pow(f1 - this.#implementation.gainCompensation.middleFrequency, 2);
+        if (shift &lt; 0)
+            return 1 + factor0 * Math.pow(shift, 2);
+        else                
+            return 1 + factor1 * Math.pow(shift, 2);
+    } //compensation
+    return compensation;
+})(); //setupGain
+```
+
+The stitching happens at the medium frequency point, at the point of zero derivative, but with a step in second derivative. This imperfect _smoothness_ may sound questionable, but, after some experiments, seems to produce smooth sound, pun unintended ;-).
+
+## Live Play
+The application can play at [here](https://SAKryukov.github.io/microtonal-chromatic-lattice-keyboard/SoundBuilder/index.html). Again, no server part and no network is used, so the application can be downloaded and used on a local system.
+
+Most likely, to get started, one may need a set of sample data files, which can be downloaded from this article page.
+
+## Using API and Generated Instruments In Applications
+
+Naturally, Sound Builder doesn't do much if it is not used in other applications. See the instructions in https://SAKryukov.github.io/microtonal-chromatic-lattice-keyboard/SoundBuilderAPI.html.
+
+Basically, the user needs to produce a set of desired instruments and test them.
+
+<ul>
+<li>Produce some set of instruments, test and save them, each instrument is a separate JSON - file;</li>
+<li>Use the element “Instrument List”, button “Load” to load created instruments, “Save” all of them in a single .js file;</li>
+<li>Include the API, all sound/*.js files in the application;</li>
+<li>Also include .js file generated before;</li>
+<li>In the application, create in instance of <code>Instrument</code>;</li>
+<li>To apply instrument data, assign <code>instrumentInstance.data = instrumentList[someIndex]</code>;</li>
+<li>To play a single sound, call <code>instrument.play</code>;</li>
+<li>Enjoy :-).</li>
+</ul>
+
+### API
+
+The `Instrument` constructor expects 2 arguments: `constructor(frequencySet, tonalSystem)`.
+
+First of all, one needs to define a set of fundamental frequencies for the generated sounds. This is either an array of frequencies in Hertz units, or an object `{first, last, startingFrequency}`, where `first` is always zero (reserved for advanced features), `last` is the last index of the frequency array, and `startingFrequency` is the lowest absolute frequency in Hertz units (27.5 for standard 88-key piano). Second parameter should specify a tonal system, which is the number of tones in octave. In this case, the tone set will be automatically populated with [Equal Division of the Octave (EDO)](https://en.wikipedia.org/wiki/Equal_temperament) frequencies.
+
+For example:
+    
+`const piano = new Instrument({ first: 0, last: 87, 25.7 }, 12)` will create a standard 88-key piano tuning, and typical microtonal systems could use 19, 29, 31, 41, etc., for the second argument.
+
+`const perfect = new Instrument([100, 133.333, 150])` will create an instrument with only 3 tones, 100 Hz and two more tones, perfect fourth and perfect fifth in [just intonation](https://en.wikipedia.org/wiki/Just_intonation).
+
+Second parameter, `tonalSystem`, is used even when an array of fixed frequency values --- for the implementation of the property `transposition`. If this argument is not specified, it is assumed to the length of this array.
+
+Method `play(on, index)` starts (if `on==true`) or stops (if `on==false`) the damps of a tone of specified `index`. Starting of damping is never instantaneous, it is defined by the gain envelope and damping sustain parameter. The timing is limited by some minimal values.
+
+Properties: `volume` (0 to 1), `sustain` (time in seconds) and `transposition` (in the units of logarithmic equal divisions of octave, depending on the `tonalSystem` argument of the `Instrument` constructor). The property `frequencies` is read-only, returns the array representing current frequency set.
+
+To include the API, use this code sample:</h2>
+
+```
+&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+&lt;head&gt;
+    &lt;meta charset="utf-8"/&gt;
+    &lt;script src="../sound/definition-set.js"&gt;&lt;/script&gt;
+    &lt;script src="../sound/chain-node.js"&gt;&lt;/script&gt;
+    &lt;script src="../sound/envelope.js"&gt;&lt;/script&gt;
+    &lt;script src="../sound/modulator.js"&gt;&lt;/script&gt;
+    &lt;script src="../sound/modulator-set.js"&gt;&lt;/script&gt;
+    &lt;script src="../sound/tone.js"&gt;&lt;/script&gt;
+    &lt;script src="../sound/instrument.js"&gt;&lt;/script&gt;
+    &lt;!-- ... ---&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+
+    &lt;!-- ... ---&gt;
+
+&lt;/body&gt;
+&lt;/html&gt;
+```
+
 
 ## Compatibility
 
