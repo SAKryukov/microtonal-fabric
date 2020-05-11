@@ -16,7 +16,6 @@ Original publication on the present work: *[Microtonal Music Study with Chromati
 - For three chromatic tone systems, the same keyboard is used; the choice of tone system can be changed dynamically
 - Due to the very special keyboard layout, basic playing skills acquired and techniques learned for one tone system are immediately applicable to other tone systems
 - Side-by-side comparison of the sound of tones and chords in different tone systems
-- Choice of 5 instruments or 4 basic waveforms
 - Chord generation
 - Optional chord visualization
 - Compatible browsers include, but not limited to Google Chrome, Mozilla Firefox, Mozilla SeaMonkey and Opera
@@ -24,7 +23,3 @@ Original publication on the present work: *[Microtonal Music Study with Chromati
 ### Live Demo and Source Code
 
 All source code and development is in the directory "docs", which is the source of the product [Web site](https://sakryukov.github.io/microtonal-chromatic-lattice-keyboard).
-
-### Acknowledgments
-
-The application uses 5 JavaScript audio font files developed by [Srgy Surkv (Surikov)](https://github.com/surikov) and offered in his [webaudiofontdata](https://github.com/surikov/webaudiofontdata) project. The core functionality of the player is also based on the project [webaudiofont](https://github.com/surikov/webaudiofont) of the same author, but is heavily modified and upgraded with different feature, as in its current form the code is not suitable for the application. The quality of the audio fonts is also not fully satisfying, so the fonts need replacement or improvements. 
