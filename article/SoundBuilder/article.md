@@ -42,7 +42,7 @@ The second keyboard is _microchromatic_, very innovative, works in a Web browser
 
 ## Advanced features
 
-The tool is a synthesizer synthesizer, or a generator of the instrument instances which can be [exported](#heading-using-api-and-generated-instruments-in-applications) in a form of an single JSON file, [embedded](#heading-using-api-and-generated-instruments-in-applications) in some other JavaScript code and [used](#heading-using-api-and-generated-instruments-in-applications) for implementation of an in-browser musical instrument based on Web Audio API, or some other tool for generation of music on a Web page. The tool is oriented to both common-practice and [microtonal](https://en.wikipedia.org/wiki/Microtonal_music) or [xenharmonic](https://en.xen.wiki) musical applications.
+The tool is a synthesizer synthesizer, or a generator of the instrument instances which can be [exported](#api-export) in a form of an single JSON file, [embedded](#api-embed) in some other JavaScript code and [used](#api-use) for implementation of an in-browser musical instrument based on Web Audio API, or some other tool for generation of music on a Web page. The tool is oriented to both common-practice and [microtonal](https://en.wikipedia.org/wiki/Microtonal_music) or [xenharmonic](https://en.xen.wiki) musical applications.
 
 No part of the code uses any server-site operation, so any part of the code can be played locally on a wide range of devices, even without connection to Internet.
 
@@ -216,20 +216,20 @@ Most likely, to get started, one may need a set of sample data files, which can 
 
 ## Using API and Generated Instruments In Applications
 
-Naturally, Sound Builder doesn't do much if it is not used in other applications. See the instructions in https://SAKryukov.github.io/microtonal-chromatic-lattice-keyboard/SoundBuilderAPI.html.
+Naturally, Sound Builder doesn't do much if it is not used in other applications. See the instructions in https://SAKryukov.github.io/microtonal-chromatic-lattice-keyboard/SoundBuilder/API.html.
 
 Basically, the user needs to produce a set of desired instruments and test them.
 
-<ul>
-<li>Produce some set of instruments, test and save them, each instrument is a separate JSON - file;</li>
-<li>Use the element “Instrument List”, button “Load” to load created instruments, “Save” all of them in a single .js file;</li>
-<li>Include the API, all sound/*.js files in the application;</li>
-<li>Also include .js file generated before;</li>
-<li>In the application, create in instance of <code>Instrument</code>;</li>
-<li>To apply instrument data, assign <code>instrumentInstance.data = instrumentList[someIndex]</code>;</li>
-<li>To play a single sound, call <code>instrument.play</code>;</li>
-<li>Enjoy :-).</li>
-</ul>
+- Produce some set of instruments, test and save them, each instrument is a separate JSON - file;
+- Use the element “Instrument List”, button “Load” to load created instruments, “Save” all of them in a single .js file;{id=api-export}
+- Include the API, all sound/*.js files in the application;
+- Also include .js file generated before;{id=api-embed}
+- In the application, create in instance of `Instrument`;
+- To apply instrument data, assign `instrumentInstance.data = instrumentList[someIndex]`;
+- To play a single sound, call `instrument.play`;{id=api-use}
+- Enjoy :-).
+
+Now, let's see how the API looks in detail.
 
 ### API
 
