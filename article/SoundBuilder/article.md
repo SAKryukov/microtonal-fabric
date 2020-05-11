@@ -17,9 +17,6 @@ See: https://www.codeproject.com/script/Articles/ArticleVersion.aspx?waid=277187
 Original publication:
 https://www.codeproject.com/Articles/1278552/Anamorphic-Drawing-for-the-Cheaters
 
---> 
-
----
 
 <!-- copy to CodeProject from here ------------------------------------------->
 

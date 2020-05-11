@@ -16,11 +16,58 @@
    id="svg4922"
    inkscape:version="0.92.5 (2060ec1f9f, 2020-04-08)"
    sodipodi:docname="graph.svg"
-   inkscape:export-filename="C:\sa\papers\My\CodeProject\WebAudio\ChromaticKeyboard.GitHub\microtonal-chromatic-lattice-keyboard\article\images\graph.png"
+   inkscape:export-filename="c:\sa\papers\My\CodeProject\WebAudio\ChromaticKeyboard.GitHub\microtonal-chromatic-lattice-keyboard\article\SoundBuilder\graph.png"
    inkscape:export-xdpi="61.32"
    inkscape:export-ydpi="61.32">
   <defs
      id="defs4916">
+    <marker
+       inkscape:isstock="true"
+       style="overflow:visible"
+       id="marker2151"
+       refX="0"
+       refY="0"
+       orient="auto"
+       inkscape:stockid="Arrow2Lend">
+      <path
+         inkscape:connector-curvature="0"
+         transform="matrix(-1.1,0,0,-1.1,-1.1,0)"
+         d="M 8.7185878,4.0337352 -2.2072895,0.01601326 8.7185884,-4.0017078 c -1.7454984,2.3720609 -1.7354408,5.6174519 -6e-7,8.035443 z"
+         style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:0.625;stroke-linejoin:round;stroke-opacity:1"
+         id="path2149" />
+    </marker>
+    <marker
+       inkscape:stockid="Arrow2Lend"
+       orient="auto"
+       refY="0"
+       refX="0"
+       id="marker3187"
+       style="overflow:visible"
+       inkscape:isstock="true"
+       inkscape:collect="always">
+      <path
+         id="path3185"
+         style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:0.625;stroke-linejoin:round;stroke-opacity:1"
+         d="M 8.7185878,4.0337352 -2.2072895,0.01601326 8.7185884,-4.0017078 c -1.7454984,2.3720609 -1.7354408,5.6174519 -6e-7,8.035443 z"
+         transform="matrix(-1.1,0,0,-1.1,-1.1,0)"
+         inkscape:connector-curvature="0" />
+    </marker>
+    <marker
+       inkscape:isstock="true"
+       style="overflow:visible"
+       id="marker2857"
+       refX="0"
+       refY="0"
+       orient="auto"
+       inkscape:stockid="Arrow2Lend"
+       inkscape:collect="always">
+      <path
+         inkscape:connector-curvature="0"
+         transform="matrix(-1.1,0,0,-1.1,-1.1,0)"
+         d="M 8.7185878,4.0337352 -2.2072895,0.01601326 8.7185884,-4.0017078 c -1.7454984,2.3720609 -1.7354408,5.6174519 -6e-7,8.035443 z"
+         style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:0.625;stroke-linejoin:round;stroke-opacity:1"
+         id="path2855" />
+    </marker>
     <marker
        inkscape:stockid="Arrow2Lend"
        orient="auto"
@@ -28,7 +75,8 @@
        refX="0"
        id="marker14318"
        style="overflow:visible"
-       inkscape:isstock="true">
+       inkscape:isstock="true"
+       inkscape:collect="always">
       <path
          id="path14316"
          style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:0.625;stroke-linejoin:round;stroke-opacity:1"
@@ -67,38 +115,6 @@
          d="M 8.7185878,4.0337352 -2.2072895,0.01601326 8.7185884,-4.0017078 c -1.7454984,2.3720609 -1.7354408,5.6174519 -6e-7,8.035443 z"
          transform="matrix(-1.1,0,0,-1.1,-1.1,0)"
          inkscape:connector-curvature="0" />
-    </marker>
-    <marker
-       inkscape:isstock="true"
-       style="overflow:visible"
-       id="marker12548"
-       refX="0"
-       refY="0"
-       orient="auto"
-       inkscape:stockid="Arrow2Lend"
-       inkscape:collect="always">
-      <path
-         inkscape:connector-curvature="0"
-         transform="matrix(-1.1,0,0,-1.1,-1.1,0)"
-         d="M 8.7185878,4.0337352 -2.2072895,0.01601326 8.7185884,-4.0017078 c -1.7454984,2.3720609 -1.7354408,5.6174519 -6e-7,8.035443 z"
-         style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:0.625;stroke-linejoin:round;stroke-opacity:1"
-         id="path12546" />
-    </marker>
-    <marker
-       inkscape:isstock="true"
-       style="overflow:visible"
-       id="marker11874"
-       refX="0"
-       refY="0"
-       orient="auto"
-       inkscape:stockid="Arrow2Lend"
-       inkscape:collect="always">
-      <path
-         inkscape:connector-curvature="0"
-         transform="matrix(-1.1,0,0,-1.1,-1.1,0)"
-         d="M 8.7185878,4.0337352 -2.2072895,0.01601326 8.7185884,-4.0017078 c -1.7454984,2.3720609 -1.7354408,5.6174519 -6e-7,8.035443 z"
-         style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:0.625;stroke-linejoin:round;stroke-opacity:1"
-         id="path11872" />
     </marker>
     <marker
        inkscape:isstock="true"
@@ -163,22 +179,6 @@
          d="M 8.7185878,4.0337352 -2.2072895,0.01601326 8.7185884,-4.0017078 c -1.7454984,2.3720609 -1.7354408,5.6174519 -6e-7,8.035443 z"
          style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:0.625;stroke-linejoin:round;stroke-opacity:1"
          id="path8879" />
-    </marker>
-    <marker
-       inkscape:stockid="Arrow2Lend"
-       orient="auto"
-       refY="0"
-       refX="0"
-       id="marker8593"
-       style="overflow:visible"
-       inkscape:isstock="true"
-       inkscape:collect="always">
-      <path
-         id="path8591"
-         style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:0.625;stroke-linejoin:round;stroke-opacity:1"
-         d="M 8.7185878,4.0337352 -2.2072895,0.01601326 8.7185884,-4.0017078 c -1.7454984,2.3720609 -1.7354408,5.6174519 -6e-7,8.035443 z"
-         transform="matrix(-1.1,0,0,-1.1,-1.1,0)"
-         inkscape:connector-curvature="0" />
     </marker>
     <marker
        inkscape:stockid="Arrow2Lend"
@@ -801,6 +801,21 @@
          style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:1.00000003pt;stroke-opacity:1"
          transform="matrix(-0.4,0,0,-0.4,-4,0)" />
     </marker>
+    <marker
+       inkscape:stockid="Arrow1Mend"
+       orient="auto"
+       refY="0"
+       refX="0"
+       id="Arrow1Mend-0-5-3"
+       style="overflow:visible"
+       inkscape:isstock="true">
+      <path
+         inkscape:connector-curvature="0"
+         id="path940-4-6-8"
+         d="M 0,0 5,-5 -12.5,0 5,5 Z"
+         style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:1.00000003pt;stroke-opacity:1"
+         transform="matrix(-0.4,0,0,-0.4,-4,0)" />
+    </marker>
   </defs>
   <sodipodi:namedview
      id="base"
@@ -810,7 +825,7 @@
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
      inkscape:zoom="1"
-     inkscape:cx="557.37632"
+     inkscape:cx="466.58287"
      inkscape:cy="384.20112"
      inkscape:document-units="mm"
      inkscape:current-layer="layer1"
@@ -838,7 +853,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title></dc:title>
+        <dc:title />
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -1161,7 +1176,7 @@
          style="fill:none;stroke:#000000;stroke-width:2;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;marker-end:url(#Arrow1Mend-0-5-9)" />
     </g>
     <g
-       transform="matrix(0.26458333,0,0,0.26458333,388.44137,-99.875013)"
+       transform="matrix(0.26458333,0,0,0.26458333,388.97054,-99.875013)"
        id="g1928-9-7"
        inkscape:export-filename="c:\sa\papers\My\CodeProject\WebAudio\ChromaticKeyboard.GitHub\microtonal-chromatic-lattice-keyboard\article\SoundBuilder\graph.png"
        inkscape:export-xdpi="61.316711"
@@ -1405,7 +1420,7 @@
        inkscape:export-ydpi="61.316711" />
     <path
        style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-end:url(#marker2768)"
-       d="M 7.9348628,56.493759 V 69.722918"
+       d="m 7.9348628,56.493759 0,13.229159"
        id="path2758"
        inkscape:connector-type="polyline"
        inkscape:connector-curvature="0"
@@ -1416,7 +1431,7 @@
        inkscape:export-ydpi="61.316711" />
     <path
        style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-end:url(#marker3008)"
-       d="m 12.315615,96.181251 3.559358,10.318739"
+       d="m 12.395601,96.181251 3.479372,10.318739"
        id="path2998"
        inkscape:connector-type="polyline"
        inkscape:connector-curvature="0"
@@ -1933,59 +1948,9 @@
            inkscape:connector-curvature="0" />
       </g>
     </g>
-    <g
-       transform="matrix(0.26458333,0,0,0.26458333,428.6252,-99.345815)"
-       id="g1928-9-7-4-5"
-       inkscape:export-filename="c:\sa\papers\My\CodeProject\WebAudio\ChromaticKeyboard.GitHub\microtonal-chromatic-lattice-keyboard\article\SoundBuilder\graph.png"
-       inkscape:export-xdpi="61.316711"
-       inkscape:export-ydpi="61.316711">
-      <rect
-         y="390"
-         x="-890"
-         height="100"
-         width="100"
-         id="rect1368-1-1-4-7-6-4-5-0-6"
-         style="opacity:1;fill:none;fill-opacity:1;stroke:#000000;stroke-width:2;stroke-linecap:square;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:markers stroke fill" />
-      <g
-         style="stroke-width:2.66666675"
-         transform="matrix(0.375,0,0,0.375,-720,376.25)"
-         id="g932-4-3-5-8">
-        <rect
-           style="opacity:1;fill:none;fill-opacity:1;stroke:#000000;stroke-width:5.33333349;stroke-linecap:square;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:markers stroke fill"
-           id="rect917-5-1-5-1"
-           width="170"
-           height="110"
-           x="-405"
-           y="115"
-           rx="1.2682292e-05"
-           ry="128.54027" />
-        <path
-           style="fill:none;stroke:#000000;stroke-width:5.33333349;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
-           d="m -405,217 85,-62 85,62 v 8 h -170"
-           id="path927-7-6-0-6"
-           inkscape:connector-curvature="0"
-           sodipodi:nodetypes="ccccc" />
-        <path
-           style="fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:5.33333349;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
-           d="m -325,170 h 10 l 80,-45 v -10 h -170 v 10 l 80,45 v 0"
-           id="path923-6-3-1-7"
-           inkscape:connector-curvature="0" />
-      </g>
-    </g>
-    <path
-       style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-end:url(#marker8593)"
-       d="m 201.24881,30.300017 -4.92133,12.699978"
-       id="path8583"
-       inkscape:connector-type="polyline"
-       inkscape:connector-curvature="0"
-       inkscape:connection-start="#g1928-9-7-4-5"
-       inkscape:connection-end="#g1928-9-7-4"
-       inkscape:export-filename="c:\sa\papers\My\CodeProject\WebAudio\ChromaticKeyboard.GitHub\microtonal-chromatic-lattice-keyboard\article\SoundBuilder\graph.png"
-       inkscape:export-xdpi="61.316711"
-       inkscape:export-ydpi="61.316711" />
     <path
        style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-end:url(#marker8881)"
-       d="M 182.51023,42.999995 174.3508,29.770819"
+       d="M 182.9042,42.999995 174.81237,29.770819"
        id="path8871"
        inkscape:connector-type="polyline"
        inkscape:connector-curvature="0"
@@ -2010,7 +1975,7 @@
          style="stroke-width:0.26458332">Gain Envelope</tspan></text>
     <path
        style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-end:url(#marker9845)"
-       d="M 232.83352,60.778747 204.2252,58.029599"
+       d="M 232.83352,60.65162 204.2252,57.627559"
        id="path10135"
        inkscape:connector-type="polyline"
        inkscape:connector-curvature="0"
@@ -2021,7 +1986,7 @@
        inkscape:export-ydpi="61.316711" />
     <path
        style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-end:url(#marker10174)"
-       d="m 246.06263,93.80001 4e-5,-18.520826"
+       d="m 246.06263,93.80001 3e-5,-18.520826"
        id="path10164"
        inkscape:connector-type="polyline"
        inkscape:connector-curvature="0"
@@ -2060,7 +2025,7 @@
          id="tspan11254">Compensation</tspan></text>
     <path
        style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-end:url(#marker11266)"
-       d="m 100.27722,-39.74421 76.99378,9.648831"
+       d="M 100.27722,-39.067526 177.271,-25.480393"
        id="path11256"
        inkscape:connector-type="polyline"
        inkscape:connector-curvature="0"
@@ -2070,29 +2035,8 @@
        inkscape:export-xdpi="61.316711"
        inkscape:export-ydpi="61.316711" />
     <path
-       style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-end:url(#marker11874)"
-       d="M 100.27722,46.932907 153.4583,29.77082"
-       id="path11864"
-       inkscape:connector-type="polyline"
-       inkscape:connector-curvature="0"
-       inkscape:connection-start="#g1921-1-0-7-7-7"
-       inkscape:export-filename="c:\sa\papers\My\CodeProject\WebAudio\ChromaticKeyboard.GitHub\microtonal-chromatic-lattice-keyboard\article\SoundBuilder\graph.png"
-       inkscape:export-xdpi="61.316711"
-       inkscape:export-ydpi="61.316711" />
-    <path
-       style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-end:url(#marker12548)"
-       d="m 232.83351,17.07084 -13.22914,5e-6"
-       id="path12538"
-       inkscape:connector-type="polyline"
-       inkscape:connector-curvature="0"
-       inkscape:connection-start="#g1911"
-       inkscape:connection-end="#g1928-9-7-4-5"
-       inkscape:export-filename="c:\sa\papers\My\CodeProject\WebAudio\ChromaticKeyboard.GitHub\microtonal-chromatic-lattice-keyboard\article\SoundBuilder\graph.png"
-       inkscape:export-xdpi="61.316711"
-       inkscape:export-ydpi="61.316711" />
-    <path
        style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-end:url(#marker13272)"
-       d="M 152.96221,13.34266 100.54164,0.66665367"
+       d="M 153.49138,13.368239 100.54164,0.66665367"
        id="path13262"
        inkscape:connector-type="polyline"
        inkscape:connector-curvature="0"
@@ -2102,7 +2046,7 @@
        inkscape:export-ydpi="61.316711" />
     <path
        style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-end:url(#marker13994)"
-       d="m 203.72933,-23.807282 39.68731,13.8906025"
+       d="m 203.72933,-19.838534 39.68731,9.9218545"
        id="path13984"
        inkscape:connector-type="polyline"
        inkscape:connector-curvature="0"
@@ -2112,7 +2056,7 @@
        inkscape:export-ydpi="61.316711" />
     <path
        style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-end:url(#marker14318)"
-       d="m 232.83352,-36.09781 -29.10419,5.266461"
+       d="M 232.83352,-34.837889 203.72933,-26.7996"
        id="path14308"
        inkscape:connector-type="polyline"
        inkscape:connector-curvature="0"
@@ -2121,63 +2065,110 @@
        inkscape:export-filename="c:\sa\papers\My\CodeProject\WebAudio\ChromaticKeyboard.GitHub\microtonal-chromatic-lattice-keyboard\article\SoundBuilder\graph.png"
        inkscape:export-xdpi="61.316711"
        inkscape:export-ydpi="61.316711" />
-    <rect
-       style="opacity:1;vector-effect:none;fill:#808080;fill-opacity:1;stroke:none;stroke-width:0.26458332;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:markers stroke fill"
-       id="rect14638"
-       width="5.2916665"
-       height="206.375"
-       x="129.6458"
-       y="-86.116684"
-       inkscape:export-filename="c:\sa\papers\My\CodeProject\WebAudio\ChromaticKeyboard.GitHub\microtonal-chromatic-lattice-keyboard\article\SoundBuilder\graph.png"
-       inkscape:export-xdpi="61.316711"
-       inkscape:export-ydpi="61.316711" />
-    <text
-       xml:space="preserve"
-       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.23333311px;line-height:1.25;font-family:sans-serif;-inkscape-font-specification:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
-       x="137.58363"
-       y="-78.708351"
-       id="text4326-5-2-0-2-0-8"
-       inkscape:export-filename="c:\sa\papers\My\CodeProject\WebAudio\ChromaticKeyboard.GitHub\microtonal-chromatic-lattice-keyboard\article\SoundBuilder\graph.png"
-       inkscape:export-xdpi="61.316711"
-       inkscape:export-ydpi="61.316711"><tspan
-         sodipodi:role="line"
-         id="tspan4324-5-4-4-8-4-0"
-         x="137.58363"
+    <g
+       id="g2486"
+       transform="translate(5.2916669)">
+      <rect
+         inkscape:export-ydpi="61.316711"
+         inkscape:export-xdpi="61.316711"
+         inkscape:export-filename="c:\sa\papers\My\CodeProject\WebAudio\ChromaticKeyboard.GitHub\microtonal-chromatic-lattice-keyboard\article\SoundBuilder\graph.png"
+         y="-86.116684"
+         x="129.6458"
+         height="206.375"
+         width="5.2916665"
+         id="rect14638"
+         style="opacity:1;vector-effect:none;fill:#808080;fill-opacity:1;stroke:none;stroke-width:0.26458332;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:markers stroke fill" />
+      <text
+         inkscape:export-ydpi="61.316711"
+         inkscape:export-xdpi="61.316711"
+         inkscape:export-filename="c:\sa\papers\My\CodeProject\WebAudio\ChromaticKeyboard.GitHub\microtonal-chromatic-lattice-keyboard\article\SoundBuilder\graph.png"
+         id="text4326-5-2-0-2-0-8"
          y="-78.708351"
-         style="stroke-width:0.26458332">Set</tspan><tspan
-         sodipodi:role="line"
          x="137.58363"
-         y="-73.416687"
-         style="stroke-width:0.26458332"
-         id="tspan14658">of</tspan><tspan
-         sodipodi:role="line"
-         x="137.58363"
-         y="-68.125015"
-         style="stroke-width:0.26458332"
-         id="tspan14660">Tone</tspan><tspan
-         sodipodi:role="line"
-         x="137.58363"
-         y="-62.833355"
-         style="stroke-width:0.26458332"
-         id="tspan14682">instances</tspan></text>
-    <text
-       xml:space="preserve"
-       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.23333311px;line-height:1.25;font-family:sans-serif;-inkscape-font-specification:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
-       x="104.2458"
-       y="-78.708359"
-       id="text4326-5-56"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.23333311px;line-height:1.25;font-family:sans-serif;-inkscape-font-specification:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+         xml:space="preserve"><tspan
+           style="stroke-width:0.26458332"
+           y="-78.708351"
+           x="137.58363"
+           id="tspan4324-5-4-4-8-4-0"
+           sodipodi:role="line">Set</tspan><tspan
+           id="tspan14658"
+           style="stroke-width:0.26458332"
+           y="-73.416687"
+           x="137.58363"
+           sodipodi:role="line">of</tspan><tspan
+           id="tspan14660"
+           style="stroke-width:0.26458332"
+           y="-68.125015"
+           x="137.58363"
+           sodipodi:role="line">Tone</tspan><tspan
+           id="tspan14682"
+           style="stroke-width:0.26458332"
+           y="-62.833351"
+           x="137.58363"
+           sodipodi:role="line">instances</tspan></text>
+      <text
+         inkscape:export-ydpi="61.316711"
+         inkscape:export-xdpi="61.316711"
+         inkscape:export-filename="c:\sa\papers\My\CodeProject\WebAudio\ChromaticKeyboard.GitHub\microtonal-chromatic-lattice-keyboard\article\SoundBuilder\graph.png"
+         id="text4326-5-56"
+         y="-78.708359"
+         x="104.2458"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.23333311px;line-height:1.25;font-family:sans-serif;-inkscape-font-specification:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+         xml:space="preserve"><tspan
+           style="stroke-width:0.26458332"
+           y="-78.708359"
+           x="104.2458"
+           id="tspan4324-5-2"
+           sodipodi:role="line">Instrument</tspan><tspan
+           id="tspan14680"
+           style="stroke-width:0.26458332"
+           y="-73.416695"
+           x="104.2458"
+           sodipodi:role="line">instance</tspan></text>
+    </g>
+    <g
+       transform="matrix(0.26458333,0,0,0.26458333,428.62517,-67.595806)"
+       id="g1921-1-4"
        inkscape:export-filename="c:\sa\papers\My\CodeProject\WebAudio\ChromaticKeyboard.GitHub\microtonal-chromatic-lattice-keyboard\article\SoundBuilder\graph.png"
        inkscape:export-xdpi="61.316711"
-       inkscape:export-ydpi="61.316711"><tspan
-         sodipodi:role="line"
-         id="tspan4324-5-2"
-         x="104.2458"
-         y="-78.708359"
-         style="stroke-width:0.26458332">Instrument</tspan><tspan
-         sodipodi:role="line"
-         x="104.2458"
-         y="-73.416695"
-         style="stroke-width:0.26458332"
-         id="tspan14680">instance</tspan></text>
+       inkscape:export-ydpi="61.316711">
+      <rect
+         y="270"
+         x="-890"
+         height="100"
+         width="100"
+         id="rect1368-1-1-4-7-0-3"
+         style="opacity:1;fill:none;fill-opacity:1;stroke:#000000;stroke-width:2;stroke-linecap:square;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:markers stroke fill" />
+      <path
+         inkscape:connector-curvature="0"
+         id="path929-9-4"
+         d="m -876.03993,356.03993 c 70,-70 70,-70 70,-70"
+         style="fill:none;stroke:#000000;stroke-width:2;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;marker-end:url(#Arrow1Mend-0-5-3)" />
+    </g>
+    <path
+       style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:0.26499999;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;marker-end:url(#marker2857)"
+       d="m 232.83351,17.070843 -13.22917,8e-6"
+       id="path2847"
+       inkscape:connector-type="polyline"
+       inkscape:connector-curvature="0"
+       inkscape:connection-start="#g1911"
+       inkscape:connection-end="#g1921-1-4" />
+    <path
+       style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-end:url(#marker3187)"
+       d="m 201.17951,30.300026 -4.98782,12.699969"
+       id="path3177"
+       inkscape:connector-type="polyline"
+       inkscape:connector-curvature="0"
+       inkscape:connection-start="#g1921-1-4"
+       inkscape:connection-end="#g1928-9-7-4" />
+    <path
+       style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:0.26499999;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;marker-end:url(#marker2151)"
+       d="m 100.27722,51.841877 77.48965,3.747504"
+       id="path2141"
+       inkscape:connector-type="polyline"
+       inkscape:connector-curvature="0"
+       inkscape:connection-start="#g1921-1-0-7-7-7"
+       inkscape:connection-end="#g1928-9-7-4" />
   </g>
 </svg>
