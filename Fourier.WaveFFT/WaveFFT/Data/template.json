@@ -1,0 +1,118 @@
+{
+    "header": {
+        "format": "Sound Builder",
+        "version": "4.5.0",
+        "formatVersion": "3.1.0",
+        "author": "WaveFFT",
+        "instrumentName": ""
+    },
+    "gainCompensation": {
+        "masterGain": 1,
+        "middleFrequency": 261.6,
+        "lowFrequency": 27.5,
+        "lowFrequencyCompensationGain": 1,
+        "highFrequency": 3951,
+        "highFrequencyCompensationGain": 1
+    },
+    "oscillator": {
+        "type": "Fourier",
+      "Fourier": [
+"*" // placeholder for Fourier data
+      ]
+    },
+    "gainEnvelope": {
+        "stages": [],
+        "dampingSustain": 0.02
+    },
+    "detuneEnvelope": {
+        "stages": [],
+        "dampingSustain": 0.02
+    },
+    "frequencyModulation": {
+        "absoluteFrequency": {
+            "masterDepth": 1,
+            "modes": []
+        },
+        "relativeFrequency": {
+            "masterDepth": 1,
+            "modes": []
+        },
+        "envelope": {
+            "stages": [],
+            "dampingSustain": 0.02
+        }
+    },
+    "amplitudeModulation": {
+        "absoluteFrequency": {
+            "masterDepth": 1,
+            "modes": []
+        },
+        "relativeFrequency": {
+            "masterDepth": 1,
+            "modes": []
+        },
+        "envelope": {
+            "stages": [],
+            "dampingSustain": 0.02
+        }
+    },
+    "filter": [
+        {
+            "present": true,
+            "index": 0,
+            "type": "lowpass",
+            "frequency": 350,
+            "Q": 1
+        },
+        {
+            "present": false,
+            "index": 1,
+            "type": "highpass",
+            "frequency": 350,
+            "Q": 1
+        },
+        {
+            "present": false,
+            "index": 2,
+            "type": "bandpass",
+            "frequency": 350,
+            "Q": 1
+        },
+        {
+            "present": false,
+            "index": 3,
+            "type": "lowshelf",
+            "frequency": 350,
+            "gain": 1
+        },
+        {
+            "present": false,
+            "index": 4,
+            "type": "highshelf",
+            "frequency": 350,
+            "gain": 1
+        },
+        {
+            "present": false,
+            "index": 5,
+            "type": "peaking",
+            "frequency": 350,
+            "Q": 1,
+            "gain": 1
+        },
+        {
+            "present": false,
+            "index": 6,
+            "type": "notch",
+            "frequency": 350,
+            "Q": 1
+        },
+        {
+            "present": false,
+            "index": 7,
+            "type": "allpass",
+            "frequency": 350,
+            "Q": 1
+        }
+    ]
+}

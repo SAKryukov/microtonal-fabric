@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Viewbox xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" Stretch="Uniform">
+  <Canvas Width="285.75" Height="243.41667">
+    <Canvas.RenderTransform>
+      <TranslateTransform X="0" Y="0"/>
+    </Canvas.RenderTransform>
+    <Canvas.Resources/>
+    <Canvas>
+      <Canvas.RenderTransform>
+        <TranslateTransform X="306.91666"/>
+      </Canvas.RenderTransform>
+      <Rectangle xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Canvas.Left="-169.33333" Canvas.Top="0" Width="10.583333" Height="243.41666" Fill="#FF000080" StrokeThickness="0.264999" StrokeMiterLimit="4" StrokeLineJoin="Miter" StrokeStartLineCap="Flat" StrokeEndLineCap="Flat" Opacity="1"/>
+      <Rectangle xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Canvas.Left="-158.75" Canvas.Top="31.75" Width="10.583333" Height="211.66666" Fill="#FF000080" StrokeThickness="0.264999" StrokeMiterLimit="4" StrokeLineJoin="Miter" StrokeStartLineCap="Flat" StrokeEndLineCap="Flat" Opacity="1"/>
+      <Rectangle xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Canvas.Left="-179.91667" Canvas.Top="31.75" Width="10.583333" Height="211.66666" Fill="#FF000080" StrokeThickness="0.264999" StrokeMiterLimit="4" StrokeLineJoin="Miter" StrokeStartLineCap="Flat" StrokeEndLineCap="Flat" Opacity="1"/>
+      <Rectangle xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Canvas.Left="-148.16667" Canvas.Top="158.75" Width="10.583333" Height="84.666664" Fill="#FF000080" StrokeThickness="0.264999" StrokeMiterLimit="4" StrokeLineJoin="Miter" StrokeStartLineCap="Flat" StrokeEndLineCap="Flat" Opacity="1"/>
+      <Rectangle xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Canvas.Left="-137.58333" Canvas.Top="127" Width="10.583333" Height="116.41666" Fill="#FF000080" StrokeThickness="0.264999" StrokeMiterLimit="4" StrokeLineJoin="Miter" StrokeStartLineCap="Flat" StrokeEndLineCap="Flat" Opacity="1"/>
+      <Rectangle xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Canvas.Left="-127" Canvas.Top="190.5" Width="10.583333" Height="52.916664" Fill="#FF000080" StrokeThickness="0.264999" StrokeMiterLimit="4" StrokeLineJoin="Miter" StrokeStartLineCap="Flat" StrokeEndLineCap="Flat" Opacity="1"/>
+      <Rectangle xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Canvas.Left="-116.41666" Canvas.Top="211.66666" Width="10.583333" Height="31.75" Fill="#FF000080" StrokeThickness="0.264999" StrokeMiterLimit="4" StrokeLineJoin="Miter" StrokeStartLineCap="Flat" StrokeEndLineCap="Flat" Opacity="1"/>
+      <Rectangle xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Canvas.Left="-105.83333" Canvas.Top="222.25" Width="31.75" Height="21.166666" Fill="#FF000080" StrokeThickness="0.264999" StrokeMiterLimit="4" StrokeLineJoin="Miter" StrokeStartLineCap="Flat" StrokeEndLineCap="Flat" Opacity="1"/>
+      <Rectangle xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Canvas.Left="-74.083336" Canvas.Top="232.83333" Width="52.916664" Height="10.583333" Fill="#FF000080" StrokeThickness="0.264999" StrokeMiterLimit="4" StrokeLineJoin="Miter" StrokeStartLineCap="Flat" StrokeEndLineCap="Flat" Opacity="1"/>
+      <Rectangle xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Canvas.Left="-95.25" Canvas.Top="201.08333" Width="10.583333" Height="31.75" Fill="#FF000080" StrokeThickness="0.264999" StrokeMiterLimit="4" StrokeLineJoin="Miter" StrokeStartLineCap="Flat" StrokeEndLineCap="Flat" Opacity="1"/>
+      <Rectangle xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Canvas.Left="-190.5" Canvas.Top="158.75" Width="10.583333" Height="84.666664" Fill="#FF000080" StrokeThickness="0.264999" StrokeMiterLimit="4" StrokeLineJoin="Miter" StrokeStartLineCap="Flat" StrokeEndLineCap="Flat" Opacity="1"/>
+      <Rectangle xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Canvas.Left="-201.08333" Canvas.Top="127" Width="10.583333" Height="116.41666" Fill="#FF000080" StrokeThickness="0.264999" StrokeMiterLimit="4" StrokeLineJoin="Miter" StrokeStartLineCap="Flat" StrokeEndLineCap="Flat" Opacity="1"/>
+      <Rectangle xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Canvas.Left="-211.66666" Canvas.Top="190.5" Width="10.583333" Height="52.916664" Fill="#FF000080" StrokeThickness="0.264999" StrokeMiterLimit="4" StrokeLineJoin="Miter" StrokeStartLineCap="Flat" StrokeEndLineCap="Flat" Opacity="1"/>
+      <Rectangle xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Canvas.Left="-222.25" Canvas.Top="211.66666" Width="10.583333" Height="31.75" Fill="#FF000080" StrokeThickness="0.264999" StrokeMiterLimit="4" StrokeLineJoin="Miter" StrokeStartLineCap="Flat" StrokeEndLineCap="Flat" Opacity="1"/>
+      <Rectangle xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Canvas.Left="-232.83333" Canvas.Top="222.25" Width="10.583333" Height="21.166666" Fill="#FF000080" StrokeThickness="0.264999" StrokeMiterLimit="4" StrokeLineJoin="Miter" StrokeStartLineCap="Flat" StrokeEndLineCap="Flat" Opacity="1"/>
+      <Rectangle xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Canvas.Left="-243.41666" Canvas.Top="201.08333" Width="10.583333" Height="42.333332" Fill="#FF000080" StrokeThickness="0.264999" StrokeMiterLimit="4" StrokeLineJoin="Miter" StrokeStartLineCap="Flat" StrokeEndLineCap="Flat" Opacity="1"/>
+      <Rectangle xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Canvas.Left="-254" Canvas.Top="222.25" Width="10.583333" Height="21.166666" Fill="#FF000080" StrokeThickness="0.264999" StrokeMiterLimit="4" StrokeLineJoin="Miter" StrokeStartLineCap="Flat" StrokeEndLineCap="Flat" Opacity="1"/>
+      <Rectangle xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Canvas.Left="-306.91666" Canvas.Top="232.83333" Width="52.916664" Height="10.583333" Fill="#FF000080" StrokeThickness="0.264999" StrokeMiterLimit="4" StrokeLineJoin="Miter" StrokeStartLineCap="Flat" StrokeEndLineCap="Flat" Opacity="1"/>
+    </Canvas>
+  </Canvas>
+</Viewbox>

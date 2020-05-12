@@ -32,7 +32,7 @@ class VariableTable {
         element.style.border = "thick black solid";
         this.#implementation.tableBody.firstElementChild.lastElementChild.textContent =  `${String.fromCodePoint(0x2612)}`;
         this.#implementation.tableBody.firstElementChild.lastElementChild.style.color = "transparent";
-        this.#implementation.addRow = (first) => {
+        this.#implementation.addRow = first => {
             if (!first) {
                 const newRowIndex = this.#implementation.tableBody.childElementCount - 1;
                 this.#implementation.tableBody.lastElementChild.onclick = undefined;
@@ -105,9 +105,11 @@ class VariableTable {
     get derivedClassData() { return this.#implementation.derivedClassData; }
 
     reset() {
-        while (this.#implementation.tableBody.childElementCount > 3)
-            this.#implementation.tableBody.removeChild(this.#implementation.tableBody.children[2]);
+        while (this.#implementation.tableBody.childElementCount > 1)
+            this.#implementation.tableBody.removeChild(this.#implementation.tableBody.children[this.#implementation.tableBody.childElementCount - 1]);
+        this.#implementation.addRow(true);
+        this.#implementation.addRow(false);
         this.#implementation.updateLastRow();
-        } //reset
+    } //reset
 
 } //class VariableTable
