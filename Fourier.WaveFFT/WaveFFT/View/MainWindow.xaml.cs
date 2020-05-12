@@ -32,6 +32,7 @@
 
         public MainWindow() {
             InitializeComponent();
+            Title = Main.UtilitySet.ProductName;
 
             this.canvasTime.Domain = new Visualization.Domain(0, 1, -1, 1);
             this.canvasFrequency.Domain = new Visualization.Domain(0, 1, 0, 1);
