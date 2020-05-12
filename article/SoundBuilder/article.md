@@ -29,7 +29,6 @@ https://www.codeproject.com/Articles/1278552/Anamorphic-Drawing-for-the-Cheaters
 
 @toc
 
-
 ## Motivation
 
 The main driving force of thе present work is a severe need.
@@ -112,9 +111,9 @@ This call is a working horse of synthesis. The data for the wave is supplied by 
 
 In the Sound Builder UI, the spectrum is represented not by an array or complex number, but by an equivalent array of amplitudes and phases, which the user can "draw" by a mouse on a table of sliders. Each slider is an input element with `type="range"` with modified behavior which allowed drawing-like mouse action.
 
-Alternative way of entering data is using a separate application "WavFFT.exe" (WAV file to Fast Fourier Transform). It can load a WAV file, observe its waveform, select a fragment of the the sample sequence (FFT support number of samples equal to natural power of 2, this is supported by the UI), perform FFT, observe resulting spectrum and save this data in the format of Sound Builder instrument data file.
+Alternative way of entering data is using a separate application "WaveFFT.exe" (WAV file to Fast Fourier Transform). It can load a WAV file, observe its waveform, select a fragment of the the sample sequence (FFT support number of samples equal to natural power of 2, this is supported by the UI), perform FFT, observe resulting spectrum and save this data in the format of Sound Builder instrument data file.
 
-Typically, the data file created with WavFFT serves as a starting point. Another way to start is to use some sample files downloadable with this article.
+Typically, the data file created with WaveFFT serves as a starting point. Another way to start is to use some sample files downloadable with this article.
 
 [OscillatorNode](https://developer.mozilla.org/en-US/docs/Web/API/OscillatorNode/OscillatorNode) has two [a-rate](https://developer.mozilla.org/en-US/docs/Web/API/AudioParam#a-rate) properties, supporting the interface [AudioParam](https://developer.mozilla.org/en-US/docs/Web/API/AudioParam): [frequency](https://developer.mozilla.org/en-US/docs/Web/API/OscillatorNode/frequency) and [detune](https://developer.mozilla.org/en-US/docs/Web/API/OscillatorNode/detune).
 
