@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:components="clr-namespace:Components"
         mc:Ignorable="d"
-        Width="670" Height="370"
+        Width="640" Height="370"
         ResizeMode="CanResizeWithGrip"
         Title="{Binding ProductName}"
         WindowStartupLocation="CenterOwner">
