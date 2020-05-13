@@ -27,6 +27,8 @@ https://www.codeproject.com/Articles/1278552/Anamorphic-Drawing-for-the-Cheaters
 <p><i>If something is prohibited but you badly want it, it is&hellip; permitted</i></p>
 <dd>Folk wisdom</dd></blockquote>
 
+## Contents{no-toc}
+
 @toc
 
 ## Motivation
@@ -111,15 +113,35 @@ This call is a working horse of synthesis. The data for the wave is supplied by 
 
 In the Sound Builder UI, the spectrum is represented not by an array or complex number, but by an equivalent array of amplitudes and phases, which the user can "draw" by a mouse on a table of sliders. Each slider is an input element with `type="range"` with modified behavior which allowed drawing-like mouse action.
 
+### Wave FFT
+
 Alternative way of entering data is using a separate application "WaveFFT.exe" (WAV file to Fast Fourier Transform). It can load a WAV file, observe its waveform, select a fragment of the the sample sequence (FFT support number of samples equal to natural power of 2, this is supported by the UI), perform FFT, observe resulting spectrum and save this data in the format of Sound Builder instrument data file.
 
 Typically, the data file created with WaveFFT serves as a starting point. Another way to start is to use some sample files downloadable with this article.
+
+This application could be a matter of a separate article. In brief, this is a .NET Core WPF application, so it can be executed on different platforms without rebuild. At present time, it includes Windows, Linux and Mac OS with appropriate [framework installed](https://en.wikipedia.org/wiki/.NET_Core).
+
+![Wave FFT](WaveFFT.png)
+
+## Oscillator Control
+
+With Web Audio API, a node can be connected to another node or an object which is a property of a node, if this object supports the interface [AudioParam](https://developer.mozilla.org/en-US/docs/Web/API/AudioParam). This is a way to modulate the value corresponding to some audio parameter.{id=in-text-how-to-modulate}
 
 [OscillatorNode](https://developer.mozilla.org/en-US/docs/Web/API/OscillatorNode/OscillatorNode) has two [a-rate](https://developer.mozilla.org/en-US/docs/Web/API/AudioParam#a-rate) properties, supporting the interface [AudioParam](https://developer.mozilla.org/en-US/docs/Web/API/AudioParam): [frequency](https://developer.mozilla.org/en-US/docs/Web/API/OscillatorNode/frequency) and [detune](https://developer.mozilla.org/en-US/docs/Web/API/OscillatorNode/detune).
 
 Frequency [AudioParam](https://developer.mozilla.org/en-US/docs/Web/API/AudioParam) input can be used for FM, which, optionally, can be enveloped. The same can be done to detune, but modulation of detune would make little sense. Instead, it can modified through an envelope.
 
-First, we need to understand the operation of envelopes.
+## Modulation
+
+Two kinds of modulation are implemented in different ways: FM signal connects to the frequency input of some oscillator, while AF needs to be done on output, to modulate the gain of already generated and frequency-modulated signal.
+
+Therefore, FM signal is connected to an oscillator node frequency [AudioParam](https://developer.mozilla.org/en-US/docs/Web/API/AudioParam), as explained [above](#in-text-how-to-modulate), and AM signal is connected to some gain node.
+
+In both cases, FM and AM signals are connected to some gain node, shown on the [graph](#picture-graph) as "FM Envelope" and "AM Envelope", correspondingly. 
+
+Each of those gain mode receive FM and AM signals from two sources, absolute-frequency modulation signals from the `Instrument` instance and relative-frequency modulation signals from within the same `Tone` instance.
+
+On top of that, let's remember that "FM Envelope" and "AM Envelope" gain nodes are also envelopes. It means that the gain value of these node is kept zero until a performer press down a key. When it happens, an envelope function is applied to the gain, to open signals to output. Let's see how it works.
 
 ## Envelopes
 
@@ -289,6 +311,10 @@ Here is the text of the recommendations which a page shows when a browser cannot
 </blockquote>
 
 By the way, my congratulations to Microsoft people for their virtue of giving up majorly defunct [EdgeHTML](https://en.wikipedia.org/wiki/EdgeHTML) used for [Edge](https://en.wikipedia.org/wiki/Microsoft_Edge) until 2020. :-)
+
+## Credits
+
+[Wave FFT](#heading-wave-fft) uses C# [implementation](http://lomont.org/software/misc/fft/LomontFFT.html) of Fast Fourier Transform by [Chris Lomont](http://lomont.org).
 
 ## Conclusions
 
