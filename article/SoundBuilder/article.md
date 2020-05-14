@@ -242,7 +242,7 @@ Basically, the user needs to produce a set of desired instruments and test them.
 - Also include .js file generated before;{id=api-embed}
 - In the application, create in instance of `Instrument`;
 - To apply instrument data, assign `instrumentInstance.data = instrumentList[someIndex]`;
-- To play a single sound, call `instrument.play`;{id=api-use}
+- To play a single sound, call `instrumentInstance.play`;{id=api-use}
 - Enjoy :-).
 
 Now, let's see how the API looks in detail.
