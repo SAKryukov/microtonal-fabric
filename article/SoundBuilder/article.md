@@ -230,11 +230,6 @@ const compensation = (() =&gt; {
 
 The stitching happens at the medium frequency point, at the point of zero derivative, but with a step in second derivative. This imperfect _smoothness_ may sound questionable, but, after some experiments, seems to produce smooth sound, pun unintended ;-).
 
-## Live Play
-The application can play at [here](https://SAKryukov.github.io/microtonal-chromatic-lattice-keyboard/SoundBuilder/index.html). Again, no server part and no network is used, so the application can be downloaded and used on a local system.
-
-Most likely, to get started, one may need a set of sample data files, which can be downloaded from this article page.
-
 ## Using API and Generated Instruments In Applications
 
 Naturally, Sound Builder doesn't do much if it is not used in other applications. See the instructions in https://SAKryukov.github.io/microtonal-chromatic-lattice-keyboard/SoundBuilder/API.html.
@@ -295,6 +290,106 @@ To include the API, use this code sample:</h2>
 &lt;/html&gt;
 ```
 
+## Interesting Implementation Detail
+
+There is no much code needed to explain the principles of operation, because the essence of the technology is best explained on the [graph](#picture-graph), but some technical peculiarities are good to share.
+
+### Classes with Private Members
+
+After some experiments and thinking, I developed convenient discipline of using JavaScript classes, only for the cases when it seems to be convenient, with separation of public and [private members](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes/Class_fields). To reduce some possible clutter, I decided to concentrate all private member of a single object uniformly named `#implementation`.
+
+To demonstrate it, I'm showing the simplest of the sound classes, `Modulator`. It is a pretty trivial thing, a connected pair of instances of [OscillatorNode](https://developer.mozilla.org/en-US/docs/Web/API/OscillatorNode) and [GainNode](https://developer.mozilla.org/en-US/docs/Web/API/GainNode):
+
+```{lang=JavaScript}
+class Modulator {
+
+    #implementation = { isEnabled: true };
+
+    constructor(audioContext) {
+        this.#implementation.oscillator = new OscillatorNode(audioContext);
+        this.#implementation.depthNode = new GainNode(audioContext);
+        this.#implementation.depthNode.gain.value = 100;
+        this.#implementation.oscillator.connect(this.#implementation.depthNode);
+        this.#implementation.oscillator.start();
+        this.#implementation.output = this.#implementation.depthNode;
+        this.#implementation.deactivate = _ =&gt; {
+            this.#implementation.oscillator.stop();
+            this.#implementation.oscillator.disconnect();
+            this.#implementation.depthNode.disconnect();
+        }; //this.#implementation.deactivate
+    } //constructor
+
+    get frequency() { return this.#implementation.oscillator.frequency.value; }
+    set frequency(value) { this.#implementation.oscillator.frequency.value = value; }
+
+    get depth() { return this.#implementation.depthNode.gain.value; }
+    set depth(value) { this.#implementation.depthNode.gain.value = value; }
+
+    connect(audioParameter) {
+        this.#implementation.output.connect(audioParameter);
+        return this;
+    } //connect
+    disconnect() { this.#implementation.output.disconnect(); return this; }
+
+    deactivate() { this.#implementation.deactivate(); }
+
+}
+```
+Hopefully, this code is self-explaining. The sets of oscillators are used to implement `ModulatorSet`, a base class for `Instrument` and `Tone` classes.
+
+### Initialization
+
+On may wonder, why all the applications of the [Microtonal Music Study project](https://SAKryukov.github.io/microtonal-chromatic-lattice-keyboard) start with on-screen "Start" key or power button.
+
+If one tries to initialize Web Audio subsystem when the page is loaded, it will fail. Depending on the browser, producing sound may still be possible, or it will require [resuming](https://developer.mozilla.org/en-US/docs/Web/API/AudioContext/resume) of the [AudioContext](https://developer.mozilla.org/en-US/docs/Web/API/AudioContext). In both cases, very first sound will be lost, and it may be delayed if the initialization is [lazily](https://en.wikipedia.org/wiki/Lazy_evaluation) performed on the first press on a musical instrument key. Therefore, both practices would be dirty.
+
+Web Audio starts to function in full only after the user of a Web page provides any input on this page. Why Web Audio behaves in such a strange way. I think this is very good. It tries to protect the users of a Web page. The users reasonably expect nice behavior. Despite of many sites violating nice practices, people generally don't expect a nice site to produce any sound without explicit concent of the user. Imagine what a user sometimes working in the middle of night can feel if this person accidentally loads a Web page which could wake up entire household! Web browser tries to protect users from such accidents.
+
+Therefore, Web Audio should be initialized early, but only on some user's input.
+
+To solve this problem, the object `initializationController` is used:
+```{lang=JavaScript}
+const initializationController = {
+    badJavaScriptEngine: () =&gt; {
+        if (!goodJavaScriptEngine) {
+            const title = `This application requires JavaScript engine better conforming to the standard`;
+            const advice =
+                `Browsers based on V8 engine are recommended, such as ` +
+                `Chromium, Chrome, Opera, Vivaldi, Microsoft Edge v.&thinsp;80.0.361.111 or later, and more`;
+            document.body.style.padding = "1em";
+            document.body.innerHTML = `&lt;h1&gt;${title}.&lt;br/&gt;&lt;br/&gt;${advice}&hellip;&lt;/h1&gt;&lt;br/&gt;`; // last &lt;br/&gt; facilitates selection (enabled)
+            return true;
+        } //goodJavaScriptEngine                    
+    }, //badJavaScriptEngine
+    initialize: function (hiddenControls, startControl, startControlParent, startHandler) {
+        for (let control of hiddenControls) {
+            const style = window.getComputedStyle(control);
+            const display = style.getPropertyValue("display");
+            this.hiddenControlMap.set(control, display);
+            control.style.display = "none";
+        } //loop
+        startControl.focus();
+        const restore = () =&gt; {
+            startControlParent.style.display = "none";
+            for (let control of hiddenControls) {
+                control.style.visibility = "visible";
+                control.style.display = this.hiddenControlMap.get(control);
+            } //loop
+        }; //restore
+        startControl.onclick = event =&gt; {
+            document.body.style.cursor = "wait";
+            startHandler();
+            restore();
+            document.body.style.cursor = "auto";
+        } //startControl.onclick
+    }, //initialize
+    hiddenControlMap: new Map()
+}; //initializationController
+```
+
+This object pretty delicately works with page controls. Its `initialize` method accepts an array of elements to be hidden, an element used as the input for initialization command, its parent element and the initialization method named `startHandler`. During initial phase, elements to be hidden get hidden, but their `style.display` property values are remembered to be restored after initialization is complete. Everything else is self-explaining.
+
+Note `goodJavaScriptEngine` part. This is done to filter out obsolete JavaScript engines, those which don't support private class members. Unfortunately, Mozilla doesn't support it, but this is only useful for this application, because of the problems of Mozilla [Gecko](https://en.wikipedia.org/wiki/Gecko_(software)) sound rendition. See also [compatibility section](#heading-compatibility).
 
 ## Compatibility
 
@@ -312,11 +407,23 @@ Here is the text of the recommendations which a page shows when a browser cannot
 
 By the way, my congratulations to Microsoft people for their virtue of giving up majorly defunct [EdgeHTML](https://en.wikipedia.org/wiki/EdgeHTML) used for [Edge](https://en.wikipedia.org/wiki/Microsoft_Edge) until 2020. :-)
 
+## Live Play
+The application can play [on this page](https://SAKryukov.github.io/microtonal-chromatic-lattice-keyboard/SoundBuilder/index.html) of the [Microtonal Music Study site](https://SAKryukov.github.io/microtonal-chromatic-lattice-keyboard). Again, no server part and no network is used, so the application can be downloaded and used on a local system.
+
+Most likely, to get started, one may need a set of sample data files, which can be downloaded from this article page.
+
 ## Credits
 
 [Wave FFT](#heading-wave-fft) uses C# [implementation](http://lomont.org/software/misc/fft/LomontFFT.html) of Fast Fourier Transform by [Chris Lomont](http://lomont.org).
 
+[Valeri Brainin](https://en.wikipedia.org/wiki/Valeri_Brainin), prominent musicologist, music manager, composer, and poet, the author of the famous pedagogical system called [Brainin Method](http://brainin.org/Method/method_pro_de/publications_en1.html) participated in the [Microtonal Music Study project](https://SAKryukov.github.io/microtonal-chromatic-lattice-keyboard) as the early author of conception, inventor or co-author of some microtonal keyboard designs, recently implemented based on Sound Builder. He started to use those keyboards in his pedagogical practice and reported very promising results. He also have done a good deal of testing of the performance of the instruments and evaluation of the sound during development, provided feedback which helped me to solve number of problems, and some ideas which have been implemented or will be implemented in future versions.
+
 ## Conclusions
 
+It works now, and I think that this experiment with musical sound synthesis can be dubbed successful.
+
+I'll highly appreciate if anyone tries out the operation and gives me some feedback; I'll also be much grateful for any questions, comments, suggestions, and especially for criticism.
+
 Enjoy! :-)
+
 <!-- copy to CodeProject to here --------------------------------------------->
