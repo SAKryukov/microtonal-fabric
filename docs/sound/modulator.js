@@ -14,7 +14,7 @@ class Modulator {
             this.#implementation.oscillator.disconnect();
             this.#implementation.depthNode.disconnect();
         }; //this.#implementation.deactivate
-    } //constuctor
+    } //constructor
 
     get frequency() { return this.#implementation.oscillator.frequency.value; }
     set frequency(value) { this.#implementation.oscillator.frequency.value = value; }

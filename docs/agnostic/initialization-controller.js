@@ -33,6 +33,6 @@ const initializationController = {
             restore();
             document.body.style.cursor = "auto";
         } //startControl.onclick
-    }, //initalize
+    }, //initialize
     hiddenControlMap: new Map()
 }; //initializationController
