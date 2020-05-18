@@ -30,6 +30,11 @@ class Keyboard {
             element.style.fill = on ? options.highlightColor : elementData.originalColor;
         }; //handleElement
 
+        const handleIndex = (index, on) => {
+            const element = this.#implementation.keyList[index];
+            handleElement(element, keyMap.get(element), on);
+        }; //handleIndex
+
         const handler = (element, on) => {
             const elementData = keyMap.get(element);
             if (this.#implementation.mode == keyboardMode.chord) {
@@ -150,6 +155,15 @@ class Keyboard {
             } //loop
         }; //this.#implementation.clearChord
 
+        this.#implementation.playSequence = sequence => {
+            for (let index = 0; index < sequence.length; index += 3) {
+                const keyIndex = sequence[index];
+                const on = sequence[index + 1];
+                const time = sequence[index + 2];
+                setTimeout((keyIndex, on) => handleIndex(keyIndex, on), time, keyIndex, on);
+            } //loop
+        }; //this.#implementation.playSequence
+
     } //constructor
 
     set keyHandler(aHandler) { this.#implementation.keyHandler = aHandler; }
@@ -164,5 +178,7 @@ class Keyboard {
 
     set mode(value) { this.#implementation.setMode(value); }
     get mode() { return this.#implementation.mode; }
+
+    playSequence(sequence) { this.#implementation.playSequence(sequence); }
 
 } //class Keyboard
