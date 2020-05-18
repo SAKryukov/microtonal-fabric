@@ -36,6 +36,9 @@ const findControls = () => {
             chord: document.querySelector("#radio-mode-chord"),
             chordSet: document.querySelector("#radio-mode-chord-set"),
         },
+        memory: {
+            playSequence: document.querySelector("#play-sequence"),
+        },
         version: document.querySelector("footer span"),
     };
     controls.playControl.volume.label = controls.playControl.volumeLabel;

@@ -156,11 +156,11 @@ class Keyboard {
         }; //this.#implementation.clearChord
 
         this.#implementation.playSequence = sequence => {
-            for (let index = 0; index < sequence.length; index += 3) {
-                const keyIndex = sequence[index];
-                const on = sequence[index + 1];
-                const time = sequence[index + 2];
-                setTimeout((keyIndex, on) => handleIndex(keyIndex, on), time, keyIndex, on);
+            for (let www of sequence) {
+                const what = www[0];
+                const where = www[1];
+                const when = www[2];
+                setTimeout((where, what) => handleIndex(where, what), when, where, what);
             } //loop
         }; //this.#implementation.playSequence
 

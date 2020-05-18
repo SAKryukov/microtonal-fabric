@@ -109,6 +109,15 @@ window.onload = () => {
             }; //windowUpDownKeyHandler
             window.onkeydown = event => { windowUpDownKeyHandler(event, true); }
             window.onkeyup = event => { windowUpDownKeyHandler(event, false); }
+            
+            // preserved:
+            // controls.memory.playSequence.onclick = _ => 
+            //     keyboards[activeInstrumentIndex].playSequence([
+            //         [1,20,0],[0, 20,2000],[1,30,0],[0,30,2000],
+            //         [1,40,2000],[0, 40,3000],[1,50,2000],[0,50,3000],
+            //         [1,60,3000],[0, 60,4000],[1,70,3000],[0,70,4000],
+            //     ]);
+
         })();
     
     } //startApplication

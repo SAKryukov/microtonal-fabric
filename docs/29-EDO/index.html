@@ -1,4 +1,17 @@
 ﻿<!DOCTYPE html>
+
+<!--
+// Microtonal Music Study with Chromatic Lattice Keyboard
+//
+// Copyright (c) Sergey A Kryukov, 2017, 2020
+//
+// http://www.SAKryukov.org
+// http://www.codeproject.com/Members/SAKryukov
+// https://github.com/SAKryukov
+// https://github.com/SAKryukov/microtonal-chromatic-lattice-keyboard
+//
+-->
+
 <html lang="en-us">
 <head>
    <title>29 EDO Microtonal Keyboard</title>
@@ -55,7 +68,7 @@
      main article label { margin-right: var(--small-horizontal-gap); }
      main article div:last-of-type { margin-right: var(--horizontal-gap); }
      main article:first-of-type label:last-of-type { margin-left: 4em; }
-     main section { display: inline-block; margin-top: var(--vertical-gap); }
+     main section, details { display: inline-block; margin-top: var(--vertical-gap); vertical-align: top; }
      main section:first-of-type { margin-right: var(--small-horizontal-gap); }
      main section select { margin-left: var(--small-horizontal-gap); margin-top: var(--big-vertical-gap); }
      main, main p:first-of-type { margin-top: var(--big-vertical-gap); }
@@ -64,6 +77,9 @@
      footer { background: oldlace; padding: 0.2em; padding-bottom: 0.4em; padding-left: 0.4rem; padding-right: 0.4rem; border-top: solid gray thin; font-size: 60%; }
      footer a, footer span:last-child { margin-left: 2em; }
      footer span:last-child { color: red; overflow: auto; }
+     details { vertical-align: bottom; }
+     details { display: none; } /* to be removed and thus revealed in future releases, reserved for memory and display options */
+     summary { padding-left: var(--horizontal-gap); padding-right: var(--horizontal-gap); }
   </style>
 </head>
 <body>
@@ -1798,6 +1814,12 @@
    <section><label accesskey="I" for="select-instrument"><u>I</u>nstrument:</label>
       <select id="select-instrument"></select>
    </section>
+   <details><summary accesskey="M"><u>M</u>emory</summary>
+         <br/>
+         <button id="play-sequence">Play Sequence</button><br/>
+   </details>
+   <details><summary accesskey="P">Dis<u>p</u>lay</summary>
+</details>
 </main>
 
 <footer>29 EDO Microtonal Keyboard v&thinsp;<span></span><a href="authors.html">Authors</a><span></span></footer>
