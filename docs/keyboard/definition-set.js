@@ -1,6 +1,6 @@
 ﻿// Microtonal Music Study with Chromatic Lattice Keyboard
 //
-// Copyright (c) Sergey A Kryukov, 2017, 2019
+// Copyright (c) Sergey A Kryukov, 2017, 2020
 //
 // http://www.SAKryukov.org
 // http://www.codeproject.com/Members/SAKryukov

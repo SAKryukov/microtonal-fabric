@@ -1,3 +1,12 @@
+// Microtonal Music Study with Chromatic Lattice Keyboard
+//
+// Copyright (c) Sergey A Kryukov, 2017, 2020
+//
+// http://www.SAKryukov.org
+// http://www.codeproject.com/Members/SAKryukov
+// https://github.com/SAKryukov
+// https://github.com/SAKryukov/microtonal-chromatic-lattice-keyboard
+
 class VariableTable {
 
     #implementation = { metrics: { rowFirst: 0, rowLast: 0, columnFirst: 0, columnLast: 0 }, map: new Map() };

@@ -230,6 +230,8 @@ const compensation = (() =&gt; {
 
 The stitching happens at the medium frequency point, at the point of zero derivative, but with a step in second derivative. This imperfect _smoothness_ may sound questionable, but, after some experiments, seems to produce smooth sound, pun unintended ;-).
 
+The compensation function depends on fundamental frequency of each of the main oscillators, the value of gain compensation is combined as a result of operation of many gain nodes, gain nodes "Compensation", one per `Tone` instance, plus one node of the `Instrument` instance, "Gain compensation", as shown on the [graph](#picture-graph).
+
 ## Using API and Generated Instruments In Applications
 
 Naturally, Sound Builder doesn't do much if it is not used in other applications. See the instructions in https://SAKryukov.github.io/microtonal-chromatic-lattice-keyboard/SoundBuilder/API.html.
@@ -416,7 +418,7 @@ Most likely, to get started, one may need a set of sample data files, which can 
 
 [Wave FFT](#heading-wave-fft) uses C# [implementation](http://lomont.org/software/misc/fft/LomontFFT.html) of Fast Fourier Transform by [Chris Lomont](http://lomont.org).
 
-[Valeri Brainin](https://en.wikipedia.org/wiki/Valeri_Brainin), prominent musicologist, music manager, composer, and poet, the author of the famous pedagogical system called [Brainin Method](http://brainin.org/Method/method_pro_de/publications_en1.html) participated in the [Microtonal Music Study project](https://SAKryukov.github.io/microtonal-chromatic-lattice-keyboard) as the early author of conception, inventor or co-author of some microtonal keyboard designs, recently implemented based on Sound Builder. He started to use those keyboards in his pedagogical practice and reported very promising results. He also have done a good deal of testing of the performance of the instruments and evaluation of the sound during development, provided feedback which helped me to solve number of problems, and some ideas which have been implemented or will be implemented in future versions.
+[Valeri Brainin](https://en.wikipedia.org/wiki/Valeri_Brainin), prominent musicologist, music manager, composer, and poet, the author of the famous pedagogical system called [Brainin Method](http://brainin.org/Method/method_pro_de/publications_en1.html), participated in the [Microtonal Music Study project](https://SAKryukov.github.io/microtonal-chromatic-lattice-keyboard) as the early author of conception, inventor or co-author of some microtonal keyboard designs, recently implemented based on Sound Builder. He started to use those keyboards in his pedagogical practice and reported very promising results. He also have done a good deal of testing of the performance of the instruments and evaluation of the sound during development, provided feedback which helped me to solve number of problems, and some ideas which have been implemented or will be implemented in future versions.
 
 ## Conclusions
 

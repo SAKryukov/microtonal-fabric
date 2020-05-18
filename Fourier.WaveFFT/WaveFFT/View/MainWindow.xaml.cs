@@ -83,7 +83,7 @@
                 string declaredSampleCount = string.Empty;
                 if (this.wave.DeclaredSampleCount != this.wave.SampleCount)
                     declaredSampleCount = $" (declared sample count: {this.wave.DeclaredSampleCount})";
-                this.textBlockAudioProperties.Text = $"Sample count {this.wave.SampleCount}{declaredSampleCount}, channels: {this.wave.ChannelCount}... {this.wave.IsAcceptableDataSize}";
+                this.textBlockAudioProperties.Text = $"Sample count {this.wave.SampleCount}, channels: {this.wave.ChannelCount}";
             } //reportMetadata
             reportMetadata();
             this.footer.Text = DefinitionSet.formatInputFileName(wavFileName);
