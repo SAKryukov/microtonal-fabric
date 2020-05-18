@@ -1,6 +1,15 @@
+// Microtonal Music Study with Chromatic Lattice Keyboard
+//
+// Copyright (c) Sergey A Kryukov, 2017, 2020
+//
+// http://www.SAKryukov.org
+// http://www.codeproject.com/Members/SAKryukov
+// https://github.com/SAKryukov
+// https://github.com/SAKryukov/microtonal-chromatic-lattice-keyboard
+
 class Tone extends ModulatorSet {
 
-    #implementation = { isFmEnvelopеEnabled: true, isAmEnvelopеEnabled: true };
+    #implementation = { isFmEnvelopeEnabled: true, isAmEnvelopeEnabled: true };
 
     constructor(audioContext, frequency, frequencyCompensationGain) {
         super(audioContext, frequency);
@@ -66,14 +75,14 @@ class Tone extends ModulatorSet {
     get detuneEnvelopeEnable() { return this.#implementation.detuneEnvelope.enable; }    
     set frequencyModulationEnvelopeEnable(enable) {
         this.#implementation.frequencyModulationEnvelope.enable = enable;
-        this.#implementation.isFmEnvelopеEnabled = enable;
+        this.#implementation.isFmEnvelopeEnabled = enable;
     } //set frequencyModulationEnvelopeEnable
-    get frequencyModulationEnvelopeEnable() { return this.#implementation.isFmEnvelopеEnabled; }
+    get frequencyModulationEnvelopeEnable() { return this.#implementation.isFmEnvelopeEnabled; }
     set amplitudeModulationEnvelopeEnable(enable) {
         this.#implementation.amplitudeModulationEnvelope.enable = enable;
-        this.#implementation.isAmEnvelopеEnabled = enable;
+        this.#implementation.isAmEnvelopeEnabled = enable;
     }  //set amplitudeModulationEnvelopeEnable
-    get amplitudeModulationEnvelopeEnable() { return this.#implementation.isAmEnvelopеEnabled; }
+    get amplitudeModulationEnvelopeEnable() { return this.#implementation.isAmEnvelopeEnabled; }
 
     get frequencyModulatorTarget() { return this.#implementation.frequencyModulationEnvelopeNode; }
     get amplitudeModulatorTarget() { return this.#implementation.amplitudeModulationEnvelopeNode; }
