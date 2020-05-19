@@ -12,6 +12,11 @@
 const recorderControl = {
     
     init: (recorder, buttonRecord, buttonPlay, buttonToClipboard, buttonFromClipboard, playHandler) => {
+        recorder.phaseChangeHandler = value => {
+            for (let button of [buttonPlay, buttonToClipboard, buttonFromClipboard])
+                button.disabled = value != soundRecorderPhase.none;
+            buttonRecord.hidden = value == soundRecorderPhase.playing;
+        } //recorder.phaseChangeHandler
         buttonRecord.handler = value => recorder.recording = value;
         buttonPlay.onclick = playHandler;
     },
