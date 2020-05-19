@@ -6,7 +6,9 @@ class Keyboard {
 
     #implementation = { mode: 0, chord: new Set(), chordRoot: -1 };
 
-    constructor(keyboard, system, temperament, options) { //options: definitionSet.keyboardOptions
+    constructor(keyboard, system, temperament, options, recorder) { //options: definitionSet.keyboardOptions
+
+        this.#implementation.recorder = recorder;
 
         this.#implementation.setVisibility = on => {
             keyboard.style.display = on ? "block" : "none";
@@ -25,6 +27,8 @@ class Keyboard {
         }; //refreshChordColors
 
         const handleElement = (element, elementData, on) => {
+            if (this.#implementation.recorder)
+                (this.#implementation.recorder.record(on, elementData.index));
             if (this.#implementation.keyHandler)
                 this.#implementation.keyHandler(elementData.index, on);
             element.style.fill = on ? options.highlightColor : elementData.originalColor;
@@ -155,13 +159,9 @@ class Keyboard {
             } //loop
         }; //this.#implementation.clearChord
 
-        this.#implementation.playSequence = sequence => {
-            for (let www of sequence) {
-                const what = www[0];
-                const where = www[1];
-                const when = www[2];
-                setTimeout((where, what) => handleIndex(where, what), when, where, what);
-            } //loop
+        this.#implementation.playSequence = _ => {
+            if (this.#implementation.recorder)
+                this.#implementation.recorder.play(handleIndex);
         }; //this.#implementation.playSequence
 
     } //constructor
