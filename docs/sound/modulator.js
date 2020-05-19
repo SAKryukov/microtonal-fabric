@@ -6,6 +6,9 @@
 // http://www.codeproject.com/Members/SAKryukov
 // https://github.com/SAKryukov
 // https://github.com/SAKryukov/microtonal-chromatic-lattice-keyboard
+//
+// Original publication:
+// https://www.codeproject.com/Articles/5268512/Sound-Builder
 
 class Modulator {
 
