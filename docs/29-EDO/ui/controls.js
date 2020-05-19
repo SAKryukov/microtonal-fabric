@@ -1,3 +1,12 @@
+// Microtonal Music Study with Chromatic Lattice Keyboard
+//
+// Copyright (c) Sergey A Kryukov, 2017, 2020
+//
+// http://www.SAKryukov.org
+// http://www.codeproject.com/Members/SAKryukov
+// https://github.com/SAKryukov
+// https://github.com/SAKryukov/microtonal-chromatic-lattice-keyboard
+
 "use strict";
 
 const findInitializerControls = () => {
@@ -36,8 +45,11 @@ const findControls = () => {
             chord: document.querySelector("#radio-mode-chord"),
             chordSet: document.querySelector("#radio-mode-chord-set"),
         },
-        memory: {
-            playSequence: document.querySelector("#play-sequence"),
+        recorder: {
+            record: new TwoStateButton(document.querySelector("#recorder button:first-of-type")),
+            playSequence: document.querySelector("#recorder button:nth-of-type(2)"),
+            toClipboard: document.querySelector("#recorder button:nth-of-type(3)"),
+            fromClipboard: document.querySelector("#recorder button:nth-of-type(4)"),
         },
         version: document.querySelector("footer span"),
     };
@@ -47,5 +59,6 @@ const findControls = () => {
     controls.playControl.volumeLabel.ondblclick = _ => controls.playControl.volume.value = defaultVolume;
     controls.playControl.sustainLabel.ondblclick = _ => controls.playControl.sustain.value = defaultSustain;
     controls.playControl.transpositionLabel.ondblclick = _ => controls.playControl.transposition.value = defaultTransposition;
+    controls.recorder.record.isDown = false;
     return controls;
 }; //findControls

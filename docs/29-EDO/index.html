@@ -21,6 +21,7 @@
    <script src="../ui.components/multitouch.js"></script>
    <script src="../ui.components/keyboard.js"></script>
    <script src="../ui.components/slider.js"></script>
+   <script src="../ui.components/button.js"></script>
    <script src="../ui.components/recorder.js"></script>
    <script src="../agnostic/initialization-controller.js"></script>
    <script src="../agnostic/enumeration.js"></script>
@@ -34,53 +35,83 @@
    <script src="../instruments/instrument-list.js"></script>
    <script src="ui/keyboard.js"></script>
    <script src="ui/controls.js"></script>
+   <script src="ui/recorder-control.js"></script>
    <script src="main/definition-set.js"></script>
    <script src="main/main.js"></script>
    <style>
       :root {
          --vertical-gap: 0.2em;
+         --grid-vertical-gap: 0.4em;
          --big-vertical-gap: 1em;
          --small-horizontal-gap: 0.2em;
          --horizontal-gap: 1em;
-     }
-     * { font-family: sans-serif; }
-     * { margin: 0; padding: 0; }
-     * { box-sizing: context-box; touch-action: none; user-select: none; }
-     svg rect { stroke: gray; }
-     svg:first-child rect { fill: white; stroke-width: 0.2; }
-     svg:nth-child(2) rect { fill: white; stroke-width: 1px; }
-     svg:last-child rect { fill: lightGray; stroke-width: 2px; }
-     html, body, svg { height: 100%; }
-     body { display: flex; flex-flow: column; }
-     main { width: 100%; flex: auto; overflow-y: auto; }
-     svg { margin-top: 1em; margin-bottom: 1.6em; width: 100%; display: none; }
-     body header { margin-left: 0.4em; margin-right: 0.4em; visibility: hidden; }
-     body aside { text-align: center; }
-     body aside button {
-        margin-top: 3em;
-        padding: var(--horizontal-gap); padding-top: var(--vertical-gap); padding-bottom: var(--vertical-gap);
-        font-size: 120%; background-color: yellow; border: solid thin black; border-radius: 3px;
-     }
-     body aside button:hover { background-color: lightgoldenrodyellow; }
-     main > * { margin-left: var(--horizontal-gap); margin-right: var(--horizontal-gap); }
-     main article { margin: 0; display: flex; white-space: nowrap; width: 100%; }
-     main article div { white-space: nowrap; width: 100%; }
-     main article label:first-of-type { margin-left: var(--horizontal-gap); }
-     main article label { margin-right: var(--small-horizontal-gap); }
-     main article div:last-of-type { margin-right: var(--horizontal-gap); }
-     main article:first-of-type label:last-of-type { margin-left: 4em; }
-     main section, details { display: inline-block; margin-top: var(--vertical-gap); vertical-align: top; }
-     main section:first-of-type { margin-right: var(--small-horizontal-gap); }
-     main section select { margin-left: var(--small-horizontal-gap); margin-top: var(--big-vertical-gap); }
-     main, main p:first-of-type { margin-top: var(--big-vertical-gap); }
-     main input[type=radio] { margin-right: var(--small-horizontal-gap); }
-     main button { margin-left: var(--horizontal-gap); padding-left: var(--horizontal-gap); padding-right: var(--horizontal-gap); }
-     footer { background: oldlace; padding: 0.2em; padding-bottom: 0.4em; padding-left: 0.4rem; padding-right: 0.4rem; border-top: solid gray thin; font-size: 60%; }
-     footer a, footer span:last-child { margin-left: 2em; }
-     footer span:last-child { color: red; overflow: auto; }
-     details { vertical-align: bottom; }
-     details { display: none; } /* to be removed and thus revealed in future releases, reserved for memory and display options */
-     summary { padding-left: var(--horizontal-gap); padding-right: var(--horizontal-gap); }
+         --frame: 0.2em 1.2em 0.2em 1.2em;
+      }
+      * { font-family: sans-serif; }
+      * { margin: 0; padding: 0; }
+      * { box-sizing: context-box; touch-action: none; user-select: none; }
+      svg rect { stroke: gray; }
+      svg:first-child rect { fill: white; stroke-width: 0.2; }
+      svg:nth-child(2) rect { fill: white; stroke-width: 1px; }
+      svg:last-child rect { fill: lightGray; stroke-width: 2px; }
+      html, body, svg { height: 100%; }
+      body { display: flex; flex-flow: column; }
+      main { width: 100%; flex: auto; overflow-y: auto; }
+      svg { margin-top: 1em; margin-bottom: 1.6em; width: 100%; display: none; }
+      body header { margin-left: 0.4em; margin-right: 0.4em; visibility: hidden; }
+      body aside { text-align: center; }
+      body aside button {
+         margin-top: 3em;
+         padding: var(--horizontal-gap); padding-top: var(--vertical-gap); padding-bottom: var(--vertical-gap);
+         font-size: 120%; background-color: yellow; border: solid thin black; border-radius: 3px;
+      }
+      button {
+            outline: none;
+            border: solid 2px;
+            border-radius: 0.6em;
+            padding: var(--frame);
+        }
+      body aside button:hover { background-color: lightgoldenrodyellow; }
+      main > * { margin-left: var(--horizontal-gap); margin-right: var(--horizontal-gap); }
+      main article { margin: 0; display: flex; white-space: nowrap; width: 100%; }
+      main article div { white-space: nowrap; width: 100%; }
+      main article label:first-of-type { margin-left: var(--horizontal-gap); }
+      main article label { margin-right: var(--small-horizontal-gap); }
+      main article div:last-of-type { margin-right: var(--horizontal-gap); }
+      main article:first-of-type label:last-of-type { margin-left: 4em; }
+      main > section, details { display: inline-block; margin-top: var(--vertical-gap); vertical-align: top; }
+      main > section:first-of-type { margin-right: var(--small-horizontal-gap); }
+      main > section select { margin-left: var(--small-horizontal-gap); margin-top: var(--big-vertical-gap); }
+      main, main p:first-of-type { margin-top: var(--big-vertical-gap); }
+      main input[type=radio] { margin-right: var(--small-horizontal-gap); }
+      footer { background: oldlace; padding: 0.2em; padding-bottom: 0.4em; padding-left: 0.4rem; padding-right: 0.4rem; border-top: solid gray thin; font-size: 60%; }
+      footer a, footer span:last-child { margin-left: 2em; }
+      footer span:last-child { color: red; overflow: auto; }
+      details { vertical-align: bottom; }
+      details > section { display: grid; grid-template-columns: repeat(2, 1fr); grid-template-rows: repeat(2, 1fr); grid-gap: var(--grid-vertical-gap); padding-top: var(--grid-vertical-gap); }
+      details > section button:nth-of-type(1), details > section button:nth-of-type(2) { grid-column-start: 1; }
+      details > section button:nth-of-type(3), details > section button:nth-of-type(4) { grid-column-start: 2; }
+      details > section button:nth-of-type(1), details > section button:nth-of-type(3) { grid-row-start: 1; }
+      details > section button:nth-of-type(2), details > section button:nth-of-type(4) { grid-row-start: 2; }
+      details { display: none; } /* to be removed and thus revealed in future releases, reserved for memory and display options */
+      summary { padding-left: var(--horizontal-gap); padding-right: var(--horizontal-gap); }
+      button[disabled] { border-color: silver; color: silver; border-style: double; }
+      button:active { background-color: var(--light-title-background); filter: brightness(116%); }
+      button:focus {
+          border-style: double dotted double dotted;
+      }
+      button.st {
+         background: lightgray;
+         padding-bottom: 0.3em;
+         border-color: slategray;
+      }
+      button.st.down {
+         background: darkslategray;
+         color: white;
+         border-color: lightgreen;
+      }
+      button span { opacity: 0.2; }
+      button.st.down span { color: lightgreen; font-weight: normal; opacity: 1; };
   </style>
 </head>
 <body>
@@ -1815,11 +1846,14 @@
    <section><label accesskey="I" for="select-instrument"><u>I</u>nstrument:</label>
       <select id="select-instrument"></select>
    </section>
-   <details><summary accesskey="M"><u>M</u>emory</summary>
-         <br/>
-         <button id="play-sequence">Play Sequence</button><br/>
+   <details><summary accesskey="R"><u>R</u>ecorder</summary>
+      <section id="recorder">
+         <button class="st down"><span>&#x2B24;</span> Record</button><br/>
+         <button>Play</button><br/>
+         <button>То Clipboard</button><br/>
+         <button>From Clipboard</button><br/>
+      </section>
    </details>
-   <details><summary accesskey="P">Dis<u>p</u>lay</summary>
 </details>
 </main>
 
