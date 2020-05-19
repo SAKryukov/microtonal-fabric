@@ -15,8 +15,11 @@ For CodeProject, makes sure there are no HTML comments in the area to past!
 
 See: https://www.codeproject.com/script/Articles/ArticleVersion.aspx?waid=277187&aid=1278552&PageFlow=FixedWidth
 Original publication:
-https://www.codeproject.com/Articles/1278552/Anamorphic-Drawing-for-the-Cheaters
+https://www.codeproject.com/Articles/5268512/Sound-Builder
 
+Abstract:
+
+This in-browser synthesizer creates instruments to be used in musical applications, offers advanced additive and subtractive synthesis techniques. It is based on Web Audio API and relies only on the browser, does not require any server-side part. It creates the synthesizers of the musical instruments. The synthesizers can be exported and embedded in a Web application.
 
 <!-- copy to CodeProject from here ------------------------------------------->
 
@@ -101,7 +104,7 @@ Now, we are ready to present a graph, starting with a tone part of it. First, le
 
 ![Output mode](output.png) Output node
 
-The graph is shown schematically in two parts, left on right. On left, there is a singleton instance of `Instrument` connected with a set of `Tone` instances show as only one on left. Let's remember that there is an entire set of `Tone` instances, all having different fundamental frequencies. Every `Tone` instance is connected to the instance of the instrument in three ways. An `Instrument` instance supplies two signals from the sets of FM and AM modulators, which are common to all tones, and receives a fully-shaped sound signal from each tone, modulated and controlled by the functions of the envelopes.
+The graph is shown schematically in two parts, left and right. On left, there is a singleton instance of `Instrument` connected with a set of `Tone` instances show as only one on left. Let's remember that there is an entire set of `Tone` instances, all having different fundamental frequencies. Every `Tone` instance is connected to the instance of the instrument in three ways. An `Instrument` instance supplies two signals from the sets of FM and AM modulators, which are common to all tones, and receives a fully-shaped sound signal from each tone, modulated and controlled by the functions of the envelopes.
 
 ![Graph](graph.png){id=picture-graph}
 
@@ -168,7 +171,9 @@ for (let element of this.#implementation.data) {
             if (element.gain == 0 || element.isLast)
                 audioParameter.setTargetAtTime(element.gain, currentTime,  element.time);
             else
-                audioParameter.exponentialRampToValueAtTime(element.gain, currentTime + element.time);
+                audioParameter.exponentialRampToValueAtTime(
+                    element.gain,
+                    currentTime + element.time);
             break;
         case this.#implementation.typeLinear:
             audioParameter.linearRampToValueAtTime(element.gain, currentTime + element.time);
@@ -224,8 +229,10 @@ const compensation = (() =&gt; {
         const g1 = this.#implementation.gainCompensation.highFrequencyCompensationGain;
         const f0 = this.#implementation.gainCompensation.lowFrequency;
         const f1 = this.#implementation.gainCompensation.lowFrequency;
-        const factor0 = (g0 - 1) / Math.pow(f0 - this.#implementation.gainCompensation.middleFrequency, 2);
-        const factor1 = (g1 - 1) / Math.pow(f1 - this.#implementation.gainCompensation.middleFrequency, 2);
+        const factor0 = (g0 - 1) / Math.pow(
+            f0 - this.#implementation.gainCompensation.middleFrequency, 2);
+        const factor1 = (g1 - 1) /
+            Math.pow(f1 - this.#implementation.gainCompensation.middleFrequency, 2);
         if (shift &lt; 0)
             return 1 + factor0 * Math.pow(shift, 2);
         else                
@@ -366,7 +373,7 @@ const initializationController = {
                 `Browsers based on V8 engine are recommended, such as ` +
                 `Chromium, Chrome, Opera, Vivaldi, Microsoft Edge v.&thinsp;80.0.361.111 or later, and more`;
             document.body.style.padding = "1em";
-            document.body.innerHTML = `&lt;h1&gt;${title}.&lt;br/&gt;&lt;br/&gt;${advice}&hellip;&lt;/h1&gt;&lt;br/&gt;`; // last &lt;br/&gt; facilitates selection (enabled)
+            document.body.innerHTML = //...
             return true;
         } //goodJavaScriptEngine                    
     }, //badJavaScriptEngine
