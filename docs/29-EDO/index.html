@@ -23,6 +23,7 @@
    <script src="../ui.components/slider.js"></script>
    <script src="../ui.components/button.js"></script>
    <script src="../ui.components/recorder.js"></script>
+   <script src="../ui.components/recorder-control.js"></script>
    <script src="../agnostic/initialization-controller.js"></script>
    <script src="../agnostic/enumeration.js"></script>
    <script src="../sound/definition-set.js"></script>
@@ -35,7 +36,6 @@
    <script src="../instruments/instrument-list.js"></script>
    <script src="ui/keyboard.js"></script>
    <script src="ui/controls.js"></script>
-   <script src="ui/recorder-control.js"></script>
    <script src="main/definition-set.js"></script>
    <script src="main/main.js"></script>
    <style>
@@ -93,7 +93,6 @@
       details > section button:nth-of-type(3), details > section button:nth-of-type(4) { grid-column-start: 2;}
       details > section button:nth-of-type(1), details > section button:nth-of-type(3) { grid-row-start: 1; }
       details > section button:nth-of-type(2), details > section button:nth-of-type(4) { grid-row-start: 2; }
-      details { display: none; } /* to be removed and thus revealed in future releases, reserved for memory and display options */
       summary { padding-left: var(--horizontal-gap); padding-right: var(--horizontal-gap); }
       button[disabled] { border-color: silver; color: silver; border-style: double; }
       button:active { background-color: var(--light-title-background); filter: brightness(116%); }
@@ -1849,9 +1848,9 @@
    <details><summary accesskey="R"><u>R</u>ecorder</summary>
       <section id="recorder">
          <button class="st down"><span>&#x2B24;</span> Record</button><br/>
-         <button>Play</button><br/>
-         <button>То Clipboard</button><br/>
-         <button>From Clipboard</button><br/>
+         <button accesskey="P"><u>P</u>lay</button><br/>
+         <button accesskey="O">Т<u>o</u> Clipboard</button><br/>
+         <button accesskey="M">Fro<u>m</u> Clipboard</button><br/>
       </section>
    </details>
 </details>

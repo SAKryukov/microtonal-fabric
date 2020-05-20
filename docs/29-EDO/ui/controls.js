@@ -60,5 +60,7 @@ const findControls = () => {
     controls.playControl.sustainLabel.ondblclick = _ => controls.playControl.sustain.value = defaultSustain;
     controls.playControl.transpositionLabel.ondblclick = _ => controls.playControl.transposition.value = defaultTransposition;
     controls.recorder.record.isDown = false;
+    controls.recorder.playSequence.disabled = true;
+    controls.recorder.toClipboard.disabled = true;
     return controls;
 }; //findControls

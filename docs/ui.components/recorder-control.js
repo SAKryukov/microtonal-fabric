@@ -12,13 +12,28 @@
 const recorderControl = {
     
     init: (recorder, buttonRecord, buttonPlay, buttonToClipboard, buttonFromClipboard, playHandler) => {
-        recorder.phaseChangeHandler = value => {
+
+        recorder.phaseChangeHandler = (value, sequenceLength) => {
             for (let button of [buttonPlay, buttonToClipboard, buttonFromClipboard])
                 button.disabled = value != soundRecorderPhase.none;
+            for (let button of [buttonPlay, buttonToClipboard])
+                if (sequenceLength < 1)
+                    button.disabled = true;
             buttonRecord.hidden = value == soundRecorderPhase.playing;
         } //recorder.phaseChangeHandler
+
         buttonRecord.handler = value => recorder.recording = value;
+
         buttonPlay.onclick = playHandler;
-    },
+
+        buttonToClipboard.onclick = _ => {
+            navigator.clipboard.writeText(recorder.serializedSequence);
+        }; //ToClipboard
+
+        buttonFromClipboard.onclick = _ => {            
+            navigator.clipboard.readText().then(value => recorder.serializedSequence = value);
+        }; //FromClipboard
+
+    }, //init
 
 }; //recorderControl
