@@ -36,6 +36,7 @@ class Keyboard {
         }; //refreshChordColors
 
         const handleElement = (element, elementData, on) => {
+            if (!elementData) return; // important when called from handleIndex, which call is caused by recorder.play
             if (this.#implementation.recorder)
                 (this.#implementation.recorder.record(on, elementData.index));
             if (this.#implementation.keyHandler)
