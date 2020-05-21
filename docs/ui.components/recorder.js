@@ -7,23 +7,24 @@
 // https://github.com/SAKryukov
 // https://github.com/SAKryukov/microtonal-chromatic-lattice-keyboard
 
-const soundRecorderPhase = { none: 1, recording: 2, playing: 4, };
+const soundRecorderPhase = { recording: 1, playing: 2, };
 
 class Recorder {
 
-    #implementation = { phase: soundRecorderPhase.none, sequence: [] };
+    #implementation = { phase: new Set(), playSequence: [], recordSequence: [], };
 
     constructor() {
-        this.#implementation.callPhaseChangeHandler = forced => {
-            if (forced)
-                this.#implementation.phase = forced;
+        this.#implementation.callPhaseChangeHandler = stopPlay => {
+            if (stopPlay)
+                this.#implementation.phase.delete(soundRecorderPhase.playing);
             if (this.#implementation.changePhaseHandler)
-                this.#implementation.changePhaseHandler(this.#implementation.phase, this.#implementation.sequence.length);
+                this.#implementation.changePhaseHandler(this.#implementation.phase, this.#implementation.playSequence.length);
         }; //this.#implementation.callPhaseChangeHandler
         this.#implementation.normalizeSequence = _ => {
-            if (this.#implementation.sequence.length < 1) return;
-            const startTime = Math.round(this.#implementation.sequence[0][2]);
-            for (let www of this.#implementation.sequence) {
+            if (this.#implementation.playSequence.length < 1) return;
+            const startTime = Math.round(this.#implementation.playSequence[0][2]);
+            if (startTime == 0) return;
+            for (let www of this.#implementation.playSequence) {
                 www[0] = www[0] ? 1 : 0;
                 www[2] = Math.round(www[2]);
                 www[2] -= startTime;
@@ -33,19 +34,19 @@ class Recorder {
     } //constructor
 
     record(what, where) {
-        if (this.#implementation.phase != soundRecorderPhase.recording) return;
+        if (!this.#implementation.phase.has(soundRecorderPhase.recording)) return;
         const when = performance.now();
-        this.#implementation.sequence.push([what, where, when]);
+        this.#implementation.recordSequence.push([what, where, when]);
     } //record
     
     play(handler) { // handler(where, what) that is, handler(keyIndex, bool on/off)
-        if (this.#implementation.phase == soundRecorderPhase.recording) return;
-        this.#implementation.phase = soundRecorderPhase.playing;
+        this.#implementation.phase.add(soundRecorderPhase.playing);
         this.#implementation.callPhaseChangeHandler();
-        let actualPlayCount = this.#implementation.sequence.length;
+        let actualPlayCount = this.#implementation.playSequence.length;
         if (actualPlayCount < 1)
-            return this.#implementation.callPhaseChangeHandler(soundRecorderPhase.none);
-        for (let www of this.#implementation.sequence) {
+            return this.#implementation.callPhaseChangeHandler(true);
+        this.#implementation.normalizeSequence();
+        for (let www of this.#implementation.playSequence) {
             const what = www[0];
             const where = www[1];
             const when = www[2];
@@ -53,21 +54,23 @@ class Recorder {
                 handler(where, what);
                 --actualPlayCount;
                 if (actualPlayCount <= 0)
-                    this.#implementation.callPhaseChangeHandler(soundRecorderPhase.none);
+                    this.#implementation.callPhaseChangeHandler(true);
             }, when, where, what);
         } //loop
     } //play
 
     set recording(isRecording) {
-        if (this.#implementation.phase == soundRecorderPhase.playing) return;
-        if (isRecording && this.#implementation.phase == soundRecorderPhase.recording) return;
-        if (!isRecording && this.#implementation.phase != soundRecorderPhase.recording) return;
-        this.#implementation.phase = isRecording ? soundRecorderPhase.recording : soundRecorderPhase.none;
-        this.#implementation.callPhaseChangeHandler();
+        if (isRecording && this.#implementation.phase.has(soundRecorderPhase.recording)) return;
+        if (!isRecording && !this.#implementation.phase.has(soundRecorderPhase.recording)) return;
         if (isRecording)
-            this.#implementation.sequence.splice(0);
+            this.#implementation.phase.add(soundRecorderPhase.recording)
         else
-            this.#implementation.normalizeSequence();
+            this.#implementation.phase.delete(soundRecorderPhase.recording)
+        if (!isRecording) {
+            this.#implementation.playSequence = this.#implementation.recordSequence;
+            this.#implementation.recordSequence = [];
+        } //if
+        this.#implementation.callPhaseChangeHandler();
     } //set recording
 
     validateData(data) {
@@ -95,16 +98,13 @@ class Recorder {
         return list;
     } //validateData
 
-    get recording() { return this.#implementation.phase == soundRecorderPhase.recording; }
-    get playing() { return this.#implementation.phase == soundRecorderPhase.playing; }
-
     set phaseChangeHandler(value) { this.#implementation.changePhaseHandler = value; }
 
-    get serializedSequence() { return JSON.stringify(this.#implementation.sequence); }
+    get serializedSequence() { return JSON.stringify(this.#implementation.playSequence); }
     set serializedSequence(data) {
         const list = this.validateData(data);
         if (list) {
-            this.#implementation.sequence = list;
+            this.#implementation.playSequence = list;
             this.#implementation.callPhaseChangeHandler();
         } //if
         return list;
