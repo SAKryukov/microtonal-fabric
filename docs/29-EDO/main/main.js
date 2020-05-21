@@ -26,11 +26,11 @@ window.onload = () => {
     function startApplication() {
 
         const controls = findControls();
-        const recorder = new Recorder();
 
         controls.version.textContent = definitionSet.version;
 
         const keyboards = [];
+        const recorder = new Recorder(keyboards);
 
         (function setupKeyboards() {
             let index = 0;

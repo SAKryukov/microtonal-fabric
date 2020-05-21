@@ -153,8 +153,7 @@ class Keyboard {
             const doRelease = (mode != keyboardMode.chord && this.#implementation.mode == keyboardMode.chord);
             this.#implementation.mode = mode;
             if (doRelease)
-                for (let key of this.#implementation.keyList)
-                    handleElement(key, keyMap.get(key), false);
+                this.#implementation.stopAllSounds();
             refreshChordColors(mode);
         }; //this.#implementation.setMode
 
@@ -174,6 +173,11 @@ class Keyboard {
                 this.#implementation.recorder.play(handleIndex);
         }; //this.#implementation.playSequence
 
+        this.#implementation.stopAllSounds = _ => { //SA??? unfixed bug, temporarily recovered, see instrument.js
+            for (let key of this.#implementation.keyList)
+                handleElement(key, keyMap.get(key), false);
+        }; //this.#implementation.stopAllSounds
+
     } //constructor
 
     set keyHandler(aHandler) { this.#implementation.keyHandler = aHandler; }
@@ -190,5 +194,7 @@ class Keyboard {
     get mode() { return this.#implementation.mode; }
 
     playSequence(sequence) { this.#implementation.playSequence(sequence); }
+
+    stopAllSounds() { this.#implementation.stopAllSounds(); } //SA??? unfixed bug, temporarily recovered, see instrument.js
 
 } //class Keyboard

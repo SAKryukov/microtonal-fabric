@@ -11,9 +11,11 @@ const soundRecorderPhase = { recording: 1, playing: 2, };
 
 class Recorder {
 
-    #implementation = { phase: new Set(), playSequence: [], recordSequence: [], };
+    #implementation = { keyboardSet: [], phase: new Set(), playSequence: [], recordSequence: [], cancelSequence: [] };
 
-    constructor() {
+    constructor(keyboardSet) {
+
+        this.#implementation.keyboardSet = keyboardSet;
         this.#implementation.callPhaseChangeHandler = stopPlay => {
             if (stopPlay)
                 this.#implementation.phase.delete(soundRecorderPhase.playing);
@@ -40,22 +42,31 @@ class Recorder {
     } //record
     
     play(handler) { // handler(where, what) that is, handler(keyIndex, bool on/off)
+        if (this.#implementation.phase.has(soundRecorderPhase.playing)) { //cancel
+            for (let functionToCancel of this.#implementation.cancelSequence)
+                clearTimeout(functionToCancel);            
+            this.#implementation.cancelSequence.splice(0);
+            for (let keyboard of this.#implementation.keyboardSet)
+                keyboard.stopAllSounds();
+            return this.#implementation.callPhaseChangeHandler(true);
+        } //if cancel
         this.#implementation.phase.add(soundRecorderPhase.playing);
         this.#implementation.callPhaseChangeHandler();
         let actualPlayCount = this.#implementation.playSequence.length;
         if (actualPlayCount < 1)
             return this.#implementation.callPhaseChangeHandler(true);
         this.#implementation.normalizeSequence();
+        this.#implementation.cancelSequence.splice(0);
         for (let www of this.#implementation.playSequence) {
             const what = www[0];
             const where = www[1];
             const when = www[2];
-            setTimeout((where, what) => {
+            this.#implementation.cancelSequence.push(setTimeout((where, what) => {
                 handler(where, what);
                 --actualPlayCount;
                 if (actualPlayCount <= 0)
                     this.#implementation.callPhaseChangeHandler(true);
-            }, when, where, what);
+            }, when, where, what));
         } //loop
     } //play
 

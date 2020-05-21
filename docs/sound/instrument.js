@@ -134,7 +134,11 @@ class Instrument extends ModulatorSet {
         }; //this.#implementation.deactivate
     } //constructor
 
-    play(on, index) { this.#implementation.tones.get(index).play(on); }
+    play(on, index) {
+        const obj = this.#implementation.tones.get(index);
+        if (obj) //SA??? recovered unfixed bug in recorder.play, cancel => Keyboard.stopAllSounds()
+            obj.play(on);
+    } //play 
 
     playWith(usage, enable) {
         switch (usage) {
