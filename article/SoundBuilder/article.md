@@ -70,7 +70,7 @@ On top of this, there is a set of filters with user-defined parameters. Any subs
 
 Finally, on top of this, there is a gain compensation system.
 
-During the work, the author of an instrument uses a set of interactive tools used to listen to intermediate results. There is a test Jankó -style keyboard, corresponding to the standard 88-key piano without one highest tone. The keyboard can be played with a mouse or by all 10 fingers using a touch screen. For both methods of playing, glissando is also possible, which is somewhat not very trivial technical aspect. Another important feature is this: during trial playing, any of the classes of the effects can be temporarily turned on, which is important for comparisons. Also, trial playing can be done with the control of volume, (additional) sustain and transposition. These controls are not parts of resulting instruments and are designed specifically for the trial playing.
+During the work, the author of an instrument uses a set of interactive tools used to listen to intermediate results. There is a test Jankó-style keyboard, corresponding to the standard 88-key piano without one highest tone. The keyboard can be played with a mouse or by all 10 fingers using a touch screen. For both methods of playing, glissando is also possible, which is somewhat not very trivial technical aspect. Another important feature is this: during trial playing, any of the classes of the effects can be temporarily turned on, which is important for comparisons. Also, trial playing can be done with the control of volume, (additional) sustain and transposition. These controls are not parts of resulting instruments and are designed specifically for the trial playing.
 
 ## A Word of Warning and a Disclaimer
 
@@ -424,7 +424,9 @@ Here is the text of the recommendations which a page shows when a browser cannot
 By the way, my congratulations to Microsoft people for their virtue of giving up majorly defunct [EdgeHTML](https://en.wikipedia.org/wiki/EdgeHTML) used for [Edge](https://en.wikipedia.org/wiki/Microsoft_Edge) until 2020. :-)
 
 ## Live Play
-The application can play [on this page](https://SAKryukov.github.io/microtonal-chromatic-lattice-keyboard/SoundBuilder/index.html) of the [Microtonal Music Study site](https://SAKryukov.github.io/microtonal-chromatic-lattice-keyboard). Again, no server part and no network is used, so the application can be downloaded and used on a local system.
+The application can play [on this page](https://SAKryukov.github.io/microtonal-chromatic-lattice-keyboard/SoundBuilder/index.html) of the [Microtonal Music Study site](https://SAKryukov.github.io/microtonal-chromatic-lattice-keyboard). On this site, one can find several musical keyboard applications based on Sound Builder and some synthesized instruments created with Sound Builder. All of them can also be played live on their Web pages.
+
+Again, no server part and no network is used, so the application can be downloaded and used on a local system.
 
 Most likely, to get started, one may need a set of sample data files, which can be downloaded from this article page.
 
