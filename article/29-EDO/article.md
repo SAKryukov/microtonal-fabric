@@ -1,4 +1,4 @@
-1@numbering {
+@numbering {
     enable: false
 }
 
@@ -6,7 +6,7 @@
 
 [*Sergey A Kryukov*](https://www.SAKryukov.org){.author}
 
-*In-browser synthesizer creates instruments to be used in musical applications, offers advanced additive and subtractive synthesis techniques*
+*Microtonal musical instrument based on Sound Builder synthesis renders 29 EDO tonal system represented by three different on-screen keyboards of intricate layouts*
 
 <!-- <h2>Contents</h2> is not Markdown element, just to avoid adding it to TOC -->
 <!-- change style in next line <ul> to <ul style="list-style-type: none"> -->
@@ -18,16 +18,17 @@ Original publication:
 
 Abstract:
 
-SA??? This in-browser synthesizer creates instruments to be used in musical applications, offers advanced additive and subtractive synthesis techniques. It is based on Web Audio API and relies only on the browser, does not require any server-side part. It creates the synthesizers of the musical instruments. The synthesizers can be exported and embedded in a Web application.
+A specialized microtonal musical instrument is specialized to 29 EDO tonal system. It is based on Sound Builder synthesis based on Web Audio API and relies only on the browser, does not require any server-side part. It offers three on-screen keyboard layouts, two of them invented by the pioneers of microtonal music, and another one by the author of this article.
 
 <!-- copy to CodeProject from here ------------------------------------------->
 
-![Sound Builder](main.png){id=picture-main}
+![29 EDO](main.png){id=picture-main}
 
 <blockquote id="epigraph" class="FQ"><div class="FQA">Epigraph:</div>
 
-<p><i>If something is prohibited but you badly want it, it is&hellip; permitted</i></p>
-<dd>Folk wisdom</dd></blockquote>
+<p>&mdash;&nbsp;So, would you say you're in your prime?
+<br/>&mdash;&nbsp;No. I'm 28. Wait till next year.</p>
+<dd><i>Darren Goossens</i></dd></blockquote>
 
 ## Contents{no-toc}
 
@@ -44,7 +45,7 @@ This is the fourth article of the series dedicated to musical study with on-scre
 
 ## History
 
-Long time ago, 
+Long time ago, SA???
 
 ## Ogolevets-Brainin Layout
 
