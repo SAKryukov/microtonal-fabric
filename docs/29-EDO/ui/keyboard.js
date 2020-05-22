@@ -35,11 +35,11 @@ class Keyboard {
             } //loop
         }; //refreshChordColors
 
-        const handleElement = (element, elementData, on) => {
+        const handleElement = (element, elementData, on, noSound) => {
             if (!elementData) return; // important when called from handleIndex, which call is caused by recorder.play
             if (this.#implementation.recorder)
                 (this.#implementation.recorder.record(on, elementData.index));
-            if (this.#implementation.keyHandler)
+            if (!noSound && this.#implementation.keyHandler)
                 this.#implementation.keyHandler(elementData.index, on);
             element.style.fill = on ? options.highlightColor : elementData.originalColor;
         }; //handleElement
@@ -173,9 +173,9 @@ class Keyboard {
                 this.#implementation.recorder.play(handleIndex);
         }; //this.#implementation.playSequence
 
-        this.#implementation.stopAllSounds = _ => { //SA??? unfixed bug, temporarily recovered, see instrument.js
+        this.#implementation.stopAllSounds = noSound => {
             for (let key of this.#implementation.keyList)
-                handleElement(key, keyMap.get(key), false);
+                handleElement(key, keyMap.get(key), false, noSound);
         }; //this.#implementation.stopAllSounds
 
     } //constructor
@@ -194,7 +194,6 @@ class Keyboard {
     get mode() { return this.#implementation.mode; }
 
     playSequence(sequence) { this.#implementation.playSequence(sequence); }
-
-    stopAllSounds() { this.#implementation.stopAllSounds(); } //SA??? unfixed bug, temporarily recovered, see instrument.js
+    stopAllSounds(noSound) { this.#implementation.stopAllSounds(noSound); } // used to cancel PlaySequence
 
 } //class Keyboard

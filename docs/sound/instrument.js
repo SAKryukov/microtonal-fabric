@@ -132,13 +132,13 @@ class Instrument extends ModulatorSet {
             this.#implementation.compensationMasterGainNode.disconnect();
             this.#implementation.masterGain.disconnect();
         }; //this.#implementation.deactivate
+        this.#implementation.silence = _ => {
+            for (let [_, tone] of this.#implementation.tones)
+                tone.play(false);
+        }; //this.#implementation.silence
     } //constructor
 
-    play(on, index) {
-        const obj = this.#implementation.tones.get(index);
-        if (obj) //SA??? recovered unfixed bug in recorder.play, cancel => Keyboard.stopAllSounds()
-            obj.play(on);
-    } //play 
+    play(on, index) { this.#implementation.tones.get(index).play(on); }
 
     playWith(usage, enable) {
         switch (usage) {
@@ -214,5 +214,7 @@ class Instrument extends ModulatorSet {
     set transposition(value) { this.#implementation.transpose(value); }
 
     deactivate() { this.#implementation.deactivate(); }
+
+    silence() { this.#implementation.silence(); }
 
 } //class Instrument

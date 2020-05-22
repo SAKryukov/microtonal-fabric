@@ -30,7 +30,9 @@ window.onload = () => {
         controls.version.textContent = definitionSet.version;
 
         const keyboards = [];
-        const recorder = new Recorder(keyboards);
+        let activeInstrumentIndex = 0;
+        let instrument;
+        const recorder = new Recorder(keyboards, () => { instrument.silence(); });
 
         (function setupKeyboards() {
             let index = 0;
@@ -43,8 +45,6 @@ window.onload = () => {
                     recorder));
         })(); //setupKeyboards
 
-        let activeInstrumentIndex = 0;
-        let instrument;
         const setupInstrument = keyboardIndex => {
             activeInstrumentIndex = keyboardIndex;
             const temperament = definitionSet.temperament;
