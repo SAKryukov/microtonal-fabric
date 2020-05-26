@@ -30,12 +30,15 @@ class TwoStateButton {
             if (theHandler) theHandler(value);
         } //this.setDown
         this.#implementation.setFocus = () => theElement.focus();
+        this.#implementation.click = () => theElement.click();
         this.#implementation.setHandler = value => theHandler = value;
         this.#implementation.setDisabled = value => theElement.disabled = value;
         this.#implementation.setHidden = value => theElement.style.visibility = value ? "hidden" : "visible";
+        this.#implementation.getDataset = () => theElement.dataset;
     } //constructor
 
     focus() { this.#implementation.setFocus(); }
+    click() { this.#implementation.click(); }
 
     get isDown() { return this.#implementation.getDown(); }
     set isDown(value) { this.#implementation.setDown(value); }
@@ -44,5 +47,7 @@ class TwoStateButton {
 
     set disabled(value) { this.#implementation.setDisabled(value); }
     set hidden(value) { this.#implementation.setHidden(value); }
+
+    get dataset() { return this.#implementation.getDataset(); }
 
 } //class TwoStateButton

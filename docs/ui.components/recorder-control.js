@@ -14,7 +14,7 @@ const recorderControl = {
     init: (recorder, buttonRecord, buttonPlay, buttonToClipboard, buttonFromClipboard, playHandler) => {
 
         const playContent = buttonPlay.innerHTML;
-        const cancelContent = buttonPlay.dataset.alternateName;
+        const cancelContent = buttonPlay.dataset.cancelName;
         recorder.phaseChangeHandler = (value, sequenceLength) => {
             for (let button of [buttonToClipboard, buttonFromClipboard]) {
                 button.disabled = value.has(soundRecorderPhase.playing) || value.has(soundRecorderPhase.recording);
@@ -24,6 +24,12 @@ const recorderControl = {
             buttonPlay.disabled = sequenceLength < 1;
             buttonPlay.innerHTML = value.has(soundRecorderPhase.playing) ? cancelContent : playContent;
         } //recorder.phaseChangeHandler
+
+        window.addEventListener("keydown", event => {                
+            for (let button of [buttonRecord, buttonPlay, buttonToClipboard, buttonFromClipboard])
+                if (button.dataset.directAccessKey.toLowerCase() == event.key.toLowerCase())
+                    button.click();
+        }); // window onkeydown
 
         buttonRecord.handler = value => recorder.recording = value;
 
