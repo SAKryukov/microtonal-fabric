@@ -22,11 +22,11 @@ class Recorder {
             if (this.#implementation.changePhaseHandler)
                 this.#implementation.changePhaseHandler(this.#implementation.phase, this.#implementation.playSequence.length);
         }; //this.#implementation.callPhaseChangeHandler
-        this.#implementation.normalizeSequence = _ => {
-            if (this.#implementation.playSequence.length < 1) return;
-            const startTime = Math.round(this.#implementation.playSequence[0][2]);
+        this.#implementation.normalizeSequence = sequence => {
+            if (sequence.length < 1) return;
+            const startTime = Math.round(sequence[0][2]);
             if (startTime == 0) return;
-            for (let www of this.#implementation.playSequence) {
+            for (let www of sequence) {
                 www[0] = www[0] ? 1 : 0;
                 www[2] = Math.round(www[2]);
                 www[2] -= startTime;
@@ -57,7 +57,6 @@ class Recorder {
         let actualPlayCount = this.#implementation.playSequence.length;
         if (actualPlayCount < 1)
             return this.#implementation.callPhaseChangeHandler(true);
-        this.#implementation.normalizeSequence();
         this.#implementation.cancelSequence.splice(0);
         for (let www of this.#implementation.playSequence) {
             const what = www[0];
@@ -81,6 +80,7 @@ class Recorder {
             this.#implementation.phase.delete(soundRecorderPhase.recording)
         if (!isRecording) {
             this.#implementation.playSequence = this.#implementation.recordSequence;
+            this.#implementation.normalizeSequence(this.#implementation.playSequence);
             this.#implementation.recordSequence = [];
         } //if
         this.#implementation.callPhaseChangeHandler();
