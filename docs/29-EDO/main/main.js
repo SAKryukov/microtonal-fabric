@@ -39,22 +39,22 @@ window.onload = () => {
             for (let svg of controls.keyboards)
                 keyboards.push(new Keyboard(
                     svg,
-                    definitionSet.temperament.system,
-                    definitionSet.temperament.byIndex(index++),
+                    definitionSet.keyboardLayoutSet.system,
+                    definitionSet.keyboardLayoutSet.byIndex(index++),
                     definitionSet.keyboardOptions,
                     recorder));
         })(); //setupKeyboards
 
         const setupInstrument = keyboardIndex => {
             activeInstrumentIndex = keyboardIndex;
-            const temperament = definitionSet.temperament;
+            const keyboardLayout = definitionSet.keyboardLayoutSet.byIndex(keyboardIndex);
             const instrumentIndex = controls.instrument.selectedIndex >=0 ? controls.instrument.selectedIndex : 0;
-            let startingFrequency = temperament.startingFrequencies[keyboardIndex];
+            let startingFrequency = keyboardLayout.startingFrequency;
             if (instrument)
                 instrument.deactivate();
             instrument = new Instrument(
                 { first: keyboards[keyboardIndex].first, last: keyboards[keyboardIndex].last, startingFrequency: startingFrequency },
-                temperament.system);
+                keyboardLayout.system);
             instrument.data = instrumentList[instrumentIndex];
             for (let aKeyboard of keyboards)
                 aKeyboard.hide();

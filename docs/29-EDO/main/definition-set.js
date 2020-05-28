@@ -14,17 +14,17 @@ const definitionSet = (() => {
     const version = sharedDefinitionSet.version;
     const years = sharedDefinitionSet.years;
 
-    const temperament = (() => {
+    const keyboardLayoutSet = (() => {
         const standardA = 440;
         const system = 29;
+        const commonPracticeSystem = 12;
         const shiftOgolevetsA = 68;
         const shiftBraininA = 40;
         const shiftKryukovA = 82;
         const getStartingFrequency = shift => standardA * Math.pow(2, -shift / system);
-        const startSA = standardA * Math.pow(2, -81 / system); // -82!!!
-        let instrument;
         return {
             system: system,
+            systems: [system, system, system, commonPracticeSystem],
             startingFrequencies: [
                 getStartingFrequency(shiftOgolevetsA),
                 getStartingFrequency(shiftBraininA),
@@ -33,9 +33,11 @@ const definitionSet = (() => {
             shiftsA: [
                 shiftOgolevetsA,
                 shiftBraininA,
-                shiftKryukovA
+                shiftKryukovA,
+                shiftBraininA,
             ],
-            autoWhiteColors: [ true, false, true, ],
+            svgIndices: [0, 1, 2, 1], // Braining-Ogolevets, piano (Brainin), Kryukov, piano (12 EDO)
+            autoWhiteColors: [ true, false, true, false ],
             defaultChords: [
                 [46, 56, 63],
                 [40, 50, 57],
@@ -43,19 +45,21 @@ const definitionSet = (() => {
             ],
             byIndex: function(index) {
                 return {
+                    system: this.systems[index],
                     autoWhiteColor: this.autoWhiteColors[index],
                     startingFrequency: this.startingFrequencies[index],
-                    shiftA: this.shiftsA[index],
                     defaultChord: this.defaultChords[index],
+                    shiftA: this.shiftsA[index],
+                    svgIndex: this.svgIndices[index],
                 }
             }, //byIndex
         };
-    })(); //temperament
+    })(); //keyboardLayoutSet
 
     const result = {
         version: version,
         years: years,
-        temperament: temperament,
+        keyboardLayoutSet: keyboardLayoutSet,
         keyboardOptions: {
             whiteKeyColor: "white",
             standardColorA: "Azure", // 440 Hz
