@@ -15,12 +15,12 @@ class Keyboard {
 
     #implementation = { mode: 0, chord: new Set(), chordRoot: -1 };
 
-    constructor(keyboard, system, temperament, options, recorder) { //options: definitionSet.keyboardOptions
+    constructor(element, layout, options, recorder) { //options: definitionSet.keyboardOptions
 
         this.#implementation.recorder = recorder;
 
         this.#implementation.setVisibility = on => {
-            keyboard.style.display = on ? "block" : "none";
+            element.style.display = on ? "block" : "none";
         }; //this.#implementation.setVisibility
         const keyMap = new Map();
 
@@ -100,10 +100,10 @@ class Keyboard {
         }; //handler
 
         setMultiTouch(
-            keyboard,
+            element,
             element => element.constructor == SVGRectElement,
             (element, _, on) => { handler(element, on); });
-        const keys = Array.prototype.slice.call(keyboard.firstElementChild.children);
+        const keys = Array.prototype.slice.call(element.firstElementChild.children);
 
         this.#implementation.keyList = keys;
         keys.sort((a, b) => {
@@ -124,17 +124,17 @@ class Keyboard {
         const noteNames = soundDefinitionSet.noteNames.edo29;
         const locationA = noteNames.indexOf("A");
         for (let key of keys) {
-            const inDefaultChord = temperament.defaultChord.includes(index);
-            const isChordRoot = index == temperament.defaultChord[0];
+            const inDefaultChord = layout.defaultChord.includes(index);
+            const isChordRoot = index == layout.defaultChord[0];
             if (isChordRoot) this.#implementation.chordRoot = index;
             if (inDefaultChord) this.#implementation.chord.add(index);
-            const note = noteNames[(index + system - (temperament.shiftA % system) + locationA) % noteNames.length];
+            const note = noteNames[(index + layout.system - (layout.shiftA % layout.system) + locationA) % noteNames.length];
             const whiteNote = note.length == 1;
-            const originalColor = index == temperament.shiftA
+            const originalColor = index == layout.shiftA
                 ?
                 options.standardColorA
                 :
-                (whiteNote && temperament.autoWhiteColor ? options.whiteKeyColor : key.style.fill);
+                (whiteNote && layout.autoWhiteColor ? options.whiteKeyColor : key.style.fill);
             key.style.fill = originalColor;    
             keyMap.set(key, {
                 index: index, originalColor: originalColor,

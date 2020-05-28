@@ -40,7 +40,6 @@ window.onload = () => {
                 const svg = controls.keyboards[keyboardLayout.svgIndex];
                 keyboards.push(new Keyboard(
                     svg,
-                    keyboardLayout.system,
                     keyboardLayout,
                     definitionSet.keyboardOptions,
                     recorder));
