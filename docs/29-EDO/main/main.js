@@ -35,14 +35,16 @@ window.onload = () => {
         const recorder = new Recorder(keyboards, () => { instrument.silence(); });
 
         (function setupKeyboards() {
-            let index = 0;
-            for (let svg of controls.keyboards)
+            for (let index = 0; index < definitionSet.keyboardLayoutSet.count; ++index) {
+                const keyboardLayout = definitionSet.keyboardLayoutSet.byIndex(index);
+                const svg = controls.keyboards[keyboardLayout.svgIndex];
                 keyboards.push(new Keyboard(
                     svg,
-                    definitionSet.keyboardLayoutSet.system,
-                    definitionSet.keyboardLayoutSet.byIndex(index++),
+                    keyboardLayout.system,
+                    keyboardLayout,
                     definitionSet.keyboardOptions,
                     recorder));
+            } //loop
         })(); //setupKeyboards
 
         const setupInstrument = keyboardIndex => {

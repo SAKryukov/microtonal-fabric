@@ -21,14 +21,15 @@ const definitionSet = (() => {
         const shiftOgolevetsA = 68;
         const shiftBraininA = 40;
         const shiftKryukovA = 82;
-        const getStartingFrequency = shift => standardA * Math.pow(2, -shift / system);
+        const getStartingFrequency = (shift, system) => standardA * Math.pow(2, -shift / system);
         return {
-            system: system,
+            count: 4,
             systems: [system, system, system, commonPracticeSystem],
             startingFrequencies: [
-                getStartingFrequency(shiftOgolevetsA),
-                getStartingFrequency(shiftBraininA),
-                getStartingFrequency(shiftKryukovA),
+                getStartingFrequency(shiftOgolevetsA, system),
+                getStartingFrequency(shiftBraininA, system),
+                getStartingFrequency(shiftKryukovA, system),
+                getStartingFrequency(shiftBraininA, commonPracticeSystem),
             ],
             shiftsA: [
                 shiftOgolevetsA,
@@ -41,7 +42,8 @@ const definitionSet = (() => {
             defaultChords: [
                 [46, 56, 63],
                 [40, 50, 57],
-                [60, 70, 77]
+                [60, 70, 77],
+                [31, 35, 38],
             ],
             byIndex: function(index) {
                 return {
