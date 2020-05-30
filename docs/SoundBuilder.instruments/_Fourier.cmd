@@ -1,1 +1,1 @@
-@start c:\sa\papers\My\CodeProject\WebAudio\Fourier\output.Release.AnyCPU\WavFft.exe %CD%
+@start ..\..\Fourier.WaveFFT\output.Release.AnyCPU\netcoreapp3.1\WaveFFT.exe %CD%
