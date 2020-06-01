@@ -37,7 +37,7 @@ class Keyboard {
 
         const handleElement = (element, elementData, on, noSound) => {
             if (!elementData) return; // important when called from handleIndex, which call is caused by recorder.play
-            if (this.#implementation.recorder)
+            if (!noSound && this.#implementation.recorder)
                 (this.#implementation.recorder.record(on, elementData.index));
             if (!noSound && this.#implementation.keyHandler)
                 this.#implementation.keyHandler(elementData.index, on);
@@ -153,7 +153,7 @@ class Keyboard {
             const doRelease = (mode != keyboardMode.chord && this.#implementation.mode == keyboardMode.chord);
             this.#implementation.mode = mode;
             if (doRelease)
-                this.#implementation.stopAllSounds();
+                this.#implementation.stopAllSounds(true);
             refreshChordColors(mode);
         }; //this.#implementation.setMode
 
