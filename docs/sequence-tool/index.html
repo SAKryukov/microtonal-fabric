@@ -1,0 +1,89 @@
+﻿<!DOCTYPE html>
+
+<!--
+// Microtonal Music Study with Chromatic Lattice Keyboard
+//
+// Copyright (c) Sergey A Kryukov, 2017, 2020
+//
+// http://www.SAKryukov.org
+// http://www.codeproject.com/Members/SAKryukov
+// https://github.com/SAKryukov
+// https://github.com/SAKryukov/microtonal-chromatic-lattice-keyboard
+//
+-->
+
+<html lang="en-us">
+<head>
+   <title>Sequence Tool</title>
+   <meta charset="utf-8"/>
+   <script src="main/controls.js"></script>
+   <script src="main/main.js"></script>
+   <style>
+      :root {
+         --small-vertical-gap: 0.2em;
+         --vertical-gap: 0.4em;
+         --big-vertical-gap: 1em;
+         --small-horizontal-gap: 0.2em;
+         --big-horizontal-gap: 1em;
+         --horizontal-gap: 0.6em;
+         --frame: 0.2em 1.2em 0.2em 1.2em;
+      }
+      section { display: inline-block; }
+      select { height: 100%; }
+      * { padding: 0; margin: 0; box-sizing: border-box; }
+      * { font-family: sans-serif; }
+      option { font-family: monospace; }
+      html, body { height: 100%; }
+      body { display: flex; flex-flow: column; height: 100%; }
+      header { background: transparent; border-bottom: gray solid thin; }
+      main { display: flex; flex-flow: row; flex:auto; background: rgb(240, 255, 210); overflow: auto; justify-items: start; }
+      footer { background: oldLace; border-top: gray solid thin; }
+      button, option, input, main, footer, header { padding: var(--horizontal-gap); }
+      button, option, input, footer, header { padding-top: var(--small-vertical-gap); padding-bottom: var(--small-vertical-gap); }
+      main { padding-top: var(--big-vertical-gap); padding-bottom: var(--big-vertical-gap); }
+      section { margin-left: var(--big-vertical-gap); }
+      section { display: flex; flex-flow: column; flex: auto; }
+      button, input { width: 20em; }
+      div button { width: fit-content; }
+      section button:not(:last-child), section input:not(:last-child) { margin-bottom: var(--vertical-gap);}
+      footer i { font-style: normal; margin-left: var(--horizontal-gap); color: red; margin-left: var(--big-horizontal-gap); margin-right: var(--big-horizontal-gap);  overflow-x:auto; white-space: nowrap; user-select: all; }
+  </style>
+</head>
+<body>
+
+<header>Pay attention: select below on left is multi-select</header>
+
+<main>
+<select multiple="true">
+<option>1</option><option>1</option><option>1</option><option>1</option><option>1</option><option>1</option><option>1</option><option>1</option><option>1</option><option>1</option><option>1</option><option>1</option><option>1</option><option>1</option><option>1</option><option>1</option><option>1</option><option>1</option><option>1</option><option>1</option><option>1</option><option>1</option><option>1</option><option>1</option><option>1</option><option>1</option><option>1</option><option>1</option><option>1</option><option>1</option><option>1</option><option>1</option><option>1</option><option>1</option><option>1</option><option>1</option><option>1</option><option>1</option><option>1</option><option>1</option><option>1</option><option>1</option><option>1</option><option>1</option><option>1</option><option>1</option><option>1</option><option>1</option><option>1</option><option>1</option><option>1</option><option>1</option><option>1</option><option>1</option><option>1</option><option>1</option><option>1</option><option>1</option><option>1</option><option>1</option><option>1</option><option>1</option><option>1</option><option>1</option><option>1</option><option>1</option><option>1</option><option>1</option><option>1</option><option>1</option><option>1</option><option>1</option><option>1</option><option>1</option><option>1</option><option>1</option><option>1</option><option>1</option><option>1</option><option>1</option><option>1</option>
+</select>
+<section>
+   <label>Time:</label>
+   <input type="text" value="0"/>
+   <div>
+      <button>&#x23f4;</button>
+      <button>&#x23f5;</button>
+   </div>
+   <br/>
+   <label>Key:</label>
+   <input type="text" value="0"/>
+   <div>
+      <button>&#x23f4;</button>
+      <button>&#x23f5;</button>
+   </div>
+   <br/>
+   <button>From Clipboard</button>
+   <button>Append From Clipboard</button>
+   <button>To Clipboard</button>
+</section>
+<section>
+   <button>From Clipboard</button>
+   <button>Append From Clipboard</button>
+   <button>To Clipboard</button>
+</section>
+</main>
+
+<footer>?<i></i></footer>
+
+</body>
+</html>
