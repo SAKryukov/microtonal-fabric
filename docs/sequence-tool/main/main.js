@@ -12,6 +12,8 @@
 window.onload = () => {
 
     const controls = getControls();
+    const thinSpace = String.fromCodePoint(0x2009);
+    controls.product.textContent = `${sharedDefinitionSet.years}, v.${thinSpace}${sharedDefinitionSet.version}`;
     const sequenceMap = new Map();
 
     const showException = ex => {

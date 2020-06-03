@@ -16,6 +16,7 @@
 <head>
    <title>Sequence Tool</title>
    <meta charset="utf-8"/>
+   <script src="../definition-set.js"></script>
    <script src="main/controls.js"></script>
    <script src="main/main.js"></script>
    <style>
@@ -46,6 +47,7 @@
       button, input { width: 20em; }
       div button { width: fit-content; padding-top: 0; padding-bottom: 0.2em; font-size: 108%; }
       section button:not(:last-child), section input:not(:last-child) { margin-bottom: var(--vertical-gap);}
+      footer em { font-style: normal; font-weight: normal; }
       footer i { font-style: normal; margin-left: var(--horizontal-gap); color: red; margin-left: var(--big-horizontal-gap); margin-right: var(--big-horizontal-gap);  overflow-x:auto; white-space: nowrap; user-select: all; }
   </style>
 </head>
@@ -88,7 +90,7 @@
 </section>
 </main>
 
-<footer>?<i></i></footer>
+<footer><small>Copyright &copy; by S A Kryukov, <em></em><i></i></small></footer>
 
 </body>
 </html>

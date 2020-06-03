@@ -16,6 +16,7 @@ const getControls = () => {
     const upDown = document.getElementById("up-down");
     
     const result = {
+        product: document.querySelector("footer em"),
         sequence: document.querySelector("select"),
         shift: {
             time: {
