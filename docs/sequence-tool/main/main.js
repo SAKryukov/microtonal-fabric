@@ -92,14 +92,21 @@ window.onload = () => {
         navigator.clipboard.writeText(serialize(sequenceMap));
     }; //toClipboard
 
-    const shift = (indexInWWW, valueInput, forward) => {
-        let shiftValue = parseInt(valueInput.value);
+    const operationKind = { shiftForward: 0, shiftBack: 1, multiply: 2, set: 3, };
+    const shift = (indexInWWW, valueInput, operation) => {
+        let shiftValue = operation == operationKind.multiply ? parseFloat(valueInput.value) : parseInt(valueInput.value);
         if (!shiftValue || isNaN(shiftValue)) return;
-        if (!forward) shiftValue = -shiftValue;
+        if (operation == operationKind.shiftBack)
+            shiftValue = -shiftValue;
         for(let option of controls.sequence.children) {
             if (!option.selected) continue;
             const www = sequenceMap.get(option);
-            www[indexInWWW] += shiftValue;
+            if (operation == operationKind.shiftBack || operation == operationKind.shiftForward)
+                www[indexInWWW] += shiftValue;
+            else if (operation == operationKind.multiply)
+                www[indexInWWW] = Math.round(www[indexInWWW] * shiftValue);
+            else
+                www[indexInWWW] = shiftValue;
             if (www[indexInWWW] < 0)
                 www[indexInWWW] = 0;
             option.textContent = formatWwwItem(www[0], www[1], www[2]);
@@ -121,10 +128,13 @@ window.onload = () => {
     controls.keyboard.appendFrom.onclick = () => fromClipboard(true);
     controls.keyboard.to.onclick = () => toClipboard();
 
-    controls.shift.time.left.onclick = () => shift(2, controls.shift.time.input, false);
-    controls.shift.time.right.onclick = () => shift(2, controls.shift.time.input, true);
-    controls.shift.key.left.onclick = () => shift(1, controls.shift.key.input, false);
-    controls.shift.key.right.onclick = () => shift(1, controls.shift.key.input, true);
+    controls.shift.time.left.onclick = () => shift(2, controls.shift.time.input, operationKind.shiftBack);
+    controls.shift.time.right.onclick = () => shift(2, controls.shift.time.input, operationKind.shiftForward);
+    controls.shift.key.left.onclick = () => shift(1, controls.shift.key.input, operationKind.shiftBack);
+    controls.shift.key.right.onclick = () => shift(1, controls.shift.key.input, operationKind.shiftForward);
+
+    controls.shift.time.timeSet.onclick = () => shift(2, controls.shift.time.input, operationKind.set);
+    controls.shift.time.tempoFactor.onclick = () => shift(2, controls.shift.time.input, operationKind.multiply);
 
     populate([[0, 0, 0]]);
 
