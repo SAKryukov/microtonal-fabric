@@ -99,10 +99,6 @@ class Keyboard {
                 handleElement(element, elementData, on);
         }; //handler
 
-        setMultiTouch(
-            element,
-            element => element.constructor == SVGRectElement,
-            (element, _, on) => { handler(element, on); });
         const keys = Array.prototype.slice.call(element.firstElementChild.children);
 
         this.#implementation.keyList = keys;
@@ -139,12 +135,22 @@ class Keyboard {
             keyMap.set(key, {
                 index: index, originalColor: originalColor,
                 chordMember: inDefaultChord, isChordRoot: isChordRoot });
-            key.onmousedown = event => handler(event.target, true);
-            key.onmouseup = event => handler(event.target, false);
-            key.onmouseenter = event => { if (event.buttons == 1) handler(event.target, true); }
-            key.onmouseleave = event => { if (event.buttons == 1) handler(event.target, false); }
             ++index;
         } //loop
+
+        this.#implementation.assignHandlers = _ => {
+            setMultiTouch(
+                element,
+                element => element.constructor == SVGRectElement,
+                (element, _, on) => { handler(element, on); });
+            for (let key of keys) {
+                key.onmousedown = event => handler(event.target, true);
+                key.onmouseup = event => handler(event.target, false);
+                key.onmouseenter = event => { if (event.buttons == 1) handler(event.target, true); }
+                key.onmouseleave = event => { if (event.buttons == 1) handler(event.target, false); }
+            } //loop
+        } //this.#implementation.assignHandlers
+        this.#implementation.assignHandlers();
 
         this.#implementation.getFirst = _ => { return 0; }
         this.#implementation.getLast = _ => { return keys.length - 1; }
@@ -188,7 +194,7 @@ class Keyboard {
     get last() { return this.#implementation.getLast(); }
     
     hide() { this.#implementation.setVisibility(false); }
-    show() { this.#implementation.setVisibility(true); }
+    show() { this.#implementation.setVisibility(true); this.#implementation.assignHandlers(); }
 
     set mode(value) { this.#implementation.setMode(value); }
     get mode() { return this.#implementation.mode; }
