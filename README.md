@@ -13,6 +13,11 @@ Original publication on the present work: *[Microtonal Music Study with Chromati
 - [29 EDO](https://en.wikipedia.org/wiki/19_equal_temperament)
 - [31 EDO](https://en.wikipedia.org/wiki/31_equal_temperament)
 
+### Compatibility
+Most applications require advanced JavaScript engine and modern standard browser.
+
+Browsers based on [Blink](https://en.wikipedia.org/wiki/Blink_(browser_engine))+[V8](https://en.wikipedia.org/wiki/V8_(JavaScript_engine)) engines are recommended, such as Chromium, Chrome, Opera, Vivaldi, Microsoft Edge v. 80.0.361.111 or later, and more…
+
 ### Features:
 - For three chromatic tone systems, the same keyboard is used; the choice of tone system can be changed dynamically
 - Due to the very special keyboard layout, basic playing skills acquired and techniques learned for one tone system are immediately applicable to other tone systems
