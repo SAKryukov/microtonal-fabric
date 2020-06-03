@@ -36,7 +36,7 @@
       html, body { height: 100%; }
       body { display: flex; flex-flow: column; height: 100%; }
       header { background: transparent; border-bottom: gray solid thin; }
-      main { display: flex; flex-flow: row; flex:auto; background: rgb(240, 255, 210); overflow: auto; justify-items: start; }
+      main { display: flex; flex-flow: row; flex:auto; background: rgb(228, 255, 220); overflow: auto; justify-items: start; }
       footer { background: oldLace; border-top: gray solid thin; }
       button, option, input, main, footer, header { padding: var(--horizontal-gap); }
       button, option, input, footer, header { padding-top: var(--small-vertical-gap); padding-bottom: var(--small-vertical-gap); }
@@ -44,7 +44,7 @@
       section { margin-left: var(--big-vertical-gap); }
       section { display: flex; flex-flow: column; flex: auto; }
       button, input { width: 20em; }
-      div button { width: fit-content; }
+      div button { width: fit-content; padding-top: 0; padding-bottom: 0.2em; font-size: 108%; }
       section button:not(:last-child), section input:not(:last-child) { margin-bottom: var(--vertical-gap);}
       footer i { font-style: normal; margin-left: var(--horizontal-gap); color: red; margin-left: var(--big-horizontal-gap); margin-right: var(--big-horizontal-gap);  overflow-x:auto; white-space: nowrap; user-select: all; }
   </style>
@@ -54,32 +54,35 @@
 <header>Pay attention: select below on left is multi-select</header>
 
 <main>
-<select multiple="true">
-<option>1</option><option>1</option><option>1</option><option>1</option><option>1</option><option>1</option><option>1</option><option>1</option><option>1</option><option>1</option><option>1</option><option>1</option><option>1</option><option>1</option><option>1</option><option>1</option><option>1</option><option>1</option><option>1</option><option>1</option><option>1</option><option>1</option><option>1</option><option>1</option><option>1</option><option>1</option><option>1</option><option>1</option><option>1</option><option>1</option><option>1</option><option>1</option><option>1</option><option>1</option><option>1</option><option>1</option><option>1</option><option>1</option><option>1</option><option>1</option><option>1</option><option>1</option><option>1</option><option>1</option><option>1</option><option>1</option><option>1</option><option>1</option><option>1</option><option>1</option><option>1</option><option>1</option><option>1</option><option>1</option><option>1</option><option>1</option><option>1</option><option>1</option><option>1</option><option>1</option><option>1</option><option>1</option><option>1</option><option>1</option><option>1</option><option>1</option><option>1</option><option>1</option><option>1</option><option>1</option><option>1</option><option>1</option><option>1</option><option>1</option><option>1</option><option>1</option><option>1</option><option>1</option><option>1</option><option>1</option><option>1</option>
-</select>
+<select multiple="true"></select>
 <section>
-   <label>Time:</label>
-   <input type="text" value="0"/>
-   <div>
+   <label accesskey="T" for="input-time"><u>T</u>ime:</label>
+   <input id="input-time" type="text" value="0"/>
+   <div id="left-right-time">
       <button>&#x23f4;</button>
       <button>&#x23f5;</button>
    </div>
    <br/>
-   <label>Key:</label>
-   <input type="text" value="0"/>
-   <div>
-      <button>&#x23f4;</button>
-      <button>&#x23f5;</button>
+   <label accesskey="K" for="input-key"><u>K</u>ey:</label>
+   <input id="input-key" type="text" value="0"/>
+   <div id="left-right-key">
+      <button>&#x23f4;&#x266D;</button>
+      <button>&#x266F;&#x23f5;</button>
    </div>
    <br/>
-   <button>From Clipboard</button>
-   <button>Append From Clipboard</button>
-   <button>To Clipboard</button>
+   <div id="up-down">
+      <button>&#x23f6;</button>
+      <br/>
+      <button>&#x23f7;</button>
+   </div>
+   <br/>
+   <button>Sort By Key</button>
+   <button>Sort By Up/Down, then Key</button>
 </section>
 <section>
-   <button>From Clipboard</button>
-   <button>Append From Clipboard</button>
-   <button>To Clipboard</button>
+   <button id="button-from-keyboard">From Clipboard</button>
+   <button id="button-append-from-keyboard">Append From Clipboard</button>
+   <button id="button-to-keyboard">To Clipboard</button>
 </section>
 </main>
 
