@@ -69,7 +69,7 @@ window.onload = () => {
         const sequence = [];
         for (let element of sequenceMap) 
             sequence.push(element[1]);
-        return JSON.serialize(sequence);
+        return JSON.stringify(sequence);
     } //serialize
 
     const fromClipboard = append => {
