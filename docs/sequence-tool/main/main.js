@@ -20,6 +20,20 @@ window.onload = () => {
         controls.error.textContent = ex ? ex.message : "";
     }; //showException
 
+    const updateStatus = target => {
+        const value = target.selectedOptions.length > 0;
+        for (let index in controls.shift.time)
+            controls.shift.time[index].disabled = !value;
+        for (let index in controls.shift.key)
+            controls.shift.key[index].disabled = !value;
+        for (let index in controls.mark)
+            controls.mark[index].disabled = !value;
+        for (let element of [controls.move.up, controls.move.down])
+            element.disabled = !value;
+    }; //updateStatus
+    updateStatus(controls.sequence);
+    controls.sequence.onchange = event => updateStatus(event.target);
+
     const formatWwwItem = (what, where, when) => {
         where = `${where}`.padStart(3, "0");
         when = `${when}`.padStart(8, "0");
@@ -69,8 +83,9 @@ window.onload = () => {
 
     const serialize = sequenceMap => {
         const sequence = [];
-        for (let element of sequenceMap) 
-            sequence.push(element[1]);
+        for (let element of sequenceMap)
+            if (element[1].constructor == Array)
+                sequence.push(element[1]);
         return JSON.stringify(sequence);
     } //serialize
 
@@ -103,6 +118,7 @@ window.onload = () => {
         for(let option of controls.sequence.children) {
             if (!option.selected) continue;
             const www = sequenceMap.get(option);
+            if (www.constructor != Array) continue;
             if (operation == operationKind.shiftBack || operation == operationKind.shiftForward)
                 www[indexInWWW] += shiftValue;
             else if (operation == operationKind.multiply)
@@ -115,6 +131,32 @@ window.onload = () => {
             sequenceMap.set(option, www);
         } //loop
     }; //shift
+
+    const addMark = value => {
+        const selected = controls.sequence.selectedOptions;
+        if (selected.length < 1) return;
+        const mark = document.createElement("option");
+        mark.textContent = `${String.fromCodePoint(0x274C)} ${value}`;
+        mark.onclick = event => {
+            const style = getComputedStyle(event.target);
+            const mainText = document.createElement("span");
+            mainText.style.font = style.getPropertyValue("font");
+            const text = document.createElement("span");
+            text.textContent = event.target.textContent[0];
+            mainText.appendChild(text);
+            document.body.appendChild(mainText);
+            const textWidth = text.offsetWidth;
+            document.body.removeChild(mainText);
+            const left = parseInt(style.getPropertyValue('padding-left'));
+            const position = event.clientX - event.target.offsetLeft;
+            const correctClick = left <= position && position <= left + textWidth;
+            if (!correctClick) return;
+            const list = event.target.parentElement;
+            list.removeChild(event.target);
+            updateStatus(list);
+        }; //mark.onclick
+        controls.sequence.insertBefore(mark, selected[0]);
+    }; //addMark
 
     // const filterInput = input => {
     //     input.onchange = event => {
@@ -137,6 +179,7 @@ window.onload = () => {
 
     controls.shift.time.timeSet.onclick = () => shift(2, controls.shift.time.input, operationKind.set);
     controls.shift.time.tempoFactor.onclick = () => shift(2, controls.shift.time.input, operationKind.multiply);
+    controls.mark.add.onclick = () => addMark(controls.mark.input.value);
 
     populate([[0, 0, 0]]);
 

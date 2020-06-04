@@ -32,6 +32,10 @@ const getControls = () => {
                 right: leftRightKey.lastElementChild,
             },
         },
+        mark: {
+            input: document.getElementById("input-mark"),
+            add: document.getElementById("button-mark"),
+        },
         move: {
             up: upDown.firstElementChild,
             down: upDown.lastElementChild,
