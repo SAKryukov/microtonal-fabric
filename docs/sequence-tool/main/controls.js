@@ -50,8 +50,8 @@ const getControls = () => {
         },
     };
 
-    for (let index in result.move)
-        result.move[index].disabled = true;
+    for (let control of [result.move.sortByKey, result.move.sortByUpDownKey])
+        control.style.display = "none";
     return result;
 
 } //getControls

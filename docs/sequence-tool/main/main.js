@@ -169,6 +169,32 @@ window.onload = () => {
         updateStatus(controls.sequence);
     }; //controls.sequence.onkeydown
 
+    const moveUpDown = up => {
+        if (controls.sequence.selectedOptions.length < 1) return;
+        let index = 0;        
+        const selected = [];
+        for (let option of controls.sequence.children) {
+            if (option.selected)
+                selected.push({ selected: option, index: index});
+            ++index;
+        } //loop
+        if (up && selected[0].index < 1) return;
+        if (!up && selected[selected.length - 1] > controls.sequence.childElementCount - 1) return;
+        const shift = up ? -1 : 1;
+        if (shift < 0)
+            for (let element of selected) {
+                controls.sequence.removeChild(element.selected);
+                controls.sequence.insertBefore(element.selected, controls.sequence.children[element.index + shift]);
+            } //loop
+        else
+            for (let index = selected.length - 1; index >= 0; --index) {
+                const element = selected[index];
+                controls.sequence.removeChild(element.selected);
+                controls.sequence.insertBefore(element.selected, controls.sequence.children[element.index + shift]);
+            } //loop
+        updateStatus(controls.sequence);
+    }; //moveUpDown
+
     // const filterInput = input => {
     //     input.onchange = event => {
     //         if (event.target.value != '0')
@@ -191,6 +217,9 @@ window.onload = () => {
     controls.shift.time.timeSet.onclick = () => shift(2, controls.shift.time.input, operationKind.set);
     controls.shift.time.tempoFactor.onclick = () => shift(2, controls.shift.time.input, operationKind.multiply);
     controls.mark.add.onclick = () => addMark(controls.mark.input.value);
+
+    controls.move.up.onclick = () => moveUpDown(true);
+    controls.move.down.onclick = () => moveUpDown(false);
 
     populate([[0, 0, 0]]);
 
