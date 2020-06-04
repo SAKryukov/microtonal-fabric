@@ -158,6 +158,17 @@ window.onload = () => {
         controls.sequence.insertBefore(mark, selected[0]);
     }; //addMark
 
+    controls.sequence.onkeydown = event => {
+        if (event.key != "Delete") return;
+        const selected = [];
+        for (let option of controls.sequence.selectedOptions)
+            selected.push(option);
+        for (let option of selected)
+            if (!sequenceMap.get(option))
+                controls.sequence.removeChild(option);
+        updateStatus(controls.sequence);
+    }; //controls.sequence.onkeydown
+
     // const filterInput = input => {
     //     input.onchange = event => {
     //         if (event.target.value != '0')
