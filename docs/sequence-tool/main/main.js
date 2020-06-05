@@ -118,7 +118,7 @@ window.onload = () => {
         for(let option of controls.sequence.children) {
             if (!option.selected) continue;
             const www = sequenceMap.get(option);
-            if (www.constructor != Array) continue;
+            if (!www) continue;
             if (operation == operationKind.shiftBack || operation == operationKind.shiftForward)
                 www[indexInWWW] += shiftValue;
             else if (operation == operationKind.multiply)
