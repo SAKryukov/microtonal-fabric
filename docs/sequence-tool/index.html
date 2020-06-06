@@ -30,10 +30,11 @@
          --frame: 0.2em 1.2em 0.2em 1.2em;
       }
       section { display: inline-block; }
-      select { height: 100%; }
       * { padding: 0; margin: 0; box-sizing: border-box; }
       * { font-family: sans-serif; }
-      option { font-family: monospace; }
+      select { height: 100%; }
+      main > select option { font-family: monospace; }
+      div > select option { padding-left: var(--big-horizontal-gap); padding-right: var(--big-horizontal-gap); }
       html, body { height: 100%; }
       body { display: flex; flex-flow: column; height: 100%; }
       header { background: transparent; border-bottom: gray solid thin; }
@@ -87,10 +88,16 @@
    <button id="button-sort-by-key">Sort By Key</button>
    <button id="button-sort-by-up-down-key">Sort By Up/Down, then Key</button>
 </section>
-<section>
-   <button id="button-from-keyboard2" disabled="true">Rhythmization</button>
-   <button id="button-append-from-keyboard2" disabled="true">Clone</button>
-   <button id="button-to-keyboard2" disabled="true">Remove</button>
+<section id="advanced">
+   <button>Clone</button>
+   <button>Remove</button>
+   <br/>
+   <button>Rhythmization</button>
+   <br/>
+   <label>Rhythmization Algorithm:</label>
+   <div>
+      <select id="select-rhythmization"></select>   
+   </div>
 </section>
 <section>
    <button id="button-from-keyboard" accesskey="M">Fro<u>m</u> Clipboard</button>

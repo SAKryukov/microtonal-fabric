@@ -11,7 +11,21 @@
 
 window.onload = () => {
 
+    const rhythmizationAlgorithms = {
+        averageDuration: 0,
+        maximumDuration: 1,
+        customDuration: 2,
+        legato: 3};
+    const rhythmizationAlgorithmNames = [ "Average Duration", "Maximum Duration" , "Custom Duration using Time", "Legato" ];
+
     const controls = getControls();
+    for (let value of rhythmizationAlgorithmNames) {
+        const option = document.createElement("option");
+        option.textContent = value;
+        controls.advanced.rhythmizationAlgorithm.appendChild(option)
+    } //loop
+    controls.advanced.rhythmizationAlgorithm.selectedIndex = 0;
+
     const thinSpace = String.fromCodePoint(0x2009);
     controls.product.textContent = `${sharedDefinitionSet.years}, v.${thinSpace}${sharedDefinitionSet.version}`;
     const sequenceMap = new Map();
@@ -30,6 +44,9 @@ window.onload = () => {
             controls.mark[index].disabled = !value;
         for (let element of [controls.move.up, controls.move.down])
             element.disabled = !value;
+        for (let element of [controls.advanced.clone, controls.advanced.remove])
+            element.disabled = !value;
+        controls.advanced.rhythmization.disabled = target.selectedOptions.length < 6;
         controls.clipboard.to.disabled = !value;
     }; //updateStatus
     updateStatus(controls.sequence);
@@ -209,6 +226,40 @@ window.onload = () => {
         updateStatus(controls.sequence);
     }; //moveUpDown
 
+    const clone = () => {
+        if (controls.sequence.selectedOptions.length < 1) return;
+        const insertElement = controls.sequence.selectedOptions[0];
+        for (let element of controls.sequence.selectedOptions) {
+            const option = document.createElement("option");
+            option.textContent = element.textContent;
+            controls.sequence.insertBefore(option, insertElement);
+            sequenceMap.set(sequenceMap.get(element));
+            element.selected = false;
+            option.selected = true;
+        } //loop
+        updateStatus(controls.sequence);
+    }; //clone
+    const remove = () => {
+        const removeSet = [];
+        for (let element of controls.sequence.selectedOptions)
+            removeSet.push(element);
+        for (let element of removeSet) {
+            sequenceMap.delete(element);
+            controls.sequence.removeChild(element);
+        } //loop
+        updateStatus(controls.sequence);
+    }; //remove
+
+    const doRhythmization = () => {
+        const initialSet = [];
+        for (let element of controls.sequence.selectedOptions) 
+            if (sequenceMap.get(element))
+                initialSet.push(element);
+        if (initialSet.length < 6) 
+            return showException("Nothing to process");
+        updateStatus(controls.sequence);
+    }; //doRhythmization
+
     // const filterInput = input => {
     //     input.onchange = event => {
     //         if (event.target.value != '0')
@@ -234,6 +285,10 @@ window.onload = () => {
 
     controls.move.up.onclick = () => moveUpDown(true);
     controls.move.down.onclick = () => moveUpDown(false);
+
+    controls.advanced.clone.onclick = () => clone();
+    controls.advanced.remove.onclick = () => remove();
+    controls.advanced.rhythmization.onclick = () => doRhythmization();
 
     populate([[0, 0, 0]]);
 

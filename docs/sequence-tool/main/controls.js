@@ -42,6 +42,12 @@ const getControls = () => {
             sortByKey: document.getElementById("button-sort-by-key"),
             sortByUpDownKey: document.getElementById("button-sort-by-up-down-key"),       
         },
+        advanced: {
+            clone: document.querySelector("#advanced button:nth-of-type(1)"),
+            remove: document.querySelector("#advanced button:nth-of-type(2)"),
+            rhythmization: document.querySelector("#advanced button:nth-of-type(3)"),
+            rhythmizationAlgorithm: document.querySelector("#select-rhythmization"),
+        },
         error: document.querySelector("footer i"),
         clipboard: {
             from: document.getElementById("button-from-keyboard"),
