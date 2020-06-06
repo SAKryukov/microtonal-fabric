@@ -252,11 +252,20 @@ window.onload = () => {
 
     const doRhythmization = () => {
         const initialSet = [];
-        for (let element of controls.sequence.selectedOptions) 
-            if (sequenceMap.get(element))
-                initialSet.push(element);
+        for (let element of controls.sequence.selectedOptions) {
+            const www = sequenceMap.get(element);
+            if (www)
+                initialSet.push({element: element, www: www});
+        } //loop            
         if (initialSet.length < 6) 
             return showException("Nothing to process");
+        initialSet.sort((left, right) => {
+            if (left.www[0] == right.www[0] && left.www[1] == right.www[1] && left.www[2] == right.www[2]) return 0;
+            if (left.www[2] < right.www[2]) return -1; else if (left.www[2] > right.www[2]) return 1;
+            if (left.www[1] < right.www[1]) return -1; else if (left.www[1] > right.www[1]) return 1;
+            if (left.www[0] < right.www[0]) return -1; else if (left.www[0] > right.www[0]) return 1;
+        });
+        //const pairs = [];
         updateStatus(controls.sequence);
     }; //doRhythmization
 
