@@ -50,10 +50,11 @@ window.onload = () => {
     } //setSelection
 
     const populate = (sequence, append) => {
-        sequenceMap.clear();
-        if (!append)
+        if (!append) {
+            sequenceMap.clear();
             while (controls.sequence.firstElementChild)
                 controls.sequence.removeChild(controls.sequence.firstElementChild);
+        } //if
         let index = 0;
         for (let www of sequence) {
             const option = document.createElement("option");
@@ -84,8 +85,7 @@ window.onload = () => {
     const serialize = sequenceMap => {
         const sequence = [];
         for (let element of sequenceMap)
-            if (element[1].constructor == Array)
-                sequence.push(element[1]);
+            sequence.push(element[1]);
         return JSON.stringify(sequence);
     } //serialize
 

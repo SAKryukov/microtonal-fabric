@@ -44,7 +44,7 @@
       main { padding-top: var(--big-vertical-gap); padding-bottom: var(--big-vertical-gap); }
       section { margin-left: var(--big-vertical-gap); }
       section { display: flex; flex-flow: column; flex: auto; }
-      button, input { width: 20em; }
+      button, input { width: 16em; }
       div button { width: fit-content; padding-top: 0; padding-bottom: 0.2em; font-size: 108%; }
       section button:not(:last-child), section input:not(:last-child) { margin-bottom: var(--vertical-gap);}
       footer em { font-style: normal; font-weight: normal; }
@@ -86,6 +86,11 @@
    <br/>
    <button id="button-sort-by-key">Sort By Key</button>
    <button id="button-sort-by-up-down-key">Sort By Up/Down, then Key</button>
+</section>
+<section>
+   <button id="button-from-keyboard2" disabled="true">Rhythmization</button>
+   <button id="button-append-from-keyboard2" disabled="true">Clone</button>
+   <button id="button-to-keyboard2" disabled="true">Remove</button>
 </section>
 <section>
    <button id="button-from-keyboard" accesskey="M">Fro<u>m</u> Clipboard</button>
