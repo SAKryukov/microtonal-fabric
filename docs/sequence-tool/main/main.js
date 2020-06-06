@@ -30,6 +30,7 @@ window.onload = () => {
             controls.mark[index].disabled = !value;
         for (let element of [controls.move.up, controls.move.down])
             element.disabled = !value;
+        controls.clipboard.to.disabled = !value;
     }; //updateStatus
     updateStatus(controls.sequence);
     controls.sequence.onchange = event => updateStatus(event.target);
@@ -39,6 +40,10 @@ window.onload = () => {
         when = `${when}`.padStart(8, "0");
         return `${what} ${where} ${when}`;
     } //formatWwwItem
+
+    const formatMark = value => {
+        return `${String.fromCodePoint(0x274C)} ${value}`;
+    } //formatMark
 
     const getSelection = select => {
         const selection = [];
@@ -58,9 +63,12 @@ window.onload = () => {
         let index = 0;
         for (let www of sequence) {
             const option = document.createElement("option");
-            option.textContent = formatWwwItem(www[0], www[1], www[2]);
+            if (www.constructor != String) {
+                option.textContent = formatWwwItem(www[0], www[1], www[2]);
+                sequenceMap.set(option, www);
+            } else
+                option.textContent = formatMark(www);
             controls.sequence.appendChild(option);
-            sequenceMap.set(option, www);
         } //loop
     } //populate
 
@@ -68,6 +76,7 @@ window.onload = () => {
         if (sequence.constructor != Array) return false;
         for (let www of sequence) {
             if (!www) return false;
+            if (www.constructor == String) continue;
             if (www.constructor != Array) return false;
             if (www.length != 3) return false;
             let index = 0;
@@ -84,8 +93,13 @@ window.onload = () => {
 
     const serialize = sequenceMap => {
         const sequence = [];
-        for (let element of sequenceMap)
-            sequence.push(element[1]);
+        for (let element of controls.sequence.selectedOptions) {
+            const data = sequenceMap.get(element);
+            if (data)
+                sequence.push(data);
+            else
+                sequence.push(element.textContent.slice(2)); // 2: exclude deletion and blank space
+        } //loop
         return JSON.stringify(sequence);
     } //serialize
 
@@ -136,7 +150,7 @@ window.onload = () => {
         const selected = controls.sequence.selectedOptions;
         if (selected.length < 1) return;
         const mark = document.createElement("option");
-        mark.textContent = `${String.fromCodePoint(0x274C)} ${value}`;
+        mark.textContent = formatMark(value);
         mark.onclick = event => {
             const style = getComputedStyle(event.target);
             const mainText = document.createElement("span");
@@ -205,9 +219,9 @@ window.onload = () => {
     // filterInput(controls.shift.time.input);
     // filterInput(controls.shift.key.input);
 
-    controls.keyboard.from.onclick = () => fromClipboard(false);
-    controls.keyboard.appendFrom.onclick = () => fromClipboard(true);
-    controls.keyboard.to.onclick = () => toClipboard();
+    controls.clipboard.from.onclick = () => fromClipboard(false);
+    controls.clipboard.appendFrom.onclick = () => fromClipboard(true);
+    controls.clipboard.to.onclick = () => toClipboard();
 
     controls.shift.time.left.onclick = () => shift(2, controls.shift.time.input, operationKind.shiftBack);
     controls.shift.time.right.onclick = () => shift(2, controls.shift.time.input, operationKind.shiftForward);

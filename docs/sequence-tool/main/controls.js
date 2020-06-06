@@ -43,7 +43,7 @@ const getControls = () => {
             sortByUpDownKey: document.getElementById("button-sort-by-up-down-key"),       
         },
         error: document.querySelector("footer i"),
-        keyboard: {
+        clipboard: {
             from: document.getElementById("button-from-keyboard"),
             appendFrom: document.getElementById("button-append-from-keyboard"),
             to: document.getElementById("button-to-keyboard"),
