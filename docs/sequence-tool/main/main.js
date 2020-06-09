@@ -52,6 +52,10 @@ window.onload = () => {
     updateStatus(controls.sequence);
     controls.sequence.onchange = event => updateStatus(event.target);
 
+    const what = www => www[0];
+    const where = www => www[1];
+    const when = www => www[2];
+
     const formatWwwItem = (what, where, when) => {
         where = `${where}`.padStart(3, "0");
         when = `${when}`.padStart(8, "0");
@@ -61,6 +65,11 @@ window.onload = () => {
     const formatMark = value => {
         return `${String.fromCodePoint(0x274C)} ${value}`;
     } //formatMark
+
+    const setOptionWww = (option, www) => {
+        option.textContent = formatWwwItem(www[0], www[1], www[2]);
+        sequenceMap.set(option, www);
+    }; //setOptionWww
 
     const getSelection = select => {
         const selection = [];
@@ -80,10 +89,9 @@ window.onload = () => {
         let index = 0;
         for (let www of sequence) {
             const option = document.createElement("option");
-            if (www.constructor != String) {
-                option.textContent = formatWwwItem(www[0], www[1], www[2]);
-                sequenceMap.set(option, www);
-            } else
+            if (www.constructor != String)
+                setOptionWww(option, www);
+            else
                 option.textContent = formatMark(www);
             controls.sequence.appendChild(option);
         } //loop
@@ -158,8 +166,7 @@ window.onload = () => {
                 www[indexInWWW] = shiftValue;
             if (www[indexInWWW] < 0)
                 www[indexInWWW] = 0;
-            option.textContent = formatWwwItem(www[0], www[1], www[2]);
-            sequenceMap.set(option, www);
+            setOptionWww(option, www);
         } //loop
     }; //shift
 
@@ -224,7 +231,7 @@ window.onload = () => {
                 controls.sequence.insertBefore(element.selected, controls.sequence.children[element.index + shift]);
             } //loop
         updateStatus(controls.sequence);
-    }; //moveUpDown
+  }; //moveUpDown
 
     const clone = () => {
         if (controls.sequence.selectedOptions.length < 1) return;
@@ -251,21 +258,69 @@ window.onload = () => {
     }; //remove
 
     const doRhythmization = () => {
-        const initialSet = [];
-        for (let element of controls.sequence.selectedOptions) {
-            const www = sequenceMap.get(element);
-            if (www)
-                initialSet.push({element: element, www: www});
-        } //loop            
-        if (initialSet.length < 6) 
-            return showException("Nothing to process");
-        initialSet.sort((left, right) => {
-            if (left.www[0] == right.www[0] && left.www[1] == right.www[1] && left.www[2] == right.www[2]) return 0;
-            if (left.www[2] < right.www[2]) return -1; else if (left.www[2] > right.www[2]) return 1;
-            if (left.www[1] < right.www[1]) return -1; else if (left.www[1] > right.www[1]) return 1;
-            if (left.www[0] < right.www[0]) return -1; else if (left.www[0] > right.www[0]) return 1;
-        });
-        //const pairs = [];
+        const orderedSet = (() => {
+            const result = [];
+            for (let element of controls.sequence.selectedOptions) {
+                const www = sequenceMap.get(element);
+                if (www)
+                    result.push({ element: element, www: www });
+            } //loop            
+            if (result.length < 6)
+                return showException("Nothing to process");
+            result.sort((left, right) => {
+                if (what(left.www) == what(right.www) && where(left.www) == where(right.www) && when(left.www) == when(right.www)) return 0;
+                if (when(left.www) < when(right.www)) return -1; else if (when(left.www) > when(right.www)) return 1;
+                if (what(left.www) < what(right.www)) return 1; else if (what(left.www) > what(right.www)) return -1;
+                if (where(left.www) < where(right.www)) return -1; else if (where(left.www) > where(right.www)) return 1;
+            });
+            return result;
+        })();
+        (orderedSet => {
+            const aSet = new Map();
+            for (let element of orderedSet) {
+                const existingElement = aSet.get(where(element.www));
+                if (existingElement) {
+                    if (element.what) {
+                        existingElement.push({down: { element: element.element, www: element.www }, up: null });
+                    } else {
+                        for (let note of existingElement) {
+                            if (note.up) continue;
+                            note.up = { element: element.element, www: element.www };
+                            note.original.up = element;
+                            break;
+                        } //loop pairs    
+                    } //if                
+                } else
+                    if (what(element.www))
+                        aSet.set(where(element.www), [{ original: element, down: { element: element.element, www: element.www }, up: null }]);
+            } //loop
+        })(orderedSet);
+        ((sequence) => {
+            let timeFirst = Number.POSITIVE_INFINITY;
+            let timeLast = 0;
+            let pressCount = 0;
+            for (let element of sequence) {
+                if (!element.up) continue;
+                if (!element.www[0]) continue;
+                if (timeFirst > when(element.www)) timeFirst = when(element.www);
+                if (timeLast < when(element.www)) timeLast = when(element.www);
+                pressCount++;
+            } //loop
+            if (!pressCount) return;
+            if (!timeLast) return;
+            if (!isFinite(timeFirst)) return;
+            const period = Math.round((timeLast - timeFirst) / pressCount);
+            const duration = period; //SA???
+            let index = 0;
+            for (let element of sequence) {
+                if (!element.up) continue;
+                if (!element.www[0]) continue;
+                element.www[2] = timeFirst + index * period;
+                element.up.www[2] = when(element.www) + duration; //SA???
+                setOptionWww(element.element, element.www);
+                setOptionWww(element.up.element, element.up.www);
+            } //loop
+        })(orderedSet);
         updateStatus(controls.sequence);
     }; //doRhythmization
 
