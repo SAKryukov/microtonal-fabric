@@ -13,10 +13,11 @@ window.onload = () => {
 
     const rhythmizationAlgorithms = {
         averageDuration: 0,
-        maximumDuration: 1,
-        customDuration: 2,
-        legato: 3};
-    const rhythmizationAlgorithmNames = [ "Average Duration", "Maximum Duration" , "Custom Duration using Time", "Legato" ];
+        keepDuration: 1,
+        maximumDuration: 2,
+        customDuration: 3,
+        legato: 4};
+    const rhythmizationAlgorithmNames = [ "Average Duration", "Keep Duration", "Maximum Duration" , "Custom Duration using Time", "Legato" ];
 
     const controls = getControls();
     for (let value of rhythmizationAlgorithmNames) {
@@ -129,7 +130,7 @@ window.onload = () => {
     } //serialize
 
     const fromClipboard = append => {
-        showException(null);
+        showException();
         navigator.clipboard.readText().then(value => {
             try {
                 const sequence = JSON.parse(value);
@@ -144,12 +145,13 @@ window.onload = () => {
     }; //fromClipboard
 
     const toClipboard = append => {
-        showException(null);
+        showException();
         navigator.clipboard.writeText(serialize(sequenceMap));
     }; //toClipboard
 
     const operationKind = { shiftForward: 0, shiftBack: 1, multiply: 2, set: 3, };
     const shift = (indexInWWW, valueInput, operation) => {
+        showException();
         let shiftValue = operation == operationKind.multiply ? parseFloat(valueInput.value) : parseInt(valueInput.value);
         if (!shiftValue || isNaN(shiftValue)) return;
         if (operation == operationKind.shiftBack)
@@ -171,6 +173,7 @@ window.onload = () => {
     }; //shift
 
     const addMark = value => {
+        showException();
         const selected = controls.sequence.selectedOptions;
         if (selected.length < 1) return;
         const mark = document.createElement("option");
@@ -197,6 +200,7 @@ window.onload = () => {
     }; //addMark
 
     controls.sequence.onkeydown = event => {
+        showException();
         if (event.key != "Delete") return;
         const selected = [];
         for (let option of controls.sequence.selectedOptions)
@@ -208,6 +212,7 @@ window.onload = () => {
     }; //controls.sequence.onkeydown
 
     const moveUpDown = up => {
+        showException();
         if (controls.sequence.selectedOptions.length < 1) return;
         let index = 0;        
         const selected = [];
@@ -234,6 +239,7 @@ window.onload = () => {
   }; //moveUpDown
 
     const clone = () => {
+        showException();
         if (controls.sequence.selectedOptions.length < 1) return;
         const insertElement = controls.sequence.selectedOptions[0];
         for (let element of controls.sequence.selectedOptions) {
@@ -247,6 +253,7 @@ window.onload = () => {
         updateStatus(controls.sequence);
     }; //clone
     const remove = () => {
+        showException();
         const removeSet = [];
         for (let element of controls.sequence.selectedOptions)
             removeSet.push(element);
@@ -258,6 +265,14 @@ window.onload = () => {
     }; //remove
 
     const doRhythmization = () => {
+        showException();
+        let customDuration = null;
+        const rhythmizationAlgorith = controls.advanced.rhythmizationAlgorithm.selectedIndex;
+        if (rhythmizationAlgorith == rhythmizationAlgorithms.customDuration) {
+            customDuration = parseInt(controls.shift.time.input.value);
+            if (!customDuration || isNaN(customDuration))
+                return showException(new Error(`Invalid custom duration: ${controls.shift.time.input.value}`));
+        } //if customDuration
         const orderedSet = (() => {
             const result = [];
             for (let element of controls.sequence.selectedOptions) {
@@ -299,26 +314,42 @@ window.onload = () => {
             let timeFirst = Number.POSITIVE_INFINITY;
             let timeLast = 0;
             let pressCount = 0;
+            let maxDuration = -1;
+            let sumDuration = 0;
             for (let element of sequence) {
                 if (!element.up) continue;
-                if (!element.www[0]) continue;
+                if (!what(element.www)) continue;
                 if (timeFirst > when(element.www)) timeFirst = when(element.www);
                 if (timeLast < when(element.www)) timeLast = when(element.www);
+                const duration = when(element.up.www) - when(element.www);
+                if (maxDuration < duration) maxDuration = duration;
+                sumDuration += duration;
                 pressCount++;
             } //loop
             if (!pressCount) return;
             if (!timeLast) return;
             if (!isFinite(timeFirst)) return;
             const period = Math.round((timeLast - timeFirst) / pressCount);
-            const duration = period; //SA???
+            let duration = null;
+            if (rhythmizationAlgorith == rhythmizationAlgorithms.customDuration)
+                duration = customDuration;
+            else if (rhythmizationAlgorith == rhythmizationAlgorithms.averageDuration)
+                duration = sumDuration / pressCount;
+            else if (rhythmizationAlgorith == rhythmizationAlgorithms.maximumDuration)
+                duration = maxDuration;
+            else if (rhythmizationAlgorith == rhythmizationAlgorithms.legato)
+                duration = period;
+            // keepDuration is default
             let index = 0;
             for (let element of sequence) {
                 if (!element.up) continue;
-                if (!element.www[0]) continue;
+                if (!what(element.www)) continue;
                 element.www[2] = timeFirst + index * period;
-                element.up.www[2] = when(element.www) + duration; //SA???
+                if (duration)
+                    element.up.www[2] = when(element.www) + duration;
                 setOptionWww(element.element, element.www);
                 setOptionWww(element.up.element, element.up.www);
+                ++index;
             } //loop
         })(orderedSet);
         updateStatus(controls.sequence);
