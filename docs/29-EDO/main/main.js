@@ -46,6 +46,9 @@ window.onload = () => {
             } //loop
         })(); //setupKeyboards
 
+        const getSustainValue = () =>
+            controls.playControl.sustainEnableButton.isDown ? controls.playControl.sustain.value : 0;
+
         const setupInstrument = keyboardIndex => {
             activeInstrumentIndex = keyboardIndex;
             const keyboardLayout = definitionSet.keyboardLayoutSet.byIndex(keyboardIndex);
@@ -57,6 +60,9 @@ window.onload = () => {
                 { first: keyboards[keyboardIndex].first, last: keyboards[keyboardIndex].last, startingFrequency: startingFrequency },
                 keyboardLayout.system);
             instrument.data = instrumentList[instrumentIndex];
+            instrument.volume = controls.playControl.volume.value;
+            instrument.sustain = getSustainValue();
+            instrument.transposition = controls.playControl.transposition.value;
             for (let aKeyboard of keyboards)
                 aKeyboard.hide();
             keyboards[keyboardIndex].show();
@@ -80,10 +86,14 @@ window.onload = () => {
         } //loop
         controls.instrument.onchange = event => { instrument.data = instrumentList[event.target.selectedIndex]; };
 
+        controls.playControl.sustainEnableButton.handler = value => {
+            controls.playControl.sustain.disabled = !value;
+            instrument.sustain = getSustainValue();
+        } //controls.playControl.sustainEnableButton.handler
         controls.playControl.volume.onchange = (self, value) => instrument.volume = value;
-        controls.playControl.sustain.onchange = (self, value) => instrument.sustain = value;
+        controls.playControl.sustain.onchange = (self, value) => instrument.sustain = getSustainValue();
         controls.playControl.transposition.onchange = (self, value) => instrument.transposition = value;
-        controls.playControl.clearChord.onclick = _ => { keyboards[activeInstrumentIndex].clearChord(); }
+        controls.playControl.clearChord.onclick = _ => keyboards[activeInstrumentIndex].clearChord();
 
         (function setupModeKeyboardModeControl() {
             const setKeyboardMode = (mode, toView) => {

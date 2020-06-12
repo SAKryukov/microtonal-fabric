@@ -32,11 +32,11 @@ const findControls = () => {
         playControl: {
             volumeLabel: document.querySelector("main article:last-of-type label"),
             volume: new Slider( { value: 1, min: 0, max: 10, step: 0.1, indicatorWidth: indicatorWidth }, document.querySelector("#slider-volume")),
-            sustainLabel: document.querySelector("main article:first-child label:first-of-type"),
+            sustainEnableButton: new TwoStateButton(document.querySelector("main article:first-child button:first-of-type")),
             sustain: new Slider( { value: 0, min: 0, max: 10, step: 0.1, indicatorWidth: indicatorWidth, indicatorSuffix: " s" }, document.querySelector("#slider-sustain")),
             transpositionLabel: document.querySelector("main article:first-child label:last-of-type"),
             transposition: new Slider( { value: 0, min: -100, max: 100, step: 1, indicatorWidth: indicatorWidth }, document.querySelector("#slider-transposition")),
-            clearChord: document.querySelector("main button"),
+            clearChord: document.querySelector("#button-clear-chord"),
         },
         keyboardLayout: document.querySelector("#select-layout"),
         instrument: document.querySelector("#select-instrument"),
@@ -57,7 +57,8 @@ const findControls = () => {
     controls.playControl.sustain.label = controls.playControl.sustainLabel;
     controls.playControl.transposition.label = controls.playControl.transpositionLabel;
     controls.playControl.volumeLabel.ondblclick = _ => controls.playControl.volume.value = defaultVolume;
-    controls.playControl.sustainLabel.ondblclick = _ => controls.playControl.sustain.value = defaultSustain;
+    controls.playControl.sustainEnableButton.isDown = false;
+    controls.playControl.sustain.disabled = true;
     controls.playControl.transpositionLabel.ondblclick = _ => controls.playControl.transposition.value = defaultTransposition;
     controls.recorder.record.isDown = false;
     controls.recorder.playSequence.disabled = true;

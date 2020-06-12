@@ -45,6 +45,7 @@
          --big-vertical-gap: 1em;
          --small-horizontal-gap: 0.2em;
          --horizontal-gap: 1em;
+         --button-horizontal-gap: 0.4em;
          --frame: 0.2em 1.2em 0.2em 1.2em;
       }
       * { font-family: sans-serif; }
@@ -73,10 +74,12 @@
         }
       body aside button:hover { background-color: lightgoldenrodyellow; }
       main > * { margin-left: var(--horizontal-gap); margin-right: var(--horizontal-gap); }
-      main article { margin: 0; display: flex; white-space: nowrap; width: 100%; }
+      main article { margin: 0; display: flex; white-space: nowrap; width: 100%; align-items: center; }
       main article div { white-space: nowrap; width: 100%; }
       main article label:first-of-type { margin-left: var(--horizontal-gap); }
       main article label { margin-right: var(--small-horizontal-gap); }
+      main article button:first-of-type { margin-left: var(--horizontal-gap); margin-right: var(--button-horizontal-gap); }
+      #button-clear-chord { margin-left: var(--button-horizontal-gap); }
       main article div:last-of-type { margin-right: var(--horizontal-gap); }
       main article:first-of-type label:last-of-type { margin-left: 4em; }
       main > section, details { display: inline-block; margin-top: var(--vertical-gap); vertical-align: top; }
@@ -1821,7 +1824,7 @@
 
 <main>
    <article>
-      <label for="slider-sustain-control" accesskey="U">S<u>u</u>stain:</label>
+      <button class="st down" accesskey="S"><span>&#x2B24;</span> <u>S</u>ustain</button>
       <div id="slider-sustain"></div>
       <label for="slider-transposition-control" accesskey="T"><u>T</u>ransposition:</label>
       <div id="slider-transposition"></div>
@@ -1833,7 +1836,7 @@
    </article>
    <p><label><input id="radio-mode-normal" type="radio" name="mode" checked="true"/>Play Mode</label></p>
    <p><label><input id="radio-mode-chord-set" type="radio" name="mode"/>Chord Set Mode: Shift down: view, Shift+key: include/exclude, Ctrl+Shift+key: move/add chord root</label>
-      <button accesskey="H">Clear C<u>h</u>ord</button></p>
+      <button accesskey="H" id="button-clear-chord">Clear C<u>h</u>ord</button></p>
    <p><label><input id="radio-mode-chord" type="radio" name="mode"/>Chord Play Mode: Ctrl+key</label></p>
    <section><label accesskey="K" for="select-layout"><u>K</u>eyboard:</label>
       <select id="select-layout">
