@@ -290,26 +290,35 @@ window.onload = () => {
             });
             return result;
         })();
-        (orderedSet => {
-            const aSet = new Map();
+        const history = (orderedSet => { // segregate histories of each key
+            const history = new Map();
             for (let element of orderedSet) {
-                const existingElement = aSet.get(where(element.www));
-                if (existingElement) {
-                    if (element.what) {
-                        existingElement.push({down: { element: element.element, www: element.www }, up: null });
-                    } else {
-                        for (let note of existingElement) {
-                            if (note.up) continue;
-                            note.up = { element: element.element, www: element.www };
-                            note.original.up = element;
-                            break;
-                        } //loop pairs    
-                    } //if                
-                } else
-                    if (what(element.www))
-                        aSet.set(where(element.www), [{ original: element, down: { element: element.element, www: element.www }, up: null }]);
+                const key = where(element.www);
+                let historyList = history.get(key);
+                if (!historyList) {
+                    historyList = [];
+                    history.set(key, historyList);
+                } //if
+                historyList.push(element);
             } //loop
-        })(orderedSet);
+            return history;
+        }) (orderedSet);
+        (history => {
+            for (let [_, historyList] of history) {
+                if (historyList.length < 2) continue;
+                let lastDown = null;
+                let lastUp = null;
+                for (let element of historyList) {
+                    if (what(element.www)) {
+                        lastDown = element;
+                    } else {
+                        lastUp = element;
+                        if (lastDown)
+                            lastDown.up = element;
+                    } //if
+                } //loop historyList
+            } //loop
+        })(history);
         ((sequence) => {
             let timeFirst = Number.POSITIVE_INFINITY;
             let timeLast = 0;
@@ -344,9 +353,9 @@ window.onload = () => {
             for (let element of sequence) {
                 if (!element.up) continue;
                 if (!what(element.www)) continue;
+                const effectiveDuration = duration != null ? duration : when(element.up.www) - when(element.www);
                 element.www[2] = timeFirst + index * period;
-                if (duration)
-                    element.up.www[2] = when(element.www) + duration;
+                element.up.www[2] = when(element.www) + effectiveDuration;
                 setOptionWww(element.element, element.www);
                 setOptionWww(element.up.element, element.up.www);
                 ++index;
