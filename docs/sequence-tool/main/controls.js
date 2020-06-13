@@ -46,7 +46,7 @@ const getControls = () => {
             clone: document.querySelector("#advanced button:nth-of-type(1)"),
             remove: document.querySelector("#advanced button:nth-of-type(2)"),
             rhythmization: document.querySelector("#advanced button:nth-of-type(3)"),
-            rhythmizationAlgorithm: document.querySelector("#select-rhythmization"),
+            rhythmizationTiming: document.querySelector("#select-rhythmization"),
         },
         error: document.querySelector("footer i"),
         clipboard: {

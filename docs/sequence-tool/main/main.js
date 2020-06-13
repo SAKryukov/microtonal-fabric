@@ -11,21 +11,22 @@
 
 window.onload = () => {
 
-    const rhythmizationAlgorithms = {
+    const rhythmizationTimingChoice = {
         averageDuration: 0,
         keepDuration: 1,
         maximumDuration: 2,
         customDuration: 3,
         legato: 4};
-    const rhythmizationAlgorithmNames = [ "Average Duration", "Keep Duration", "Maximum Duration" , "Custom Duration using Time", "Legato" ];
+    const rhythmizationTimingChoiceDefault = rhythmizationTimingChoice.keepDuration;
+    const rhythmizationTimingChoiceNames = [ "Average duration", "Keep original duration", "Maximum duration" , "Custom duration using Time", "Legato" ];
 
     const controls = getControls();
-    for (let value of rhythmizationAlgorithmNames) {
+    for (let value of rhythmizationTimingChoiceNames) {
         const option = document.createElement("option");
         option.textContent = value;
-        controls.advanced.rhythmizationAlgorithm.appendChild(option)
+        controls.advanced.rhythmizationTiming.appendChild(option)
     } //loop
-    controls.advanced.rhythmizationAlgorithm.selectedIndex = 0;
+    controls.advanced.rhythmizationTiming.selectedIndex = rhythmizationTimingChoiceDefault;
 
     const thinSpace = String.fromCodePoint(0x2009);
     controls.product.textContent = `${sharedDefinitionSet.years}, v.${thinSpace}${sharedDefinitionSet.version}`;
@@ -72,22 +73,12 @@ window.onload = () => {
         sequenceMap.set(option, www);
     }; //setOptionWww
 
-    const getSelection = select => {
-        const selection = [];
-        for(let option in select.children)
-           selection.append(option);
-        return selection;
-    }; //getSelection
-    const setSelection = (select, selection) => {
-    } //setSelection
-
     const populate = (sequence, append) => {
         if (!append) {
             sequenceMap.clear();
             while (controls.sequence.firstElementChild)
                 controls.sequence.removeChild(controls.sequence.firstElementChild);
         } //if
-        let index = 0;
         for (let www of sequence) {
             const option = document.createElement("option");
             if (www.constructor != String)
@@ -144,7 +135,7 @@ window.onload = () => {
         });
     }; //fromClipboard
 
-    const toClipboard = append => {
+    const toClipboard = () => {
         showException();
         navigator.clipboard.writeText(serialize(sequenceMap));
     }; //toClipboard
@@ -267,8 +258,8 @@ window.onload = () => {
     const doRhythmization = () => {
         showException();
         let customDuration = null;
-        const rhythmizationAlgorith = controls.advanced.rhythmizationAlgorithm.selectedIndex;
-        if (rhythmizationAlgorith == rhythmizationAlgorithms.customDuration) {
+        const rhythmizationTiming = controls.advanced.rhythmizationTiming.selectedIndex;
+        if (rhythmizationTiming == rhythmizationTimingChoice.customDuration) {
             customDuration = parseInt(controls.shift.time.input.value);
             if (!customDuration || isNaN(customDuration))
                 return showException(new Error(`Invalid custom duration: ${controls.shift.time.input.value}`));
@@ -309,9 +300,9 @@ window.onload = () => {
                 let lastDown = null;
                 let lastUp = null;
                 for (let element of historyList) {
-                    if (what(element.www)) {
+                    if (what(element.www))
                         lastDown = element;
-                    } else {
+                    else {
                         lastUp = element;
                         if (lastDown)
                             lastDown.up = element;
@@ -340,13 +331,13 @@ window.onload = () => {
             if (!isFinite(timeFirst)) return;
             const period = Math.round((timeLast - timeFirst) / pressCount);
             let duration = null;
-            if (rhythmizationAlgorith == rhythmizationAlgorithms.customDuration)
+            if (rhythmizationTiming == rhythmizationTimingChoice.customDuration)
                 duration = customDuration;
-            else if (rhythmizationAlgorith == rhythmizationAlgorithms.averageDuration)
+            else if (rhythmizationTiming == rhythmizationTimingChoice.averageDuration)
                 duration = sumDuration / pressCount;
-            else if (rhythmizationAlgorith == rhythmizationAlgorithms.maximumDuration)
+            else if (rhythmizationTiming == rhythmizationTimingChoice.maximumDuration)
                 duration = maxDuration;
-            else if (rhythmizationAlgorith == rhythmizationAlgorithms.legato)
+            else if (rhythmizationTiming == rhythmizationTimingChoice.legato)
                 duration = period;
             // keepDuration is default
             let index = 0;
@@ -354,8 +345,8 @@ window.onload = () => {
                 if (!element.up) continue;
                 if (!what(element.www)) continue;
                 const effectiveDuration = duration != null ? duration : when(element.up.www) - when(element.www);
-                element.www[2] = timeFirst + index * period;
-                element.up.www[2] = when(element.www) + effectiveDuration;
+                element.www[2] = Math.round(timeFirst + index * period);
+                element.up.www[2] = Math.round(when(element.www) + effectiveDuration);
                 setOptionWww(element.element, element.www);
                 setOptionWww(element.up.element, element.up.www);
                 ++index;
