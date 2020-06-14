@@ -89,6 +89,7 @@ class Recorder {
     validateData(data) {
         if (data.constructor != String) return false;
         let list;
+        const result = [];
         try {
             list = JSON.parse(data);
             if (list.constructor != Array) return false
@@ -101,15 +102,16 @@ class Recorder {
                 for (let w of www) {
                     if (index == 0 && w !== 0 && w !== 1)
                         return false;
-                    if (w == undefined || w == null) return;
-                    if (w.constructor != Number) return;
+                    if (w == undefined || w == null) return false;
+                    if (w.constructor != Number) return false;
                     ++index;
                 } //loop w
+                result.push(www);
             } //loop www
         } catch {
             return false;
         } //exception
-        return list;
+        return result;
     } //validateData
 
     set phaseChangeHandler(value) { this.#implementation.changePhaseHandler = value; }
