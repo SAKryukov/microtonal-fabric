@@ -18,7 +18,7 @@ window.onload = () => {
         customDuration: 3,
         legato: 4};
     const rhythmizationTimingChoiceDefault = rhythmizationTimingChoice.keepDuration;
-    const rhythmizationTimingChoiceNames = [ "Average duration", "Keep original duration", "Maximum duration" , "Custom duration using Time", "Legato" ];
+    const rhythmizationTimingChoiceNames = [ "Average duration", "Keep original durations", "Maximum duration" , "Custom duration using Time", "Legato" ];
 
     const controls = getControls();
     for (let value of rhythmizationTimingChoiceNames) {
