@@ -10,7 +10,7 @@ Original publication on the present work: *[Microtonal Music Study with Chromati
 - [Just Intonation](https://en.wikipedia.org/wiki/Just_intonation) (only [presented](https://sakryukov.github.io/microtonal-chromatic-lattice-keyboard/tone-system-comparison/tone-system-comparison.html) on the [chromatic-circle](https://en.wikipedia.org/wiki/Chromatic_circle) keyboard)
 - [Common-practice](https://en.wikipedia.org/wiki/Common_practice_period) [12 EDO](https://en.wikipedia.org/wiki/Equal_temperament)
 - [19 EDO](https://en.wikipedia.org/wiki/19_equal_temperament)
-- [29 EDO](https://en.wikipedia.org/wiki/19_equal_temperament)
+- [29 EDO](https://en.xen.wiki/w/29edo)
 - [31 EDO](https://en.wikipedia.org/wiki/31_equal_temperament)
 
 ### Compatibility
