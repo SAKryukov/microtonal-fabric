@@ -9,10 +9,11 @@
 
     const goodJavaScriptEngine = (() => {
         try {
-            eval("class a{ #b; }");
+            const supportsClasses = !!Function("class a{ #b; }");
+            const supportsDefaultArguments = !!Function("const f = (a = 0) => a; f();");
+            return supportsClasses && supportsDefaultArguments;
         } catch {
             return false;
         }
-        return true;
     })();
 
