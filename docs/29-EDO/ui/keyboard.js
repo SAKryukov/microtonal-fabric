@@ -13,7 +13,7 @@ const keyboardMode = { normal: 0, chord: 1, chordSet: 2, chordRootSet: 4 };
 
 class Keyboard {
 
-    #implementation = { mode: 0, chord: new Set(), chordRoot: -1 };
+    #implementation = { mode: 0, chord: new Set(), chordRoot: -1, useHighlight: true };
 
     constructor(element, layout, options, recorder) { //options: definitionSet.keyboardOptions
 
@@ -41,7 +41,8 @@ class Keyboard {
                 (this.#implementation.recorder.record(on, elementData.index));
             if (!noSound && this.#implementation.keyHandler)
                 this.#implementation.keyHandler(elementData.index, on);
-            element.style.fill = on ? options.highlightColor : elementData.originalColor;
+            if (this.#implementation.useHighlight)
+                element.style.fill = on ? options.highlightColor : elementData.originalColor;
         }; //handleElement
 
         const handleIndex = (index, on) => {
@@ -201,5 +202,8 @@ class Keyboard {
 
     playSequence(sequence) { this.#implementation.playSequence(sequence); }
     stopAllSounds(noSound) { this.#implementation.stopAllSounds(noSound); } // used to cancel PlaySequence
+
+    get useHighlight() { return this.#implementation.useHighlight; }
+    set useHighlight(value) { this.#implementation.useHighlight = value; }
 
 } //class Keyboard

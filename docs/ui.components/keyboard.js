@@ -18,9 +18,13 @@ class ScrollableKeyboard {
         };
         const keyColor = keyColors.background;
         const keyColorHighlight = keyColors.hightlight;
+        let doUseHightlight = true;
+        this.getUseHighlight = () => doUseHightlight;
+        this.setUseHighlight = (value) => doUseHightlight = value;
         const keyHandler = (target, on) => {
             const index = this.map.get(target);
-            target.style.backgroundColor = on ? keyColorHighlight : keyColor;
+            if (doUseHightlight)
+                target.style.backgroundColor = on ? keyColorHighlight : keyColor;
             this.action(on, index);
         }; //keyHandler
         const upEventHandler = (event, isMove) => {
@@ -140,6 +144,9 @@ class ScrollableKeyboard {
         const array = Array.from(this.map.values());
         return array[array.length - 1];
     } //get last
+
+    get useHighlight() { return getUseHighlight(); }
+    set useHighlight(value) { return setUseHighlight(value); }
 
     showFrequencies(frequencies, prefix, suffix) {
         for (let [key, value] of this.map)

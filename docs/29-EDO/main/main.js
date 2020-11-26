@@ -45,6 +45,7 @@ window.onload = () => {
                     recorder));
             } //loop
         })(); //setupKeyboards
+        //keyboards[0].useHighlight = false;
 
         const getSustainValue = () =>
             controls.playControl.sustainEnableButton.isDown ? controls.playControl.sustain.value : 0;
