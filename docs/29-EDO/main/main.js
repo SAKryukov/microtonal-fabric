@@ -45,7 +45,11 @@ window.onload = () => {
                     recorder));
             } //loop
         })(); //setupKeyboards
-        //keyboards[0].useHighlight = false;
+
+        controls.playControl.useHighlihgtKeysButton.handler = value => {
+            for (let keyboard of keyboards)
+                keyboard.useHighlight = value;
+        }; //controls.playControl.useHighlihgtKeysButton.handler
 
         const getSustainValue = () =>
             controls.playControl.sustainEnableButton.isDown ? controls.playControl.sustain.value : 0;
