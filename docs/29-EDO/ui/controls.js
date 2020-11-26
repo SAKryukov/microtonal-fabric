@@ -33,6 +33,7 @@ const findControls = () => {
             volumeLabel: document.querySelector("main article:last-of-type label"),
             volume: new Slider( { value: 1, min: 0, max: 10, step: 0.1, indicatorWidth: indicatorWidth }, document.querySelector("#slider-volume")),
             sustainEnableButton: new TwoStateButton(document.querySelector("main article:first-child button:first-of-type")),
+            useHighlihgtKeysButton: new TwoStateButton(document.querySelector("#button-use-keys-highlight")),
             sustain: new Slider( { value: 0, min: 0, max: 10, step: 0.1, indicatorWidth: indicatorWidth, indicatorSuffix: " s" }, document.querySelector("#slider-sustain")),
             transpositionLabel: document.querySelector("main article:first-child label:last-of-type"),
             transposition: new Slider( { value: 0, min: -100, max: 100, step: 1, indicatorWidth: indicatorWidth }, document.querySelector("#slider-transposition")),

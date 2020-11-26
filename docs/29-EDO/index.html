@@ -25,7 +25,7 @@
    <script src="../ui.components/recorder.js"></script>
    <script src="../ui.components/recorder-control.js"></script>
    <script src="../agnostic/initialization-controller.js"></script>
-   <script src="../agnostic/enumeration.js"></script>
+  <script src="../agnostic/enumeration.js"></script>
    <script src="../sound/definition-set.js"></script>
    <script src="../sound/chain-node.js"></script>
    <script src="../sound/envelope.js"></script>
@@ -84,6 +84,7 @@
       main article:first-of-type label:last-of-type { margin-left: 4em; }
       main > section, details { display: inline-block; margin-top: var(--vertical-gap); vertical-align: top; }
       main > section:first-of-type { margin-right: var(--small-horizontal-gap); }
+      main > section:nth-of-type(2) > button { margin-left: var(--horizontal-gap); }
       main > section select { margin-left: var(--small-horizontal-gap); margin-top: var(--big-vertical-gap); }
       main, main p:first-of-type { margin-top: var(--big-vertical-gap); }
       main input[type=radio] { margin-right: var(--small-horizontal-gap); }
@@ -1836,7 +1837,7 @@
    </article>
    <p><label><input id="radio-mode-normal" type="radio" name="mode" checked="true"/>Play Mode</label></p>
    <p><label><input id="radio-mode-chord-set" type="radio" name="mode"/>Chord Set Mode: Shift down: view, Shift+key: include/exclude, Ctrl+Shift+key: move/add chord root</label>
-      <button accesskey="H" id="button-clear-chord">Clear C<u>h</u>ord</button></p>
+   <button accesskey="H" id="button-clear-chord">Clear C<u>h</u>ord</button></p>
    <p><label><input id="radio-mode-chord" type="radio" name="mode"/>Chord Play Mode: Ctrl+key</label></p>
    <section><label accesskey="K" for="select-layout"><u>K</u>eyboard:</label>
       <select id="select-layout">
@@ -1848,6 +1849,7 @@
    </section>
    <section><label accesskey="I" for="select-instrument"><u>I</u>nstrument:</label>
       <select id="select-instrument"></select>
+      <button class="st down" id="button-use-keys-highlight"><span>&#x2B24;</span> Hightlight Keys</button>
    </section>
    <details><summary accesskey="R"><u>R</u>ecorder</summary>
       <section id="recorder">
@@ -1860,7 +1862,9 @@
 </details>
 </main>
 
-<footer>29 EDO Microtonal Keyboard v&thinsp;<span></span><a href="authors.html">Authors</a><span></span></footer>
+<footer>29 EDO Microtonal Keyboard v&thinsp;<span></span>
+   <a href="authors.html">Authors</a><span></span>
+</footer>
 
 </body>
 </html>
