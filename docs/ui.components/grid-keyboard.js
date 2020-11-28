@@ -13,9 +13,9 @@ class GridKeyboard {
 
     constructor(element, keyWidth, keyHeight, rowCount, rowWidth, keyColors) {
         if (!keyColors) keyColors = {
-            background: undefined,
-            hightlight: undefined,
-            border: undefined,
+            background: "transparent",
+            hightlight: "lightYellow",
+            border: "black",
             label: undefined
         };
         const parseSize = stringValue => {
@@ -30,20 +30,25 @@ class GridKeyboard {
         })();
         element.style.display = "grid";
         element.style.width = "100%";
-        const borderStyle = "solid black thin";
         this.#implementation.keyMap = new Map();
         const keyHandler = (target, on, isMove) => {
             if (isMove && (event.buttons != 1)) return;
-            const index = this.#implementation.keyMap.get(target);
+            const keyData = this.#implementation.keyMap.get(target);
             if (this.#implementation.useKeyHightlight)
                 target.style.backgroundColor = on ? keyColors.hightlight : keyColors.background;
             if (this.#implementation.action)
-                this.#implementation.action(on, index);
+                this.#implementation.action(on, keyData);
         }; //keyHandler
+        const borderStyle = `solid ${keyColors.border} thin`;
         for (let yIndex = 0; yIndex < rowCount; ++yIndex)
             for (let xIndex = 0; xIndex < rowWidth; ++xIndex) {
                 const key = document.createElement("div");
                 key.style.borderRadius = "5px";
+                key.style.paddingLeft = "0.3em";
+                key.style.paddingTop = "0.3em";
+                key.style.overflow = "hidden";
+                key.style.color = keyColors.label;
+                key.style.backgroundColor = keyColors.background;
                 key.style.height = keyHeight ? keyHeight : keyWidth;
                 if (yIndex == 0)
                     key.style.borderTop = borderStyle;
@@ -163,14 +168,15 @@ class GridKeyboard {
                 this.map.set(keyArray[index], parseInt(index));
     } //constructor
   
-    label() {
-        //SA???
+    label(handler) {
+        for (let [key, value] of this.#implementation.keyMap)
+            key.textContent = handler(value.x, value.y);
     } //label
 
     set fitView(booleanValue) { this.#implementation.fitView(booleanValue); }
 
     set action(handler) { 
-        this.#implementation.action = handler; // handler(bool down, integer rowIndex, integer columnIndex);
+        this.#implementation.action = handler; // handler(bool down, Object keyData);
     } //setAction
     get action() { this.#implementation.action; }
 
