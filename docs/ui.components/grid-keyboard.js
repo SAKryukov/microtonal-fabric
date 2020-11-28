@@ -163,10 +163,8 @@ class GridKeyboard {
                 this.map.set(keyArray[index], parseInt(index));
     } //constructor
   
-    label(labelArray, startIndex) {
-        if (startIndex == undefined) startIndex = 0;
-        for (let keyValuePair of this.map)
-            keyValuePair[0].textContent = labelArray[(keyValuePair[1] + startIndex) %  labelArray.length];
+    label() {
+        //SA???
     } //label
 
     set fitView(booleanValue) { this.#implementation.fitView(booleanValue); }
