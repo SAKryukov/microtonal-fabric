@@ -9,7 +9,7 @@
 
 class GridKeyboard {
 
-    #implementation = { useKeyHightlight: true };
+    #implementation = { useKeyHightlight: true, rows: [], keyMap: new Map() };
 
     constructor(element, keyWidth, keyHeight, rowCount, rowWidth, keyColors) {
         if (!keyColors) keyColors = {
@@ -30,7 +30,6 @@ class GridKeyboard {
         })();
         element.style.display = "grid";
         element.style.width = "100%";
-        this.#implementation.keyMap = new Map();
         const keyHandler = (target, on, isMove) => {
             if (isMove && (event.buttons != 1)) return;
             const keyData = this.#implementation.keyMap.get(target);
@@ -40,10 +39,12 @@ class GridKeyboard {
                 this.#implementation.action(on, keyData);
         }; //keyHandler
         const borderStyle = `solid ${keyColors.border} thin`;
-        for (let yIndex = 0; yIndex < rowCount; ++yIndex)
+        for (let yIndex = 0; yIndex < rowCount; ++yIndex) {
+            this.#implementation.rows[yIndex] = [];
             for (let xIndex = 0; xIndex < rowWidth; ++xIndex) {
                 const key = document.createElement("div");
-                key.style.borderRadius = "5px";
+                this.#implementation.rows[yIndex][xIndex] = key;
+                key.style.borderRadius = "0px"; //SA???
                 key.style.paddingLeft = "0.3em";
                 key.style.paddingTop = "0.3em";
                 key.style.overflow = "hidden";
@@ -63,6 +64,7 @@ class GridKeyboard {
                 key.onmouseleave = event => keyHandler(event.target, false, true);
                 element.appendChild(key);
             } //loop keys
+        } //loop rows
         this.#implementation.defineGridTemplates = doFit => {
             const widthUnit = doFit ? "fr" : keySize.width.unit;
             const widthValue = doFit ? 1 : keySize.width.value;
@@ -172,6 +174,11 @@ class GridKeyboard {
         for (let [key, value] of this.#implementation.keyMap)
             key.textContent = handler(value.x, value.y);
     } //label
+
+    labelRow(row, handler) {
+        for (let index = 0; index < this.#implementation.rows[row].length; ++index) 
+            this.#implementation.rows[row][index].textContent = handler(index);
+    } //labelRow
 
     set fitView(booleanValue) { this.#implementation.fitView(booleanValue); }
 

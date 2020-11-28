@@ -12,6 +12,9 @@ window.onload = _ => {
     keyboard.label((x, y) => 
         (x + y) % 2 ? "a" : "B"
     );
+    keyboard.labelRow(1, index =>
+        `x: ${index}`
+    );
     fitElement.onchange = event => keyboard.fitView = event.target.checked;
 
 };
