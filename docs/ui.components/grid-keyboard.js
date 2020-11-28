@@ -9,6 +9,8 @@
 
 class GridKeyboard {
 
+    #implementation = { useKeyHightlight: true };
+
     constructor(element, keyWidth, keyHeight, rowCount, rowWidth, keyColors) {
         if (!keyColors) keyColors = {
             background: undefined,
@@ -16,24 +18,62 @@ class GridKeyboard {
             border: undefined,
             label: undefined
         };
+        const parseSize = stringValue => {
+            if (!stringValue) return { vale: undefined, unit: undefined };
+            const size = (/([0-9]*\.?[0-9]*)([a-zA-Z]*)/).exec(stringValue);
+            const sizeValue = parseFloat(size[size.length-2]);
+            const sizeUnit = size[size.length-1];
+            return { value: sizeValue, unit: sizeUnit };
+        } //parseSize
+        const keySize = (() => {
+            return { width: parseSize(keyWidth), height: parseSize(keyHeight) };
+        })();
         element.style.display = "grid";
         element.style.width = "100%";
-        //element.style.gridTemplateColumns = `repeat(${rowWidth}, ${keyWidth})`;
-        element.style.gridTemplateColumns = `repeat(${rowWidth}, 1fr)`;
         const borderStyle = "solid black thin";
+        this.#implementation.keyMap = new Map();
+        const keyHandler = (target, on, isMove) => {
+            if (isMove && (event.buttons != 1)) return;
+            const index = this.#implementation.keyMap.get(target);
+            if (this.#implementation.useKeyHightlight)
+                target.style.backgroundColor = on ? keyColors.hightlight : keyColors.background;
+            if (this.#implementation.action)
+                this.#implementation.action(on, index);
+        }; //keyHandler
         for (let yIndex = 0; yIndex < rowCount; ++yIndex)
             for (let xIndex = 0; xIndex < rowWidth; ++xIndex) {
                 const key = document.createElement("div");
-                key.style.width = keyWidth;
-                key.style.height = keyHeight;
+                key.style.borderRadius = "5px";
+                key.style.height = keyHeight ? keyHeight : keyWidth;
                 if (yIndex == 0)
                     key.style.borderTop = borderStyle;
                 if (xIndex == 0)
                     key.style.borderLeft = borderStyle;
                 key.style.borderBottom = borderStyle;
                 key.style.borderRight = borderStyle;
+                this.#implementation.keyMap.set(key, { x: xIndex, y: yIndex, frequency: undefined });
+                key.onmousedown = event => keyHandler(event.target, true);
+                key.onmouseup = event => keyHandler(event.target, false);
+                key.onmouseenter = event => keyHandler(event.target, true, true);
+                key.onmouseleave = event => keyHandler(event.target, false, true);
                 element.appendChild(key);
-        }
+            } //loop keys
+        this.#implementation.defineGridTemplates = doFit => {
+            const widthUnit = doFit ? "fr" : keySize.width.unit;
+            const widthValue = doFit ? 1 : keySize.width.value;
+            element.style.gridTemplateColumns = `repeat(${rowWidth}, ${widthValue}${widthUnit})`;
+        }; //this.#implementation.defineGridTemplates
+        this.#implementation.defineGridTemplates(false);
+        let lastOffsetWidth = undefined;
+        this.#implementation.fitView = value => {
+            const fitWidth = element.offsetWidth / rowWidth;
+            this.#implementation.defineGridTemplates(value);
+            if (!(keySize.height.value && keySize.height.unit)) {
+                const keyHeight = value ? `${fitWidth}px` : `${keySize.width.value}${keySize.width.unit}`;
+                for (let key of this.#implementation.keyMap.keys())
+                    key.style.height = keyHeight;
+            }
+        };
         return;
         const keyColor = keyColors.background;
         const keyColorHighlight = keyColors.hightlight;
@@ -69,21 +109,6 @@ class GridKeyboard {
         this.element = element;
         this.keyHeight = undefined;
         this.keyWidth = undefined;
-        this.lastExplicitKeyWidth = undefined;
-        this.defineGridTemplates = (keyWidth, keyHeight) => {
-            if (keyWidth)
-                this.keyWidth = keyWidth.toString();
-            if (keyHeight)
-                this.keyHeight = keyHeight.toString();
-            const width = (/([0-9]*\.?[0-9]*)([a-zA-Z]*)/).exec(this.keyWidth);
-            const widthValue = parseFloat(width[width.length-2])/2;
-            const widthUnit = width[width.length-1];
-            if (widthUnit != "fr")
-                this.lastExplicitKeyWidth = this.keyWidth;
-            this.element.style.gridTemplateColumns = `repeat(${2*this.number}, ${widthValue}${widthUnit})`;
-            this.element.style.gridTemplateRows = `${this.keyHeight} ${this.keyHeight}`;    
-        }; //this.defineGridTemplates
-        this.defineGridTemplates(keyWidth, keyHeight);
         element.style.overflowX = "auto";
         element.style.userSelect = "none";
         let upperCounter = -3;
@@ -144,29 +169,14 @@ class GridKeyboard {
             keyValuePair[0].textContent = labelArray[(keyValuePair[1] + startIndex) %  labelArray.length];
     } //label
 
-    set fitView(booleanValue) {
-        if (booleanValue)
-            this.defineGridTemplates("1fr", undefined);
-        else
-            this.defineGridTemplates(this.lastExplicitKeyWidth, undefined);
-    } //fitView
+    set fitView(booleanValue) { this.#implementation.fitView(booleanValue); }
 
-    setAction(handler) { 
-        this.action = handler; // handler(bool down, integer keyIndex);
+    set action(handler) { 
+        this.#implementation.action = handler; // handler(bool down, integer rowIndex, integer columnIndex);
     } //setAction
+    get action() { this.#implementation.action; }
 
-    get first() { return Array.from(this.map.values())[0];  }
-    get last() {
-        const array = Array.from(this.map.values());
-        return array[array.length - 1];
-    } //get last
-
-    get useHighlight() { return getUseHighlight(); }
-    set useHighlight(value) { return setUseHighlight(value); }
-
-    showFrequencies(frequencies, prefix, suffix) {
-        for (let [key, value] of this.map)
-            key.title = `${key.parentElement.title}${prefix} ${frequencies[value]} ${suffix}`;
-    } //showFrequencies
+    get useHighlight() { return this.#implementation.useKeyHightlight; }
+    set useHighlight(value) { this.#implementation.useKeyHightlight = value; }
 
 } //class GridKeyboard
