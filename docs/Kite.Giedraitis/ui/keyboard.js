@@ -146,12 +146,18 @@ class Keyboard {
                 }
             })(); //setNoteNames
             (() => { // handlers
+                this.#implementation.setKeyHander = aHandler => {
+                    this.#implementation.keyHandler = aHandler;
+                    if (aHandler) svg.element.style.opacity = 1;
+                }; //
                 const handler = (element, on) => {
+                    if (!this.#implementation.keyHandler) return;
                     const value = this.#implementation.keyMap.get(element);
-                    element.style.stroke = on ? "red" : "black";
-                    element.style.strokeWidth = on ? 2 * svg.circleStrokeWidth : svg.circleStrokeWidth;
-                    if (this.#implementation.keyHandler)
-                        this.#implementation.keyHandler(value.interval, on);
+                    if (this.#implementation.useHighlight) {
+                        element.style.stroke = on ? "red" : "black";
+                        element.style.strokeWidth = on ? 2 * svg.circleStrokeWidth : svg.circleStrokeWidth;
+                    } //if
+                    this.#implementation.keyHandler(value.interval, on);
                 } //handler
                 for (let [key, _] of this.#implementation.keyMap) {
                     key.onmousedown = event => handler(event.target, true);
@@ -176,6 +182,6 @@ class Keyboard {
     get useHighlight() { return this.#implementation.useHighlight; }
     set useHighlight(value) { this.#implementation.useHighlight = value; }
 
-    set keyHandler(aHandler) { this.#implementation.keyHandler = aHandler; }
+    set keyHandler(aHandler) { this.#implementation.setKeyHander(aHandler); }
 
 } //class Keyboard

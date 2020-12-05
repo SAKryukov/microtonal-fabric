@@ -18,6 +18,7 @@
     <title>Harmonic System</title>
     <meta charset="utf-8"/>
     <script src="../agnostic/mathematics.js"></script>
+    <script src="../agnostic/initialization-controller.js"></script>
     <script src="../ui.components/multitouch.js"></script>
     <script src="../ui.components/SVG.js"></script>
     <script src="ui/keyboard.js"></script>
@@ -33,19 +34,34 @@
         }
         * { margin: 0; padding: 0; font-family: sans-serif; box-sizing: content-box; touch-action: none; user-select: none; }
         svg text { text-anchor: middle; dominant-baseline: middle; touch-action: none; pointer-events: none; }
-        body > section:last-child { padding-left: 1em; }
-        body > section:last-child > input[type=radio] { margin-left: 1em; }
+        main { padding-left: 1em; padding-right: 1em; }
+        main > section > label { margin-left: var(--small-horizontal-gap) }
+        /* flex: */
+        html, body { height: 100%; }
+        body { display: flex; flex-flow: column; }
+        main { flex: auto; overflow: auto; }
+        footer { background: lightgreen; }
+        /* end flex */
+        svg { opacity: 0.2; }
+        footer { background: oldlace; padding: 0.2em; padding-bottom: 0.4em; padding-left: 0.4rem; padding-right: 0.4rem; border-top: solid gray thin; font-size: 60%; }
+        body > section { margin-left: auto; margin-right: auto; margin-top: 3em; margin-bottom: 4em; }
+        body > section > button { padding: 0.2em; padding-left:1em; padding-right:1em; border: solid thin navy; background-color: yellow; font-size: 120%; }
     </style>
 </head>
 
 <body>
 
-    <section></section>
-    <section>
-        <input id="label-type-intervals" type="radio" name="label-type"> Ratio</input>
-        <input id="label-type-note-names" type="radio" name="label-type"> Note names</input>
-        <input id="label-type-none" type="radio" name="label-type"> No labels</input>
-    </section>
+    <section><button>Start</button></section>
+
+    <header></header>
+    <main>
+        <section>
+            <label><input id="label-type-intervals" type="radio" name="label-type"/> Ratio</label>
+            <label><input id="label-type-note-names" type="radio" name="label-type"/> Note names</label>
+            <label><input id="label-type-none" type="radio" name="label-type"/> No labels</label>    
+        </section>
+    </main>
+    <footer>Authors&hellip;</footer>
 
 </body>
 </html>
