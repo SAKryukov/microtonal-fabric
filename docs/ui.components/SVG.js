@@ -52,31 +52,33 @@ class SVG {
     get rectangleStrokeWidth() { return this.#implementation.rectangleStrokeWidth; }
     set rectangleStrokeWidth(value) { this.#implementation.rectangleStrokeWidth = value; }
 
-
-    appendElement(element) {
-        this.#implementation.svg.appendChild(element);
+    appendElement(element, group) {
+        if (group)
+            group.appendChild(element);
+        else
+            this.#implementation.svg.appendChild(element);
         return element;
     } //appendElement
 
-    line(x1, x2, y1, y2) {
+    line(x1, x2, y1, y2, group) {
         const element = this.#implementation.createNS("line");
         this.#implementation.attribute(element, {x1: x1, x2: x2, y1: y1, y2: y2});
         element.style.strokeWidth = this.#implementation.lineStrokeWidth;
         element.style.stroke = this.#implementation.lineStrokeColor;
-        return this.appendElement(element);
+        return this.appendElement(element, group);
     } //line
 
-    circle(cx, cy, r) {
+    circle(cx, cy, r, group) {
         const element = this.#implementation.createNS("circle");
         this.#implementation.attribute(element, {cx: cx, cy: cy, r: r});
         this.#implementation.svg.appendChild(element);
         element.style.stroke = this.#implementation.circleStrokeColor;
         element.style.fill = this.#implementation.circleFillColor;
         element.style.strokeWidth = this.#implementation.circleStrokeWidth;
-        return this.appendElement(element);
+        return this.appendElement(element, group);
     } //circle
 
-    rectangle(x, y, width, height, rx, ry) {
+    rectangle(x, y, width, height, rx, ry, group) {
         const element = this.#implementation.createNS("rect");
         this.#implementation.attribute(element, {x: x, y: y, width: width, height: height});
         if (rx) this.#implementation.attribute(element, {rx: rx});
@@ -84,15 +86,17 @@ class SVG {
         element.style.stroke = this.#implementation.rectangleStrokeColor;
         element.style.fill = this.#implementation.rectangleFillColor;
         element.style.strokeWidth = this.#implementation.rectangleStrokeWidth;
-        return this.appendElement(element);
+        return this.appendElement(element, group);
     } //rectangle
 
-    text(x, y, value, size) {
+    text(x, y, value, size, group) {
         const element = this.#implementation.createNS("text");
         this.#implementation.attribute(element, {x: x, y: y});
         element.textContent = value;
         if (size) element.style.fontSize = size;
-        return this.appendElement(element);
+        return this.appendElement(element, group);
     } //text
+
+    group() { return this.appendElement(this.#implementation.createNS("g")); }
 
 } //class SVG
