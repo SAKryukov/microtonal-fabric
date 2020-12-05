@@ -1,3 +1,12 @@
+// Microtonal Music Study with Chromatic Lattice Keyboard
+//
+// Copyright (c) Sergey A Kryukov, 2017, 2020
+//
+// http://www.SAKryukov.org
+// http://www.codeproject.com/Members/SAKryukov
+// https://github.com/SAKryukov
+// https://github.com/SAKryukov/microtonal-chromatic-lattice-keyboard
+
 class SVG {
 
     #implementation = {};
@@ -43,6 +52,7 @@ class SVG {
     get rectangleStrokeWidth() { return this.#implementation.rectangleStrokeWidth; }
     set rectangleStrokeWidth(value) { this.#implementation.rectangleStrokeWidth = value; }
 
+
     appendElement(element) {
         this.#implementation.svg.appendChild(element);
         return element;
@@ -79,7 +89,7 @@ class SVG {
 
     text(x, y, value, size) {
         const element = this.#implementation.createNS("text");
-        this.#implementation.attribute(element, {x: y, y: y});
+        this.#implementation.attribute(element, {x: x, y: y});
         element.textContent = value;
         if (size) element.style.fontSize = size;
         return this.appendElement(element);
