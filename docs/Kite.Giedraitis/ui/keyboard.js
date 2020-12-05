@@ -7,20 +7,31 @@ class Keyboard {
         const dy = 1; // triangle height, or half of hexagon height
         const dx = Math.sqrt(1.0/3); // half of hexagon size
         const triangleCenter = 1/3;
-        const hex = (svg, x, y) => {
-            svg.line(x, x - dx , y, y + 1);
-            svg.line(x, x - dx, y, y - 1);
-            svg.line(x, x + dx, y, y + 1);
-            svg.line(x, x + dx, y, y - 1);
-            svg.line(x, x - 2 * dx, y, y);
-            svg.line(x, x + 2 * dx, y, y);
-            svg.line(x - dx, x + dx, y - 1, y - 1);
-            svg.line(x - dx, x + dx, y + 1, y + 1);
-            svg.line(x - 2 * dx, x - dx, y, y + 1);
-            svg.line(x - 2 * dx, x - dx, y, y - 1);
-            svg.line(x + 2 * dx, x + dx, y, y + 1);
-            svg.line(x + 2 * dx, x + dx, y, y - 1);
-        }; //hex
+        const hex = (() => { // optimized line drawing
+            const lineMap = new Set();
+            const addLine = (svg, x1, x2, y1, y2) => {
+                const hash = x1 + 10000 * x2 + 100000 * y1 + 1000000 * y2;
+                if (lineMap.has(hash))
+                    return;
+                lineMap.add(hash);
+                svg.line(x1, x2, y1, y2);
+            }; //addLine
+            const hex = (svg, x, y) => {
+                addLine(svg, x, x - dx , y, y + 1);
+                addLine(svg, x, x - dx, y, y - 1);
+                addLine(svg, x, x + dx, y, y + 1);
+                addLine(svg, x, x + dx, y, y - 1);
+                addLine(svg, x, x - 2 * dx, y, y);
+                addLine(svg, x, x + 2 * dx, y, y);
+                addLine(svg, x - dx, x + dx, y - 1, y - 1);
+                addLine(svg, x - dx, x + dx, y + 1, y + 1);
+                addLine(svg, x - 2 * dx, x - dx, y, y + 1);
+                addLine(svg, x - 2 * dx, x - dx, y, y - 1);
+                addLine(svg, x + 2 * dx, x + dx, y, y + 1);
+                addLine(svg, x + 2 * dx, x + dx, y, y - 1);
+            }; //hex
+            return hex;
+        })(); // optimized line drawing
         const addToMap = (key, row, column, x, y) => {
             this.#implementation.keyMap.set(key, {row: row, column: column, x: x, y: y});
         }; //addToMap
@@ -54,7 +65,7 @@ class Keyboard {
                 }
             }
         }; //secondaryKeys
-        const testHex = () => {
+        const createMain = () => {
             const svg = new SVG({
                 x: { from: -4.6*dx, to: +4.6*dx, },
                 y: { from: -dy - dx*0.6, to: +dy + dx*0.6, } });
@@ -91,7 +102,7 @@ class Keyboard {
                     intervals.push(row);
                 }
                 return intervals;
-            })();
+            })(); //intervals
             const intervalLabelGroup = svg.group();
             const noteLabelGroup = svg.group();
             (() => { //setLabelVisibilityControl
@@ -135,8 +146,8 @@ class Keyboard {
                 }
             })(); //setNoteNames
             return svg.element;
-        };
-        parent.appendChild(testHex());
+        }; //createMain
+        parent.appendChild(createMain());
     } //constructor
 
     get labelVisibility() { return this.#implementation.labelVisibility; }
