@@ -34,8 +34,17 @@ window.onload = () => {
     })();
 
     function start() {
+        const frequencies = [];
+        for (let frequency of elements.keyboardLeft.instrumentFrequencySet)
+            frequencies.push(frequency * 200);
+
+        const instrument = new Instrument(frequencies);
+        instrument.volume = 0.2;
+        instrument.data = instrumentList[3];
         for (kbd of [elements.keyboardLeft, elements.keyboardRight])
-            kbd.keyHandler = () => {};
+            kbd.keyHandler = (on, index) => {
+                instrument.play(on, index);
+            };
     } //start
 
 }; //window.onload

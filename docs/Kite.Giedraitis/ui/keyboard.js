@@ -115,7 +115,11 @@ class Keyboard {
             })(); //setLabelVisibilityControl
             this.#implementation.setIntervalLabelGroupVisibility(Keyboard.labelType.intervals);
             const sorted = [];
+            let keyIndex = 0;
+            const instrumentFrequencySet = [];
+            this.#implementation.getInstrumentFrequencySet = () => instrumentFrequencySet;
             for (let [key, value] of this.#implementation.keyMap) {
+                value.keyIndex = keyIndex++;
                 let color;
                 switch (value.row) {
                     case -3: color = "yellow"; break;
@@ -128,6 +132,7 @@ class Keyboard {
                 }
                 key.style.fill = color;
                 value.interval = intervals[value.row + 3][value.column];
+                instrumentFrequencySet.push(value.interval.toReal());
                 svg.text(value.x, value.y, value.interval.toString(), 0.2, intervalLabelGroup);
                 sorted.push(value);
             }
@@ -157,7 +162,7 @@ class Keyboard {
                         element.style.stroke = on ? "red" : "black";
                         element.style.strokeWidth = on ? 2 * svg.circleStrokeWidth : svg.circleStrokeWidth;
                     } //if
-                    this.#implementation.keyHandler(value.interval, on);
+                    this.#implementation.keyHandler(on, value.keyIndex);
                 } //handler
                 for (let [key, _] of this.#implementation.keyMap) {
                     key.onmousedown = event => handler(event.target, true);
@@ -183,5 +188,7 @@ class Keyboard {
     set useHighlight(value) { this.#implementation.useHighlight = value; }
 
     set keyHandler(aHandler) { this.#implementation.setKeyHander(aHandler); }
+
+    get instrumentFrequencySet() { return this.#implementation.getInstrumentFrequencySet(); }
 
 } //class Keyboard
