@@ -158,6 +158,8 @@ class Keyboard {
                 const handler = (element, on) => {
                     if (!this.#implementation.keyHandler) return;
                     const value = this.#implementation.keyMap.get(element);
+                    if (!value)
+                        return; //work-around
                     if (this.#implementation.useHighlight) {
                         element.style.stroke = on ? "red" : "black";
                         element.style.strokeWidth = on ? 2 * svg.circleStrokeWidth : svg.circleStrokeWidth;
