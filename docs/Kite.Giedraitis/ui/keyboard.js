@@ -111,6 +111,11 @@ class Keyboard {
                 }
                 return intervals;
             })();
+            const intervalLabelGroup = svg.group();
+            this.#implementation.setIntervalLabelGroupVisibility = value => {
+                intervalLabelGroup.setAttribute("display", value ? null : "none");
+                this.#implementation.labelVisibility = value;
+            } //this.#implementation.setIntervalLabelGroupVisibility
             for (let [key, value] of this.#implementation.keyMap) {
                 let color;
                 switch (value.row) {
@@ -124,9 +129,7 @@ class Keyboard {
                 }
                 key.style.fill = color;
                 value.interval = intervals[value.row + 3][value.column];
-                value.label = svg.text(value.x, value.y, value.interval.toString(), 0.2);
-                this.#implementation.labelVisibility = true;
-                //value.label.setAttribute("display", "none");
+                value.label = svg.text(value.x, value.y, value.interval.toString(), 0.2, intervalLabelGroup);
             }
             return svg.element;
         }; //test
@@ -134,7 +137,7 @@ class Keyboard {
     } //constructor
 
     get labelVisibility() { return this.#implementation.labelVisibility; }
-    set labelVisibility(value) { return this.#implementation.labelVisibility; }
+    set labelVisibility(value) { return this.#implementation.setIntervalLabelGroupVisibility(value); }
 
     toCSSColor(r, g, b) { return `rgb(${r}, ${g}, ${b})`; }
     averageColor(first, second) {
