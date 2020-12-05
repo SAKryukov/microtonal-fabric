@@ -32,10 +32,19 @@
         }
         * { margin: 0; padding: 0; font-family: sans-serif; box-sizing: content-box; touch-action: none; user-select: none; }
         svg text { text-anchor: middle; dominant-baseline: middle; }
+        body > section:last-child { padding-left: 1em; }
+        body > section:last-child > input[type=radio] { margin-left: 1em; }
     </style>
 </head>
 
 <body>
+
+    <section></section>
+    <section>
+        <input id="label-type-intervals" type="radio" name="label-type"> Ratio</input>
+        <input id="label-type-note-names" type="radio" name="label-type"> Note names</input>
+        <input id="label-type-none" type="radio" name="label-type"> No labels</input>
+    </section>
 
 </body>
 </html>

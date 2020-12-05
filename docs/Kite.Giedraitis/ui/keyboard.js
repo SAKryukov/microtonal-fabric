@@ -1,30 +1,12 @@
 class Keyboard {
-    
-    #implementation = { keyMap: new Map(), labelVisibility: true };
+
+    static labelType = { none : 0, intervals: 1, noteNames: 2 };
+    #implementation = { keyMap: new Map(), labelVisibility: Keyboard.labelType.intervals };
 
     constructor (parent) {
         const dy = 1; // triangle height, or half of hexagon height
         const dx = Math.sqrt(1.0/3); // half of hexagon size
         const triangleCenter = 1/3;
-        const test = () => {
-            const svg = new SVG({
-                x: { from: -1000, to: +1000, },
-                y: { from: -400, to: +400, } });
-            svg.element.style.width = "100%";
-            svg.element.style.height = "auto";
-            const line1 = svg.line(-100, 100, 0, 200);
-            svg.lineStrokeColor = "red";
-            svg.line(-100, 100, 10, 210);
-            svg.text(200, 100, "my text", "820%");
-            svg.circleStrokeColor = "red";
-            svg.circleStrokeWidth = "0.1%";
-            svg.circle(0, 0, 300);
-            svg.rectangleStrokeWidth = "1%";
-            svg.rectangleFillColor = "#FFAAFF";
-            svg.rectangleStrokeColor = "Navy";
-            svg.rectangle(-500, 0, 300, 200, 0, 0);
-            return svg.element;
-        } //test
         const hex = (svg, x, y) => {
             svg.line(x, x - dx , y, y + 1);
             svg.line(x, x - dx, y, y - 1);
@@ -74,14 +56,13 @@ class Keyboard {
         }; //secondaryKeys
         const testHex = () => {
             const svg = new SVG({
-                x: { from: -5*dx, to: +5*dx, },
-                y: { from: -dy - dx, to: +dy + dx, } });
+                x: { from: -4.6*dx, to: +4.6*dx, },
+                y: { from: -dy - dx*0.6, to: +dy + dx*0.6, } });
             svg.lineStrokeWidth = "0.02";
             svg.circleStrokeWidth = "0.04";
-            svg.circleFillColor = this.toCSSColor(244, 255, 2*255/3);
-               //this.averageColor({r: 255, g:255, b:255}, {r: 255, g:255, b:0});
-            svg.element.style.width = "70%";
-            svg.element.style.marginLeft = "15%";
+            svg.element.style.width = "50%";
+            svg.element.style.marginLeft = "0";
+            svg.element.style.marginTop = "0";
             svg.element.style.height = "auto";
             hex(svg, 0, 0);
             hex(svg, -dx*2, 0);
@@ -112,15 +93,22 @@ class Keyboard {
                 return intervals;
             })();
             const intervalLabelGroup = svg.group();
-            this.#implementation.setIntervalLabelGroupVisibility = value => {
-                intervalLabelGroup.setAttribute("display", value ? null : "none");
-                this.#implementation.labelVisibility = value;
-            } //this.#implementation.setIntervalLabelGroupVisibility
+            const noteLabelGroup = svg.group();
+            (() => { //setLabelVisibilityControl
+                const show = (element, value) => element.style.display = value ? null : "none";
+                this.#implementation.setIntervalLabelGroupVisibility = value => {
+                    show(intervalLabelGroup, value == Keyboard.labelType.none ? false : (value == Keyboard.labelType.intervals ? true : false));
+                    show(noteLabelGroup, value == Keyboard.labelType.none ? false : (value == Keyboard.labelType.noteNames ? true : false));
+                    this.#implementation.labelVisibility = value;
+                } //this.#implementation.setIntervalLabelGroupVisibility    
+            })(); //setLabelVisibilityControl
+            this.#implementation.setIntervalLabelGroupVisibility(Keyboard.labelType.intervals);
+            const sorted = [];
             for (let [key, value] of this.#implementation.keyMap) {
                 let color;
                 switch (value.row) {
                     case -3: color = "yellow"; break;
-                    case -2: color = "orange"; break;
+                    case -2: color = "#FFBB44"; break;
                     case -1: color = "#8075FF"; break;
                     case  0: color = "white"; break;
                     case +1: color = "#FF6070"; break;
@@ -129,24 +117,29 @@ class Keyboard {
                 }
                 key.style.fill = color;
                 value.interval = intervals[value.row + 3][value.column];
-                value.label = svg.text(value.x, value.y, value.interval.toString(), 0.2, intervalLabelGroup);
+                svg.text(value.x, value.y, value.interval.toString(), 0.2, intervalLabelGroup);
+                sorted.push(value);
             }
+            (function setNoteNames() {
+                const noteNames = ["C", "C♯¹", "C♯²", "D♭²", "D♭¹", "D", "D♯", "de", "E♭", "E", "E♯", "F♭", "F",
+                    "F♯", "G♭", "G", "G♯", "ga", "A♭", "A", "A♯¹", "A♯²", "ab", "B♭²", "B♭¹", "B", "bc"];
+                sorted.sort((first, second) => {
+                    const a = first.interval.toReal();
+                    const b = second.interval.toReal();
+                    return a == b ? 0 : (a < b ? -1 : 1);
+                }); //sort
+                let noteIndex = 0;
+                for (let value of sorted) {
+                    value.noteName = noteNames[noteIndex++];
+                    svg.text(value.x, value.y, value.noteName, 0.2, noteLabelGroup);
+                }
+            })(); //setNoteNames
             return svg.element;
-        }; //test
+        };
         parent.appendChild(testHex());
     } //constructor
 
     get labelVisibility() { return this.#implementation.labelVisibility; }
     set labelVisibility(value) { return this.#implementation.setIntervalLabelGroupVisibility(value); }
-
-    toCSSColor(r, g, b) { return `rgb(${r}, ${g}, ${b})`; }
-    averageColor(first, second) {
-        const r = first.r + second.r / 2;
-        const g = first.g + second.g / 2;
-        const b = first.b + second.b / 2;
-        return `rgb(${r}, ${g}, ${b})`;
-    }
-    get colorGreen() { return {r:0, g:255, b: 0}}
-
 
 } //class Keyboard
