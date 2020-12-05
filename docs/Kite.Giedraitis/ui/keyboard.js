@@ -1,6 +1,6 @@
 class Keyboard {
     
-    #implementation = { keyMap: new Map() };
+    #implementation = { keyMap: new Map(), labelVisibility: true };
 
     constructor (parent) {
         const dy = 1; // triangle height, or half of hexagon height
@@ -60,7 +60,7 @@ class Keyboard {
                     const x = xIndex * dx * 2;
                     const y = yIndex * (dy - triangleCenter);
                     const key = svg.circle(x, y, dx/2);
-                    addToMap(key, 2 * yIndex, xIndex, x, y);
+                    addToMap(key, 2 * yIndex, xIndex + 1, x, y);
                 }
             }
             for (let yIndex of [-1, +1]) {
@@ -88,6 +88,29 @@ class Keyboard {
             hex(svg, +dx*2, 0);
             mainKeys(svg);
             secondaryKeys(svg);
+            const intervals = (() => {
+                const generator = new Interval(3, 2);
+                const intervals = [];
+                const rows = [
+                    { start: new Interval(10, 9), length: 4 },
+                    { start: new Interval(40, 21), length: 3 },
+                    { start: new Interval(14, 9), length: 4 },
+                    { start: new Interval(16, 9), length: 5 },
+                    { start: new Interval(32, 21), length: 4 },
+                    { start: new Interval(28, 15), length: 3 },
+                    { start: new Interval(16, 15), length: 4 },
+                ];
+                for (let rowIndex = 0; rowIndex < rows.length; ++rowIndex) {
+                    let current = rows[rowIndex].start;
+                    const row = [current];
+                    for (let columnIndex = 1; columnIndex < rows[rowIndex].length; ++columnIndex) {
+                        current = current.multiply(generator).normalize();
+                        row.push(current);
+                    }
+                    intervals.push(row);
+                }
+                return intervals;
+            })();
             for (let [key, value] of this.#implementation.keyMap) {
                 let color;
                 switch (value.row) {
@@ -100,12 +123,18 @@ class Keyboard {
                     case +3: color = "lightGreen"; break;
                 }
                 key.style.fill = color;
-                //svg.text(value.x, value.y, "5/3", 0.2);
+                value.interval = intervals[value.row + 3][value.column];
+                value.label = svg.text(value.x, value.y, value.interval.toString(), 0.2);
+                this.#implementation.labelVisibility = true;
+                //value.label.setAttribute("display", "none");
             }
             return svg.element;
         }; //test
         parent.appendChild(testHex());
     } //constructor
+
+    get labelVisibility() { return this.#implementation.labelVisibility; }
+    set labelVisibility(value) { return this.#implementation.labelVisibility; }
 
     toCSSColor(r, g, b) { return `rgb(${r}, ${g}, ${b})`; }
     averageColor(first, second) {
