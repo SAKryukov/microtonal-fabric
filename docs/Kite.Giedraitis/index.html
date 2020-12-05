@@ -18,6 +18,7 @@
     <title>Harmonic System</title>
     <meta charset="utf-8"/>
     <script src="../agnostic/mathematics.js"></script>
+    <script src="../ui.components/multitouch.js"></script>
     <script src="../ui.components/SVG.js"></script>
     <script src="ui/keyboard.js"></script>
     <script src="main/main.js"></script>
@@ -31,7 +32,7 @@
             --frame: 0.2em 0.6em 0.2em 0.6em;
         }
         * { margin: 0; padding: 0; font-family: sans-serif; box-sizing: content-box; touch-action: none; user-select: none; }
-        svg text { text-anchor: middle; dominant-baseline: middle; }
+        svg text { text-anchor: middle; dominant-baseline: middle; touch-action: none; pointer-events: none; }
         body > section:last-child { padding-left: 1em; }
         body > section:last-child > input[type=radio] { margin-left: 1em; }
     </style>

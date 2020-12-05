@@ -1,7 +1,7 @@
 class Keyboard {
 
     static labelType = { none : 0, intervals: 1, noteNames: 2 };
-    #implementation = { keyMap: new Map(), labelVisibility: Keyboard.labelType.intervals };
+    #implementation = { keyMap: new Map(), labelVisibility: Keyboard.labelType.intervals, useHighlight: true };
 
     constructor (parent) {
         const dy = 1; // triangle height, or half of hexagon height
@@ -69,7 +69,7 @@ class Keyboard {
             const svg = new SVG({
                 x: { from: -4.6*dx, to: +4.6*dx, },
                 y: { from: -dy - dx*0.6, to: +dy + dx*0.6, } });
-            svg.lineStrokeWidth = "0.02";
+            svg.lineStrokeWidth = 0.02;
             svg.circleStrokeWidth = "0.04";
             svg.element.style.width = "50%";
             svg.element.style.marginLeft = "0";
@@ -145,6 +145,26 @@ class Keyboard {
                     svg.text(value.x, value.y, value.noteName, 0.2, noteLabelGroup);
                 }
             })(); //setNoteNames
+            (() => { // handlers
+                const handler = (element, on) => {
+                    const value = this.#implementation.keyMap.get(element);
+                    element.style.stroke = on ? "red" : "black";
+                    element.style.strokeWidth = on ? 2 * svg.circleStrokeWidth : svg.circleStrokeWidth;
+                    if (this.#implementation.keyHandler)
+                        this.#implementation.keyHandler(value.interval, on);
+                } //handler
+                for (let [key, _] of this.#implementation.keyMap) {
+                    key.onmousedown = event => handler(event.target, true);
+                    key.onmouseup = event => handler(event.target, false);
+                    key.onmouseenter = event => { if (event.buttons == 1) handler(event.target, true); }
+                    key.onmouseleave = event => { if (event.buttons == 1) handler(event.target, false); }
+                } //key
+                setMultiTouch(
+                    svg.element,
+                    element => element.constructor == SVGCircleElement, 
+                    (element, _, on) => handler(element, on)
+                );    
+            })(); // handlers
             return svg.element;
         }; //createMain
         parent.appendChild(createMain());
@@ -152,5 +172,10 @@ class Keyboard {
 
     get labelVisibility() { return this.#implementation.labelVisibility; }
     set labelVisibility(value) { return this.#implementation.setIntervalLabelGroupVisibility(value); }
+
+    get useHighlight() { return this.#implementation.useHighlight; }
+    set useHighlight(value) { this.#implementation.useHighlight = value; }
+
+    set keyHandler(aHandler) { this.#implementation.keyHandler = aHandler; }
 
 } //class Keyboard
