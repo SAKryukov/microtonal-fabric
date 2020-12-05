@@ -1,11 +1,12 @@
 class Keyboard {
     
-    #implementation = { map: new Map() };
+    #implementation = { keyMap: new Map() };
 
     constructor (parent) {
-        const dy = 1; // triangle height, or half of hexagon heigh
+        const dy = 1; // triangle height, or half of hexagon height
         const dx = Math.sqrt(1.0/3); // half of hexagon size
-        const triangleCenter = 1/3;    const test = () => {
+        const triangleCenter = 1/3;
+        const test = () => {
             const svg = new SVG({
                 x: { from: -1000, to: +1000, },
                 y: { from: -400, to: +400, } });
@@ -19,7 +20,7 @@ class Keyboard {
             svg.circleStrokeWidth = "0.1%";
             svg.circle(0, 0, 300);
             svg.rectangleStrokeWidth = "1%";
-            svg.rectangleFillColor = "yellow";
+            svg.rectangleFillColor = "#FFAAFF";
             svg.rectangleStrokeColor = "Navy";
             svg.rectangle(-500, 0, 300, 200, 0, 0);
             return svg.element;
@@ -38,66 +39,82 @@ class Keyboard {
             svg.line(x + 2 * dx, x + dx, y, y + 1);
             svg.line(x + 2 * dx, x + dx, y, y - 1);
         }; //hex
-        const hexRows = svg => {
-            hex(svg, 0, 0);
-            hex(svg, 4 * dx, 0);
-            hex(svg, -4 * dx, 0);
-            hex(svg, -dx, dy);
-            hex(svg, 4 * dx -dx , dy);
-            hex(svg, -4 * dx - dx, dy);
-        }; //hexRows
-        const horizontals = svg => {
-            for (let index = 0; index < 3; ++index) {
-                const x0 = - dx * 8 + dx * index;
-                const y = index * dy;
-                svg.line(x0, -x0, y, y);
-                svg.line(x0, -x0, -y, -y);
-            }
-        }; //horizontals
-        const diagonals = svg => {
-            for (let index = -4; index <= 4; ++index) {
-                svg.line(2 * index * dx -2 * dx, 2 * index * dx + 2 * dx, -dy * 2, + dy * 2);
-                svg.line(2 * index * dx +2 * dx, 2 * index * dx - 2 * dx, -dy * 2, + dy * 2);
-            }
-        }; //diagonals
+        const addToMap = (key, row, column, x, y) => {
+            this.#implementation.keyMap.set(key, {row: row, column: column, x: x, y: y});
+        }; //addToMap
         const mainKeys = svg => {
-            for (let rowIndex = -2; rowIndex <= 2; ++rowIndex) {
+            for (let rowIndex = -1; rowIndex <= 1; ++rowIndex) {
                 const shift = Math.abs(rowIndex);
-                const rowWidth = 9 - shift;
+                const rowWidth = 5 - shift;
                 for (let xIndex = 0; xIndex < rowWidth; ++ xIndex) {
                     const y = rowIndex * dy;
-                    const x = - 8 * dx + shift * dx + xIndex * dx * 2;
-                    svg.circle(x, y, dx/2);
+                    const x = - 4 * dx + shift * dx + xIndex * dx * 2;
+                    const key = svg.circle(x, y, dx/2);
+                    addToMap(key, 3 * rowIndex, xIndex, x, y);
                 } //loop x
             } //loop y
         }; //mainKeys
         const secondaryKeys = svg => {
-            const x = 0;
-            const y = 0;
-            svg.circle(x + 0, y + dy * 2 * triangleCenter, dx/2);
-            svg.circle(x + dx, y + dy * triangleCenter, dx/2);
+            for (let yIndex of [-1, +1]) {
+                for (let xIndex = -1; xIndex <= 1; ++xIndex) {
+                    const x = xIndex * dx * 2;
+                    const y = yIndex * (dy - triangleCenter);
+                    const key = svg.circle(x, y, dx/2);
+                    addToMap(key, 2 * yIndex, xIndex, x, y);
+                }
+            }
+            for (let yIndex of [-1, +1]) {
+                for (let xIndex = 0; xIndex < 4; ++xIndex) {
+                    const x = -dx * 3 + xIndex * 2 * dx;
+                    const y = yIndex * triangleCenter;
+                    const key = svg.circle(x, y, dx/2);
+                    addToMap(key, 1 * yIndex, xIndex, x, y);
+                }
+            }
         }; //secondaryKeys
         const testHex = () => {
             const svg = new SVG({
-                x: { from: -10*dx, to: +10*dx, },
-                y: { from: -2.5, to: +2.5, } });
+                x: { from: -5*dx, to: +5*dx, },
+                y: { from: -dy - dx, to: +dy + dx, } });
             svg.lineStrokeWidth = "0.02";
             svg.circleStrokeWidth = "0.04";
-            svg.circleFillColor = "yellow";
+            svg.circleFillColor = this.toCSSColor(244, 255, 2*255/3);
+               //this.averageColor({r: 255, g:255, b:255}, {r: 255, g:255, b:0});
             svg.element.style.width = "70%";
             svg.element.style.marginLeft = "15%";
             svg.element.style.height = "auto";
-            horizontals(svg);
-            diagonals(svg);
+            hex(svg, 0, 0);
+            hex(svg, -dx*2, 0);
+            hex(svg, +dx*2, 0);
             mainKeys(svg);
             secondaryKeys(svg);
-            //hexRows(svg);
-            // star(svg, - 2 * dx, 0);
-            // star(svg, 2 * dx, 0);
-            // star(svg, 0, 2 * dy);
+            for (let [key, value] of this.#implementation.keyMap) {
+                let color;
+                switch (value.row) {
+                    case -3: color = "yellow"; break;
+                    case -2: color = "orange"; break;
+                    case -1: color = "#8075FF"; break;
+                    case  0: color = "white"; break;
+                    case +1: color = "#FF6070"; break;
+                    case +2: color = "PaleTurquoise"; break;
+                    case +3: color = "lightGreen"; break;
+                }
+                key.style.fill = color;
+                //svg.text(value.x, value.y, "5/3", 0.2);
+            }
             return svg.element;
         }; //test
         parent.appendChild(testHex());
     } //constructor
+
+    toCSSColor(r, g, b) { return `rgb(${r}, ${g}, ${b})`; }
+    averageColor(first, second) {
+        const r = first.r + second.r / 2;
+        const g = first.g + second.g / 2;
+        const b = first.b + second.b / 2;
+        return `rgb(${r}, ${g}, ${b})`;
+    }
+    get colorGreen() { return {r:0, g:255, b: 0}}
+
 
 } //class Keyboard
