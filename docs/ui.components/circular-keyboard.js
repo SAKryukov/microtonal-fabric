@@ -12,13 +12,14 @@ class CircularKeyboard {
     #implementation = { useKeyHightlight: true, keyMap: new Map() };
 
     constructor(parent) {
-        const factor = 1.2;
+        const factor = 1.5;
         const svg = new SVG({
             x: { from: -factor, to: factor },
             y: { from: -factor, to: factor },
         });
         svg.lineStrokeWidth = "0.2%";
         svg.circleStrokeWidth = "0.2%";
+        svg.circleFillColor = "white";
         svg.circle(0, 0, 1);
         this.#implementation.addTone = (interval, size) => {
             const angle = Math.log2(interval) * Math.PI * 2 - Math.PI / 2;
@@ -30,6 +31,10 @@ class CircularKeyboard {
             svg.line(0, location.x, 0, location.y);
             if (!size) return;
             svg.circle(location.x, location.y, size);
+            const lowLocation = getCenter(angle, 1 + 2 * size);
+            const highLocation = getCenter(angle, 1 - 2 * size);
+            svg.circle(lowLocation.x, lowLocation.y, size);
+            svg.circle(highLocation.x, highLocation.y, size);
         }; //this.#implementation.addTone
         parent.appendChild(svg.element);
     } //constructor
@@ -47,6 +52,6 @@ class CircularKeyboard {
     get useHighlight() { return this.#implementation.useKeyHightlight; }
     set useHighlight(value) { this.#implementation.useKeyHightlight = value; }
 
-    addTone(interval) { return this.#implementation.addTone(interval); }
+    addTone(interval, size) { return this.#implementation.addTone(interval, size); }
 
 } //class CircularKeyboard
