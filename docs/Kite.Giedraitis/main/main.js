@@ -35,16 +35,15 @@ window.onload = () => {
 
     function start() {
         const frequencies = [];
+        const frequencyA = 440;
+        const frequencyC = frequencyA * 3 / 5;
         for (let frequency of elements.keyboardLeft.instrumentFrequencySet)
-            frequencies.push(frequency * 200);
-
+            frequencies.push(frequency * frequencyC);
         const instrument = new Instrument(frequencies);
         instrument.volume = 0.2;
-        instrument.data = instrumentList[3];
+        instrument.data = instrumentList[0];
         for (kbd of [elements.keyboardLeft, elements.keyboardRight])
-            kbd.keyHandler = (on, index) => {
-                instrument.play(on, index);
-            };
+            kbd.keyHandler = (on, index) => instrument.play(on, index);
     } //start
 
 }; //window.onload
