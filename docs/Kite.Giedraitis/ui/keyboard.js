@@ -1,7 +1,10 @@
 class Keyboard {
 
     static labelType = { none : 0, intervals: 1, noteNames: 2 };
-    #implementation = { keyMap: new Map(), labelVisibility: Keyboard.labelType.intervals, useHighlight: true };
+    #implementation = {
+        keyMap: new Map(), useHighlight: true,
+        labelVisibility: Keyboard.labelType.intervals, chromaticPathVisibility: false,
+    };
 
     constructor (parent) {
         const dy = 1; // triangle height, or half of hexagon height
@@ -105,21 +108,26 @@ class Keyboard {
             })(); //intervals
             const intervalLabelGroup = svg.group();
             const noteLabelGroup = svg.group();
-            (() => { //setLabelVisibilityControl
+            const chromaticGroup = svg.group();
+            (() => { //setVisibilityControl
                 const show = (element, value) => element.style.display = value ? null : "none";
                 this.#implementation.setIntervalLabelGroupVisibility = value => {
                     show(intervalLabelGroup, value == Keyboard.labelType.none ? false : (value == Keyboard.labelType.intervals ? true : false));
                     show(noteLabelGroup, value == Keyboard.labelType.none ? false : (value == Keyboard.labelType.noteNames ? true : false));
                     this.#implementation.labelVisibility = value;
-                } //this.#implementation.setIntervalLabelGroupVisibility    
-            })(); //setLabelVisibilityControl
+                } //this.#implementation.setIntervalLabelGroupVisibility
+                this.#implementation.setChromaticPathVisibility = value => {
+                    show(chromaticGroup, value);
+                    this.#implementation.chromaticPathVisibility = value;
+                };
+            })(); //setVisibilityControl
             this.#implementation.setIntervalLabelGroupVisibility(Keyboard.labelType.intervals);
+            this.#implementation.setChromaticPathVisibility(false);
             const sorted = [];
             let keyIndex = 0;
             const instrumentFrequencySet = [];
             this.#implementation.getInstrumentFrequencySet = () => instrumentFrequencySet;
             for (let [key, value] of this.#implementation.keyMap) {
-                value.keyIndex = keyIndex++;
                 let color;
                 switch (value.row) {
                     case -3: color = "yellow"; break;
@@ -132,11 +140,10 @@ class Keyboard {
                 }
                 key.style.fill = color;
                 value.interval = intervals[value.row + 3][value.column];
-                instrumentFrequencySet.push(value.interval.toReal());
                 svg.text(value.x, value.y, value.interval.toString(), 0.2, intervalLabelGroup);
                 sorted.push(value);
             }
-            (function setNoteNames() {
+            (function setNoteNamesAndChromaticPath() {
                 const noteNames = ["C", "C♯¹", "C♯²", "D♭²", "D♭¹", "D", "D♯", "de", "E♭", "E", "E♯", "F♭", "F",
                     "F♯", "G♭", "G", "G♯", "ga", "A♭", "A", "A♯¹", "A♯²", "ab", "B♭²", "B♭¹", "B", "bc"];
                 sorted.sort((first, second) => {
@@ -145,11 +152,24 @@ class Keyboard {
                     return a == b ? 0 : (a < b ? -1 : 1);
                 }); //sort
                 let noteIndex = 0;
+                const currentChromaticPoint = { x: undefined, y: undefined };
+                const chromaticLineColors = ["darkRed", "darkOrange", "gold", "darkGreen", "slateBlue", "midnightBlue", "darkViolet"];
+                let currentChromaticLineColor = 0;
+                svg.lineStrokeColor = chromaticLineColors[currentChromaticLineColor];
                 for (let value of sorted) {
+                    if (noteIndex % 4 == 0)
+                        svg.lineStrokeColor = chromaticLineColors[currentChromaticLineColor++];
+                    const newX = value.x + Math.random() * dx / 4;
+                    const newY = value.y + Math.random() * dx / 4;
+                    if (currentChromaticPoint.x != undefined && noteIndex < 10000)
+                        svg.line(currentChromaticPoint.x, newX, currentChromaticPoint.y, newY, chromaticGroup);
+                    currentChromaticPoint.x = newX; currentChromaticPoint.y = newY;
+                    instrumentFrequencySet.push(value.interval.toReal());
+                    value.keyIndex = noteIndex;
                     value.noteName = noteNames[noteIndex++];
                     svg.text(value.x, value.y, value.noteName, 0.2, noteLabelGroup);
-                }
-            })(); //setNoteNames
+                } //loop sorted value
+            })(); //setNoteNamesAndChromaticPath
             (() => { // handlers
                 this.#implementation.setKeyHander = aHandler => {
                     this.#implementation.keyHandler = aHandler;
@@ -185,6 +205,8 @@ class Keyboard {
 
     get labelVisibility() { return this.#implementation.labelVisibility; }
     set labelVisibility(value) { return this.#implementation.setIntervalLabelGroupVisibility(value); }
+    get chromaticPathVisibility() { return this.#implementation.chromaticPathVisibility; }
+    set chromaticPathVisibility(value) { return this.#implementation.setChromaticPathVisibility(value); }
 
     get useHighlight() { return this.#implementation.useHighlight; }
     set useHighlight(value) { this.#implementation.useHighlight = value; }

@@ -41,8 +41,9 @@
             --small-horizontal-gap: 0.4em;
             --frame: 0.2em 0.6em 0.2em 0.6em;
         }
-        * { margin: 0; padding: 0; font-family: sans-serif; box-sizing: content-box; touch-action: none; user-select: none; }
-        svg text { text-anchor: middle; dominant-baseline: middle; touch-action: none; pointer-events: none; }
+        * { margin: 0; padding: 0; font-family: sans-serif; box-sizing: content-box; touch-action: none; }
+        svg text { text-anchor: middle; dominant-baseline: middle; user-select: none; }
+        svg text, svg line { touch-action: none; pointer-events: none; }
         main { padding-left: 1em; padding-right: 1em; }
         main > section > label { margin-left: var(--small-horizontal-gap) }
         /* flex: */
@@ -67,7 +68,10 @@
         <section>
             <label><input id="label-type-intervals" type="radio" name="label-type"/> Ratio</label>
             <label><input id="label-type-note-names" type="radio" name="label-type"/> Note names</label>
-            <label><input id="label-type-none" type="radio" name="label-type"/> No labels</label>    
+            <label><input id="label-type-none" type="radio" name="label-type"/> No labels</label>
+            <br/>
+            <label><input id="chromatic-path-visibility" type="checkbox"/> Chromatic Path</label>
+            <label><input id="use-keyboard-highlight" type="checkbox"/> Use Highlight</label>
         </section>
     </main>
     <footer>Authors&hellip;</footer>

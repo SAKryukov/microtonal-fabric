@@ -11,6 +11,8 @@ window.onload = () => {
             noteNames: document.querySelector("#label-type-note-names"),
             none: document.querySelector("#label-type-none"),
         },
+        chromaticPathVisibility: document.querySelector("#chromatic-path-visibility"),
+        useKeyboardHightlight: document.querySelector("#use-keyboard-highlight"),
     };
 
     initializationController.initialize(
@@ -20,7 +22,7 @@ window.onload = () => {
         start
     );
 
-    (function setLabelTypes() {
+    (function setVisualClueVisibility() {
         elements.labelType.intervals.onchange = event => {
             if (event.target.checked) elements.keyboardLeft.labelVisibility = Keyboard.labelType.intervals;
         };
@@ -28,10 +30,15 @@ window.onload = () => {
             if (event.target.checked) elements.keyboardLeft.labelVisibility = Keyboard.labelType.noteNames;
         };
         elements.labelType.none.onchange = event => {
-            if (event.target.checked)  elements.keyboardLeft.labelVisibility = Keyboard.labelType.none;
+            if (event.target.checked) elements.keyboardLeft.labelVisibility = Keyboard.labelType.none;
         };
-        elements.labelType.intervals.checked = true;    
-    })();
+        elements.chromaticPathVisibility.onchange = event =>
+            elements.keyboardLeft.chromaticPathVisibility = event.target.checked;
+        elements.labelType.intervals.checked = true;
+        elements.useKeyboardHightlight.onchange = event =>
+            elements.keyboardLeft.useHighlight = event.target.checked;
+        elements.useKeyboardHightlight.checked = true;
+    })(); //setVisualClueVisibility
 
     function start() {
         const frequencies = [];
