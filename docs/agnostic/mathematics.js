@@ -166,3 +166,5 @@ class Interval extends RationalNumber {
         };
     } //normalize
 } //class Interval
+
+const interval = (numerator, denominator) => new Interval(numerator, denominator);
