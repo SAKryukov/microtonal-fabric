@@ -16,6 +16,7 @@ window.onload = () => {
             hiddenControls: document.querySelectorAll("main > section, header"),
         },
         keyboardParent: document.querySelector("header > section"),
+        instrumentSelector: document.querySelector("#instrument"),
     }; //elements
 
     elements.keyboardParent.style.display = "grid"; // important workaround, otherwise initializationController.initialize breaks it
@@ -27,6 +28,8 @@ window.onload = () => {
         start);
 
     function start() {
+
+        const population = new UserPopulation(tones, definitionSet.rowCount, definitionSet.columnCount);
 
         const keyboard = new GridKeyboard(elements.keyboardParent, definitionSet.keyWidth, definitionSet.keyHeight,
             definitionSet.rowCount, definitionSet.columnCount,
@@ -48,9 +51,18 @@ window.onload = () => {
         keyboard.keyHandler = (on, index) =>
              instrument.play(on, index);
 
-        const population = new UserPopulation(tones, definitionSet.rowCount, definitionSet.columnCount);
         keyboard.label((x, y) => population.labelHandler(x, y));
         keyboard.setTitles((x, y) => population.titleHandler(x, y));
+
+        (function setupInstruments() {
+            for (let instrumentData of instrumentList) {
+                const option = document.createElement("option");
+                option.textContent = instrumentData.header.instrumentName;
+                elements.instrumentSelector.appendChild(option);
+            } //loop
+            elements.instrumentSelector.selectedIndex = 0;
+            elements.instrumentSelector.onchange = event => instrument.data = instrumentList[event.target.selectedIndex];
+        })(); //setupInstruments
 
     }; //start
 
