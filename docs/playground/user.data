@@ -1,4 +1,4 @@
-const repeat = true;
+﻿const repeat = true;
 
 const tones = {
     base: 55, //Hz
@@ -6,7 +6,7 @@ const tones = {
         [interval(1), interval(9,8),   interval(5,4),   interval(4,3), interval(3,2), interval(27,16), interval(15,8), repeat],
         [interval(2), interval(9,8),   interval(77,64), interval(4,3), interval(3,2), interval(27,16), interval(16,9), repeat],
         [interval(1), interval(16,15), interval(77,64), interval(4,3), interval(3,2), interval(8,5),   interval(16,9), repeat],
-        [220, 110, interval(12/200), {label: "asas", frequency: 32}],
+        [220, 110, interval(12/200), {label: "int", interval: interval(77,64)}, null, {label: "←null", frequency: 1}, ],
         [1],
         [1], 
         [1],
