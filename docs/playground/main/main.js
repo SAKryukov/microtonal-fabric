@@ -1,5 +1,12 @@
 "use strict";
 
+const definitionSet = {
+    keyWidth: "4em",
+    keyHeight: "4em",
+    rowCount: 8,
+    columnCount: 7*4,
+}; //definitionSet
+
 window.onload = () => {
 
     const elements = {
@@ -21,24 +28,31 @@ window.onload = () => {
 
     function start() {
 
-        const keyboard = new GridKeyboard(elements.keyboardParent, "4em", "4em", 7, 7*4,
-        {
-            background: "transparent",
-            hightlight: "yellow",
-            border: "darkGray",
-            disabled: "darkGray",
-            label: "Gray"
-        });
+        const keyboard = new GridKeyboard(elements.keyboardParent, definitionSet.keyWidth, definitionSet.keyHeight,
+            definitionSet.rowCount, definitionSet.columnCount,
+            {
+                background: "transparent",
+                hightlight: "yellow",
+                border: "darkGray",
+                disabled: "darkGray",
+                label: "Gray"
+            });
         keyboard.fitView = true;
         const frequencies = [];
         const startingFrequency = 10;
-        for (let index = 0; index < 4*7*7; ++index)
+        for (let index = 0; index < definitionSet.columnCount * definitionSet.rowCount; ++index)
             frequencies.push(startingFrequency * Math.pow(2, index/12));
         const instrument = new Instrument(frequencies);
         instrument.volume = 0.2;
         instrument.data = instrumentList[0];
         keyboard.keyHandler = (on, index) =>
              instrument.play(on, index);
+        keyboard.labelRow(1, col => {
+            if (col < 4)
+                return null;
+            else    
+                return col.toString();
+        });
 
     }; //start
 

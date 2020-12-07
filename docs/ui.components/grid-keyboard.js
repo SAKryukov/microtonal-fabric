@@ -26,17 +26,19 @@ class GridKeyboard {
                 const result = handler(value.x, value.y);
                 if (result == null) { // disabled key mechanism
                     value.keyIndex = null;
-                    value.style.backgroundColor = keyColors.disabled;
+                    key.style.backgroundColor = keyColors.disabled;
                 } else
                     key.textContent = result;
             } //loop
         }; //this.#implementation.label
-        this.#implementation.labelRow = handler => {
+        this.#implementation.labelRow = (row, handler) => {
             for (let index = 0; index < this.#implementation.rows[row].length; ++index) {
+                const element = this.#implementation.rows[row][index];
+                const value = this.#implementation.keyMap.get(element);
                 const result = handler(index);
                 if (result == null) { // disabled key mechanism
                     value.keyIndex = null;
-                    value.style.backgroundColor = keyColors.disabled;
+                    element.style.backgroundColor = keyColors.disabled;
                 } else
                     this.#implementation.rows[row][index].textContent = result;
             } //loop
@@ -114,93 +116,6 @@ class GridKeyboard {
                     key.style.height = keyHeight;
             }
         };
-        return;
-        const keyColor = keyColors.background;
-        const keyColorHighlight = keyColors.hightlight;
-        let doUseHightlight = true;
-        this.getUseHighlight = () => doUseHightlight;
-        this.setUseHighlight = (value) => doUseHightlight = value;
-        for (let yIndex = 0; yIndex < rowCount; ++yIndex)
-            for (let xIndex = 0; xIndex < rowWidth; ++xIndex) {
-                const cell = document.createElement("div");
-                cell.style.borderLeft
-            }
-        // const keyHandler = (target, on) => {
-        //     const index = this.map.get(target);
-        //     if (doUseHightlight)
-        //         target.style.backgroundColor = on ? keyColorHighlight : keyColor;
-        //     this.action(on, index);
-        // }; //keyHandler
-        // const upEventHandler = (event, isMove) => {
-        //     if (isMove && event.buttons != 1) return;
-        //     keyHandler(event.target, false);
-        // }; //upEventHandler
-        // const downEventHandler = event => {
-        //     if (event.buttons != 1) return;
-        //     keyHandler(event.target, true);
-        // }; //downEventHandler
-        this.action = undefined;
-        this.map = new Map();
-        const color = keyColors.border;
-        const borderProperty = `solid 1px ${color}`;
-        element.style.display = "grid";
-        element.style.paddingBottom = "0.3em";
-        this.number = number;
-        this.element = element;
-        this.keyHeight = undefined;
-        this.keyWidth = undefined;
-        element.style.overflowX = "auto";
-        element.style.userSelect = "none";
-        let upperCounter = -3;
-        let lowCounter = -2;
-        let counter;
-        let upperLast, lowLast;
-        const keyArray = [];
-        for (let row = 0; row < 2; ++row)
-            for (let x = 0; x < number; ++x) {
-                const key = document.createElement("div");
-                key.style.backgroundColor = keyColor;
-                if (row == 0) {
-                    upperCounter += 2;
-                    counter = upperCounter;
-                    upperLast = key;
-                } else {
-                    lowCounter += 2;
-                    counter = lowCounter;
-                    lowLast = key;
-                } //if
-                const dummy = row == 0 && x == 0;
-                if (!dummy) {
-                    key.style.gridColumn = "span 2";
-                    key.style.borderLeft = borderProperty;
-                    key.style.borderTop = borderProperty;
-                    if (row == 1)
-                        key.style.borderBottom = borderProperty;
-                    key.textContent = counter.toString();
-                } else {
-                    key.style.gridColumn = "span 1";
-                    key.style.backgroundColor = "transparent";
-                }
-                element.appendChild(key);
-                key.style.color = keyColors.label;
-                key.style.padding = "0.1em 0.3em";
-                if (!dummy) {
-                    keyArray[counter] = key;
-                    key.onmousedown = downEventHandler;
-                    key.onmouseup = upEventHandler;
-                    key.onmouseenter = event => downEventHandler(event, true);
-                    key.onmouseleave = event => upEventHandler(event, true);
-                } //if not dummy
-            } //loop
-            setMultiTouch(
-                element,
-                aKey => this.map.has(aKey),
-                (aKey, touchObject, on) => keyHandler(aKey, on)
-            );
-            upperLast.style.borderRight = borderProperty;
-            lowLast.style.borderRight = borderProperty;
-            for (let index in keyArray)
-                this.map.set(keyArray[index], parseInt(index));
     } //constructor
   
     label(handler) { this.#implementation.label(handler); }
