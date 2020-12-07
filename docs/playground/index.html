@@ -1,0 +1,75 @@
+﻿<!DOCTYPE html>
+
+<!--
+// Microtonal Music Study with Chromatic Lattice Keyboard
+//
+// Copyright (c) Sergey A Kryukov, 2017, 2020
+//
+// http://www.SAKryukov.org
+// http://www.codeproject.com/Members/SAKryukov
+// https://github.com/SAKryukov
+// https://github.com/SAKryukov/microtonal-chromatic-lattice-keyboard
+//
+// Original publication:
+-->
+
+<html lang="en-us">
+<head>
+    <title>Microtonal Playground</title>
+    <meta charset="utf-8"/>
+    <script src="../agnostic/enumeration.js"></script>
+    <script src="../agnostic/mathematics.js"></script>
+    <script src="../agnostic/initialization-controller.js"></script>
+    <script src="../ui.components/multitouch.js"></script>
+    <script src="../ui.components/grid-keyboard.js"></script>
+    <script src="../sound/definition-set.js"></script>
+    <script src="../sound/chain-node.js"></script>
+    <script src="../sound/envelope.js"></script>
+    <script src="../sound/modulator.js"></script>
+    <script src="../sound/modulator-set.js"></script>
+    <script src="../sound/tone.js"></script>
+    <script src="../sound/instrument.js"></script>
+    <script src="../instruments/instrument-list.js"></script>
+    <script src="user-data.js"></script>
+    <script src="main/main.js"></script>
+    <style>
+        :root {
+            --vertical-gap: 0.2em;
+            --horizontal-gap: 0.6em;
+            --big-vertical-gap: 0.4em;
+            --big-horizontal-gap: 1.6em;
+            --small-horizontal-gap: 0.4em;
+            --frame: 0.2em 0.6em 0.2em 0.6em;
+        }
+        * { margin: 0; padding: 0; font-family: sans-serif; box-sizing: content-box; touch-action: none; user-select: none; }
+        svg text { text-anchor: middle; dominant-baseline: middle; }
+        svg text, svg line { touch-action: none; pointer-events: none; }
+        main { padding-left: 1em; padding-right: 1em; }
+        main > section > label { margin-left: var(--small-horizontal-gap) }
+        /* flex: */
+        html, body { height: 100%; }
+        body { display: flex; flex-flow: column; }
+        main { flex: auto; overflow: auto; }
+        footer { background: lightgreen; }
+        /* end flex */
+        svg { opacity: 0.2; }
+        footer { background: oldlace; padding: 0.2em; padding-bottom: 0.4em; padding-left: 0.4rem; padding-right: 0.4rem; border-top: solid gray thin; font-size: 60%; }
+        body > section { margin-left: auto; margin-right: auto; margin-top: 3em; margin-bottom: 4em; }
+        body > section > button { padding: 0.2em; padding-left:1em; padding-right:1em; border: solid thin navy; background-color: yellow; font-size: 120%; }
+        header { padding: 0.4em; overflow-x: auto; }
+    </style>
+</head>
+
+<body>
+
+    <section><button>Start</button></section>
+    <header></header>
+
+    <main>
+        <section>aaa</section>
+        <section>bbb</section>
+    </main>
+    <footer>Authors&hellip;</footer>
+
+</body>
+</html>
