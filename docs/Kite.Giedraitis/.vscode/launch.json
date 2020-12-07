@@ -5,6 +5,7 @@
             "type": "chrome",
             "request": "launch",
             "name": "Harmonic",
+            "runtimeArgs": ["--incognito"],
             "file":"${workspaceFolder}/index.html"
         }
     ]

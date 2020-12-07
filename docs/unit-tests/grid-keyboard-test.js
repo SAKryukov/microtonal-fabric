@@ -1,5 +1,5 @@
 window.onload = _ => {
-    const parent = document.querySelector("body > section:first-child");
+    const parent = document.querySelector("body > header");
     const fitElement = document.querySelector("input");
     const keyboard = new GridKeyboard(parent, "5em", undefined, 7, 7*4,
         {

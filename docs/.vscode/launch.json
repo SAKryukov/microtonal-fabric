@@ -2,10 +2,10 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "runtimeArgs": ["--incognito"],
             "type": "chrome",
             "request": "launch",
-            "name": "Launch Chrome against localhost",
+            "name": "Debug with Chrome",
+            "runtimeArgs": ["--incognito"],
             //"file": "${workspaceFolder}/index.html"
             //"file": "${workspaceFolder}/tone-system-comparison/tone-system-comparison.html"
             //"file": "${workspaceFolder}/29-EDO/index.html"
