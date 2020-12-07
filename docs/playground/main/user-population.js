@@ -53,7 +53,18 @@ class UserPopulation {
             labelSet.push(labelRow);
         } //loop rows
         for (let repeatItem of repeatPoints) {
-            // SA??? implement repeating:
+            const sourceLength = repeatItem.column;
+            let current = 0;
+            for (let index = repeatItem.column; index < keyboardColumnCount; ++index) {
+                labelSet[repeatItem.row][index] = labelSet[repeatItem.row][index - repeatItem.column];
+                const power = Math.trunc(current/sourceLength) + 1;
+                const octave = Math.pow(2, power);
+                const sourceFrequency = this.#implementation.frequencySet[repeatItem.frequencySetIndex + current - repeatItem.column];
+                if (sourceFrequency)
+                    this.#implementation.frequencySet[repeatItem.frequencySetIndex + current] = sourceFrequency * octave;
+                ++current;
+            } //loop
+            //alert(current);
         } //loop repeatPoints
         this.#implementation.labelHandler = (x, y) => {
             const row = labelSet[y];
