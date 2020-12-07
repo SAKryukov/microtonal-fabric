@@ -29,6 +29,7 @@ class GridKeyboard {
             return { width: parseSize(keyWidth), height: parseSize(keyHeight) };
         })();
         element.style.display = "grid";
+        element.style.overflowX = "auto";
         element.style.width = "100%";
         const keyHandler = (target, on, isMove) => {
             if (isMove && (event.buttons != 1)) return;
@@ -36,9 +37,10 @@ class GridKeyboard {
             if (this.#implementation.useKeyHightlight)
                 target.style.backgroundColor = on ? keyColors.hightlight : keyColors.background;
             if (this.#implementation.action)
-                this.#implementation.action(on, keyData);
+                this.#implementation.action(on, keyData.keyIndex);
         }; //keyHandler
         const borderStyle = `solid ${keyColors.border} thin`;
+        let keyIndex = 0;
         for (let yIndex = 0; yIndex < rowCount; ++yIndex) {
             this.#implementation.rows[yIndex] = [];
             for (let xIndex = 0; xIndex < rowWidth; ++xIndex) {
@@ -57,7 +59,7 @@ class GridKeyboard {
                     key.style.borderLeft = borderStyle;
                 key.style.borderBottom = borderStyle;
                 key.style.borderRight = borderStyle;
-                this.#implementation.keyMap.set(key, { x: xIndex, y: yIndex, frequency: undefined });
+                this.#implementation.keyMap.set(key, { x: xIndex, y: yIndex, keyIndex: keyIndex++ });
                 key.onmousedown = event => keyHandler(event.target, true);
                 key.onmouseup = event => keyHandler(event.target, false);
                 key.onmouseenter = event => keyHandler(event.target, true, true);
@@ -65,6 +67,13 @@ class GridKeyboard {
                 element.appendChild(key);
             } //loop keys
         } //loop rows
+        (() => { //events
+            setMultiTouch(
+                element,
+                () => true,
+                (aKey, _, on) => keyHandler(aKey, on)
+            );
+        })(); //events
         this.#implementation.defineGridTemplates = doFit => {
             const widthUnit = doFit ? "fr" : keySize.width.unit;
             const widthValue = doFit ? 1 : keySize.width.value;
@@ -182,9 +191,9 @@ class GridKeyboard {
 
     set fitView(booleanValue) { this.#implementation.fitView(booleanValue); }
 
-    set action(handler) { 
-        this.#implementation.action = handler; // handler(bool down, Object keyData);
-    } //setAction
+    set keyHandler(handler) { 
+        this.#implementation.action = handler; // handler(bool down, int keyIndex);
+    } //keyHandler
     get action() { this.#implementation.action; }
 
     get useHighlight() { return this.#implementation.useKeyHightlight; }

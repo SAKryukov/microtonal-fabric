@@ -6,11 +6,11 @@ window.onload = () => {
             startButtonParent: document.querySelector("body > section"),
             hiddenControls: document.querySelectorAll("main > section, header"),
         },
-        keyboardParent: document.querySelector("header"),
+        keyboardParent: document.querySelector("header > section"),
     }; //elements
 
-    elements.keyboardParent.style.display = "grid"; // important fix, otherwise initializationController.initialize breaks it by restoring
-
+    elements.keyboardParent.style.display = "grid"; // important workaround, otherwise initializationController.initialize breaks it
+                                                    // by restoring previous display style
     initializationController.initialize(
         elements.initialization.hiddenControls,
         elements.initialization.startButton,
@@ -19,13 +19,25 @@ window.onload = () => {
 
     function start() {
 
-        const keyboard = new GridKeyboard(elements.keyboardParent, "4em", undefined, 7, 7*4,
+        const keyboard = new GridKeyboard(elements.keyboardParent, "4em", "4em", 7, 7*4,
         {
             background: "transparent",
             hightlight: "yellow",
             border: "darkGray",
-            label: "Grey"
+            label: "Gray"
         });
+        keyboard.fitView = true;
+        const frequencies = [];
+        const startingFrequency = 10;
+        for (index = 0; index < 4*7*7; ++index)
+            frequencies.push(startingFrequency * Math.pow(2, index/12));
+        const instrument = new Instrument(frequencies);
+        instrument.volume = 0.2;
+        instrument.data = instrumentList[0];
+        keyboard.keyHandler = (on, index) =>
+        {
+             instrument.play(on, index);
+        }
 
     }; //start
 
