@@ -47,12 +47,9 @@ window.onload = () => {
         instrument.data = instrumentList[0];
         keyboard.keyHandler = (on, index) =>
              instrument.play(on, index);
-        keyboard.labelRow(1, col => {
-            if (col < 4)
-                return null;
-            else    
-                return col.toString();
-        });
+
+        const population = new UserPopulation(tones, definitionSet.rowCount, definitionSet.columnCount);
+        keyboard.label((x, y) => population.labelHandler(x, y));
 
     }; //start
 
