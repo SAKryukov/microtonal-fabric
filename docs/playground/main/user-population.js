@@ -26,15 +26,26 @@ class UserPopulation {
         for (let rowIndex = 0; rowIndex < workingDimensions.rowCount; ++rowIndex) {
             const labelRow = [];
             for (let columnIndex = 0; columnIndex < workingDimensions.columnCount; ++columnIndex) {
+                const frequencySetIndex = rowIndex * keyboardColumnCount + columnIndex;
                 const userCellData = data.rows[rowIndex][columnIndex];
                 if (!userCellData) continue;
                 if (userCellData.constructor == Interval || userCellData.constructor == Number) {
                     labelRow[columnIndex] = userCellData.toString();
+                    if (userCellData.constructor == Interval) 
+                        this.#implementation.frequencySet[frequencySetIndex] = userCellData.toReal() * userCellData.base;
+                    else // Number:
+                        this.#implementation.frequencySet[frequencySetIndex] = userCellData;
                 } else if (userCellData.constructor == Object) {
                     if (userCellData.label && userCellData.label.constructor == String)
                         labelRow[columnIndex] = userCellData.label;
                     else
                         labelRow[columnIndex] = null; // "disabled" indication
+                    if (userCellData.interval && userCellData.interval.constructor == Interval)
+                        this.#implementation.frequencySet[frequencySetIndex] = userCellData.interval.toReal() * userCellData.base;
+                    else if (userCellData.frequency && userCellData.frequency.constructor == Number)
+                        this.#implementation.frequencySet[frequencySetIndex] = userCellData.frequency;
+                } else if (userCellData === true) { // "repeat" indication
+                    // SA??? implement repeating
                 } else
                     labelRow[columnIndex] = null; // "disabled" indication
             } //loop columns
@@ -45,9 +56,17 @@ class UserPopulation {
             if (!row) return null;
             return row[x];
         }; //this.#implementation.labelHandler
+        const titleSet = [];
+        if (data.rowTitles && data.rowTitles.constructor == Array)
+            for (let index = 0; index < data.rowTitles.length; ++index)
+                titleSet[index] = data.rowTitles[index].toString();
+        this.#implementation.titleHandler = (x, y) => {
+            return titleSet[y];
+        } //this.#implementation.titleHandler
     } //constructor
 
     get labelHandler() { return this.#implementation.labelHandler; }
+    get titleHandler() { return this.#implementation.titleHandler; }
     get frequencySet() { return this.#implementation.frequencySet; }
 
 } //class UserPopulation

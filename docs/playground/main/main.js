@@ -50,6 +50,7 @@ window.onload = () => {
 
         const population = new UserPopulation(tones, definitionSet.rowCount, definitionSet.columnCount);
         keyboard.label((x, y) => population.labelHandler(x, y));
+        keyboard.setTitles((x, y) => population.titleHandler(x, y));
 
     }; //start
 

@@ -43,6 +43,22 @@ class GridKeyboard {
                     this.#implementation.rows[row][index].textContent = result;
             } //loop
         }; //this.#implementation.labelRow
+        this.#implementation.setTitles = handler => {
+            for (let [key, value] of this.#implementation.keyMap) {
+                const result = handler(value.x, value.y);
+                if (result)
+                    key.title = result;
+            } //loop
+        }; //this.#implementation.setTitles
+        this.#implementation.setRowTitles = (row, handler) => {
+            for (let index = 0; index < this.#implementation.rows[row].length; ++index) {
+                const element = this.#implementation.rows[row][index];
+                const value = this.#implementation.keyMap.get(element);
+                const result = handler(index);
+                if (result)
+                    element.title = result;
+            } //loop
+        }; //this.#implementation.setRowTitles
         const parseSize = stringValue => {
             if (!stringValue) return { vale: undefined, unit: undefined };
             const size = (/([0-9]*\.?[0-9]*)([a-zA-Z]*)/).exec(stringValue);
@@ -120,6 +136,8 @@ class GridKeyboard {
   
     label(handler) { this.#implementation.label(handler); }
     labelRow(row, handler) { this.#implementation.labelRow(row, handler); }
+    setTitles(handler) { this.#implementation.setTitles(handler); }
+    setRowTitles(row, handler) { this.#implementation.setRowTitles(row, handler); }
 
     set fitView(booleanValue) { this.#implementation.fitView(booleanValue); }
 
