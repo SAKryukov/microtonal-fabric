@@ -41,11 +41,11 @@ window.onload = () => {
                 label: "Gray"
             });
         keyboard.fitView = true;
-        const frequencies = [];
-        const startingFrequency = 10;
-        for (let index = 0; index < definitionSet.columnCount * definitionSet.rowCount; ++index)
-            frequencies.push(startingFrequency * Math.pow(2, index/12));
-        const instrument = new Instrument(frequencies);
+        // const frequencies = [];
+        // const startingFrequency = 10;
+        // for (let index = 0; index < definitionSet.columnCount * definitionSet.rowCount; ++index)
+        //     frequencies.push(startingFrequency * Math.pow(2, index/12));
+        const instrument = new Instrument(population.frequencySet);
         instrument.volume = 0.2;
         instrument.data = instrumentList[0];
         keyboard.keyHandler = (on, index) =>

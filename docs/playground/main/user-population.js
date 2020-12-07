@@ -32,7 +32,7 @@ class UserPopulation {
                 if (userCellData.constructor == Interval || userCellData.constructor == Number) {
                     labelRow[columnIndex] = userCellData.toString();
                     if (userCellData.constructor == Interval) 
-                        this.#implementation.frequencySet[frequencySetIndex] = userCellData.toReal() * userCellData.base;
+                        this.#implementation.frequencySet[frequencySetIndex] = userCellData.toReal() * data.base;
                     else // Number:
                         this.#implementation.frequencySet[frequencySetIndex] = userCellData;
                 } else if (userCellData.constructor == Object) {
@@ -41,7 +41,7 @@ class UserPopulation {
                     else
                         labelRow[columnIndex] = null; // "disabled" indication
                     if (userCellData.interval && userCellData.interval.constructor == Interval)
-                        this.#implementation.frequencySet[frequencySetIndex] = userCellData.interval.toReal() * userCellData.base;
+                        this.#implementation.frequencySet[frequencySetIndex] = userCellData.interval.toReal() * data.base;
                     else if (userCellData.frequency && userCellData.frequency.constructor == Number)
                         this.#implementation.frequencySet[frequencySetIndex] = userCellData.frequency;
                 } else if (userCellData === true) { // "repeat" indication
