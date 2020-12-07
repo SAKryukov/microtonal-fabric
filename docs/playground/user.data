@@ -1,9 +1,22 @@
+<<<<<<< HEAD
+﻿tones = { // see help.html
+    metadata: { //optional
+        author: "Me",
+        title: "My tonal system",
+        time: "2020",
+        version: "0.1.1",
+    },
+    base: 55/2, //Hz, interval(numerator, denominator) uses base to calculate a corresponding frequency
+    rows: [ // interval(numerator, denominator): returns an element of the interval group, other numbers are frequencies in Hertz, "repeat" starts repetition of the previous elements to the end of the raw in higher octaves
+        [interval(1), interval(9,8), interval(5,4),   interval(4,3), interval(3,2), interval(27,16), interval(15,8), repeat],
+=======
 ﻿const repeat = true;
 
 const tones = {
     base: 55/2, //Hz
     rows: [
         [interval(1), interval(9,8),   interval(5,4),   interval(4,3), interval(3,2), interval(27,16), interval(15,8), repeat],
+>>>>>>> f91674c56a1b48828359e680b7aa62b5ca0e3100
         [interval(1), interval(9,8),   interval(77,64), interval(4,3), interval(3,2), interval(27,16), interval(16,9), repeat],
         [interval(1), interval(16,15), interval(77,64), interval(4,3), interval(3,2), interval(8,5),   interval(16,9), repeat],
         [{label: "Demo", frequency: 220}, 110, interval(12/200), {label: "int", interval: interval(77,64)}, null, {label: "←null", frequency: 1}, repeat],

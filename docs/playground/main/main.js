@@ -1,13 +1,35 @@
 "use strict";
 
+const repeat = true; //used in user data file
+const userDataFile = "user.data";
 const definitionSet = {
     keyWidth: "4em",
     keyHeight: "4em",
     rowCount: 8,
     columnCount: 7*4,
+    userError: {
+        element: "p",
+        message: `Lexical error in user data, file: &ldquo;${userDataFile}&rdquo;`,
+        style: "padding: 1em; padding-top: 0.2em; font-size: 180%; font-family: sans-serif",
+    },
 }; //definitionSet
 
+(function addUserDataDynamically(file) {
+    window.onerror = () => window.status = definitionSet.userError.message;
+    const script = document.createElement("script");
+    script.src = file;
+    document.head.append(script);
+})(userDataFile); //addUserDataDynamically
+
 window.onload = () => {
+
+    if (window.status) {
+        window.onerror = undefined;
+        document.write(
+            `<${definitionSet.userError.element} style="${definitionSet.userError.style}">${definitionSet.userError.message}</${definitionSet.userError.element}>`
+        );
+        return;
+    } //if userError
 
     const elements = {
         initialization: {
