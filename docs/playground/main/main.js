@@ -1,3 +1,5 @@
+"use strict";
+
 window.onload = () => {
 
     const elements = {
@@ -24,20 +26,19 @@ window.onload = () => {
             background: "transparent",
             hightlight: "yellow",
             border: "darkGray",
+            disabled: "darkGray",
             label: "Gray"
         });
         keyboard.fitView = true;
         const frequencies = [];
         const startingFrequency = 10;
-        for (index = 0; index < 4*7*7; ++index)
+        for (let index = 0; index < 4*7*7; ++index)
             frequencies.push(startingFrequency * Math.pow(2, index/12));
         const instrument = new Instrument(frequencies);
         instrument.volume = 0.2;
         instrument.data = instrumentList[0];
         keyboard.keyHandler = (on, index) =>
-        {
              instrument.play(on, index);
-        }
 
     }; //start
 

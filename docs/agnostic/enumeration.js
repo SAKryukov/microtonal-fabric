@@ -7,6 +7,8 @@
 // https://github.com/SAKryukov
 // https://github.com/SAKryukov/microtonal-chromatic-lattice-keyboard
 
+"use strict";
+
 class Enumeration {
 
     #implementation = {};

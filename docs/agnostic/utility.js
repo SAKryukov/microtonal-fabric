@@ -7,6 +7,8 @@
 // https://github.com/SAKryukov
 // https://github.com/SAKryukov/microtonal-chromatic-lattice-keyboard
 
+"use strict";
+
 const setReadonly = (target, recursive) => {
     const readonlyHandler = { set(obj, prop, value) { return false; } };
     if (recursive)

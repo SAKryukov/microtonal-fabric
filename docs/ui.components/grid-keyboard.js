@@ -7,6 +7,8 @@
 // https://github.com/SAKryukov
 // https://github.com/SAKryukov/microtonal-chromatic-lattice-keyboard
 
+"use strict";
+
 class GridKeyboard {
 
     #implementation = { useKeyHightlight: true, rows: [], keyMap: new Map() };
@@ -15,9 +17,30 @@ class GridKeyboard {
         if (!keyColors) keyColors = {
             background: "transparent",
             hightlight: "lightYellow",
+            disabled: "darkGray",
             border: "black",
             label: undefined
         };
+        this.#implementation.label = handler => {
+            for (let [key, value] of this.#implementation.keyMap) {
+                const result = handler(value.x, value.y);
+                if (result == null) { // disabled key mechanism
+                    value.keyIndex = null;
+                    value.style.backgroundColor = keyColors.disabled;
+                } else
+                    key.textContent = result;
+            } //loop
+        }; //this.#implementation.label
+        this.#implementation.labelRow = handler => {
+            for (let index = 0; index < this.#implementation.rows[row].length; ++index) {
+                const result = handler(index);
+                if (result == null) { // disabled key mechanism
+                    value.keyIndex = null;
+                    value.style.backgroundColor = keyColors.disabled;
+                } else
+                    this.#implementation.rows[row][index].textContent = result;
+            } //loop
+        }; //this.#implementation.labelRow
         const parseSize = stringValue => {
             if (!stringValue) return { vale: undefined, unit: undefined };
             const size = (/([0-9]*\.?[0-9]*)([a-zA-Z]*)/).exec(stringValue);
@@ -34,6 +57,7 @@ class GridKeyboard {
         const keyHandler = (target, on, isMove) => {
             if (isMove && (event.buttons != 1)) return;
             const keyData = this.#implementation.keyMap.get(target);
+            if (keyData.keyIndex == null) return; // indicated disabled
             if (this.#implementation.useKeyHightlight)
                 target.style.backgroundColor = on ? keyColors.hightlight : keyColors.background;
             if (this.#implementation.action)
@@ -179,15 +203,8 @@ class GridKeyboard {
                 this.map.set(keyArray[index], parseInt(index));
     } //constructor
   
-    label(handler) {
-        for (let [key, value] of this.#implementation.keyMap)
-            key.textContent = handler(value.x, value.y);
-    } //label
-
-    labelRow(row, handler) {
-        for (let index = 0; index < this.#implementation.rows[row].length; ++index) 
-            this.#implementation.rows[row][index].textContent = handler(index);
-    } //labelRow
+    label(handler) { this.#implementation.label(handler); }
+    labelRow(row, handler) { this.#implementation.labelRow(row, handler); }
 
     set fitView(booleanValue) { this.#implementation.fitView(booleanValue); }
 
