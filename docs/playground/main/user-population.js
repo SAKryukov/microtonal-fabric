@@ -54,17 +54,24 @@ class UserPopulation {
         } //loop rows
         for (let repeatItem of repeatPoints) {
             const sourceLength = repeatItem.column;
-            let current = 0;
+            const targetLength = keyboardColumnCount - sourceLength;
             for (let index = repeatItem.column; index < keyboardColumnCount; ++index) {
-                labelSet[repeatItem.row][index] = labelSet[repeatItem.row][index - repeatItem.column];
-                const power = Math.trunc(current/sourceLength) + 1;
-                const octave = Math.pow(2, power);
-                const sourceFrequency = this.#implementation.frequencySet[repeatItem.frequencySetIndex + current - repeatItem.column];
-                if (sourceFrequency)
-                    this.#implementation.frequencySet[repeatItem.frequencySetIndex + current] = sourceFrequency * octave;
-                ++current;
+                const steps = Math.trunc(targetLength/sourceLength) + 1;
+                for (let stepIndex = 0; stepIndex < steps; ++stepIndex) {
+                    const octave = Math.pow(2, stepIndex + 1);
+                    for (let sourceIndex = 0; sourceIndex < sourceLength; ++sourceIndex) {
+                        const sourceLabel = labelSet[repeatItem.row][sourceIndex];
+                        const targetIndex = repeatItem.column +  stepIndex * sourceLength + sourceIndex;
+                        if (targetIndex >= keyboardColumnCount) continue;
+                        labelSet[repeatItem.row][targetIndex] = sourceLabel;
+                        const sourceFrequencyIndex = repeatItem.frequencySetIndex - sourceLength + sourceIndex;
+                        const sourceFrequency = this.#implementation.frequencySet[sourceFrequencyIndex];
+                        if (!sourceFrequency) continue;
+                        const targetFrequencyIndex = targetIndex - repeatItem.column + repeatItem.frequencySetIndex;
+                        this.#implementation.frequencySet[targetFrequencyIndex] = sourceFrequency * octave;
+                    } //loop within step
+                } //loop step
             } //loop
-            //alert(current);
         } //loop repeatPoints
         this.#implementation.labelHandler = (x, y) => {
             const row = labelSet[y];
