@@ -37,17 +37,19 @@ class UserPopulation {
                     else // Number:
                         this.#implementation.frequencySet[frequencySetIndex] = userCellData;
                 } else if (userCellData.constructor == Object) {
-                    if (userCellData.label && userCellData.label.constructor == String)
+                    if (userCellData.label && userCellData.label.constructor == String) {
                         labelRow[columnIndex] = userCellData.label;
-                    else
+                    } else
                         labelRow[columnIndex] = null; // "disabled" indication
                     if (userCellData.interval && userCellData.interval.constructor == Interval)
                         this.#implementation.frequencySet[frequencySetIndex] = userCellData.interval.toReal() * data.base;
                     else if (userCellData.frequency && userCellData.frequency.constructor == Number)
                         this.#implementation.frequencySet[frequencySetIndex] = userCellData.frequency;
-                    else if (userCellData === repeatObject) // "repeat" indication
+                    else if (userCellData === repeatObject) { // "repeat" indication
                         if (columnIndex == data.rows[rowIndex].length - 1)
                             repeatPoints.push({ row: rowIndex, column: columnIndex, frequencySetIndex: frequencySetIndex });
+                    } else
+                        labelRow[columnIndex] = null; // "disabled" indication
                 } else
                     labelRow[columnIndex] = null; // "disabled" indication
             } //loop columns
