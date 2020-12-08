@@ -4,7 +4,7 @@ class UserPopulation {
 
     #implementation = { rowLabelHandler: null, labelHandler: null, frequencySet: [] }
 
-    constructor(data, keyboardRowCount, keyboardColumnCount) {
+    constructor(data, keyboardRowCount, keyboardColumnCount, repeatObject) {
         const labelSet = [];
         const workingDimensions = (function getDimensions() {
             let maxRowCount = data.rows.length;
@@ -15,7 +15,7 @@ class UserPopulation {
                 if (userRowLength >= keyboardColumnCount) {
                     maxColumnCount = keyboardColumnCount; break;
                 } //if
-                if (data.rows[rowIndex][userRowLength - 1] == true) { // "repeat" indication
+                if (data.rows[rowIndex][userRowLength - 1] === repeatObject) { // "repeat" indication
                     maxColumnCount = keyboardColumnCount; break;
                 } else
                     if (userRowLength > maxColumnCount)
@@ -45,9 +45,10 @@ class UserPopulation {
                         this.#implementation.frequencySet[frequencySetIndex] = userCellData.interval.toReal() * data.base;
                     else if (userCellData.frequency && userCellData.frequency.constructor == Number)
                         this.#implementation.frequencySet[frequencySetIndex] = userCellData.frequency;
-                } else if (userCellData === true) // "repeat" indication
-                    repeatPoints.push({ row: rowIndex, column: columnIndex, frequencySetIndex: frequencySetIndex });
-                else
+                    else if (userCellData === repeatObject) // "repeat" indication
+                        if (columnIndex == data.rows[rowIndex].length - 1)
+                            repeatPoints.push({ row: rowIndex, column: columnIndex, frequencySetIndex: frequencySetIndex });
+                } else
                     labelRow[columnIndex] = null; // "disabled" indication
             } //loop columns
             labelSet.push(labelRow);

@@ -1,6 +1,6 @@
 "use strict";
 
-const repeat = true; //used in user data file
+const repeat = { repeatObject: true }; //used in user data file
 const userDataFile = "user.data";
 const definitionSet = {
     keyWidth: "4em",
@@ -60,7 +60,7 @@ window.onload = () => {
 
     function start() {
 
-        const population = new UserPopulation(tones, definitionSet.rowCount, definitionSet.columnCount);
+        const population = new UserPopulation(tones, definitionSet.rowCount, definitionSet.columnCount, repeat);
 
         const keyboard = new GridKeyboard(elements.keyboardParent, definitionSet.keyWidth, definitionSet.keyHeight,
             definitionSet.rowCount, definitionSet.columnCount, definitionSet.colorSet);
