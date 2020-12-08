@@ -19,6 +19,9 @@ const definitionSet = {
         disabled: "darkGray",
         label: "Gray"
     },
+    instrumentControl: {
+        defaultInstrument: 0,
+    },
 }; //definitionSet
 
 (function addUserDataDynamically(file) {
@@ -66,8 +69,8 @@ window.onload = () => {
             definitionSet.rowCount, definitionSet.columnCount, definitionSet.colorSet);
         keyboard.fitView = true;
         const instrument = new Instrument(population.frequencySet);
-        instrument.volume = 0.2;
-        instrument.data = instrumentList[0];
+        instrument.volume = 0.5;
+        instrument.data = instrumentList[definitionSet.instrumentControl.defaultInstrument];
         keyboard.keyHandler = (on, index) =>
              instrument.play(on, index);
 
@@ -80,7 +83,7 @@ window.onload = () => {
                 option.textContent = instrumentData.header.instrumentName;
                 elements.instrumentSelector.appendChild(option);
             } //loop
-            elements.instrumentSelector.selectedIndex = 0;
+            elements.instrumentSelector.selectedIndex = definitionSet.instrumentControl.defaultInstrument;
             elements.instrumentSelector.onchange = event => instrument.data = instrumentList[event.target.selectedIndex];
         })(); //setupInstruments
 
