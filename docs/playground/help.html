@@ -18,29 +18,15 @@
     <title>Microtonal Playground</title>
     <meta charset="utf-8"/>
     <script src="../definition-set.js"></script>
-    <script src="../agnostic/enumeration.js"></script>
-    <script src="../agnostic/mathematics.js"></script>
-    <script src="../agnostic/initialization-controller.js"></script>
-    <script src="../ui.components/multitouch.js"></script>
-    <script src="../ui.components/grid-keyboard.js"></script>
-    <script src="../sound/definition-set.js"></script>
-    <script src="../sound/chain-node.js"></script>
-    <script src="../sound/envelope.js"></script>
-    <script src="../sound/modulator.js"></script>
-    <script src="../sound/modulator-set.js"></script>
-    <script src="../sound/tone.js"></script>
-    <script src="../sound/instrument.js"></script>
-    <script src="../instruments/instrument-list.js"></script>
-    <script src="main/user-population.js"></script>
     <script src="main/metadata.js"></script>
-    <script src="main/main.js"></script>
+    <script src="main/help.js"></script>
     <style>
         :root {
             --vertical-gap: 0.2em;
             --horizontal-gap: 0.6em;
             --big-vertical-gap: 0.4em;
             --big-horizontal-gap: 1.6em;
-            --small-horizontal-gap: 0.4em;
+            --small-horizontal-gap: 0.4em;h1
             --frame: 0.2em 0.6em 0.2em 0.6em;
         }
         * { margin: 0; padding: 0; font-family: sans-serif; box-sizing: content-box; touch-action: none; user-select: none; }
@@ -51,7 +37,7 @@
         /* flex: */
         html, body { height: 100%; }
         body { display: flex; flex-flow: column; }
-        main { flex: auto; overflow: auto; }
+        article { flex: auto; overflow: auto; }
         footer { background: lightgreen; }
         /* end flex */
         svg { opacity: 0.2; }
@@ -65,17 +51,12 @@
 
 <body>
 
-    <section><button>Start</button></section>
-    <header><section></section></header>
+    <header><h1>Microtonal Playground</h1></header>
 
-    <main>
-        <section>
-            <label>Instrument: <select id="instrument">
-            </select></label>
-        </section>
-        <section></section>
-    </main>
-    <footer>v.&thinsp;<span>3.0.0</span>Copyright &copy; Sergey A Kryukov, <span></span><a href="help.html">Help</a></footer>
+    <article>
+	<h2></h2>
+    </article>
+    <footer>v.&thinsp;<span>3.0.0</span>Copyright &copy; Sergey A Kryukov, <span></span></footer>
 
 </body>
 </html>

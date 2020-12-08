@@ -48,6 +48,8 @@ window.onload = () => {
         instrumentSelector: document.querySelector("#instrument"),
     }; //elements
 
+    setMetadata();
+
     elements.keyboardParent.style.display = "grid"; // important workaround, otherwise initializationController.initialize breaks it
                                                     // by restoring previous display style
     initializationController.initialize(
