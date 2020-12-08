@@ -21490,6 +21490,7 @@ const instrumentList = [
             }
         ]
     },
+/* //commented-out problematic Marimba:
     {
         "header": {
             "format": "Sound Builder",
@@ -22044,6 +22045,7 @@ const instrumentList = [
             }
         ]
     },
+*/ // end of commented-out problematic Marimba
     {
         "header": {
             "format": "Sound Builder",
