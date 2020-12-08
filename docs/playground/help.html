@@ -23,8 +23,8 @@
     <style>
         :root {
             --vertical-gap: 0.2em;
-            --horizontal-gap: 0.6em;
-            --big-vertical-gap: 0.4em;
+            --horizontal-gap: 1em;
+            --big-vertical-gap: 0.6em;
             --big-horizontal-gap: 1.6em;
             --small-horizontal-gap: 0.4em;h1
             --frame: 0.2em 0.6em 0.2em 0.6em;
@@ -46,16 +46,77 @@
         body > section > button { padding: 0.2em; padding-left:1em; padding-right:1em; border: solid thin navy; background-color: yellow; font-size: 120%; }
         header { padding: 0.6em; }
         footer > * { padding-right: 1em; }
+
+	code { font-size: 120%; font-weight: bold; }
+	pre, code { color: darkGreen; padding: 0; font-family: 'Consolas', sans-serif }
+	pre code { color: black; font-weight: normal; font-size: 94%; }
+        pre { background-color: antiqueWhite; }
+        blockquote { border-left: thick blue solid; padding-left: 1em; }
+	h1, h2, h3, h4, h5, h6 { border: none; }
+	h1 { font-size: 200%; }
+	h2 { font-size: 162%; }
+	h3 { font-size: 134%; }
+	h4 { font-size: 114%; }
+	h5 { font-size: 105%; }
+	h6 { font-size: 100%; }
+        h1 { margin-bottom: margin-bottom: var(--vertical-gap); }
+        h1, h2, h3, h4, h5, h6 { margin-top: var(--big-vertical-gap); margin-bottom: var(--vertical-gap); }
+        article { padding: var(--vertical-gap); padding-left: var(--horizontal-gap); padding-right: var(--horizontal-gap); }
     </style>
 </head>
 
 <body>
 
-    <header><h1>Microtonal Playground</h1></header>
-
-    <article>
-	<h2></h2>
-    </article>
+    <header>
+        <h1>Microtonal Playground</h1>
+        <p class="toc">
+            <a style="margin-left: 0em;" href="#heading-general">General</a><br />
+            <a style="margin-left: 0em;" href="#heading-tones">Tones</a><br />
+            <a style="margin-left: 3em;" href="#heading-fixed-frequency">Fixed frequency</a><br />
+            <a style="margin-left: 3em;" href="#heading-interval">Interval</a><br />
+            <a style="margin-left: 3em;" href="#heading-frequency-element-with-a-custom-label">Frequency Element with a
+                Custom label</a><br />
+            <a style="margin-left: 3em;" href="#heading-repeat">Repeat</a><br />
+            <a style="margin-left: 3em;" href="#heading-invalid-array-elements">Invalid Array Elements</a><br />
+    </header>
+<article>
+    </p>
+    <h2 id="heading-general">General</h2>
+    <p>Microtone Playground is the in-browser application which provides a way of playing with different thinkable
+        tonal systems. The user uses simple grid keyboard with fixed number and arrangenement of keys. The main
+        method of playing is based on 10-finger touchscreen. In this case all kinds of chords combined with
+        glissando can be played. Without a touchscreen, it can be played with a mouse/trackball.</p>
+    <h2 id="heading-tones">Tones</h2>
+    <p>The user creates a tonal system by defining frequencies for all or some keys. Frequences are put in an array
+        representing rows, each row being an array of row keys. Any sizes of arrays are allowed — redundant data
+        will be ignored, and missing data will be filled with disabled keys.</p>
+    <p>Array elements representing frequencies for the keys are defined as a polymorphic set, so the elements can be
+        of several differnet types: fixed frequency, interval from a base note, fixed frequency or interval with a
+        custom label, or repeat object.</p>
+    <h3 id="heading-fixed-frequency">Fixed frequency</h3>
+    <p>Fixed frequency is a floating-point or integer number, representing frequency in Hertz.</p>
+    <h3 id="heading-interval">Interval</h3>
+    <p>The intervals are defined by the calls to the functions <code>interval(numerator, denonimator)</code>, where
+        <code>numerator</code> and <code>denonimator</code> are positive integer numbers representing a rational
+        number <code>numerator/denonimator</code>. Interval is the element of a free Abelian group with the
+        multiplicative group operation.</p>
+    <h3 id="heading-frequency-element-with-a-custom-label">Frequency Element with a Custom label</h3>
+    <p>Such elements take on of the forms:
+        <code>{ label: &quot;label&quot;, interval: interval(numerator, denonimator)}</code> or
+        <code>{ label: &quot;label&quot;, frequency: number}</code>. These forms allow to provide a custom label with an
+        interval or a fixed frequency object. If a label is not defined, is an empty string or this property with the
+        name <code>label</code> is not of a <code>String</code> type, it renders the corresponding key disabled.
+        Likewise, a key is disabled when the frequency is zero or not defined, or an interval is not defined.</p>
+    <h3 id="heading-repeat">Repeat</h3>
+    <p>The special object <code>repeat</code> is used to mark the row array for repetition of the previous elements.
+        It works only if the <code>repeat</code> object is the last element of an array, otherwise it renders
+        corresponding key disabled. The repetition works in the following way: all the elements before the element
+        <code>repeat</code> are copied to fill in the complete row in a repeating patterns. The labels are simply
+        copied, but the frequencies are transferred in the next octave per each repetition.</p>
+    <h3 id="heading-invalid-array-elements">Invalid Array Elements</h3>
+    <p>Array elements of the types not listed above render corresponding part of the keys disabled. Other cases when
+        the key is disabled are described above.</p>
+</article>
     <footer>v.&thinsp;<span>3.0.0</span>Copyright &copy; Sergey A Kryukov, <span></span></footer>
 
 </body>
