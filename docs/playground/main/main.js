@@ -12,6 +12,13 @@ const definitionSet = {
         message: `Lexical error in user data, file: &ldquo;${userDataFile}&rdquo;`,
         style: "padding: 1em; padding-top: 0.2em; font-size: 180%; font-family: sans-serif",
     },
+    colorSet: {
+        background: "transparent",
+        hightlight: "yellow",
+        border: "darkGray",
+        disabled: "darkGray",
+        label: "Gray"
+    },
 }; //definitionSet
 
 (function addUserDataDynamically(file) {
@@ -54,19 +61,8 @@ window.onload = () => {
         const population = new UserPopulation(tones, definitionSet.rowCount, definitionSet.columnCount);
 
         const keyboard = new GridKeyboard(elements.keyboardParent, definitionSet.keyWidth, definitionSet.keyHeight,
-            definitionSet.rowCount, definitionSet.columnCount,
-            {
-                background: "transparent",
-                hightlight: "yellow",
-                border: "darkGray",
-                disabled: "darkGray",
-                label: "Gray"
-            });
+            definitionSet.rowCount, definitionSet.columnCount, definitionSet.colorSet);
         keyboard.fitView = true;
-        // const frequencies = [];
-        // const startingFrequency = 10;
-        // for (let index = 0; index < definitionSet.columnCount * definitionSet.rowCount; ++index)
-        //     frequencies.push(startingFrequency * Math.pow(2, index/12));
         const instrument = new Instrument(population.frequencySet);
         instrument.volume = 0.2;
         instrument.data = instrumentList[0];
