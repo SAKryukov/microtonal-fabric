@@ -1,20 +1,22 @@
 "use strict";
 
 const repeat = { repeatObject: true }; //used in user data file
-let userDataFile = "user.data";
 const definitionSet = {
     keyWidth: "4em",
     keyHeight: "4em",
-    userError: {
-        element: "p",
-        messageBadFile: `User data file not found, not accessible, or invalid`,
-        messageBadFileContent: `Lexical error in user data`,
-        style: "padding: 1em; padding-top: 0.2em; font-size: 180%; font-family: sans-serif",
-        format: function(message, file) {
-            return `<${this.element} style="${this.style}">${message}<br/>File: &ldquo;${file}&rdquo;</${this.element}>`;
-        },
-        reportBadFile: function(file) { document.write(this.format(this.messageBadFile, file)); },
-        reportBadFileContent: function(file) { document.write(this.format(this.messageBadFileContent, file)); },
+    userData: {
+        dataFileName: "user.data",
+        error: {
+            messageElement: "p",
+            messageBadFile: `User data file not found or not accessible`,
+            messageBadFileContent: `Lexical error in user data`,
+            messageStyle: "padding: 1em; padding-top: 0.2em; font-size: 180%; font-family: sans-serif",
+            messageFile: file => `<br/>File: &ldquo;${file}&rdquo;`,
+            format: function(message, file) {
+                return `<${this.messageElement} style="${this.messageStyle}">${message}${this.messageFile(file)}</${this.messageElement}>`; },
+        }, //error
+        reportBadFile: function(file) { document.write(this.error.format(this.error.messageBadFile, file)); },
+        reportBadFileContent: function(file) { document.write(this.error.format(this.error.messageBadFileContent, file)); },
     }, //user Error
     colorSet: {
         background: "transparent",
@@ -29,13 +31,13 @@ const definitionSet = {
 }; //definitionSet
 
 (function addUserDataDynamically() {
-    window.onerror = () => window.status = definitionSet.userError.message;
+    window.onerror = () => window.status = definitionSet.userData.error.messageBadFileContent;
     const script = document.createElement("script");
     const searchUrl = window.location.search;
     const useDefault = (!searchUrl || searchUrl.length < 2 || searchUrl[0] != "?")
     if (!useDefault)
-        userDataFile = searchUrl.slice(1);
-    script.src = userDataFile;
+        definitionSet.userData.dataFileName = searchUrl.slice(1);
+    script.src = definitionSet.userData.dataFileName;
     document.head.append(script);
 })(); //addUserDataDynamically
 
@@ -43,7 +45,7 @@ window.onload = () => {
 
     if (window.status) {
         window.onerror = undefined;
-        return definitionSet.userError.reportBadFileContent(userDataFile);
+        return definitionSet.userData.reportBadFileContent(definitionSet.userData.dataFileName);
     } //if userError
 
     const elements = {
@@ -69,7 +71,7 @@ window.onload = () => {
     function start() {
 
         if (!UserPopulation.validate())
-            return definitionSet.userError.reportBadFile(userDataFile);
+            return definitionSet.userData.reportBadFile(definitionSet.userData.dataFileName);
  
         const instrument = (() => {
             const rowCount = tones.size.height;
