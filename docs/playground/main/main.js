@@ -1,15 +1,21 @@
 "use strict";
 
 const repeat = { repeatObject: true }; //used in user data file
-const userDataFile = "user.data";
+let userDataFile = "user.data";
 const definitionSet = {
     keyWidth: "4em",
     keyHeight: "4em",
     userError: {
         element: "p",
-        message: `Lexical error in user data, file: &ldquo;${userDataFile}&rdquo;`,
+        messageBadFile: `User data file not found, not accessible, or invalid`,
+        messageBadFileContent: `Lexical error in user data`,
         style: "padding: 1em; padding-top: 0.2em; font-size: 180%; font-family: sans-serif",
-    },
+        format: function(message, file) {
+            return `<${this.element} style="${this.style}">${message}<br/>File: &ldquo;${file}&rdquo;</${this.element}>`;
+        },
+        reportBadFile: function(file) { document.write(this.format(this.messageBadFile, file)); },
+        reportBadFileContent: function(file) { document.write(this.format(this.messageBadFileContent, file)); },
+    }, //user Error
     colorSet: {
         background: "transparent",
         hightlight: "yellow",
@@ -22,23 +28,22 @@ const definitionSet = {
     },
 }; //definitionSet
 
-(function addUserDataDynamically(file) {
+(function addUserDataDynamically() {
     window.onerror = () => window.status = definitionSet.userError.message;
     const script = document.createElement("script");
     const searchUrl = window.location.search;
     const useDefault = (!searchUrl || searchUrl.length < 2 || searchUrl[0] != "?")
-    script.src = useDefault ? file : searchUrl.slice(1);
+    if (!useDefault)
+        userDataFile = searchUrl.slice(1);
+    script.src = userDataFile;
     document.head.append(script);
-})(userDataFile); //addUserDataDynamically
+})(); //addUserDataDynamically
 
 window.onload = () => {
 
     if (window.status) {
         window.onerror = undefined;
-        document.write(
-            `<${definitionSet.userError.element} style="${definitionSet.userError.style}">${definitionSet.userError.message}</${definitionSet.userError.element}>`
-        );
-        return;
+        return definitionSet.userError.reportBadFileContent(userDataFile);
     } //if userError
 
     const elements = {
@@ -63,6 +68,9 @@ window.onload = () => {
 
     function start() {
 
+        if (!UserPopulation.validate())
+            return definitionSet.userError.reportBadFile(userDataFile);
+ 
         const instrument = (() => {
             const rowCount = tones.size.height;
             const columnCount = tones.size.width;

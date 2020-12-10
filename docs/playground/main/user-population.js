@@ -98,6 +98,16 @@ class UserPopulation {
         } //this.#implementation.cleanUp
     } //constructor
 
+    static validate() {
+        const userDataType = typeof(tones);
+        if (!userDataType) return;
+        if (userDataType == typeof(undefined)) return;
+        if (!tones.size) return;
+        if (!tones.size.width) return;
+        if (!tones.size.height) return;
+        return true;
+    } //validate
+
     get labelHandler() { return this.#implementation.labelHandler; }
     get titleHandler() { return this.#implementation.titleHandler; }
     get frequencySet() { return this.#implementation.frequencySet; }
