@@ -6,6 +6,7 @@
         version: "",
         time: "2017-2020",
     },
+    size: { width: 28, height: 8 },
     base: 275/4, //Hz
     rows: [
         [interval(1), interval(9,8),   interval(5,4),   interval(4,3),   interval(3,2),   interval(27,16), interval(15,8), repeat],

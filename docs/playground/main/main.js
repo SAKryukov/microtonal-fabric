@@ -5,8 +5,6 @@ const userDataFile = "user.data";
 const definitionSet = {
     keyWidth: "4em",
     keyHeight: "4em",
-    rowCount: 8,
-    columnCount: 7*4,
     userError: {
         element: "p",
         message: `Lexical error in user data, file: &ldquo;${userDataFile}&rdquo;`,
@@ -27,7 +25,9 @@ const definitionSet = {
 (function addUserDataDynamically(file) {
     window.onerror = () => window.status = definitionSet.userError.message;
     const script = document.createElement("script");
-    script.src = file;
+    const searchUrl = window.location.search;
+    const useDefault = (!searchUrl || searchUrl.length < 2 || searchUrl[0] != "?")
+    script.src = useDefault ? file : searchUrl.slice(1);
     document.head.append(script);
 })(userDataFile); //addUserDataDynamically
 
@@ -64,9 +64,11 @@ window.onload = () => {
     function start() {
 
         const instrument = (() => {
-            let population = new UserPopulation(tones, definitionSet.rowCount, definitionSet.columnCount, repeat);
+            const rowCount = tones.size.height;
+            const columnCount = tones.size.width;
+            let population = new UserPopulation(tones, rowCount, columnCount, repeat);
             const keyboard = new GridKeyboard(elements.keyboardParent, definitionSet.keyWidth, definitionSet.keyHeight,
-                definitionSet.rowCount, definitionSet.columnCount, definitionSet.colorSet);
+                rowCount, columnCount, definitionSet.colorSet);
             keyboard.fitView = true;
             const instrument = new Instrument(population.frequencySet);      
             keyboard.label((x, y) => population.labelHandler(x, y));
