@@ -89,10 +89,19 @@ class UserPopulation {
         this.#implementation.titleHandler = (x, y) => {
             return titleSet[y];
         } //this.#implementation.titleHandler
+        this.#implementation.cleanUp = () => {
+            this.#implementation.frequencySet = undefined;
+            data.rows = undefined;
+            data.rowTitles = undefined;
+            data.metadata = undefined;
+            labelSet.splice(0, labelSet.length);
+        } //this.#implementation.cleanUp
     } //constructor
 
     get labelHandler() { return this.#implementation.labelHandler; }
     get titleHandler() { return this.#implementation.titleHandler; }
     get frequencySet() { return this.#implementation.frequencySet; }
+
+    cleanUp() { this.#implementation.cleanUp(); }
 
 } //class UserPopulation

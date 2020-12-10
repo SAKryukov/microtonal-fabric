@@ -63,19 +63,20 @@ window.onload = () => {
 
     function start() {
 
-        const population = new UserPopulation(tones, definitionSet.rowCount, definitionSet.columnCount, repeat);
-
-        const keyboard = new GridKeyboard(elements.keyboardParent, definitionSet.keyWidth, definitionSet.keyHeight,
-            definitionSet.rowCount, definitionSet.columnCount, definitionSet.colorSet);
-        keyboard.fitView = true;
-        const instrument = new Instrument(population.frequencySet);
-        instrument.volume = 0.5;
-        instrument.data = instrumentList[definitionSet.instrumentControl.defaultInstrument];
-        keyboard.keyHandler = (on, index) =>
-             instrument.play(on, index);
-
-        keyboard.label((x, y) => population.labelHandler(x, y));
-        keyboard.setTitles((x, y) => population.titleHandler(x, y));
+        const instrument = (() => {
+            let population = new UserPopulation(tones, definitionSet.rowCount, definitionSet.columnCount, repeat);
+            const keyboard = new GridKeyboard(elements.keyboardParent, definitionSet.keyWidth, definitionSet.keyHeight,
+                definitionSet.rowCount, definitionSet.columnCount, definitionSet.colorSet);
+            keyboard.fitView = true;
+            const instrument = new Instrument(population.frequencySet);      
+            keyboard.label((x, y) => population.labelHandler(x, y));
+            keyboard.setTitles((x, y) => population.titleHandler(x, y));
+            population.cleanUp(); population = undefined;
+            instrument.volume = 0.5;
+            instrument.data = instrumentList[definitionSet.instrumentControl.defaultInstrument];
+            keyboard.keyHandler = (on, index) => instrument.play(on, index);
+            return instrument;
+        })();
 
         (function setupInstruments() {
             for (let instrumentData of instrumentList) {
