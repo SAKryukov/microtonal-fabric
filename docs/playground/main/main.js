@@ -1,3 +1,15 @@
+// Microtonal Music Study with Chromatic Lattice Keyboard
+//
+// Copyright (c) Sergey A Kryukov, 2017, 2020
+//
+// http://www.SAKryukov.org
+// http://www.codeproject.com/Members/SAKryukov
+// https://github.com/SAKryukov
+// https://github.com/SAKryukov/microtonal-chromatic-lattice-keyboard
+//
+// Original publication:
+// https://www.codeproject.com/Articles/1204180/Microtonal-Music-Study-Chromatic-Lattice-Keyboard
+
 "use strict";
 
 const repeat = { repeatObject: true }; //used in user data file
@@ -8,8 +20,9 @@ const definitionSet = {
         dataFileName: "user.data",
         error: {
             messageElement: "p",
-            messageBadFile: `User data file not found or not accessible`,
-            messageBadFileContent: `Lexical error in user data`,
+            messageBadFile: "User data file not found or not accessible",
+            messageBadFileContent: "Lexical error in user data",
+            messageFileContentError: "Error in user data file: ",
             messageStyle: "padding: 1em; padding-top: 0.2em; font-size: 180%; font-family: sans-serif",
             messageFile: file => `<br/>File: &ldquo;${file}&rdquo;`,
             format: function(message, file) {
@@ -17,6 +30,9 @@ const definitionSet = {
         }, //error
         reportBadFile: function(file) { document.write(this.error.format(this.error.messageBadFile, file)); },
         reportBadFileContent: function(file) { document.write(this.error.format(this.error.messageBadFileContent, file)); },
+        reportBadFileContentBecause: function(file, reason) {
+            document.write(this.error.format(this.error.messageFileContentError + reason, file));
+        },
     }, //user Error
     colorSet: {
         background: "transparent",
@@ -70,8 +86,13 @@ window.onload = () => {
 
     function start() {
 
-        if (!UserPopulation.validate())
-            return definitionSet.userData.reportBadFile(definitionSet.userData.dataFileName);
+        const validationResult = UserPopulation.validate();
+        if (validationResult !== true) {
+            if (validationResult === undefined)
+                return definitionSet.userData.reportBadFile(definitionSet.userData.dataFileName);
+            else
+                return definitionSet.userData.reportBadFileContentBecause(definitionSet.userData.dataFileName, validationResult);
+        } //if validationResult !== true
  
         const instrument = (() => {
             const rowCount = tones.size.height;

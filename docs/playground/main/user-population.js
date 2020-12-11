@@ -1,3 +1,15 @@
+// Microtonal Music Study with Chromatic Lattice Keyboard
+//
+// Copyright (c) Sergey A Kryukov, 2017, 2020
+//
+// http://www.SAKryukov.org
+// http://www.codeproject.com/Members/SAKryukov
+// https://github.com/SAKryukov
+// https://github.com/SAKryukov/microtonal-chromatic-lattice-keyboard
+//
+// Original publication:
+// https://www.codeproject.com/Articles/1204180/Microtonal-Music-Study-Chromatic-Lattice-Keyboard
+
 "use strict";
 
 class UserPopulation {
@@ -100,11 +112,21 @@ class UserPopulation {
 
     static validate() {
         const userDataType = typeof(tones);
-        if (!userDataType) return;
-        if (userDataType == typeof(undefined)) return;
-        if (!tones.size) return;
-        if (!tones.size.width) return;
-        if (!tones.size.height) return;
+        if (!userDataType) return undefined;
+        if (userDataType == typeof(undefined)) return undefined;
+        if (!tones.size) return "invalid or undefined tones.size";
+        if (!tones.size.width) return "invalid or undefined tones.size.width";
+        if (!tones.size.height) return "invalid or undefined tones.size.height";
+        if (tones.size.width.constructor != Number) return "tones.size.width is not a number";
+        if (tones.size.height.constructor != Number) return "tones.size.height is not a number";
+        if (!tones.rows) return "invalid or undefined tones.row";
+        if (tones.rows.constructor != Array) return "tones.rows is not an array"
+        let index = 0;
+        for (let element of tones.rows) {
+            if (!element) return `invalid row ${index}`;
+            if (element.constructor != Array) return `in tones.rows, row ${index} is not an array`;
+            ++index;
+        } //loop
         return true;
     } //validate
 
