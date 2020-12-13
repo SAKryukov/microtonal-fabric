@@ -64,6 +64,7 @@ window.onload = () => {
         return definitionSet.userData.reportBadFileContent(definitionSet.userData.dataFileName);
     } //if userError
 
+    if (initializationController.badJavaScriptEngine()) return;
     const elements = {
         initialization: {
             startButton: document.querySelector("body > section > button"),

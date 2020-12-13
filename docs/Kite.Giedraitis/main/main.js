@@ -12,6 +12,8 @@
 
 window.onload = () => {
 
+    if (initializationController.badJavaScriptEngine()) return;
+
     const elements = {
         startButton: document.querySelector("body > section > button"),
         startButtonParent: document.querySelector("body > section"),
