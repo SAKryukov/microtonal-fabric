@@ -23,3 +23,12 @@ All source code and development is in the directory "docs", which is the source 
 Specialized [29-EDO](https://sakryukov.github.io/microtonal-fabric/code/29-EDO) keyboards
 
 [Sequence Tool](https://sakryukov.github.io/microtonal-fabric/code/sequence-tool)
+
+## Original Publications
+
+[Musical Study with Isomorphic Computer Keyboard](https://www.codeproject.com/Articles/1201737/Musical-Study-with-Isomorphic-Computer-Keyboard), August 16, 2017<br/><small>This is the first work of the keyboard-related cycle, and it is not microtonal. However, it contains some theoretical introduction applicable to other works, which are essentially microtonal.</small>
+
+[Microtonal Music Study with Chromatic Lattice Keyboard](https://www.codeproject.com/Articles/1204180/Microtonal-Music-Study-Chromatic-Lattice-Keyboard), September 1, 2017
+
+[Sound Builder, Web Audio Synthesizer](https://www.codeproject.com/Articles/5268512/Sound-Builder), May 19, 2020
+
