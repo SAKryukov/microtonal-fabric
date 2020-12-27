@@ -1,4 +1,4 @@
-## Microtonal Fabric
+﻿## Microtonal Fabric
 
 Microtonal Fabric is a microtonal music platform based on WebAudio API. It is a framework for building universal or customized microtonal musical keyboard instruments, microtonal experiments and computing, music study, and teaching music lessons with possible remote options.
 
@@ -14,7 +14,7 @@ Browsers based on V8 engine are recommended, such as Chromium, Chrome, Opera, Vi
 
 [Tonal System Comparison](https://sakryukov.github.io/microtonal-fabric/code/tone-system-comparison) application
 
-[Multi-EDO](https://sakryukov.github.io/microtonal-fabric/code/Multi-EDO/index.html) isomorphic keyboard
+[Multi-EDO Chromatic Lattice](https://sakryukov.github.io/microtonal-fabric/code/Multi-EDO/index.html), isomorphic chromatic keyboard
 
 Specialized [29-EDO](https://sakryukov.github.io/microtonal-fabric/code/29-EDO) keyboards
 
