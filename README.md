@@ -18,6 +18,6 @@ All source code and development is in the directory "docs", which is the source 
 
 [Tonal System Comparison](https://sakryukov.github.io/microtonal-fabric/code/tone-system-comparison) application
 
-[Specialized 29-EDO](https://sakryukov.github.io/microtonal-fabric/code/tone-system-comparison) Keyboards
+[Specialized 29-EDO](https://sakryukov.github.io/microtonal-fabric/code/29-EDO) Keyboards
 
 [Sequence Tool](https://sakryukov.github.io/microtonal-fabric/code/sequence-tool)
