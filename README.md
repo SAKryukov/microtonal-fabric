@@ -8,11 +8,7 @@ The applications support standard touchscreen. With a touchscreen, one can play 
 
 Browsers based on V8 engine are recommended, such as Chromium, Chrome, Opera, Vivaldi, Microsoft Edge v. 80.0.361.111 or later, and more…
 
-### Live Demo and Source Code
-
-All source code and development is in the directory "docs", which is the source of the product [Web site](https://sakryukov.github.io/microtonal-fabric).
-
-#### Live-Play Applications
+### Live-Play Applications
 
 [SoundBuilder](https://sakryukov.github.io/microtonal-fabric/code/SoundBuilder)
 
