@@ -1,4 +1,4 @@
-﻿## Microtonal Fabric — see [Live Play](https://sakryukov.github.io/microtonal-fabric)
+## Microtonal Fabric
 
 Microtonal Fabric is a microtonal music platform based on WebAudio API. It provides a framework for building musical keyboard instruments 
 
@@ -18,8 +18,8 @@ All source code and development is in the directory "docs", which is the source 
 
 [Tonal System Comparison](https://sakryukov.github.io/microtonal-fabric/code/tone-system-comparison) application
 
-[Multi-EDO](https://sakryukov.github.io/microtonal-fabric/code/Multi-EDO/index.html) isomoprphic Keyboard
+[Multi-EDO](https://sakryukov.github.io/microtonal-fabric/code/Multi-EDO/index.html) isomorphic keyboard
 
-[Specialized 29-EDO](https://sakryukov.github.io/microtonal-fabric/code/29-EDO) Keyboards
+Specialized [29-EDO](https://sakryukov.github.io/microtonal-fabric/code/29-EDO) keyboards
 
 [Sequence Tool](https://sakryukov.github.io/microtonal-fabric/code/sequence-tool)
