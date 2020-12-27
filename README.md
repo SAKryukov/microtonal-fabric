@@ -11,3 +11,13 @@ Browsers based on V8 engine are recommended, such as Chromium, Chrome, Opera, Vi
 ### Live Demo and Source Code
 
 All source code and development is in the directory "docs", which is the source of the product [Web site](https://sakryukov.github.io/microtonal-fabric).
+
+## Live-Play Applications
+
+[SoundBuilder](https://sakryukov.github.io/microtonal-fabric/code/SoundBuilder)
+
+[Tonal System Comparison](https://sakryukov.github.io/microtonal-fabric/code/tone-system-comparison) application
+
+[Specialized 29-EDO](https://sakryukov.github.io/microtonal-fabric/code/tone-system-comparison) Keyboards
+
+[Sequence Tool](https://sakryukov.github.io/microtonal-fabric/code/sequence-tool\)
