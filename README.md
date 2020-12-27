@@ -24,6 +24,6 @@ Specialized [29-EDO](https://sakryukov.github.io/microtonal-fabric/code/29-EDO) 
 
 _[Musical Study with Isomorphic Computer Keyboard](https://www.codeproject.com/Articles/1201737/Musical-Study-with-Isomorphic-Computer-Keyboard)_, August 16, 2017<br/><small>This is the first work of the keyboard-related cycle, and it is not microtonal. However, it contains some theoretical introduction applicable to other works, which are essentially microtonal.</small>
 
-_Microtonal Music Study with Chromatic Lattice Keyboard](https://www.codeproject.com/Articles/1204180/Microtonal-Music-Study-Chromatic-Lattice-Keyboard)_, September 1, 2017
+_[Microtonal Music Study with Chromatic Lattice Keyboard](https://www.codeproject.com/Articles/1204180/Microtonal-Music-Study-Chromatic-Lattice-Keyboard)_, September 1, 2017
 
-_Sound Builder, Web Audio Synthesizer](https://www.codeproject.com/Articles/5268512/Sound-Builder)_, May 19, 2020
+_[Sound Builder, Web Audio Synthesizer](https://www.codeproject.com/Articles/5268512/Sound-Builder)_, May 19, 2020
