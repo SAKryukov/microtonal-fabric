@@ -18,7 +18,7 @@ All source code and development is in the directory "docs", which is the source 
 
 [Tonal System Comparison](https://sakryukov.github.io/microtonal-fabric/code/tone-system-comparison) application
 
-[Multi-EDO](https://sakryukov.github.io/microtonal-fabric/code/Multi-EDO) isomprphic Keyboard
+[Multi-EDO](https://sakryukov.github.io/microtonal-fabric/code/Multi-EDO/index.html) isomoprphic Keyboard
 
 [Specialized 29-EDO](https://sakryukov.github.io/microtonal-fabric/code/29-EDO) Keyboards
 
