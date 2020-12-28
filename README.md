@@ -6,7 +6,7 @@ All applications presented by this project can be played live using a Web browse
 
 The applications support standard touchscreen. With a touchscreen, one can play with ten fingers, any chords, glissando (important) in any combinations. So a touchscreen is highly recommended. Without a touch screen, a user still can play with a mouse/touchpad and, in special cases, a computer keyboard.
 
-Browsers based on V8 engine are recommended, such as Chromium, Chrome, Opera, Vivaldi, Microsoft Edge v. 80.0.361.111 or later, and more…
+Browsers based on V8 engine are recommended, such as Chromium, Chrome, Opera, Vivaldi, Microsoft Edge v.&thinsp;80.0.361.111 or later, and more…
 
 ### Live-Play Applications
 
