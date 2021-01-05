@@ -6,9 +6,9 @@ This is the solution for Windows:
 
 ## Instructions
 
-Download and unpack the latest FFMPeg.
+Download and unpack the latest FFMPeg. Pre-built releases for Windows can be found [on GitHub](https://github.com/BtbN/FFmpeg-Builds/releases).
 
-Locate the file `video-capture.cmd` and save it to the local directory on your Windows system.
+Locate the file [`video-capture.cmd`](https://SAKryukov.github.io/microtonal-fabric/article/video-production/video-capture.cmd) and save it to the local directory on your Windows system.
 
 Edit `video-capture.cmd`: on the second line, correct the path to "ffmpeg.exe" according to its actual location.
 
