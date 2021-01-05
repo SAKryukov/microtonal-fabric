@@ -6,7 +6,7 @@
 
 ## Инструкции
 
-Нужно скачать и распаковать последнюю версию FFMPeg. Заранее построенные релизы для Windows можно найти на [на GitHub](https://github.com/BtbN/FFmpeg-Builds/releases).
+Нужно скачать и распаковать последнюю версию FFMPeg. Заранее построенные релизы для Windows можно [найти на GitHub](https://github.com/BtbN/FFmpeg-Builds/releases).
 
 Файл со скриптом [`video-capture.cmd`](https://SAKryukov.github.io/microtonal-fabric/article/video-production/video-capture.cmd) нужно сохранить в любой локальной директории Windows.
 
