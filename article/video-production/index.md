@@ -19,3 +19,5 @@ After the file name is defined, the script will start recording everything on th
 To complete the recording, close the window where `video-capture.cmd` is executed. The video will be recorded in the file .mp4. The codecs uses are AAC and AVC. For production, the file can be transcoded with better compression using more advanced codecs and a container.
 
 By default, the video from a sound card is recorded. To switch to a microphone, see the script and instructions at the bottom part of the script text. Optionally, see the [article](https://www.codeproject.com/Tips/5291304/Video-Screen-Capture-with-Audio). Also, these instructions explain how to use and check up the system settings.
+
+### [Instructions in Russian](instructions.ru.md)
