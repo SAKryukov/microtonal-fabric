@@ -94,7 +94,7 @@ class Recorder {
             list = JSON.parse(data);
             if (list.constructor != Array) return false
             for (let www of list) {
-                if (!www) return false;
+                if (www == null) return false;
                 if (www.constructor == String) continue;
                 if (www.constructor != Array) return false;
                 if (www.length != 3) return false;
