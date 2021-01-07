@@ -92,7 +92,7 @@ window.onload = () => {
     const validateSequence = sequence => {
         if (sequence.constructor != Array) return false;
         for (let www of sequence) {
-            if (!www) return false;
+            if (www == null) return false;
             if (www.constructor == String) continue;
             if (www.constructor != Array) return false;
             if (www.length != 3) return false;
