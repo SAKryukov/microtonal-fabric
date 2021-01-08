@@ -144,7 +144,7 @@ window.onload = () => {
     const shift = (indexInWWW, valueInput, operation) => {
         showException();
         let shiftValue = operation == operationKind.multiply ? parseFloat(valueInput.value) : parseInt(valueInput.value);
-        if (!shiftValue || isNaN(shiftValue)) return;
+        if (isNaN(shiftValue)) return;
         if (operation == operationKind.shiftBack)
             shiftValue = -shiftValue;
         for(let option of controls.sequence.children) {
