@@ -33,6 +33,27 @@ window.onload = () => {
     controls.product.textContent = `${sharedDefinitionSet.years}, v.${thinSpace}${sharedDefinitionSet.version}`;
     const sequenceMap = new Map();
 
+    const toHistory = data => {
+    }; //toHistory
+    const fromHistory = data => {
+    }; //fromHistory
+
+    const historyAgent = (() => {
+        const result = new History();
+        const undo = () => {};
+        const redo = () => {};
+        window.onkeydown = event => {
+            if (event.repeat) return;
+            if (!event.ctrlKey) return;
+            const doUndo = event.code == "KeyZ";
+            const doRedo = event.code == "KeyY";
+            if (!doUndo && !doRedo) return;
+            if (doUndo) undo(); else if (doRedo) redo();
+            event.preventDefault();
+        }; //window.onclick
+        return result;
+    })(); //historyAgent
+
     const showException = ex => {
         controls.error.textContent = ex ? ex.message : "";
     }; //showException
