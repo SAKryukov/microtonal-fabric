@@ -19,7 +19,7 @@ window.onload = () => {
         uniformLegato: 4,
         legato: 5};
     const rhythmizationTimingChoiceDefault = rhythmizationTimingChoice.uniformLegato;
-    const rhythmizationTimingChoiceNames = [ "Average duration", "Keep original durations", "Maximum duration" , "Custom duration using Time", "Uniform Legato using Time", "Legato" ];
+    const rhythmizationTimingChoiceNames = [ "Average duration", "Keep original durations", "Maximum duration" , "Custom duration using Time", "Uniform legato using Time", "Legato" ];
 
     const controls = getControls();
     for (let value of rhythmizationTimingChoiceNames) {
