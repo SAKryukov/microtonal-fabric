@@ -6,13 +6,13 @@
             "request": "launch",
             "name": "Debug with Chrome",
             "runtimeArgs": ["--incognito", "--enable-precise-memory-info"],
+            //"file": "${workspaceFolder}/sequence-tool/index.html"
             //"file": "${workspaceFolder}/index.html"
             //"file": "${workspaceFolder}/tone-system-comparison/tone-system-comparison.html"
-            //"file": "${workspaceFolder}/29-EDO/index.html"
-            //"file": "${workspaceFolder}/29-EDO/index.html"
+            "file": "${workspaceFolder}/29-EDO/index.html"
             //"file": "${workspaceFolder}/SoundBuilder/index.html"
             //"file": "${workspaceFolder}/playground/index.html?custom-demo/customized.user.data"
-            "file": "${workspaceFolder}/playground/index.html"
+            //"file": "${workspaceFolder}/playground/index.html"
             //"file": "${workspaceFolder}/unit-tests/circular-keyboard.html"
         }
     ]
