@@ -16,9 +16,10 @@ window.onload = () => {
         keepDuration: 1,
         maximumDuration: 2,
         customDuration: 3,
-        legato: 4};
-    const rhythmizationTimingChoiceDefault = rhythmizationTimingChoice.keepDuration;
-    const rhythmizationTimingChoiceNames = [ "Average duration", "Keep original durations", "Maximum duration" , "Custom duration using Time", "Legato" ];
+        uniformLegato: 4,
+        legato: 5};
+    const rhythmizationTimingChoiceDefault = rhythmizationTimingChoice.uniformLegato;
+    const rhythmizationTimingChoiceNames = [ "Average duration", "Keep original durations", "Maximum duration" , "Custom duration using Time", "Uniform Legato using Time", "Legato" ];
 
     const controls = getControls();
     for (let value of rhythmizationTimingChoiceNames) {
@@ -259,7 +260,7 @@ window.onload = () => {
         showException();
         let customDuration = null;
         const rhythmizationTiming = controls.advanced.rhythmizationTiming.selectedIndex;
-        if (rhythmizationTiming == rhythmizationTimingChoice.customDuration) {
+        if (rhythmizationTiming == rhythmizationTimingChoice.customDuration || rhythmizationTimingChoice.uniformLegato) {
             customDuration = parseInt(controls.shift.time.input.value);
             if (!customDuration || isNaN(customDuration))
                 return showException(new Error(`Invalid custom duration: ${controls.shift.time.input.value}`));
@@ -329,9 +330,12 @@ window.onload = () => {
             if (!pressCount) return;
             if (!timeLast) return;
             if (!isFinite(timeFirst)) return;
-            const period = Math.round((timeLast - timeFirst) / pressCount);
+            const period = rhythmizationTiming == rhythmizationTimingChoice.uniformLegato ?
+                customDuration
+                :
+                Math.round((timeLast - timeFirst) / pressCount);
             let duration = null;
-            if (rhythmizationTiming == rhythmizationTimingChoice.customDuration)
+            if (rhythmizationTiming == rhythmizationTimingChoice.customDuration || rhythmizationTiming == rhythmizationTimingChoice.uniformLegato)
                 duration = customDuration;
             else if (rhythmizationTiming == rhythmizationTimingChoice.averageDuration)
                 duration = sumDuration / pressCount;
