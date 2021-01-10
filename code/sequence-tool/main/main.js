@@ -90,24 +90,24 @@ window.onload = () => {
         } //loop
     } //populate
 
-    const validateSequence = sequence => {
-        if (sequence.constructor != Array) return false;
-        for (let www of sequence) {
-            if (www == null) return false;
-            if (www.constructor == String) continue;
-            if (www.constructor != Array) return false;
-            if (www.length != 3) return false;
-            let index = 0;
-            for (let w of www) {
-                if (index == 0 && w !== 0 && w !== 1)
-                    return false;
-                if (w == undefined || w == null) return;
-                if (w.constructor != Number) return;
-                ++index;
-            } //loop w
-        } //loop www
-        return sequence;
-    } //validateSequence
+    // const validateSequence = sequence => {
+    //     if (sequence.constructor != Array) return false;
+    //     for (let www of sequence) {
+    //         if (www == null) return false;
+    //         if (www.constructor == String) continue;
+    //         if (www.constructor != Array) return false;
+    //         if (www.length != 3) return false;
+    //         let index = 0;
+    //         for (let w of www) {
+    //             if (index == 0 && w !== 0 && w !== 1)
+    //                 return false;
+    //             if (w == undefined || w == null) return;
+    //             if (w.constructor != Number) return;
+    //             ++index;
+    //         } //loop w
+    //     } //loop www
+    //     return sequence;
+    // } //validateSequence
 
     const serialize = sequenceMap => {
         const sequence = [];
@@ -125,8 +125,7 @@ window.onload = () => {
         showException();
         navigator.clipboard.readText().then(value => {
             try {
-                const sequence = JSON.parse(value);
-                const validatedSequence = validateSequence(sequence);
+                const validatedSequence = Recorder.readAndValidateData(value); // from ui.components/Recorder.js
                 if (!validatedSequence)
                     throw new Error("Invalid sequence");
                 populate(validatedSequence, append);

@@ -86,12 +86,12 @@ class Recorder {
         this.#implementation.callPhaseChangeHandler();
     } //set recording
 
-    validateData(data) {
-        if (data.constructor != String) return false;
+    static readAndValidateData(jsonData) {
+        if (jsonData.constructor != String) return false;
         let list;
         const result = [];
         try {
-            list = JSON.parse(data);
+            list = JSON.parse(jsonData);
             if (list.constructor != Array) return false
             for (let www of list) {
                 if (www == null) return false;
@@ -112,13 +112,13 @@ class Recorder {
             return false;
         } //exception
         return result;
-    } //validateData
+    } //readAndValidateData
 
     set phaseChangeHandler(value) { this.#implementation.changePhaseHandler = value; }
 
     get serializedSequence() { return JSON.stringify(this.#implementation.playSequence); }
     set serializedSequence(data) {
-        const list = this.validateData(data);
+        const list = this.constructor.readAndValidateData(data);
         if (list) {
             this.#implementation.playSequence = list;
             this.#implementation.callPhaseChangeHandler();
