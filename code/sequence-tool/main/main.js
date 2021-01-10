@@ -33,27 +33,6 @@ window.onload = () => {
     controls.product.textContent = `${sharedDefinitionSet.years}, v.${thinSpace}${sharedDefinitionSet.version}`;
     const sequenceMap = new Map();
 
-    const toHistory = data => {
-    }; //toHistory
-    const fromHistory = data => {
-    }; //fromHistory
-
-    const historyAgent = (() => {
-        const result = new History();
-        const undo = () => {};
-        const redo = () => {};
-        window.onkeydown = event => {
-            if (event.repeat) return;
-            if (!event.ctrlKey) return;
-            const doUndo = event.code == "KeyZ";
-            const doRedo = event.code == "KeyY";
-            if (!doUndo && !doRedo) return;
-            if (doUndo) undo(); else if (doRedo) redo();
-            event.preventDefault();
-        }; //window.onclick
-        return result;
-    })(); //historyAgent
-
     const showException = ex => {
         controls.error.textContent = ex ? ex.message : "";
     }; //showException
@@ -80,35 +59,78 @@ window.onload = () => {
     const where = www => www[1];
     const when = www => www[2];
 
-    const formatWwwItem = (what, where, when) => {
-        where = `${where}`.padStart(3, "0");
-        when = `${when}`.padStart(8, "0");
-        return `${what} ${where} ${when}`;
-    } //formatWwwItem
-
-    const formatMark = value => {
-        return `${String.fromCodePoint(0x274C)} ${value}`;
-    } //formatMark
-
-    const setOptionWww = (option, www) => {
-        option.textContent = formatWwwItem(www[0], www[1], www[2]);
-        sequenceMap.set(option, www);
-    }; //setOptionWww
-
-    const populate = (sequence, append) => {
-        if (!append) {
+    const population = {
+        clear: () => {
             sequenceMap.clear();
             while (controls.sequence.firstElementChild)
                 controls.sequence.removeChild(controls.sequence.firstElementChild);
-        } //if
-        for (let www of sequence) {
+        },
+        formatWwwItem: (what, where, when) => {
+            where = `${where}`.padStart(3, "0");
+            when = `${when}`.padStart(8, "0");
+            return `${what} ${where} ${when}`;
+        },
+        setOptionWww: function(option, www) {
+            option.textContent = this.formatWwwItem(www[0], www[1], www[2]);
+            sequenceMap.set(option, www);
+        },
+        formatMark: value => `${String.fromCodePoint(0x274C)} ${value}`,
+        addElement: function(sequenceElement, select) {
             const option = document.createElement("option");
-            if (www.constructor != String)
-                setOptionWww(option, www);
+            if (sequenceElement.constructor != String)
+                this.setOptionWww(option, sequenceElement);
             else
-                option.textContent = formatMark(www);
+                option.textContent = this.formatMark(sequenceElement);
+            if (select) option.selected = true;
             controls.sequence.appendChild(option);
+            return option;
+        },
+    }; //population
+
+    const fromHistory = data => {
+        if (!data) return;
+        population.clear();
+        for (const element of data) {
+            const option = population.addElement(element.element);
+            if (element.selected)
+               option.selected = true;
         } //loop
+    }; //fromHistory
+    const toHistory = historyAgent => {
+        const data = [];
+        if (controls.sequence.children.length < 1) return;
+        for (let child of controls.sequence.children) {
+            const sequenceElement = sequenceMap.get(child);
+            data.push({
+                selected: child.selected,
+                element: sequenceElement ? new Object(sequenceElement) : child.textContent.substring(1)
+            });
+        } //loop
+        if (data.length < 1) return;
+        historyAgent.push(data);
+    }; //toHistory
+
+    const historyAgent = (() => {
+        const result = new History();
+        const undo = () => fromHistory(result.undo());
+        const redo = () => fromHistory(result.redo());
+        window.onkeydown = event => {
+            if (event.repeat) return;
+            if (!event.ctrlKey) return;
+            const doUndo = event.code == "KeyZ";
+            const doRedo = event.code == "KeyY";
+            if (!doUndo && !doRedo) return;
+            if (doUndo) undo(); else if (doRedo) redo();
+            event.preventDefault();
+        }; //window.onclick
+        return result;
+    })(); //historyAgent
+
+    const populate = (sequence, append) => {
+        if (!append)
+            population.clear();
+        for (let www of sequence)
+            population.addElement(www);
     } //populate
 
     const serialize = sequenceMap => {
@@ -131,6 +153,7 @@ window.onload = () => {
                 if (!validatedSequence)
                     throw new Error("Invalid sequence");
                 populate(validatedSequence, append);
+                toHistory(historyAgent);
             } catch (ex) {
                 showException(ex);
             } //exception
@@ -161,8 +184,9 @@ window.onload = () => {
                 www[indexInWWW] = shiftValue;
             if (www[indexInWWW] < 0)
                 www[indexInWWW] = 0;
-            setOptionWww(option, www);
+            population.setOptionWww(option, www);
         } //loop
+        toHistory(historyAgent);
     }; //shift
 
     const addMark = value => {
@@ -170,7 +194,7 @@ window.onload = () => {
         const selected = controls.sequence.selectedOptions;
         if (selected.length < 1) return;
         const mark = document.createElement("option");
-        mark.textContent = formatMark(value);
+        mark.textContent = population.formatMark(value);
         mark.onclick = event => {
             const style = getComputedStyle(event.target);
             const mainText = document.createElement("span");
@@ -190,6 +214,7 @@ window.onload = () => {
             updateStatus(list);
         }; //mark.onclick
         controls.sequence.insertBefore(mark, selected[0]);
+        toHistory(historyAgent);
     }; //addMark
 
     controls.sequence.onkeydown = event => {
@@ -229,6 +254,7 @@ window.onload = () => {
                 controls.sequence.insertBefore(element.selected, controls.sequence.children[element.index + shift]);
             } //loop
         updateStatus(controls.sequence);
+        toHistory(historyAgent);
   }; //moveUpDown
 
     const clone = () => {
@@ -244,6 +270,7 @@ window.onload = () => {
             option.selected = true;
         } //loop
         updateStatus(controls.sequence);
+        toHistory(historyAgent);
     }; //clone
     const remove = () => {
         showException();
@@ -255,6 +282,7 @@ window.onload = () => {
             controls.sequence.removeChild(element);
         } //loop
         updateStatus(controls.sequence);
+        toHistory(historyAgent);
     }; //remove
 
     const doRhythmization = () => {
@@ -352,12 +380,13 @@ window.onload = () => {
                 const effectiveDuration = duration != null ? duration : when(element.up.www) - when(element.www);
                 element.www[2] = Math.round(timeFirst + index * period);
                 element.up.www[2] = Math.round(when(element.www) + effectiveDuration);
-                setOptionWww(element.element, element.www);
-                setOptionWww(element.up.element, element.up.www);
+                population.setOptionWww(element.element, element.www);
+                population.setOptionWww(element.up.element, element.up.www);
                 ++index;
             } //loop
         })(orderedSet);
         updateStatus(controls.sequence);
+        toHistory(historyAgent);
     }; //doRhythmization
 
     // const filterInput = input => {
