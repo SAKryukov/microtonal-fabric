@@ -90,25 +90,6 @@ window.onload = () => {
         } //loop
     } //populate
 
-    // const validateSequence = sequence => {
-    //     if (sequence.constructor != Array) return false;
-    //     for (let www of sequence) {
-    //         if (www == null) return false;
-    //         if (www.constructor == String) continue;
-    //         if (www.constructor != Array) return false;
-    //         if (www.length != 3) return false;
-    //         let index = 0;
-    //         for (let w of www) {
-    //             if (index == 0 && w !== 0 && w !== 1)
-    //                 return false;
-    //             if (w == undefined || w == null) return;
-    //             if (w.constructor != Number) return;
-    //             ++index;
-    //         } //loop w
-    //     } //loop www
-    //     return sequence;
-    // } //validateSequence
-
     const serialize = sequenceMap => {
         const sequence = [];
         for (let element of controls.sequence.selectedOptions) {
