@@ -103,7 +103,7 @@ window.onload = () => {
             const sequenceElement = sequenceMap.get(child);
             data.push({
                 selected: child.selected,
-                element: sequenceElement ? new Object(sequenceElement) : child.textContent.substring(1)
+                element: sequenceElement ? new Object(sequenceElement) : child.textContent.slice(2)
             });
         } //loop
         if (data.length < 1) return;
@@ -149,11 +149,12 @@ window.onload = () => {
         showException();
         navigator.clipboard.readText().then(value => {
             try {
-                const validatedSequence = Recorder.readAndValidateData(value); // from ui.components/Recorder.js
+                const validatedSequence = Recorder.readAndValidateData(value, true); // from ui.components/Recorder.js
                 if (!validatedSequence)
                     throw new Error("Invalid sequence");
+                if (validatedSequence && validatedSequence.length > 0)
+                    toHistory(historyAgent);
                 populate(validatedSequence, append);
-                toHistory(historyAgent);
             } catch (ex) {
                 showException(ex);
             } //exception
@@ -172,7 +173,9 @@ window.onload = () => {
         if (isNaN(shiftValue)) return;
         if (operation == operationKind.shiftBack)
             shiftValue = -shiftValue;
-        for(let option of controls.sequence.children) {
+        if (controls.sequence.children.length > 0)
+            toHistory(historyAgent);
+         for (let option of controls.sequence.children) {
             if (!option.selected) continue;
             const www = sequenceMap.get(option);
             if (!www) continue;
@@ -186,13 +189,13 @@ window.onload = () => {
                 www[indexInWWW] = 0;
             population.setOptionWww(option, www);
         } //loop
-        toHistory(historyAgent);
     }; //shift
 
     const addMark = value => {
         showException();
         const selected = controls.sequence.selectedOptions;
         if (selected.length < 1) return;
+        toHistory(historyAgent);
         const mark = document.createElement("option");
         mark.textContent = population.formatMark(value);
         mark.onclick = event => {
@@ -214,7 +217,6 @@ window.onload = () => {
             updateStatus(list);
         }; //mark.onclick
         controls.sequence.insertBefore(mark, selected[0]);
-        toHistory(historyAgent);
     }; //addMark
 
     controls.sequence.onkeydown = event => {
@@ -232,6 +234,7 @@ window.onload = () => {
     const moveUpDown = up => {
         showException();
         if (controls.sequence.selectedOptions.length < 1) return;
+        toHistory(historyAgent);
         let index = 0;        
         const selected = [];
         for (let option of controls.sequence.children) {
@@ -254,12 +257,12 @@ window.onload = () => {
                 controls.sequence.insertBefore(element.selected, controls.sequence.children[element.index + shift]);
             } //loop
         updateStatus(controls.sequence);
-        toHistory(historyAgent);
   }; //moveUpDown
 
     const clone = () => {
         showException();
         if (controls.sequence.selectedOptions.length < 1) return;
+        toHistory(historyAgent);
         const insertElement = controls.sequence.selectedOptions[0];
         for (let element of controls.sequence.selectedOptions) {
             const option = document.createElement("option");
@@ -270,11 +273,12 @@ window.onload = () => {
             option.selected = true;
         } //loop
         updateStatus(controls.sequence);
-        toHistory(historyAgent);
     }; //clone
     const remove = () => {
         showException();
         const removeSet = [];
+        if (controls.sequence.selectedOptions.length > 0)
+            toHistory(historyAgent);
         for (let element of controls.sequence.selectedOptions)
             removeSet.push(element);
         for (let element of removeSet) {
@@ -282,7 +286,6 @@ window.onload = () => {
             controls.sequence.removeChild(element);
         } //loop
         updateStatus(controls.sequence);
-        toHistory(historyAgent);
     }; //remove
 
     const doRhythmization = () => {
@@ -294,6 +297,8 @@ window.onload = () => {
             if (!customDuration || isNaN(customDuration))
                 return showException(new Error(`Invalid custom duration: ${controls.shift.time.input.value}`));
         } //if customDuration
+        if (controls.sequence.selectedOptions.length > 0)
+            toHistory(historyAgent);
         const orderedSet = (() => {
             const result = [];
             for (let element of controls.sequence.selectedOptions) {
@@ -386,7 +391,6 @@ window.onload = () => {
             } //loop
         })(orderedSet);
         updateStatus(controls.sequence);
-        toHistory(historyAgent);
     }; //doRhythmization
 
     // const filterInput = input => {

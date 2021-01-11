@@ -86,7 +86,7 @@ class Recorder {
         this.#implementation.callPhaseChangeHandler();
     } //set recording
 
-    static readAndValidateData(jsonData) {
+    static readAndValidateData(jsonData, acceptStrings) {
         if (jsonData.constructor != String) return false;
         let list;
         const result = [];
@@ -95,7 +95,10 @@ class Recorder {
             if (list.constructor != Array) return false
             for (let www of list) {
                 if (www == null) return false;
-                if (www.constructor == String) continue;
+                if (www.constructor == String) {
+                    if (acceptStrings) result.push(www);
+                    continue;
+                } //if
                 if (www.constructor != Array) return false;
                 if (www.length != 3) return false;
                 let index = 0;
