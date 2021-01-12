@@ -75,15 +75,25 @@ window.onload = () => {
             sequenceMap.set(option, www);
         },
         formatMark: value => `${String.fromCodePoint(0x274C)} ${value}`,
-        addElement: function(sequenceElement, select) {
+        addElement: function(sequenceElement, select, optionParent, optionBefore) {
             const option = document.createElement("option");
             if (sequenceElement.constructor != String)
                 this.setOptionWww(option, sequenceElement);
             else
                 option.textContent = this.formatMark(sequenceElement);
             if (select) option.selected = true;
-            controls.sequence.appendChild(option);
+            if (optionParent && optionBefore)
+                optionParent.insertBefore(option, optionBefore);
+            else
+                controls.sequence.appendChild(option);
             return option;
+        },
+        serializeOption: (element, sequenceMap) => {
+            const data = sequenceMap.get(element);
+            if (data)
+                return data;
+            else
+                return element.textContent.slice(2);
         },
     }; //population
 
@@ -138,13 +148,8 @@ window.onload = () => {
 
     const serialize = sequenceMap => {
         const sequence = [];
-        for (let element of controls.sequence.selectedOptions) {
-            const data = sequenceMap.get(element);
-            if (data)
-                sequence.push(data);
-            else
-                sequence.push(element.textContent.slice(2)); // 2: exclude deletion and blank space
-        } //loop
+        for (let element of controls.sequence.selectedOptions) 
+            sequence.push(population.serializeOption(element, sequenceMap));
         return JSON.stringify(sequence);
     } //serialize
 
@@ -161,7 +166,6 @@ window.onload = () => {
                 showException(ex);
             } //exception
         });
-        
     }; //fromClipboard
 
     const toClipboard = () => {
@@ -259,19 +263,17 @@ window.onload = () => {
             } //loop
         updateStatus(controls.sequence);
         toHistory(historyAgent);
-  }; //moveUpDown
+    }; //moveUpDown
 
     const clone = () => {
         showException();
         if (controls.sequence.selectedOptions.length < 1) return;
         const insertElement = controls.sequence.selectedOptions[0];
         for (let element of controls.sequence.selectedOptions) {
-            const option = document.createElement("option");
-            option.textContent = element.textContent;
-            controls.sequence.insertBefore(option, insertElement);
+            const data = population.serializeOption(element, sequenceMap);
+            population.addElement(data, true, controls.sequence, insertElement);
             sequenceMap.set(sequenceMap.get(element));
             element.selected = false;
-            option.selected = true;
         } //loop
         updateStatus(controls.sequence);
         toHistory(historyAgent);
