@@ -1,6 +1,6 @@
 ﻿// Microtonal Music Study with Chromatic Lattice Keyboard
 //
-// Copyright (c) Sergey A Kryukov, 2017, 2020
+// Copyright (c) Sergey A Kryukov, 2017-2021
 //
 // http://www.SAKryukov.org
 // http://www.codeproject.com/Members/SAKryukov
@@ -12,7 +12,7 @@
 const sharedDefinitionSet = {
 
     version: "5.0.7",
-    years: "2017-2020",
+    years: "2017-2021",
 
     soundControl: {
         audibleMiddle: { note: "C", midiNote: 60, frequency: 261.625 },
