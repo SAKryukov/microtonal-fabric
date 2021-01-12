@@ -18,17 +18,15 @@ class History {
 
         this.#implementation.move = doRedo => {
             if (!this.#implementation.can(doRedo)) return;
-            if (doRedo) historyPosition++;
-            const data = history[historyPosition];
-            if (!doRedo) historyPosition--;
-            return data;
+            if (doRedo) historyPosition++; else historyPosition--;
+            return history[historyPosition];
         } //this.#implementation.move
 
         this.#implementation.can = redo => {
             if (redo)
-                return historyPosition < history.length - 1;
+                return historyPosition >= 0 && historyPosition < history.length - 1;
             else
-                return historyPosition >= 0;
+                return historyPosition > 0;
         } //this.#implementation.can
 
         this.#implementation.push = data => {
