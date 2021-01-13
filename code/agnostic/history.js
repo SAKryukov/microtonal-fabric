@@ -4,7 +4,7 @@
 //
 // http://www.SAKryukov.org
 // http://www.codeproject.com/Members/SAKryukov
-// https://github.com/SAKryukov
+// https://github.com/SAKryukovh
 // https://github.com/SAKryukov/microtonal-chromatic-lattice-keyboard
 
 class History {

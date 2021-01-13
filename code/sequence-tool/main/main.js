@@ -60,6 +60,7 @@ window.onload = () => {
     const when = www => www[2];
 
     const population = {
+        cloneObject: data => Object.assign({}, data),
         clear: () => {
             sequenceMap.clear();
             while (controls.sequence.firstElementChild)
@@ -114,11 +115,11 @@ window.onload = () => {
                 const sequenceElement = sequenceMap.get(child);
                 data.push({
                     selected: child.selected,
-                    element: sequenceElement ? new Object(sequenceElement) : child.textContent.slice(2)
+                    element: sequenceElement ? population.cloneObject(sequenceElement) : child.textContent.slice(2)
                 });
             } //loop
             if (data.length < 1) return;
-            historyAgent.push(data);    
+            historyAgent.push(data);
         }; //core
         setTimeout(core, 0, historyAgent);
     }; //toHistory
@@ -271,8 +272,9 @@ window.onload = () => {
         const insertElement = controls.sequence.selectedOptions[0];
         for (let element of controls.sequence.selectedOptions) {
             const data = population.serializeOption(element, sequenceMap);
-            population.addElement(data, true, controls.sequence, insertElement);
-            sequenceMap.set(sequenceMap.get(element));
+            const newOption = population.addElement(data, true, controls.sequence, insertElement);
+            if (data.constructor != String)
+                sequenceMap.set(newOption, data);
             element.selected = false;
         } //loop
         updateStatus(controls.sequence);
