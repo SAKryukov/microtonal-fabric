@@ -61,6 +61,7 @@ window.onload = () => {
 
     const population = {
         cloneObject: data => Object.assign({}, data),
+        cloneArray: data => Object.assign([], data),
         clear: () => {
             sequenceMap.clear();
             while (controls.sequence.firstElementChild)
@@ -115,7 +116,7 @@ window.onload = () => {
                 const sequenceElement = sequenceMap.get(child);
                 data.push({
                     selected: child.selected,
-                    element: sequenceElement ? population.cloneObject(sequenceElement) : child.textContent.slice(2)
+                    element: sequenceElement ? population.cloneArray(sequenceElement) : child.textContent.slice(2)
                 });
             } //loop
             if (data.length < 1) return;
