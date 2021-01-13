@@ -1,6 +1,6 @@
 ﻿## Microtonal Fabric
 
-Microtonal Fabric is a microtonal music platform based on WebAudio API. It is a framework for building universal or customized microtonal musical keyboard instruments, microtonal experiments and computing, music study, and teaching music lessons with possible remote options.
+[Microtonal Fabric](https://SAKryukov.github.io/microtonal-fabric) is a microtonal music platform based on WebAudio API. It is a framework for building universal or customized microtonal musical keyboard instruments, microtonal experiments and computing, music study, and teaching music lessons with possible remote options.
 
 All applications presented by this project can be played live using a Web browser.
 
