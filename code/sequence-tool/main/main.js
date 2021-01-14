@@ -431,4 +431,12 @@ window.onload = () => {
     populate([[0, 0, 0]]);
     toHistory(historyAgent);
 
+    window.addEventListener('beforeunload', function (e) { // protect from losing unsaved data
+        if (!historyAgent.canQuit) { // guarantee unload prompt for all browsers:
+            e.preventDefault();
+            e.returnValue = true; // show confirmation dialog!
+        } else // guarantee unconditional unload for all browsers:
+            delete(e.returnValue);
+    }); //// protect from losing unsaved data
+
 }; //window.onload
