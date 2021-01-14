@@ -300,6 +300,8 @@ window.onload = () => {
         const throwBadPattern = () => { throw new Error("Invalid rhythmic pattern. Default (uniform) pattern is used."); };
         const pattern = (pattern => {
             try {
+                let firstBeatSize = null;
+                let sameBeatSize = true;
                 pattern = pattern.trim();
                 if (!pattern.match(/^[0-9 ]+$/)) throwBadPattern();
                 const beats = pattern.match(/[^ ]+/g);
@@ -308,12 +310,19 @@ window.onload = () => {
                 for (let beat of beats) {
                     const beatSize = parseInt(beat);    
                     if (beatSize === 0) throwBadPattern();
+                    if (firstBeatSize == null)
+                        firstBeatSize = beatSize;
+                    if (sameBeatSize && beatSize != firstBeatSize)
+                        sameBeatSize = false;
                     result.push(beatSize);
                 } //loop
+                return sameBeatSize ? [] : result;
             } catch (ex) {
                 showException(ex);
+                return [];
             } //exception
         })(controls.advanced.rhythmicPattern.value); //pattern
+        const uniformBeatSize = pattern.length < 2;
         let customDuration = null;
         const rhythmizationTiming = controls.advanced.rhythmizationTiming.selectedIndex;
         if (rhythmizationTiming == rhythmizationTimingChoice.customDuration || rhythmizationTimingChoice.customLegato) {
