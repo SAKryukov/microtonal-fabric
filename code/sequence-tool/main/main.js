@@ -297,7 +297,7 @@ window.onload = () => {
 
     const doRhythmization = () => {
         showException();
-        const throwBadPattern = () => { throw new Error("Invalid rhythmic pattern. Default (uniform) pattern is be used."); };
+        const throwBadPattern = () => { throw new Error("Invalid rhythmic pattern. Default (uniform) pattern is used."); };
         const pattern = (pattern => {
             try {
                 pattern = pattern.trim();
