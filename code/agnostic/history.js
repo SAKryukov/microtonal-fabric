@@ -35,10 +35,15 @@ class History {
             historyPosition++;
         } //this.#implementation.push
 
+        this.#implementation.canQuit = () => {
+            return history.length < 2;
+        }; //this.#implementation.canQuit
+
     } //constructor
 
     get canUndo() { return this.#implementation.can(false); }
     get canRedo() { return this.#implementation.can(true); }
+    get canQuit() { return this.#implementation.canQuit(); }
     undo() { return this.#implementation.move(false); }
     redo() { return this.#implementation.move(true); }
     push(data) { return this.#implementation.push(data); }
