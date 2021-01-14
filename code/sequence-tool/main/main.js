@@ -16,10 +16,10 @@ window.onload = () => {
         keepDuration: 1,
         maximumDuration: 2,
         customDuration: 3,
-        uniformLegato: 4,
+        customLegato: 4,
         legato: 5};
-    const rhythmizationTimingChoiceDefault = rhythmizationTimingChoice.uniformLegato;
-    const rhythmizationTimingChoiceNames = [ "Average duration", "Keep original durations", "Maximum duration" , "Custom duration using Time", "Uniform legato using Time", "Legato" ];
+    const rhythmizationTimingChoiceDefault = rhythmizationTimingChoice.customLegato;
+    const rhythmizationTimingChoiceNames = [ "Average duration", "Keep original durations", "Maximum duration" , "Custom duration using Time", "Legato using Time", "Legato" ];
 
     const controls = getControls();
     for (let value of rhythmizationTimingChoiceNames) {
@@ -49,7 +49,8 @@ window.onload = () => {
             element.disabled = !value;
         for (let element of [controls.advanced.clone, controls.advanced.remove])
             element.disabled = !value;
-        controls.advanced.rhythmization.disabled = target.selectedOptions.length < 6;
+        const cannotRhythm = target.selectedOptions.length < 6; //SA???
+        controls.advanced.rhythmization.disabled = cannotRhythm;
         controls.clipboard.to.disabled = !value;
     }; //updateStatus
     updateStatus(controls.sequence);
@@ -296,9 +297,26 @@ window.onload = () => {
 
     const doRhythmization = () => {
         showException();
+        const throwBadPattern = () => { throw new Error("Invalid rhythmic pattern. Default (uniform) pattern is be used."); };
+        const pattern = (pattern => {
+            try {
+                pattern = pattern.trim();
+                if (!pattern.match(/^[0-9 ]+$/)) throwBadPattern();
+                const beats = pattern.match(/[^ ]+/g);
+                if (beats.length < 1) throwBadPattern();
+                const result = [];
+                for (let beat of beats) {
+                    const beatSize = parseInt(beat);    
+                    if (beatSize === 0) throwBadPattern();
+                    result.push(beatSize);
+                } //loop
+            } catch (ex) {
+                showException(ex);
+            } //exception
+        })(controls.advanced.rhythmicPattern.value); //pattern
         let customDuration = null;
         const rhythmizationTiming = controls.advanced.rhythmizationTiming.selectedIndex;
-        if (rhythmizationTiming == rhythmizationTimingChoice.customDuration || rhythmizationTimingChoice.uniformLegato) {
+        if (rhythmizationTiming == rhythmizationTimingChoice.customDuration || rhythmizationTimingChoice.customLegato) {
             customDuration = parseInt(controls.shift.time.input.value);
             if (!customDuration || isNaN(customDuration))
                 return showException(new Error(`Invalid custom duration: ${controls.shift.time.input.value}`));
@@ -368,12 +386,12 @@ window.onload = () => {
             if (!pressCount) return;
             if (!timeLast) return;
             if (!isFinite(timeFirst)) return;
-            const period = rhythmizationTiming == rhythmizationTimingChoice.uniformLegato ?
+            const period = rhythmizationTiming == rhythmizationTimingChoice.customLegato ?
                 customDuration
                 :
                 Math.round((timeLast - timeFirst) / pressCount);
             let duration = null;
-            if (rhythmizationTiming == rhythmizationTimingChoice.customDuration || rhythmizationTiming == rhythmizationTimingChoice.uniformLegato)
+            if (rhythmizationTiming == rhythmizationTimingChoice.customDuration || rhythmizationTiming == rhythmizationTimingChoice.customLegato)
                 duration = customDuration;
             else if (rhythmizationTiming == rhythmizationTimingChoice.averageDuration)
                 duration = sumDuration / pressCount;

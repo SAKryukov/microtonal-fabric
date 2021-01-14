@@ -47,6 +47,7 @@ const getControls = () => {
             remove: document.querySelector("#advanced button:nth-of-type(2)"),
             rhythmization: document.querySelector("#advanced button:nth-of-type(3)"),
             rhythmizationTiming: document.querySelector("#select-rhythmization"),
+            rhythmicPattern: document.querySelector("#input-rhythmic-pattern"),
         },
         error: document.querySelector("footer i"),
         clipboard: {
