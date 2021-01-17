@@ -20,6 +20,7 @@ const durationTimingChoiceNames = [ "Fixed, ms", "Relative to beat", "Relative t
 const what = www => www[0];
 const where = www => www[1];
 const when = www => www[2];
+const setTime = (www, newValue) => www[2] = newValue;
 
 const rhythmizationTransform = (population, showException) => {
 
@@ -150,16 +151,16 @@ const rhythmizationTransform = (population, showException) => {
             const downTime = lastTime;
             const upTime = lastTime + period * durationSequence[index];
             lastTime = upTime;
-            element.www[2] = Math.round(downTime);
-            element.up.www[2] = Math.round(upTime);
+            setTime(element.www, Math.round(downTime));
+            setTime(element.up.www, Math.round(upTime));
             population.setOptionWww(element.element, element.www);
             population.setOptionWww(element.up.element, element.up.www);
             ++index;
         } //loop
     }; //doRhythmization
 
-    const adjustDuration = (subSequence, sequenceMap, durationString, timing) => {
-        const duration = parseInt(durationString);
+    const adjustDuration = (subSequence, sequenceMap, rhythmicPattern, customBeatSize, durationString, timing) => {
+        const duration = timing == durationTimingChoice.fixed ? parseInt(durationString) : parseFloat(durationString);
         if (!duration)
             try {
                 throwBadDuration();
@@ -172,8 +173,8 @@ const rhythmizationTransform = (population, showException) => {
         for (let element of orderedSet) {
             if (!element.up) continue;
             if (!what(element.www)) continue;
-            const downTime = element.www[2];
-            const upTime = element.up.www[2];
+            const downTime = when(element.www);
+            const upTime = when(element.up.www);
             const currentDuration = upTime - downTime;
             let effectiveDuration = null;
             switch (timing) {
@@ -182,7 +183,8 @@ const rhythmizationTransform = (population, showException) => {
                 case durationTimingChoice.relativeToCurrentDuration:
                     effectiveDuration = currentDuration * duration;
             } //switch
-            element.up.www[2] = Math.round(downTime + effectiveDuration);
+            setTime(element.up.www, Math.round(downTime + effectiveDuration));
+            population.setOptionWww(element.up.element, element.up.www);
         } //loop
         //SA???
     }; //adjustDuration

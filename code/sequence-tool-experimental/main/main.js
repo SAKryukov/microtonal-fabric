@@ -307,8 +307,10 @@ window.onload = () => {
         rhythmizationMethods.adjustDuration(
             controls.sequence.selectedOptions,
             sequenceMap,
+            controls.advanced.rhythmicPattern.value,
+            controls.advanced.rhythmBeatTime.value,
             controls.advanced.durationTime.value,
-            durationTimingChoice[controls.advanced.durationTiming.selectedIndex]);
+            controls.advanced.durationTiming.selectedIndex);
         updateStatus(controls.sequence);
         toHistory(historyAgent);
     }; //adjustDuration
