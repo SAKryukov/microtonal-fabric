@@ -12,17 +12,17 @@
 const durationTimingChoice = {
     fixed: 0,
     relativeToBeat: 1,
-    relativeToLegato: 2,
+    relativeToCurrentDuration: 2,
 };
-const durationTimingChoiceDefault = durationTimingChoice.relativeToLegato;
-const durationTimingChoiceNames = [ "Fixed, ms", "Relative to beat", "Relative to legato duration" ];
+const durationTimingChoiceDefault = durationTimingChoice.relativeToCurrentDuration;
+const durationTimingChoiceNames = [ "Fixed, ms", "Relative to beat", "Relative to current duration" ];
 
 const what = www => www[0];
 const where = www => www[1];
 const when = www => www[2];
 
 const rhythmizationTransform = (
-    pattern, rhythmizationChoice, customDurationValue,
+    pattern, customDurationValue,
     subSequence,
     population, showException, sequenceMap) => {
 
@@ -62,14 +62,11 @@ const rhythmizationTransform = (
         })(patternValue); //reducedPattern
 
     let customDuration = null;
-    const durationTiming = rhythmizationChoice;
 
-    if (durationTiming == durationTimingChoice.customDuration || durationTimingChoice.customLegato) {
-        customDuration = parseInt(customDurationValue);
-        if (!customDuration || isNaN(customDuration))
-            return showException(new Error(`Invalid custom duration: ${customDurationValue}`));
-    } //if customDuration
-    
+    customDuration = parseInt(customDurationValue);
+    if (!customDuration || isNaN(customDuration))
+        return showException(new Error(`Invalid custom duration: ${customDurationValue}`));
+
     const orderedSet = (() => {
         const result = [];
         for (let element of subSequence) {

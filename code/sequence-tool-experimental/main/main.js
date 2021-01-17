@@ -39,8 +39,8 @@ window.onload = () => {
             element.disabled = !value;
         for (let element of [controls.advanced.clone, controls.advanced.remove])
             element.disabled = !value;
-        const cannotRhythm = target.selectedOptions.length < 6; //SA???
-        controls.advanced.rhythmization.disabled = cannotRhythm;
+        controls.advanced.durationAdjust.disabled  = target.selectedOptions.length < 3; //SA???
+        controls.advanced.rhythmization.disabled = target.selectedOptions.length < 6; //SA???
         controls.clipboard.to.disabled = !value;
     }; //updateStatus
     updateStatus(controls.sequence);
@@ -293,7 +293,6 @@ window.onload = () => {
         showException();
         rhythmizationTransform(
             controls.advanced.rhythmicPattern.value,
-            controls.advanced.durationTiming.selectedIndex,
             controls.shift.time.input.value,
             controls.sequence.selectedOptions,
             population,
