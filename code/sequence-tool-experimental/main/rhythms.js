@@ -31,7 +31,7 @@ const rhythmizationTransform = (population, showException) => {
         array.splice(max);
     }; //populateArrayTo
 
-    const getPatternValue = pattern => {
+    const buildRhythmicPattern = pattern => {
         try {
             let firstBeatSize = null;
             let sameBeatSize = true;
@@ -54,7 +54,7 @@ const rhythmizationTransform = (population, showException) => {
             showException(ex);
             return [];
         } //exception
-    }; //getPatternValue
+    }; //buildRhythmicPattern
 
     const analyzeSequence = (subSequence, sequenceMap) => {
         const orderedSet = (() => {
@@ -106,10 +106,10 @@ const rhythmizationTransform = (population, showException) => {
         return orderedSet;
     }; //analyzeSequence
 
-    const doRhythmization = (subSequence, sequenceMap, pattern, customBeatSize) => {
-        const patternValue = getPatternValue(pattern);
-        if (patternValue.length < 1)
-            patternValue.push(1);
+    const doRhythmization = (subSequence, sequenceMap, rhythmicPattern, customBeatSize) => {
+        const pattern = buildRhythmicPattern(rhythmicPattern);
+        if (pattern.length < 1)
+            pattern.push(1);
         const beatSize = parseInt(customBeatSize);
         const orderedSet = analyzeSequence(subSequence, sequenceMap);
         ((sequence) => {
@@ -132,18 +132,20 @@ const rhythmizationTransform = (population, showException) => {
             if (!timeLast) return;
             if (!isFinite(timeFirst)) return;
             const durationSequence = [];
-            populateArrayTo(durationSequence, patternValue, pressCount);
+            populateArrayTo(durationSequence, pattern, pressCount);
             const beatCount = durationSequence.reduce(
                 (accumulator, currentValue) => accumulator + currentValue, 0);
             const period = !!beatSize ? beatSize : sumDuration / beatCount;
-            const duration = period * beatCount;
             let index = 0;
+            let lastTime = timeFirst;
             for (let element of sequence) {
                 if (!element.up) continue;
                 if (!what(element.www)) continue;
-                const effectiveDuration = duration != null ? duration : when(element.up.www) - when(element.www);
-                element.www[2] = Math.round(timeFirst + index * period);
-                element.up.www[2] = Math.round(when(element.www) + effectiveDuration);
+                const downTime = lastTime;
+                const upTime = lastTime + period * durationSequence[index];
+                lastTime = upTime;
+                element.www[2] = Math.round(downTime);
+                element.up.www[2] = Math.round(upTime);
                 population.setOptionWww(element.element, element.www);
                 population.setOptionWww(element.up.element, element.up.www);
                 ++index;
