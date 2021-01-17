@@ -24,6 +24,7 @@ const when = www => www[2];
 const rhythmizationTransform = (population, showException) => {
 
     const throwBadPattern = () => { throw new Error("Invalid rhythmic pattern. Default (uniform) pattern is used."); };
+    const throwBadDuration = () => { throw new Error("Invalid duration"); };
     const populateArray = (array, source) => array.push.apply(array, source);
     const populateArrayTo = (array, source, max) => {
         while (array.length < max)
@@ -106,55 +107,83 @@ const rhythmizationTransform = (population, showException) => {
         return orderedSet;
     }; //analyzeSequence
 
+    const getSequenceMetrics = sequence => {
+        let timeFirst = Number.POSITIVE_INFINITY;
+        let timeLast = 0;
+        let pressCount = 0;
+        let maxDuration = -1;
+        let totalDuration = 0;
+        for (let element of sequence) {
+            if (!element.up) continue;
+            if (!what(element.www)) continue;
+            if (timeFirst > when(element.www)) timeFirst = when(element.www);
+            if (timeLast < when(element.www)) timeLast = when(element.www);
+            const duration = when(element.up.www) - when(element.www);
+            if (maxDuration < duration) maxDuration = duration;
+            totalDuration += duration;
+            pressCount++;
+        } //loop
+        return { timeFirst: timeFirst, timeLast: timeLast, pressCount: pressCount,
+            maxDuration: maxDuration, totalDuration: totalDuration };
+    }; //getSequenceMetrics
+
     const doRhythmization = (subSequence, sequenceMap, rhythmicPattern, customBeatSize) => {
         const pattern = buildRhythmicPattern(rhythmicPattern);
         if (pattern.length < 1)
             pattern.push(1);
         const beatSize = parseInt(customBeatSize);
         const orderedSet = analyzeSequence(subSequence, sequenceMap);
-        ((sequence) => {
-            let timeFirst = Number.POSITIVE_INFINITY;
-            let timeLast = 0;
-            let pressCount = 0;
-            let maxDuration = -1;
-            let sumDuration = 0;
-            for (let element of sequence) {
-                if (!element.up) continue;
-                if (!what(element.www)) continue;
-                if (timeFirst > when(element.www)) timeFirst = when(element.www);
-                if (timeLast < when(element.www)) timeLast = when(element.www);
-                const duration = when(element.up.www) - when(element.www);
-                if (maxDuration < duration) maxDuration = duration;
-                sumDuration += duration;
-                pressCount++;
-            } //loop
-            if (!pressCount) return;
-            if (!timeLast) return;
-            if (!isFinite(timeFirst)) return;
-            const durationSequence = [];
-            populateArrayTo(durationSequence, pattern, pressCount);
-            const beatCount = durationSequence.reduce(
-                (accumulator, currentValue) => accumulator + currentValue, 0);
-            const period = !!beatSize ? beatSize : sumDuration / beatCount;
-            let index = 0;
-            let lastTime = timeFirst;
-            for (let element of sequence) {
-                if (!element.up) continue;
-                if (!what(element.www)) continue;
-                const downTime = lastTime;
-                const upTime = lastTime + period * durationSequence[index];
-                lastTime = upTime;
-                element.www[2] = Math.round(downTime);
-                element.up.www[2] = Math.round(upTime);
-                population.setOptionWww(element.element, element.www);
-                population.setOptionWww(element.up.element, element.up.www);
-                ++index;
-            } //loop
-        })(orderedSet);    
+        const metrics = getSequenceMetrics(orderedSet);
+        if (!metrics.pressCount) return;
+        if (!metrics.timeLast) return;
+        if (!isFinite(metrics.timeFirst)) return;
+        const durationSequence = [];
+        populateArrayTo(durationSequence, pattern, metrics.pressCount);
+        const beatCount = durationSequence.reduce(
+            (accumulator, currentValue) => accumulator + currentValue, 0);
+        const period = !!beatSize ? beatSize : metrics.totalDuration / beatCount;
+        let index = 0;
+        let lastTime = metrics.timeFirst;
+        for (let element of orderedSet) {
+            if (!element.up) continue;
+            if (!what(element.www)) continue;
+            const downTime = lastTime;
+            const upTime = lastTime + period * durationSequence[index];
+            lastTime = upTime;
+            element.www[2] = Math.round(downTime);
+            element.up.www[2] = Math.round(upTime);
+            population.setOptionWww(element.element, element.www);
+            population.setOptionWww(element.up.element, element.up.www);
+            ++index;
+        } //loop
     }; //doRhythmization
 
-    const adjustDuration = (subSequence, sequenceMap, factor) => {
+    const adjustDuration = (subSequence, sequenceMap, durationString, timing) => {
+        const duration = parseInt(durationString);
+        if (!duration)
+            try {
+                throwBadDuration();
+            } catch(ex) { showException(ex); }
         const orderedSet = analyzeSequence(subSequence, sequenceMap);
+        const metrics = getSequenceMetrics(orderedSet);
+        if (!metrics.pressCount) return;
+        if (!metrics.timeLast) return;
+        if (!isFinite(metrics.timeFirst)) return;
+        for (let element of orderedSet) {
+            if (!element.up) continue;
+            if (!what(element.www)) continue;
+            const downTime = element.www[2];
+            const upTime = element.up.www[2];
+            const currentDuration = upTime - downTime;
+            let effectiveDuration = null;
+            switch (timing) {
+                case durationTimingChoice.fixed: effectiveDuration = duration; break;
+                case durationTimingChoice.relativeToBeat: effectiveDuration = duration; break; //SA???
+                case durationTimingChoice.relativeToCurrentDuration:
+                    effectiveDuration = currentDuration * duration;
+            } //switch
+            element.up.www[2] = Math.round(downTime + effectiveDuration);
+        } //loop
         //SA???
     }; //adjustDuration
     
