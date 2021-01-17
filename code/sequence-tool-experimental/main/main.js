@@ -289,18 +289,29 @@ window.onload = () => {
         toHistory(historyAgent);
     }; //remove
 
+    const rhythmizationMethods = rhythmizationTransform(population, showException);
+
     const doRhythmization = () => {
         showException();
-        rhythmizationTransform(
-            controls.advanced.rhythmicPattern.value,
-            controls.shift.time.input.value,
+        rhythmizationMethods.doRhythmization(
             controls.sequence.selectedOptions,
-            population,
-            showException,
-            sequenceMap);
+            sequenceMap,
+            controls.advanced.rhythmicPattern.value,
+            controls.advanced.rhythmBeatTime.value);
         updateStatus(controls.sequence);
         toHistory(historyAgent);
     }; //doRhythmization
+
+    const adjustDuration = () => {
+        showException();
+        rhythmizationMethods.adjustDuration(
+            controls.sequence.selectedOptions,
+            sequenceMap,
+            controls.advanced.durationTime.value,
+            durationTimingChoice[controls.advanced.durationTiming.selectedIndex]);
+        updateStatus(controls.sequence);
+        toHistory(historyAgent);
+    }; //adjustDuration
 
     (function filterInputs() {
         const filterInput = (control, criterion) => {
@@ -344,6 +355,7 @@ window.onload = () => {
     controls.advanced.clone.onclick = () => clone();
     controls.advanced.remove.onclick = () => remove();
     controls.advanced.rhythmization.onclick = () => doRhythmization();
+    controls.advanced.durationAdjust.onclick = () => adjustDuration();
 
     populate([[0, 0, 0]]);
     setInterval(() => {
