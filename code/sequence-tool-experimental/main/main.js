@@ -12,12 +12,12 @@
 window.onload = () => {
 
     const controls = getControls();
-    for (let value of rhythmizationTimingChoiceNames) {
+    for (let value of durationTimingChoiceNames) {
         const option = document.createElement("option");
         option.textContent = value;
-        controls.advanced.rhythmizationTiming.appendChild(option)
+        controls.advanced.durationTiming.appendChild(option)
     } //loop
-    controls.advanced.rhythmizationTiming.selectedIndex = rhythmizationTimingChoiceDefault;
+    controls.advanced.durationTiming.selectedIndex = durationTimingChoiceDefault;
 
     const thinSpace = String.fromCodePoint(0x2009);
     controls.product.textContent = `${sharedDefinitionSet.years}, v.${thinSpace}${sharedDefinitionSet.version}`;
@@ -186,7 +186,7 @@ window.onload = () => {
         toHistory(historyAgent);
     }; //shift
 
-    const addMark = value => {
+    const addMark = (value, isUp) => {
         showException();
         const selected = controls.sequence.selectedOptions;
         if (selected.length < 1) return;
@@ -210,7 +210,15 @@ window.onload = () => {
             list.removeChild(event.target);
             updateStatus(list);
         }; //mark.onclick
-        controls.sequence.insertBefore(mark, selected[0]);
+        if (isUp)
+            controls.sequence.insertBefore(mark, selected[0]);
+        else {
+            const next = selected[selected.length-1].nextElementSibling;
+            if (next)
+                controls.sequence.insertBefore(mark, next);
+            else
+                controls.sequence.appendChild(mark);
+        } //if
         toHistory(historyAgent);
     }; //addMark
 
@@ -285,7 +293,7 @@ window.onload = () => {
         showException();
         rhythmizationTransform(
             controls.advanced.rhythmicPattern.value,
-            controls.advanced.rhythmizationTiming.selectedIndex,
+            controls.advanced.durationTiming.selectedIndex,
             controls.shift.time.input.value,
             controls.sequence.selectedOptions,
             population,
@@ -302,12 +310,19 @@ window.onload = () => {
                     event.preventDefault();
             });
         } //filterInput
-        filterInput(controls.shift.time.input, (data, value) => {
-            const decimal = '.';
-            if (value.includes(decimal) && data.includes(decimal)) return false;
-            return data.match(/^[0-9\.]*$/);
-        });
-        filterInput(controls.advanced.rhythmicPattern, (data, _) => data.match(/^[0-9\s]+$/));    
+        const filterInputInteger = control => filterInput(control, (data, _) => data.match(/^[0-9]+$/));
+        const filterInputIntegerSet = control => filterInput(control, (data, _) => data.match(/^[0-9\s]+$/));
+        const filterInputIntegerMixedNumberType = control => 
+            filterInput(control, (data, value) => {
+                const decimal = '.';
+                if (value.includes(decimal) && data.includes(decimal)) return false;
+                return data.match(/^[0-9\.]*$/);
+            });
+        //
+        filterInputIntegerMixedNumberType(controls.shift.time.input);
+        filterInputIntegerSet(controls.advanced.rhythmicPattern);
+        filterInputInteger(controls.advanced.rhythmBeatTime);
+        filterInputIntegerMixedNumberType(controls.advanced.durationTime);
     })(); //filterInputs
 
     controls.clipboard.from.onclick = () => fromClipboard(false);
@@ -321,7 +336,8 @@ window.onload = () => {
 
     controls.shift.time.timeSet.onclick = () => shift(2, controls.shift.time.input, operationKind.set);
     controls.shift.time.tempoFactor.onclick = () => shift(2, controls.shift.time.input, operationKind.multiply);
-    controls.mark.add.onclick = () => addMark(controls.mark.input.value);
+    controls.mark.addUp.onclick = () => addMark(controls.mark.input.value, true);
+    controls.mark.addDown.onclick = () => addMark(controls.mark.input.value, false);
 
     controls.move.up.onclick = () => moveUpDown(true);
     controls.move.down.onclick = () => moveUpDown(false);
@@ -331,6 +347,9 @@ window.onload = () => {
     controls.advanced.rhythmization.onclick = () => doRhythmization();
 
     populate([[0, 0, 0]]);
+    setInterval(() => {
+        controls.sequence.style.minWidth = `${controls.sequence.offsetWidth}px`;
+    });
     toHistory(historyAgent);
 
     window.addEventListener('beforeunload', function (e) { // protect from losing unsaved data

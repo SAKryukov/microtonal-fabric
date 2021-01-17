@@ -36,6 +36,7 @@
       * { padding: 0; margin: 0; box-sizing: border-box; user-select: none; }
       * { font-family: sans-serif; }
       select { height: 100%; }
+      input[type=text] { text-overflow: ellipsis; }
       main > select option { font-family: monospace; }
       div > select option { padding-left: var(--big-horizontal-gap); padding-right: var(--big-horizontal-gap); }
       html, body { height: 100%; }
@@ -50,9 +51,11 @@
       section { display: flex; flex-flow: column; flex: auto; }
       button, input, section > div { width: 16rem; }
       section > div { display: flex; flex-direction: row; align-items: flex-start; justify-content: space-between; }
-      #up-down { display: block; }
-      div button { width: fit-content; padding-top: 0; padding-bottom: 0.2em; font-size: 108%; }
-      section button:not(:last-child), section input:not(:last-child) { margin-bottom: var(--vertical-gap);}
+      div button { width: 6.2rem; padding-top: 0; padding-bottom: 0.2em; font-size: 100%; }
+      section > div:last-of-type { display: block; }
+      section button:not(:last-child), section input { margin-bottom: var(--vertical-gap); }
+      #advanced br { content: ""; display: block; margin: 2rem 0; }
+      #advanced button:last-child { margin-top: var(--vertical-gap); }
       footer em { font-style: normal; font-weight: normal; }
       footer i { font-style: normal; margin-left: var(--horizontal-gap); color: red; margin-left: var(--big-horizontal-gap); margin-right: var(--big-horizontal-gap);  overflow-x:auto; white-space: nowrap; user-select: all; }
   </style>
@@ -74,8 +77,8 @@
    <label for="input-mark">Мark:</label>
    <input id="input-mark" type="text" value=""/>
    <div>
-   <button id="button-mark">Add &#x23f6;</button>
-   <button id="button-mark">Add &#x23f7;</button>
+   <button id="button-mark-up">Add &#x23f6;</button>
+   <button id="button-mark-down">Add &#x23f7;</button>
    </div>
    <br/>
    <label accesskey="K" for="input-key"><u>K</u>ey:</label>
@@ -98,17 +101,18 @@
    <button>Clone</button>
    <button>Remove</button>
    <br/>
-   <br/>
-   <br/>
-   <button accesskey="R"><u>R</u>hythmization</button>
-   <br/>
    <label for="input-rhythmic-pattern" accesskey="P">Rhythmic <u>P</u>attern:</label>
    <input id="input-rhythmic-pattern" type="text" value="1"/>
+   <label for="input-beat-time">Beat, ms (empty/0: auto):</label>
+   <input id="input-beat-time" type="text" value=""/>
+   <button accesskey="R"><u>R</u>hythmization</button>
    <br/>
-   <label>Rhythmization Timing:</label>
+   <label for="input-duration">Duration:</label>
+   <input id="input-duration" type="text" value="1"/>
    <div>
-      <select id="select-rhythmization"></select>   
+      <select id="select-duration"></select>   
    </div>
+   <button>Adjust Duration</button>
 </section>
 <section>
    <button id="button-from-keyboard" accesskey="M">Fro<u>m</u> Clipboard</button>

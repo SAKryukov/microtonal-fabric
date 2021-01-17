@@ -9,15 +9,13 @@
 
 "use strict";
 
-const rhythmizationTimingChoice = {
-    averageDuration: 0,
-    keepDuration: 1,
-    maximumDuration: 2,
-    customDuration: 3,
-    customLegato: 4,
-    legato: 5};
-const rhythmizationTimingChoiceDefault = rhythmizationTimingChoice.customLegato;
-const rhythmizationTimingChoiceNames = [ "Average duration", "Keep original durations", "Maximum duration" , "Custom duration using Time", "Legato using Time", "Legato" ];
+const durationTimingChoice = {
+    fixed: 0,
+    relativeToBeat: 1,
+    relativeToLegato: 2,
+};
+const durationTimingChoiceDefault = durationTimingChoice.relativeToLegato;
+const durationTimingChoiceNames = [ "Fixed, ms", "Relative to beat", "Relative to legato duration" ];
 
 const what = www => www[0];
 const where = www => www[1];
@@ -64,8 +62,9 @@ const rhythmizationTransform = (
         })(patternValue); //reducedPattern
 
     let customDuration = null;
-    const rhythmizationTiming = rhythmizationChoice;
-    if (rhythmizationTiming == rhythmizationTimingChoice.customDuration || rhythmizationTimingChoice.customLegato) {
+    const durationTiming = rhythmizationChoice;
+
+    if (durationTiming == durationTimingChoice.customDuration || durationTimingChoice.customLegato) {
         customDuration = parseInt(customDurationValue);
         if (!customDuration || isNaN(customDuration))
             return showException(new Error(`Invalid custom duration: ${customDurationValue}`));
@@ -139,21 +138,8 @@ const rhythmizationTransform = (
         if (!pressCount) return;
         if (!timeLast) return;
         if (!isFinite(timeFirst)) return;
-        const period = rhythmizationTiming == rhythmizationTimingChoice.customLegato ?
-            customDuration
-            :
-            Math.round((timeLast - timeFirst) / pressCount);
-
-            let duration = null;
-        if (rhythmizationTiming == rhythmizationTimingChoice.customDuration || rhythmizationTiming == rhythmizationTimingChoice.customLegato)
-            duration = customDuration;
-        else if (rhythmizationTiming == rhythmizationTimingChoice.averageDuration)
-            duration = sumDuration / pressCount;
-        else if (rhythmizationTiming == rhythmizationTimingChoice.maximumDuration)
-            duration = maxDuration;
-        else if (rhythmizationTiming == rhythmizationTimingChoice.legato)
-            duration = period;
-        // keepDuration is default
+        const period = customDuration;
+        const duration = customDuration;
 
         let index = 0;
         for (let element of sequence) {
