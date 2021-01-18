@@ -366,12 +366,15 @@ window.onload = () => {
     });
     toHistory(historyAgent);
 
-    window.addEventListener('beforeunload', function (e) { // protect from losing unsaved data
+    window.addEventListener("beforeunload", function (e) { // protect from losing unsaved data
         if (!historyAgent.canQuit) { // guarantee unload prompt for all browsers:
             e.preventDefault();
             e.returnValue = true; // show confirmation dialog!
         } else // guarantee unconditional unload for all browsers:
             delete(e.returnValue);
-    }); //// protect from losing unsaved data
+    }); // protect from losing unsaved data
+
+    document.body.addEventListener("focusout", e => updateStatus(controls.sequence));
+    document.body.addEventListener("focusin", e => updateStatus(controls.sequence));
 
 }; //window.onload

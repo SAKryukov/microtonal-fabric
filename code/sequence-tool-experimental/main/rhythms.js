@@ -15,9 +15,14 @@ const durationTimingChoice = {
     legato: 2,
     minimum: 3,
     maximum: 4,
+    isRelative: function(index) {
+        return index == this.relativeToCurrentDuration ||
+               index == this.minimum ||
+               index == this.maximum;
+        },
 };
 const durationTimingChoiceDefault = durationTimingChoice.relativeToCurrentDuration;
-const durationTimingChoiceNames = [ "Relative to current duration", "Fixed, ms", "Legato", "Minimum", "Maximum" ];
+const durationTimingChoiceNames = [ "Relative to current duration", "Fixed, ms", "Legato", "Relative to minimum", "Relative to maximum" ];
 
 const what = www => www[0];
 const where = www => www[1];
@@ -196,8 +201,8 @@ const rhythmizationTransform = (population, showException) => {
                     case durationTimingChoice.fixed: effectiveDuration = duration; break;
                     case durationTimingChoice.relativeToCurrentDuration:
                         effectiveDuration = currentDuration * duration; break;
-                    case durationTimingChoice.minimum: effectiveDuration = metrics.minDuration; break;
-                    case durationTimingChoice.maximum: effectiveDuration = metrics.maxDuration; break;
+                    case durationTimingChoice.minimum: effectiveDuration = metrics.minDuration * duration; break;
+                    case durationTimingChoice.maximum: effectiveDuration = metrics.maxDuration * duration; break;
                     default: effectiveDuration = null;
                 } //switch
                 if (effectiveDuration) {
