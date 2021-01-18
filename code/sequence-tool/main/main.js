@@ -12,12 +12,12 @@
 window.onload = () => {
 
     const controls = getControls();
-    for (let value of rhythmizationTimingChoiceNames) {
+    for (let value of durationTimingChoiceNames) {
         const option = document.createElement("option");
         option.textContent = value;
-        controls.advanced.rhythmizationTiming.appendChild(option)
+        controls.advanced.durationTiming.appendChild(option)
     } //loop
-    controls.advanced.rhythmizationTiming.selectedIndex = rhythmizationTimingChoiceDefault;
+    controls.advanced.durationTiming.selectedIndex = durationTimingChoiceDefault;
 
     const thinSpace = String.fromCodePoint(0x2009);
     controls.product.textContent = `${sharedDefinitionSet.years}, v.${thinSpace}${sharedDefinitionSet.version}`;
@@ -39,8 +39,8 @@ window.onload = () => {
             element.disabled = !value;
         for (let element of [controls.advanced.clone, controls.advanced.remove])
             element.disabled = !value;
-        const cannotRhythm = target.selectedOptions.length < 6; //SA???
-        controls.advanced.rhythmization.disabled = cannotRhythm;
+        controls.advanced.durationAdjust.disabled = target.selectedOptions.length < 3; //SA???
+        controls.advanced.rhythmization.disabled = target.selectedOptions.length < 6; //SA???
         controls.clipboard.to.disabled = !value;
     }; //updateStatus
     updateStatus(controls.sequence);
@@ -53,6 +53,10 @@ window.onload = () => {
             sequenceMap.clear();
             while (controls.sequence.firstElementChild)
                 controls.sequence.removeChild(controls.sequence.firstElementChild);
+        },
+        clearSelection: () => {
+            for (let element of controls.sequence.children)
+                element.selected = false;
         },
         formatWwwItem: (what, where, when) => {
             where = `${where}`.padStart(3, "0");
@@ -84,6 +88,13 @@ window.onload = () => {
             else
                 return element.textContent.slice(2);
         },
+        loadSequence: function(sequence, append, select) {
+            if (!append)
+                this.clear();
+            updateStatus(controls.sequence);
+            for (let www of sequence)
+                this.addElement(www, select);
+        } //loadSequence
     }; //population
 
     const fromHistory = data => {
@@ -128,13 +139,6 @@ window.onload = () => {
         return result;
     })(); //historyAgent
 
-    const populate = (sequence, append) => {
-        if (!append)
-            population.clear();
-        for (let www of sequence)
-            population.addElement(www);
-    } //populate
-
     const serialize = sequenceMap => {
         const sequence = [];
         for (let element of controls.sequence.selectedOptions) 
@@ -149,12 +153,17 @@ window.onload = () => {
                 const validatedSequence = Recorder.readAndValidateData(value, true); // from ui.components/Recorder.js
                 if (!validatedSequence)
                     throw new Error("Invalid sequence");
-                populate(validatedSequence, append);
-                toHistory(historyAgent);
+                if (controls.sequence.selectedOptions.length > 0) {
+                    toHistory(historyAgent); // save selection
+                    population.clearSelection();
+                } // do selection
+                population.loadSequence(validatedSequence, append, true);
             } catch (ex) {
                 showException(ex);
             } //exception
         });
+        updateStatus(controls.sequence);
+        toHistory(historyAgent);
     }; //fromClipboard
 
     const toClipboard = () => {
@@ -183,10 +192,11 @@ window.onload = () => {
                 www[indexInWWW] = 0;
             population.setOptionWww(option, www);
         } //loop
+        updateStatus(controls.sequence);
         toHistory(historyAgent);
     }; //shift
 
-    const addMark = value => {
+    const addMark = (value, isUp) => {
         showException();
         const selected = controls.sequence.selectedOptions;
         if (selected.length < 1) return;
@@ -210,7 +220,16 @@ window.onload = () => {
             list.removeChild(event.target);
             updateStatus(list);
         }; //mark.onclick
-        controls.sequence.insertBefore(mark, selected[0]);
+        if (isUp)
+            controls.sequence.insertBefore(mark, selected[0]);
+        else {
+            const next = selected[selected.length-1].nextElementSibling;
+            if (next)
+                controls.sequence.insertBefore(mark, next);
+            else
+                controls.sequence.appendChild(mark);
+        } //if
+        updateStatus(controls.sequence);
         toHistory(historyAgent);
     }; //addMark
 
@@ -281,19 +300,29 @@ window.onload = () => {
         toHistory(historyAgent);
     }; //remove
 
+    const rhythmizationMethods = rhythmizationTransform(population, showException);
+
     const doRhythmization = () => {
         showException();
-        rhythmizationTransform(
-            controls.advanced.rhythmicPattern.value,
-            controls.advanced.rhythmizationTiming.selectedIndex,
-            controls.shift.time.input.value,
+        rhythmizationMethods.doRhythmization(
             controls.sequence.selectedOptions,
-            population,
-            showException,
-            sequenceMap);
+            sequenceMap,
+            controls.advanced.rhythmicPattern.value,
+            controls.advanced.rhythmBeatTime.value);
         updateStatus(controls.sequence);
         toHistory(historyAgent);
     }; //doRhythmization
+
+    const adjustDuration = () => {
+        showException();
+        rhythmizationMethods.adjustDuration(
+            controls.sequence.selectedOptions,
+            sequenceMap,
+            controls.advanced.durationTime.value,
+            controls.advanced.durationTiming.selectedIndex);
+        updateStatus(controls.sequence);
+        toHistory(historyAgent);
+    }; //adjustDuration
 
     (function filterInputs() {
         const filterInput = (control, criterion) => {
@@ -302,12 +331,19 @@ window.onload = () => {
                     event.preventDefault();
             });
         } //filterInput
-        filterInput(controls.shift.time.input, (data, value) => {
-            const decimal = '.';
-            if (value.includes(decimal) && data.includes(decimal)) return false;
-            return data.match(/^[0-9\.]*$/);
-        });
-        filterInput(controls.advanced.rhythmicPattern, (data, _) => data.match(/^[0-9\s]+$/));    
+        const filterInputInteger = control => filterInput(control, (data, _) => data.match(/^[0-9]+$/));
+        const filterInputIntegerSet = control => filterInput(control, (data, _) => data.match(/^[0-9\s]+$/));
+        const filterInputIntegerMixedNumberType = control => 
+            filterInput(control, (data, value) => {
+                const decimal = '.';
+                if (value.includes(decimal) && data.includes(decimal)) return false;
+                return data.match(/^[0-9\.]*$/);
+            });
+        //
+        filterInputIntegerMixedNumberType(controls.shift.time.input);
+        filterInputIntegerSet(controls.advanced.rhythmicPattern);
+        filterInputInteger(controls.advanced.rhythmBeatTime);
+        filterInputIntegerMixedNumberType(controls.advanced.durationTime);
     })(); //filterInputs
 
     controls.clipboard.from.onclick = () => fromClipboard(false);
@@ -321,7 +357,8 @@ window.onload = () => {
 
     controls.shift.time.timeSet.onclick = () => shift(2, controls.shift.time.input, operationKind.set);
     controls.shift.time.tempoFactor.onclick = () => shift(2, controls.shift.time.input, operationKind.multiply);
-    controls.mark.add.onclick = () => addMark(controls.mark.input.value);
+    controls.mark.addUp.onclick = () => addMark(controls.mark.input.value, true);
+    controls.mark.addDown.onclick = () => addMark(controls.mark.input.value, false);
 
     controls.move.up.onclick = () => moveUpDown(true);
     controls.move.down.onclick = () => moveUpDown(false);
@@ -329,16 +366,23 @@ window.onload = () => {
     controls.advanced.clone.onclick = () => clone();
     controls.advanced.remove.onclick = () => remove();
     controls.advanced.rhythmization.onclick = () => doRhythmization();
+    controls.advanced.durationAdjust.onclick = () => adjustDuration();
 
-    populate([[0, 0, 0]]);
+    population.loadSequence([[0, 0, 0]]);
+    setInterval(() => {
+        controls.sequence.style.minWidth = `${controls.sequence.offsetWidth}px`;
+    });
     toHistory(historyAgent);
 
-    window.addEventListener('beforeunload', function (e) { // protect from losing unsaved data
+    window.addEventListener("beforeunload", function (e) { // protect from losing unsaved data
         if (!historyAgent.canQuit) { // guarantee unload prompt for all browsers:
             e.preventDefault();
             e.returnValue = true; // show confirmation dialog!
         } else // guarantee unconditional unload for all browsers:
             delete(e.returnValue);
-    }); //// protect from losing unsaved data
+    }); // protect from losing unsaved data
+
+    document.body.addEventListener("focusout", () => updateStatus(controls.sequence));
+    document.body.addEventListener("focusin", () => updateStatus(controls.sequence));
 
 }; //window.onload

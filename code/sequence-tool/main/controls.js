@@ -34,7 +34,8 @@ const getControls = () => {
         },
         mark: {
             input: document.getElementById("input-mark"),
-            add: document.getElementById("button-mark"),
+            addUp: document.getElementById("button-mark-up"),
+            addDown: document.getElementById("button-mark-down"),
         },
         move: {
             up: upDown.firstElementChild,
@@ -45,9 +46,12 @@ const getControls = () => {
         advanced: {
             clone: document.querySelector("#advanced button:nth-of-type(1)"),
             remove: document.querySelector("#advanced button:nth-of-type(2)"),
-            rhythmization: document.querySelector("#advanced button:nth-of-type(3)"),
-            rhythmizationTiming: document.querySelector("#select-rhythmization"),
             rhythmicPattern: document.querySelector("#input-rhythmic-pattern"),
+            rhythmBeatTime: document.querySelector("#input-beat-time"),
+            rhythmization: document.querySelector("#advanced button:nth-of-type(3)"),
+            durationTime: document.querySelector("#input-duration"),
+            durationTiming: document.querySelector("#select-duration"),
+            durationAdjust: document.querySelector("#advanced button:last-of-type"),
         },
         error: document.querySelector("footer i"),
         clipboard: {
