@@ -84,6 +84,13 @@ window.onload = () => {
             else
                 return element.textContent.slice(2);
         },
+        loadSequence: function(sequence, append, select) {
+            if (!append)
+                population.clear();
+            updateStatus(controls.sequence);
+            for (let www of sequence)
+                this.addElement(www, select);
+        } //loadSequence
     }; //population
 
     const fromHistory = data => {
@@ -128,14 +135,6 @@ window.onload = () => {
         return result;
     })(); //historyAgent
 
-    const populate = (sequence, append) => {
-        if (!append)
-            population.clear();
-        updateStatus(controls.sequence);
-        for (let www of sequence)
-            population.addElement(www);
-    } //populate
-
     const serialize = sequenceMap => {
         const sequence = [];
         for (let element of controls.sequence.selectedOptions) 
@@ -150,7 +149,7 @@ window.onload = () => {
                 const validatedSequence = Recorder.readAndValidateData(value, true); // from ui.components/Recorder.js
                 if (!validatedSequence)
                     throw new Error("Invalid sequence");
-                populate(validatedSequence, append);
+                population.loadSequence(validatedSequence, append, true);
             } catch (ex) {
                 showException(ex);
             } //exception
@@ -361,7 +360,7 @@ window.onload = () => {
     controls.advanced.rhythmization.onclick = () => doRhythmization();
     controls.advanced.durationAdjust.onclick = () => adjustDuration();
 
-    populate([[0, 0, 0]]);
+    population.loadSequence([[0, 0, 0]]);
     setInterval(() => {
         controls.sequence.style.minWidth = `${controls.sequence.offsetWidth}px`;
     });
