@@ -131,6 +131,7 @@ window.onload = () => {
     const populate = (sequence, append) => {
         if (!append)
             population.clear();
+        updateStatus(controls.sequence);
         for (let www of sequence)
             population.addElement(www);
     } //populate
@@ -374,7 +375,7 @@ window.onload = () => {
             delete(e.returnValue);
     }); // protect from losing unsaved data
 
-    document.body.addEventListener("focusout", e => updateStatus(controls.sequence));
-    document.body.addEventListener("focusin", e => updateStatus(controls.sequence));
+    document.body.addEventListener("focusout", () => updateStatus(controls.sequence));
+    document.body.addEventListener("focusin", () => updateStatus(controls.sequence));
 
 }; //window.onload
