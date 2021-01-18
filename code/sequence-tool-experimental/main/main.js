@@ -54,6 +54,10 @@ window.onload = () => {
             while (controls.sequence.firstElementChild)
                 controls.sequence.removeChild(controls.sequence.firstElementChild);
         },
+        clearSelection: () => {
+            for (let element of controls.sequence.children)
+                element.selected = false;
+        },
         formatWwwItem: (what, where, when) => {
             where = `${where}`.padStart(3, "0");
             when = `${when}`.padStart(8, "0");
@@ -86,7 +90,7 @@ window.onload = () => {
         },
         loadSequence: function(sequence, append, select) {
             if (!append)
-                population.clear();
+                this.clear();
             updateStatus(controls.sequence);
             for (let www of sequence)
                 this.addElement(www, select);
@@ -149,6 +153,10 @@ window.onload = () => {
                 const validatedSequence = Recorder.readAndValidateData(value, true); // from ui.components/Recorder.js
                 if (!validatedSequence)
                     throw new Error("Invalid sequence");
+                if (controls.sequence.selectedOptions.length > 0) {
+                    toHistory(historyAgent); // save selection
+                    population.clearSelection();
+                } // do selection
                 population.loadSequence(validatedSequence, append, true);
             } catch (ex) {
                 showException(ex);
