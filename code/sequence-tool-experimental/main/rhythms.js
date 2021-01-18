@@ -10,12 +10,12 @@
 "use strict";
 
 const durationTimingChoice = {
-    fixed: 0,
-    relativeToBeat: 1,
-    relativeToCurrentDuration: 2,
+    relativeToCurrentDuration: 0,
+    fixed: 1,
+    legato: 2,
 };
 const durationTimingChoiceDefault = durationTimingChoice.relativeToCurrentDuration;
-const durationTimingChoiceNames = [ "Fixed, ms", "Relative to beat", "Relative to current duration" ];
+const durationTimingChoiceNames = [ "Relative to current duration", "Fixed, ms", "Legato" ];
 
 const what = www => www[0];
 const where = www => www[1];
@@ -113,19 +113,22 @@ const rhythmizationTransform = (population, showException) => {
         let timeLast = 0;
         let pressCount = 0;
         let maxDuration = -1;
-        let totalDuration = 0;
+        let durationSum = 0;
+        let minDuration = Number.POSITIVE_INFINITY;
         for (let element of sequence) {
             if (!element.up) continue;
             if (!what(element.www)) continue;
             if (timeFirst > when(element.www)) timeFirst = when(element.www);
-            if (timeLast < when(element.www)) timeLast = when(element.www);
+            if (timeLast < when(element.up.www)) timeLast = when(element.up.www);
             const duration = when(element.up.www) - when(element.www);
-            if (maxDuration < duration) maxDuration = duration;
-            totalDuration += duration;
+            if (duration < minDuration) minDuration = duration;
+            if (duration > maxDuration) maxDuration = duration;
+            durationSum += duration;
             pressCount++;
         } //loop
         return { timeFirst: timeFirst, timeLast: timeLast, pressCount: pressCount,
-            maxDuration: maxDuration, totalDuration: totalDuration };
+                 minDuration: minDuration, maxDuration: maxDuration,
+                 durationSum: durationSum, totalDuration: timeLast - timeFirst };
     }; //getSequenceMetrics
 
     const doRhythmization = (subSequence, sequenceMap, rhythmicPattern, customBeatSize) => {
@@ -159,9 +162,9 @@ const rhythmizationTransform = (population, showException) => {
         } //loop
     }; //doRhythmization
 
-    const adjustDuration = (subSequence, sequenceMap, rhythmicPattern, customBeatSize, durationString, timing) => {
+    const adjustDuration = (subSequence, sequenceMap, durationString, timing) => {
         const duration = timing == durationTimingChoice.fixed ? parseInt(durationString) : parseFloat(durationString);
-        if (!duration)
+        if (!duration && timing != durationTimingChoice.legato)
             try {
                 throwBadDuration();
             } catch(ex) { showException(ex); }
@@ -170,23 +173,31 @@ const rhythmizationTransform = (population, showException) => {
         if (!metrics.pressCount) return;
         if (!metrics.timeLast) return;
         if (!isFinite(metrics.timeFirst)) return;
+        let previousElement = null;
         for (let element of orderedSet) {
             if (!element.up) continue;
             if (!what(element.www)) continue;
-            const downTime = when(element.www);
-            const upTime = when(element.up.www);
-            const currentDuration = upTime - downTime;
-            let effectiveDuration = null;
-            switch (timing) {
-                case durationTimingChoice.fixed: effectiveDuration = duration; break;
-                case durationTimingChoice.relativeToBeat: effectiveDuration = duration; break; //SA???
-                case durationTimingChoice.relativeToCurrentDuration:
-                    effectiveDuration = currentDuration * duration;
-            } //switch
-            setTime(element.up.www, Math.round(downTime + effectiveDuration));
-            population.setOptionWww(element.up.element, element.up.www);
+            if (previousElement && timing == durationTimingChoice.legato) {
+                setTime(previousElement.up.www, when(element.www));
+                population.setOptionWww(previousElement.up.element, previousElement.up.www);
+            } else {
+                const downTime = when(element.www);
+                const upTime = when(element.up.www);
+                const currentDuration = upTime - downTime;
+                    let effectiveDuration = null;
+                switch (timing) {
+                    case durationTimingChoice.fixed: effectiveDuration = duration; break;
+                    case durationTimingChoice.relativeToCurrentDuration:
+                        effectiveDuration = currentDuration * duration;
+                    default: effectiveDuration = null;
+                } //switch
+                if (effectiveDuration) {
+                    setTime(element.up.www, Math.round(downTime + effectiveDuration));
+                    population.setOptionWww(element.up.element, element.up.www);    
+                } //if
+            } //if
+            previousElement = element;
         } //loop
-        //SA???
     }; //adjustDuration
     
     return { doRhythmization: doRhythmization, adjustDuration: adjustDuration };

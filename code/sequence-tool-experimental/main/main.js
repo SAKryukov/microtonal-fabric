@@ -39,7 +39,7 @@ window.onload = () => {
             element.disabled = !value;
         for (let element of [controls.advanced.clone, controls.advanced.remove])
             element.disabled = !value;
-        controls.advanced.durationAdjust.disabled  = target.selectedOptions.length < 3; //SA???
+        controls.advanced.durationAdjust.disabled = target.selectedOptions.length < 3; //SA???
         controls.advanced.rhythmization.disabled = target.selectedOptions.length < 6; //SA???
         controls.clipboard.to.disabled = !value;
     }; //updateStatus
@@ -150,11 +150,12 @@ window.onload = () => {
                 if (!validatedSequence)
                     throw new Error("Invalid sequence");
                 populate(validatedSequence, append);
-                toHistory(historyAgent);
             } catch (ex) {
                 showException(ex);
             } //exception
         });
+        updateStatus(controls.sequence);
+        toHistory(historyAgent);
     }; //fromClipboard
 
     const toClipboard = () => {
@@ -183,6 +184,7 @@ window.onload = () => {
                 www[indexInWWW] = 0;
             population.setOptionWww(option, www);
         } //loop
+        updateStatus(controls.sequence);
         toHistory(historyAgent);
     }; //shift
 
@@ -219,6 +221,7 @@ window.onload = () => {
             else
                 controls.sequence.appendChild(mark);
         } //if
+        updateStatus(controls.sequence);
         toHistory(historyAgent);
     }; //addMark
 
@@ -307,8 +310,6 @@ window.onload = () => {
         rhythmizationMethods.adjustDuration(
             controls.sequence.selectedOptions,
             sequenceMap,
-            controls.advanced.rhythmicPattern.value,
-            controls.advanced.rhythmBeatTime.value,
             controls.advanced.durationTime.value,
             controls.advanced.durationTiming.selectedIndex);
         updateStatus(controls.sequence);
