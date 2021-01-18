@@ -13,9 +13,11 @@ const durationTimingChoice = {
     relativeToCurrentDuration: 0,
     fixed: 1,
     legato: 2,
+    minimum: 3,
+    maximum: 4,
 };
 const durationTimingChoiceDefault = durationTimingChoice.relativeToCurrentDuration;
-const durationTimingChoiceNames = [ "Relative to current duration", "Fixed, ms", "Legato" ];
+const durationTimingChoiceNames = [ "Relative to current duration", "Fixed, ms", "Legato", "Minimum", "Maximum" ];
 
 const what = www => www[0];
 const where = www => www[1];
@@ -59,6 +61,8 @@ const rhythmizationTransform = (population, showException) => {
     }; //buildRhythmicPattern
 
     const analyzeSequence = (subSequence, sequenceMap) => {
+        if (!subSequence) return;
+        if (subSequence.length < 1) return;
         const orderedSet = (() => {
             const result = [];
             for (let element of subSequence) {
@@ -76,6 +80,7 @@ const rhythmizationTransform = (population, showException) => {
             });
             return result;
         })();
+        if (!orderedSet) return;
         const history = (orderedSet => { // segregate histories of each key
             const history = new Map();
             for (let element of orderedSet) {
@@ -137,6 +142,7 @@ const rhythmizationTransform = (population, showException) => {
             pattern.push(1);
         const beatSize = parseInt(customBeatSize);
         const orderedSet = analyzeSequence(subSequence, sequenceMap);
+        if (!orderedSet) return;
         const metrics = getSequenceMetrics(orderedSet);
         if (!metrics.pressCount) return;
         if (!metrics.timeLast) return;
@@ -167,8 +173,9 @@ const rhythmizationTransform = (population, showException) => {
         if (!duration && timing != durationTimingChoice.legato)
             try {
                 throwBadDuration();
-            } catch(ex) { showException(ex); }
+            } catch(ex) { showException(ex); return; }
         const orderedSet = analyzeSequence(subSequence, sequenceMap);
+        if (!orderedSet) return;
         const metrics = getSequenceMetrics(orderedSet);
         if (!metrics.pressCount) return;
         if (!metrics.timeLast) return;
@@ -188,7 +195,9 @@ const rhythmizationTransform = (population, showException) => {
                 switch (timing) {
                     case durationTimingChoice.fixed: effectiveDuration = duration; break;
                     case durationTimingChoice.relativeToCurrentDuration:
-                        effectiveDuration = currentDuration * duration;
+                        effectiveDuration = currentDuration * duration; break;
+                    case durationTimingChoice.minimum: effectiveDuration = metrics.minDuration; break;
+                    case durationTimingChoice.maximum: effectiveDuration = metrics.maxDuration; break;
                     default: effectiveDuration = null;
                 } //switch
                 if (effectiveDuration) {
