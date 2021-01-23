@@ -102,17 +102,18 @@ const rhythmizationTransform = (population, showException) => {
         (history => {
             for (let [_, historyList] of history) {
                 if (historyList.length < 2) continue;
-                let lastDown = null;
-                let lastUp = null;
+                const sortedDowns = [];
+                const sortedUps = [];
                 for (let element of historyList) {
                     if (what(element.www))
-                        lastDown = element;
-                    else {
-                        lastUp = element;
-                        if (lastDown)
-                            lastDown.up = element;
-                    } //if
+                        sortedDowns.push(element);
+                    else
+                        sortedUps.push(element);
                 } //loop historyList
+                let length = sortedUps.length;
+                if (sortedDowns.length < length) length = sortedDowns.length;
+                for (let index = 0; index < length; ++index)
+                    sortedDowns[index].up = sortedUps[index];
             } //loop
         })(history);
         return orderedSet;
