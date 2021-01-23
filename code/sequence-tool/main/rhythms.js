@@ -104,12 +104,11 @@ const rhythmizationTransform = (population, showException) => {
                 if (historyList.length < 2) continue;
                 const sortedDowns = [];
                 const sortedUps = [];
-                for (let element of historyList) {
+                for (let element of historyList)
                     if (what(element.www))
                         sortedDowns.push(element);
                     else
                         sortedUps.push(element);
-                } //loop historyList
                 let length = sortedUps.length;
                 if (sortedDowns.length < length) length = sortedDowns.length;
                 for (let index = 0; index < length; ++index)

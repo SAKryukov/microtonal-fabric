@@ -13,7 +13,7 @@ const keyboardMode = { normal: 0, chord: 1, chordSet: 2, chordRootSet: 4 };
 
 class Keyboard {
 
-    #implementation = { mode: 0, chord: new Set(), chordRoot: -1, useHighlight: true };
+    #implementation = { mode: 0, chord: new Set(), playingElements: new(Set), chordRoot: -1, useHighlight: true };
 
     constructor(element, layout, options, recorder) { //options: definitionSet.keyboardOptions
 
@@ -35,11 +35,11 @@ class Keyboard {
             } //loop
         }; //refreshChordColors
 
-        const handleElement = (element, elementData, on, noSound) => {
-            if (!elementData) return; // important when called from handleIndex, which call is caused by recorder.play
-            if (!noSound && this.#implementation.recorder)
+        const handleElement = (element, elementData, on) => {
+            if (!elementData) return; // important when called from handleIndex, called via by recorder.play
+            if (this.#implementation.recorder)
                 (this.#implementation.recorder.record(on, elementData.index));
-            if (!noSound && this.#implementation.keyHandler)
+            if (this.#implementation.keyHandler)
                 this.#implementation.keyHandler(elementData.index, on);
             if (this.#implementation.useHighlight)
                 element.style.fill = on ? options.highlightColor : elementData.originalColor;
@@ -50,17 +50,27 @@ class Keyboard {
             handleElement(element, keyMap.get(element), on);
         }; //handleIndex
 
+        const handlePlayingElementSet = (element, on) => {
+            if (on)
+                this.#implementation.playingElements.add(element);
+            else
+                this.#implementation.playingElements.delete(element);
+        }; //handlePlayingElementSet
+
         const handler = (element, on) => {
             const elementData = keyMap.get(element);
             if (this.#implementation.mode == keyboardMode.chord) {
-                if (this.#implementation.chordRoot < 0 || this.#implementation.chord.size <= 0)
-                    return handleElement(element, elementData, on);
+                if (this.#implementation.chordRoot < 0 || this.#implementation.chord.size <= 0) {
+                    handleElement(element, elementData, on);
+                    return handlePlayingElementSet(element, on);
+                } //if
                 const delta = elementData.index - this.#implementation.chordRoot;
                 for (let chordIndex of this.#implementation.chord) {
                     const shiftedChordIndex = chordIndex + delta;
                     if (shiftedChordIndex < 0 || shiftedChordIndex >= this.#implementation.keyList.length) continue;
                     const chordElement = this.#implementation.keyList[shiftedChordIndex];
                     handleElement(chordElement, keyMap.get(chordElement), on);
+                    handlePlayingElementSet(chordElement, on);
                 } //loop
             } else if (on && this.#implementation.mode & keyboardMode.chordSet) {
                 if (!on) return;
@@ -96,8 +106,10 @@ class Keyboard {
                     } //if
                 } //if
                 refreshChordColors(this.#implementation.mode);
-            } else if (this.#implementation.mode == keyboardMode.normal)
+            } else if (this.#implementation.mode == keyboardMode.normal) {
                 handleElement(element, elementData, on);
+                handlePlayingElementSet(element, on);
+            } //if
         }; //handler
 
         const keys = Array.prototype.slice.call(element.firstElementChild.children);
@@ -180,9 +192,10 @@ class Keyboard {
                 this.#implementation.recorder.play(handleIndex);
         }; //this.#implementation.playSequence
 
-        this.#implementation.stopAllSounds = noSound => {
-            for (let key of this.#implementation.keyList)
-                handleElement(key, keyMap.get(key), false, noSound);
+        this.#implementation.stopAllSounds = () => {
+            for (let element of this.#implementation.playingElements)
+                handleElement(element, keyMap.get(element), false);
+            this.#implementation.playingElements.clear();
         }; //this.#implementation.stopAllSounds
 
     } //constructor
@@ -201,7 +214,7 @@ class Keyboard {
     get mode() { return this.#implementation.mode; }
 
     playSequence(sequence) { this.#implementation.playSequence(sequence); }
-    stopAllSounds(noSound) { this.#implementation.stopAllSounds(noSound); } // used to cancel PlaySequence
+    stopAllSounds() { this.#implementation.stopAllSounds(); } // used to cancel PlaySequence
 
     get useHighlight() { return this.#implementation.useHighlight; }
     set useHighlight(value) { this.#implementation.useHighlight = value; }

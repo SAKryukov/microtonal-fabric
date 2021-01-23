@@ -47,7 +47,7 @@ class Recorder {
                 clearTimeout(functionToCancel);            
             this.#implementation.cancelSequence.splice(0);
             for (let keyboard of this.#implementation.keyboardSet)
-                keyboard.stopAllSounds(true);
+                keyboard.stopAllSounds();
             if (this.#implementation.silenceHandler)
                 this.#implementation.silenceHandler();
             return this.#implementation.callPhaseChangeHandler(true);
