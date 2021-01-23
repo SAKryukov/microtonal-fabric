@@ -39,7 +39,7 @@ window.onload = () => {
             element.disabled = !value;
         for (let element of [controls.advanced.clone, controls.advanced.remove])
             element.disabled = !value;
-        controls.advanced.durationAdjust.disabled = target.selectedOptions.length < 3; //SA???
+        controls.advanced.durationAdjust.disabled = target.selectedOptions.length < 2; //SA???
         controls.advanced.rhythmization.disabled = target.selectedOptions.length < 6; //SA???
         controls.clipboard.to.disabled = !value;
     }; //updateStatus
