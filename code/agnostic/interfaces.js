@@ -10,6 +10,7 @@
 "use strict";
 
 class IInterface {
+
     static isImplementedBy(testObject) {
         const thisAsPrototype = Reflect.getPrototypeOf(new this());
         const list = Reflect.ownKeys(thisAsPrototype);
@@ -20,7 +21,14 @@ class IInterface {
         }
         return true;
     } //isImplementedBy
+
     static throwNotImplemented(implementor) {
         throw new Error(`${implementor.constructor.name} should implement ${this.name}`);
-    }
+    } //throwNotImplemented
+
+    static throwIfNotImplemented(implementor) {
+        if (!this.isImplementedBy(implementor))
+            this.throwNotImplemented(implementor);
+    } //throwNotImplemented
+
 } //class IInterface
