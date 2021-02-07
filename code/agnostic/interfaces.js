@@ -12,6 +12,8 @@
 class IInterface {
 
     static isImplementedBy(testObject) {
+        if (testObject == null) return false;
+        if (testObject.constructor == Function) testObject = new testObject();
         const thisAsPrototype = Reflect.getPrototypeOf(new this());
         const list = Reflect.ownKeys(thisAsPrototype);
         for (let property of list) {
@@ -23,7 +25,12 @@ class IInterface {
     } //isImplementedBy
 
     static throwNotImplemented(implementor) {
-        throw new Error(`${implementor.constructor.name} should implement ${this.name}`);
+        if (implementor == null)
+            throw new Error(`${implementor} cannot implement ${this.name}`);
+        const implementorName = implementor == Function
+            ? implementor.name
+            : implementor.constructor.name;
+        throw new Error(`${implementorName} should implement ${this.name}`);
     } //throwNotImplemented
 
     static throwIfNotImplemented(implementor) {
