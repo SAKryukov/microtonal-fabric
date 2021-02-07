@@ -9,10 +9,19 @@
 
 "use strict";
 
+const IInterfaceStrictness = {
+    anyNumberOfFunctionArguments: 0,
+    sameNumberOfFunctionArguments: 1,
+    implementorShouldHandleSameNumberOfFunctionArgumentsOrMore: 2,
+    implementorShouldHandleSameNumberOfFunctionArgumentsOrLess: 3,
+    default: 0,
+}; //IInterfaceStrictness
+
 class IInterface {
 
-    static isImplementedBy(testObject) {
+    static isImplementedBy(testObject, strictness) {
         if (testObject == null) return false;
+        if (strictness == null) strictness = IInterfaceStrictness.default;
         if (testObject.constructor == Function) testObject = new testObject();
         const thisAsPrototype = Reflect.getPrototypeOf(new this());
         const list = Reflect.ownKeys(thisAsPrototype);
@@ -20,7 +29,20 @@ class IInterface {
             if (thisAsPrototype[property].constructor != Function) continue;
             const test = testObject[property];
             if (!test || test.constructor != Function) return false;
-        }
+            if (strictness == IInterfaceStrictness.anyNumberOfFunctionArguments) continue;
+            const requiredArgumentCount = thisAsPrototype[property].length;
+            const implementedArgumentCount = test.length;
+            switch(strictness) {
+                case IInterfaceStrictness.sameNumberOfFunctionArguments:
+                    if (requiredArgumentCount != implementedArgumentCount) return false;
+                    break;
+                case IInterfaceStrictness.implementorShouldHandleSameNumberOfFunctionArgumentsOrMore:
+                    if (implementedArgumentCount < requiredArgumentCount) return false;
+                    break;
+                case IInterfaceStrictness.implementorShouldHandleSameNumberOfFunctionArgumenOrLess:
+                        if (implementedArgumentCount > requiredArgumentCount) return false;
+                } //switch
+        } //loop
         return true;
     } //isImplementedBy
 
@@ -33,8 +55,8 @@ class IInterface {
         throw new Error(`${implementorName} should implement ${this.name}`);
     } //throwNotImplemented
 
-    static throwIfNotImplemented(implementor) {
-        if (!this.isImplementedBy(implementor))
+    static throwIfNotImplemented(implementor, strictness) {
+        if (!this.isImplementedBy(implementor, strictness))
             this.throwNotImplemented(implementor);
     } //throwNotImplemented
 
