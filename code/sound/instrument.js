@@ -1,14 +1,11 @@
-// Microtonal Music Study with Chromatic Lattice Keyboard
+// Microtonal Fabric
 //
 // Copyright (c) Sergey A Kryukov, 2017-2021
 //
 // http://www.SAKryukov.org
 // http://www.codeproject.com/Members/SAKryukov
 // https://github.com/SAKryukov
-// https://github.com/SAKryukov/microtonal-chromatic-lattice-keyboard
-//
-// Original publication:
-// https://www.codeproject.com/Articles/5268512/Sound-Builder
+// https://github.com/SAKryukov/microtonal-fabric
 
 class Instrument extends ModulatorSet {
 

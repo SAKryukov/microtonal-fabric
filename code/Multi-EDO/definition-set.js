@@ -1,14 +1,11 @@
-﻿// Microtonal Music Study with Chromatic Lattice Keyboard
+﻿// Microtonal Fabric
 //
 // Copyright (c) Sergey A Kryukov, 2017-2021
 //
 // http://www.SAKryukov.org
 // http://www.codeproject.com/Members/SAKryukov
 // https://github.com/SAKryukov
-// https://github.com/SAKryukov/microtonal-chromatic-lattice-keyboard
-//
-// Original publication:
-// https://www.codeproject.com/Articles/1204180/Microtonal-Music-Study-Chromatic-Lattice-Keyboard
+// https://github.com/SAKryukov/microtonal-fabric
 
 "use strict";
 
