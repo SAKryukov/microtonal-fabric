@@ -55,6 +55,7 @@ class AbstractKeyboard {
                 this.#implementation.keyHandler(elementData.index, on);
             if (this.#implementation.useHighlight)
                 this.highlightKey(element, on ? keyHightlight.down : keyHightlight.normal);
+            handlePlayingElementSet(element, on);
         }; //handleElement
 
         const handleIndex = (index, on) => {
@@ -63,6 +64,8 @@ class AbstractKeyboard {
         }; //handleIndex
 
         const handlePlayingElementSet = (element, on) => {
+            if (this.#implementation.mode & keyboardMode.chord > 0) return;
+            if (this.#implementation.mode & keyboardMode.chordRootSet > 0) return;
             if (on)
                 this.#implementation.playingElements.add(element);
             else
@@ -119,7 +122,6 @@ class AbstractKeyboard {
                 refreshChordColors(this.#implementation.mode);
             } else if (this.#implementation.mode == keyboardMode.normal) {
                 handleElement(element, elementData, on);
-                handlePlayingElementSet(element, on);
             } //if
         }; //handler
 
