@@ -26,6 +26,7 @@ class IInterface {
         const thisAsPrototype = Reflect.getPrototypeOf(new this());
         const list = Reflect.ownKeys(thisAsPrototype);
         for (let property of list) {
+            if (thisAsPrototype[property] == thisAsPrototype.constructor) continue;
             if (thisAsPrototype[property].constructor != Function) continue;
             const test = testObject[property];
             if (!test || test.constructor != Function) return false;
