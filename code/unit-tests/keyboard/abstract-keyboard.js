@@ -121,8 +121,14 @@ class AbstractKeyboard {
         }; //handler
 
         const keys = this.createKeys(element);
-
         this.#implementation.keyList = keys;
+
+        (() => { //registerKeys
+            let index = 0;
+            for (let key of keys)
+                keyMap.set(key, { index: index++ });
+        })(); //registerKeys
+
         /* //SA???
         keys.sort((a, b) => {
             if (b.x.baseVal.value == a.x.baseVal.value && b.y.baseVal.value == a.y.baseVal.value)
@@ -164,7 +170,7 @@ class AbstractKeyboard {
         this.#implementation.assignHandlers = _ => {
             setMultiTouch(
                 element,
-                element => this.isTouchElement(element),
+                keyElement => this.isTouchElement(element, keyElement),
                 (element, _, on) => { handler(element, on); });
             for (let key of keys) {
                 key.onmousedown = event => handler(event.target, true);

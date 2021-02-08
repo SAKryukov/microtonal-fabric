@@ -17,9 +17,9 @@ class MinimalKeyboard extends AbstractKeyboard {
         const result = [];
         for (let index = 0; index < 4; ++index) {
             const key = document.createElement("div");
-            key.style.width = "30px";
-            key.style.height = "30px";
-            key.style.border = "solid thin red";
+            key.style.width = "100px";
+            key.style.height = "100px";
+            key.style.outline = "solid thin red";
             key.style.margin = "0";
             key.style.display = "inline-block";
             result.push(key);
@@ -35,7 +35,9 @@ class MinimalKeyboard extends AbstractKeyboard {
             case keyHightlight.chordRoot: return element.style.backgroundColor = "orange";
         }
     }
-    isTouchElement(parentElement, element) { return false; }
+    isTouchElement(parentElement, element) {
+        return element && element.parentElement == parentElement;
+    }
 } //class MinimalKeyboard
 
 
