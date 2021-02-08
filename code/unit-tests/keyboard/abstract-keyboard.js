@@ -15,8 +15,8 @@ const keyHightlight = { normal: 0, down: 1, chord: 2, chordRoot: 4 };
 class IKeyboardGeometry extends IInterface {
     createKeys(parentElement) {}
     highlightKey(keyElement, keyboardMode) {}
-    isKey(parentElement, keyElement) {} // for touch interface
-    get defaultChord() {}
+    isTouchKey(parentElement, keyElement) {} // for touch interface
+    get defaultChord() {} // should return array of indices of keys in default chord
     customKeyHandler(keyElement, keyData, on) {} // return false to stop embedded handling
 } //IKeyboardGeometry
 
@@ -24,14 +24,14 @@ class AbstractKeyboard {
 
     #implementation = { mode: 0, chord: new Set(), playingElements: new(Set), chordRoot: -1, useHighlight: true };
 
-    constructor(element, recorder) {
+    constructor(parentElement, recorder) {
 
         IKeyboardGeometry.throwIfNotImplemented(this, IInterfaceStrictness.sameNumberOfFunctionArguments);
 
         this.#implementation.recorder = recorder;
 
         this.#implementation.setVisibility = on => {
-            element.style.display = on ? "block" : "none";
+            parentElement.style.display = on ? "block" : "none";
         }; //this.#implementation.setVisibility
         const keyMap = new Map();
 
@@ -127,9 +127,9 @@ class AbstractKeyboard {
 
         this.#implementation.assignHandlers = _ => {
             setMultiTouch(
-                element,
-                keyElement => this.isKey(element, keyElement),
-                (element, _, on) => { handler(element, on); });
+                parentElement,
+                keyElement => this.isTouchKey(parentElement, keyElement),
+                (keyElement, _, on) => { handler(keyElement, on); });
             for (let key of this.#implementation.keyList) {
                 key.onmousedown = event => handler(event.target, true);
                 key.onmouseup = event => handler(event.target, false);
@@ -138,9 +138,18 @@ class AbstractKeyboard {
             } //loop
         } //this.#implementation.assignHandlers
 
+        this.#implementation.stopAllSounds = () => {
+            for (let element of this.#implementation.playingElements)
+                handleElement(element, keyMap.get(element), false);
+            this.#implementation.playingElements.clear();
+        }; //this.#implementation.stopAllSounds
+
         this.#implementation.recreate = () => {
-            //SA??? recorder to stop
-            const keys = this.createKeys(element);
+            if (recorder) 
+                recorder.cancelPlaying(); // stop playing in all keyboards serviced by the same recorder
+            else
+                this.#implementation.stopAllSounds();
+            const keys = this.createKeys(parentElement);
             this.#implementation.keyList = keys;
             let index = 0;
             const useDefaultChord = this.defaultChord
@@ -186,12 +195,6 @@ class AbstractKeyboard {
             if (this.#implementation.recorder)
                 this.#implementation.recorder.play(handleIndex);
         }; //this.#implementation.playSequence
-
-        this.#implementation.stopAllSounds = () => {
-            for (let element of this.#implementation.playingElements)
-                handleElement(element, keyMap.get(element), false);
-            this.#implementation.playingElements.clear();
-        }; //this.#implementation.stopAllSounds
 
     } //constructor
 

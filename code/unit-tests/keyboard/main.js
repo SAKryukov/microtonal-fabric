@@ -25,6 +25,7 @@ class MinimalKeyboard extends AbstractKeyboard {
             key.style.width = "100px";
             key.style.height = "100px";
             key.style.outline = "solid thin red";
+            key.style.outlineOffset = "0px";
             key.style.padding = "0.2em";
             key.style.margin = "0";
             key.style.display = "inline-block";
@@ -43,10 +44,10 @@ class MinimalKeyboard extends AbstractKeyboard {
             case keyHightlight.chordRoot: return keyElement.style.backgroundColor = "orange";
         } //switch
     } //highlightKey
-    isKey(parentElement, keyElement) {
+    isTouchKey(parentElement, keyElement) {
         return keyElement && keyElement.parentElement == parentElement;
-    } //isKey
-    get defaultChord() {}
+    } //isTouchKey
+    get defaultChord() { return [1, 3, 5] }
     customKeyHandler(keyElement, keyData, on) {
         keyElement.style.color = on ? "black" : "transparent";
     } //customKeyHandler
