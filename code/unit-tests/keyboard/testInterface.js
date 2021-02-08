@@ -9,14 +9,14 @@
 
 "use strict";
 
-class IKeyboardGeometry extends IInterface {
+class ITestKeyboardGeometry extends IInterface {
     createKeys() {}
-    highlightKey(element) {}
+    highlightKey(element, p01, p02) {}
 }
 
 class Keyboard { // abstract, instantiation requires IKeyboardGeometry
     constructor() {
-        IKeyboardGeometry.throwIfNotImplemented(this);
+        //ITestKeyboardGeometry.throwIfNotImplemented(this);
     }
 }
 
@@ -26,6 +26,10 @@ class RoundKeyboard extends Keyboard {
     }
     createKeys() {}
     highlightKey(element) {}
+    static Test() {
+        ITestKeyboardGeometry.throwIfNotImplemented(this, IInterfaceStrictness.implementorShouldHandleSameNumberOfFunctionArgumentsOrLess);
+    }
 }
+RoundKeyboard.Test();
 
 const keyboard = new RoundKeyboard();
