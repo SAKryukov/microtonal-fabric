@@ -24,7 +24,7 @@ class IInterface {
         if (strictness == null) strictness = IInterfaceStrictness.default;
         if (testObject.constructor == Function) testObject = new testObject();
         if (testObject == null || this.prototype == null) return false;
-        const list = Reflect.ownKeys(this.prototype);
+        const properties = Object.getOwnPropertyNames(this.prototype);
         const compareFunctions = (required, implemented) => {
             if (implemented && implemented.constructor != Function) return false;
             if (strictness == IInterfaceStrictness.anyNumberOfFunctionArguments) return true;
@@ -47,12 +47,12 @@ class IInterface {
             if ((required.set == null && implemented.set != null) || (required.set != null && implemented.set == null)) return false;
             return true; 
         } //compareGettersSetters
-        for (let property of list) {
+        for (let property of properties) {
             if (this.prototype[property] == this.prototype.constructor) continue;
             const descriptor = Object.getOwnPropertyDescriptor(this.prototype, property);
             if (descriptor.get != null || descriptor.get != null) {
                 if (!compareGettersSetters(descriptor, Object.getOwnPropertyDescriptor(testObject.constructor.prototype, property))) return false;
-            } else if (this.prototype[property] != null && this.prototype[property].constructor == Function) {
+            } else if (descriptor.value != null && descriptor.value.constructor == Function) {
                 if (!compareFunctions(this.prototype[property], testObject[property])) return false;
             } //if
         } //loop
