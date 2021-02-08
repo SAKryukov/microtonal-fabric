@@ -43,6 +43,7 @@ class Keyboard {
                 this.#implementation.keyHandler(elementData.index, on);
             if (this.#implementation.useHighlight)
                 element.style.fill = on ? options.highlightColor : elementData.originalColor;
+            handlePlayingElementSet(element, on);
         }; //handleElement
 
         const handleIndex = (index, on) => {
@@ -51,6 +52,8 @@ class Keyboard {
         }; //handleIndex
 
         const handlePlayingElementSet = (element, on) => {
+            if (this.#implementation.mode & keyboardMode.chord > 0) return;
+            if (this.#implementation.mode & keyboardMode.chordRootSet > 0) return;
             if (on)
                 this.#implementation.playingElements.add(element);
             else
@@ -108,7 +111,6 @@ class Keyboard {
                 refreshChordColors(this.#implementation.mode);
             } else if (this.#implementation.mode == keyboardMode.normal) {
                 handleElement(element, elementData, on);
-                handlePlayingElementSet(element, on);
             } //if
         }; //handler
 

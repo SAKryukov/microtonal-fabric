@@ -40,18 +40,24 @@ class Recorder {
         const when = performance.now();
         this.#implementation.recordSequence.push([what, where, when]);
     } //record
+
+    cancelPlaying() {
+        if (!this.#implementation.phase.has(soundRecorderPhase.playing)) return;
+        for (let functionToCancel of this.#implementation.cancelSequence)
+            clearTimeout(functionToCancel);            
+        this.#implementation.cancelSequence.splice(0);
+        for (let keyboard of this.#implementation.keyboardSet)
+            keyboard.stopAllSounds();
+        if (this.#implementation.silenceHandler)
+            this.#implementation.silenceHandler();
+        return this.#implementation.callPhaseChangeHandler(true);
+    } //cancelPlaying
     
     play(handler) {
-        if (this.#implementation.phase.has(soundRecorderPhase.playing)) { //cancel
-            for (let functionToCancel of this.#implementation.cancelSequence)
-                clearTimeout(functionToCancel);            
-            this.#implementation.cancelSequence.splice(0);
-            for (let keyboard of this.#implementation.keyboardSet)
-                keyboard.stopAllSounds();
-            if (this.#implementation.silenceHandler)
-                this.#implementation.silenceHandler();
-            return this.#implementation.callPhaseChangeHandler(true);
-        } //if cancel
+        if (this.#implementation.phase.has(soundRecorderPhase.playing)) {
+            this.cancelPlaying();
+            return;
+        } //if
         this.#implementation.phase.add(soundRecorderPhase.playing);
         this.#implementation.callPhaseChangeHandler();
         let actualPlayCount = this.#implementation.playSequence.length;
