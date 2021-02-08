@@ -26,25 +26,28 @@ class MinimalKeyboard extends AbstractKeyboard {
             parentElement.appendChild(key);
         }
         return result;
-    }
-    highlightKey(element, keyboardMode) {
+    } //createKeys
+    highlightKey(keyElement, keyboardMode) {
         switch (keyboardMode) {
-            case keyHightlight.normal: return element.style.backgroundColor = "transparent";
-            case keyHightlight.down: return element.style.backgroundColor = "lightBlue";
-            case keyHightlight.chord: return element.style.backgroundColor = "yellow";
-            case keyHightlight.chordRoot: return element.style.backgroundColor = "orange";
-        }
-    }
-    isTouchElement(parentElement, element) {
-        return element && element.parentElement == parentElement;
-    }
+            case keyHightlight.normal: return keyElement.style.backgroundColor = "transparent";
+            case keyHightlight.down: return keyElement.style.backgroundColor = "lightBlue";
+            case keyHightlight.chord: return keyElement.style.backgroundColor = "yellow";
+            case keyHightlight.chordRoot: return keyElement.style.backgroundColor = "orange";
+        } //switch
+    } //highlightKey
+    isKey(parentElement, keyElement) {
+        return keyElement && keyElement.parentElement == parentElement;
+    } //isKey
+    get defaultChord() { return []; }
+    customKeyHandler(keyElement, on) {}
 } //class MinimalKeyboard
-
 
 window.onload = () => {
 
     const parentElement = document.createElement("section");
     document.body.appendChild(parentElement);
     const myKeyboard = new MinimalKeyboard(parentElement, null);
+    const testDescriptor = Object.getOwnPropertyDescriptor(myKeyboard.constructor.prototype, "AAATest");
+    console.log(1);
     
 } //window.onload

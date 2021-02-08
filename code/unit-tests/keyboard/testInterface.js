@@ -9,6 +9,19 @@
 
 "use strict";
 
+class Test {
+    AAA() { return "AAA"; }
+    BBB() {}
+    static reflect() {
+        const isit = Reflect.has(this, "AAA");
+        const keys = Reflect.ownKeys(this.prototype);
+        const pd = Reflect.getOwnPropertyDescriptor(this.prototype, "AAA");
+        //Reflect.
+        return keys;    
+    }
+}
+Test.reflect();
+
 class ITestKeyboardGeometry extends IInterface {
     createKeys() {}
     highlightKey(element, p01, p02) {}

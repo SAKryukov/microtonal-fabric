@@ -14,8 +14,10 @@ const keyHightlight = { normal: 0, down: 1, chord: 2, chordRoot: 4 };
 
 class IKeyboardGeometry extends IInterface {
     createKeys(parentElement) {}
-    highlightKey(element, keyboardMode) {}
-    isTouchElement(parentElement, element) {}
+    highlightKey(keyElement, keyboardMode) {}
+    isKey(parentElement, keyElement) {}
+    get defaultChord() {}
+    customKeyHandler(keyElement, on) {}
 } //IKeyboardGeometry
 
 class AbstractKeyboard {
@@ -120,14 +122,14 @@ class AbstractKeyboard {
             } //if
         }; //handler
 
-        const keys = this.createKeys(element);
-        this.#implementation.keyList = keys;
-
-        (() => { //registerKeys
+        this.#implementation.recreate = () => {
+            const keys = this.createKeys(element);
+            this.#implementation.keyList = keys;
             let index = 0;
             for (let key of keys)
                 keyMap.set(key, { index: index++ });
-        })(); //registerKeys
+        }; //this.#implementation.recreate
+        this.#implementation.recreate();
 
         /* //SA???
         keys.sort((a, b) => {
@@ -170,9 +172,9 @@ class AbstractKeyboard {
         this.#implementation.assignHandlers = _ => {
             setMultiTouch(
                 element,
-                keyElement => this.isTouchElement(element, keyElement),
+                keyElement => this.isKey(element, keyElement),
                 (element, _, on) => { handler(element, on); });
-            for (let key of keys) {
+            for (let key of this.#implementation.keyList) {
                 key.onmousedown = event => handler(event.target, true);
                 key.onmouseup = event => handler(event.target, false);
                 key.onmouseenter = event => { if (event.buttons == 1) handler(event.target, true); }
@@ -215,6 +217,8 @@ class AbstractKeyboard {
         }; //this.#implementation.stopAllSounds
 
     } //constructor
+
+    recreate() { this.#implementation.recreate(); }
 
     set keyHandler(aHandler) { this.#implementation.keyHandler = aHandler; }
 
