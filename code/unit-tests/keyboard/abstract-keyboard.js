@@ -17,7 +17,7 @@ class IKeyboardGeometry extends IInterface {
     highlightKey(keyElement, keyboardMode) {}
     isKey(parentElement, keyElement) {}
     get defaultChord() {}
-    customKeyHandler(keyElement, on) {}
+    customKeyHandler(keyElement, keyData, on) {}
 } //IKeyboardGeometry
 
 class AbstractKeyboard {
@@ -54,6 +54,7 @@ class AbstractKeyboard {
                 this.#implementation.keyHandler(elementData.index, on);
             if (this.#implementation.useHighlight)
                 this.highlightKey(element, on ? keyHightlight.down : keyHightlight.normal);
+            this.customKeyHandler(element, elementData, on);
         }; //handleElement
 
         const handleIndex = (index, on) => {
@@ -126,48 +127,21 @@ class AbstractKeyboard {
             const keys = this.createKeys(element);
             this.#implementation.keyList = keys;
             let index = 0;
-            for (let key of keys)
-                keyMap.set(key, { index: index++ });
+            const useDefaultChord = this.defaultChord
+                && this.defaultChord.constructor == Array
+                && this.defaultChord.length > 0;
+            for (let key of keys) {
+                let inDefaultChord = false, isChordRoot = false;
+                if (useDefaultChord) {
+                    inDefaultChord = this.defaultChord.includes(index);
+                    isChordRoot = index == this.defaultChord[0];
+                    if (isChordRoot) this.#implementation.chordRoot = index;
+                    if (inDefaultChord) this.#implementation.chord.add(index);        
+                } //if
+                keyMap.set(key, { index: index++, chordMember: inDefaultChord, isChordRoot: isChordRoot });
+            } //loop
         }; //this.#implementation.recreate
         this.#implementation.recreate();
-
-        /* //SA???
-        keys.sort((a, b) => {
-            if (b.x.baseVal.value == a.x.baseVal.value && b.y.baseVal.value == a.y.baseVal.value)
-                return 0;
-            else if (b.x.baseVal.value == a.x.baseVal.value) {
-                if (b.y.baseVal.value > a.y.baseVal.value)
-                    return 1;
-                else
-                    return -1;
-            } else if (b.x.baseVal.value > a.x.baseVal.value)
-                return -1;
-            else
-                return 1;
-        });
-
-        let index = 0;
-        const noteNames = soundDefinitionSet.noteNames.edo29;
-        const locationA = noteNames.indexOf("A");
-        for (let key of keys) {
-            const inDefaultChord = layout.defaultChord.includes(index);
-            const isChordRoot = index == layout.defaultChord[0];
-            if (isChordRoot) this.#implementation.chordRoot = index;
-            if (inDefaultChord) this.#implementation.chord.add(index);
-            const note = noteNames[(index + layout.system - (layout.shiftA % layout.system) + locationA) % noteNames.length];
-            const whiteNote = note.length == 1;
-            const originalColor = index == layout.shiftA
-                ?
-                options.standardColorA
-                :
-                (whiteNote && layout.autoWhiteColor ? options.whiteKeyColor : key.style.fill);
-            key.style.fill = originalColor;    
-            keyMap.set(key, {
-                index: index, originalColor: originalColor,
-                chordMember: inDefaultChord, isChordRoot: isChordRoot });
-            ++index;
-        } //loop
-        */
 
         this.#implementation.assignHandlers = _ => {
             setMultiTouch(

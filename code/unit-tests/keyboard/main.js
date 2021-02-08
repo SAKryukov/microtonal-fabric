@@ -12,7 +12,7 @@
 class MinimalKeyboard extends AbstractKeyboard {
     constructor(parentElement, recorder) {
         super(parentElement, recorder);
-    }
+    } //constructor
     createKeys(parentElement) {
         const result = [];
         for (let index = 0; index < 4; ++index) {
@@ -38,8 +38,10 @@ class MinimalKeyboard extends AbstractKeyboard {
     isKey(parentElement, keyElement) {
         return keyElement && keyElement.parentElement == parentElement;
     } //isKey
-    get defaultChord() { return []; }
-    customKeyHandler(keyElement, on) {}
+    get defaultChord() {}
+    customKeyHandler(keyElement, keyData, on) {
+        //console.log(keyData.index, on);
+    } //customKeyHandler
 } //class MinimalKeyboard
 
 window.onload = () => {
@@ -47,7 +49,5 @@ window.onload = () => {
     const parentElement = document.createElement("section");
     document.body.appendChild(parentElement);
     const myKeyboard = new MinimalKeyboard(parentElement, null);
-    const testDescriptor = Object.getOwnPropertyDescriptor(myKeyboard.constructor.prototype, "AAATest");
-    console.log(1);
     
 } //window.onload
