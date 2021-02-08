@@ -10,18 +10,26 @@
 "use strict";
 
 class MinimalKeyboard extends AbstractKeyboard {
+    static getRandom(min, max) {
+        return Math.random() * (max - min) + min;
+    }
     constructor(parentElement, recorder) {
         super(parentElement, recorder);
     } //constructor
     createKeys(parentElement) {
+        while (parentElement.firstChild) parentElement.removeChild(parentElement.lastChild);
         const result = [];
-        for (let index = 0; index < 4; ++index) {
+        const count = this.constructor.getRandom(1, 50);
+        for (let index = 0; index < count; ++index) {
             const key = document.createElement("div");
             key.style.width = "100px";
             key.style.height = "100px";
             key.style.outline = "solid thin red";
+            key.style.padding = "0.2em";
             key.style.margin = "0";
             key.style.display = "inline-block";
+            key.style.color = "transparent";
+            key.textContent = index;
             result.push(key);
             parentElement.appendChild(key);
         }
@@ -40,7 +48,7 @@ class MinimalKeyboard extends AbstractKeyboard {
     } //isKey
     get defaultChord() {}
     customKeyHandler(keyElement, keyData, on) {
-        //console.log(keyData.index, on);
+        keyElement.style.color = on ? "black" : "transparent";
     } //customKeyHandler
 } //class MinimalKeyboard
 
@@ -49,5 +57,6 @@ window.onload = () => {
     const parentElement = document.createElement("section");
     document.body.appendChild(parentElement);
     const myKeyboard = new MinimalKeyboard(parentElement, null);
+    document.querySelector("button").onclick = () => myKeyboard.recreate();
     
 } //window.onload

@@ -15,9 +15,9 @@ const keyHightlight = { normal: 0, down: 1, chord: 2, chordRoot: 4 };
 class IKeyboardGeometry extends IInterface {
     createKeys(parentElement) {}
     highlightKey(keyElement, keyboardMode) {}
-    isKey(parentElement, keyElement) {}
+    isKey(parentElement, keyElement) {} // for touch interface
     get defaultChord() {}
-    customKeyHandler(keyElement, keyData, on) {}
+    customKeyHandler(keyElement, keyData, on) {} // return false to stop embedded handling
 } //IKeyboardGeometry
 
 class AbstractKeyboard {
@@ -47,6 +47,7 @@ class AbstractKeyboard {
         }; //refreshChordColors
 
         const handleElement = (element, elementData, on) => {
+            if (this.customKeyHandler(element, elementData, on) === false) return;
             if (!elementData) return; // important when called from handleIndex, called via by recorder.play
             if (this.#implementation.recorder)
                 (this.#implementation.recorder.record(on, elementData.index));
@@ -54,7 +55,6 @@ class AbstractKeyboard {
                 this.#implementation.keyHandler(elementData.index, on);
             if (this.#implementation.useHighlight)
                 this.highlightKey(element, on ? keyHightlight.down : keyHightlight.normal);
-            this.customKeyHandler(element, elementData, on);
         }; //handleElement
 
         const handleIndex = (index, on) => {
@@ -123,6 +123,19 @@ class AbstractKeyboard {
             } //if
         }; //handler
 
+        this.#implementation.assignHandlers = _ => {
+            setMultiTouch(
+                element,
+                keyElement => this.isKey(element, keyElement),
+                (element, _, on) => { handler(element, on); });
+            for (let key of this.#implementation.keyList) {
+                key.onmousedown = event => handler(event.target, true);
+                key.onmouseup = event => handler(event.target, false);
+                key.onmouseenter = event => { if (event.buttons == 1) handler(event.target, true); }
+                key.onmouseleave = event => { if (event.buttons == 1) handler(event.target, false); }
+            } //loop
+        } //this.#implementation.assignHandlers
+
         this.#implementation.recreate = () => {
             const keys = this.createKeys(element);
             this.#implementation.keyList = keys;
@@ -140,22 +153,9 @@ class AbstractKeyboard {
                 } //if
                 keyMap.set(key, { index: index++, chordMember: inDefaultChord, isChordRoot: isChordRoot });
             } //loop
+            this.#implementation.assignHandlers();
         }; //this.#implementation.recreate
         this.#implementation.recreate();
-
-        this.#implementation.assignHandlers = _ => {
-            setMultiTouch(
-                element,
-                keyElement => this.isKey(element, keyElement),
-                (element, _, on) => { handler(element, on); });
-            for (let key of this.#implementation.keyList) {
-                key.onmousedown = event => handler(event.target, true);
-                key.onmouseup = event => handler(event.target, false);
-                key.onmouseenter = event => { if (event.buttons == 1) handler(event.target, true); }
-                key.onmouseleave = event => { if (event.buttons == 1) handler(event.target, false); }
-            } //loop
-        } //this.#implementation.assignHandlers
-        this.#implementation.assignHandlers();
 
         this.#implementation.getFirst = _ => { return 0; }
         this.#implementation.getLast = _ => { return keys.length - 1; }
