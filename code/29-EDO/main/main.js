@@ -32,7 +32,7 @@ window.onload = () => {
         const keyboards = [];
         let activeInstrumentIndex = 0;
         let instrument;
-        const recorder = new Recorder(keyboards, () => { instrument.silence(); });
+        const recorder = new Recorder(keyboards);
 
         (function setupKeyboards() {
             for (let index = 0; index < definitionSet.keyboardLayoutSet.count; ++index) {

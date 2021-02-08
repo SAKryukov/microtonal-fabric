@@ -13,9 +13,8 @@ class Recorder {
 
     #implementation = { keyboardSet: [], phase: new Set(), playSequence: [], recordSequence: [], cancelSequence: [] };
 
-    constructor(keyboardSet, silenceHandler) {
+    constructor(keyboardSet) {
         this.#implementation.keyboardSet = keyboardSet;
-        this.#implementation.silenceHandler = silenceHandler;
         this.#implementation.callPhaseChangeHandler = stopPlay => {
             if (stopPlay)
                 this.#implementation.phase.delete(soundRecorderPhase.playing);
@@ -48,8 +47,6 @@ class Recorder {
         this.#implementation.cancelSequence.splice(0);
         for (let keyboard of this.#implementation.keyboardSet)
             keyboard.stopAllSounds();
-        if (this.#implementation.silenceHandler)
-            this.#implementation.silenceHandler();
         return this.#implementation.callPhaseChangeHandler(true);
     } //cancelPlaying
     
