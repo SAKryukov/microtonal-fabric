@@ -23,16 +23,13 @@ class IInterface {
         if (testObject == null) return false;
         if (strictness == null) strictness = IInterfaceStrictness.default;
         if (testObject.constructor == Function) testObject = new testObject();
-        const thisAsPrototype = Reflect.getPrototypeOf(new this());
-        const list = Reflect.ownKeys(thisAsPrototype);
-        for (let property of list) {
-            if (thisAsPrototype[property] == thisAsPrototype.constructor) continue;
-            if (thisAsPrototype[property].constructor != Function) continue;
-            const test = testObject[property];
-            if (!test || test.constructor != Function) return false;
-            if (strictness == IInterfaceStrictness.anyNumberOfFunctionArguments) continue;
-            const requiredArgumentCount = thisAsPrototype[property].length;
-            const implementedArgumentCount = test.length;
+        if (testObject == null || this.prototype == null) return false;
+        const list = Reflect.ownKeys(this.prototype);
+        const compareFunctions = (required, implemented) => {
+            if (implemented && implemented.constructor != Function) return false;
+            if (strictness == IInterfaceStrictness.anyNumberOfFunctionArguments) return true;
+            const requiredArgumentCount = required.length;
+            const implementedArgumentCount = implemented.length;
             switch(strictness) {
                 case IInterfaceStrictness.sameNumberOfFunctionArguments:
                     if (requiredArgumentCount != implementedArgumentCount) return false;
@@ -43,6 +40,21 @@ class IInterface {
                 case IInterfaceStrictness.implementorShouldHandleSameNumberOfFunctionArgumenOrLess:
                         if (implementedArgumentCount > requiredArgumentCount) return false;
                 } //switch
+            return true;
+        } //compareFunctions
+        const compareGettersSetters = (required, implemented) => {
+            if ((required.get == null && implemented.get != null) || (required.get != null && implemented.get == null)) return false;
+            if ((required.set == null && implemented.set != null) || (required.set != null && implemented.set == null)) return false;
+            return true; 
+        } //compareGettersSetters
+        for (let property of list) {
+            if (this.prototype[property] == this.prototype.constructor) continue;
+            const descriptor = Object.getOwnPropertyDescriptor(this.prototype, property);
+            if (descriptor.get != null || descriptor.get != null) {
+                if (!compareGettersSetters(descriptor, Object.getOwnPropertyDescriptor(testObject.constructor.prototype, property))) return false;
+            } else if (this.prototype[property] != null && this.prototype[property].constructor == Function) {
+                if (!compareFunctions(this.prototype[property], testObject[property])) return false;
+            } //if
         } //loop
         return true;
     } //isImplementedBy
