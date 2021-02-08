@@ -137,6 +137,7 @@ class AbstractKeyboard {
         } //this.#implementation.assignHandlers
 
         this.#implementation.recreate = () => {
+            //SA??? recorder to stop
             const keys = this.createKeys(element);
             this.#implementation.keyList = keys;
             let index = 0;
