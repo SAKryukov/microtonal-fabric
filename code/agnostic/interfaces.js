@@ -26,6 +26,7 @@ class IInterface {
         if (testObject == null || this.prototype == null) return false;
         const properties = Object.getOwnPropertyNames(this.prototype);
         const compareFunctions = (required, implemented) => {
+            if (implemented == null) return false;
             if (implemented && implemented.constructor != Function) return false;
             if (strictness == IInterfaceStrictness.anyNumberOfFunctionArguments) return true;
             const requiredArgumentCount = required.length;
@@ -43,6 +44,7 @@ class IInterface {
             return true;
         } //compareFunctions
         const compareGettersSetters = (required, implemented) => {
+            if (implemented == null) return false;
             if ((required.get == null && implemented.get != null) || (required.get != null && implemented.get == null)) return false;
             if ((required.set == null && implemented.set != null) || (required.set != null && implemented.set == null)) return false;
             return true; 
