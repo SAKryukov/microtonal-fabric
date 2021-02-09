@@ -11,10 +11,9 @@ const soundRecorderPhase = { recording: 1, playing: 2, };
 
 class Recorder {
 
-    #implementation = { keyboardSet: [], phase: new Set(), playSequence: [], recordSequence: [], cancelSequence: [] };
+    #implementation = { phase: new Set(), playSequence: [], recordSequence: [], cancelSequence: [] };
 
-    constructor(keyboardSet) {
-        this.#implementation.keyboardSet = keyboardSet;
+    constructor() {
         this.#implementation.callPhaseChangeHandler = stopPlay => {
             if (stopPlay)
                 this.#implementation.phase.delete(soundRecorderPhase.playing);
@@ -45,8 +44,6 @@ class Recorder {
         for (let functionToCancel of this.#implementation.cancelSequence)
             clearTimeout(functionToCancel);            
         this.#implementation.cancelSequence.splice(0);
-        for (let keyboard of this.#implementation.keyboardSet)
-            keyboard.stopAllSounds();
         return this.#implementation.callPhaseChangeHandler(true);
     } //cancelPlaying
     
@@ -74,9 +71,11 @@ class Recorder {
         } //loop
     } //play
 
+    get playing() { return this.#implementation.phase.has(soundRecorderPhase.playing); }
+    get recording() { return this.#implementation.phase.has(soundRecorderPhase.recording); }
     set recording(isRecording) {
-        if (isRecording && this.#implementation.phase.has(soundRecorderPhase.recording)) return;
-        if (!isRecording && !this.#implementation.phase.has(soundRecorderPhase.recording)) return;
+        if (isRecording && this.recording) return;
+        if (!isRecording && !this.recording) return;
         if (isRecording)
             this.#implementation.phase.add(soundRecorderPhase.recording)
         else

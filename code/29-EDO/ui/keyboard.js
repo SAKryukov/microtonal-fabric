@@ -153,7 +153,7 @@ class Keyboard {
             ++index;
         } //loop
 
-        this.#implementation.assignHandlers = _ => {
+        this.#implementation.assignHandlers = () => {
             setMultiTouch(
                 element,
                 element => element.constructor == SVGRectElement,
@@ -167,8 +167,8 @@ class Keyboard {
         } //this.#implementation.assignHandlers
         this.#implementation.assignHandlers();
 
-        this.#implementation.getFirst = _ => { return 0; }
-        this.#implementation.getLast = _ => { return keys.length - 1; }
+        this.#implementation.getFirst = () => 0;
+        this.#implementation.getLast = () => keys.length - 1;
 
         this.#implementation.setMode = mode => {
             const doRelease = (mode != keyboardMode.chord && this.#implementation.mode == keyboardMode.chord);
@@ -178,7 +178,7 @@ class Keyboard {
             refreshChordColors(mode);
         }; //this.#implementation.setMode
 
-        this.#implementation.clearChord = _ => {
+        this.#implementation.clearChord = () => {
             this.#implementation.chord.clear();
             this.#implementation.chordRoot = -1;
             for (let key of this.#implementation.keyList) {
@@ -189,9 +189,12 @@ class Keyboard {
             } //loop
         }; //this.#implementation.clearChord
 
-        this.#implementation.playSequence = _ => {
-            if (this.#implementation.recorder)
-                this.#implementation.recorder.play(handleIndex);
+        this.#implementation.playSequence = () => {
+            if (!this.#implementation.recorder) return;
+            const cancelling = this.#implementation.recorder.playing;
+            this.#implementation.recorder.play(handleIndex);
+            if (cancelling)
+                this.#implementation.stopAllSounds();
         }; //this.#implementation.playSequence
 
         this.#implementation.stopAllSounds = () => {

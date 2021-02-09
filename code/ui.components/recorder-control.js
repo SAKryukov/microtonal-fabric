@@ -35,11 +35,11 @@ const recorderControl = {
 
         buttonPlay.onclick = playHandler;
 
-        buttonToClipboard.onclick = _ => {
+        buttonToClipboard.onclick = () => {
             navigator.clipboard.writeText(recorder.serializedSequence);
         }; //ToClipboard
 
-        buttonFromClipboard.onclick = _ => {            
+        buttonFromClipboard.onclick = () => {            
             navigator.clipboard.readText().then(value => recorder.serializedSequence = value);
         }; //FromClipboard
 
