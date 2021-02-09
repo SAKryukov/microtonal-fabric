@@ -23,10 +23,12 @@ class IKeyboardGeometry extends IInterface {
 class AbstractKeyboard {
 
     #implementation = { mode: 0, chord: new Set(), playingElements: new(Set), chordRoot: -1, useHighlight: true };
+    derivedClassConstructorArguments = [undefined];
 
-    constructor(parentElement) {
+    constructor(parentElement, ...moreArguments) {
 
         IKeyboardGeometry.throwIfNotImplemented(this, IInterfaceStrictness.sameNumberOfFunctionArguments);
+        this.derivedClassConstructorArguments = moreArguments;
 
         this.#implementation.setVisibility = on => {
             parentElement.style.display = on ? "block" : "none";
