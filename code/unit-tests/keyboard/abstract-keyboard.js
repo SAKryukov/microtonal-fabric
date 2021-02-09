@@ -24,11 +24,9 @@ class AbstractKeyboard {
 
     #implementation = { mode: 0, chord: new Set(), playingElements: new(Set), chordRoot: -1, useHighlight: true };
 
-    constructor(parentElement, recorder) {
+    constructor(parentElement) {
 
         IKeyboardGeometry.throwIfNotImplemented(this, IInterfaceStrictness.sameNumberOfFunctionArguments);
-
-        this.#implementation.recorder = recorder;
 
         this.#implementation.setVisibility = on => {
             parentElement.style.display = on ? "block" : "none";
@@ -145,10 +143,7 @@ class AbstractKeyboard {
         }; //this.#implementation.stopAllSounds
 
         this.#implementation.recreate = () => {
-            if (recorder) 
-                recorder.cancelPlaying(); // stop playing in all keyboards serviced by the same recorder
-            else
-                this.#implementation.stopAllSounds();
+            this.#implementation.stopAllSounds();
             const keys = this.createKeys(parentElement);
             this.#implementation.keyList = keys;
             let index = 0;
@@ -218,5 +213,8 @@ class AbstractKeyboard {
 
     get useHighlight() { return this.#implementation.useHighlight; }
     set useHighlight(value) { this.#implementation.useHighlight = value; }
+
+    get recorder() { return this.#implementation.recorder; }
+    set recorder(value) { this.#implementation.recorder = value; }
 
 } //class AbstractKeyboard
