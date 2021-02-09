@@ -13,21 +13,24 @@ class MinimalKeyboard extends AbstractKeyboard {
     static getRandom(min, max) {
         return Math.random() * (max - min) + min;
     }
-    constructor(parentElement, recorder) {
-        super(parentElement, recorder);
+    #implementation = {};
+    constructor(parentElement, metrics) {
+        super(parentElement, metrics);
     } //constructor
     createKeys(parentElement) {
+        const metrics = this.derivedClassConstructorArguments[0];
         while (parentElement.firstChild) parentElement.removeChild(parentElement.lastChild);
         const result = [];
         const count = this.constructor.getRandom(1, 50);
         for (let index = 0; index < count; ++index) {
             const key = document.createElement("div");
-            key.style.width = "100px";
-            key.style.height = "100px";
-            key.style.outline = "solid thin red";
-            key.style.outlineOffset = "0px";
-            key.style.padding = "0.2em";
-            key.style.margin = "0";
+            key.style.width = metrics.keyWidth;
+            key.style.height = metrics.keyWidth;
+            key.style.outline = metrics.keyBorder;
+            key.style.outlineOffset = metrics.keyOutlineOffset;
+            key.style.padding = metrics.keyPadding;
+            key.style.margin = metrics.keyMargin;
+            key.style.backgroundColor = metrics.colors.normal;
             key.style.display = "inline-block";
             key.style.color = "transparent";
             key.textContent = index;
@@ -37,9 +40,10 @@ class MinimalKeyboard extends AbstractKeyboard {
         return result;
     } //createKeys
     highlightKey(keyElement, keyboardMode) {
+        const metrics = this.derivedClassConstructorArguments[0];
         switch (keyboardMode) {
-            case keyHightlight.normal: return keyElement.style.backgroundColor = "transparent";
-            case keyHightlight.down: return keyElement.style.backgroundColor = "lightBlue";
+            case keyHightlight.normal: return keyElement.style.backgroundColor = metrics.colors.normal;
+            case keyHightlight.down: return keyElement.style.backgroundColor = metrics.colors.down;
             case keyHightlight.chord: return keyElement.style.backgroundColor = "yellow";
             case keyHightlight.chordRoot: return keyElement.style.backgroundColor = "orange";
         } //switch
@@ -57,7 +61,18 @@ window.onload = () => {
 
     const parentElement = document.createElement("section");
     document.body.appendChild(parentElement);
-    const myKeyboard = new MinimalKeyboard(parentElement, null);
+    const myKeyboard = new MinimalKeyboard(parentElement,
+        { // metrics:
+            keyWidth: "60px",
+            keyBorder: "solid thin red",
+            keyOutlineOffset: "0px",
+            keyPadding: "0.2em",
+            keyMargin: "0",
+            colors: {
+                normal: "lightYellow",
+                down: "lightCyan",
+            }
+        });
     document.querySelector("button").onclick = () => myKeyboard.recreate();
     
 } //window.onload
