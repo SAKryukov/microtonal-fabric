@@ -142,7 +142,12 @@ window.onload = () => {
                 recorder,
                 controls.recorder.record, controls.recorder.playSequence,
                 controls.recorder.toClipboard, controls.recorder.fromClipboard,
-                _ => { keyboards[activeInstrumentIndex].playSequence(); });
+                isPlaying => {
+                    keyboards[activeInstrumentIndex].playSequence();
+                    if (isPlaying)
+                        for (let keyboard of keyboards)
+                            keyboard.stopAllSounds();
+                });
 
         })();
     
