@@ -23,6 +23,7 @@ class IKeyboardGeometry extends IInterface {
 class AbstractKeyboard {
 
     #implementation = { mode: 0, chord: new Set(), playingElements: new(Set), chordRoot: -1, useHighlight: true };
+    derivedImplementation = {};
     derivedClassConstructorArguments = [undefined];
 
     constructor(parentElement, ...moreArguments) {
@@ -33,12 +34,12 @@ class AbstractKeyboard {
         this.#implementation.setVisibility = on => {
             parentElement.style.display = on ? "block" : "none";
         }; //this.#implementation.setVisibility
-        const keyMap = new Map();
+        this.#implementation.keyMap = new Map();
 
         const refreshChordColors = mode => {
             for (let keyIndex of this.#implementation.chord) {
                 const chordKey = this.#implementation.keyList[keyIndex];
-                const chordKeyData = keyMap.get(chordKey);
+                const chordKeyData = this.#implementation.keyMap.get(chordKey);
                 this.highlightKey(chordKey, 
                     mode & keyboardMode.chordSet
                         ? (chordKeyData.isChordRoot ? keyHightlight.chordRoot : keyHightlight.chord)
@@ -60,7 +61,7 @@ class AbstractKeyboard {
 
         const handleIndex = (index, on) => {
             const element = this.#implementation.keyList[index];
-            handleElement(element, keyMap.get(element), on);
+            handleElement(element, this.#implementation.keyMap.get(element), on);
         }; //handleIndex
 
         const handlePlayingElementSet = (element, on) => {
@@ -73,7 +74,7 @@ class AbstractKeyboard {
         }; //handlePlayingElementSet
 
         const handler = (element, on) => {
-            const elementData = keyMap.get(element);
+            const elementData = this.#implementation.keyMap.get(element);
             if (this.#implementation.mode == keyboardMode.chord) {
                 if (this.#implementation.chordRoot < 0 || this.#implementation.chord.size <= 0) {
                     handleElement(element, elementData, on);
@@ -84,7 +85,7 @@ class AbstractKeyboard {
                     const shiftedChordIndex = chordIndex + delta;
                     if (shiftedChordIndex < 0 || shiftedChordIndex >= this.#implementation.keyList.length) continue;
                     const chordElement = this.#implementation.keyList[shiftedChordIndex];
-                    handleElement(chordElement, keyMap.get(chordElement), on);
+                    handleElement(chordElement, this.#implementation.keyMap.get(chordElement), on);
                     handlePlayingElementSet(chordElement, on);
                 } //loop
             } else if (on && this.#implementation.mode & keyboardMode.chordSet) {
@@ -93,7 +94,7 @@ class AbstractKeyboard {
                 if ((this.#implementation.mode & keyboardMode.chordRootSet) && elementData.chordMember) {
                     this.#implementation.chordRoot = elementData.index;
                     for (let chordIndex of this.#implementation.chord)
-                        keyMap.get(this.#implementation.keyList[chordIndex]).isChordRoot = false;
+                    this.#implementation.keyMap.get(this.#implementation.keyList[chordIndex]).isChordRoot = false;
                     elementData.isChordRoot = true;
                 } else {
                     const chordMember = elementData.chordMember;
@@ -112,11 +113,11 @@ class AbstractKeyboard {
                     for (let chordIndex of this.#implementation.chord) {
                         if (chordIndex < first)
                             first = chordIndex;
-                        keyMap.get(this.#implementation.keyList[chordIndex]).isChordRoot = false;
+                        this.#implementation.keyMap.get(this.#implementation.keyList[chordIndex]).isChordRoot = false;
                     } //loop
                     if (first < this.#implementation.keyList.length) {
                         this.#implementation.chordRoot = first;
-                        keyMap.get(this.#implementation.keyList[first]).isChordRoot = true;
+                        this.#implementation.keyMap.get(this.#implementation.keyList[first]).isChordRoot = true;
                     } //if
                 } //if
                 refreshChordColors(this.#implementation.mode);
@@ -140,7 +141,7 @@ class AbstractKeyboard {
 
         this.#implementation.stopAllSounds = () => {
             for (let element of this.#implementation.playingElements)
-                handleElement(element, keyMap.get(element), false);
+                handleElement(element, this.#implementation.keyMap.get(element), false);
             this.#implementation.playingElements.clear();
         }; //this.#implementation.stopAllSounds
 
@@ -160,7 +161,9 @@ class AbstractKeyboard {
                     if (isChordRoot) this.#implementation.chordRoot = index;
                     if (inDefaultChord) this.#implementation.chord.add(index);        
                 } //if
-                keyMap.set(key, { index: index++, chordMember: inDefaultChord, isChordRoot: isChordRoot });
+                this.#implementation.keyMap.set(
+                    key,
+                    { index: index++, chordMember: inDefaultChord, isChordRoot: isChordRoot });
             } //loop
             this.#implementation.assignHandlers();
         }; //this.#implementation.recreate
@@ -181,7 +184,7 @@ class AbstractKeyboard {
             this.#implementation.chord.clear();
             this.#implementation.chordRoot = -1;
             for (let key of this.#implementation.keyList) {
-                const keyData = keyMap.get(key);
+                const keyData = this.#implementation.keyMap.get(key);
                 key.style.fill = keyData.originalColor;
                 keyData.isChordRoot = false;
                 keyData.chordMember = false;
@@ -197,6 +200,8 @@ class AbstractKeyboard {
         }; //this.#implementation.playSequence
 
     } //constructor
+
+    get keyMap() { return this.#implementation.keyMap; }
 
     recreate() { this.#implementation.recreate(); }
 
