@@ -11,17 +11,18 @@
 
 class GridKeyboard extends AbstractKeyboard {
 
-    #implementation = { rows: [] };
+    testTest = { value: "value test" };
 
     constructor(element, keyWidth, keyHeight, rowCount, rowWidth, keyColors) {
         super(element, {keyWidth: keyWidth, keyHeight: keyHeight, rowCount: rowCount, rowWidth: rowWidth, keyColors: keyColors});
-        this.#implementation.keyColors = keyColors;
+        this.derivedImplementation.keyColors = keyColors;
         this.metrics = { keyWidth: keyWidth, keyHeight: keyHeight, rowCount: rowCount, rowWidth: rowWidth };
     } //constructor
 
     //IKeyboardGeometry:
 
     createKeys(parentElement) {
+        this.derivedImplementation.rows = [];
         const metrics = this.derivedClassConstructorArguments[0];
         while (parentElement.firstChild) parentElement.removeChild(parentElement.lastChild);
         const parseSize = stringValue => {
@@ -37,30 +38,30 @@ class GridKeyboard extends AbstractKeyboard {
                 height: parseSize(metrics.keyHeight)
             };
         })();
-        this.#implementation.defineGridTemplates = doFit => {
+        this.derivedImplementation.defineGridTemplates = doFit => {
             const widthUnit = doFit ? "fr" : keySize.width.unit;
             const widthValue = doFit ? 1 : keySize.width.value;
             parentElement.style.gridTemplateColumns = `repeat(${metrics.rowWidth}, ${widthValue}${widthUnit})`;
-        }; //this.#implementation.defineGridTemplates
-        this.#implementation.fitView = value => {
+        }; //this.derivedImplementation.defineGridTemplates
+        this.derivedImplementation.fitView = value => {
             const fitWidth = parentElement.offsetWidth / metrics.rowWidth;
-            this.#implementation.defineGridTemplates(value);
+            this.derivedImplementation.defineGridTemplates(value);
             if (!(keySize.height.value && keySize.height.unit)) {
                 const keyHeight = value ? `${fitWidth}px` : `${keySize.width.value}${keySize.width.unit}`;
                 for (let key of parentElement.children)
                     key.style.height = keyHeight;
             }
-        } //this.#implementation.fitView
-        this.#implementation.fitView(false);
+        } //this.derivedImplementation.fitView
+        this.derivedImplementation.fitView(false);
         parentElement.style.display = "grid";
         parentElement.style.overflowX = "auto";
         parentElement.style.width = "100%";
         const borderStyle = `solid ${metrics.keyColors.border} thin`;
         for (let yIndex = 0; yIndex < metrics.rowCount; ++yIndex) {
-            this.#implementation.rows[yIndex] = []; //SA???
+            this.derivedImplementation.rows[yIndex] = []; //SA???
             for (let xIndex = 0; xIndex < metrics.rowWidth; ++xIndex) {
                 const key = document.createElement("div");
-                this.#implementation.rows[yIndex][xIndex] = key;
+                this.derivedImplementation.rows[yIndex][xIndex] = key;
                 key.style.borderRadius = "0px"; //SA???
                 key.style.paddingLeft = "0.3em";
                 key.style.paddingTop = "0.3em";
@@ -77,7 +78,7 @@ class GridKeyboard extends AbstractKeyboard {
                 parentElement.appendChild(key);
             } //loop keys
         } //loop rows
-        this.#implementation.label = handler => {
+        this.derivedImplementation.label = handler => {
             for (let [key, value] of this.keyMap) {
                 const result = handler(value.x, value.y);
                 if (result == null) { // disabled key mechanism
@@ -86,44 +87,44 @@ class GridKeyboard extends AbstractKeyboard {
                 } else
                     key.textContent = result;
             } //loop
-        }; //this.#implementation.label
-        this.#implementation.labelRow = (row, handler) => {
-            for (let index = 0; index < this.#implementation.rows[row].length; ++index) {
-                const element = this.#implementation.rows[row][index];
+        }; //this.derivedImplementation.label
+        this.derivedImplementation.labelRow = (row, handler) => {
+            for (let index = 0; index < this.derivedImplementation.rows[row].length; ++index) {
+                const element = this.derivedImplementation.rows[row][index];
                 const value = this.keyMap.get(element);
                 const result = handler(index);
                 if (result == null) { // disabled key mechanism
                     value.keyIndex = null;
                     element.style.backgroundColor = keyColors.disabled;
                 } else
-                    this.#implementation.rows[row][index].textContent = result;
+                    this.derivedImplementation.rows[row][index].textContent = result;
             } //loop
-        }; //this.#implementation.labelRow
-        this.#implementation.setTitles = handler => {
-            for (let [key, value] of this.#implementation.keyMap) {
+        }; //this.derivedImplementation.labelRow
+        this.derivedImplementation.setTitles = handler => {
+            for (let [key, value] of this.derivedImplementation.keyMap) {
                 const result = handler(value.x, value.y);
                 if (result)
                     key.title = result;
             } //loop
-        }; //this.#implementation.setTitles
-        this.#implementation.setRowTitles = (row, handler) => {
-            for (let index = 0; index < this.#implementation.rows[row].length; ++index) {
-                const element = this.#implementation.rows[row][index];
-                const value = this.#implementation.keyMap.get(element);
+        }; //this.derivedImplementation.setTitles
+        this.derivedImplementation.setRowTitles = (row, handler) => {
+            for (let index = 0; index < this.derivedImplementation.rows[row].length; ++index) {
+                const element = this.derivedImplementation.rows[row][index];
+                const value = this.derivedImplementation.keyMap.get(element);
                 const result = handler(index);
                 if (result)
                     element.title = result;
             } //loop
-        }; //this.#implementation.setRowTitles
+        }; //this.derivedImplementation.setRowTitles
         return parentElement.children;
     } //IKeyboardGeometry.createKeys
     
     highlightKey(keyElement, keyboardMode) {
         switch (keyboardMode) {
-            case keyHightlight.normal: return keyElement.style.backgroundColor = this.#implementation.keyColors.background;
-            case keyHightlight.down: return keyElement.style.backgroundColor = this.#implementation.keyColors.hightlight;
-            case keyHightlight.chord: return keyElement.style.backgroundColor = this.#implementation.keyColors.chord;
-            case keyHightlight.chordRoot: return keyElement.style.backgroundColor = this.#implementation.keyColors.chordRoot;
+            case keyHightlight.normal: return keyElement.style.backgroundColor = this.derivedImplementation.keyColors.background;
+            case keyHightlight.down: return keyElement.style.backgroundColor = this.derivedImplementation.keyColors.hightlight;
+            case keyHightlight.chord: return keyElement.style.backgroundColor = this.derivedImplementation.keyColors.chord;
+            case keyHightlight.chordRoot: return keyElement.style.backgroundColor = this.derivedImplementation.keyColors.chordRoot;
         } //switch
     } //IKeyboardGeometry.highlightKey
     isTouchKey(parentElement, keyElement) {
@@ -134,11 +135,11 @@ class GridKeyboard extends AbstractKeyboard {
     
     //IKeyboardGeometry
   
-    label(handler) { this.#implementation.label(handler); }
-    labelRow(row, handler) { this.#implementation.labelRow(row, handler); }
-    setTitles(handler) { this.#implementation.setTitles(handler); }
-    setRowTitles(row, handler) { this.#implementation.setRowTitles(row, handler); }
+    label(handler) { this.derivedImplementation.label(handler); }
+    labelRow(row, handler) { this.derivedImplementation.labelRow(row, handler); }
+    setTitles(handler) { this.derivedImplementation.setTitles(handler); }
+    setRowTitles(row, handler) { this.derivedImplementation.setRowTitles(row, handler); }
 
-    set fitView(booleanValue) { this.#implementation.fitView(booleanValue); }
+    set fitView(booleanValue) { this.derivedImplementation.fitView(booleanValue); }
 
 } //class GridKeyboard
