@@ -14,6 +14,7 @@ const keyHightlight = { normal: 0, down: 1, chord: 2, chordRoot: 4 };
 
 class IKeyboardGeometry extends IInterface {
     createKeys(parentElement) {}
+    createCustomKeyData(keyElement, index) {}
     highlightKey(keyElement, keyboardMode) {}
     isTouchKey(parentElement, keyElement) {} // for touch interface
     get defaultChord() {} // should return array of indices of keys in default chord
@@ -53,7 +54,7 @@ class AbstractKeyboard {
             if (this.#implementation.recorder)
                 (this.#implementation.recorder.record(on, elementData.index));
             if (this.#implementation.keyHandler)
-                this.#implementation.keyHandler(elementData.index, on);
+                this.#implementation.keyHandler(on, elementData.index);
             if (this.#implementation.useHighlight)
                 this.highlightKey(element, on ? keyHightlight.down : keyHightlight.normal);
             handlePlayingElementSet(element, on);
@@ -163,7 +164,9 @@ class AbstractKeyboard {
                 } //if
                 this.#implementation.keyMap.set(
                     key,
-                    { index: index++, chordMember: inDefaultChord, isChordRoot: isChordRoot });
+                    { index: index, chordMember: inDefaultChord, isChordRoot: isChordRoot,
+                        customKeyData: this.createCustomKeyData(key, index) });
+                ++index;
             } //loop
             this.#implementation.assignHandlers();
         }; //this.#implementation.recreate
