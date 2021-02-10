@@ -9,12 +9,15 @@ window.onload = _ => {
             label: "Grey"
         }
     );
-    keyboard.label((x, y) => 
+    setTimeout(() => {
+        keyboard.label((x, y) => 
         (x + y) % 2 ? "a" : "B"
-    );
-    keyboard.labelRow(1, index =>
-        `x: ${index}`
-    );
+        );
+        keyboard.labelRow(1, index =>
+            `x: ${index}`
+        );
+    });
+
     fitElement.onchange = event => keyboard.fitView = event.target.checked;
 
 };

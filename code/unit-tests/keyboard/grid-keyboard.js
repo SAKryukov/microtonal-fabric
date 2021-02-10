@@ -14,22 +14,71 @@ class GridKeyboard extends AbstractKeyboard {
     #implementation = { rows: [] };
 
     constructor(element, keyWidth, keyHeight, rowCount, rowWidth, keyColors) {
-        super(element);
-        if (!keyColors) keyColors = {
-            background: "transparent",
-            hightlight: "lightYellow",
-            disabled: "darkGray",
-            chord: "lightcyan",
-            chordRoot: "lightblue",
-            border: "black",
-            label: undefined
-        };
+        super(element, {keyWidth: keyWidth, keyHeight: keyHeight, rowCount: rowCount, rowWidth: rowWidth, keyColors: keyColors});
         this.#implementation.keyColors = keyColors;
         this.metrics = { keyWidth: keyWidth, keyHeight: keyHeight, rowCount: rowCount, rowWidth: rowWidth };
+    } //constructor
 
-        /*
+    //IKeyboardGeometry:
+
+    createKeys(parentElement) {
+        const metrics = this.derivedClassConstructorArguments[0];
+        while (parentElement.firstChild) parentElement.removeChild(parentElement.lastChild);
+        const parseSize = stringValue => {
+            if (!stringValue) return { vale: undefined, unit: undefined };
+            const size = (/([0-9]*\.?[0-9]*)([a-zA-Z]*)/).exec(stringValue);
+            const sizeValue = parseFloat(size[size.length-2]);
+            const sizeUnit = size[size.length-1];
+            return { value: sizeValue, unit: sizeUnit };
+        } //parseSize
+        const keySize = (() => {
+            return {
+                width: parseSize(metrics.keyWidth),
+                height: parseSize(metrics.keyHeight)
+            };
+        })();
+        this.#implementation.defineGridTemplates = doFit => {
+            const widthUnit = doFit ? "fr" : keySize.width.unit;
+            const widthValue = doFit ? 1 : keySize.width.value;
+            parentElement.style.gridTemplateColumns = `repeat(${metrics.rowWidth}, ${widthValue}${widthUnit})`;
+        }; //this.#implementation.defineGridTemplates
+        this.#implementation.fitView = value => {
+            const fitWidth = parentElement.offsetWidth / metrics.rowWidth;
+            this.#implementation.defineGridTemplates(value);
+            if (!(keySize.height.value && keySize.height.unit)) {
+                const keyHeight = value ? `${fitWidth}px` : `${keySize.width.value}${keySize.width.unit}`;
+                for (let key of parentElement.children)
+                    key.style.height = keyHeight;
+            }
+        } //this.#implementation.fitView
+        this.#implementation.fitView(false);
+        parentElement.style.display = "grid";
+        parentElement.style.overflowX = "auto";
+        parentElement.style.width = "100%";
+        const borderStyle = `solid ${metrics.keyColors.border} thin`;
+        for (let yIndex = 0; yIndex < metrics.rowCount; ++yIndex) {
+            this.#implementation.rows[yIndex] = []; //SA???
+            for (let xIndex = 0; xIndex < metrics.rowWidth; ++xIndex) {
+                const key = document.createElement("div");
+                this.#implementation.rows[yIndex][xIndex] = key;
+                key.style.borderRadius = "0px"; //SA???
+                key.style.paddingLeft = "0.3em";
+                key.style.paddingTop = "0.3em";
+                key.style.overflow = "hidden";
+                key.style.color = metrics.keyColors.label;
+                key.style.backgroundColor = metrics.keyColors.background;
+                key.style.height = metrics.keyHeight ? metrics.keyHeight : metrics.keyWidth;
+                if (yIndex == 0)
+                    key.style.borderTop = borderStyle;
+                if (xIndex == 0)
+                    key.style.borderLeft = borderStyle;
+                key.style.borderBottom = borderStyle;
+                key.style.borderRight = borderStyle;
+                parentElement.appendChild(key);
+            } //loop keys
+        } //loop rows
         this.#implementation.label = handler => {
-            for (let [key, value] of this.#implementation.keyMap) {
+            for (let [key, value] of this.keyMap) {
                 const result = handler(value.x, value.y);
                 if (result == null) { // disabled key mechanism
                     value.keyIndex = null;
@@ -41,7 +90,7 @@ class GridKeyboard extends AbstractKeyboard {
         this.#implementation.labelRow = (row, handler) => {
             for (let index = 0; index < this.#implementation.rows[row].length; ++index) {
                 const element = this.#implementation.rows[row][index];
-                const value = this.#implementation.keyMap.get(element);
+                const value = this.keyMap.get(element);
                 const result = handler(index);
                 if (result == null) { // disabled key mechanism
                     value.keyIndex = null;
@@ -66,109 +115,6 @@ class GridKeyboard extends AbstractKeyboard {
                     element.title = result;
             } //loop
         }; //this.#implementation.setRowTitles
-        const parseSize = stringValue => {
-            if (!stringValue) return { vale: undefined, unit: undefined };
-            const size = (/([0-9]*\.?[0-9]*)([a-zA-Z]*)/).exec(stringValue);
-            const sizeValue = parseFloat(size[size.length-2]);
-            const sizeUnit = size[size.length-1];
-            return { value: sizeValue, unit: sizeUnit };
-        } //parseSize
-        const keySize = (() => {
-            return { width: parseSize(keyWidth), height: parseSize(keyHeight) };
-        })();
-        element.style.display = "grid";
-        element.style.overflowX = "auto";
-        element.style.width = "100%";
-        const borderStyle = `solid ${keyColors.border} thin`;
-        let keyIndex = 0;
-        for (let yIndex = 0; yIndex < rowCount; ++yIndex) {
-            this.#implementation.rows[yIndex] = [];
-            for (let xIndex = 0; xIndex < rowWidth; ++xIndex) {
-                const key = document.createElement("div");
-                this.#implementation.rows[yIndex][xIndex] = key;
-                key.style.borderRadius = "0px"; //SA???
-                key.style.paddingLeft = "0.3em";
-                key.style.paddingTop = "0.3em";
-                key.style.overflow = "hidden";
-                key.style.color = keyColors.label;
-                key.style.backgroundColor = keyColors.background;
-                key.style.height = keyHeight ? keyHeight : keyWidth;
-                if (yIndex == 0)
-                    key.style.borderTop = borderStyle;
-                if (xIndex == 0)
-                    key.style.borderLeft = borderStyle;
-                key.style.borderBottom = borderStyle;
-                key.style.borderRight = borderStyle;
-                element.appendChild(key);
-            } //loop keys
-        } //loop rows
-        this.#implementation.defineGridTemplates = doFit => {
-            const widthUnit = doFit ? "fr" : keySize.width.unit;
-            const widthValue = doFit ? 1 : keySize.width.value;
-            element.style.gridTemplateColumns = `repeat(${rowWidth}, ${widthValue}${widthUnit})`;
-        }; //this.#implementation.defineGridTemplates
-        this.#implementation.defineGridTemplates(false);
-        let lastOffsetWidth = undefined;
-        this.#implementation.fitView = value => {
-            const fitWidth = element.offsetWidth / rowWidth;
-            this.#implementation.defineGridTemplates(value);
-            if (!(keySize.height.value && keySize.height.unit)) {
-                const keyHeight = value ? `${fitWidth}px` : `${keySize.width.value}${keySize.width.unit}`;
-                for (let key of this.#implementation.keyMap.keys())
-                    key.style.height = keyHeight;
-            }
-        };
-        */
-       this.#implementation.label = () => {};
-       this.#implementation.labelRow = () => {};
-       this.#implementation.setTitles = handler => handler;
-       this.#implementation.setRowTitles = (row, handler) => handler(row); //SA???
-       this.#implementation.fitView = booleanValue => booleanValue;
-    } //constructor
-
-    //IKeyboardGeometry:
-
-    createKeys(parentElement) {
-        while (parentElement.firstChild) parentElement.removeChild(parentElement.lastChild);
-        const parseSize = stringValue => {
-            if (!stringValue) return { vale: undefined, unit: undefined };
-            const size = (/([0-9]*\.?[0-9]*)([a-zA-Z]*)/).exec(stringValue);
-            const sizeValue = parseFloat(size[size.length-2]);
-            const sizeUnit = size[size.length-1];
-            return { value: sizeValue, unit: sizeUnit };
-        } //parseSize
-        const keySize = (() => {
-            return {
-                width: parseSize(this.metrics.keyWidth),
-                height: parseSize(this.metrics.keyHeight)
-            };
-        })();
-        parentElement.style.display = "grid";
-        parentElement.style.overflowX = "auto";
-        parentElement.style.width = "100%";
-        const borderStyle = `solid ${keyColors.border} thin`;
-        let keyIndex = 0;
-        for (let yIndex = 0; yIndex < rowCount; ++yIndex) {
-            this.#implementation.rows[yIndex] = [];
-            for (let xIndex = 0; xIndex < rowWidth; ++xIndex) {
-                const key = document.createElement("div");
-                this.#implementation.rows[yIndex][xIndex] = key;
-                key.style.borderRadius = "0px"; //SA???
-                key.style.paddingLeft = "0.3em";
-                key.style.paddingTop = "0.3em";
-                key.style.overflow = "hidden";
-                key.style.color = keyColors.label;
-                key.style.backgroundColor = keyColors.background;
-                key.style.height = keyHeight ? keyHeight : keyWidth;
-                if (yIndex == 0)
-                    key.style.borderTop = borderStyle;
-                if (xIndex == 0)
-                    key.style.borderLeft = borderStyle;
-                key.style.borderBottom = borderStyle;
-                key.style.borderRight = borderStyle;
-                parentElement.appendChild(key);
-            } //loop keys
-        } //loop rows
         return parentElement.children;
     } //IKeyboardGeometry.createKeys
     

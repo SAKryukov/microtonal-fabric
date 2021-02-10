@@ -73,6 +73,7 @@ window.onload = () => {
                 down: "lightCyan",
             }
         });
+    myKeyboard.recreate();
     document.querySelector("button").onclick = () => myKeyboard.recreate();
     
 } //window.onload
