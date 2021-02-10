@@ -15,12 +15,16 @@ class GridKeyboard extends AbstractKeyboard {
 
     constructor(element, keyWidth, keyHeight, rowCount, rowWidth, keyColors) {
         super(element, {keyWidth: keyWidth, keyHeight: keyHeight, rowCount: rowCount, rowWidth: rowWidth, keyColors: keyColors});
-        this.derivedImplementation.keyColors = keyColors;
-        this.metrics = { keyWidth: keyWidth, keyHeight: keyHeight, rowCount: rowCount, rowWidth: rowWidth };
     } //constructor
 
     //IKeyboardGeometry:
 
+    createCustomKeyData(_, index) {
+        const metrics = this.derivedClassConstructorArguments[0];
+        const y = Math.floor(index / metrics.rowWidth);
+        const x = index % metrics.rowWidth;
+        return { x: x, y: y };
+    } //createCustomKeyData
     createKeys(parentElement) {
         this.derivedImplementation.rows = [];
         const metrics = this.derivedClassConstructorArguments[0];
@@ -53,6 +57,7 @@ class GridKeyboard extends AbstractKeyboard {
             }
         } //this.derivedImplementation.fitView
         this.derivedImplementation.fitView(false);
+        parentElement.style.backgroundColor = "white";
         parentElement.style.display = "grid";
         parentElement.style.overflowX = "auto";
         parentElement.style.width = "100%";
@@ -79,11 +84,12 @@ class GridKeyboard extends AbstractKeyboard {
             } //loop keys
         } //loop rows
         this.derivedImplementation.label = handler => {
+            const metrics = this.derivedClassConstructorArguments[0];
             for (let [key, value] of this.keyMap) {
-                const result = handler(value.x, value.y);
+                const result = handler(value.customKeyData.x, value.customKeyData.y);
                 if (result == null) { // disabled key mechanism
                     value.keyIndex = null;
-                    key.style.backgroundColor = keyColors.disabled;
+                    key.style.backgroundColor = metrics.keyColors.disabled;
                 } else
                     key.textContent = result;
             } //loop
@@ -101,8 +107,8 @@ class GridKeyboard extends AbstractKeyboard {
             } //loop
         }; //this.derivedImplementation.labelRow
         this.derivedImplementation.setTitles = handler => {
-            for (let [key, value] of this.derivedImplementation.keyMap) {
-                const result = handler(value.x, value.y);
+            for (let [key, value] of this.keyMap) {
+                const result = handler(value.customKeyData.x, value.customKeyData.y);
                 if (result)
                     key.title = result;
             } //loop
@@ -120,11 +126,12 @@ class GridKeyboard extends AbstractKeyboard {
     } //IKeyboardGeometry.createKeys
     
     highlightKey(keyElement, keyboardMode) {
+        const metrics = this.derivedClassConstructorArguments[0];
         switch (keyboardMode) {
-            case keyHightlight.normal: return keyElement.style.backgroundColor = this.derivedImplementation.keyColors.background;
-            case keyHightlight.down: return keyElement.style.backgroundColor = this.derivedImplementation.keyColors.hightlight;
-            case keyHightlight.chord: return keyElement.style.backgroundColor = this.derivedImplementation.keyColors.chord;
-            case keyHightlight.chordRoot: return keyElement.style.backgroundColor = this.derivedImplementation.keyColors.chordRoot;
+            case keyHightlight.normal: keyElement.style.backgroundColor = metrics.keyColors.background; break;
+            case keyHightlight.down: keyElement.style.backgroundColor = metrics.keyColors.hightlight; break;
+            case keyHightlight.chord: keyElement.style.backgroundColor = metrics.keyColors.chord; break;
+            case keyHightlight.chordRoot: keyElement.style.backgroundColor = metrics.keyColors.chordRoot;
         } //switch
     } //IKeyboardGeometry.highlightKey
     isTouchKey(parentElement, keyElement) {

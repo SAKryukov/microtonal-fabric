@@ -39,6 +39,7 @@ class MinimalKeyboard extends AbstractKeyboard {
         }
         return result;
     } //createKeys
+    createCustomKeyData(keyElement, index) {}
     highlightKey(keyElement, keyboardMode) {
         const metrics = this.derivedClassConstructorArguments[0];
         switch (keyboardMode) {
