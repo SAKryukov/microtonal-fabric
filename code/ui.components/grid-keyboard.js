@@ -57,17 +57,16 @@ class GridKeyboard extends AbstractKeyboard {
             }
         } //this.derivedImplementation.fitView
         this.derivedImplementation.fitView(false);
-        parentElement.style.backgroundColor = "white";
         parentElement.style.display = "grid";
         parentElement.style.overflowX = "auto";
         parentElement.style.width = "100%";
         const borderStyle = `solid ${metrics.keyColors.border} thin`;
         for (let yIndex = 0; yIndex < metrics.rowCount; ++yIndex) {
-            this.derivedImplementation.rows[yIndex] = []; //SA???
+            this.derivedImplementation.rows[yIndex] = [];
             for (let xIndex = 0; xIndex < metrics.rowWidth; ++xIndex) {
                 const key = document.createElement("div");
                 this.derivedImplementation.rows[yIndex][xIndex] = key;
-                key.style.borderRadius = "0px"; //SA???
+                key.style.borderRadius = "0px";
                 key.style.paddingLeft = "0.3em";
                 key.style.paddingTop = "0.3em";
                 key.style.overflow = "hidden";
@@ -87,8 +86,8 @@ class GridKeyboard extends AbstractKeyboard {
             const metrics = this.derivedClassConstructorArguments[0];
             for (let [key, value] of this.keyMap) {
                 const result = handler(value.customKeyData.x, value.customKeyData.y);
-                if (result == null) { // disabled key mechanism
-                    value.keyIndex = null;
+                if (result == null) { // the mechanism to mark disabled key
+                    value.disabled = true;
                     key.style.backgroundColor = metrics.keyColors.disabled;
                 } else
                     key.textContent = result;
@@ -99,8 +98,8 @@ class GridKeyboard extends AbstractKeyboard {
                 const element = this.derivedImplementation.rows[row][index];
                 const value = this.keyMap.get(element);
                 const result = handler(index);
-                if (result == null) { // disabled key mechanism
-                    value.keyIndex = null;
+                if (result == null) { // the mechanism to mark disabled key
+                    value.disabled = true;
                     element.style.backgroundColor = keyColors.disabled;
                 } else
                     this.derivedImplementation.rows[row][index].textContent = result;
@@ -138,7 +137,9 @@ class GridKeyboard extends AbstractKeyboard {
         return keyElement && keyElement.parentElement == parentElement;
     } ////IKeyboardGeometry.isTouchKey
     get defaultChord() {} // should return array of indices of keys in default chord
-    customKeyHandler(keyElement, keyData, on) {} // return false to stop embedded handling
+    customKeyHandler(keyElement, keyData, on) {
+        if (keyData.disabled) return false; // no handling if disabled
+    } // return false to stop embedded handling
     
     //IKeyboardGeometry
   
