@@ -9,19 +9,6 @@
 
 "use strict";
 
-class Test {
-    AAA() { return "AAA"; }
-    BBB() {}
-    static reflect() {
-        const isit = Reflect.has(this, "AAA");
-        const keys = Reflect.ownKeys(this.prototype);
-        const pd = Reflect.getOwnPropertyDescriptor(this.prototype, "AAA");
-        //Reflect.
-        return keys;    
-    }
-}
-Test.reflect();
-
 class ITestKeyboardGeometry extends IInterface {
     createKeys() {}
     highlightKey(element, p01, p02) {}
@@ -29,9 +16,17 @@ class ITestKeyboardGeometry extends IInterface {
 
 class Keyboard { // abstract, instantiation requires IKeyboardGeometry
     constructor() {
-        //ITestKeyboardGeometry.throwIfNotImplemented(this);
+        ITestKeyboardGeometry.throwIfNotImplemented(this);
     }
 }
+
+class SpecialKeyboard extends Keyboard {
+    highlightKey(element) {}
+    static Test() {
+        ITestKeyboardGeometry.throwIfNotImplemented(this, IInterfaceStrictness.implementorShouldHandleSameNumberOfFunctionArgumentsOrLess);
+    }
+}
+const sk = new SpecialKeyboard();
 
 class RoundKeyboard extends Keyboard {
     constructor() {
