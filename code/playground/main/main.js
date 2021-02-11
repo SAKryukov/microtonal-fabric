@@ -62,13 +62,10 @@ window.onload = () => {
         constructor(element, keyWidth, keyHeight, rowCount, rowWidth, keyColors) {
             super(element, keyWidth, keyHeight, rowCount, rowWidth, keyColors);
         }
-        createCustomKeyData(parentElement, index) { return super.createCustomKeyData(parentElement, index); }
-        highlightKey(keyElement, keyboardMode) { return super.highlightKey(keyElement, keyboardMode); }
-        isTouchKey(parentElement, keyElement) { super.isTouchKey(parentElement, keyElement); }
-        get defaultChord() {}
+        get defaultChord() { return super.defaultChord; }
         customKeyHandler(keyElement, keyData, on) {
-            if (keyData.disabled) return false; // no handling if disabled
             if (globalKeyTracker.isAltDown()) return false;
+            return super.customKeyHandler(keyElement, keyData, on);
         } // return false to stop embedded handling    
     } //class SpecialKeyboard
 
