@@ -56,6 +56,22 @@ const definitionSet = {
 
 window.onload = () => {
 
+    globalKeyTracker.init();
+
+    class SpecialKeyboard extends GridKeyboard {
+        constructor(element, keyWidth, keyHeight, rowCount, rowWidth, keyColors) {
+            super(element, keyWidth, keyHeight, rowCount, rowWidth, keyColors);
+        }
+        createCustomKeyData(parentElement, index) { return super.createCustomKeyData(parentElement, index); }
+        highlightKey(keyElement, keyboardMode) { return super.highlightKey(keyElement, keyboardMode); }
+        isTouchKey(parentElement, keyElement) { super.isTouchKey(parentElement, keyElement); }
+        get defaultChord() {}
+        customKeyHandler(keyElement, keyData, on) {
+            if (keyData.disabled) return false; // no handling if disabled
+            if (globalKeyTracker.isAltDown()) return false;
+        } // return false to stop embedded handling    
+    } //class SpecialKeyboard
+
     if (window.status) {
         window.onerror = undefined;
         return definitionSet.userData.reportBadFileContent(definitionSet.userData.dataFileName);
@@ -96,7 +112,7 @@ window.onload = () => {
             const rowCount = tones.size.height;
             const columnCount = tones.size.width;
             let population = new UserPopulation(tones, rowCount, columnCount, repeat);
-            const keyboard = new GridKeyboard(elements.keyboardParent, definitionSet.keyWidth, definitionSet.keyHeight,
+            const keyboard = new SpecialKeyboard(elements.keyboardParent, definitionSet.keyWidth, definitionSet.keyHeight,
                 rowCount, columnCount, definitionSet.colorSet);
             keyboard.fitView = true;
             const instrument = new Instrument(population.frequencySet);      
