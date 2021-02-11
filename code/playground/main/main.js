@@ -33,7 +33,7 @@ const definitionSet = {
     }, //user Error
     colorSet: {
         background: "transparent",
-        hightlight: "yellow",
+        highlight: "red",
         border: "darkGray",
         disabled: "darkGray",
         label: "Gray"

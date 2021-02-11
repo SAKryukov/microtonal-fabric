@@ -10,7 +10,7 @@
 "use strict";
 
 const keyboardMode = { normal: 0, chord: 1, chordSet: 2, chordRootSet: 4 };
-const keyHightlight = { normal: 0, down: 1, chord: 2, chordRoot: 4 };
+const keyHighlight = { normal: 0, down: 1, chord: 2, chordRoot: 4 };
 
 class IKeyboardGeometry extends IInterface {
     createKeys(parentElement) {}
@@ -43,8 +43,8 @@ class AbstractKeyboard {
                 const chordKeyData = this.#implementation.keyMap.get(chordKey);
                 this.highlightKey(chordKey, 
                     mode & keyboardMode.chordSet
-                        ? (chordKeyData.isChordRoot ? keyHightlight.chordRoot : keyHightlight.chord)
-                        : keyHightlight.normal);
+                        ? (chordKeyData.isChordRoot ? keyHighlight.chordRoot : keyHighlight.chord)
+                        : keyHighlight.normal);
             } //loop
         }; //refreshChordColors
 
@@ -56,7 +56,7 @@ class AbstractKeyboard {
             if (this.#implementation.keyHandler)
                 this.#implementation.keyHandler(on, elementData.index);
             if (this.#implementation.useHighlight)
-                this.highlightKey(element, on ? keyHightlight.down : keyHightlight.normal);
+                this.highlightKey(element, on ? keyHighlight.down : keyHighlight.normal);
             handlePlayingElementSet(element, on);
         }; //handleElement
 
@@ -106,8 +106,8 @@ class AbstractKeyboard {
                         this.#implementation.chord.delete(elementData.index);    
                 } //if chord root
                 this.highlightKey(element, elementData.chordMember
-                    ? (elementData.isChordRoot ? keyHightlight.chordRoot : keyHightlight.chord)
-                    : keyHightlight.normal);
+                    ? (elementData.isChordRoot ? keyHighlight.chordRoot : keyHighlight.chord)
+                    : keyHighlight.normal);
                 if (!this.#implementation.chord.has(this.#implementation.chordRoot)) {
                     this.#implementation.chordRoot = -1;
                     let first = this.#implementation.keyList.length + 1;

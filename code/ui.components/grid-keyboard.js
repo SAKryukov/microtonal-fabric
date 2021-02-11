@@ -14,6 +14,14 @@ class GridKeyboard extends AbstractKeyboard {
     testTest = { value: "value test" };
 
     constructor(element, keyWidth, keyHeight, rowCount, rowWidth, keyColors) {
+        if (!keyColors || !keyColors.background || !keyColors.highlight || !keyColors.border || !keyColors.disabled || !keyColors.label)
+            keyColors = {
+                background: "transparent",
+                highlight: "yellow",
+                border: "darkGray",
+                disabled: "darkGray",
+                label: "Gray"
+            };
         super(element, {keyWidth: keyWidth, keyHeight: keyHeight, rowCount: rowCount, rowWidth: rowWidth, keyColors: keyColors});
     } //constructor
 
@@ -127,10 +135,10 @@ class GridKeyboard extends AbstractKeyboard {
     highlightKey(keyElement, keyboardMode) {
         const metrics = this.derivedClassConstructorArguments[0];
         switch (keyboardMode) {
-            case keyHightlight.normal: keyElement.style.backgroundColor = metrics.keyColors.background; break;
-            case keyHightlight.down: keyElement.style.backgroundColor = metrics.keyColors.hightlight; break;
-            case keyHightlight.chord: keyElement.style.backgroundColor = metrics.keyColors.chord; break;
-            case keyHightlight.chordRoot: keyElement.style.backgroundColor = metrics.keyColors.chordRoot;
+            case keyHighlight.normal: keyElement.style.backgroundColor = metrics.keyColors.background; break;
+            case keyHighlight.down: keyElement.style.backgroundColor = metrics.keyColors.highlight; break;
+            case keyHighlight.chord: keyElement.style.backgroundColor = metrics.keyColors.chord; break;
+            case keyHighlight.chordRoot: keyElement.style.backgroundColor = metrics.keyColors.chordRoot;
         } //switch
     } //IKeyboardGeometry.highlightKey
     isTouchKey(parentElement, keyElement) {
