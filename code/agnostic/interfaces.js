@@ -52,7 +52,7 @@ class IInterface {
         for (let property of properties) {
             if (this.prototype[property] == this.prototype.constructor) continue;
             const descriptor = Object.getOwnPropertyDescriptor(this.prototype, property);
-            if (descriptor.get != null || descriptor.get != null) {
+            if (descriptor.get != null || descriptor.set != null) {
                 if (!compareGettersSetters(descriptor, Object.getOwnPropertyDescriptor(testObject.constructor.prototype, property))) return false;
             } else if (descriptor.value != null && descriptor.value.constructor == Function) {
                 if (!compareFunctions(this.prototype[property], testObject[property])) return false;
