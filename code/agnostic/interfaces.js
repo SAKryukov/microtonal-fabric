@@ -22,7 +22,7 @@ class IInterface {
     static isImplementedBy(testObject, strictness) {
         if (testObject == null) return false;
         if (strictness == null) strictness = IInterfaceStrictness.default;
-        if (testObject.constructor == Function) testObject = new testObject();
+        if (testObject.constructor == Function) testObject = testObject.prototype;
         if (testObject == null || this.prototype == null) return false;
         const properties = Object.getOwnPropertyNames(this.prototype);
         const compareFunctions = (required, implemented) => {
@@ -49,11 +49,25 @@ class IInterface {
             if ((required.set == null && implemented.set != null) || (required.set != null && implemented.set == null)) return false;
             return true; 
         } //compareGettersSetters
+        const getDescriptor = (obj, property) => {
+            const constructor = obj.constructor;
+            if (constructor == null) return null;
+            const getConstructorDescriptor = (constructor, property) => {
+                const descriptor = Object.getOwnPropertyDescriptor(constructor.prototype, property);
+                if (descriptor == null) {
+                    const parentConstructor = Object.getPrototypeOf(constructor);
+                    if (parentConstructor == null) return null;
+                    return getConstructorDescriptor(parentConstructor, property);
+                } else
+                    return descriptor;
+            } //getConstructorDescriptor
+            return getConstructorDescriptor(obj.constructor, property);
+        } //getDescriptor        
         for (let property of properties) {
             if (this.prototype[property] == this.prototype.constructor) continue;
             const descriptor = Object.getOwnPropertyDescriptor(this.prototype, property);
             if (descriptor.get != null || descriptor.set != null) {
-                if (!compareGettersSetters(descriptor, Object.getOwnPropertyDescriptor(testObject.constructor.prototype, property))) return false;
+                if (!compareGettersSetters(descriptor, getDescriptor(testObject, property))) return false;
             } else if (descriptor.value != null && descriptor.value.constructor == Function) {
                 if (!compareFunctions(this.prototype[property], testObject[property])) return false;
             } //if
