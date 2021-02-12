@@ -9,35 +9,56 @@
 
 "use strict";
 
-class ITestKeyboardGeometry extends IInterface {
-    createKeys() {}
-    highlightKey(element, p01, p02) {}
+class ITest extends IInterface {
+    methodBase() {}
+    methodDerived() {}
+    get propertyBase() {}
+    get propertyDerived() {}
 }
 
-class Keyboard { // abstract, instantiation requires IKeyboardGeometry
+class AbstractBase {
     constructor() {
-        ITestKeyboardGeometry.throwIfNotImplemented(this);
+        ITest.throwIfNotImplemented(this);
+    }
+    static test() {
+        ITest.throwIfNotImplemented(this);
     }
 }
 
-class SpecialKeyboard extends Keyboard {
-    highlightKey(element) {}
-    static Test() {
-        ITestKeyboardGeometry.throwIfNotImplemented(this, IInterfaceStrictness.implementorShouldHandleSameNumberOfFunctionArgumentsOrLess);
+class Base extends AbstractBase {
+    methodBase() {}
+    get propertyBase() {}
+}
+
+class Derived extends Base {
+    methodDerived() {}
+    get propertyDerived() {}
+    static test() {
+        ITest.throwIfNotImplemented(this);
     }
 }
-const sk = new SpecialKeyboard();
+Derived.test();
 
-class RoundKeyboard extends Keyboard {
-    constructor() {
-        super();
-    }
-    createKeys() {}
-    highlightKey(element) {}
-    static Test() {
-        ITestKeyboardGeometry.throwIfNotImplemented(this, IInterfaceStrictness.implementorShouldHandleSameNumberOfFunctionArgumentsOrLess);
-    }
-}
-RoundKeyboard.Test();
+const getDescriptor = (obj, property) => {
+    const constructor = obj.constructor;
+    if (constructor == null) return null;
+    const getConstructorDescriptor = (constructor, property) => {
+        const descriptor = Object.getOwnPropertyDescriptor(constructor.prototype, property);
+        if (descriptor == null) {
+            const parentConstructor = Object.getPrototypeOf(constructor);
+            if (parentConstructor == null) return null;
+            return getConstructorDescriptor(parentConstructor, property);
+        } else
+            return descriptor;
+    } //getConstructorDescriptor
+    return getConstructorDescriptor(obj.constructor, property);
+} //getDescriptor
 
-const keyboard = new RoundKeyboard();
+const ddd = new Derived();
+const v0 = ddd.values;
+const s1 = getDescriptor(ddd, "methodDerived");
+const s2 = getDescriptor(ddd, "methodBase");
+const s3 = getDescriptor(ddd, "propertyDerived");
+const s4 = getDescriptor(ddd, "propertyBase");
+
+console.log("here");
