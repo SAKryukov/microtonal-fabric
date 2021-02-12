@@ -62,7 +62,6 @@ window.onload = () => {
         constructor(element, keyWidth, keyHeight, rowCount, rowWidth, keyColors) {
             super(element, keyWidth, keyHeight, rowCount, rowWidth, keyColors);
         }
-        get defaultChord() { return super.defaultChord; }
         customKeyHandler(keyElement, keyData, on) {
             if (globalKeyTracker.isAltDown()) return false;
             return super.customKeyHandler(keyElement, keyData, on);
