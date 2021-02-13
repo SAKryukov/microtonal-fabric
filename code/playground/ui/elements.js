@@ -23,14 +23,20 @@ const findElements = () => {
             volume: new Slider( { value: 0.4, min: 0, max: 1, step: 0.01, indicatorWidth: definitionSet.indicatorWidth },
                 document.querySelector("#slider-volume")),
             sustainEnableButton: new TwoStateButton(document.querySelector("#sound-control button:first-of-type")),
-            sustain: new Slider( { value: 0, min: 0, max: 10, step: 0.1, indicatorWidth: definitionSet.indicatorWidth, indicatorSuffix: " s" }, document.querySelector("#slider-sustain")),
+            sustain: new Slider( { value: 0, min: 0, max: 10, step: 0.1, indicatorWidth: definitionSet.indicatorWidth, indicatorSuffix: " s" },
+                document.querySelector("#slider-sustain")),
             transpositionLabel: document.querySelector("#sound-control label:last-of-type"),
             transposition: new Slider( { value: 0, min: -100, max: 100, step: 1, indicatorWidth: definitionSet.indicatorWidth},
                 document.querySelector("#slider-transposition")),
         },
         initialize: function () {
+            const defaultVolume = this.playControl.volume.value;
+            const defaultTransposition = this.playControl.transposition.value;
             this.recorder.record.isDown = false;
+            this.playControl.sustain.disabled = true;
             this.playControl.sustainEnableButton.isDown = false;
+            this.playControl.volumeLabel.onclick = () => this.playControl.volume.value = defaultVolume;
+            this.playControl.transpositionLabel.onclick = () => this.playControl.transposition.value = defaultTransposition;
         }
     }; //elements
     elements.initialize();

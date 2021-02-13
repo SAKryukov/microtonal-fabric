@@ -90,7 +90,7 @@ window.onload = () => {
             const keyboard = new PlaygroungKeyboard(elements.keyboardParent, definitionSet.keyWidth, definitionSet.keyHeight,
                 rowCount, columnCount, definitionSet.colorSet);
             keyboard.fitView = true;
-            const instrument = new Instrument(population.frequencySet, 12); //SA??? 12?
+            const instrument = new Instrument(population.frequencySet, tones.transpositionUnits);
             keyboard.label((x, y) => population.labelHandler(x, y));
             keyboard.setTitles((x, y) => population.titleHandler(x, y));
             population.cleanUp(); population = undefined;
@@ -110,6 +110,7 @@ window.onload = () => {
             }
             instrument.sustain = getSustainValue();
             instrument.transposition = elements.playControl.transposition.value;
+            elements.playControl.transposition.onchange = (_, value) => instrument.transposition = value;
             elements.playControl.sustain.onchange = () => instrument.sustain = getSustainValue();
             return { keyboard: keyboard, instrument: instrument };
         })();
