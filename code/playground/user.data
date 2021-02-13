@@ -6,7 +6,7 @@
         version: "",
         time: "2017-2020",
     },
-    size: { width: 28, height: 8 },
+    size: { width: 28, height: 7 },
     base: 275/4, //Hz
     rows: [
         [interval(1), interval(9,8),   interval(5,4),   interval(4,3),   interval(3,2),   interval(27,16), interval(15,8), repeat],
@@ -16,7 +16,6 @@
         [interval(1), interval(9,8),   interval(5,4),   interval(4,3),   interval(3,2),   interval(27,16), interval(16,9), repeat],
         [interval(1), interval(9,8),   interval(77,64), interval(4,3),   interval(3,2),   interval(8,5),   interval(16,9), repeat],
         [interval(1), interval(16,15), interval(77,64), interval(4,3),   interval(64,45), interval(8,5),   interval(16,9), repeat],
-        [{label: "Demo", frequency: 220}, 110, {label: "frequency", frequency: 40}, {label: "int", interval: interval(77,64)}, null, {label: "←null", frequency: 1}, repeat],
     ],
     // optional:
     rowTitles: ["Ionian", "Dorian", "Phrygian", "Lydian", "Mixolydian", "Aeolian", "Locrian", "Demo"],

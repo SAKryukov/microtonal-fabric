@@ -65,7 +65,8 @@
         body > section > button { padding: 0.2em; padding-left:1em; padding-right:1em; border: solid thin navy; background-color: yellow; font-size: 120%; }
         header { padding: 0.6em; }
         footer > * { padding-right: 1em; }
-        details section > section { display: inline-block; }
+        main > section, details, details section > section { display: inline-block; }
+        main > section, main > section > label { vertical-align: top; }
         details section > section:last-of-type { margin-left: var(--big-horizontal-gap); }
         details section button { margin-top: var(--big-vertical-gap); width: 12em; }
         button {
@@ -101,22 +102,20 @@
 
     <main>
         <section>
-            <label>Instrument: <select id="instrument">
-            </select></label>
+            <label>Instrument: <select id="instrument"></select></label>
         </section>
-        <section></section>
-   <details><summary accesskey="R"><u>R</u>ecorder</summary>
-      <section id="recorder">
-         <section>
-             <button class="st down" data-direct-access-key="R"><span>&#x2B24;</span> Record (R)</button><br/>
-             <button data-cancel-name="Cancel (1)" accesskey="P" data-direct-access-key="1"><u>P</u>lay (1)</button>
-         </section>
-         <section>
-             <button accesskey="O" data-direct-access-key="C">T<u>o</u> Clipboard (C)</button><br/>
-             <button accesskey="M" data-direct-access-key="V">Fro<u>m</u> Clipboard (V)</button><br/>
-         </section>
-      </section>
-   </details>
+        <details><summary accesskey="R"><u>R</u>ecorder</summary>
+            <section id="recorder">
+               <section>
+                   <button class="st down" data-direct-access-key="R"><span>&#x2B24;</span> Record (R)</button><br/>
+                   <button data-cancel-name="Cancel (1)" accesskey="P" data-direct-access-key="1"><u>P</u>lay (1)</button>
+               </section>
+               <section>
+                   <button accesskey="O" data-direct-access-key="C">T<u>o</u> Clipboard (C)</button><br/>
+                   <button accesskey="M" data-direct-access-key="V">Fro<u>m</u> Clipboard (V)</button><br/>
+               </section>
+           </section>
+       </details>
    </main>
    <footer>v.&thinsp;<span>3.0.0</span>Copyright &copy; Sergey A Kryukov, <span></span><a href="help.html">Help</a></footer>
 
