@@ -20,11 +20,12 @@ window.onload = () => {
     controls.advanced.durationTiming.selectedIndex = durationTimingChoiceDefault;
 
     const thinSpace = String.fromCodePoint(0x2009);
-    controls.product.textContent = `${sharedDefinitionSet.years}, v.${thinSpace}${sharedDefinitionSet.version}`;
+    controls.metadata.product.textContent = `${sharedDefinitionSet.years}`;
+    controls.metadata.version.textContent = `v.${thinSpace}${sharedDefinitionSet.version}`;
     const sequenceMap = new Map();
 
     const showException = ex => {
-        controls.error.textContent = ex ? ex.message : "";
+        controls.metadata.error.textContent = ex ? ex.message : "";
     }; //showException
 
     const updateStatus = target => {

@@ -15,12 +15,13 @@ initializationController.initialize(
     elements.initializationControllerData.startControlParent,
     main);
 
-function main () {
-
     (function setCopyright() {
         elements.copyright.spanYears.textContent = sharedDefinitionSet.years;
         elements.copyright.spanVersion.textContent = sharedDefinitionSet.version;
     })(); //setCopyright
+
+function main () {
+
     
     const comparer = setupComparer(elements, definitionSet);
 

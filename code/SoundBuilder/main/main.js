@@ -211,7 +211,7 @@ window.onload = () => {
 
         controls.usage.FitKeyboard.focus();
 
-        controls.copyright.innerHTML = definitionSet.copyright(sharedDefinitionSet.years);
+        controls.copyright.innerHTML = `${document.title} v.&thinsp;${sharedDefinitionSet.version}<span style="padding: 0.4em">&bull;</span>${definitionSet.copyright(sharedDefinitionSet.years)}`;
         controls.copyright.title = `${definitionSet.title} v. ${sharedDefinitionSet.version}`;
 
     } //startApplication

@@ -16,7 +16,11 @@ const getControls = () => {
     const upDown = document.getElementById("up-down");
     
     const result = {
-        product: document.querySelector("footer em"),
+        metadata: {
+            version: document.querySelector("footer em:first-of-type"),
+            product: document.querySelector("footer em:nth-of-type(2)"),
+            error: document.querySelector("footer i"),    
+        },
         sequence: document.querySelector("select"),
         shift: {
             time: {
@@ -53,7 +57,6 @@ const getControls = () => {
             durationTiming: document.querySelector("#select-duration"),
             durationAdjust: document.querySelector("#advanced button:last-of-type"),
         },
-        error: document.querySelector("footer i"),
         clipboard: {
             from: document.getElementById("button-from-keyboard"),
             appendFrom: document.getElementById("button-append-from-keyboard"),
