@@ -13,11 +13,11 @@ const findInitializerControls = () => {
     return {
         initializer: document.querySelector("body > aside"),
         initializerButton: document.querySelector("body > aside > button"),
-        hidden: [
-            document.querySelector("body header"),
-            document.querySelector("body main"),
-            document.querySelector("footer"),
-        ],
+        hidden: document.querySelectorAll("main *"),
+        //     document.querySelector("body header"),
+        //     document.querySelector("body main"),
+        //     document.querySelector("footer"),
+        // ],
     };
 }; //findInitializerControls
 

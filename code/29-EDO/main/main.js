@@ -23,12 +23,11 @@ window.onload = () => {
         );    
     })(); //Initialize
 
+    const controls = findControls();
+    controls.version.textContent = definitionSet.version;
+
     function startApplication() {
-
-        const controls = findControls();
-
-        controls.version.textContent = definitionSet.version;
-
+        
         const keyboards = [];
         let activeInstrumentIndex = 0;
         let instrument;
