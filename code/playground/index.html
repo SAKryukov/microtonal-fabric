@@ -38,6 +38,8 @@
     <script src="../sound/tone.js"></script>
     <script src="../sound/instrument.js"></script>
     <script src="../instruments/instrument-list.js"></script>
+    <script src="ui/playground-keyboard.js"></script>
+    <script src="ui/elements.js"></script>
     <script src="main/user-population.js"></script>
     <script src="main/metadata.js"></script>
     <script src="main/main.js"></script>
@@ -103,13 +105,14 @@
         #keyboard-control > button { margin-right: var(--big-horizontal-gap); }
         #sound-control > label { padding-left: var(--big-horizontal-gap); }
         main { padding: var(--horizontal-gap); padding-bottom: 0; }
+        header { padding: var(--horizontal-gap); padding-bottom: 0; }
     </style>
 </head>
 
 <body>
 
     <section><button>Start</button></section>
-    <header><section></section></header>
+    <header><section id="keyboard"></section></header>
 
     <main>
         <section id="keyboard-control">

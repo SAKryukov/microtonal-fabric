@@ -8,6 +8,7 @@
     },
     size: { width: 28, height: 7 },
     base: 275/4, //Hz
+    transpositionUnits: 12,
     rows: [
         [interval(1), interval(9,8),   interval(5,4),   interval(4,3),   interval(3,2),   interval(27,16), interval(15,8), repeat],
         [interval(1), interval(9,8),   interval(77,64), interval(4,3),   interval(3,2),   interval(27,16), interval(16,9), repeat],

@@ -114,8 +114,8 @@ class UserPopulation {
         if (!tones.size) return "invalid or undefined tones.size";
         if (!tones.size.width) return "invalid or undefined tones.size.width";
         if (!tones.size.height) return "invalid or undefined tones.size.height";
-        if (tones.size.width.constructor != Number) return "tones.size.width is not a number";
-        if (tones.size.height.constructor != Number) return "tones.size.height is not a number";
+        if (tones.size.width.constructor != Number) return `tones.size.width is not a number, cannot be “${tones.size.width}”`;
+        if (tones.size.height.constructor != Number) return `tones.size.height is not a number, cannot be “${tones.size.height}”`;
         if (!tones.rows) return "invalid or undefined tones.row";
         if (tones.rows.constructor != Array) return "tones.rows is not an array"
         let index = 0;
@@ -124,12 +124,18 @@ class UserPopulation {
             if (element.constructor != Array) return `in tones.rows, row ${index} is not an array`;
             ++index;
         } //loop
+        if (tones.transpositionUnits != null) {
+            if (tones.transpositionUnits.constructor != Number || tones.transpositionUnits <= 0)
+                return `transpositionUnits should be a positive integer number, cannot be “${tones.transpositionUnits}”`;
+        } //tones.transpositionUnits
+           
         return true;
     } //validate
 
     get labelHandler() { return this.#implementation.labelHandler; }
     get titleHandler() { return this.#implementation.titleHandler; }
     get frequencySet() { return this.#implementation.frequencySet; }
+    get transpositionUnits() { return tones.transpositionUnits; }
 
     cleanUp() { this.#implementation.cleanUp(); }
 

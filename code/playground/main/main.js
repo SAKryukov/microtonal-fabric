@@ -59,64 +59,14 @@ window.onload = () => {
 
     globalKeyTracker.init();
 
-    class SpecialKeyboard extends GridKeyboard {
-        constructor(element, keyWidth, keyHeight, rowCount, rowWidth, keyColors) {
-            super(element, keyWidth, keyHeight, rowCount, rowWidth, keyColors);
-        }
-        customKeyHandler(keyElement, keyData, on) {
-            if (globalKeyTracker.isControlDown()) return false;
-            return super.customKeyHandler(keyElement, keyData, on);
-        } // return false to stop embedded handling
-        resetAllModes() { } //SA??? 
-    } //class SpecialKeyboard
-
     if (window.status) {
         window.onerror = undefined;
         return definitionSet.userData.reportBadFileContent(definitionSet.userData.dataFileName);
     } //if userError
 
     if (initializationController.badJavaScriptEngine()) return;
-
-    const elements = {
-        initialization: {
-            startButton: document.querySelector("body > section > button"),
-            startButtonParent: document.querySelector("body > section"),
-            hiddenControls: document.querySelectorAll("main > section, header, main > article, main > details"),
-        },
-        keyboardParent: document.querySelector("header > section"),
-        instrumentSelector: document.querySelector("#instrument"),
-        recorder: {
-            record: new TwoStateButton(document.querySelector("#recorder > section:first-of-type > button:first-of-type")),
-            playSequence: document.querySelector("#recorder > section:first-of-type > button:last-of-type"),
-            toClipboard: document.querySelector("#recorder > section:last-of-type > button:first-of-type"),
-            fromClipboard: document.querySelector("#recorder > section:last-of-type > button:last-of-type"),
-        },
-        keyboardControl: {
-            fit: new TwoStateButton(document.querySelector("#keyboard-control > button:first-child")),
-            hightlight: new TwoStateButton(document.querySelector("#keyboard-control > button:nth-child(2)")),
-            reset: document.querySelector("#keyboard-control > button:last-of-type"),
-        },
-        playControl: {
-            volumeLabel: document.querySelector("#volume-control label"),
-            volume: new Slider( { value: 0.4, min: 0, max: 1, step: 0.01, indicatorWidth: definitionSet.indicatorWidth },
-                document.querySelector("#slider-volume")),
-            sustainEnableButton: new TwoStateButton(document.querySelector("#sound-control button:first-of-type")),
-            sustain: new Slider( { value: 0, min: 0, max: 10, step: 0.1, indicatorWidth: definitionSet.indicatorWidth, indicatorSuffix: " s" }, document.querySelector("#slider-sustain")),
-            transpositionLabel: document.querySelector("#sound-control label:last-of-type"),
-            transposition: new Slider( { value: 0, min: -100, max: 100, step: 1, indicatorWidth: definitionSet.indicatorWidth},
-                document.querySelector("#slider-transposition")),
-        },
-        initialize: function () {
-            this.recorder.record.isDown = false;
-            this.playControl.sustainEnableButton.isDown = false;
-        }
-    }; //elements
-    elements.initialize();
-
+    const elements = findElements();
     setMetadata();
-
-    elements.keyboardParent.style.display = "grid"; // important workaround, otherwise initializationController.initialize breaks it
-                                                    // by restoring previous display style
     initializationController.initialize(
         elements.initialization.hiddenControls,
         elements.initialization.startButton,
@@ -137,10 +87,10 @@ window.onload = () => {
             const rowCount = tones.size.height;
             const columnCount = tones.size.width;
             let population = new UserPopulation(tones, rowCount, columnCount, repeat);
-            const keyboard = new SpecialKeyboard(elements.keyboardParent, definitionSet.keyWidth, definitionSet.keyHeight,
+            const keyboard = new PlaygroungKeyboard(elements.keyboardParent, definitionSet.keyWidth, definitionSet.keyHeight,
                 rowCount, columnCount, definitionSet.colorSet);
             keyboard.fitView = true;
-            const instrument = new Instrument(population.frequencySet);      
+            const instrument = new Instrument(population.frequencySet, 12); //SA??? 12?
             keyboard.label((x, y) => population.labelHandler(x, y));
             keyboard.setTitles((x, y) => population.titleHandler(x, y));
             population.cleanUp(); population = undefined;
@@ -159,6 +109,7 @@ window.onload = () => {
                 elements.playControl.sustain.disabled = !value;
             }
             instrument.sustain = getSustainValue();
+            instrument.transposition = elements.playControl.transposition.value;
             elements.playControl.sustain.onchange = () => instrument.sustain = getSustainValue();
             return { keyboard: keyboard, instrument: instrument };
         })();
