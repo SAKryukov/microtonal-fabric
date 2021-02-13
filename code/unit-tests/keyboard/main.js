@@ -43,10 +43,10 @@ class MinimalKeyboard extends AbstractKeyboard {
     highlightKey(keyElement, keyboardMode) {
         const metrics = this.derivedClassConstructorArguments[0];
         switch (keyboardMode) {
-            case keyHightlight.normal: return keyElement.style.backgroundColor = metrics.colors.normal;
-            case keyHightlight.down: return keyElement.style.backgroundColor = metrics.colors.down;
-            case keyHightlight.chord: return keyElement.style.backgroundColor = "yellow";
-            case keyHightlight.chordRoot: return keyElement.style.backgroundColor = "orange";
+            case keyHighlight.normal: return keyElement.style.backgroundColor = metrics.colors.normal;
+            case keyHighlight.down: return keyElement.style.backgroundColor = metrics.colors.down;
+            case keyHighlight.chord: return keyElement.style.backgroundColor = "yellow";
+            case keyHighlight.chordRoot: return keyElement.style.backgroundColor = "orange";
         } //switch
     } //highlightKey
     isTouchKey(parentElement, keyElement) {

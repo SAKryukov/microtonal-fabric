@@ -55,7 +55,6 @@ const getDescriptor = (obj, property) => {
 } //getDescriptor
 
 const ddd = new Derived();
-const v0 = ddd.values;
 const s1 = getDescriptor(ddd, "methodDerived");
 const s2 = getDescriptor(ddd, "methodBase");
 const s3 = getDescriptor(ddd, "propertyDerived");
