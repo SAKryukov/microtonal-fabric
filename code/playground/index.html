@@ -50,11 +50,11 @@
             --small-horizontal-gap: 0.4em;
             --frame: 0.2em 0.6em 0.2em 0.6em;
         }
-        * { margin: 0; padding: 0; font-family: sans-serif; box-sizing: content-box; touch-action: none; user-select: none; }
+        * { margin: 0; padding: 0; font-family: sans-serif; box-sizing: content-box; user-select: none; }
+        header { touch-action: none; }
         main { padding-right: 1em; padding-top: var(--big-vertical-gap); }
         main p { height: var(--big-vertical-gap); }
         main > article > p { width: var(--horizontal-gap); }
-        main > section > label { margin-left: var(--small-horizontal-gap) }
         /* flex: */
         html, body { height: 100%; }
         body { display: flex; flex-flow: column; }
@@ -71,9 +71,7 @@
         footer > * { padding-right: 1em; }
         main article { margin: 0; display: flex; white-space: nowrap; width: 100%; align-items: center; }
         main article div { white-space: nowrap; width: 100%; }
-        main article label:first-of-type { margin-left: var(--horizontal-gap); }
         main article label { margin-right: var(--small-horizontal-gap); }
-        main article button:first-of-type { margin-left: var(--horizontal-gap); margin-right: var(--button-horizontal-gap); }
         main > section, details, details section > section { display: inline-block; }
         main > details { margin-left: var(--horizontal-gap); }
         main > section, main > section > label { vertical-align: top; }
@@ -102,6 +100,9 @@
         }
         button span { opacity: 0.2; }
         button.st.down span { color: lightgreen; font-weight: normal; opacity: 1; };
+        #keyboard-control > button { margin-right: var(--big-horizontal-gap); }
+        #sound-control > label { padding-left: var(--big-horizontal-gap); }
+        main { padding: var(--horizontal-gap); padding-bottom: 0; }
     </style>
 </head>
 
@@ -111,11 +112,14 @@
     <header><section></section></header>
 
     <main>
-        <article>
+        <section id="keyboard-control">
             <button class="st down" accesskey="F"><span>&#x2B24;</span> <u>F</u>it</button>
-        </article>
+            <button class="st down" accesskey="U"><span>&#x2B24;</span> <u>U</u>se Hightlight</button>
+            <button accesskey="M"><u>R</u>eset All Modes</button>
+            <span>(Ctrl+Click: change mode)</span>
+        </section>
         <p/>
-        <article>
+        <article id="sound-control">
             <button class="st down" accesskey="S"><span>&#x2B24;</span> <u>S</u>ustain</button>
             <p/>
             <div id="slider-sustain"></div>
@@ -123,9 +127,9 @@
             <div id="slider-transposition"></div>
         </article>
         <p/>
-        <article>
-           <label for="slider-volume-control" accesskey="V"><u>V</u>olume:</label>
-           <div id="slider-volume"></div>
+        <article id="volume-control">
+            <label for="slider-volume-control" accesskey="V"><u>V</u>olume:</label>
+            <div id="slider-volume"></div>
         </article>
         <p/>
         <section>
@@ -133,16 +137,16 @@
         </section>
         <details><summary accesskey="R"><u>R</u>ecorder</summary>
             <section id="recorder">
-               <section>
-                   <button class="st down" data-direct-access-key="R"><span>&#x2B24;</span> Record (R)</button><br/>
-                   <button data-cancel-name="Cancel (1)" accesskey="P" data-direct-access-key="1"><u>P</u>lay (1)</button>
-               </section>
-               <section>
-                   <button accesskey="O" data-direct-access-key="C">T<u>o</u> Clipboard (C)</button><br/>
-                   <button accesskey="M" data-direct-access-key="V">Fro<u>m</u> Clipboard (V)</button><br/>
-               </section>
-           </section>
-       </details>
+                <section>
+                    <button class="st down" data-direct-access-key="R"><span>&#x2B24;</span> Record (R)</button><br/>
+                    <button data-cancel-name="Cancel (1)" accesskey="P" data-direct-access-key="1"><u>P</u>lay (1)</button>
+                </section>
+                <section>
+                    <button accesskey="O" data-direct-access-key="C">T<u>o</u> Clipboard (C)</button><br/>
+                    <button accesskey="M" data-direct-access-key="V">Fro<u>m</u> Clipboard (V)</button><br/>
+                </section>
+            </section>
+        </details>
    </main>
    <footer>v.&thinsp;<span>3.0.0</span>Copyright &copy; Sergey A Kryukov, <span></span><a href="help.html">Help</a></footer>
 

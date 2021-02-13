@@ -64,9 +64,10 @@ window.onload = () => {
             super(element, keyWidth, keyHeight, rowCount, rowWidth, keyColors);
         }
         customKeyHandler(keyElement, keyData, on) {
-            if (globalKeyTracker.isAltDown()) return false;
+            if (globalKeyTracker.isControlDown()) return false;
             return super.customKeyHandler(keyElement, keyData, on);
-        } // return false to stop embedded handling    
+        } // return false to stop embedded handling
+        resetAllModes() { } //SA??? 
     } //class SpecialKeyboard
 
     if (window.status) {
@@ -90,14 +91,20 @@ window.onload = () => {
             toClipboard: document.querySelector("#recorder > section:last-of-type > button:first-of-type"),
             fromClipboard: document.querySelector("#recorder > section:last-of-type > button:last-of-type"),
         },
+        keyboardControl: {
+            fit: new TwoStateButton(document.querySelector("#keyboard-control > button:first-child")),
+            hightlight: new TwoStateButton(document.querySelector("#keyboard-control > button:nth-child(2)")),
+            reset: document.querySelector("#keyboard-control > button:last-of-type"),
+        },
         playControl: {
-            volumeLabel: document.querySelector("main article:nth-of-type(2) label"),
-            volume: new Slider( { value: 1, min: 0, max: 10, step: 0.1, indicatorWidth: definitionSet.indicatorWidth },
+            volumeLabel: document.querySelector("#volume-control label"),
+            volume: new Slider( { value: 0.4, min: 0, max: 1, step: 0.01, indicatorWidth: definitionSet.indicatorWidth },
                 document.querySelector("#slider-volume")),
-            sustainEnableButton: new TwoStateButton(document.querySelector("main article:nth-of-type(2) button:first-of-type")),
+            sustainEnableButton: new TwoStateButton(document.querySelector("#sound-control button:first-of-type")),
             sustain: new Slider( { value: 0, min: 0, max: 10, step: 0.1, indicatorWidth: definitionSet.indicatorWidth, indicatorSuffix: " s" }, document.querySelector("#slider-sustain")),
-            transpositionLabel: document.querySelector("main article:nth-of-type(2) label:last-of-type"),
-            transposition: new Slider( { value: 0, min: -100, max: 100, step: 1, indicatorWidth: definitionSet.indicatorWidth}, document.querySelector("#slider-transposition")),
+            transpositionLabel: document.querySelector("#sound-control label:last-of-type"),
+            transposition: new Slider( { value: 0, min: -100, max: 100, step: 1, indicatorWidth: definitionSet.indicatorWidth},
+                document.querySelector("#slider-transposition")),
         },
         initialize: function () {
             this.recorder.record.isDown = false;
@@ -137,10 +144,22 @@ window.onload = () => {
             keyboard.label((x, y) => population.labelHandler(x, y));
             keyboard.setTitles((x, y) => population.titleHandler(x, y));
             population.cleanUp(); population = undefined;
-            instrument.volume = 0.5; //SA???
             instrument.data = instrumentList[definitionSet.instrumentControl.defaultInstrument];
             keyboard.keyHandler = (on, index) => instrument.play(on, index);
             keyboard.recorder = new Recorder();
+            elements.keyboardControl.fit.handler = value => keyboard.fitView = value;
+            elements.keyboardControl.hightlight.handler = value => keyboard.useHighlight = value;
+            elements.keyboardControl.reset.onclick = () => keyboard.resetAllModes();
+            instrument.volume = elements.playControl.volume.value;
+            elements.playControl.volume.onchange = (_, value) => instrument.volume = value;
+            const getSustainValue = () =>
+                elements.playControl.sustainEnableButton.isDown ? elements.playControl.sustain.value : 0;
+            instrument.sustain = getSustainValue();
+            elements.playControl.sustainEnableButton.handler = value => {
+                elements.playControl.sustain.disabled = !value;
+            }
+            instrument.sustain = getSustainValue();
+            elements.playControl.sustain.onchange = () => instrument.sustain = getSustainValue();
             return { keyboard: keyboard, instrument: instrument };
         })();
 
