@@ -10,11 +10,9 @@
     const globalKeyTracker = {
         keys: { control: 1, shift: 2, alt: 4 },
         current: 0,
-        isControlDown: function() {
-            return (this.current & this.keys.control) > 0
-        },
-        isShiftDown: function() { return (this.current & this.keys.shift) > 0},
-        isAltDown: function() { return (this.current & this.keys.alt) > 0},
+        isControlDown: function() { return (this.current & this.keys.control) > 0 },
+        isShiftDown: function() { return (this.current & this.keys.shift) > 0 },
+        isAltDown: function() { return (this.current & this.keys.alt) > 0 },
         init: function() {
             const thisObject = this;
             window.addEventListener("keydown", function(event) {
