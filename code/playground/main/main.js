@@ -74,6 +74,7 @@ window.onload = () => {
     } //if userError
 
     if (initializationController.badJavaScriptEngine()) return;
+
     const elements = {
         initialization: {
             startButton: document.querySelector("body > section > button"),
@@ -82,7 +83,22 @@ window.onload = () => {
         },
         keyboardParent: document.querySelector("header > section"),
         instrumentSelector: document.querySelector("#instrument"),
+        recorder: {
+            record: new TwoStateButton(document.querySelector("#recorder > section:first-of-type > button:first-of-type")),
+            playSequence: document.querySelector("#recorder > section:first-of-type > button:last-of-type"),
+            toClipboard: document.querySelector("#recorder > section:last-of-type > button:first-of-type"),
+            fromClipboard: document.querySelector("#recorder > section:last-of-type > button:last-of-type"),
+        },
+        initialize: function () {
+            const hiddenControls = [];
+            for (let control of this.initialization.hiddenControls)
+                hiddenControls.push(control);
+            hiddenControls.push(document.querySelector("details"));
+            this.initialization.hiddenControls = hiddenControls;
+            this.recorder.record.isDown = false;
+        }
     }; //elements
+    elements.initialize();
 
     setMetadata();
 
@@ -104,7 +120,7 @@ window.onload = () => {
                 return definitionSet.userData.reportBadFileContentBecause(definitionSet.userData.dataFileName, validationResult);
         } //if validationResult !== true
  
-        const instrument = (() => {
+        const music = (() => {
             const rowCount = tones.size.height;
             const columnCount = tones.size.width;
             let population = new UserPopulation(tones, rowCount, columnCount, repeat);
@@ -118,8 +134,19 @@ window.onload = () => {
             instrument.volume = 0.5;
             instrument.data = instrumentList[definitionSet.instrumentControl.defaultInstrument];
             keyboard.keyHandler = (on, index) => instrument.play(on, index);
-            return instrument;
+            keyboard.recorder = new Recorder();
+            return { keyboard: keyboard, instrument: instrument };
         })();
+
+        recorderControl.init(
+            music.keyboard.recorder,
+            elements.recorder.record, elements.recorder.playSequence,
+            elements.recorder.toClipboard, elements.recorder.fromClipboard,
+            isPlaying => {
+                music.keyboard.playSequence();
+                if (isPlaying)
+                    music.keyboard.stopAllSounds();
+            });
 
         (function setupInstruments() {
             for (let instrumentData of instrumentList) {
@@ -128,7 +155,7 @@ window.onload = () => {
                 elements.instrumentSelector.appendChild(option);
             } //loop
             elements.instrumentSelector.selectedIndex = definitionSet.instrumentControl.defaultInstrument;
-            elements.instrumentSelector.onchange = event => instrument.data = instrumentList[event.target.selectedIndex];
+            elements.instrumentSelector.onchange = event => music.instrument.data = instrumentList[event.target.selectedIndex];
         })(); //setupInstruments
 
     }; //start

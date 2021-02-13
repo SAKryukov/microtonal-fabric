@@ -51,8 +51,6 @@
             --frame: 0.2em 0.6em 0.2em 0.6em;
         }
         * { margin: 0; padding: 0; font-family: sans-serif; box-sizing: content-box; touch-action: none; user-select: none; }
-        svg text { text-anchor: middle; dominant-baseline: middle; }
-        svg text, svg line { touch-action: none; pointer-events: none; }
         main { padding-left: 1em; padding-right: 1em; }
         main > section > label { margin-left: var(--small-horizontal-gap) }
         /* flex: */
@@ -67,6 +65,32 @@
         body > section > button { padding: 0.2em; padding-left:1em; padding-right:1em; border: solid thin navy; background-color: yellow; font-size: 120%; }
         header { padding: 0.6em; }
         footer > * { padding-right: 1em; }
+        details section > section { display: inline-block; }
+        details section > section:last-of-type { margin-left: var(--big-horizontal-gap); }
+        details section button { margin-top: var(--big-vertical-gap); width: 12em; }
+        button {
+            outline: none;
+            border: solid 2px;
+            border-radius: 0.6em;
+            padding: var(--frame);
+        }
+        button[disabled] { border-color: silver; color: silver; border-style: double; }
+        button:active { background-color: var(--light-title-background); filter: brightness(116%); }
+        button:focus {
+            border-style: double dotted double dotted;
+        }
+        button.st {
+            background: lightgray;
+            padding-bottom: 0.3em;
+            border-color: slategray;
+        }
+        button.st.down {
+            background: darkslategray;
+            color: white;
+            border-color: lightgreen;
+        }
+        button span { opacity: 0.2; }
+        button.st.down span { color: lightgreen; font-weight: normal; opacity: 1; };
     </style>
 </head>
 
@@ -81,8 +105,20 @@
             </select></label>
         </section>
         <section></section>
-    </main>
-    <footer>v.&thinsp;<span>3.0.0</span>Copyright &copy; Sergey A Kryukov, <span></span><a href="help.html">Help</a></footer>
+   <details><summary accesskey="R"><u>R</u>ecorder</summary>
+      <section id="recorder">
+         <section>
+             <button class="st down" data-direct-access-key="R"><span>&#x2B24;</span> Record (R)</button><br/>
+             <button data-cancel-name="Cancel (1)" accesskey="P" data-direct-access-key="1"><u>P</u>lay (1)</button>
+         </section>
+         <section>
+             <button accesskey="O" data-direct-access-key="C">T<u>o</u> Clipboard (C)</button><br/>
+             <button accesskey="M" data-direct-access-key="V">Fro<u>m</u> Clipboard (V)</button><br/>
+         </section>
+      </section>
+   </details>
+   </main>
+   <footer>v.&thinsp;<span>3.0.0</span>Copyright &copy; Sergey A Kryukov, <span></span><a href="help.html">Help</a></footer>
 
 </body>
 </html>
