@@ -13,6 +13,10 @@ class UserPopulation {
 
     #implementation = { rowLabelHandler: null, labelHandler: null, frequencySet: [] }
 
+    static definitionSet = {
+        audibleDomain: [20, 12000], //Hz
+    }
+
     constructor(data, keyboardRowCount, keyboardColumnCount, repeatObject) {
         const labelSet = [];
         const workingDimensions = (function getDimensions() {
@@ -105,6 +109,19 @@ class UserPopulation {
             data.metadata = undefined;
             labelSet.splice(0, labelSet.length);
         } //this.#implementation.cleanUp
+        if (!data.transpositionUnits) return;
+        const frequencyDomain = [Number.POSITIVE_INFINITY, Number.NEGATIVE_INFINITY]; // min, max
+        for (let frequency of this.#implementation.frequencySet) {
+            if (frequency < frequencyDomain[0])
+                frequencyDomain[0] = frequency;
+            if (frequency > frequencyDomain[1])
+                frequencyDomain[1] = frequency;
+        } //loop
+        const audibleDomain = this.constructor.definitionSet.audibleDomain;
+        this.#implementation.realisticTransposition = [
+            Math.ceil(data.transpositionUnits * (Math.log2(audibleDomain[0]) - Math.log2(frequencyDomain[0]))),
+            Math.floor((data.transpositionUnits * (Math.log2(audibleDomain[1]) - Math.log2(frequencyDomain[1])))),
+        ]; //SA???
     } //constructor
 
     static validate() {
@@ -128,7 +145,6 @@ class UserPopulation {
             if (tones.transpositionUnits.constructor != Number || tones.transpositionUnits <= 0)
                 return `transpositionUnits should be a positive integer number, cannot be “${tones.transpositionUnits}”`;
         } //tones.transpositionUnits
-           
         return true;
     } //validate
 
@@ -136,6 +152,7 @@ class UserPopulation {
     get titleHandler() { return this.#implementation.titleHandler; }
     get frequencySet() { return this.#implementation.frequencySet; }
     get transpositionUnits() { return tones.transpositionUnits; }
+    get realisticTransposition() { return this.#implementation.realisticTransposition; } // array [min, max]
 
     cleanUp() { this.#implementation.cleanUp(); }
 

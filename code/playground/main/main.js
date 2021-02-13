@@ -93,7 +93,6 @@ window.onload = () => {
             const instrument = new Instrument(population.frequencySet, tones.transpositionUnits);
             keyboard.label((x, y) => population.labelHandler(x, y));
             keyboard.setTitles((x, y) => population.titleHandler(x, y));
-            population.cleanUp(); population = undefined;
             instrument.data = instrumentList[definitionSet.instrumentControl.defaultInstrument];
             keyboard.keyHandler = (on, index) => instrument.play(on, index);
             keyboard.recorder = new Recorder();
@@ -109,10 +108,21 @@ window.onload = () => {
                 elements.playControl.sustain.disabled = !value;
                 if (!value) instrument.sustain = 0;
             } //elements.playControl.sustainEnableButton.handler
-            instrument.sustain = getSustainValue();
+            instrument.sustain = getSustainValue();            
+            const realisticTransposition = population.realisticTransposition;
             instrument.transposition = elements.playControl.transposition.value;
-            elements.playControl.transposition.onchange = (_, value) => instrument.transposition = value;
-            elements.playControl.sustain.onchange = () => instrument.sustain = getSustainValue();
+            if (realisticTransposition) {
+                elements.playControl.transposition.minimum = realisticTransposition[0];
+                elements.playControl.transposition.maximum = realisticTransposition[1];
+                elements.playControl.transposition.onchange = (_, value) => instrument.transposition = value;
+                elements.playControl.sustain.onchange = () => instrument.sustain = getSustainValue();    
+            } else {
+                elements.playControl.transposition.disabled = !tones.transpositionUnits;
+                elements.playControl.transpositionLabel.disabled = !tones.transpositionUnits;    
+                elements.playControl.transpositionLabel.style.color = 
+                    elements.playControl.transpositionLabel.dataset.disabledColor;
+            } //if
+            population.cleanUp(); population = undefined;
             return { keyboard: keyboard, instrument: instrument };
         })();
 

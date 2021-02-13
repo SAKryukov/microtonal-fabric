@@ -26,7 +26,7 @@ const findElements = () => {
             sustain: new Slider( { value: 0, min: 0, max: 10, step: 0.1, indicatorWidth: definitionSet.indicatorWidth, indicatorSuffix: " s" },
                 document.querySelector("#slider-sustain")),
             transpositionLabel: document.querySelector("#sound-control label:last-of-type"),
-            transposition: new Slider( { value: 0, min: -100, max: 100, step: 1, indicatorWidth: definitionSet.indicatorWidth},
+            transposition: new Slider( { value: 0, min: -1, max: 1, step: 1, indicatorWidth: definitionSet.indicatorWidth},
                 document.querySelector("#slider-transposition")),
         },
         initialize: function () {
