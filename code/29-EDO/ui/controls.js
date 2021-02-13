@@ -13,16 +13,12 @@ const findInitializerControls = () => {
     return {
         initializer: document.querySelector("body > aside"),
         initializerButton: document.querySelector("body > aside > button"),
-        hidden: document.querySelectorAll("main *"),
-        //     document.querySelector("body header"),
-        //     document.querySelector("body main"),
-        //     document.querySelector("footer"),
-        // ],
+        hidden: document.querySelectorAll("main article, main section, main p, main details"),
     };
 }; //findInitializerControls
 
 const findControls = () => {
-    const indicatorWidth = "3em";
+    const indicatorWidth = "2em";
     const defaultVolume = 1;
     const defaultSustain = 0;
     const defaultTransposition = 0;
