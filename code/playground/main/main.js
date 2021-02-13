@@ -107,7 +107,8 @@ window.onload = () => {
             instrument.sustain = getSustainValue();
             elements.playControl.sustainEnableButton.handler = value => {
                 elements.playControl.sustain.disabled = !value;
-            }
+                if (!value) instrument.sustain = 0;
+            } //elements.playControl.sustainEnableButton.handler
             instrument.sustain = getSustainValue();
             instrument.transposition = elements.playControl.transposition.value;
             elements.playControl.transposition.onchange = (_, value) => instrument.transposition = value;
