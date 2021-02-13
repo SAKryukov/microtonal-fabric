@@ -21,6 +21,10 @@ class Slider {
         theParent.style.gridTemplateColumns = properties.label ? "min-content 1fr min-content" : "1fr min-content";
         let theValue = properties.value ? properties.value : 0;
         const slider = document.createElement("input");
+        this.#implementation.setMinimum = value => slider.min = value;
+        this.#implementation.setMaximum = value => slider.max = value;
+        this.#implementation.getMinimum = () => slider.min;
+        this.#implementation.getMaximum = () => slider.max;
         slider.setAttribute("type", "range");
         if (properties.min) slider.min = properties.min;
         if (properties.max) slider.max = properties.max;
@@ -105,6 +109,10 @@ class Slider {
 
     get value() { return this.#implementation.getValue(); }
     set value(floatValue) { this.#implementation.setValue(floatValue); }
+    set minimum(value) { this.#implementation.setMinimum(value); }
+    set maximum(value) { this.#implementation.setMaximum(value); }
+    get minimum() { return this.#implementation.getMinimum(); }
+    get maximum() { return this.#implementation.getMaximum(); }
     
     get element() { return this.#implementation.getParent(); }
 
