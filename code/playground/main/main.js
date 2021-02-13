@@ -13,6 +13,7 @@ const repeat = { repeatObject: true }; //used in user data file
 const definitionSet = {
     keyWidth: "4em",
     keyHeight: "4em",
+    indicatorWidth: "3em",
     userData: {
         dataFileName: "user.data",
         error: {
@@ -79,7 +80,7 @@ window.onload = () => {
         initialization: {
             startButton: document.querySelector("body > section > button"),
             startButtonParent: document.querySelector("body > section"),
-            hiddenControls: document.querySelectorAll("main > section, header"),
+            hiddenControls: document.querySelectorAll("main > section, header, main > article, main > details"),
         },
         keyboardParent: document.querySelector("header > section"),
         instrumentSelector: document.querySelector("#instrument"),
@@ -89,13 +90,18 @@ window.onload = () => {
             toClipboard: document.querySelector("#recorder > section:last-of-type > button:first-of-type"),
             fromClipboard: document.querySelector("#recorder > section:last-of-type > button:last-of-type"),
         },
+        playControl: {
+            volumeLabel: document.querySelector("main article:nth-of-type(2) label"),
+            volume: new Slider( { value: 1, min: 0, max: 10, step: 0.1, indicatorWidth: definitionSet.indicatorWidth },
+                document.querySelector("#slider-volume")),
+            sustainEnableButton: new TwoStateButton(document.querySelector("main article:nth-of-type(2) button:first-of-type")),
+            sustain: new Slider( { value: 0, min: 0, max: 10, step: 0.1, indicatorWidth: definitionSet.indicatorWidth, indicatorSuffix: " s" }, document.querySelector("#slider-sustain")),
+            transpositionLabel: document.querySelector("main article:nth-of-type(2) label:last-of-type"),
+            transposition: new Slider( { value: 0, min: -100, max: 100, step: 1, indicatorWidth: definitionSet.indicatorWidth}, document.querySelector("#slider-transposition")),
+        },
         initialize: function () {
-            const hiddenControls = [];
-            for (let control of this.initialization.hiddenControls)
-                hiddenControls.push(control);
-            hiddenControls.push(document.querySelector("details"));
-            this.initialization.hiddenControls = hiddenControls;
             this.recorder.record.isDown = false;
+            this.playControl.sustainEnableButton.isDown = false;
         }
     }; //elements
     elements.initialize();
@@ -131,7 +137,7 @@ window.onload = () => {
             keyboard.label((x, y) => population.labelHandler(x, y));
             keyboard.setTitles((x, y) => population.titleHandler(x, y));
             population.cleanUp(); population = undefined;
-            instrument.volume = 0.5;
+            instrument.volume = 0.5; //SA???
             instrument.data = instrumentList[definitionSet.instrumentControl.defaultInstrument];
             keyboard.keyHandler = (on, index) => instrument.play(on, index);
             keyboard.recorder = new Recorder();

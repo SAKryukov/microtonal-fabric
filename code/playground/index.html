@@ -51,7 +51,9 @@
             --frame: 0.2em 0.6em 0.2em 0.6em;
         }
         * { margin: 0; padding: 0; font-family: sans-serif; box-sizing: content-box; touch-action: none; user-select: none; }
-        main { padding-left: 1em; padding-right: 1em; }
+        main { padding-right: 1em; padding-top: var(--big-vertical-gap); }
+        main p { height: var(--big-vertical-gap); }
+        main > article > p { width: var(--horizontal-gap); }
         main > section > label { margin-left: var(--small-horizontal-gap) }
         /* flex: */
         html, body { height: 100%; }
@@ -62,10 +64,18 @@
         svg { opacity: 0.2; }
         footer { background: oldlace; padding: 0.2em; padding-bottom: 0.4em; padding-left: 0.4rem; padding-right: 0.4rem; border-top: solid gray thin; font-size: 60%; }
         body > section { margin-left: auto; margin-right: auto; margin-top: 3em; margin-bottom: 4em; }
-        body > section > button { padding: 0.2em; padding-left:1em; padding-right:1em; border: solid thin navy; background-color: yellow; font-size: 120%; }
+        body > section > button { padding: 0.2em; padding-left:1em; padding-right:1em; border: solid thin navy; font-size: 120%; }
+        body > section > button, body > section > button:focus { border-radius: 2px; border-style: solid solid solid solid; background-color: yellow; }
+        body > section > button
         header { padding: 0.6em; }
         footer > * { padding-right: 1em; }
+        main article { margin: 0; display: flex; white-space: nowrap; width: 100%; align-items: center; }
+        main article div { white-space: nowrap; width: 100%; }
+        main article label:first-of-type { margin-left: var(--horizontal-gap); }
+        main article label { margin-right: var(--small-horizontal-gap); }
+        main article button:first-of-type { margin-left: var(--horizontal-gap); margin-right: var(--button-horizontal-gap); }
         main > section, details, details section > section { display: inline-block; }
+        main > details { margin-left: var(--horizontal-gap); }
         main > section, main > section > label { vertical-align: top; }
         details section > section:last-of-type { margin-left: var(--big-horizontal-gap); }
         details section button { margin-top: var(--big-vertical-gap); width: 12em; }
@@ -101,6 +111,23 @@
     <header><section></section></header>
 
     <main>
+        <article>
+            <button class="st down" accesskey="F"><span>&#x2B24;</span> <u>F</u>it</button>
+        </article>
+        <p/>
+        <article>
+            <button class="st down" accesskey="S"><span>&#x2B24;</span> <u>S</u>ustain</button>
+            <p/>
+            <div id="slider-sustain"></div>
+            <label for="slider-transposition-control" accesskey="T"><u>T</u>ransposition:</label>
+            <div id="slider-transposition"></div>
+        </article>
+        <p/>
+        <article>
+           <label for="slider-volume-control" accesskey="V"><u>V</u>olume:</label>
+           <div id="slider-volume"></div>
+        </article>
+        <p/>
         <section>
             <label>Instrument: <select id="instrument"></select></label>
         </section>
