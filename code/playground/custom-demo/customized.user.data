@@ -5,7 +5,7 @@
         [interval(1), interval(9,8),   interval(5,4),   interval(4,3),   interval(3,2),   interval(27,16), interval(15,8), repeat],
         [interval(1), interval(9,8),   interval(77,64), interval(4,3),   interval(3,2),   interval(27,16), interval(16,9), repeat],
         [interval(1), interval(16,15), interval(77,64), interval(4,3),   interval(3,2),   interval(8,5),   interval(16,9), repeat],
-        [{label: "Demo", frequency: 220}, 110, {label: "frequency", frequency: 40}, {label: "int", interval: interval(77,64)}, 120, {label: "←null", frequency: 1}, repeat],
+        [{label: "Demo", frequency: 220}, 110, {label: "frequency", frequency: 40}, {label: null, interval: interval(77,64)}, {label: "←null", frequency: 440}, 120, repeat],
     ],
     // optional:
     rowTitles: [
