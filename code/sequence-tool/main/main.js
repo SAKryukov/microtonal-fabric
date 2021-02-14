@@ -19,9 +19,7 @@ window.onload = () => {
     } //loop
     controls.advanced.durationTiming.selectedIndex = durationTimingChoiceDefault;
 
-    const thinSpace = String.fromCodePoint(0x2009);
-    controls.metadata.product.textContent = `${sharedDefinitionSet.years}`;
-    controls.metadata.version.textContent = `v.${thinSpace}${sharedDefinitionSet.version}`;
+    metadata.initialize(controls.metadata);
     const sequenceMap = new Map();
 
     const showException = ex => {

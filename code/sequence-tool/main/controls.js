@@ -16,11 +16,7 @@ const getControls = () => {
     const upDown = document.getElementById("up-down");
     
     const result = {
-        metadata: {
-            version: document.querySelector("footer em:first-of-type"),
-            product: document.querySelector("footer em:nth-of-type(2)"),
-            error: document.querySelector("footer i"),    
-        },
+        metadata: document.querySelector("footer small"),
         sequence: document.querySelector("select"),
         shift: {
             time: {
