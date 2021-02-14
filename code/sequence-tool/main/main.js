@@ -23,7 +23,7 @@ window.onload = () => {
     const sequenceMap = new Map();
 
     const showException = ex => {
-        controls.metadata.error.textContent = ex ? ex.message : "";
+        controls.error.textContent = ex ? ex.message : "";
     }; //showException
 
     const updateStatus = target => {

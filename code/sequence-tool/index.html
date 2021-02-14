@@ -50,6 +50,7 @@
       header { background: transparent; border-bottom: gray solid thin; }
       main { display: flex; flex-flow: row; flex:auto; background: rgb(228, 255, 220); overflow: auto; justify-items: start; }
       footer { background: oldLace; border-top: gray solid thin; }
+      footer > span { color: red; margin-left: 1em; }
       button, option, input, main, footer, header { padding: var(--horizontal-gap); }
       button, option, input, footer, header { padding-top: var(--small-vertical-gap); padding-bottom: var(--small-vertical-gap); }
       main { padding-top: var(--big-vertical-gap); padding-bottom: var(--big-vertical-gap); }
@@ -125,7 +126,7 @@
 </section>
 </main>
 
-<footer><small></small></footer>
+<footer><small></small><span></span></footer>
 
 </body>
 </html>

@@ -17,6 +17,7 @@ const getControls = () => {
     
     const result = {
         metadata: document.querySelector("footer small"),
+        error: document.querySelector("footer span"),
         sequence: document.querySelector("select"),
         shift: {
             time: {
