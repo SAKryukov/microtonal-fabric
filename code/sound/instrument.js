@@ -70,6 +70,20 @@ class Instrument extends ModulatorSet {
             } //loop
             this.data = this.#implementation.lastDataset;
         }; //this.#implementation.transpose
+        this.#implementation.changeFrequencies = (indexFrom, indexTo, frequencyCalculator) => {
+            const saveTransposition = this.#implementation.transposition;
+            this.#implementation.transpose(0);
+            try {
+                for (let index = indexFrom; index <= indexTo; ++index) {
+                    const tone = this.#implementation.tones.get(index);
+                    if (!tone) break;
+                    const frequency = frequencyCalculator(index);
+                    tone.transpose(frequency, compensation(frequency));
+                } //loop    
+            } finally {
+                this.#implementation.transpose(saveTransposition);
+            } //exception
+        } //this.#implementation.changeFrequencies
         this.#implementation.compensationMasterGainNode.connect(this.#implementation.masterGain);
         const oscillatorTypeFourier = soundDefinitionSet.OscillatorType.getValue(0).name; //default
         this.#implementation.setWaveform = (oscillator) => {
@@ -207,8 +221,12 @@ class Instrument extends ModulatorSet {
         return result;
     } //get frequencies
 
-    get transposition() { return this.#implementation.value; }
+    get transposition() { return this.#implementation.transposition; }
     set transposition(value) { this.#implementation.transpose(value); }
+    
+    changeFrequencies(indexFrom, indexTo, frequencyCalculator) {
+        this.#implementation.changeFrequencies(indexFrom, indexTo, frequencyCalculator);
+    }
 
     deactivate() { this.#implementation.deactivate(); }
 
