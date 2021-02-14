@@ -1,11 +1,17 @@
 ﻿const tones = {
     metadata: { // optional
-        title: "Rational Diatonic System",
-        author: "Dawson Berry",
-        copyright: "",
-        version: "1?",
-        time: "2017-2020",
-        "Something else": "data",
+        // two properties are special: title and copyright, processed in special ways, other properties are arbitrary, blank spaces, quotation marks and capitalization recommended
+        title: "Aura's Diatonic Scales",
+        copyright: "", // don't include "Copyright" word and symbol, it's done automatically, at the end of the content
+        "Author": "Dawson Berry",
+        "Description": `Set of <a href="https://en.xen.wiki/w/User:Aura/Aura's_Diatonic_Scales">Diatonic Scales</a>
+            suggested by <a href="https://en.xen.wiki/w/Dawson_Berry">Dawson Berry</a> a.&thinsp;k.&thinsp;a. <a href="https://en.xen.wiki/w/User:Aura">Aura</a>`,
+        "Usage":
+		`<br/>The system has 7 natural diatonic scales rendered in rational intervals,
+                 from Ionian to Locrian.<br/>
+                 Each scale has 7 modes.<br/>
+                 To change mode, Ctrl+Click on a note to make it a tonic.<br/>
+                 Each mode is shown as a row title.`
     },
     size: { width: 28, height: 7 },
     base: 275/4, //Hz

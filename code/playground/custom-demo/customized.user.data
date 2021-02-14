@@ -1,11 +1,4 @@
 ﻿const tones = {
-    metadata: { // optional
-        title: "My tonal system",
-        author: "Me",
-        copyright: "",
-        version: "",
-        time: "2017-2020",
-    },
     size: { width: 28, height: 4 },
     base: 275/4, //Hz
     rows: [

@@ -12,7 +12,7 @@
 const metadataElement = {
     initialize: function(data) {
         if (!data) return;
-        const special = new Set(["title", "author", "copyright", "version", "time"]);
+        const special = new Set(["title", "copyright"]);
         const createCloseBox = (size, background, border, stroke) => {
             const ns = "http://www.w3.org/2000/svg";
             const createNS = (name) => document.createElementNS(ns, name);
@@ -24,8 +24,12 @@ const metadataElement = {
             svg.innerHTML = `<g><line x1="0.2" y1="0.2" x2="0.8" y2="0.8"/><line x1="0.2" y1="0.8" x2="0.8" y2="0.2"/></g>`;
             return svg;
         };
+        const remove = () => this.element.style.display = "none";
         this.element = document.createElement("aside");
-        this.element.onclick = event => { event.target.style.display = "none"; }
+        this.element.onclick = event => {
+            if (event.target && event.target.constructor == HTMLAnchorElement) return;
+            remove();
+        } //this.element.onclick
         this.element.style.position = "absolute";
         this.element.style.display = "none";
         this.element.style.left = "1em";
@@ -39,34 +43,26 @@ const metadataElement = {
         if (data.title) {
             const p = document.createElement("h1");
             p.style.fontSize = "110%";
+            p.style.margin = "0";
+            p.style.marginBottom = "0.2em";
             p.textContent = data.title;
             this.element.appendChild(p);
         } //title
-        if (data.version) {
-            const p = document.createElement("p");
-            p.innerHTML = `Version: ${data.version}`;
-            this.element.appendChild(p);
-        } //version
-        if (data.author && data.time) {
-            const p = document.createElement("p");
-            p.innerHTML = `Copyright &copy; ${data.author}, ${data.time}`;
-            this.element.appendChild(p);
-        } else {
-            if (data.author) {
-
-            } //copyright
-        } //copyright
         for (let property in data) {
             if (special.has(property)) continue;
             const p = document.createElement("p");
-            p.textContent = `${property}: ${data[property]}`;
+            p.innerHTML = `<b>${property}</b>: ${data[property]}`;
             this.element.appendChild(p);
         } //loop
+        if (data.copyright) {
+            const p = document.createElement("p");
+            p.innerHTML = `Copyright &copy; ${data.copyright}`;
+            this.element.appendChild(p);
+        } //title
         this.element.appendChild(createCloseBox(12, "yellow", "black", "red"));
-        for (let child of this.element.children)
-            child.style.pointerEvents = "none";
+        //for (let child of this.element.children)
+        //    child.style.pointerEvents = "none";
         document.body.appendChild(this.element);
-        const remove = () => this.element.style.display = "none";
         window.addEventListener("keydown", function(event) {
             if (event.key == "Escape")
                 remove();
