@@ -71,6 +71,7 @@ class Instrument extends ModulatorSet {
             this.data = this.#implementation.lastDataset;
         }; //this.#implementation.transpose
         this.#implementation.changeFrequencies = (indexFrom, indexTo, frequencyCalculator) => {
+            if (!isFrequencySetArray) return;
             const saveTransposition = this.#implementation.transposition;
             this.#implementation.transpose(0);
             try {
@@ -78,6 +79,7 @@ class Instrument extends ModulatorSet {
                     const tone = this.#implementation.tones.get(index);
                     if (!tone) break;
                     const frequency = frequencyCalculator(index);
+                    frequencySet[index] = frequency;
                     tone.transpose(frequency, compensation(frequency));
                 } //loop    
             } finally {
