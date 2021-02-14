@@ -19,7 +19,11 @@ window.onload = () => {
         controls.playControl.globalStartButtonParent,
         startApplication
     );
-    
+
+    metadata.initialize();
+    controls.copyright.innerHTML = `${document.title} v.&thinsp;${sharedDefinitionSet.version}<span style="padding: 0.4em">&bigstar;</span>${definitionSet.copyright(sharedDefinitionSet.years)}`;
+    controls.copyright.title = `${definitionSet.title} v. ${sharedDefinitionSet.version}`;
+
     function startApplication() {
 
         const keyboardProperties = (() => {
@@ -210,9 +214,6 @@ window.onload = () => {
         })(); //setup IO
 
         controls.usage.FitKeyboard.focus();
-
-        controls.copyright.innerHTML = `${document.title} v.&thinsp;${sharedDefinitionSet.version}<span style="padding: 0.4em">&bull;</span>${definitionSet.copyright(sharedDefinitionSet.years)}`;
-        controls.copyright.title = `${definitionSet.title} v. ${sharedDefinitionSet.version}`;
 
     } //startApplication
     

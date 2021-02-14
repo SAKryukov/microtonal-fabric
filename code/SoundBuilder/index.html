@@ -15,12 +15,16 @@
 <head>
     <title>Sound Builder &mdash; Microtonal Fabric</title>
     <meta charset="utf-8"/>
+    <meta name="url" content="https://github.com/SAKryukov/microtonal-fabric"/>
+    <meta name="author" content="Sergey A Kryukov"/>
+    <meta name="url" content="https://www.SAKryukov.org"/>
     <script src="../agnostic/test-js-engine.js"></script>
     <script src="../definition-set.js"></script>
     <script src="../agnostic/enumeration.js"></script>
     <script src="../agnostic/initialization-controller.js"></script>
     <script src="main/default-instrument.js"></script>
     <script src="main/definition-set.js"></script>
+    <script src="../ui.components/metadata.js"></script>
     <script src="../ui.components/multitouch.js"></script>
     <script src="../ui.components/button.js"></script>
     <script src="../ui.components/variable-table.js"></script>
@@ -54,7 +58,6 @@
             --title-background: steelblue;
         }
         * { margin: 0; padding: 0; font-family: sans-serif; box-sizing: content-box; touch-action: none; user-select: none; }
-        header, article, footer { visibility: collapse; }
         #initialize-system { text-align: center; margin: 1em; padding: 1em; };
         h1 { color: red; margin: var(--frame); font-size: 110%; user-select: all; } /* critical error: bad JavaScript engine */
         small { font-size: 60%; }

@@ -36,12 +36,7 @@ const findControls = () => {
         exception: document.querySelector("footer p:nth-child(2)"),
         playControl: {
             globalStartButtonParent: document.querySelector("#initialize-system"),
-            hiddenBeforeStart:
-                [
-                    document.querySelector("header"),
-                    document.querySelector("footer"),
-                    document.querySelector("article"),
-                ],
+            hiddenBeforeStart: document.querySelectorAll("main article, header, footer button"),
             globalStartButton: document.querySelector("#initialize-system > button"),
             volume: new Slider({ value: 1, min: 0, max: 1, step: 0.01, indicatorWidth: "2.5em" }, parentVolume),
             sustain: new Slider({ value: 0, min: soundDefinitionSet.playControl.minimalSustain, max: 1, step: 0.01, indicatorWidth: "3.2em", indicatorSuffix: " s" }, parentSustain),
