@@ -97,8 +97,8 @@ class UserPopulation {
         const titleSet = [];
         if (data.rowTitles && data.rowTitles.constructor == Array)
             for (let index = 0; index < data.rowTitles.length; ++index)
-                if (data.rowTitles[index])
-                    titleSet[index] = data.rowTitles[index].toString();
+                if (data.rowTitles[index][0])
+                    titleSet[index] = data.rowTitles[index][0].toString();
         this.#implementation.titleHandler = (x, y) => {
             return titleSet[y];
         } //this.#implementation.titleHandler

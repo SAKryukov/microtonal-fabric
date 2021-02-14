@@ -15,5 +15,9 @@
         [{label: "Demo", frequency: 220}, 110, {label: "frequency", frequency: 40}, {label: "int", interval: interval(77,64)}, null, {label: "←null", frequency: 1}, repeat],
     ],
     // optional:
-    rowTitles: ["Ionian", "Dorian", "Phrygian", "Lydian", "Mixolydian", "Aeolian", "Locrian", "Demo"],
+    rowTitles: [
+       ["Ionian", "Ionic Dorian", "Ionic Phrygian", "Ionic Lydian", "Ionic Mixolydian", "Ionic Aeolian", "Ionic Locrian"],
+       ["Dorian", "Doric Phrygian", "Doric Lydian", "Doric Mixolydian", "Doric Aeolian", "Doric Locrian", "Doric Ionian"],
+       ["Phrygian", "Phrygic Lydian", "Phrygic Mixolydian", "Phrygic Aeolian", "Phrygic Locrian", "Phrygic Ionian", "Phrygic Dorian"],
+    ],
 };
