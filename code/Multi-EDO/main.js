@@ -13,10 +13,7 @@
 
     const definitionSet = settings();
 
-    (function setCopyright() {
-        definitionSet.elements.copyright.spanYears.textContent = sharedDefinitionSet.years;
-        definitionSet.elements.copyright.spanVersion.textContent = sharedDefinitionSet.version;
-    })(); //setCopyright
+    metadata.initialize(definitionSet.elements.copyright);
 
     (function MicrosoftFeatureRejection() { for (let attribute of definitionSet.elements.keyboard.attributes) break; })();
 

@@ -12,10 +12,7 @@
 const settings = () => {
 
     const elements = {
-        copyright: {
-            spanYears: document.getElementById("years"),
-            spanVersion: document.getElementById("version")
-        },
+        copyright: document.querySelector("footer"),
         keyboard: document.getElementById("keyboard"),
         invitation: document.getElementById("invitation"),
         buttonShowChordTable: document.getElementById("button-show-chord-table"),
