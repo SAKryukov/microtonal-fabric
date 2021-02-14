@@ -15,6 +15,9 @@
 <head>
    <title>Microtonal Fabric &mdash; 29 EDO</title>
    <meta charset="utf-8"/>
+   <meta name="url" content="https://github.com/SAKryukov/microtonal-fabric"/>
+   <meta name="author" content="Sergey A Kryukov"/>
+   <meta name="url" content="https://www.SAKryukov.org"/>
    <script src="../agnostic/test-js-engine.js"></script>
    <script src="../definition-set.js"></script>
    <script src="../ui.components/multitouch.js"></script>
@@ -22,6 +25,7 @@
    <script src="../ui.components/button.js"></script>
    <script src="../ui.components/recorder.js"></script>
    <script src="../ui.components/recorder-control.js"></script>
+   <script src="../ui.components/metadata.js"></script>
    <script src="../agnostic/initialization-controller.js"></script>
    <script src="../agnostic/enumeration.js"></script>
    <script src="../sound/definition-set.js"></script>
@@ -88,7 +92,6 @@
       main, main p:first-of-type { margin-top: var(--big-vertical-gap); }
       main input[type=radio] { margin-right: var(--small-horizontal-gap); }
       footer { background: oldlace; padding: 0.2em; padding-bottom: 0.4em; padding-left: 0.4rem; padding-right: 0.4rem; border-top: solid gray thin; font-size: 60%; }
-      footer a, footer span:last-child { margin-left: 2em; }
       footer span:last-child { color: red; overflow: auto; }
       details { vertical-align: bottom; margin-top: var(--big-vertical-gap); }
       details > section { display: grid; grid-template-columns: 1fr 1.2fr; grid-template-rows: 1fr, 1fr; grid-gap: var(--grid-vertical-gap); padding-top: var(--grid-vertical-gap); }
@@ -1860,7 +1863,7 @@
    </details>
 </main>
 
-<footer>Microtonal Fabric &mdash; 29 EDO v.&thinsp;<span></span>
+<footer><span></span><span style="padding: 1em">&bigstar;</span>
    <a href="authors.html">Authors</a><span></span>
 </footer>
 

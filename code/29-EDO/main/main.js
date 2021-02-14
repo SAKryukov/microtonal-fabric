@@ -24,7 +24,7 @@ window.onload = () => {
     })(); //Initialize
 
     const controls = findControls();
-    controls.version.textContent = definitionSet.version;
+    metadata.initialize(controls.version, true);
 
     function startApplication() {
         
