@@ -31,7 +31,7 @@
        ["Dorian", "Doric Phrygian", "Doric Lydian", "Doric Mixolydian", "Doric Aeolian", "Doric Locrian", "Doric Ionian"],
        ["Phrygian", "Phrygic Lydian", "Phrygic Mixolydian", "Phrygic Aeolian", "Phrygic Locrian", "Phrygic Ionian", "Phrygic Dorian"],
        ["Lydian", "Lydic Mixolydian", "Lydic Aeolian", "Lydic Locrian", "Lydic Ionian", "Lydic Dorian", "Lydic Phrygian"],
-       ["Mixolydian", "Myxolydic Aeolian,", "Myxolydic Locrian", "Myxolydic Ionian", "Myxolydic Dorian", "Myxolydic Phrygian", "Myxolydic Lydian"],
+       ["Mixolydian", "Mixolydic Aeolian,", "Mixolydic Locrian", "Mixolydic Ionian", "Mixolydic Dorian", "Mixolydic Phrygian", "Mixolydic Lydian"],
        ["Aeolian", "Aeolic Locrian", "Aeolic Ionian", "Aeolic Dorian", "Aeolic Phrygian", "Aeolic Lydian", "Aeolic Mixolydian"],
        ["Locrian", "Locric Ionian", "Locric Dorian", "Locric Phrygian", "Locric Lydian", "Locric Mixolydian", "Locric Aeolian"],
     ],
