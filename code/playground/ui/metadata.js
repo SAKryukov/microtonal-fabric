@@ -10,7 +10,7 @@
 "use strict";
 
 const metadataElement = {
-    init: function(data) {
+    initialize: function(data) {
         if (!data) return;
         const special = new Set(["title", "author", "copyright", "version", "time"]);
         const createCloseBox = (size, background, border, stroke) => {

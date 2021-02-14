@@ -76,7 +76,7 @@ window.onload = () => {
     function start() {
 
         if (tones.metadata) {
-            metadataElement.init(tones.metadata);
+            metadataElement.initialize(tones.metadata);
             elements.keyboardControl.metadata.onclick = () => metadataElement.show();    
         } else
             elements.keyboardControl.metadata.style.display = "none";
