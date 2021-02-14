@@ -1,3 +1,14 @@
+// Microtonal Fabric
+//
+// Copyright (c) Sergey A Kryukov, 2017-2021
+//
+// http://www.SAKryukov.org
+// http://www.codeproject.com/Members/SAKryukov
+// https://github.com/SAKryukov
+// https://github.com/SAKryukov/microtonal-fabric
+
+"use strict";
+
 const findElements = () => {
     const elements = {
         initialization: {
@@ -16,6 +27,7 @@ const findElements = () => {
         keyboardControl: {
             fit: new TwoStateButton(document.querySelector("#keyboard-control > button:first-child")),
             hightlight: new TwoStateButton(document.querySelector("#keyboard-control > button:nth-child(2)")),
+            metadata: document.querySelector("#keyboard-control > button:nth-child(3)"),
             reset: document.querySelector("#keyboard-control > button:last-of-type"),
         },
         playControl: {

@@ -1,10 +1,11 @@
 ﻿const tones = {
     metadata: { // optional
-        title: "My tonal system",
-        author: "Me",
+        title: "Rational Diatonic System",
+        author: "Dawson Berry",
         copyright: "",
-        version: "",
+        version: "1?",
         time: "2017-2020",
+        "Something else": "data",
     },
     size: { width: 28, height: 7 },
     base: 275/4, //Hz

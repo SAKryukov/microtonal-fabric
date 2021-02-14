@@ -75,6 +75,12 @@ window.onload = () => {
 
     function start() {
 
+        if (tones.metadata) {
+            metadataElement.init(tones.metadata);
+            elements.keyboardControl.metadata.onclick = () => metadataElement.show();    
+        } else
+            elements.keyboardControl.metadata.style.display = "none";
+
         const validationResult = UserPopulation.validate();
         if (validationResult !== true) {
             if (validationResult === undefined)
