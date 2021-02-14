@@ -15,10 +15,7 @@ initializationController.initialize(
     elements.initializationControllerData.startControlParent,
     main);
 
-    (function setCopyright() {
-        elements.copyright.spanYears.textContent = sharedDefinitionSet.years;
-        elements.copyright.spanVersion.textContent = sharedDefinitionSet.version;
-    })(); //setCopyright
+    metadata.initialize(elements.controls.metadata);
 
 function main () {
 

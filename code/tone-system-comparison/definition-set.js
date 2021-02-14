@@ -74,6 +74,7 @@ const elements = setReadonly({
         }
     ],
     controls: {
+        metadata: document.querySelector("footer small"),
         comparer: document.getElementById("comparer-main"),
         comparerLeft: document.getElementById("comparer-left"),
         comparerRight: document.getElementById("comparer-right"),
