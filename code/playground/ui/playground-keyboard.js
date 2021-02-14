@@ -18,8 +18,8 @@ class PlaygroungKeyboard extends GridKeyboard {
             const row = keyData.customKeyData.y;
             return false;
             //SA???
-            this.#playgroundImplementation.instrument.changeFrequencies(startingIndex, startingIndex + 7,
-                index => 200);
+            this.#playgroundImplementation.instrument.changeFrequencies(startingIndex, startingIndex + rowWidth - 1,
+                index => 40);
             this.labelRow(row, index => `${index}`);
             return false;
         } //this.#playgroundImplementation.changeMode
