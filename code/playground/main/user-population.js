@@ -1,4 +1,4 @@
-// Microtonal Fabric
+﻿// Microtonal Fabric
 //
 // Copyright (c) Sergey A Kryukov, 2017-2021
 //
@@ -124,7 +124,7 @@ class UserPopulation {
         ]; //SA???
     } //constructor
 
-    static validate() {
+    static validate(repeatObject) {
         const userDataType = typeof(tones);
         if (!userDataType) return undefined;
         if (userDataType == typeof(undefined)) return undefined;
@@ -135,10 +135,41 @@ class UserPopulation {
         if (tones.size.height.constructor != Number) return `tones.size.height is not a number, cannot be “${tones.size.height}”`;
         if (!tones.rows) return "invalid or undefined tones.row";
         if (tones.rows.constructor != Array) return "tones.rows is not an array"
+        const invalidElementMessage = (element, row, indexInRow, extra) => {
+            if (!extra) extra = "";
+            return `invalid element ${element} in tones.row[${index}], index in row: ${indexInRow}${extra}`;
+        }
         let index = 0;
-        for (let element of tones.rows) {
-            if (!element) return `invalid row ${index}`;
-            if (element.constructor != Array) return `in tones.rows, row ${index} is not an array`;
+        for (let row of tones.rows) {
+            if (!row) return `invalid row ${index}`;
+            if (row.constructor != Array) return `in tones.rows, row ${index} is not an array`;
+            let indexInRow = 0;
+            for (let element of row) {
+                if (!element)
+                    return invalidElementMessage(element, index, indexInRow);
+                if (element.constructor == Number) {
+                    if (element <= 0)
+                        return invalidElementMessage(element, index, indexInRow, "; frequency shoud be positive");
+                } //if Number
+                if (element.constructor == Object) {
+                    if (element === repeatObject) continue;
+                    if (element.frequency == null && element.interval == null)
+                        return invalidElementMessage(element, index, indexInRow, "; neither frequency nor interval are defined");
+                    if (element.frequency != null) {
+                        if (element.frequency.constructor != Number)
+                            return invalidElementMessage(element, index, indexInRow, "; invalid frequency");
+                        else if (element.frequency <= 0)
+                            return invalidElementMessage(element, index, indexInRow, "; frequency shoud be positive");
+                    } //if Object with frequency
+                    if (element.interval != null) {
+                        if (element.interval.constructor != Interval)
+                            return invalidElementMessage(element.interval, index, indexInRow, "; interval is not of the type Interval");
+                        if (!element.interval.real || element.interval.real <= 0)
+                            return invalidElementMessage(element.interval.real, index, indexInRow, "; invalid interval value, should be positive rational number");
+                    } //if Object with interval
+                } //if Object
+                ++indexInRow;
+            } //loop in row
             ++index;
         } //loop
         if (tones.transpositionUnits != null) {

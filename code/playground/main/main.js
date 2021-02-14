@@ -81,7 +81,7 @@ window.onload = () => {
         } else
             elements.keyboardControl.metadata.style.display = "none";
 
-        const validationResult = UserPopulation.validate();
+        const validationResult = UserPopulation.validate(repeat);
         if (validationResult !== true) {
             if (validationResult === undefined)
                 return definitionSet.userData.reportBadFile(definitionSet.userData.dataFileName);
