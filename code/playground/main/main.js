@@ -66,12 +66,12 @@ window.onload = () => {
 
     if (initializationController.badJavaScriptEngine()) return;
     const elements = findElements();
-    setMetadata();
     initializationController.initialize(
         elements.initialization.hiddenControls,
         elements.initialization.startButton,
         elements.initialization.startButtonParent,
         start);
+    metadata.initialize(elements.copyright);
 
     function start() {
 

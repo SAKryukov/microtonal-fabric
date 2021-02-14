@@ -11,6 +11,7 @@
 
 const findElements = () => {
     const elements = {
+        copyright: document.querySelector("footer span:first-child"),
         initialization: {
             startButton: document.querySelector("body > section > button"),
             startButtonParent: document.querySelector("body > section"),

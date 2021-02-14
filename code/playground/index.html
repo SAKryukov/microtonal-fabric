@@ -15,6 +15,9 @@
 <head>
     <title>Microtonal Playground &mdash; Microtonal Fabric</title>
     <meta charset="utf-8"/>
+    <meta name="url" content="https://github.com/SAKryukov/microtonal-fabric"/>
+    <meta name="author" content="Sergey A Kryukov"/>
+    <meta name="url" content="https://www.SAKryukov.org"/>
     <script src="../definition-set.js"></script>
     <script src="../agnostic/test-js-engine.js"></script>
     <script src="../agnostic/enumeration.js"></script>
@@ -30,6 +33,7 @@
     <script src="../ui.components/recorder.js"></script>
     <script src="../ui.components/recorder-control.js"></script>
     <script src="../ui.components/global-key-tracker.js"></script>
+    <script src="../ui.components/metadata.js"></script>
     <script src="../sound/definition-set.js"></script>
     <script src="../sound/chain-node.js"></script>
     <script src="../sound/envelope.js"></script>
@@ -39,7 +43,6 @@
     <script src="../sound/instrument.js"></script>
     <script src="../instruments/instrument-list.js"></script>
     <script src="ui/playground-keyboard.js"></script>
-    <script src="ui/metadata.js"></script>
     <script src="ui/elements.js"></script>
     <script src="main/user-population.js"></script>
     <script src="main/metadata.js"></script>
@@ -62,7 +65,6 @@
         html, body { height: 100%; }
         body { display: flex; flex-flow: column; }
         main { flex: auto; overflow: auto; }
-        footer { background: lightgreen; }
         /* end flex */
         svg { opacity: 0.2; }
         footer { background: oldlace; padding: 0.2em; padding-bottom: 0.4em; padding-left: 0.4rem; padding-right: 0.4rem; border-top: solid gray thin; font-size: 60%; }
@@ -71,7 +73,6 @@
         body > section > button, body > section > button:focus { border-radius: 2px; border-style: solid solid solid solid; background-color: yellow; }
         body > section > button
         header { padding: 0.6em; }
-        footer > * { padding-right: 1em; }
         main article { margin: 0; display: flex; white-space: nowrap; width: 100%; align-items: center; }
         main article div { white-space: nowrap; width: 100%; }
         main article label { margin-right: var(--small-horizontal-gap); }
@@ -153,7 +154,7 @@
             </section>
         </details>
    </main>
-   <footer>Microtonal Playground &mdash; Microtonal Fabric v.&thinsp;<span></span> &bigstar; Copyright &copy; Sergey A Kryukov, <span></span> &bigstar; <a href="help.html">Help</a></footer>
+   <footer><span></span><span style="padding: 1em">&bigstar;</span><a href="help.html">Help</a></footer>
 
 </body>
 </html>

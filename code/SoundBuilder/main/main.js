@@ -19,10 +19,8 @@ window.onload = () => {
         controls.playControl.globalStartButtonParent,
         startApplication
     );
-
-    metadata.initialize();
-    controls.copyright.innerHTML = `${document.title} v.&thinsp;${sharedDefinitionSet.version}<span style="padding: 0.4em">&bigstar;</span>${definitionSet.copyright(sharedDefinitionSet.years)}`;
-    controls.copyright.title = `${definitionSet.title} v. ${sharedDefinitionSet.version}`;
+    metadata.initialize(controls.copyright);
+    controls.playControl.globalStartButton.focus();
 
     function startApplication() {
 
