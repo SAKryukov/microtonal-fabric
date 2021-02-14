@@ -9,14 +9,30 @@
 
 class PlaygroungKeyboard extends GridKeyboard {
 
+    #playgroundImplementation = { instrument: null, };
+
     constructor(element, keyWidth, keyHeight, rowCount, rowWidth, keyColors) {
         super(element, keyWidth, keyHeight, rowCount, rowWidth, keyColors);
-    }
+        this.#playgroundImplementation.changeMode = keyData => {
+            const startingIndex = keyData.index - keyData.customKeyData.x;
+            const row = keyData.customKeyData.y;
+            return false;
+            //SA???
+            this.#playgroundImplementation.instrument.changeFrequencies(startingIndex, startingIndex + 7,
+                index => 200);
+            this.labelRow(row, index => `${index}`);
+            return false;
+        } //this.#playgroundImplementation.changeMode
+    } //constructor
 
     customKeyHandler(keyElement, keyData, on) {
-        if (globalKeyTracker.isControlDown()) return false; // return false to stop embedded handling
+        // return false to stop embedded handling
+        if (globalKeyTracker.isControlDown()) return this.#playgroundImplementation.changeMode(keyData);
         return super.customKeyHandler(keyElement, keyData, on); 
     } //customKeyHandler
+
+    get instrument() { return this.#playgroundImplementation.instrument; }
+    set instrument(instance) { this.#playgroundImplementation.instrument = instance; }
 
     resetAllModes() { } //SA??? 
 

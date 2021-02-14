@@ -97,6 +97,7 @@ window.onload = () => {
                 rowCount, columnCount, definitionSet.colorSet);
             keyboard.fitView = true;
             const instrument = new Instrument(population.frequencySet, tones.transpositionUnits);
+            keyboard.instrument = instrument;
             keyboard.label((x, y) => population.labelHandler(x, y));
             keyboard.setTitles((x, y) => population.titleHandler(x, y));
             instrument.data = instrumentList[definitionSet.instrumentControl.defaultInstrument];
@@ -120,7 +121,10 @@ window.onload = () => {
             if (realisticTransposition) {
                 elements.playControl.transposition.minimum = realisticTransposition[0];
                 elements.playControl.transposition.maximum = realisticTransposition[1];
-                elements.playControl.transposition.onchange = (_, value) => instrument.transposition = value;
+                elements.playControl.transposition.onchange = (_, value) => {
+                    instrument.transposition = value;
+                    console.log(instrument.transposition);  
+                } //elements.playControl.transposition.onchange
                 elements.playControl.sustain.onchange = () => instrument.sustain = getSustainValue();    
             } else {
                 elements.playControl.transposition.disabled = !tones.transpositionUnits;
