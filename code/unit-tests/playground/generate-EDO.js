@@ -4,7 +4,7 @@ const edo = 12;
 // ♭♯
 
 const Ionian = [
-    "Ionian",
+    "Ionian", // 0 2 4 5 7 9 11
     { label: "C", step: 0 },
     { label: "D", step: 2 },
     { label: "E", step: 4 },
@@ -14,7 +14,7 @@ const Ionian = [
     { label: "B", step: 11 },
 ];
 const Dorian = [
-    "Dorian",
+    "Dorian", // 1 2 b3 4 5 6 b7 8 (flat 3,7)
     { analog: "D 02", label: "C", step: 0 },
     { analog: "E 04", label: "D", step: 2 },
     { analog: "F 05", label: "♭E", step: 3 },
@@ -24,7 +24,7 @@ const Dorian = [
     { analog: "C 12", label: "♭B", step: 10 },
 ];
 const Phrygian = [
-    "Phrygian",
+    "Phrygian", // 1 b2 b3 4 5 b6 b7 8 (flat 2,3,6,7)
     { analog: "E 04", label: "C", step: 0 },
     { analog: "F 05", label: "♭D", step: 1 },
     { analog: "G 07", label: "♭E", step: 3 },
@@ -35,7 +35,7 @@ const Phrygian = [
 ];
 
 const Lydian = [
-    "Lydian",
+    "Lydian", // 1 2 3 #4 5 6 7 8 (sharp 4)
     { analog: "F 05", label: "C", step: 0 },
     { analog: "G 07", label: "D", step: 2 },
     { analog: "A 09", label: "E", step: 4 },
@@ -46,7 +46,7 @@ const Lydian = [
 ];
 
 const Mixolydian = [
-    "Mixolydian",
+    "Mixolydian", // 1 2 3 4 5 6 b7 (flat 7)
     { analog: "G 07", label: "C", step: 0 },
     { analog: "A 09", label: "D", step: 2 },
     { analog: "B 11", label: "E", step: 4 },
@@ -57,7 +57,7 @@ const Mixolydian = [
 ];
 
 const Aeolian = [
-    "Aeolian",
+    "Aeolian", // 1 2 b3 4 5 b6 b7 8 (flat 3,6,7)
     { analog: "A 09", label: "C", step: 0 },
     { analog: "B 11", label: "D", step: 2 },
     { analog: "C 12", label: "♭E", step: 3 },
@@ -68,7 +68,7 @@ const Aeolian = [
 ];
 
 const Locrian = [
-    "Locrian",
+    "Locrian", // 1 b2 b3 4 b5 b6 b7 8 (flat 2,3,5,6,7)
     { analog: "B 11", label: "C", step: 0 },
     { analog: "C 12", label: "♭D", step: 1 },
     { analog: "D 02", label: "♭E", step: 3 },
