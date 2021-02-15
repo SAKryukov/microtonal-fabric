@@ -133,7 +133,6 @@ window.onload = () => {
                 elements.playControl.transposition.maximum = realisticTransposition[1];
                 elements.playControl.transposition.onchange = (_, value) => {
                     instrument.transposition = value;
-                    console.log(instrument.transposition);  
                 } //elements.playControl.transposition.onchange
                 elements.playControl.sustain.onchange = () => instrument.sustain = getSustainValue();    
             } else {
