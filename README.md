@@ -16,6 +16,8 @@ Browsers based on V8 engine are recommended, such as Chromium, Chrome, Opera, Vi
 
 [Multi-EDO Chromatic Lattice](https://sakryukov.github.io/microtonal-fabric/code/Multi-EDO/index.html), isomorphic chromatic keyboard
 
+[Microtonal Playground](https://sakryukov.github.io/microtonal-fabric/code/playground)
+
 Specialized [29-EDO](https://sakryukov.github.io/microtonal-fabric/code/29-EDO) keyboards
 
 [Sequence Tool](https://sakryukov.github.io/microtonal-fabric/code/sequence-tool)
