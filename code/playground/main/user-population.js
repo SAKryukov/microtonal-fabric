@@ -61,21 +61,33 @@ class UserPopulation {
                     return userCellData.frequency;
             } //if
         } //getFrequencyFromUserData
+        const frequencyDomain = [Number.POSITIVE_INFINITY, Number.NEGATIVE_INFINITY]; // min, max
+        const trackFrequencyDomain = (frequencyDomain, frequency) => {
+            if (frequency < frequencyDomain[0])
+                frequencyDomain[0] = frequency;
+            if (frequency > frequencyDomain[1])
+                frequencyDomain[1] = frequency;
+        }; //trackFrequencyDomain
         this.#implementation.createRowFrequencySet = rowIndex => {
             const result = [];
             const column = rowIndex % workingDimensions.columnCount;
             const startingIndex = rowIndex - column;
-            for (let index = startingIndex; index < startingIndex + rowDescriptors[rowIndex].cycleSize; ++index)
-                result.push(getFrequencyFromUserData(data.rows[rowIndex][index]));
+            for (let index = startingIndex; index < startingIndex + rowDescriptors[rowIndex].cycleSize; ++index) {
+                const frequency = getFrequencyFromUserData(data.rows[rowIndex][index]);
+                result.push(frequency);
+                trackFrequencyDomain(frequencyDomain, frequency);
+            } //loop population
             //SA cycle here!
             let octave = 2;
             let indexInBase = 0;
             for (let index = startingIndex + rowDescriptors[rowIndex].cycleSize; index < workingDimensions.columnCount; ++index) {
-                result[index] = result[indexInBase] * octave;
+                const upperFrequency = result[indexInBase] * octave;
+                trackFrequencyDomain(frequencyDomain, upperFrequency);
+                result[index] = upperFrequency;
                 if (indexInBase == rowDescriptors[rowIndex].cycleSize) {
                     octave *= 2;
                     indexInBase = 0;
-                }
+                } //if
                 ++indexInBase;
             } //loop repetitions
             return result;
@@ -99,21 +111,11 @@ class UserPopulation {
             return getLabelFromUserData(userCellData);
         }; //this.#implementation.labelHandler
         if (!data.transpositionUnits) return;
-        const frequencyDomain = [Number.POSITIVE_INFINITY, Number.NEGATIVE_INFINITY]; // min, max
-        //SA???
-        // for (let frequency of this.#implementation.frequencySet) {
-        //     if (frequency < frequencyDomain[0])
-        //         frequencyDomain[0] = frequency;
-        //     if (frequency > frequencyDomain[1])
-        //         frequencyDomain[1] = frequency;
-        // } //loop
         const audibleDomain = this.constructor.definitionSet.audibleDomain;
-        this.#implementation.realisticTransposition = [
-            //SA???
-            -20, 20
-            // Math.ceil(data.transpositionUnits * (Math.log2(audibleDomain[0]) - Math.log2(frequencyDomain[0]))),
-            // Math.floor((data.transpositionUnits * (Math.log2(audibleDomain[1]) - Math.log2(frequencyDomain[1])))),
-        ]; //SA???
+        this.#implementation.getRealisticTransposition = () => [
+            Math.ceil(data.transpositionUnits * (Math.log2(audibleDomain[0]) - Math.log2(frequencyDomain[0]))),
+            Math.floor((data.transpositionUnits * (Math.log2(audibleDomain[1]) - Math.log2(frequencyDomain[1])))),
+        ]; //this.#implementation.realisticTransposition //SA???
     } //constructor
 
     static validate(repeatObject) {
@@ -174,7 +176,7 @@ class UserPopulation {
     get labelHandler() { return this.#implementation.labelHandler; }
     get titleHandler() { return this.#implementation.titleHandler; }
     get transpositionUnits() { return tones.transpositionUnits; }
-    get realisticTransposition() { return this.#implementation.realisticTransposition; } // array [min, max]
+    get realisticTransposition() { return this.#implementation.getRealisticTransposition(); } // array [min, max]
     get workingDimensions() { return this.#implementation.workingDimensions; }
 
     createRowFrequencySet(rowIndex) { return this.#implementation.createRowFrequencySet(rowIndex); }
