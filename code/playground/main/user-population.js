@@ -77,6 +77,7 @@ class UserPopulation {
                 frequencyDomain[1] = frequency;
         }; //trackFrequencyDomain
         this.#implementation.createRowFrequencySet = rowIndex => {
+            if (rowIndex > this.#implementation.workingDimensions.rowCount - 1) return;
             const rowDescriptor = rowDescriptors[rowIndex];
             let result = null;
             const column = rowIndex % workingDimensions.columnCount;
@@ -122,6 +123,7 @@ class UserPopulation {
             return result;
         }; //this.#implementation.createRowFrequencySet
         this.#implementation.titleHandler = (x, y) => {
+            if (y > this.#implementation.workingDimensions.rowCount - 1) return;
             const shift = rowDescriptors[y].cyclicShift;
             if (!data.rowTitles) return;
             if (!data.rowTitles[y]) return;
@@ -137,6 +139,7 @@ class UserPopulation {
                 return userCellData.label;
         }; //getLabel
         this.#implementation.labelHandler = (x, y) => {
+            if (y > this.#implementation.workingDimensions.rowCount - 1) return;
             const column = (x + rowDescriptors[y].cyclicShift) % rowDescriptors[y].cycleSize;
             const userCellData = data.rows[y][column];
             return getLabelFromUserData(userCellData);

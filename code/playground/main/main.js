@@ -102,8 +102,9 @@ window.onload = () => {
             const rowCount = tones.size.height;
             const columnCount = tones.size.width;
             let population = new UserPopulation(tones, rowCount, columnCount, repeat);
+            const dimensions = population.workingDimensions;
             const keyboard = new PlaygroungKeyboard(elements.keyboardParent, definitionSet.keyWidth, definitionSet.keyHeight,
-                rowCount, columnCount, definitionSet.colorSet);
+                dimensions.rowCount, dimensions.columnCount, definitionSet.colorSet);
             keyboard.populationData = population;
             const instrument = setupInstrument(population);
             keyboard.instrument = instrument;
