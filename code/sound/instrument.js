@@ -70,15 +70,16 @@ class Instrument extends ModulatorSet {
             } //loop
             this.data = this.#implementation.lastDataset;
         }; //this.#implementation.transpose
-        this.#implementation.changeFrequencies = (indexFrom, indexTo, frequencyCalculator) => {
+        this.#implementation.changeFrequencies = (indexFrom, indexTo, list) => {
             if (!isFrequencySetArray) return;
             const saveTransposition = this.#implementation.transposition;
             this.#implementation.transpose(0);
             try {
+                let indexInList = 0;
                 for (let index = indexFrom; index <= indexTo; ++index) {
                     const tone = this.#implementation.tones.get(index);
                     if (!tone) break;
-                    const frequency = frequencyCalculator(index);
+                    const frequency = list[indexInList++];
                     frequencySet[index] = frequency;
                     tone.transpose(frequency, compensation(frequency));
                 } //loop    
@@ -226,10 +227,10 @@ class Instrument extends ModulatorSet {
     get transposition() { return this.#implementation.transposition; }
     set transposition(value) { this.#implementation.transpose(value); }
     
-    changeFrequencies(indexFrom, indexTo, frequencyCalculator) {
-        this.#implementation.changeFrequencies(indexFrom, indexTo, frequencyCalculator);
+    changeFrequencies(indexFrom, indexTo, list) {
+        this.#implementation.changeFrequencies(indexFrom, indexTo, list);
     }
-
+    
     deactivate() { this.#implementation.deactivate(); }
 
     silence() { this.#implementation.silence(); }
