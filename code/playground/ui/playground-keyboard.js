@@ -14,14 +14,16 @@ class PlaygroungKeyboard extends GridKeyboard {
     constructor(element, keyWidth, keyHeight, rowCount, rowWidth, keyColors) {
         super(element, keyWidth, keyHeight, rowCount, rowWidth, keyColors);
         this.#playgroundImplementation.changeMode = keyData => {
+            const metrics = this.derivedClassConstructorArguments[0];
             const row = keyData.customKeyData.y;
             const column = keyData.customKeyData.x;
             this.#playgroundImplementation.populationData.cycleMode(row, column);
             this.labelRow(row, x => this.#playgroundImplementation.populationData.labelHandler(x, row));
             this.setRowTitles(row, x => this.#playgroundImplementation.populationData.titleHandler(x, row));
-            //SA??? frequences:
-            //this.#playgroundImplementation.instrument.changeFrequencies(startingIndex, startingIndex + rowWidth - 1,
-            //    index => 40);
+            const startRowIndex = row * metrics.rowWidth;
+            this.#playgroundImplementation.instrument.changeFrequencies(
+                startRowIndex, startRowIndex + metrics.rowWidth - 1,
+                this.#playgroundImplementation.populationData.createRowFrequencySet(row));
         }; //this.#playgroundImplementation.changeMode
         this.#playgroundImplementation.resetAllModes = () => {
             this.#playgroundImplementation.populationData.resetAllModes();

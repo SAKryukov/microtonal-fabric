@@ -81,7 +81,10 @@ class UserPopulation {
             const column = rowIndex % workingDimensions.columnCount;
             const startingIndex = rowIndex - column;
             for (let index = startingIndex; index < startingIndex + rowDescriptors[rowIndex].cycleSize; ++index) {
-                const frequency = getFrequencyFromUserData(data.rows[rowIndex][index]);
+                const shiftedIndex =
+                    (index + rowDescriptors[rowIndex].cyclicPosition) % rowDescriptors[rowIndex].cycleSize;
+                    //SA??? re-calculate if shifted, should be new intervals
+                const frequency = getFrequencyFromUserData(data.rows[rowIndex][shiftedIndex]);
                 result.push(frequency);
                 trackFrequencyDomain(frequencyDomain, frequency);
             } //loop population
