@@ -206,8 +206,11 @@ class UserPopulation {
 
     get labelHandler() { return this.#implementation.labelHandler; }
     get titleHandler() { return this.#implementation.titleHandler; }
-    get transpositionUnits() { return tones.transpositionUnits; }
-    get realisticTransposition() { return this.#implementation.getRealisticTransposition(); } // array [min, max]
+    get transpositionUnits() { return tones.transpositionUnits; } 
+    get realisticTransposition() { // returns [min, max]:
+        if (!tones.transpositionUnits) return;
+        return this.#implementation.getRealisticTransposition();
+    } //realisticTransposition
     get workingDimensions() { return this.#implementation.workingDimensions; }
 
     createRowFrequencySet(rowIndex) { return this.#implementation.createRowFrequencySet(rowIndex); }
