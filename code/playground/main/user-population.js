@@ -37,7 +37,6 @@ class UserPopulation {
             return { rowCount: maxRowCount, columnCount: maxColumnCount };
         })();
         this.#implementation.workingDimensions = workingDimensions;
-        //////////////////////// new! ///////////////////////////////////////////////
         const rowDescriptors = [];
         for (let rowIndex = 0; rowIndex < workingDimensions.rowCount; ++rowIndex) {
             const rowDescriptor = { cyclicPosition: 0, };
@@ -86,81 +85,23 @@ class UserPopulation {
             const shift = rowDescriptors[y].cyclicPosition;
             return data.rowTitles[y][shift];
         } //this.#implementation.titleHandler
-        //////////////////////// end new! ///////////////////////////////////////////
-        // const repeatPoints = [];
-        // for (let rowIndex = 0; rowIndex < workingDimensions.rowCount; ++rowIndex) {
-        //     const labelRow = [];
-        //     for (let columnIndex = 0; columnIndex < workingDimensions.columnCount; ++columnIndex) {
-        //         const frequencySetIndex = rowIndex * keyboardColumnCount + columnIndex;
-        //         const userCellData = data.rows[rowIndex][columnIndex];
-        //         if (!userCellData) break;
-        //         if (userCellData.constructor == Interval || userCellData.constructor == Number) {
-        //             labelRow[columnIndex] = userCellData.toString();
-        //             if (userCellData.constructor == Interval) 
-        //                 this.#implementation.frequencySet[frequencySetIndex] = userCellData.toReal() * data.base;
-        //             else // Number:
-        //                 this.#implementation.frequencySet[frequencySetIndex] = userCellData;
-        //         } else if (userCellData.constructor == Object) {
-        //             if (userCellData.label && userCellData.label.constructor == String) {
-        //                 labelRow[columnIndex] = userCellData.label;
-        //             } else
-        //                 labelRow[columnIndex] = null; // "disabled" indication
-        //             if (userCellData.interval && userCellData.interval.constructor == Interval)
-        //                 this.#implementation.frequencySet[frequencySetIndex] = userCellData.interval.toReal() * data.base;
-        //             else if (userCellData.frequency && userCellData.frequency.constructor == Number)
-        //                 this.#implementation.frequencySet[frequencySetIndex] = userCellData.frequency;
-        //             else if (userCellData === repeatObject) { // "repeat" indication
-        //                 if (columnIndex == data.rows[rowIndex].length - 1)
-        //                     repeatPoints.push({ row: rowIndex, column: columnIndex, frequencySetIndex: frequencySetIndex });
-        //             } else
-        //                 labelRow[columnIndex] = null; // "disabled" indication
-        //         } else
-        //             labelRow[columnIndex] = null; // "disabled" indication
-        //     } //loop columns
-        //     labelSet.push(labelRow);
-        // } //loop rows
-        // for (let repeatItem of repeatPoints) {
-        //     const sourceLength = repeatItem.column;
-        //     const targetLength = keyboardColumnCount - sourceLength;
-        //     for (let index = repeatItem.column; index < keyboardColumnCount; ++index) {
-        //         const steps = Math.trunc(targetLength/sourceLength) + 1;
-        //         for (let stepIndex = 0; stepIndex < steps; ++stepIndex) {
-        //             const octave = Math.pow(2, stepIndex + 1);
-        //             for (let sourceIndex = 0; sourceIndex < sourceLength; ++sourceIndex) {
-        //                 const sourceLabel = labelSet[repeatItem.row][sourceIndex];
-        //                 const targetIndex = repeatItem.column +  stepIndex * sourceLength + sourceIndex;
-        //                 if (targetIndex >= keyboardColumnCount) continue;
-        //                 labelSet[repeatItem.row][targetIndex] = sourceLabel;
-        //                 const sourceFrequencyIndex = repeatItem.frequencySetIndex - sourceLength + sourceIndex;
-        //                 const sourceFrequency = this.#implementation.frequencySet[sourceFrequencyIndex];
-        //                 if (!sourceFrequency) continue;
-        //                 const targetFrequencyIndex = targetIndex - repeatItem.column + repeatItem.frequencySetIndex;
-        //                 this.#implementation.frequencySet[targetFrequencyIndex] = sourceFrequency * octave;
-        //             } //loop within step
-        //         } //loop step
-        //     } //loop
-        // } //loop repeatPoints
+        const getLabelFromUserData = userCellData => {
+            if (!userCellData) return null;
+            if (userCellData.constructor == Interval)
+                return userCellData.toString();
+            else if (userCellData.constructor == Number)
+                return userCellData.toString();
+            else if (userCellData.constructor == Object)
+                return userCellData.label;
+        }; //getLabel
         this.#implementation.labelHandler = (x, y) => {
-            return 1;
-            const row = labelSet[y];
-            if (!row) return null;
-            return row[x];
+            //SA??? Cycle here!
+            const userCellData = data.rows[y][x % rowDescriptors[y].cycleSize];
+            return getLabelFromUserData(userCellData);
         }; //this.#implementation.labelHandler
-        // const titleSet = [];
-        // if (data.rowTitles && data.rowTitles.constructor == Array)
-        //     for (let index = 0; index < data.rowTitles.length; ++index)
-        //         if (data.rowTitles[index][0])
-        //             titleSet[index] = data.rowTitles[index][0].toString();
-        this.#implementation.cleanUp = () => {
-            return;
-            this.#implementation.frequencySet = undefined;
-            data.rows = undefined;
-            data.rowTitles = undefined;
-            data.metadata = undefined;
-            labelSet.splice(0, labelSet.length);
-        } //this.#implementation.cleanUp
         if (!data.transpositionUnits) return;
         const frequencyDomain = [Number.POSITIVE_INFINITY, Number.NEGATIVE_INFINITY]; // min, max
+        //SA???
         // for (let frequency of this.#implementation.frequencySet) {
         //     if (frequency < frequencyDomain[0])
         //         frequencyDomain[0] = frequency;
@@ -169,6 +110,7 @@ class UserPopulation {
         // } //loop
         const audibleDomain = this.constructor.definitionSet.audibleDomain;
         this.#implementation.realisticTransposition = [
+            //SA???
             -20, 20
             // Math.ceil(data.transpositionUnits * (Math.log2(audibleDomain[0]) - Math.log2(frequencyDomain[0]))),
             // Math.floor((data.transpositionUnits * (Math.log2(audibleDomain[1]) - Math.log2(frequencyDomain[1])))),
@@ -237,7 +179,5 @@ class UserPopulation {
     get workingDimensions() { return this.#implementation.workingDimensions; }
 
     createRowFrequencySet(rowIndex) { return this.#implementation.createRowFrequencySet(rowIndex); }
-
-    cleanUp() { this.#implementation.cleanUp(); }
 
 } //class UserPopulation

@@ -141,7 +141,6 @@ window.onload = () => {
                 elements.playControl.transpositionLabel.style.color = 
                     elements.playControl.transpositionLabel.dataset.disabledColor;
             } //if
-            population.cleanUp(); population = undefined;
             return { keyboard: keyboard, instrument: instrument };
         })();
 
