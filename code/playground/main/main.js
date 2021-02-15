@@ -116,10 +116,7 @@ window.onload = () => {
             keyboard.instrument = instrument;
             keyboard.label((x, y) => population.labelHandler(x, y));
             keyboard.setTitles((x, y) => population.titleHandler(x, y));
-            elements.keyboardControl.reset.onclick = () => {
-                population.resetAllModes();
-                keyboard.label((x, y) => population.labelHandler(x, y));
-            } //elements.keyboardControl.reset.onclick
+            elements.keyboardControl.reset.onclick = () => keyboard.resetAllModes();
             instrument.data = instrumentList[definitionSet.instrumentControl.defaultInstrument];
             keyboard.keyHandler = (on, index) => instrument.play(on, index);
             keyboard.recorder = new Recorder();

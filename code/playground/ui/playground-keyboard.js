@@ -14,15 +14,23 @@ class PlaygroungKeyboard extends GridKeyboard {
     constructor(element, keyWidth, keyHeight, rowCount, rowWidth, keyColors) {
         super(element, keyWidth, keyHeight, rowCount, rowWidth, keyColors);
         this.#playgroundImplementation.changeMode = keyData => {
-            const startingIndex = keyData.index - keyData.customKeyData.x;
             const row = keyData.customKeyData.y;
             const column = keyData.customKeyData.x;
             this.#playgroundImplementation.populationData.cycleMode(row, column);
             this.labelRow(row, x => this.#playgroundImplementation.populationData.labelHandler(x, row));
-            //SA???
+            this.setRowTitles(row, x => this.#playgroundImplementation.populationData.titleHandler(x, row));
+            //SA??? frequences:
             //this.#playgroundImplementation.instrument.changeFrequencies(startingIndex, startingIndex + rowWidth - 1,
             //    index => 40);
-        } //this.#playgroundImplementation.changeMode
+        }; //this.#playgroundImplementation.changeMode
+        this.#playgroundImplementation.resetAllModes = () => {
+            this.#playgroundImplementation.populationData.resetAllModes();
+            const metrics = this.derivedClassConstructorArguments[0];
+            for (let row = 0; row < metrics.rowCount; ++row) {
+                this.labelRow(row, x => this.#playgroundImplementation.populationData.labelHandler(x, row));
+                this.setRowTitles(row, x => this.#playgroundImplementation.populationData.titleHandler(x, row));
+            } //loop
+        }; //.#playgroundImplementation.resetAllModes
     } //constructor
 
     customKeyHandler(keyElement, keyData, on) { //IKeyboardGeometry.customKeyHandler:
@@ -31,7 +39,7 @@ class PlaygroungKeyboard extends GridKeyboard {
         if (changeMode && on)
             this.#playgroundImplementation.changeMode(keyData);
         if (changeMode) return false;
-        //return super.customKeyHandler(keyElement, keyData, on); 
+        return super.customKeyHandler(keyElement, keyData, on); 
     } //IKeyboardGeometry.customKeyHandler
 
     get instrument() { return this.#playgroundImplementation.instrument; }
@@ -39,7 +47,7 @@ class PlaygroungKeyboard extends GridKeyboard {
     get populationData() { return this.#playgroundImplementation.populationData; }
     set populationData(instance) { this.#playgroundImplementation.populationData = instance; }
 
-    resetAllModes() { } //SA??? 
+    resetAllModes() { this.#playgroundImplementation.resetAllModes(); }
 
 } //class PlaygroungKeyboard
 
