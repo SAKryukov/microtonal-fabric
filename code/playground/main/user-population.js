@@ -18,7 +18,6 @@ class UserPopulation {
     }
 
     constructor(data, keyboardRowCount, keyboardColumnCount, repeatObject) {
-        const labelSet = [];
         const workingDimensions = (function getDimensions() {
             let maxRowCount = data.rows.length;
             if (keyboardRowCount < maxRowCount) maxRowCount = keyboardRowCount;

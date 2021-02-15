@@ -88,6 +88,21 @@ window.onload = () => {
             else
                 return definitionSet.userData.reportBadFileContentBecause(definitionSet.userData.dataFileName, validationResult);
         } //if validationResult !== true
+
+        const setupInstrument = population => { //create and pre-populate:
+            const dimensions = population.workingDimensions;
+            const frequencySetSize = dimensions.rowCount * dimensions.columnCount;
+            const frequencySet = new Array(frequencySetSize);
+            frequencySet.fill(1);
+            const instrument = new Instrument(frequencySet, tones.transpositionUnits);
+            for (let rowIndex = 0; rowIndex < dimensions.rowCount; ++rowIndex) {
+                const startRowIndex = rowIndex * dimensions.columnCount;
+                instrument.changeFrequencies(
+                    startRowIndex, startRowIndex + dimensions.columnCount - 1,
+                    population.createRowFrequencySet(rowIndex));
+            } //loop
+            return instrument;
+        }; //setupInstrument
  
         const music = (() => {
             const rowCount = tones.size.height;
@@ -96,17 +111,7 @@ window.onload = () => {
             const keyboard = new PlaygroungKeyboard(elements.keyboardParent, definitionSet.keyWidth, definitionSet.keyHeight,
                 rowCount, columnCount, definitionSet.colorSet);
             keyboard.fitView = true;
-            const dimensions = population.workingDimensions;
-            const frequencySetSize = dimensions.rowCount * dimensions.columnCount;
-            const frequencySet = new Array(frequencySetSize);
-            frequencySet.fill(50);
-            const instrument = new Instrument(frequencySet, tones.transpositionUnits);
-            for (let rowIndex = 0; rowIndex < dimensions.rowCount; ++rowIndex) {
-                const startRowIndex = rowIndex * dimensions.columnCount;
-                instrument.changeFrequencies(
-                    startRowIndex, startRowIndex + dimensions.columnCount - 1,
-                    population.createRowFrequencySet(rowIndex));
-            } //loop
+            const instrument = setupInstrument(population);
             keyboard.instrument = instrument;
             keyboard.label((x, y) => population.labelHandler(x, y));
             keyboard.setTitles((x, y) => population.titleHandler(x, y));
@@ -142,7 +147,7 @@ window.onload = () => {
                     elements.playControl.transpositionLabel.dataset.disabledColor;
             } //if
             return { keyboard: keyboard, instrument: instrument };
-        })();
+        })(); //music
 
         recorderControl.init(
             music.keyboard.recorder,
