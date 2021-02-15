@@ -19,18 +19,19 @@ class PlaygroungKeyboard extends GridKeyboard {
             const column = keyData.customKeyData.x;
             this.#playgroundImplementation.populationData.cycleMode(row, column);
             this.labelRow(row, x => this.#playgroundImplementation.populationData.labelHandler(x, row));
-            return false;
             //SA???
-            this.#playgroundImplementation.instrument.changeFrequencies(startingIndex, startingIndex + rowWidth - 1,
-                index => 40);
-            return false;
+            //this.#playgroundImplementation.instrument.changeFrequencies(startingIndex, startingIndex + rowWidth - 1,
+            //    index => 40);
         } //this.#playgroundImplementation.changeMode
     } //constructor
 
     customKeyHandler(keyElement, keyData, on) { //IKeyboardGeometry.customKeyHandler:
         // return false to stop embedded handling
-        if (globalKeyTracker.isControlDown()) return this.#playgroundImplementation.changeMode(keyData);
-        return super.customKeyHandler(keyElement, keyData, on); 
+        const changeMode = globalKeyTracker.isControlDown();
+        if (changeMode && on)
+            this.#playgroundImplementation.changeMode(keyData);
+        if (changeMode) return false;
+        //return super.customKeyHandler(keyElement, keyData, on); 
     } //IKeyboardGeometry.customKeyHandler
 
     get instrument() { return this.#playgroundImplementation.instrument; }

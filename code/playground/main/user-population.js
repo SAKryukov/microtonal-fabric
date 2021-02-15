@@ -50,11 +50,12 @@ class UserPopulation {
             rowDescriptors.push(rowDescriptor);
         } //loop rows
         this.#implementation.cycleMode = (rowIndex, value) => {
-            rowDescriptors[rowIndex].cyclicPosition = value % rowDescriptors[rowIndex].cycleSize;
+            rowDescriptors[rowIndex].cyclicPosition =
+                (value + rowDescriptors[rowIndex].cyclicPosition) % rowDescriptors[rowIndex].cycleSize;
         }; //this.#implementation.cycleMode
         this.#implementation.resetAllModes = () => {
             for (let rowIndex = 0; rowIndex < workingDimensions.rowCount; ++ rowIndex)
-                this.#implementation.cycleMode(rowIndex, 0);
+                rowDescriptors[rowIndex].cyclicPosition = 0;
         }; //this.#implementation.resetAllModes
         const getFrequencyFromUserData = userCellData => {
             if (userCellData.constructor == Interval)

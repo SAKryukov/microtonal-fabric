@@ -116,12 +116,15 @@ window.onload = () => {
             keyboard.instrument = instrument;
             keyboard.label((x, y) => population.labelHandler(x, y));
             keyboard.setTitles((x, y) => population.titleHandler(x, y));
+            elements.keyboardControl.reset.onclick = () => {
+                population.resetAllModes();
+                keyboard.label((x, y) => population.labelHandler(x, y));
+            } //elements.keyboardControl.reset.onclick
             instrument.data = instrumentList[definitionSet.instrumentControl.defaultInstrument];
             keyboard.keyHandler = (on, index) => instrument.play(on, index);
             keyboard.recorder = new Recorder();
             elements.keyboardControl.fit.handler = value => keyboard.fitView = value;
             elements.keyboardControl.hightlight.handler = value => keyboard.useHighlight = value;
-            elements.keyboardControl.reset.onclick = () => keyboard.resetAllModes();
             instrument.volume = elements.playControl.volume.value;
             elements.playControl.volume.onchange = (_, value) => instrument.volume = value;
             const getSustainValue = () =>
