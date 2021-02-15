@@ -14,7 +14,7 @@ class UserPopulation {
     #implementation = { rowLabelHandler: null, labelHandler: null, frequencySet: [] }
 
     static definitionSet = {
-        audibleDomain: [20, 12000], //Hz
+        audibleDomain: [20, 16000], //Hz
     }
 
     constructor(data, keyboardRowCount, keyboardColumnCount, repeatObject) {
@@ -115,7 +115,7 @@ class UserPopulation {
         this.#implementation.getRealisticTransposition = () => [
             Math.ceil(data.transpositionUnits * (Math.log2(audibleDomain[0]) - Math.log2(frequencyDomain[0]))),
             Math.floor((data.transpositionUnits * (Math.log2(audibleDomain[1]) - Math.log2(frequencyDomain[1])))),
-        ]; //this.#implementation.realisticTransposition //SA???
+        ]; //this.#implementation.realisticTransposition
     } //constructor
 
     static validate(repeatObject) {
@@ -171,7 +171,7 @@ class UserPopulation {
                 return `transpositionUnits should be a positive integer number, cannot be “${tones.transpositionUnits}”`;
         } //tones.transpositionUnits
         return true;
-    } //validate
+    } //validatef
 
     get labelHandler() { return this.#implementation.labelHandler; }
     get titleHandler() { return this.#implementation.titleHandler; }
