@@ -13,7 +13,7 @@
                  To change mode, Ctrl+Click on a note to make it a tonic.<br/>
                  Each mode is shown as a row title.`
     },
-    size: { width: 28, height: 7 },
+    size: { width: 29, height: 7 },
     base: 275/4, //Hz
     transpositionUnits: 12,
     rows: [

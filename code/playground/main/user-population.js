@@ -43,7 +43,6 @@ class UserPopulation {
             const rowDescriptor = { cyclicPosition: 0, };
             let maxColumns = 0;
             for (let columnIndex = 0; columnIndex < workingDimensions.columnCount; ++columnIndex) {
-                const frequencySetIndex = rowIndex * keyboardColumnCount + columnIndex;
                 const userCellData = data.rows[rowIndex][columnIndex];
                 if (!userCellData) break;
                 if (userCellData === repeatObject) break;
@@ -229,7 +228,6 @@ class UserPopulation {
 
     get labelHandler() { return this.#implementation.labelHandler; }
     get titleHandler() { return this.#implementation.titleHandler; }
-    get frequencySet() { return this.#implementation.frequencySet; }
     get transpositionUnits() { return tones.transpositionUnits; }
     get realisticTransposition() { return this.#implementation.realisticTransposition; } // array [min, max]
     get workingDimensions() { return this.#implementation.workingDimensions; }
