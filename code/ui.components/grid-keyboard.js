@@ -102,13 +102,14 @@ class GridKeyboard extends AbstractKeyboard {
             } //loop
         }; //this.derivedImplementation.label
         this.derivedImplementation.labelRow = (row, handler) => {
+            const metrics = this.derivedClassConstructorArguments[0];
             for (let index = 0; index < this.derivedImplementation.rows[row].length; ++index) {
                 const element = this.derivedImplementation.rows[row][index];
                 const value = this.keyMap.get(element);
                 const result = handler(index);
                 if (result == null) { // the mechanism to mark disabled key
                     value.disabled = true;
-                    element.style.backgroundColor = keyColors.disabled;
+                    element.style.backgroundColor = metrics.keyColors.disabled;
                 } else
                     this.derivedImplementation.rows[row][index].textContent = result;
             } //loop
