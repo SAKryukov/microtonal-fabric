@@ -123,7 +123,6 @@ class GridKeyboard extends AbstractKeyboard {
         this.derivedImplementation.setRowTitles = (row, handler) => {
             for (let index = 0; index < this.derivedImplementation.rows[row].length; ++index) {
                 const element = this.derivedImplementation.rows[row][index];
-                const value = this.derivedImplementation.keyMap.get(element);
                 const result = handler(index);
                 if (result)
                     element.title = result;
