@@ -15,67 +15,67 @@ const Ionian = [
 ];
 const Dorian = [
     "Dorian",
-    { label: "C", step: 0 },
-    { label: "D", step: 2 },
-    { label: "♭E", step: 3 },
-    { label: "F", step: 5 },
-    { label: "G", step: 7 },
-    { label: "A", step: 9 },
-    { label: "B", step: 11 },
+    { analog: "D 02", label: "C", step: 0 },
+    { analog: "E 04", label: "D", step: 2 },
+    { analog: "F 05", label: "♭E", step: 3 },
+    { analog: "G 07", label: "F", step: 5 },
+    { analog: "A 09", label: "G", step: 7 },
+    { analog: "B 11", label: "A", step: 9 },
+    { analog: "C 12", label: "♭B", step: 10 },
 ];
 const Phrygian = [
     "Phrygian",
-    { label: "C", step: 0 },
-    { label: "♭D", step: 1 },
-    { label: "♭E", step: 3 },
-    { label: "F", step: 5 },
-    { label: "G", step: 7 },
-    { label: "A", step: 9 },
-    { label: "B", step: 11 },
+    { analog: "E 04", label: "C", step: 0 },
+    { analog: "F 05", label: "♭D", step: 1 },
+    { analog: "G 07", label: "♭E", step: 3 },
+    { analog: "A 09", label: "F", step: 5 },
+    { analog: "B 11", label: "G", step: 7 },
+    { analog: "C 12", label: "♭A", step: 8 },
+    { analog: "D 02", label: "♭B", step: 10 },
 ];
 
 const Lydian = [
     "Lydian",
-    { label: "C", step: 0 },
-    { label: "D", step: 2 },
-    { label: "E", step: 4 },
-    { label: "♯F", step: 6 },
-    { label: "G", step: 7 },
-    { label: "A", step: 9 },
-    { label: "C", step: 11 },
+    { analog: "F 05", label: "C", step: 0 },
+    { analog: "G 07", label: "D", step: 2 },
+    { analog: "A 09", label: "E", step: 4 },
+    { analog: "B 11", label: "♯F", step: 6 },
+    { analog: "C 12", label: "G", step: 7 },
+    { analog: "D 02", label: "A", step: 9 },
+    { analog: "E 04", label: "C", step: 11 },
 ];
 
 const Mixolydian = [
     "Mixolydian",
-    { label: "C", step: 0 },
-    { label: "D", step: 2 },
-    { label: "E", step: 4 },
-    { label: "F", step: 5 },
-    { label: "G", step: 7 },
-    { label: "A", step: 9 },
-    { label: "♭C", step: 10 },
+    { analog: "G 07", label: "C", step: 0 },
+    { analog: "A 09", label: "D", step: 2 },
+    { analog: "B 11", label: "E", step: 4 },
+    { analog: "C 12", label: "F", step: 5 },
+    { analog: "D 02", label: "G", step: 7 },
+    { analog: "E 04", label: "A", step: 9 },
+    { analog: "F 05", label: "♭C", step: 10 },
 ];
 
 const Aeolian = [
     "Aeolian",
-    { label: "C", step: 0 },
-    { label: "D", step: 2 },
-    { label: "♭E", step: 3 },
-    { label: "F", step: 5 },
-    { label: "G", step: 7 },
-    { label: "A", step: 8 },
-    { label: "B", step: 11 },
+    { analog: "A 09", label: "C", step: 0 },
+    { analog: "B 11", label: "D", step: 2 },
+    { analog: "C 12", label: "♭E", step: 3 },
+    { analog: "D 02", label: "F", step: 5 },
+    { analog: "E 04", label: "G", step: 7 },
+    { analog: "G 07", label: "♭A", step: 8 },
+    { analog: "G 07", label: "B", step: 11 },
 ];
 
 const Locrian = [
     "Locrian",
-    { label: "C", step: 0 },
-    { label: "♭D", step: 1 },
-    { label: "♭E", step: 3 },
-    { label: "F", step: 5 },
-    { label: "♭G", step: 6 },
-    { label: "♭A", step: 8 },
-    { label: "B", step: 10 },
+    { analog: "B 11", label: "C", step: 0 },
+    { analog: "C 12", label: "♭D", step: 1 },
+    { analog: "D 02", label: "♭E", step: 3 },
+    { analog: "E 04", label: "F", step: 5 },
+    { analog: "F 05", label: "♭G", step: 6 },
+    { analog: "G 07", label: "♭A", step: 8 },
+    { analog: "A 09", label: "♭B", step: 10 },
 ];
 
 const playSet = set => {
@@ -89,3 +89,15 @@ const playSet = set => {
     }
 };
 playSet([Ionian, Dorian, Phrygian, Lydian, Mixolydian, Aeolian, Locrian]);
+
+
+/*
+from http://learneasymusictheory.freehostia.com/modes.shtml
+Ionian: 1 2 3 4 5 6 7 8 (no changes)
+Dorian: 1 2 b3 4 5 6 b7 8 (flat 3,7)
+Phrygian: 1 b2 b3 4 5 b6 b7 8 (flat 2,3,6,7)
+Lydian: 1 2 3 #4 5 6 7 8 (sharp 4)
+Mixolydian: 1 2 3 4 5 6 b7 (flat 7)
+Aeolian: 1 2 b3 4 5 b6 b7 8 (flat 3,6,7)
+Locrian: 1 b2 b3 4 b5 b6 b7 8 (flat 2,3,5,6,7)
+*/
