@@ -110,6 +110,7 @@ window.onload = () => {
             let population = new UserPopulation(tones, rowCount, columnCount, repeat);
             const keyboard = new PlaygroungKeyboard(elements.keyboardParent, definitionSet.keyWidth, definitionSet.keyHeight,
                 rowCount, columnCount, definitionSet.colorSet);
+            keyboard.populationData = population;
             keyboard.fitView = true;
             const instrument = setupInstrument(population);
             keyboard.instrument = instrument;

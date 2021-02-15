@@ -16,11 +16,13 @@ class PlaygroungKeyboard extends GridKeyboard {
         this.#playgroundImplementation.changeMode = keyData => {
             const startingIndex = keyData.index - keyData.customKeyData.x;
             const row = keyData.customKeyData.y;
+            const column = keyData.customKeyData.x;
+            this.#playgroundImplementation.populationData.cycleMode(row, column);
+            this.labelRow(row, x => this.#playgroundImplementation.populationData.labelHandler(x, row));
             return false;
             //SA???
             this.#playgroundImplementation.instrument.changeFrequencies(startingIndex, startingIndex + rowWidth - 1,
                 index => 40);
-            this.labelRow(row, index => `${index}`);
             return false;
         } //this.#playgroundImplementation.changeMode
     } //constructor

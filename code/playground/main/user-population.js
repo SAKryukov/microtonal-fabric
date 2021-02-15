@@ -14,7 +14,7 @@ class UserPopulation {
     #implementation = { rowLabelHandler: null, labelHandler: null, frequencySet: [] }
 
     static definitionSet = {
-        audibleDomain: [20, 12000], //Hz
+        audibleDomain: [20, 16000], //Hz
     }
 
     constructor(data, keyboardRowCount, keyboardColumnCount, repeatObject) {
@@ -38,7 +38,7 @@ class UserPopulation {
         this.#implementation.workingDimensions = workingDimensions;
         const rowDescriptors = [];
         for (let rowIndex = 0; rowIndex < workingDimensions.rowCount; ++rowIndex) {
-            const rowDescriptor = { cyclicPosition: 0, };
+            const rowDescriptor = { cyclicPosition: 0 };
             let maxColumns = 0;
             for (let columnIndex = 0; columnIndex < workingDimensions.columnCount; ++columnIndex) {
                 const userCellData = data.rows[rowIndex][columnIndex];
@@ -49,6 +49,13 @@ class UserPopulation {
             rowDescriptor.cycleSize = maxColumns;
             rowDescriptors.push(rowDescriptor);
         } //loop rows
+        this.#implementation.cycleMode = (rowIndex, value) => {
+            rowDescriptors[rowIndex].cyclicPosition = value % rowDescriptors[rowIndex].cycleSize;
+        }; //this.#implementation.cycleMode
+        this.#implementation.resetAllModes = () => {
+            for (let rowIndex = 0; rowIndex < workingDimensions.rowCount; ++ rowIndex)
+                this.#implementation.cycleMode(rowIndex, 0);
+        }; //this.#implementation.resetAllModes
         const getFrequencyFromUserData = userCellData => {
             if (userCellData.constructor == Interval)
                 return userCellData.toReal() * data.base;
@@ -106,8 +113,8 @@ class UserPopulation {
                 return userCellData.label;
         }; //getLabel
         this.#implementation.labelHandler = (x, y) => {
-            //SA??? Cycle here!
-            const userCellData = data.rows[y][x % rowDescriptors[y].cycleSize];
+            const column = (x + rowDescriptors[y].cyclicPosition) % rowDescriptors[y].cycleSize;
+            const userCellData = data.rows[y][column];
             return getLabelFromUserData(userCellData);
         }; //this.#implementation.labelHandler
         if (!data.transpositionUnits) return;
@@ -115,7 +122,7 @@ class UserPopulation {
         this.#implementation.getRealisticTransposition = () => [
             Math.ceil(data.transpositionUnits * (Math.log2(audibleDomain[0]) - Math.log2(frequencyDomain[0]))),
             Math.floor((data.transpositionUnits * (Math.log2(audibleDomain[1]) - Math.log2(frequencyDomain[1])))),
-        ]; //this.#implementation.realisticTransposition //SA???
+        ]; //this.#implementation.realisticTransposition
     } //constructor
 
     static validate(repeatObject) {
@@ -171,7 +178,7 @@ class UserPopulation {
                 return `transpositionUnits should be a positive integer number, cannot be “${tones.transpositionUnits}”`;
         } //tones.transpositionUnits
         return true;
-    } //validate
+    } //validatef
 
     get labelHandler() { return this.#implementation.labelHandler; }
     get titleHandler() { return this.#implementation.titleHandler; }
@@ -180,5 +187,8 @@ class UserPopulation {
     get workingDimensions() { return this.#implementation.workingDimensions; }
 
     createRowFrequencySet(rowIndex) { return this.#implementation.createRowFrequencySet(rowIndex); }
+
+    cycleMode(rowIndex, value) { this.#implementation.cycleMode(rowIndex, value); }
+    resetAllModes() { this.#implementation.resetAllModes(); }
 
 } //class UserPopulation
