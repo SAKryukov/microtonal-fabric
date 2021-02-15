@@ -38,7 +38,7 @@ class UserPopulation {
         this.#implementation.workingDimensions = workingDimensions;
         const rowDescriptors = [];
         for (let rowIndex = 0; rowIndex < workingDimensions.rowCount; ++rowIndex) {
-            const rowDescriptor = { cyclicPosition: 0 };
+            const rowDescriptor = { cyclicShift: 0, intervalChain: null };
             let maxColumns = 0;
             for (let columnIndex = 0; columnIndex < workingDimensions.columnCount; ++columnIndex) {
                 const userCellData = data.rows[rowIndex][columnIndex];
@@ -50,12 +50,12 @@ class UserPopulation {
             rowDescriptors.push(rowDescriptor);
         } //loop rows
         this.#implementation.cycleMode = (rowIndex, value) => {
-            rowDescriptors[rowIndex].cyclicPosition =
-                (value + rowDescriptors[rowIndex].cyclicPosition) % rowDescriptors[rowIndex].cycleSize;
+            rowDescriptors[rowIndex].cyclicShift =
+                (value + rowDescriptors[rowIndex].cyclicShift) % rowDescriptors[rowIndex].cycleSize;
         }; //this.#implementation.cycleMode
         this.#implementation.resetAllModes = () => {
             for (let rowIndex = 0; rowIndex < workingDimensions.rowCount; ++ rowIndex)
-                rowDescriptors[rowIndex].cyclicPosition = 0;
+                rowDescriptors[rowIndex].cyclicShift = 0;
         }; //this.#implementation.resetAllModes
         const getFrequencyFromUserData = userCellData => {
             if (userCellData.constructor == Interval)
@@ -77,25 +77,43 @@ class UserPopulation {
                 frequencyDomain[1] = frequency;
         }; //trackFrequencyDomain
         this.#implementation.createRowFrequencySet = rowIndex => {
-            const result = [];
+            const rowDescriptor = rowDescriptors[rowIndex];
+            let result = null;
             const column = rowIndex % workingDimensions.columnCount;
             const startingIndex = rowIndex - column;
-            for (let index = startingIndex; index < startingIndex + rowDescriptors[rowIndex].cycleSize; ++index) {
-                const shiftedIndex =
-                    (index + rowDescriptors[rowIndex].cyclicPosition) % rowDescriptors[rowIndex].cycleSize;
-                    //SA??? re-calculate if shifted, should be new intervals
-                const frequency = getFrequencyFromUserData(data.rows[rowIndex][shiftedIndex]);
-                result.push(frequency);
-                trackFrequencyDomain(frequencyDomain, frequency);
-            } //loop population
-            //SA cycle here!
+            if (rowDescriptor.cyclicShift == 0 || rowDescriptor.intervalChain == null) {
+                const baseIntervalSet = [];
+                for (let index = startingIndex; index < startingIndex + rowDescriptor.cycleSize; ++index) {
+                    const shiftedIndex = index % rowDescriptor.cycleSize;
+                    const frequency = getFrequencyFromUserData(data.rows[rowIndex][shiftedIndex]);
+                    baseIntervalSet.push(frequency);
+                    trackFrequencyDomain(frequencyDomain, frequency);
+                } //loop population
+                if (rowDescriptor.intervalChain == null) {
+                    rowDescriptor.intervalChain = [];
+                    for (let index = 1; index < baseIntervalSet.length; ++index)
+                        rowDescriptor.intervalChain.push(baseIntervalSet[index]/baseIntervalSet[index - 1]);
+                } //populate intervalChain
+                if (rowDescriptor.cyclicShift == 0)
+                    result = baseIntervalSet;
+            } //if
+            if (result == null) {
+                let currentFrequency = data.base;
+                result = [currentFrequency];
+                for (let index = 0 + rowDescriptor.cyclicShift; index < rowDescriptor.cyclicShift + rowDescriptor.cycleSize; ++index) {
+                    const indexInChain = index % rowDescriptor.intervalChain.length;
+                    currentFrequency *= rowDescriptor.intervalChain[indexInChain];
+                    result.push(currentFrequency);
+                } //loop result from intervalChain
+            } //if
+            // now handle repetitions:
             let octave = 2;
             let indexInBase = 0;
-            for (let index = startingIndex + rowDescriptors[rowIndex].cycleSize; index < workingDimensions.columnCount; ++index) {
+            for (let index = startingIndex + rowDescriptor.cycleSize; index < workingDimensions.columnCount; ++index) {
                 const upperFrequency = result[indexInBase] * octave;
                 trackFrequencyDomain(frequencyDomain, upperFrequency);
                 result[index] = upperFrequency;
-                if (indexInBase == rowDescriptors[rowIndex].cycleSize) {
+                if (indexInBase == rowDescriptor.cycleSize) {
                     octave *= 2;
                     indexInBase = 0;
                 } //if
@@ -104,7 +122,7 @@ class UserPopulation {
             return result;
         }; //this.#implementation.createRowFrequencySet
         this.#implementation.titleHandler = (x, y) => {
-            const shift = rowDescriptors[y].cyclicPosition;
+            const shift = rowDescriptors[y].cyclicShift;
             return data.rowTitles[y][shift];
         } //this.#implementation.titleHandler
         const getLabelFromUserData = userCellData => {
@@ -117,7 +135,7 @@ class UserPopulation {
                 return userCellData.label;
         }; //getLabel
         this.#implementation.labelHandler = (x, y) => {
-            const column = (x + rowDescriptors[y].cyclicPosition) % rowDescriptors[y].cycleSize;
+            const column = (x + rowDescriptors[y].cyclicShift) % rowDescriptors[y].cycleSize;
             const userCellData = data.rows[y][column];
             return getLabelFromUserData(userCellData);
         }; //this.#implementation.labelHandler
