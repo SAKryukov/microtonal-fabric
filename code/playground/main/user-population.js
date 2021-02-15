@@ -123,6 +123,8 @@ class UserPopulation {
         }; //this.#implementation.createRowFrequencySet
         this.#implementation.titleHandler = (x, y) => {
             const shift = rowDescriptors[y].cyclicShift;
+            if (!data.rowTitles) return;
+            if (!data.rowTitles[y]) return;
             return data.rowTitles[y][shift];
         } //this.#implementation.titleHandler
         const getLabelFromUserData = userCellData => {
