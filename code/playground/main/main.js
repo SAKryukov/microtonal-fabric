@@ -95,12 +95,6 @@ window.onload = () => {
             const frequencySet = new Array(frequencySetSize);
             frequencySet.fill(1);
             const instrument = new Instrument(frequencySet, tones.transpositionUnits);
-            for (let rowIndex = 0; rowIndex < dimensions.rowCount; ++rowIndex) {
-                const startRowIndex = rowIndex * dimensions.columnCount;
-                instrument.changeFrequencies(
-                    startRowIndex, startRowIndex + dimensions.columnCount - 1,
-                    population.createRowFrequencySet(rowIndex));
-            } //loop
             return instrument;
         }; //setupInstrument
  
@@ -111,9 +105,10 @@ window.onload = () => {
             const keyboard = new PlaygroungKeyboard(elements.keyboardParent, definitionSet.keyWidth, definitionSet.keyHeight,
                 rowCount, columnCount, definitionSet.colorSet);
             keyboard.populationData = population;
-            keyboard.fitView = true;
             const instrument = setupInstrument(population);
             keyboard.instrument = instrument;
+            keyboard.resetAllModes();
+            keyboard.fitView = true;
             keyboard.label((x, y) => population.labelHandler(x, y));
             keyboard.setTitles((x, y) => population.titleHandler(x, y));
             elements.keyboardControl.reset.onclick = () => keyboard.resetAllModes();

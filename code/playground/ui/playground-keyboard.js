@@ -29,6 +29,10 @@ class PlaygroungKeyboard extends GridKeyboard {
             for (let row = 0; row < metrics.rowCount; ++row) {
                 this.labelRow(row, x => this.#playgroundImplementation.populationData.labelHandler(x, row));
                 this.setRowTitles(row, x => this.#playgroundImplementation.populationData.titleHandler(x, row));
+                const startRowIndex = row * metrics.rowWidth;
+                this.#playgroundImplementation.instrument.changeFrequencies(
+                    startRowIndex, startRowIndex + metrics.rowWidth - 1,
+                    this.#playgroundImplementation.populationData.createRowFrequencySet(row));
             } //loop
         }; //.#playgroundImplementation.resetAllModes
     } //constructor
