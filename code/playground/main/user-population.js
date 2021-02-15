@@ -36,13 +36,61 @@ class UserPopulation {
             } //loop
             return { rowCount: maxRowCount, columnCount: maxColumnCount };
         })();
+        this.#implementation.workingDimensions = workingDimensions;
+        //////////////////////// new! ///////////////////////////////////////////////
+        const rowDescriptors = [];
+        for (let rowIndex = 0; rowIndex < workingDimensions.rowCount; ++rowIndex) {
+            const rowDescriptor = { cyclicPosition: 0, };
+            let maxColumns = 0;
+            for (let columnIndex = 0; columnIndex < workingDimensions.columnCount; ++columnIndex) {
+                const frequencySetIndex = rowIndex * keyboardColumnCount + columnIndex;
+                const userCellData = data.rows[rowIndex][columnIndex];
+                if (!userCellData) break;
+                if (userCellData === repeatObject) break;
+                ++maxColumns;
+            } //loop columns
+            rowDescriptor.cycleSize = maxColumns;
+            rowDescriptors.push(rowDescriptor);
+        } //loop rows
+        const getFrequencyFromUserData = userCellData => {
+            if (userCellData.constructor == Interval)
+                return userCellData.toReal() * data.base;
+            else if (userCellData.constructor == Number)
+                return userCellData;
+            else if (userCellData.constructor == Object) {
+                if (userCellData.interval)
+                    return userCellData.interval.toReal() * data.base;
+                else if (userCellData.frequency)
+                    return userCellData.frequency;
+            } //if
+        } //getFrequencyFromUserData
+        this.#implementation.createRowFrequencySet = rowIndex => {
+            const result = [];
+            const column = rowIndex % workingDimensions.columnCount;
+            const startingIndex = rowIndex - column;
+            for (let index = startingIndex; index < startingIndex + rowDescriptors[rowIndex].cycleSize; ++index)
+                result.push(getFrequencyFromUserData(data.rows[rowIndex][index]));
+            //SA cycle here!
+            let octave = 2;
+            let indexInBase = 0;
+            for (let index = startingIndex + rowDescriptors[rowIndex].cycleSize; index < workingDimensions.columnCount; ++index) {
+                result[index] = result[indexInBase] * octave;
+                if (indexInBase == rowDescriptors[rowIndex].cycleSize) {
+                    octave *= 2;
+                    indexInBase = 0;
+                }
+                ++indexInBase;
+            } //loop repetitions
+            return result;
+        }; //this.#implementation.createRowFrequencySet
+        //////////////////////// end new! ///////////////////////////////////////////
         const repeatPoints = [];
         for (let rowIndex = 0; rowIndex < workingDimensions.rowCount; ++rowIndex) {
             const labelRow = [];
             for (let columnIndex = 0; columnIndex < workingDimensions.columnCount; ++columnIndex) {
                 const frequencySetIndex = rowIndex * keyboardColumnCount + columnIndex;
                 const userCellData = data.rows[rowIndex][columnIndex];
-                if (!userCellData) continue;
+                if (!userCellData) break;
                 if (userCellData.constructor == Interval || userCellData.constructor == Number) {
                     labelRow[columnIndex] = userCellData.toString();
                     if (userCellData.constructor == Interval) 
@@ -184,6 +232,9 @@ class UserPopulation {
     get frequencySet() { return this.#implementation.frequencySet; }
     get transpositionUnits() { return tones.transpositionUnits; }
     get realisticTransposition() { return this.#implementation.realisticTransposition; } // array [min, max]
+    get workingDimensions() { return this.#implementation.workingDimensions; }
+
+    createRowFrequencySet(rowIndex) { return this.#implementation.createRowFrequencySet(rowIndex); }
 
     cleanUp() { this.#implementation.cleanUp(); }
 

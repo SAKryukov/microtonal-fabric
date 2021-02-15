@@ -96,7 +96,17 @@ window.onload = () => {
             const keyboard = new PlaygroungKeyboard(elements.keyboardParent, definitionSet.keyWidth, definitionSet.keyHeight,
                 rowCount, columnCount, definitionSet.colorSet);
             keyboard.fitView = true;
-            const instrument = new Instrument(population.frequencySet, tones.transpositionUnits);
+            const dimensions = population.workingDimensions;
+            const frequencySetSize = dimensions.rowCount * dimensions.columnCount;
+            const frequencySet = new Array(frequencySetSize);
+            frequencySet.fill(50);
+            const instrument = new Instrument(frequencySet, tones.transpositionUnits);
+            for (let rowIndex = 0; rowIndex < dimensions.rowCount; ++rowIndex) {
+                const startRowIndex = rowIndex * dimensions.columnCount;
+                instrument.changeFrequencies(
+                    startRowIndex, startRowIndex + dimensions.columnCount - 1,
+                    population.createRowFrequencySet(rowIndex));
+            } //loop
             keyboard.instrument = instrument;
             keyboard.label((x, y) => population.labelHandler(x, y));
             keyboard.setTitles((x, y) => population.titleHandler(x, y));

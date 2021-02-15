@@ -25,14 +25,16 @@ class PlaygroungKeyboard extends GridKeyboard {
         } //this.#playgroundImplementation.changeMode
     } //constructor
 
-    customKeyHandler(keyElement, keyData, on) {
+    customKeyHandler(keyElement, keyData, on) { //IKeyboardGeometry.customKeyHandler:
         // return false to stop embedded handling
         if (globalKeyTracker.isControlDown()) return this.#playgroundImplementation.changeMode(keyData);
         return super.customKeyHandler(keyElement, keyData, on); 
-    } //customKeyHandler
+    } //IKeyboardGeometry.customKeyHandler
 
     get instrument() { return this.#playgroundImplementation.instrument; }
     set instrument(instance) { this.#playgroundImplementation.instrument = instance; }
+    get populationData() { return this.#playgroundImplementation.populationData; }
+    set populationData(instance) { this.#playgroundImplementation.populationData = instance; }
 
     resetAllModes() { } //SA??? 
 
