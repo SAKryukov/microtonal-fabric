@@ -32,7 +32,7 @@
             {label: "F", interval: interval(1.3348398541700344, 1)}, 
             {label: "G", interval: interval(1.4983070768766815, 1)}, 
             {label: "A", interval: interval(1.6817928305074292, 1)}, 
-            {label: "B", interval: interval(1.887748625363387, 1)}, 
+            {label: "♭B", interval: interval(1.7817974362806788, 1)}, 
         repeat],
         [ // Phrygian:
             {label: "C", interval: interval(1, 1)}, 
@@ -40,8 +40,8 @@
             {label: "♭E", interval: interval(1.189207115002721, 1)}, 
             {label: "F", interval: interval(1.3348398541700344, 1)}, 
             {label: "G", interval: interval(1.4983070768766815, 1)}, 
-            {label: "A", interval: interval(1.6817928305074292, 1)}, 
-            {label: "B", interval: interval(1.887748625363387, 1)}, 
+            {label: "♭A", interval: interval(1.5874010519681994, 1)}, 
+            {label: "♭B", interval: interval(1.7817974362806788, 1)}, 
         repeat],
         [ // Lydian:
             {label: "C", interval: interval(1, 1)}, 
@@ -67,8 +67,8 @@
             {label: "♭E", interval: interval(1.189207115002721, 1)}, 
             {label: "F", interval: interval(1.3348398541700344, 1)}, 
             {label: "G", interval: interval(1.4983070768766815, 1)}, 
-            {label: "A", interval: interval(1.5874010519681994, 1)}, 
-            {label: "B", interval: interval(1.887748625363387, 1)}, 
+            {label: "♭A", interval: interval(1.5874010519681994, 1)}, 
+            {label: "♭B", interval: interval(1.7817974362806788, 1)}, 
         repeat],
         [ // Locrian:
             {label: "C", interval: interval(1, 1)}, 
@@ -77,7 +77,7 @@
             {label: "F", interval: interval(1.3348398541700344, 1)}, 
             {label: "♭G", interval: interval(1.4142135623730951, 1)}, 
             {label: "♭A", interval: interval(1.5874010519681994, 1)}, 
-            {label: "B", interval: interval(1.7817974362806788, 1)}, 
+            {label: "♭B", interval: interval(1.7817974362806788, 1)}, 
         repeat],
     ],
     // optional:
