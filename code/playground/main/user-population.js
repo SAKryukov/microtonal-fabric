@@ -94,6 +94,8 @@ class UserPopulation {
                     rowDescriptor.intervalChain = [];
                     for (let index = 1; index < baseIntervalSet.length; ++index)
                         rowDescriptor.intervalChain.push(baseIntervalSet[index]/baseIntervalSet[index - 1]);
+                    rowDescriptor.intervalChain.push(
+                        data.base * 2 / baseIntervalSet[baseIntervalSet.length - 1]); //sic!
                 } //populate intervalChain
                 if (rowDescriptor.cyclicShift == 0)
                     result = baseIntervalSet;
