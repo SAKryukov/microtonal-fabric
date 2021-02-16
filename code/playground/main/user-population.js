@@ -38,7 +38,8 @@ class UserPopulation {
         this.#implementation.workingDimensions = workingDimensions;
         const rowDescriptors = [];
         for (let rowIndex = 0; rowIndex < workingDimensions.rowCount; ++rowIndex) {
-            const rowDescriptor = { cyclicShift: 0, intervalChain: null };
+            const doRepeat = data.rows[rowIndex][data.rows[rowIndex].length - 1] == repeat;
+            const rowDescriptor = { cyclicShift: 0, intervalChain: null, repeat: doRepeat };
             let maxColumns = 0;
             for (let columnIndex = 0; columnIndex < workingDimensions.columnCount; ++columnIndex) {
                 const userCellData = data.rows[rowIndex][columnIndex];
@@ -141,6 +142,7 @@ class UserPopulation {
                 return userCellData.label;
         }; //getLabel
         this.#implementation.labelHandler = (x, y) => {
+            if (!rowDescriptors[y].repeat && x >= rowDescriptors[y].cycleSize) return null;
             if (y > this.#implementation.workingDimensions.rowCount - 1) return;
             const column = (x + rowDescriptors[y].cyclicShift) % rowDescriptors[y].cycleSize;
             const userCellData = data.rows[y][column];
