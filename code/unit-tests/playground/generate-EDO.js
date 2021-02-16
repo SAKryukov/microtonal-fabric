@@ -63,8 +63,8 @@ const Aeolian = [
     { analog: "C 12", label: "♭E", step: 3 },
     { analog: "D 02", label: "F", step: 5 },
     { analog: "E 04", label: "G", step: 7 },
-    { analog: "G 07", label: "♭A", step: 8 },
-    { analog: "G 07", label: "B", step: 11 },
+    { analog: "F 05", label: "♭A", step: 8 },
+    { analog: "G 07", label: "♭B", step: 10 },
 ];
 
 const Locrian = [
