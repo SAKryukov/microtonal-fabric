@@ -2,6 +2,12 @@
 const edo = 12;
 
 // ♭♯
+// C ♭D D ♭E E F ♯F G ♭A A ♭B B
+// ♭D: 2nd: Phrygian, Locrian
+// ♭E: 3rd: Dorian, Phrygian, Aeolian, Locrian
+// ♯F: 4th: Lydian, tritone
+// ♭A: 6th: Phrygian, Aeolian, Locrian
+// ♭B: 7th: Dorian, Phrygian, Aeolian, Locrian
 
 const Ionian = [
     "Ionian", // 0 2 4 5 7 9 11

@@ -10,17 +10,22 @@ Browsers based on V8 engine are recommended, such as Chromium, Chrome, Opera, Vi
 
 ### Live-Play Applications
 
-[SoundBuilder](https://sakryukov.github.io/microtonal-fabric/code/SoundBuilder)
+[SoundBuilder](https://SAKryukov.github.io/microtonal-fabric/code/SoundBuilder)
 
-[Tonal System Comparison](https://sakryukov.github.io/microtonal-fabric/code/tone-system-comparison) application
+[Tonal System Comparison](https://SAKryukov.github.io/microtonal-fabric/code/tone-system-comparison) application
 
-[Multi-EDO Chromatic Lattice](https://sakryukov.github.io/microtonal-fabric/code/Multi-EDO/index.html), isomorphic chromatic keyboard
+[Multi-EDO Chromatic Lattice](https://SAKryukov.github.io/microtonal-fabric/code/Multi-EDO/index.html), isomorphic chromatic keyboard
 
-[Microtonal Playground](https://sakryukov.github.io/microtonal-fabric/code/playground)
+Microtonal Playground:
 
-Specialized [29-EDO](https://sakryukov.github.io/microtonal-fabric/code/29-EDO) keyboards
+- [With Aura's Diatonic Scales](https://SAKryukov.github.io/microtonal-fabric/code/playground) (see also the [original publication](https://en.xen.wiki/w/User:Aura/Aura's_Diatonic_Scales) on these scales by [Dawson_Berry](https://en.xen.wiki/w/Dawson_Berry))
+- [With 12-EDO Diatonic Scales](https://SAKryukov.github.io/microtonal-fabric/code/playground/custom-demo/12-EDO.html)
 
-[Sequence Tool](https://sakryukov.github.io/microtonal-fabric/code/sequence-tool)
+With Microtonal Playground, the user can define any tonal system in terms of rational-number intervals, real-number intervals, or fixed frequencies, and, optionally, custom labels. When this data is passed to the application, the user can play it.
+
+Specialized [29-EDO](https://SAKryukov.github.io/microtonal-fabric/code/29-EDO) keyboards
+
+[Sequence Tool](https://SAKryukov.github.io/microtonal-fabric/code/sequence-tool)
 
 ### Original Publications
 
