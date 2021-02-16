@@ -13,7 +13,7 @@
                  Each mode is shown as a row title.`
     },
     size: { width: 29, height: 7 },
-    base: 275/4, //Hz
+    base: 65.40639, //Hz "Deep C" based on 440 Hz A
     transpositionUnits: 12,
     rows: [
         [ // Ionian:
