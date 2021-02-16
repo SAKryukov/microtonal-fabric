@@ -50,7 +50,7 @@
             {label: "♯F", interval: interval(1.4142135623730951, 1)}, 
             {label: "G", interval: interval(1.4983070768766815, 1)}, 
             {label: "A", interval: interval(1.6817928305074292, 1)}, 
-            {label: "C", interval: interval(1.887748625363387, 1)}, 
+            {label: "B", interval: interval(1.887748625363387, 1)}, 
         repeat],
         [ // Mixolydian:
             {label: "C", interval: interval(1, 1)}, 
@@ -59,7 +59,7 @@
             {label: "F", interval: interval(1.3348398541700344, 1)}, 
             {label: "G", interval: interval(1.4983070768766815, 1)}, 
             {label: "A", interval: interval(1.6817928305074292, 1)}, 
-            {label: "♭C", interval: interval(1.7817974362806788, 1)}, 
+            {label: "♭B", interval: interval(1.7817974362806788, 1)}, 
         repeat],
         [ // Aeolian:
             {label: "C", interval: interval(1, 1)}, 
