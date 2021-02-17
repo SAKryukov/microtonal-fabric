@@ -11,6 +11,6 @@
         "unembraceable"
     ],
     "markdown.styles": [
-        "smoothly-sized-styles.css"
+        "style.css"
     ],
 }
