@@ -10,6 +10,20 @@
 "use strict";
 
 const metadataElementDefinitionSet = {
+    closeKey: "Escape",
+    location: {
+        left: "0.6em",
+        top: "0.6em",
+    },
+    padding: {
+        x: "2rem",
+        y: "0.8rem",
+    },
+    text: {
+        titleSize: "120%",
+        paragraphSize: "102%",
+        titleBottom: "1rem",
+    },
     special: new Set(["title", "copyright"]),
     background: "Azure",
     color: "black",
@@ -47,22 +61,21 @@ const metadataElement = {
             if (event.target && event.target.constructor == HTMLAnchorElement) return;
             remove();
         } //this.element.onclick
+        this.element.style.fontSize = metadataElementDefinitionSet.text.paragraphSize;
         this.element.style.position = "absolute";
         this.element.style.display = "none";
-        this.element.style.left = "1em";
-        this.element.style.top = "0.6em";
+        this.element.style.left = metadataElementDefinitionSet.location.left;
+        this.element.style.top = metadataElementDefinitionSet.location.top;
         this.element.style.backgroundColor = metadataElementDefinitionSet.background;
         this.element.style.border = metadataElementDefinitionSet.border;
         this.element.style.borderColor = metadataElementDefinitionSet.borderColor;
-        this.element.style.padding = "0.4rem";
-        const horizonatalPadding = "2rem";
-        this.element.style.paddingLeft = horizonatalPadding;
-        this.element.style.paddingRight = horizonatalPadding;
+        this.element.style.padding = metadataElementDefinitionSet.padding.y;
+        this.element.style.paddingLeft = metadataElementDefinitionSet.padding.x;
+        this.element.style.paddingRight = metadataElementDefinitionSet.padding.x;
         if (data.title) {
             const p = document.createElement("h1");
-            p.style.fontSize = "110%";
             p.style.margin = "0";
-            p.style.marginBottom = "0.2em";
+            p.style.marginBottom = metadataElementDefinitionSet.text.titleBottom;
             p.textContent = data.title;
             this.element.appendChild(p);
         } //title
@@ -74,6 +87,7 @@ const metadataElement = {
         } //loop
         if (data.copyright) {
             const p = document.createElement("p");
+            p.style.fontSize = metadataElementDefinitionSet.text.paragraphSize;
             p.innerHTML = `Copyright &copy; ${data.copyright}`;
             this.element.appendChild(p);
         } //title
@@ -86,7 +100,7 @@ const metadataElement = {
         //    child.style.pointerEvents = "none";
         document.body.appendChild(this.element);
         window.addEventListener("keydown", function(event) {
-            if (event.key == "Escape")
+            if (event.key == metadataElementDefinitionSet.closeKey)
                 remove();
         });
     },
