@@ -34,6 +34,7 @@ class TwoStateButton {
         this.#implementation.setHandler = value => theHandler = value;
         this.#implementation.setDisabled = value => theElement.disabled = value;
         this.#implementation.setHidden = value => theElement.style.visibility = value ? "hidden" : "visible";
+        this.#implementation.setDisplayed = value => theElement.style.display = value ? null : "none";
         this.#implementation.getDataset = () => theElement.dataset;
     } //constructor
 
@@ -47,6 +48,7 @@ class TwoStateButton {
 
     set disabled(value) { this.#implementation.setDisabled(value); }
     set hidden(value) { this.#implementation.setHidden(value); }
+    set displayed(value) { this.#implementation.setDisplayed(value); }
 
     get dataset() { return this.#implementation.getDataset(); }
 
