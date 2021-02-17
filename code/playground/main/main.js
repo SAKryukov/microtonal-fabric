@@ -80,8 +80,7 @@ window.onload = () => {
             elements.keyboardControl.metadata.handler = value => metadataElement.show(value,
                 () => elements.keyboardControl.metadata.isDown = false);
         } else
-            elements.keyboardControl.metadata.style.display = "none";
-
+            elements.keyboardControl.metadata.displayed = false;
         const validationResult = UserPopulation.validate(repeat);
         if (validationResult !== true) {
             if (validationResult === undefined)
