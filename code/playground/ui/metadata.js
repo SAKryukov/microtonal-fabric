@@ -9,10 +9,23 @@
 
 "use strict";
 
+const metadataElementDefinitionSet = {
+    special: new Set(["title", "copyright"]),
+    background: "Azure",
+    color: "black",
+    border: "solid thin",
+    borderColor: "CornflowerBlue",
+    closeBox: {
+        size: 16,
+        background: "yellow",
+        cross: "red",
+    } //closeBox
+}; //metadataElementDefinitionSet
+
 const metadataElement = {
+    closeHandler: null,
     initialize: function(data) {
         if (!data) return;
-        const special = new Set(["title", "copyright"]);
         const createCloseBox = (size, background, border, stroke) => {
             const ns = "http://www.w3.org/2000/svg";
             const createNS = (name) => document.createElementNS(ns, name);
@@ -24,7 +37,11 @@ const metadataElement = {
             svg.innerHTML = `<g><line x1="0.2" y1="0.2" x2="0.8" y2="0.8"/><line x1="0.2" y1="0.8" x2="0.8" y2="0.2"/></g>`;
             return svg;
         };
-        const remove = () => this.element.style.display = "none";
+        const remove = () => {
+            this.element.style.display = "none";
+            if (this.closeHandler)
+                this.closeHandler();
+        }
         this.element = document.createElement("aside");
         this.element.onclick = event => {
             if (event.target && event.target.constructor == HTMLAnchorElement) return;
@@ -34,8 +51,9 @@ const metadataElement = {
         this.element.style.display = "none";
         this.element.style.left = "1em";
         this.element.style.top = "0.6em";
-        this.element.style.backgroundColor = "white";
-        this.element.style.border = "solid thin black";
+        this.element.style.backgroundColor = metadataElementDefinitionSet.background;
+        this.element.style.border = metadataElementDefinitionSet.border;
+        this.element.style.borderColor = metadataElementDefinitionSet.borderColor;
         this.element.style.padding = "0.4rem";
         const horizonatalPadding = "2rem";
         this.element.style.paddingLeft = horizonatalPadding;
@@ -49,7 +67,7 @@ const metadataElement = {
             this.element.appendChild(p);
         } //title
         for (let property in data) {
-            if (special.has(property)) continue;
+            if (metadataElementDefinitionSet.special.has(property)) continue;
             const p = document.createElement("p");
             p.innerHTML = `<b>${property}</b>: ${data[property]}`;
             this.element.appendChild(p);
@@ -59,7 +77,11 @@ const metadataElement = {
             p.innerHTML = `Copyright &copy; ${data.copyright}`;
             this.element.appendChild(p);
         } //title
-        this.element.appendChild(createCloseBox(12, "yellow", "black", "red"));
+        this.element.appendChild(createCloseBox(
+            metadataElementDefinitionSet.closeBox.size,
+            metadataElementDefinitionSet.closeBox.background,
+            metadataElementDefinitionSet.borderColor,
+            metadataElementDefinitionSet.closeBox.cross));
         //for (let child of this.element.children)
         //    child.style.pointerEvents = "none";
         document.body.appendChild(this.element);
@@ -68,8 +90,9 @@ const metadataElement = {
                 remove();
         });
     },
-    show: function() {
-        if (this.element)
-            this.element.style.display = "block";
+    show: function(value, closeHandler) {
+        if (!this.element) return;
+        this.element.style.display = value ? "block" : "none";
+        this.closeHandler = closeHandler;
     },
 }; //metadataElement

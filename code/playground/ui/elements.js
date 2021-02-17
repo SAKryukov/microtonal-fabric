@@ -28,7 +28,7 @@ const findElements = () => {
         keyboardControl: {
             fit: new TwoStateButton(document.querySelector("#keyboard-control > button:first-child")),
             hightlight: new TwoStateButton(document.querySelector("#keyboard-control > button:nth-child(2)")),
-            metadata: document.querySelector("#keyboard-control > button:nth-child(3)"),
+            metadata: new TwoStateButton(document.querySelector("#keyboard-control > button:nth-child(3)")),
             reset: document.querySelector("#keyboard-control > button:last-of-type"),
         },
         playControl: {
@@ -47,6 +47,7 @@ const findElements = () => {
             const defaultTransposition = this.playControl.transposition.value;
             this.recorder.record.isDown = false;
             this.playControl.sustain.disabled = true;
+            this.keyboardControl.metadata.isDown = false;
             this.playControl.sustainEnableButton.isDown = false;
             this.playControl.volumeLabel.onclick = () => this.playControl.volume.value = defaultVolume;
             this.playControl.transpositionLabel.onclick = () => this.playControl.transposition.value = defaultTransposition;
