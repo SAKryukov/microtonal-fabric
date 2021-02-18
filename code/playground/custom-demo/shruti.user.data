@@ -33,7 +33,7 @@
             {label: "Tīvrā<br/>B♭", interval: interval(9,5)},
             {label: "Kumudvatī<br/>B", interval: interval(15,8)},
             {label: "Mandā<br/>B", interval: interval(243,128)},
-            {label: "Chandovatī<br/>C", interval: interval(2, 1)}, 
+            repeat
         ],
         [ // 2
             {label: "Chandovatī<br/>C", interval: interval(2*1, 1)}, 
@@ -58,7 +58,7 @@
             {label: "Tīvrā<br/>B♭", interval: interval(2*9,5)},
             {label: "Kumudvatī<br/>B", interval: interval(2*15,8)},
             {label: "Mandā<br/>B", interval: interval(2*243,128)},
-            {label: "Chandovatī<br/>C", interval: interval(2*2, 1)}, 
+            repeat
         ],
         [ // 3
             {label: "Chandovatī<br/>C", interval: interval(4*1, 1)}, 
@@ -83,7 +83,7 @@
             {label: "Tīvrā<br/>B♭", interval: interval(4*9,5)},
             {label: "Kumudvatī<br/>B", interval: interval(4*15,8)},
             {label: "Mandā<br/>B", interval: interval(4*243,128)},
-            {label: "Chandovatī<br/>C", interval: interval(4*2, 1)}, 
+            repeat
         ],
         [ // 4
             {label: "Chandovatī<br/>C", interval: interval(8*1, 1)}, 
@@ -108,7 +108,7 @@
             {label: "Tīvrā<br/>B♭", interval: interval(8*9,5)},
             {label: "Kumudvatī<br/>B", interval: interval(8*15,8)},
             {label: "Mandā<br/>B", interval: interval(8*243,128)},
-            {label: "Chandovatī<br/>C", interval: interval(8*2, 1)}, 
+            repeat
         ],
     ],
 };
