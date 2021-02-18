@@ -29,7 +29,7 @@ class AbstractKeyboard {
 
     constructor(parentElement, ...moreArguments) {
 
-        IKeyboardGeometry.throwIfNotImplemented(this, IInterfaceStrictness.sameNumberOfFunctionArguments);
+        IKeyboardGeometry.throwIfNotImplemented(this);
         this.derivedClassConstructorArguments = moreArguments;
 
         this.#implementation.setVisibility = on => {

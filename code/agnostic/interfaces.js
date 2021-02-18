@@ -14,7 +14,7 @@ const IInterfaceStrictness = {
     sameNumberOfFunctionArguments: 1,
     implementorShouldHandleSameNumberOfFunctionArgumentsOrMore: 2,
     implementorShouldHandleSameNumberOfFunctionArgumentsOrLess: 3,
-    default: 0,
+    default: 1,
 }; //IInterfaceStrictness
 
 class IInterface {
