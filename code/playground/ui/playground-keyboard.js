@@ -38,10 +38,12 @@ class PlaygroungKeyboard extends GridKeyboard {
 
     customKeyHandler(keyElement, keyData, on) { //IKeyboardGeometry.customKeyHandler:
         // return false to stop embedded handling
-        const changeMode = globalKeyTracker.isControlDown();
-        if (changeMode && on)
-            this.#playgroundImplementation.changeMode(keyData);
-        if (changeMode) return false;
+        if (on) {
+            if (globalKeyTracker.isControlDown()) {
+                this.#playgroundImplementation.changeMode(keyData);
+                return false;
+            } // if change mode
+        } //if
         return super.customKeyHandler(keyElement, keyData, on); 
     } //IKeyboardGeometry.customKeyHandler
 
