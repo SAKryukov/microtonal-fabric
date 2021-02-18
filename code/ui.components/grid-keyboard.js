@@ -98,7 +98,7 @@ class GridKeyboard extends AbstractKeyboard {
                     value.disabled = true;
                     key.style.backgroundColor = metrics.keyColors.disabled;
                 } else
-                    key.textContent = result;
+                    key.innerHTML = result;
             } //loop
         }; //this.derivedImplementation.label
         this.derivedImplementation.labelRow = (row, handler) => {
@@ -111,7 +111,7 @@ class GridKeyboard extends AbstractKeyboard {
                     value.disabled = true;
                     element.style.backgroundColor = metrics.keyColors.disabled;
                 } else
-                    this.derivedImplementation.rows[row][index].textContent = result;
+                    this.derivedImplementation.rows[row][index].innerHTML = result;
             } //loop
         }; //this.derivedImplementation.labelRow
         this.derivedImplementation.setTitles = handler => {
