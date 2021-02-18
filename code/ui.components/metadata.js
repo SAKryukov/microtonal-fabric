@@ -25,6 +25,6 @@ const metadata = {
         parentElement.title = document.title;
         parentElement.innerHTML = productOnly
             ? `<a href="${url[0]}">${title}</a> v.&thinsp;${version}`
-            : `<a href="${url[0]}">${title}</a> v.&thinsp;${version}<span style="padding: 1em">&bigstar;</span>Copyright &copy; ${years} <a href="${url[1]}">${author}</a>`;
+            : `<a href="${url[0]}">${title}</a> v.&thinsp;${version}<span style="padding-left: 1em; padding-right: 1em">&bigstar;</span>Copyright &copy; ${years} <a href="${url[1]}">${author}</a>`;
     },
 }; //metadata
