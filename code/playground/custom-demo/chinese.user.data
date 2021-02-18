@@ -1,7 +1,7 @@
 ﻿const tones = {
     metadata: { // optional
         // two properties are special: title and copyright, processed in special ways, other properties are arbitrary, blank spaces, quotation marks, and capitalization recommended
-        title: "Shruti",
+        title: "Chinese Tonal System",
         //https://en.wikipedia.org/wiki/Shruti_(music)",
         Creator: `<a href="https://en.xen.wiki/w/Sergey_A_Kryukov">Sergey A Kryukov</a>`,
         copyright: "", // don't include "Copyright" word and symbol, it's done automatically, at the end of the content
@@ -10,6 +10,81 @@
     base: 440/8, // Shruti Chandovatī (C)
     transpositionUnits: 12,
     rows: [ //♭♯
+        [ // 1
+            {label: "Huang Zhong", interval: interval(1,1)}, 
+            {label: "Da Lü", interval: interval(2187,2048)}, 
+            {label: "Da Cu", interval: interval(9,8)}, 
+            {label: "Jia Zhong", interval: interval(1968,1630)}, 
+            {label: "Gu Xian", interval: interval(81,64)},
+            {label: "Zhong Lü", interval: interval(1771,1311)},
+            {label: "Rui Bin", interval: interval(729,512)},
+            {label: "Lin Zhong", interval: interval(3,2)},
+            {label: "YI Ze", interval: interval(6561,4096)},
+            {label: "Nan Lü", interval: interval(27,16)},
+            {label: "Wi Yi", interval: interval(5905,3277)},
+            {label: "Ying Zhong", interval: interval(243,128)},
+            repeat 
+        ],
+        [ // 2
+            {label: "Huang Zhong", interval: interval(2*1,1)}, 
+            {label: "Da Lü", interval: interval(2*2187,2048)}, 
+            {label: "Da Cu", interval: interval(2*9,8)}, 
+            {label: "Jia Zhong", interval: interval(2*1968,1630)}, 
+            {label: "Gu Xian", interval: interval(2*81,64)},
+            {label: "Zhong Lü", interval: interval(2*1771,1311)},
+            {label: "Rui Bin", interval: interval(2*729,512)},
+            {label: "Lin Zhong", interval: interval(2*3,2)},
+            {label: "YI Ze", interval: interval(2*6561,4096)},
+            {label: "Nan Lü", interval: interval(2*27,16)},
+            {label: "Wi Yi", interval: interval(2*5905,3277)},
+            {label: "Ying Zhong", interval: interval(2*243,128)},
+            repeat 
+        ],
+        [ // 3
+            {label: "Huang Zhong", interval: interval(4*1,1)}, 
+            {label: "Da Lü", interval: interval(4*2187,2048)}, 
+            {label: "Da Cu", interval: interval(4*9,8)}, 
+            {label: "Jia Zhong", interval: interval(4*1968,1630)}, 
+            {label: "Gu Xian", interval: interval(4*81,64)},
+            {label: "Zhong Lü", interval: interval(4*1771,1311)},
+            {label: "Rui Bin", interval: interval(4*729,512)},
+            {label: "Lin Zhong", interval: interval(4*3,2)},
+            {label: "YI Ze", interval: interval(4*6561,4096)},
+            {label: "Nan Lü", interval: interval(4*27,16)},
+            {label: "Wi Yi", interval: interval(4*5905,3277)},
+            {label: "Ying Zhong", interval: interval(4*243,128)},
+            repeat 
+        ],
+        [ // 4
+            {label: "Huang Zhong", interval: interval(8*1,1)}, 
+            {label: "Da Lü", interval: interval(8*2187,2048)}, 
+            {label: "Da Cu", interval: interval(8*9,8)}, 
+            {label: "Jia Zhong", interval: interval(8*1968,1630)}, 
+            {label: "Gu Xian", interval: interval(8*81,64)},
+            {label: "Zhong Lü", interval: interval(8*1771,1311)},
+            {label: "Rui Bin", interval: interval(8*729,512)},
+            {label: "Lin Zhong", interval: interval(8*3,2)},
+            {label: "YI Ze", interval: interval(8*6561,4096)},
+            {label: "Nan Lü", interval: interval(8*27,16)},
+            {label: "Wi Yi", interval: interval(8*5905,3277)},
+            {label: "Ying Zhong", interval: interval(8*243,128)},
+          repeat 
+        ],
+        [ // 5
+            {label: "Huang Zhong", interval: interval(16*1,1)}, 
+            {label: "Da Lü", interval: interval(16*2187,2048)}, 
+            {label: "Da Cu", interval: interval(16*9,8)}, 
+            {label: "Jia Zhong", interval: interval(16*1968,1630)}, 
+            {label: "Gu Xian", interval: interval(16*81,64)},
+            {label: "Zhong Lü", interval: interval(16*1771,1311)},
+            {label: "Rui Bin", interval: interval(16*729,512)},
+            {label: "Lin Zhong", interval: interval(16*3,2)},
+            {label: "YI Ze", interval: interval(16*6561,4096)},
+            {label: "Nan Lü", interval: interval(16*27,16)},
+            {label: "Wi Yi", interval: interval(16*5905,3277)},
+            {label: "Ying Zhong", interval: interval(16*243,128)},
+            repeat 
+        ],
         [ // 1
             {label: "Huang Zhong", interval: interval(1,1)}, 
             {label: "Da Lü", interval: interval(2187,2048)}, 

@@ -11,7 +11,7 @@
     transpositionUnits: 12,
     rows: [ //♭♯
         [ // 1
-            {label: "Chan&shy;do&shy;va&shy;tī<br/>C", interval: interval(1, 1)}, 
+            {label: "Chan&shy;do&shy;va&shy;tī<br/>C", interval: interval(1, 1)}, //Chandovatī
             {label: "Da&shy;yā&shy;va&shy;tī<br/>D♭", interval: interval(256,243)}, 
             {label: "Ra&shy;ti&shy;kā<br/>D", interval: interval(10,9)}, 
             {label: "Krodhā<br/>E♭", interval: interval(32,27)}, 
@@ -26,18 +26,18 @@
             repeat 
         ],
         [ // 1
-            {label: "Chandovatī<br/>C", interval: interval(1, 1)}, 
-            {label: "Ranjanī<br/>D♭", interval: interval(16,15)}, 
-            {label: "Raudrī<br/>D", interval: interval(9,8)}, 
-            {label: "Vajrikā<br/>E♭", interval: interval(6,5)}, 
-            {label: "Prīti<br/>E", interval: interval(81,64)},
-            {label: "Kṣhiti<br/>F", interval: interval(27,20)},
-            {label: "Sandīpanī<br/>F♯", interval: interval(729,512)},
-            {label: "Ālāpinī<br/>G", interval: interval(3,2)},
-            {label: "Rohiṇī<br/>A♭", interval: interval(8,5)},
-            {label: "Ugrā<br/>A", interval: interval(27,16)},
-            {label: "Tīvrā<br/>B♭", interval: interval(9,5)},
-            {label: "Mandā<br/>B", interval: interval(243,128)},
+            {label: "Chan&shy;do&shy;va&shy;tī<br/>C", interval: interval(1, 1)}, 
+            {label: "Ran&shy;ja&shy;nī<br/>D♭", interval: interval(16,15)}, 
+            {label: "Ra&shy;u&shy;drī<br/>D", interval: interval(9,8)}, 
+            {label: "Vajri&shy;kā<br/>E♭", interval: interval(6,5)}, 
+            {label: "Prī&shy;ti<br/>E", interval: interval(81,64)},
+            {label: "Kṣhi&shy;ti<br/>F", interval: interval(27,20)},
+            {label: "San&shy;dī&shy;pan&shy;ī<br/>F♯", interval: interval(729,512)},
+            {label: "Ālā&shy;pi&shy;nī<br/>G", interval: interval(3,2)},
+            {label: "Ro&shy;hi&shy;ṇī<br/>A♭", interval: interval(8,5)},
+            {label: "Ug&shy;rā<br/>A", interval: interval(27,16)},
+            {label: "Tīv&shy;rā<br/>B♭", interval: interval(9,5)},
+            {label: "Man&shy;dā<br/>B", interval: interval(243,128)},
             repeat
         ],
         [ // 2
