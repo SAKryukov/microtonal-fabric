@@ -48,6 +48,12 @@ class UserPopulation {
                 ++maxColumns;
             } //loop columns
             rowDescriptor.cycleSize = maxColumns;
+            if (data.rowTitles && data.rowTitles[rowIndex]) {
+                const lastIndex = data.rowTitles[rowIndex].length - 1;
+                const lastObject = data.rowTitles[rowIndex][lastIndex];
+                if (lastObject == repeatObject && data.rowTitles[rowIndex][lastIndex - 1] && data.rowTitles[rowIndex][lastIndex - 1].constructor == String)
+                    rowDescriptor.repeatedTitleIndex = lastIndex - 1;
+            } //if
             rowDescriptors.push(rowDescriptor);
         } //loop rows
         this.#implementation.cycleMode = (rowIndex, value) => {
@@ -127,9 +133,11 @@ class UserPopulation {
         }; //this.#implementation.createRowFrequencySet
         this.#implementation.titleHandler = (x, y) => {
             if (y > this.#implementation.workingDimensions.rowCount - 1) return;
-            const shift = rowDescriptors[y].cyclicShift;
+            let shift = rowDescriptors[y].cyclicShift;
             if (!data.rowTitles) return;
             if (!data.rowTitles[y]) return;
+            if (rowDescriptors[y].repeatedTitleIndex != null && shift >= rowDescriptors[y].repeatedTitleIndex)
+                shift = rowDescriptors[y].repeatedTitleIndex;
             return data.rowTitles[y][shift];
         } //this.#implementation.titleHandler
         const getLabelFromUserData = userCellData => {
