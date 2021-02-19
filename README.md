@@ -19,7 +19,7 @@ Browsers based on V8 engine are recommended, such as Chromium, Chrome, Opera, Vi
 Microtonal Playground:
 
 - [With Aura's Diatonic Scales](https://SAKryukov.github.io/microtonal-fabric/code/playground) (see also the [original publication](https://en.xen.wiki/w/User:Aura/Aura's_Diatonic_Scales) on these scales by [Dawson Berry](https://en.xen.wiki/w/Dawson_Berry))
-- [With 12-EDO Diatonic Scales](https://SAKryukov.github.io/microtonal-fabric/code/playground/custom-demo/12-EDO.html)
+- With [custom systems](https://SAKryukov.github.io/microtonal-fabric/code/playground/custom)
 
 With Microtonal Playground, the user can define any tonal system in terms of rational-number intervals, real-number intervals, or fixed frequencies, and, optionally, custom labels. When this data is passed to the application, the user can play it.
 
