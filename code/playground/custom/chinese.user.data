@@ -5,7 +5,13 @@
         //https://en.wikipedia.org/wiki/Shruti_(music)",
         Creator: `<a href="https://en.xen.wiki/w/Sergey_A_Kryukov">Sergey A Kryukov</a>`,
         copyright: "", // don't include "Copyright" word and symbol, it's done automatically, at the end of the content
-        Usage: "Two rows per octave, to make it possible play with two modes in the same octave"
+        Usage:
+            `<br/>The entire scale is shown in a single row.<br/>
+            Two top rows are identical, to make it possible play with two different modes in the same octave.<br/>
+            Below, this pattern is repeated in higher octaves.<br/>
+            There are 12 different modes; Use Ctrl-click for mode change.<br/>
+            Each mode is shown as a row title.`
+
     },
     size: { width: 13, height: 20 },
     base: 440*16/27/4, //Hz "Deep C" based on 440 Hz A

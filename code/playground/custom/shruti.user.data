@@ -6,12 +6,11 @@
         Creator: `<a href="https://en.xen.wiki/w/Sergey_A_Kryukov">Sergey A Kryukov</a>`,
         Notation:
             `<br/>CDEFGAB notation is used to show approximations of shruti tones by Western common-practice tones<br/>
-            Chandovatī and Ālāpinī are single-point tone, they match C and G match shruti tones precisely,<br/>
+            Chandovatī and Ālāpinī are single-point tones, they match C and G precisely;<br/>
             other common-practice tones have higher and lower shruti reincarnations, denoted by &uarr;&darr;.`,
         Usage:
             `<br/>A single scale with all distinct shruti tones is represented in top two rows.<br/>
-            These two rows are repeated below in higher octaves.<br/>
-            Use Ctrl-click for mode change.`,
+            These two rows are repeated below in higher octaves. Use Ctrl-click for mode change.`,
         copyright: "", // don't include "Copyright" word and symbol, it's done automatically, at the end of the content
     },
     size: { width: 13, height: 10 },
@@ -26,7 +25,7 @@
             {label: "Pra&shy;&shy;sā&shy;ri&shy;ṇī<br/>&darr;E", interval: interval(5,4)}, //Prasāriṇī
             {label: "Mā&shy;rj&shy;anī<br/>&darr;F", interval: interval(4,3)}, //Mārjanī
             {label: "Rak&shy;tā<br/>&darr;F♯", interval: interval(45,32)}, //Raktā
-            {label: "Ālā&shy;pinī<br/>G", interval: interval(3,2)}, //Ālāpinī
+            {label: "Ālā&shy;pi&shy;nī<br/>G", interval: interval(3,2)}, //Ālāpinī
             {label: "Ma&shy;dan&shy;tī<br/>&darr;A♭", interval: interval(128,81)}, //Madantī
             {label: "Ramyā<br/>&darr;A", interval: interval(5,3)}, //Ramyā
             {label: "Kṣob&shy;hinī<br/>&darr;B♭", interval: interval(16,9)}, //Kṣobhinī
@@ -36,137 +35,137 @@
         [ // 1
             {label: "Chan&shy;do&shy;va&shy;tī<br/>C", interval: interval(1, 1)}, //Chandovatī
             {label: "Ran&shy;ja&shy;nī<br/>&uarr;D♭", interval: interval(16,15)}, //Ranjanī
-            {label: "Ra&shy;u&shy;drī<br/>D", interval: interval(9,8)}, //Raudrī
-            {label: "Vajri&shy;kā<br/>E♭", interval: interval(6,5)}, //Vajrikā
-            {label: "Prī&shy;ti<br/>E", interval: interval(81,64)}, //Prīti
-            {label: "Kṣhi&shy;ti<br/>F", interval: interval(27,20)}, //Kṣhiti
-            {label: "San&shy;dī&shy;pan&shy;ī<br/>F♯", interval: interval(729,512)}, //Sandīpanī
+            {label: "Ra&shy;u&shy;drī<br/>&uarr;D", interval: interval(9,8)}, //Raudrī
+            {label: "Vajri&shy;kā<br/>&uarr;E♭", interval: interval(6,5)}, //Vajrikā
+            {label: "Prī&shy;ti<br/>&uarr;E", interval: interval(81,64)}, //Prīti
+            {label: "Kṣhi&shy;ti<br/>&uarr;F", interval: interval(27,20)}, //Kṣhiti
+            {label: "San&shy;dī&shy;pan&shy;ī<br/>&uarr;F♯", interval: interval(729,512)}, //Sandīpanī
             {label: "Ālā&shy;pi&shy;nī<br/>G", interval: interval(3,2)}, //Ālāpinī
-            {label: "Ro&shy;hi&shy;ṇī<br/>A♭", interval: interval(8,5)}, //Rohiṇī
-            {label: "Ug&shy;rā<br/>A", interval: interval(27,16)}, //Ugrā
-            {label: "Tīv&shy;rā<br/>B♭", interval: interval(9,5)}, //Tīvrā
-            {label: "Man&shy;dā<br/>B", interval: interval(243,128)}, //Mandā
+            {label: "Ro&shy;hi&shy;ṇī<br/>&uarr;A♭", interval: interval(8,5)}, //Rohiṇī
+            {label: "Ug&shy;rā<br/>&uarr;A", interval: interval(27,16)}, //Ugrā
+            {label: "Tīv&shy;rā<br/>&uarr;B♭", interval: interval(9,5)}, //Tīvrā
+            {label: "Man&shy;dā<br/>&uarr;B", interval: interval(243,128)}, //Mandā
             repeat
         ],
         [ // 2
-            {label: "Chandovatī<br/>C", interval: interval(2*1,1)}, 
-            {label: "Dayāvatī<br/>D♭", interval: interval(2*256,243)}, 
-            {label: "Ratikā<br/>D", interval: interval(2*10,9)}, 
-            {label: "Krodhā<br/>E♭", interval: interval(2*32,27)}, 
-            {label: "Prasāriṇī<br/>E", interval: interval(2*5,4)},
-            {label: "Mārjanī<br/>F", interval: interval(2*4,3)},
-            {label: "Raktā<br/>F♯", interval: interval(2*45,32)},
-            {label: "Ālāpinī<br/>G", interval: interval(2*3,2)},
-            {label: "Madantī<br/>A♭", interval: interval(2*128,81)},
-            {label: "Ramyā<br/>A", interval: interval(2*5,3)},
-            {label: "Kṣobhinī<br/>B♭", interval: interval(2*16,9)},
-            {label: "Kumudvatī<br/>B", interval: interval(2*15,8)},
+            {label: "Chan&shy;do&shy;va&shy;tī<br/>C", interval: interval(2*1,1)}, 
+            {label: "Da&shy;yā&shy;va&shy;tī<br/>&darr;D♭", interval: interval(2*256,243)}, 
+            {label: "Ra&shy;ti&shy;kā<br/>&darr;D", interval: interval(2*10,9)}, 
+            {label: "Krodhā<br/>&darr;E♭", interval: interval(2*32,27)}, 
+            {label: "Pra&shy;&shy;sā&shy;ri&shy;ṇī<br/>&darr;E", interval: interval(2*5,4)},
+            {label: "Mā&shy;rj&shy;anī<br/>&darr;F", interval: interval(2*4,3)},
+            {label: "Rak&shy;tā<br/>&darr;F♯", interval: interval(2*45,32)},
+            {label: "Ālā&shy;pi&shy;nī<br/>G", interval: interval(2*3,2)},
+            {label: "Ma&shy;dan&shy;tī<br/>&darr;A♭", interval: interval(2*128,81)},
+            {label: "Ramyā<br/>&darr;A", interval: interval(2*5,3)},
+            {label: "Kṣob&shy;hinī<br/>&darr;B♭", interval: interval(2*16,9)},
+            {label: "Kum&shy;ud&shy;va&shy;tī<br/>&darr;B", interval: interval(2*15,8)},
             repeat
         ],
         [ // 2
-            {label: "Chandovatī<br/>C", interval: interval(2*1,1)}, 
-            {label: "Ranjanī<br/>D♭", interval: interval(2*16,15)}, 
-            {label: "Raudrī<br/>D", interval: interval(2*9,8)}, 
-            {label: "Vajrikā<br/>E♭", interval: interval(2*6,5)}, 
-            {label: "Prīti<br/>E", interval: interval(2*81,64)},
-            {label: "Kṣhiti<br/>F", interval: interval(2*27,20)},
-            {label: "Sandīpanī<br/>F♯", interval: interval(2*729,512)},
-            {label: "Ālāpinī<br/>G", interval: interval(2*3,2)},
-            {label: "Rohiṇī<br/>A♭", interval: interval(2*8,5)},
-            {label: "Ugrā<br/>A", interval: interval(2*27,16)},
-            {label: "Tīvrā<br/>B♭", interval: interval(2*9,5)},
-            {label: "Mandā<br/>B", interval: interval(2*243,128)},
+            {label: "Chan&shy;do&shy;va&shy;tī<br/>C", interval: interval(2*1,1)}, 
+            {label: "Ran&shy;ja&shy;nī<br/>&uarr;D♭", interval: interval(2*16,15)}, 
+            {label: "Ra&shy;u&shy;drī<br/>&uarr;D", interval: interval(2*9,8)}, 
+            {label: "Vajri&shy;kā<br/>&uarr;E♭", interval: interval(2*6,5)}, 
+            {label: "Prī&shy;ti<br/>&uarr;E", interval: interval(2*81,64)},
+            {label: "Kṣhi&shy;ti<br/>&uarr;F", interval: interval(2*27,20)},
+            {label: "San&shy;dī&shy;pan&shy;ī<br/>&uarr;F♯", interval: interval(2*729,512)},
+            {label: "Ālā&shy;pi&shy;nī<br/>G", interval: interval(2*3,2)},
+            {label: "Ro&shy;hi&shy;ṇī<br/>&uarr;A♭", interval: interval(2*8,5)},
+            {label: "Ug&shy;rā<br/>&uarr;A", interval: interval(2*27,16)},
+            {label: "Tīv&shy;rā<br/>&uarr;B♭", interval: interval(2*9,5)},
+            {label: "Tīv&shy;rā<br/>&uarr;B♭", interval: interval(2*243,128)},
             repeat
         ],
         [ // 3
-            {label: "Chandovatī<br/>C", interval: interval(4*1,1)}, 
-            {label: "Dayāvatī<br/>D♭", interval: interval(4*256,243)}, 
-            {label: "Ratikā<br/>D", interval: interval(4*10,9)}, 
-            {label: "Krodhā<br/>E♭", interval: interval(4*32,27)}, 
-            {label: "Prasāriṇī<br/>E", interval: interval(4*5,4)},
-            {label: "Mārjanī<br/>F", interval: interval(4*4,3)},
-            {label: "Raktā<br/>F♯", interval: interval(4*45,32)},
-            {label: "Ālāpinī<br/>G", interval: interval(4*3,2)},
-            {label: "Madantī<br/>A♭", interval: interval(4*128,81)},
-            {label: "Ramyā<br/>A", interval: interval(4*5,3)},
-            {label: "Kṣobhinī<br/>B♭", interval: interval(4*16,9)},
-            {label: "Kumudvatī<br/>B", interval: interval(4*15,8)},
+            {label: "Chan&shy;do&shy;va&shy;tī<br/>C", interval: interval(4*1,1)}, 
+            {label: "Da&shy;yā&shy;va&shy;tī<br/>&darr;D♭", interval: interval(4*256,243)}, 
+            {label: "Ra&shy;ti&shy;kā<br/>&darr;D", interval: interval(4*10,9)}, 
+            {label: "Krodhā<br/>&darr;E♭", interval: interval(4*32,27)}, 
+            {label: "Pra&shy;&shy;sā&shy;ri&shy;ṇī<br/>&darr;E", interval: interval(4*5,4)},
+            {label: "Mā&shy;rj&shy;anī<br/>&darr;F", interval: interval(4*4,3)},
+            {label: "Rak&shy;tā<br/>&darr;F♯", interval: interval(4*45,32)},
+            {label: "Ālā&shy;pi&shy;nī<br/>G", interval: interval(4*3,2)},
+            {label: "Ma&shy;dan&shy;tī<br/>&darr;A♭", interval: interval(4*128,81)},
+            {label: "Ramyā<br/>&darr;A", interval: interval(4*5,3)},
+            {label: "Kṣob&shy;hinī<br/>&darr;B♭", interval: interval(4*16,9)},
+            {label: "Kum&shy;ud&shy;va&shy;tī<br/>&darr;B", interval: interval(4*15,8)},
             repeat
         ],
         [ // 3
-            {label: "Chandovatī<br/>C", interval: interval(4*1,1)}, 
-            {label: "Ranjanī<br/>D♭", interval: interval(4*16,15)}, 
-            {label: "Raudrī<br/>D", interval: interval(4*9,8)}, 
-            {label: "Vajrikā<br/>E♭", interval: interval(4*6,5)}, 
-            {label: "Prīti<br/>E", interval: interval(4*81,64)},
-            {label: "Kṣhiti<br/>F", interval: interval(4*27,20)},
-            {label: "Sandīpanī<br/>F♯", interval: interval(4*729,512)},
-            {label: "Ālāpinī<br/>G", interval: interval(4*3,2)},
-            {label: "Rohiṇī<br/>A♭", interval: interval(4*8,5)},
-            {label: "Ugrā<br/>A", interval: interval(4*27,16)},
-            {label: "Tīvrā<br/>B♭", interval: interval(4*9,5)},
-            {label: "Mandā<br/>B", interval: interval(4*243,128)},
-            {label: "Chandovatī<br/>C", interval: interval(4*2,1)}, 
+            {label: "Chan&shy;do&shy;va&shy;tī<br/>C", interval: interval(4*1,1)}, 
+            {label: "Ran&shy;ja&shy;nī<br/>&uarr;D♭", interval: interval(4*16,15)}, 
+            {label: "Ra&shy;u&shy;drī<br/>&uarr;D", interval: interval(4*9,8)}, 
+            {label: "Vajri&shy;kā<br/>&uarr;E♭", interval: interval(4*6,5)}, 
+            {label: "Prī&shy;ti<br/>&uarr;E", interval: interval(4*81,64)},
+            {label: "Kṣhi&shy;ti<br/>&uarr;F", interval: interval(4*27,20)},
+            {label: "San&shy;dī&shy;pan&shy;ī<br/>&uarr;F♯", interval: interval(4*729,512)},
+            {label: "Ālā&shy;pi&shy;nī<br/>G", interval: interval(4*3,2)},
+            {label: "Ro&shy;hi&shy;ṇī<br/>&uarr;A♭", interval: interval(4*8,5)},
+            {label: "Ug&shy;rā<br/>&uarr;A", interval: interval(4*27,16)},
+            {label: "Tīv&shy;rā<br/>&uarr;B♭", interval: interval(4*9,5)},
+            {label: "Tīv&shy;rā<br/>&uarr;B♭", interval: interval(4*243,128)},
+            {label: "Chan&shy;do&shy;va&shy;tī<br/>C", interval: interval(4*2,1)}, 
         ],
         [ // 4
-            {label: "Chandovatī<br/>C", interval: interval(8*1,1)}, 
-            {label: "Dayāvatī<br/>D♭", interval: interval(8*256,243)}, 
-            {label: "Ratikā<br/>D", interval: interval(8*10,9)}, 
-            {label: "Krodhā<br/>E♭", interval: interval(8*32,27)}, 
-            {label: "Prasāriṇī<br/>E", interval: interval(8*5,4)},
-            {label: "Mārjanī<br/>F", interval: interval(8*4,3)},
-            {label: "Raktā<br/>F♯", interval: interval(8*45,32)},
-            {label: "Ālāpinī<br/>G", interval: interval(8*3,2)},
-            {label: "Madantī<br/>A♭", interval: interval(8*128,81)},
-            {label: "Ramyā<br/>A", interval: interval(8*5,3)},
-            {label: "Kṣobhinī<br/>B♭", interval: interval(8*16,9)},
-            {label: "Kumudvatī<br/>B", interval: interval(8*15,8)},
-            {label: "Chandovatī<br/>C", interval: interval(8*2,1)}, 
+            {label: "Chan&shy;do&shy;va&shy;tī<br/>C", interval: interval(8*1,1)}, 
+            {label: "Da&shy;yā&shy;va&shy;tī<br/>&darr;D♭", interval: interval(8*256,243)}, 
+            {label: "Ra&shy;ti&shy;kā<br/>&darr;D", interval: interval(8*10,9)}, 
+            {label: "Krodhā<br/>&darr;E♭", interval: interval(8*32,27)}, 
+            {label: "Pra&shy;&shy;sā&shy;ri&shy;ṇī<br/>&darr;E", interval: interval(8*5,4)},
+            {label: "Mā&shy;rj&shy;anī<br/>&darr;F", interval: interval(8*4,3)},
+            {label: "Rak&shy;tā<br/>&darr;F♯", interval: interval(8*45,32)},
+            {label: "Ālā&shy;pi&shy;nī<br/>G", interval: interval(8*3,2)},
+            {label: "Ma&shy;dan&shy;tī<br/>&darr;A♭", interval: interval(8*128,81)},
+            {label: "Ramyā<br/>&darr;A", interval: interval(8*5,3)},
+            {label: "Kṣob&shy;hinī<br/>&darr;B♭", interval: interval(8*16,9)},
+            {label: "Kum&shy;ud&shy;va&shy;tī<br/>&darr;B", interval: interval(8*15,8)},
+            {label: "Chan&shy;do&shy;va&shy;tī<br/>C", interval: interval(8*2,1)}, 
         ],
         [ // 4
-            {label: "Chandovatī<br/>C", interval: interval(8*1,1)}, 
-            {label: "Ranjanī<br/>D♭", interval: interval(8*16,15)}, 
-            {label: "Raudrī<br/>D", interval: interval(8*9,8)}, 
-            {label: "Vajrikā<br/>E♭", interval: interval(8*6,5)}, 
-            {label: "Prīti<br/>E", interval: interval(8*81,64)},
-            {label: "Kṣhiti<br/>F", interval: interval(8*27,20)},
-            {label: "Sandīpanī<br/>F♯", interval: interval(8*729,512)},
-            {label: "Ālāpinī<br/>G", interval: interval(8*3,2)},
-            {label: "Rohiṇī<br/>A♭", interval: interval(8*8,5)},
-            {label: "Ugrā<br/>A", interval: interval(8*27,16)},
-            {label: "Tīvrā<br/>B♭", interval: interval(8*9,5)},
-            {label: "Mandā<br/>B", interval: interval(8*243,128)},
-            {label: "Chandovatī<br/>C", interval: interval(8*2,1)}, 
+            {label: "Chan&shy;do&shy;va&shy;tī<br/>C", interval: interval(8*1,1)}, 
+            {label: "Ran&shy;ja&shy;nī<br/>&uarr;D♭", interval: interval(8*16,15)}, 
+            {label: "Ra&shy;u&shy;drī<br/>&uarr;D", interval: interval(8*9,8)}, 
+            {label: "Vajri&shy;kā<br/>&uarr;E♭", interval: interval(8*6,5)}, 
+            {label: "Prī&shy;ti<br/>&uarr;E", interval: interval(8*81,64)},
+            {label: "Kṣhi&shy;ti<br/>&uarr;F", interval: interval(8*27,20)},
+            {label: "San&shy;dī&shy;pan&shy;ī<br/>&uarr;F♯", interval: interval(8*729,512)},
+            {label: "Ālā&shy;pi&shy;nī<br/>G", interval: interval(8*3,2)},
+            {label: "Ro&shy;hi&shy;ṇī<br/>&uarr;A♭", interval: interval(8*8,5)},
+            {label: "Ug&shy;rā<br/>&uarr;A", interval: interval(8*27,16)},
+            {label: "Tīv&shy;rā<br/>&uarr;B♭", interval: interval(8*9,5)},
+            {label: "Tīv&shy;rā<br/>&uarr;B♭", interval: interval(8*243,128)},
+            {label: "Chan&shy;do&shy;va&shy;tī<br/>C", interval: interval(8*2,1)}, 
         ],
         [ // 5
-            {label: "Chandovatī<br/>C", interval: interval(16*1,1)}, 
-            {label: "Dayāvatī<br/>D♭", interval: interval(16*256,243)}, 
-            {label: "Ratikā<br/>D", interval: interval(16*10,9)}, 
-            {label: "Krodhā<br/>E♭", interval: interval(16*32,27)}, 
-            {label: "Prasāriṇī<br/>E", interval: interval(16*5,4)},
-            {label: "Mārjanī<br/>F", interval: interval(16*4,3)},
-            {label: "Raktā<br/>F♯", interval: interval(16*45,32)},
-            {label: "Ālāpinī<br/>G", interval: interval(16*3,2)},
-            {label: "Madantī<br/>A♭", interval: interval(16*128,81)},
-            {label: "Ramyā<br/>A", interval: interval(16*5,3)},
-            {label: "Kṣobhinī<br/>B♭", interval: interval(16*16,9)},
-            {label: "Kumudvatī<br/>B", interval: interval(16*15,8)},
-            {label: "Chandovatī<br/>C", interval: interval(16*2,1)}, 
+            {label: "Chan&shy;do&shy;va&shy;tī<br/>C", interval: interval(16*1,1)}, 
+            {label: "Da&shy;yā&shy;va&shy;tī<br/>&darr;D♭", interval: interval(16*256,243)}, 
+            {label: "Ra&shy;ti&shy;kā<br/>&darr;D", interval: interval(16*10,9)}, 
+            {label: "Krodhā<br/>&darr;E♭", interval: interval(16*32,27)}, 
+            {label: "Pra&shy;&shy;sā&shy;ri&shy;ṇī<br/>&darr;E", interval: interval(16*5,4)},
+            {label: "Mā&shy;rj&shy;anī<br/>&darr;F", interval: interval(16*4,3)},
+            {label: "Rak&shy;tā<br/>&darr;F♯", interval: interval(16*45,32)},
+            {label: "Ālā&shy;pi&shy;nī<br/>G", interval: interval(16*3,2)},
+            {label: "Ma&shy;dan&shy;tī<br/>&darr;A♭", interval: interval(16*128,81)},
+            {label: "Ramyā<br/>&darr;A", interval: interval(16*5,3)},
+            {label: "Kṣob&shy;hinī<br/>&darr;B♭", interval: interval(16*16,9)},
+            {label: "Kum&shy;ud&shy;va&shy;tī<br/>&darr;B", interval: interval(16*15,8)},
+            {label: "Chan&shy;do&shy;va&shy;tī<br/>C", interval: interval(16*2,1)}, 
         ],
         [ // 5
-            {label: "Chandovatī<br/>C", interval: interval(16*1,1)}, 
-            {label: "Ranjanī<br/>D♭", interval: interval(16*16,15)}, 
-            {label: "Raudrī<br/>D", interval: interval(16*9,8)}, 
-            {label: "Vajrikā<br/>E♭", interval: interval(16*6,5)}, 
-            {label: "Prīti<br/>E", interval: interval(16*81,64)},
-            {label: "Kṣhiti<br/>F", interval: interval(16*27,20)},
-            {label: "Sandīpanī<br/>F♯", interval: interval(16*729,512)},
-            {label: "Ālāpinī<br/>G", interval: interval(16*3,2)},
-            {label: "Rohiṇī<br/>A♭", interval: interval(16*8,5)},
-            {label: "Ugrā<br/>A", interval: interval(16*27,16)},
-            {label: "Tīvrā<br/>B♭", interval: interval(16*9,5)},
-            {label: "Mandā<br/>B", interval: interval(16*243,128)},
-            {label: "Chandovatī<br/>C", interval: interval(16*2,1)}, 
+            {label: "Chan&shy;do&shy;va&shy;tī<br/>C", interval: interval(16*1,1)}, 
+            {label: "Ran&shy;ja&shy;nī<br/>&uarr;D♭", interval: interval(16*16,15)}, 
+            {label: "Ra&shy;u&shy;drī<br/>&uarr;D", interval: interval(16*9,8)}, 
+            {label: "Vajri&shy;kā<br/>&uarr;E♭", interval: interval(16*6,5)}, 
+            {label: "Prī&shy;ti<br/>&uarr;E", interval: interval(16*81,64)},
+            {label: "Kṣhi&shy;ti<br/>&uarr;F", interval: interval(16*27,20)},
+            {label: "San&shy;dī&shy;pan&shy;ī<br/>&uarr;F♯", interval: interval(16*729,512)},
+            {label: "Ālā&shy;pi&shy;nī<br/>G", interval: interval(16*3,2)},
+            {label: "Ro&shy;hi&shy;ṇī<br/>&uarr;A♭", interval: interval(16*8,5)},
+            {label: "Ug&shy;rā<br/>&uarr;A", interval: interval(16*27,16)},
+            {label: "Tīv&shy;rā<br/>&uarr;B♭", interval: interval(16*9,5)},
+            {label: "Tīv&shy;rā<br/>&uarr;B♭", interval: interval(16*243,128)},
+            {label: "Chan&shy;do&shy;va&shy;tī<br/>C", interval: interval(16*2,1)}, 
         ],
     ],
     rowTitles: [
