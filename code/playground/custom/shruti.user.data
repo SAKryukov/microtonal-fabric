@@ -4,6 +4,14 @@
         title: "Shruti",
         //https://en.wikipedia.org/wiki/Shruti_(music)",
         Creator: `<a href="https://en.xen.wiki/w/Sergey_A_Kryukov">Sergey A Kryukov</a>`,
+        Notation:
+            `<br/>CDEFGAB notation is used to show approximations of shruti tones by Western common-practice tones<br/>
+            Chandovatī and Ālāpinī are single-point tone, they match C and G match shruti tones precisely,<br/>
+            other common-practice tones have higher and lower shruti reincarnations, denoted by &uarr;&darr;.`,
+        Usage:
+            `<br/>A single scale with all distinct shruti tones is represented in top two rows.<br/>
+            These two rows are repeated below in higher octaves.<br/>
+            Use Ctrl-click for mode change.`,
         copyright: "", // don't include "Copyright" word and symbol, it's done automatically, at the end of the content
     },
     size: { width: 13, height: 10 },
@@ -12,22 +20,22 @@
     rows: [ //♭♯
         [ // 1
             {label: "Chan&shy;do&shy;va&shy;tī<br/>C", interval: interval(1, 1)}, //Chandovatī
-            {label: "Da&shy;yā&shy;va&shy;tī<br/>D♭", interval: interval(256,243)}, //Dayāvatī
-            {label: "Ra&shy;ti&shy;kā<br/>D", interval: interval(10,9)}, //Ratikā
-            {label: "Krodhā<br/>E♭", interval: interval(32,27)}, //Krodhā
-            {label: "Pra&shy;&shy;sā&shy;ri&shy;ṇī<br/>E", interval: interval(5,4)}, //Prasāriṇī
-            {label: "Mā&shy;rj&shy;anī<br/>F", interval: interval(4,3)}, //Mārjanī
-            {label: "Rak&shy;tā<br/>F♯", interval: interval(45,32)}, //Raktā
+            {label: "Da&shy;yā&shy;va&shy;tī<br/>&darr;D♭", interval: interval(256,243)}, //Dayāvatī
+            {label: "Ra&shy;ti&shy;kā<br/>&darr;D", interval: interval(10,9)}, //Ratikā
+            {label: "Krodhā<br/>&darr;E♭", interval: interval(32,27)}, //Krodhā
+            {label: "Pra&shy;&shy;sā&shy;ri&shy;ṇī<br/>&darr;E", interval: interval(5,4)}, //Prasāriṇī
+            {label: "Mā&shy;rj&shy;anī<br/>&darr;F", interval: interval(4,3)}, //Mārjanī
+            {label: "Rak&shy;tā<br/>&darr;F♯", interval: interval(45,32)}, //Raktā
             {label: "Ālā&shy;pinī<br/>G", interval: interval(3,2)}, //Ālāpinī
-            {label: "Ma&shy;dan&shy;tī<br/>A♭", interval: interval(128,81)}, //Madantī
-            {label: "Ramyā<br/>A", interval: interval(5,3)}, //Ramyā
-            {label: "Kṣob&shy;hinī<br/>B♭", interval: interval(16,9)}, //Kṣobhinī
-            {label: "Kum&shy;ud&shy;va&shy;tī<br/>B", interval: interval(15,8)}, //Kumudvatī
+            {label: "Ma&shy;dan&shy;tī<br/>&darr;A♭", interval: interval(128,81)}, //Madantī
+            {label: "Ramyā<br/>&darr;A", interval: interval(5,3)}, //Ramyā
+            {label: "Kṣob&shy;hinī<br/>&darr;B♭", interval: interval(16,9)}, //Kṣobhinī
+            {label: "Kum&shy;ud&shy;va&shy;tī<br/>&darr;B", interval: interval(15,8)}, //Kumudvatī
             repeat 
         ],
         [ // 1
             {label: "Chan&shy;do&shy;va&shy;tī<br/>C", interval: interval(1, 1)}, //Chandovatī
-            {label: "Ran&shy;ja&shy;nī<br/>D♭", interval: interval(16,15)}, //Ranjanī
+            {label: "Ran&shy;ja&shy;nī<br/>&uarr;D♭", interval: interval(16,15)}, //Ranjanī
             {label: "Ra&shy;u&shy;drī<br/>D", interval: interval(9,8)}, //Raudrī
             {label: "Vajri&shy;kā<br/>E♭", interval: interval(6,5)}, //Vajrikā
             {label: "Prī&shy;ti<br/>E", interval: interval(81,64)}, //Prīti
