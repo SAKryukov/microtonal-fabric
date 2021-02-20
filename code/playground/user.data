@@ -11,7 +11,7 @@
                  from Ionian to Locrian.<br/>
                  Each scale has 7 modes.<br/>
                  To change mode, Ctrl+Click on a note to make it a tonic.<br/>
-                 Each mode is shown as a row title.`
+                 A current mode name is shown as a row title.`
     },
     size: { width: 29, height: 7 },
     base: 440*16/27/4, //Hz "Deep C" based on 440 Hz A

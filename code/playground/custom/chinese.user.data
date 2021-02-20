@@ -10,7 +10,7 @@
             Two top rows are identical, to make it possible to play with two different modes in the same octave.<br/>
             Below, this pattern is repeated in higher octaves.<br/>
             There are 12 different modes; Use Ctrl-click for mode change.<br/>
-            Each mode is shown as a row title.`
+            A current mode name is shown as a row title.`
 
     },
     size: { width: 13, height: 20 },
