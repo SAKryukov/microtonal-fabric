@@ -33,7 +33,7 @@
             repeat 
         ],
         [ // 1
-            {label: "Chan&shy;do&shy;va&shy;tī<br/>C", interval: interval(1, 1)}, //Chandovatī
+            {label: "Chan&shy;do&shy;va&shy;tī<br/>C", interval: interval(1,1)}, //Chandovatī
             {label: "Ran&shy;ja&shy;nī<br/>&uarr;D♭", interval: interval(16,15)}, //Ranjanī
             {label: "Ra&shy;u&shy;drī<br/>&uarr;D", interval: interval(9,8)}, //Raudrī
             {label: "Vajri&shy;kā<br/>&uarr;E♭", interval: interval(6,5)}, //Vajrikā
@@ -44,7 +44,7 @@
             {label: "Ro&shy;hi&shy;ṇī<br/>&uarr;A♭", interval: interval(8,5)}, //Rohiṇī
             {label: "Ug&shy;rā<br/>&uarr;A", interval: interval(27,16)}, //Ugrā
             {label: "Tīv&shy;rā<br/>&uarr;B♭", interval: interval(9,5)}, //Tīvrā
-            {label: "Man&shy;dā<br/>&uarr;B", interval: interval(243,128)}, //Mandā
+            {label: "Tīv&shy;rā<br/>&uarr;B♭", interval: interval(243,128)}, //Mandā
             repeat
         ],
         [ // 2
