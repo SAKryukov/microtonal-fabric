@@ -9,7 +9,7 @@
             Chandovatī and Ālāpinī are single-point tones, they match C and G precisely;<br/>
             other common-practice tones have higher and lower shruti reincarnations, denoted by &uarr;&darr;.`,
         Usage:
-            `<br/>A single scale with all distinct shruti tones is represented in top two rows.<br/>
+            `<br/>A single scale with all distinct shruti tones is represented in two top rows.<br/>
             These two rows are repeated below in higher octaves. Use Ctrl-click for mode change.`,
         copyright: "", // don't include "Copyright" word and symbol, it's done automatically, at the end of the content
     },
