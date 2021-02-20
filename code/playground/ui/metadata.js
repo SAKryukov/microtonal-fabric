@@ -76,7 +76,7 @@ const metadataElement = {
             const p = document.createElement("h1");
             p.style.margin = "0";
             p.style.marginBottom = metadataElementDefinitionSet.text.titleBottom;
-            p.textContent = data.title;
+            p.innerHTML = data.title;
             this.element.appendChild(p);
         } //title
         for (let property in data) {
