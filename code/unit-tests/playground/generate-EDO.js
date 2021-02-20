@@ -58,7 +58,7 @@ const Mixolydian = [
     { analog: "C 12", label: "F", step: 5 },
     { analog: "D 02", label: "G", step: 7 },
     { analog: "E 04", label: "A", step: 9 },
-    { analog: "F 05", label: "B", step: 10 },
+    { analog: "F 05", label: "B♭", step: 10 },
 ];
 
 const Aeolian = [
