@@ -7,8 +7,7 @@
         pre { background-color: antiqueWhite; }
         blockquote { border-left: thick blue solid; padding-left: 1em; }
 	h1, h2, h3, h4, h5, h6 { border: none; }
-        details > details, details > summary, details > p { margin-left: 1.4em; }
-        body > details > summary { margin-left: 0; }
+        details > details, details > p { margin-left: 2em; }
 	h1 { font-size: 200%; }
 	h2 { font-size: 162%; }
 	h3 { font-size: 134%; }

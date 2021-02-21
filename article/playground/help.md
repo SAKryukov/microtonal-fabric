@@ -12,29 +12,23 @@ The user creates a tonal system by defining frequencies for all or some keys. Fr
 
 Array elements representing frequencies for the keys are defined as a polymorphic set, so the elements can be of several differnet types: fixed frequency, interval from a base note, fixed frequency or interval with a custom label, or repeat object.
 
-<details><summary><code>1</code></summary>
-Just details
-</details>
-
+The structure of the `tone` object
 <details>
 <summary><code>tones</code></summary>
 
 <details>
-<summary><code>tones.metadata</code><summary>
+<summary><code>tones.metadata</code></summary>
+    <p>Metadata is the information on the tonal system shown when &ldaquo;Tonal System Metadata&rdaquo; is turned on.
+    The text lines are shown in the order of the properties appears in the object <code>tones.metadata</code>.
+    For property names, it is recommended to take care of proper capitalization and use quotation marks if blank space character have to be used in the name. The values are strins, they can contain arbitrary HTML markup.
+    </p>
     <details>
-    <summary><code>tones.metadata</code></summary>
-        <p>Metadata is the information on the tonal system shown when "Tonal System Metadata" is turned on.
-        The text lines are shown in the order of the properties appears in the object <code>tones.metadata</code>.
-        For property names, it is recommended to take care of proper capitalization and use quotation marks if blank space character have to be used in the name. The values are strins, they can contain arbitrary HTML markup.
-        </p>
-        <details>
-        <summary><code>tones.metadata.title</code></summary>
-            <p>Title is shown as heading of the metadata element".</p>
-        </details>
-        <details>
-        <summary><code>tones.metadata.copyright</code></summary>
-            <p>Copyright HTML is prefixed with "Copyright &copy;".</p>
-        </details>
+    <summary><code>tones.metadata.title</code></summary>
+        <p>Title is shown as heading of the metadata element.</p>
+    </details>
+    <details>
+    <summary><code>tones.metadata.copyright</code></summary>
+        <p>Copyright HTML is prefixed with &ldaquo;Copyright &copy;&rdaquo;.</p>
     </details>
 </details>
 
@@ -67,9 +61,7 @@ Just details
     <p>Array of arrays of strings. Each string is the title of a row corresponding to the mode. The object <code>repeat</code> can be used at the end. It specifies that the last string should be used for the rest of the modes.</p>
 </details>
 
-
 </details>
-
 
 ### Fixed frequency
 
