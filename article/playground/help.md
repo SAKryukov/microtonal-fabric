@@ -1,7 +1,3 @@
-@numbering {
-    enable: false
-}
-
 {title}Microtonal Playground
 
 @toc
@@ -15,6 +11,65 @@ Microtone Playground is the in-browser application which provides a way of playi
 The user creates a tonal system by defining frequencies for all or some keys. Frequences are put in an array representing rows, each row being an array of row keys. Any sizes of arrays are allowed --- redundant data will be ignored, and missing data will be filled with disabled keys.
 
 Array elements representing frequencies for the keys are defined as a polymorphic set, so the elements can be of several differnet types: fixed frequency, interval from a base note, fixed frequency or interval with a custom label, or repeat object.
+
+<details><summary><code>1</code></summary>
+Just details
+</details>
+
+<details>
+<summary><code>tones</code></summary>
+
+<details>
+<summary><code>tones.metadata</code><summary>
+    <details>
+    <summary><code>tones.metadata</code></summary>
+        <p>Metadata is the information on the tonal system shown when "Tonal System Metadata" is turned on.
+        The text lines are shown in the order of the properties appears in the object <code>tones.metadata</code>.
+        For property names, it is recommended to take care of proper capitalization and use quotation marks if blank space character have to be used in the name. The values are strins, they can contain arbitrary HTML markup.
+        </p>
+        <details>
+        <summary><code>tones.metadata.title</code></summary>
+            <p>Title is shown as heading of the metadata element".</p>
+        </details>
+        <details>
+        <summary><code>tones.metadata.copyright</code></summary>
+            <p>Copyright HTML is prefixed with "Copyright &copy;".</p>
+        </details>
+    </details>
+</details>
+
+<details>
+<summary><code>tones.size</code></summary>
+    <details>
+    <summary><code>tones.size.width</code></summary>
+    </details>
+    <details>
+    <summary><code>tones.size.height</code></summary>
+    </details>
+</details>
+
+<details>
+<summary><code>tones.base</code></summary>
+</details>
+
+<details>
+<summary><code>tones.transpositionUnits</code></summary>
+    <p>Number of the transposition units per octave. For 12-EDO, this value is usually 12. This value is used in the calcuations of the minimum and maximum values of Transposition.</p>
+</details>
+
+<details>
+<summary><code>tones.rows</code></summary>
+    <p>Array of arrays of tone objects.</p>
+</details>
+
+<details>
+<summary><code>tones.rowTitles</code></summary>
+    <p>Array of arrays of strings. Each string is the title of a row corresponding to the mode. The object <code>repeat</code> can be used at the end. It specifies that the last string should be used for the rest of the modes.</p>
+</details>
+
+
+</details>
+
 
 ### Fixed frequency
 
