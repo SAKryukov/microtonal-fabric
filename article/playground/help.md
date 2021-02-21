@@ -15,18 +15,15 @@ Array elements representing frequencies for the keys are defined as a polymorphi
 The structure of the `tone` object
 <details open="true"><summary><code>tones</code></summary>
 
-<details>
-<summary><code>tones.metadata</code></summary>
+<details><summary><code>tones.metadata</code></summary>
     <p>Metadata is the information on the tonal system shown when &ldquo;Tonal System Metadata&rdquo; is turned on.
     The text lines are shown in the order of the properties as they appear in the object <code>tones.metadata</code>.
     For property names, it is recommended to take care of proper capitalization and use quotation marks if blank space characters have to be used in the name. The values are strigns, they can contain arbitrary HTML markup.
     </p>
-    <details>
-    <summary><code>tones.metadata.title</code></summary>
+    <details><summary><code>tones.metadata.title</code></summary>
         <p>Title is shown as heading of the metadata element.</p>
     </details>
-    <details>
-    <summary><code>tones.metadata.copyright</code></summary>
+    <details><summary><code>tones.metadata.copyright</code></summary>
         <p>Copyright HTML is prefixed with &ldquo;Copyright &copy;&rdquo;.</p>
     </details>
 </details>
@@ -40,23 +37,19 @@ The structure of the `tone` object
     </details>
 </details>
 
-<details>
-<summary><code>tones.base</code></summary>
+<details><summary><code>tones.base</code></summary>
     <p>Base frequency in Hz used to calculate frequencies specified as intervals.</p>
 </details>
 
-<details>
-<summary><code>tones.transpositionUnits</code></summary>
+<details><summary><code>tones.transpositionUnits</code></summary>
     <p>Number of the transposition units per octave. For 12-EDO, this value is usually 12. This value is used in the calculations of the minimum and maximum values of Transposition.</p>
 </details>
 
-<details>
-<summary><code>tones.rows</code></summary>
+<details><summary><code>tones.rows</code></summary>
     <p>Array of arrays of tone objects.</p>
 </details>
 
-<details>
-<summary><code>tones.rowTitles</code></summary>
+<details><summary><code>tones.rowTitles</code></summary>
     <p>Array of arrays of strings. Each string is the title of a row corresponding to the mode. The object <code>repeat</code> can be used at the end. It specifies that the last string should be used for the rest of the modes.</p>
 </details>
 
