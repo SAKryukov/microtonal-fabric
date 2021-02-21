@@ -13,14 +13,13 @@ The user creates a tonal system by defining frequencies for all or some keys. Fr
 Array elements representing frequencies for the keys are defined as a polymorphic set, so the elements can be of several differnet types: fixed frequency, interval from a base note, fixed frequency or interval with a custom label, or repeat object.
 
 The structure of the `tone` object
-<details>
-<summary><code>tones</code></summary>
+<details open="true"><summary><code>tones</code></summary>
 
 <details>
 <summary><code>tones.metadata</code></summary>
-    <p>Metadata is the information on the tonal system shown when &ldaquo;Tonal System Metadata&rdaquo; is turned on.
-    The text lines are shown in the order of the properties appears in the object <code>tones.metadata</code>.
-    For property names, it is recommended to take care of proper capitalization and use quotation marks if blank space character have to be used in the name. The values are strins, they can contain arbitrary HTML markup.
+    <p>Metadata is the information on the tonal system shown when &ldquo;Tonal System Metadata&rdquo; is turned on.
+    The text lines are shown in the order of the properties as they appear in the object <code>tones.metadata</code>.
+    For property names, it is recommended to take care of proper capitalization and use quotation marks if blank space characters have to be used in the name. The values are strigns, they can contain arbitrary HTML markup.
     </p>
     <details>
     <summary><code>tones.metadata.title</code></summary>
@@ -28,27 +27,27 @@ The structure of the `tone` object
     </details>
     <details>
     <summary><code>tones.metadata.copyright</code></summary>
-        <p>Copyright HTML is prefixed with &ldaquo;Copyright &copy;&rdaquo;.</p>
+        <p>Copyright HTML is prefixed with &ldquo;Copyright &copy;&rdquo;.</p>
     </details>
 </details>
 
-<details>
-<summary><code>tones.size</code></summary>
-    <details>
-    <summary><code>tones.size.width</code></summary>
+<details><summary><code>tones.size</code></summary>
+    <details><summary><code>tones.size.width</code></summary>
+        <p>Number of columns in the keyboard table</p>
     </details>
-    <details>
-    <summary><code>tones.size.height</code></summary>
+    <details><summary><code>tones.size.height</code></summary>
+        <p>Number of rows in the keyboard table. This is only a limiting property. The actual number of rows cannot be greater than this number, but it could be smaller, if the actual number of elements of <code>tones.rows</code> is smaller.</p>
     </details>
 </details>
 
 <details>
 <summary><code>tones.base</code></summary>
+    <p>Base frequency in Hz used to calculate frequencies specified as intervals.</p>
 </details>
 
 <details>
 <summary><code>tones.transpositionUnits</code></summary>
-    <p>Number of the transposition units per octave. For 12-EDO, this value is usually 12. This value is used in the calcuations of the minimum and maximum values of Transposition.</p>
+    <p>Number of the transposition units per octave. For 12-EDO, this value is usually 12. This value is used in the calculations of the minimum and maximum values of Transposition.</p>
 </details>
 
 <details>
