@@ -46,7 +46,7 @@ const metadataElement = {
             const svg = createNS("svg");
             svg.style.cssText = `background-color: ${background}; stroke: ${stroke}; stroke-width: 0.1;
                 border-left: ${border} thin solid; border-bottom: ${border} thin solid; width: ${size}px;
-                position: absolute; top: 0; right: 0; opacity: 1`;
+                position: absolute; top: 0; right: 0;`;
             svg.setAttribute("viewBox", "0 0 1 1");
             svg.innerHTML = `<g><line x1="0.2" y1="0.2" x2="0.8" y2="0.8"/><line x1="0.2" y1="0.8" x2="0.8" y2="0.2"/></g>`;
             return svg;
