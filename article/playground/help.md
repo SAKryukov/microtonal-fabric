@@ -12,23 +12,28 @@ The user creates a tonal system by defining frequencies for all or some keys. Fr
 
 Array elements representing frequencies for the keys are defined as a polymorphic set, so the elements can be of several differnet types: fixed frequency, interval from a base note, fixed frequency or interval with a custom label, or repeat object.
 
-The structure of the `tone` object
+The structure of the `tones` object
 <details open="true"><summary><code>tones</code></summary>
     <details><summary><code>tones.metadata</code></summary>
         <p>Metadata is the information on the tonal system shown when &ldquo;Tonal System Metadata&rdquo; is turned on.
         The text lines are shown in the order of the properties as they appear in the object <code>tones.metadata</code>.
-        For property names, it is recommended to take care of proper capitalization and use quotation marks if blank space characters have to be used in the name. The values are strigns, they can contain arbitrary HTML markup.
+        For property names, it is recommended to take care of proper capitalization and use quotation marks if blank space characters have to be used in the name. The values are strigns, they can contain arbitrary HTML markup.<br/>
+        Two properties are processed in a special way:
+        <code>tones.metadata.title</code> and <code>tones.metadata.copyright</code>; see below.
         </p>
         <details><summary><code>tones.metadata.title</code></summary>
             <p>Title is shown as heading of the metadata element.</p>
         </details>
         <details><summary><code>tones.metadata.copyright</code></summary>
-            <p>Copyright HTML is prefixed with &ldquo;Copyright &copy;&rdquo;.</p>
+            <p>Copyright HTML is prefixed with &ldquo;Copyright &copy;&rdquo;. This element is rendered at the end of the metadata element.</p>
         </details>
     </details>
     <details><summary><code>tones.size</code></summary>
         <details><summary><code>tones.size.width</code></summary>
-            <p>Number of columns in the keyboard table</p>
+            <p>Number of columns in the keyboard table.<br/>
+            The table width is not reduced, if some or all elements of <code>tones.rows</code> has lower length.
+            Instead, missing row elements are rendered as disabled.
+            In other cases, when the object <code>repeat</code> is used, the missing data is filled in automatically.</p>
         </details>
         <details><summary><code>tones.size.height</code></summary>
             <p>Number of rows in the keyboard table. This is only a limiting property. The actual number of rows cannot be greater than this number, but it could be smaller, if the actual number of elements of <code>tones.rows</code> is smaller.</p>
@@ -41,14 +46,18 @@ The structure of the `tone` object
         <p>Number of the transposition units per octave. For 12-EDO, this value is usually 12. This value is used in the calculations of the minimum and maximum values of Transposition.</p>
     </details>
     <details><summary><code>tones.rows</code></summary>
-        <p>Array of arrays of tone objects.</p>
+        <p>Array of arrays of tone objects.<br/>
+        A tone object can represent
+        <a href="#heading-fixed-frequency">fixed frequency</a>,
+        <a href="#heading-interval">interval</a>, or
+        a <a href="#heading-frequency-element-with-a-custom-label">frequency element with a custom label</a>.</p>
     </details>
     <details><summary><code>tones.rowTitles</code></summary>
-        <p>Array of arrays of strings. Each string is the title of a row corresponding to the mode. The object <code>repeat</code> can be used at the end. It specifies that the last string should be used for the rest of the modes.</p>
+        <p>Array of arrays of strings. Each string is the title of a row corresponding to the mode. The object <code>repeat</code> can be used at the end of some rows. It specifies that the last string should be used for the rest of the modes.</p>
     </details>
 </details>
 
-### Fixed frequency
+### Fixed Frequency
 
 Fixed frequency is a floating-point or integer number, representing frequency in Hertz.
 
@@ -56,7 +65,7 @@ Fixed frequency is a floating-point or integer number, representing frequency in
 
 The intervals are defined by the calls to the functions `interval(numerator, denonimator)`, where `numerator` and `denonimator` are positive integer numbers representing a rational number `numerator/denonimator`. Interval is the element of a free Abelian group with the multiplicative group operation.
 
-### Frequency Element with a Custom label
+### Frequency Element with a Custom Label
 
 Such elements take on of the forms: `{ label: "label", interval: interval(numerator, denonimator)}` or `{ label: "label", frequency: number}`. These forms allow to provide a custom label with an interval or a fixed frequency object. If a label is not defined, is an empty string or this property with the name `label` is not of a `String` type, it renders the corresponding key disabled. Likewise, a key is disabled when the frequency is zero or not defined, or an interval is not defined.
 
