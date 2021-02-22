@@ -67,6 +67,8 @@ class Keyboard {
                     handleElement(element, elementData, on);
                     return handlePlayingElementSet(element, on);
                 } //if
+                if (on && this.#implementation.recorder)
+                    this.#implementation.recorder.recordMark(sharedDefinitionSet.automaticChordStartMarker);
                 const delta = elementData.index - this.#implementation.chordRoot;
                 for (let chordIndex of this.#implementation.chord) {
                     const shiftedChordIndex = chordIndex + delta;

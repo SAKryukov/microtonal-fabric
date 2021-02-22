@@ -22,9 +22,13 @@ class Recorder {
         }; //this.#implementation.callPhaseChangeHandler
         this.#implementation.normalizeSequence = sequence => {
             if (sequence.length < 1) return;
-            const startTime = Math.round(sequence[0][2]);
-            if (startTime == 0) return;
+            let startTime = null;
             for (let www of sequence) {
+                if (www.constructor == String) continue;
+                if (startTime == null) {
+                    startTime = Math.round(www[2]);
+                    if (startTime == 0) return;
+                } //if
                 www[0] = www[0] ? 1 : 0;
                 www[2] = Math.round(www[2]);
                 www[2] -= startTime;
@@ -38,6 +42,8 @@ class Recorder {
         const when = performance.now();
         this.#implementation.recordSequence.push([what, where, when]);
     } //record
+
+    recordMark(text) { this.#implementation.recordSequence.push(text); }
 
     cancelPlaying() {
         if (!this.#implementation.phase.has(soundRecorderPhase.playing)) return;
@@ -121,7 +127,7 @@ class Recorder {
 
     set phaseChangeHandler(value) { this.#implementation.changePhaseHandler = value; }
 
-    get serializedSequence() { return JSON.stringify(this.#implementation.playSequence); }
+    get serializedSequence() {return JSON.stringify(this.#implementation.playSequence); }
     set serializedSequence(data) {
         const list = this.constructor.readAndValidateData(data);
         if (list) {
