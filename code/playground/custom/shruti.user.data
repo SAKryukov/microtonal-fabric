@@ -5,7 +5,9 @@
         //https://en.wikipedia.org/wiki/Shruti_(music)",
         Notation:
             `<br/>CDEFGAB notation is used to show approximations of shruti tones by Western common-practice tones<br/>
-            Chandovatī and Ālāpinī are single-point tones, they match C and G precisely;<br/>
+            The notation based on Indian synonyms rRgGMmPdDnNS is also shown;<br/>
+            the tones with index 1 are lower than the analogous and close tones with index 2.<br/>
+            Chandovatī and Ālāpinī are single-point tones, they match C (Indian S) and G (Indian P) precisely;<br/>
             other common-practice tones have higher and lower shruti reincarnations, denoted by &uarr;&darr;.`,
         Usage:
             `<br/>A single scale with all distinct shruti tones is represented in two top rows.<br/>
