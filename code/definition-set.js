@@ -11,7 +11,7 @@
 
 const sharedDefinitionSet = {
 
-    version: "5.2.44",
+    version: "5.3.0",
     years: "2017-2021",
 
     soundControl: {
@@ -25,5 +25,7 @@ const sharedDefinitionSet = {
         initialVolume: 0.4,
         volumeStep: 0.01,
     },
+
+    automaticChordStartMarker: `${String.fromCodePoint(0x1D184, 0x1D184, 0x1D184)}`,
 
 }; //sharedDefinitionSet
