@@ -11,7 +11,7 @@
 
 const sharedDefinitionSet = {
 
-    version: "5.2.43",
+    version: "5.2.44",
     years: "2017-2021",
 
     soundControl: {
