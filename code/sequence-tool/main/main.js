@@ -26,6 +26,11 @@ window.onload = () => {
         controls.error.textContent = ex ? ex.message : "";
     }; //showException
 
+    const isStartOfChordOption = option =>
+        option.value != null
+        && option.value.constructor == String
+        && option.value.endsWith(sharedDefinitionSet.automaticChordStartMarker);
+
     const updateStatus = target => {
         const value = target.selectedOptions.length > 0;
         for (let index in controls.shift.time)
@@ -41,12 +46,8 @@ window.onload = () => {
         controls.advanced.durationAdjust.disabled = target.selectedOptions.length < 2; //SA???
         controls.advanced.rhythmization.disabled = target.selectedOptions.length < 6; //SA???
         let startOfChordSequence = null;
-        if (target.selectedOptions.length > 2) {
-            startOfChordSequence =
-                target.selectedOptions[0].value != null
-                && target.selectedOptions[0].value.constructor == String
-                && target.selectedOptions[0].value.endsWith(sharedDefinitionSet.automaticChordStartMarker);
-        } //if
+        if (target.selectedOptions.length > 2)
+            startOfChordSequence = isStartOfChordOption(target.selectedOptions[0]);
         controls.advanced.alignChords.disabled = target.selectedOptions.length < 3 || !startOfChordSequence;
         controls.clipboard.to.disabled = !value;
     }; //updateStatus
@@ -331,6 +332,38 @@ window.onload = () => {
         toHistory(historyAgent);
     }; //adjustDuration
 
+    const alignChords = () => {
+        const sequence = [];
+        const alignChord = sequence => {
+            let startingDown = null;
+            let startingUp = null;
+            for (let option of sequence) {
+                const www = sequenceMap.get(option);
+                if (!www) continue;
+                if (what(www) && startingDown == null)
+                    startingDown = when(www);
+                else if (!what(www) && startingUp == null)
+                    startingUp = when(www);
+                if (what(www))
+                    setTime(www, startingDown)
+                else
+                    setTime(www, startingUp);
+                population.setOptionWww(option, www);
+            } //loop
+            sequence.splice(0, sequence.length);
+        }; //alignChord
+        for (let option of controls.sequence.selectedOptions) {
+            if (!option.selected) break;
+            if (isStartOfChordOption(option))
+                alignChord(sequence);
+            else 
+                sequence.push(option);
+        } //loop
+        alignChord(sequence);
+        updateStatus(controls.sequence);
+        toHistory(historyAgent);
+    }; //alignChords
+
     (function filterInputs() {
         const filterInput = (control, criterion) => {
             control.addEventListener('beforeinput', event => {
@@ -374,6 +407,7 @@ window.onload = () => {
     controls.advanced.remove.onclick = () => remove();
     controls.advanced.rhythmization.onclick = () => doRhythmization();
     controls.advanced.durationAdjust.onclick = () => adjustDuration();
+    controls.advanced.alignChords.onclick = () => alignChords();
 
     population.loadSequence([[0, 0, 0]]);
     setInterval(() => {
