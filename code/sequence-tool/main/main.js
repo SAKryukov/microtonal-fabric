@@ -40,6 +40,14 @@ window.onload = () => {
             element.disabled = !value;
         controls.advanced.durationAdjust.disabled = target.selectedOptions.length < 2; //SA???
         controls.advanced.rhythmization.disabled = target.selectedOptions.length < 6; //SA???
+        let startOfChordSequence = null;
+        if (target.selectedOptions.length > 2) {
+            startOfChordSequence =
+                target.selectedOptions[0].value != null
+                && target.selectedOptions[0].value.constructor == String
+                && target.selectedOptions[0].value.endsWith(sharedDefinitionSet.automaticChordStartMarker);
+        } //if
+        controls.advanced.alignChords.disabled = target.selectedOptions.length < 3 || !startOfChordSequence;
         controls.clipboard.to.disabled = !value;
     }; //updateStatus
     updateStatus(controls.sequence);

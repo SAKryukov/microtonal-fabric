@@ -52,7 +52,8 @@ const getControls = () => {
             rhythmization: document.querySelector("#advanced button:nth-of-type(3)"),
             durationTime: document.querySelector("#input-duration"),
             durationTiming: document.querySelector("#select-duration"),
-            durationAdjust: document.querySelector("#advanced button:last-of-type"),
+            durationAdjust: document.querySelector("#advanced button:nth-last-of-type(2)"),
+            alignChords: document.querySelector("#advanced button:last-of-type"),
         },
         clipboard: {
             from: document.getElementById("button-from-keyboard"),

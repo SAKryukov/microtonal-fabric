@@ -62,7 +62,7 @@
       section > div:last-of-type { display: block; }
       section button:not(:last-child), section input { margin-bottom: var(--vertical-gap); }
       #advanced br { content: ""; display: block; margin: 2rem 0; }
-      #advanced button:last-child { margin-top: var(--vertical-gap); }
+      #advanced button:nth-last-of-type(2) { margin-top: var(--vertical-gap); }
   </style>
 </head>
 <body>
@@ -118,6 +118,7 @@
       <select id="select-duration"></select>   
    </div>
    <button>Adjust Duration</button>
+   <button>Align Chords</button>
 </section>
 <section>
    <button id="button-from-keyboard" accesskey="M">Fro<u>m</u> Clipboard</button>
