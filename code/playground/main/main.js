@@ -75,12 +75,6 @@ window.onload = () => {
 
     function start() {
 
-        if (tones.metadata) {
-            metadataElement.initialize(tones.metadata);
-            elements.keyboardControl.metadata.handler = value => metadataElement.show(value,
-                () => elements.keyboardControl.metadata.isDown = false);
-        } else
-            elements.keyboardControl.metadata.displayed = false;
         const validationResult = UserPopulation.validate(repeat);
         if (validationResult !== true) {
             if (validationResult === undefined)
@@ -88,6 +82,12 @@ window.onload = () => {
             else
                 return definitionSet.userData.reportBadFileContentBecause(definitionSet.userData.dataFileName, validationResult);
         } //if validationResult !== true
+        if (tones.metadata) {
+            metadataElement.initialize(tones.metadata);
+            elements.keyboardControl.metadata.handler = value => metadataElement.show(value,
+                () => elements.keyboardControl.metadata.isDown = false);
+        } else
+            elements.keyboardControl.metadata.displayed = false;
 
         const setupInstrument = population => { //create and pre-populate:
             const dimensions = population.workingDimensions;
@@ -106,6 +106,12 @@ window.onload = () => {
             const keyboard = new PlaygroungKeyboard(elements.keyboardParent, definitionSet.keyWidth, definitionSet.keyHeight,
                 dimensions.rowCount, dimensions.columnCount, definitionSet.colorSet);
             keyboard.populationData = population;
+            const keyboardStyle = UserPopulation.getKeyboardStyle();
+            if (keyboardStyle) {
+                const result = keyboard.styleKeyboard(...keyboardStyle);
+                if (result)
+                    definitionSet.userData.reportBadFileContentBecause(definitionSet.userData.dataFileName, `Invalid keyboard style:<br/>${result}`);
+            } //if
             const instrument = setupInstrument(population);
             keyboard.instrument = instrument;
             keyboard.resetAllModes();

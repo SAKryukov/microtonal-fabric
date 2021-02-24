@@ -164,6 +164,16 @@ class UserPopulation {
         ]; //this.#implementation.realisticTransposition
     } //constructor
 
+    static getKeyboardStyle() {
+        if (!tones) return null;
+        if (!tones.keyboardStyle) return null;
+        if (!tones.keyboardStyle.className) return null;
+        if (!tones.keyboardStyle.rules) return null;
+        if (tones.keyboardStyle.rules.constructor != Array) return null;
+        if (tones.keyboardStyle.rules.length < 1) return null;
+        return [tones.keyboardStyle.className, tones.keyboardStyle.rules];
+    } //getKeyboardStyle
+
     static validate(repeatObject) {
         const userDataType = typeof(tones);
         if (!userDataType) return undefined;
@@ -216,8 +226,11 @@ class UserPopulation {
             if (tones.transpositionUnits.constructor != Number || tones.transpositionUnits <= 0)
                 return `transpositionUnits should be a positive integer number, cannot be “${tones.transpositionUnits}”`;
         } //tones.transpositionUnits
-        return true;
-    } //validatef
+        const validateKeyboardStyle = () => {
+            return true;
+        };
+        return validateKeyboardStyle();
+    } //validate
 
     get labelHandler() { return this.#implementation.labelHandler; }
     get titleHandler() { return this.#implementation.titleHandler; }
