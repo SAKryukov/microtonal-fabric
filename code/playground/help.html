@@ -74,6 +74,17 @@
     <details><summary><code>tones.rowTitles</code></summary>
         <p>Array of arrays of strings. Each string is the title of a row corresponding to the mode. The object <code>repeat</code> can be used at the end of some rows. It specifies that the last string should be used for the rest of the modes.</p>
     </details>
+    <details><summary><code>tones.keyboardStyle</code></summary>
+        <p>Optional set of rules used for custom styling of keyboard elements.</p>
+        <details><summary><code>tones.keyboardStyle.className</code></summary>
+            <p>Class name used for the keyboard parent element to avoid the clash with the application style descriptor. Should be a non-empty string representing a valid CSS class name.</p>
+        </details>
+        <details><summary><code>tones.keyboardStyle.rules</code></summary>
+            <p>List of strings each representing a CSS rule. Each string value is prepended with a class selector based on
+            <code>tones.keyboardStyle.className</code> before the application.
+            It makes the style applied only to the key elements.</p>
+        </details>
+    </details>
 </details>
 <h3 id="heading-fixed-frequency">Fixed Frequency</h3>
 <p>Fixed frequency is a floating-point or integer number, representing frequency in Hertz.</p><h3 id="heading-interval">Interval</h3>
