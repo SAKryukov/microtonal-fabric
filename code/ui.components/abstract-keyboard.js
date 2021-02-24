@@ -19,8 +19,6 @@ class IKeyboardGeometry extends IInterface {
     isTouchKey(parentElement, keyElement) {} // for touch interface
     get defaultChord() {} // should return array of indices of keys in default chord
     customKeyHandler(keyElement, keyData, on) {} // return false to stop embedded handling
-    get keyStyleClassName() {} // pseudo-abstract: return string, class name
-    get keyStylesheetRules() {} // pseudo-abstract: returns list of strings, CSS rules
 } //IKeyboardGeometry
 
 class AbstractKeyboard {
@@ -34,17 +32,19 @@ class AbstractKeyboard {
         IKeyboardGeometry.throwIfNotImplemented(this);
         this.derivedClassConstructorArguments = moreArguments;
 
-        ((className, rules) => { // set key stylesheet:
+        this.#implementation.styleKeyboard = (className, rules) => {
             if (!className) return;
             if (!rules) return;
             if (!rules.constructor == Array) return;
             if (rules.length < 1) return;
-            parentElement.classList.add(className);
-            const style = document.createElement('style');
-            document.body.appendChild(style);
-            for (let rule of rules)
-                style.sheet.insertRule(`.${className} ${rule}`);
-        })(this.keyStyleClassName, this.keyStylesheetRules);
+            try {
+                parentElement.classList.add(className);
+                const style = document.createElement('style');
+                document.body.appendChild(style);
+                for (let rule of rules)
+                    style.sheet.insertRule(`.${className} ${rule}`);
+            } catch (ex) { return ex.message; }
+        }; //this.#implementation.styleKeyboard
 
         this.#implementation.setVisibility = on => {
             parentElement.style.display = on ? "block" : "none";
@@ -219,6 +219,7 @@ class AbstractKeyboard {
     } //constructor
 
     get keyMap() { return this.#implementation.keyMap; }
+    styleKeyboard(className, rules) { return this.#implementation.styleKeyboard(className, rules); }
 
     recreate() { this.#implementation.recreate(); }
 
@@ -243,8 +244,5 @@ class AbstractKeyboard {
 
     get recorder() { return this.#implementation.recorder; }
     set recorder(value) { this.#implementation.recorder = value; }
-
-    get keyStyleClassName() {} // pseudo-abstract: return string, class name
-    get keyStylesheetRules() {} // pseudo-abstract: returns list of strings, CSS rules
 
 } //class AbstractKeyboard
