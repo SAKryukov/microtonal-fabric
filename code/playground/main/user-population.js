@@ -167,7 +167,7 @@ class UserPopulation {
     static getKeyboardStyle() {
         if (!tones.keyboardStyle) return null;
         if (!tones.keyboardStyle.className) return null;
-        if (!tones.keyboardStyle.className.constructor != String) return null;
+        if (tones.keyboardStyle.className.constructor != String) return null;
         if (!tones.keyboardStyle.rules) return null;
         if (tones.keyboardStyle.rules.constructor != Array) return null;
         if (tones.keyboardStyle.rules.length < 1) return null;
@@ -227,6 +227,7 @@ class UserPopulation {
                 return `transpositionUnits should be a positive integer number, cannot be “${tones.transpositionUnits}”`;
         } //tones.transpositionUnits
         const validateKeyboardStyle = () => {
+            return true;
             if (!tones.keyboardStyle) return true;
             if (!tones.keyboardStyle.className) return "invalid or undefined tones.keyboardStyle.className";
             if (tones.keyboardStyle.className.constructor != String) return "tones.keyboardStyle.className must be a string";
