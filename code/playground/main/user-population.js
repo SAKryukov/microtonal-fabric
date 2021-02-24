@@ -165,9 +165,9 @@ class UserPopulation {
     } //constructor
 
     static getKeyboardStyle() {
-        if (!tones) return null;
         if (!tones.keyboardStyle) return null;
         if (!tones.keyboardStyle.className) return null;
+        if (!tones.keyboardStyle.className.constructor != String) return null;
         if (!tones.keyboardStyle.rules) return null;
         if (tones.keyboardStyle.rules.constructor != Array) return null;
         if (tones.keyboardStyle.rules.length < 1) return null;
@@ -227,6 +227,18 @@ class UserPopulation {
                 return `transpositionUnits should be a positive integer number, cannot be “${tones.transpositionUnits}”`;
         } //tones.transpositionUnits
         const validateKeyboardStyle = () => {
+            if (!tones.keyboardStyle) return true;
+            if (!tones.keyboardStyle.className) return "invalid or undefined tones.keyboardStyle.className";
+            if (tones.keyboardStyle.className.constructor != String) return "tones.keyboardStyle.className must be a string";
+            if (!tones.keyboardStyle.rules) return "invalid or undefined tones.keyboardStyle.rules";
+            if (tones.keyboardStyle.rules.constructor != Array) return "tones.keyboardStyle.rules must be an array";
+            if (tones.keyboardStyle.rules.length < 1) return "tones.keyboardStyle.rules must be a non-empty array";
+            let ruleIndex = 0;
+            for (let rule of tones.keyboardStyle.rules) {
+                if (!rule) return `invalid or undefined tones.keyboardStyle.rules[${ruleIndex}]`;
+                if (rule.constructor != String) return `invalid or undefined tones.keyboardStyle.rules[${ruleIndex}]: must be a string`;
+                ++ruleIndex;
+            } //loop
             return true;
         };
         return validateKeyboardStyle();
@@ -246,4 +258,4 @@ class UserPopulation {
     cycleMode(rowIndex, value) { this.#implementation.cycleMode(rowIndex, value); }
     resetAllModes() { this.#implementation.resetAllModes(); }
 
-} //class UserPopulation
+} //class UserPopulations
