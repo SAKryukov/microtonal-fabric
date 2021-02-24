@@ -53,6 +53,7 @@ class IInterface {
             const constructor = obj.constructor;
             if (constructor == null) return null;
             const getConstructorDescriptor = (constructor, property) => {
+                if (!constructor.prototype) return null;
                 const descriptor = Object.getOwnPropertyDescriptor(constructor.prototype, property);
                 if (descriptor == null) {
                     const parentConstructor = Object.getPrototypeOf(constructor);
