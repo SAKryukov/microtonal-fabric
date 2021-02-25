@@ -35,6 +35,10 @@ _[Microtonal Music Study with Chromatic Lattice Keyboard](https://www.codeprojec
 
 _[Sound Builder, Web Audio Synthesizer](https://www.codeproject.com/Articles/5268512/Sound-Builder)_, May 19, 2020
 
+### See Also
+
+[Microtonal Fabric on Xenharmonic Wiki](https://en.xen.wiki/w/Sergey_A_Kryukov#Microtonal_Fabric)
+
 ------
 
 <br/><a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-sa/4.0/88x31.png" /></a>
