@@ -1,4 +1,4 @@
-@numbering {
+﻿@numbering {
     enable: false
 }
 
@@ -424,7 +424,9 @@ Here is the text of the recommendations which a page shows when a browser cannot
 By the way, my congratulations to Microsoft people for their virtue of giving up majorly defunct [EdgeHTML](https://en.wikipedia.org/wiki/EdgeHTML) used for [Edge](https://en.wikipedia.org/wiki/Microsoft_Edge) until 2020. :-)
 
 ## Live Play
-The application can play [on this page](https://SAKryukov.github.io/microtonal-chromatic-lattice-keyboard/SoundBuilder/index.html) of the [Microtonal Music Study site](https://SAKryukov.github.io/microtonal-chromatic-lattice-keyboard). On this site, one can find several musical keyboard applications based on Sound Builder and some synthesized instruments created with Sound Builder. All of them can also be played live on their Web pages.
+The application can play [on this page](https://sakryukov.github.io/microtonal-fabric/code/SoundBuilder/) of the [Microtonal Fabric site](https://sakryukov.github.io/microtonal-fabric/). On this site, one can find several musical keyboard applications based on Sound Builder and some synthesized instruments created with Sound Builder. All of them can also be played live on their Web pages.
+
+Also, it is possible to play different (microtonal) musical instruments based on data created with SoundBuilder. Please see the section "Live-Play Applications" on the [Microtonal Fabric main documentation page](https://sakryukov.github.io/microtonal-fabric#).
 
 Again, no server part and no network is used, so the application can be downloaded and used on a local system.
 
