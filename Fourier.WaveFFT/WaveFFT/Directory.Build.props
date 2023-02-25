@@ -1,5 +1,25 @@
-<Project>
- <PropertyGroup>
-   <BaseIntermediateOutputPath>..\$(ProjectDir).intermediateOutput\$(MSBuildProjectName)\$(Configuration).$(Platform)</BaseIntermediateOutputPath>
- </PropertyGroup>
+﻿<Project>
+ 
+    <PropertyGroup>
+        <BaseIntermediateOutputPath>$(SolutionDir).intermediateOutput\$(MSBuildProjectName)\$(Configuration).$(Platform)</BaseIntermediateOutputPath>
+        <OutputPath>$(SolutionDir)\output.$(Configuration).$(Platform)</OutputPath>
+        <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
+        <ProduceReferenceAssembly>false</ProduceReferenceAssembly>
+        <TargetFramework>net5.0-windows</TargetFramework>
+
+        <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+        <WarningsAsErrors />
+
+        <RootNamespace>WaveFFT</RootNamespace>
+        <Copyright>Copyright © 2020-2022 Sergey A Kryukov</Copyright>
+        <Product>WaveFFT</Product>
+        <Description>Creator of the </Description>
+        <Authors>Sergey A Kryukov</Authors>
+
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
+        <FileVersion>2.0.0.0</FileVersion>
+        <Version>2.0.0.0</Version>
+        <InformationalVersion>2.0.0.0</InformationalVersion> <!-- can be appended by alpha, beta, RC1, RC2, etc. -->
+
+    </PropertyGroup>
 </Project>
