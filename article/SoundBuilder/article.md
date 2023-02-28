@@ -39,14 +39,14 @@ This in-browser synthesizer creates instruments to be used in musical applicatio
 This is the third article of the series dedicated to musical study with on-screen keyboards, including microtonal ones:
 
 - [Musical Study with Isomorphic Computer Keyboard](https://www.codeproject.com/Articles/1201737/Musical-Study-with-Isomorphic-Computer-Keyboard)
-- [Microtonal Music Study with Chromatic Lattice Keyboard](https://www.codeproject.com/Articles/1204180/Microtonal-Music-Study-Chromatic-Lattice-Keyboard)
+- [Microtonal Music Study with Chromatic Lattice Keyboard](https://www.codeproject.com/Articles/1204180/Microtonal-Music-Study-Chromatic-Lattice-Keyboard) (presently the article is under reconstruction related to the transition to Microtonal Fabric)
 - Present article
+
+Presently, all the software based on Web Audio API is integrated into a single project [Microtonal Fabric](https://github.com/SAKryukov/microtonal-fabric).
 
 ## Motivation
 
 The main driving force of thе present work is a severe need.
-
-It is related to the repository of my work [Microtonal Music Study using specialized chromatic keyboards and Web Audio API](https://SAKryukov.github.io/microtonal-chromatic-lattice-keyboard).
 
 Two articles related to this topic are published as [Musical Study with Isomorphic Computer Keyboard](https://www.codeproject.com/Articles/1201737/Musical-Study-with-Isomorphic-Computer-Keyboard) and [Microtonal Music Study with Chromatic Lattice Keyboard](https://www.codeproject.com/Articles/1204180/Microtonal-Music-Study-Chromatic-Lattice-Keyboard). Even though the first article has nothing to do with microtonal systems, it describes some basic theoretical explanations of the topic.
 
@@ -126,11 +126,13 @@ In the Sound Builder UI, the spectrum is represented not by an array or complex 
 
 ### Wave FFT
 
-An alternative way of entering data is using a separate application "WaveFFT.exe" (WAV file to Fast Fourier Transform). It can load a WAV file, observe its waveform, select a fragment of the sample sequence (FFT support number of samples equal to natural power of 2, this is supported by the UI), perform FFT, observe resulting spectrum and save this data in the format of Sound Builder instrument data file.
+An alternative way of entering data is using a separate application "WaveFFT.exe" (WAV file to Fast Fourier Transform). It can load a WAV file, observe its waveform, select a fragment of the sample sequence (FFT supports a number of samples equal to the natural power of 2, this is supported by the U), perform FFT, observe resulting spectrum and save this data in the format of Sound Builder instrument data file.
 
-Typically, the data file created with WaveFFT serves as a starting point. Another way to start is to use some sample files downloadable with this article.
+Typically, the data file created with WaveFFT serves as a starting point. Another way to start creating some instrument data is using sample files downloadable with this article.
 
-This application could be a matter of a separate article. In brief, this is a .NET Core WPF application, so it can be executed on different platforms without the rebuild. Presently, it includes Windows, Linux, and Mac OS. The appropriate [framework](https://en.wikipedia.org/wiki/.NET_Core) needs to be installed.
+This application could be a matter of a separate article. In brief, this is a .NET WPF application, so it can be executed on different platforms without the rebuild. The appropriate [framework](https://en.wikipedia.org/wiki/.NET) needs to be installed.
+
+The build is set to .NET v.&thinsp;5.0. It should build and work for later .NET versions. To change the target .NET version, one would need to change only one line in "WaveFFT/Directory.Build.props".
 
 ![Wave FFT](WaveFFT.png)
 
@@ -426,7 +428,7 @@ By the way, my congratulations to Microsoft people for their virtue of giving up
 ## Live Play
 The application can play [on this page](https://sakryukov.github.io/microtonal-fabric/code/SoundBuilder/) of the [Microtonal Fabric site](https://sakryukov.github.io/microtonal-fabric/). On this site, one can find several musical keyboard applications based on Sound Builder and some synthesized instruments created with Sound Builder. All of them can also be played live on their Web pages.
 
-Also, it is possible to play different (microtonal) musical instruments based on data created with SoundBuilder. Please see the section "Live-Play Applications" on the [Microtonal Fabric main documentation page](https://sakryukov.github.io/microtonal-fabric#).
+Also, it is possible to play different (microtonal) musical instruments based on data created with Sound Builder. Please see the section "Live-Play Applications" on the [Microtonal Fabric main documentation page](https://sakryukov.github.io/microtonal-fabric#).
 
 Again, no server part and no network is used, so the application can be downloaded and used on a local system.
 
