@@ -11,8 +11,8 @@
 
 const sharedDefinitionSet = {
 
-    version: "5.3.5",
-    years: "2017-2021",
+    version: "5.4",
+    years: "2017-2023",
 
     soundControl: {
         audibleMiddle: { note: "C", midiNote: 60, frequency: 261.625 },
