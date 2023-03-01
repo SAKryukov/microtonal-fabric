@@ -39,18 +39,18 @@ This in-browser synthesizer creates instruments to be used in musical applicatio
 This is the third article of the series dedicated to musical study with on-screen keyboards, including microtonal ones:
 
 - [Musical Study with Isomorphic Computer Keyboard](https://www.codeproject.com/Articles/1201737/Musical-Study-with-Isomorphic-Computer-Keyboard)
-- [Microtonal Music Study with Chromatic Lattice Keyboard](https://www.codeproject.com/Articles/1204180/Microtonal-Music-Study-Chromatic-Lattice-Keyboard) (presently the article is under reconstruction related to the transition to Microtonal Fabric)
+- [Microtonal Music Study with Chromatic Lattice Keyboard](https://www.codeproject.com/Articles/1204180/Microtonal-Music-Study-Chromatic-Lattice-Keyboard)
 - Present article
 
-Presently, all the software based on Web Audio API is integrated into a single project [Microtonal Fabric](https://github.com/SAKryukov/microtonal-fabric).
+The present and the previous article describe different applications of a single project [Microtonal Fabric](https://github.com/SAKryukov/microtonal-fabric). The present article describes the sound synthesis engine used by all Microtonal Fabric applications. The Sound Builder application provides a method used to synthesize the sounds of different musical instruments and to create a library of sounds.
 
 ## Motivation
 
-The main driving force of thе present work is a severe need.
+The main driving force of this present work is a severe need.
 
 Two articles related to this topic are published as [Musical Study with Isomorphic Computer Keyboard](https://www.codeproject.com/Articles/1201737/Musical-Study-with-Isomorphic-Computer-Keyboard) and [Microtonal Music Study with Chromatic Lattice Keyboard](https://www.codeproject.com/Articles/1204180/Microtonal-Music-Study-Chromatic-Lattice-Keyboard). Even though the first article has nothing to do with microtonal systems, it describes some basic theoretical explanations of the topic.
 
-The second keyboard is _microchromatic_, very innovative, works in a Web browser with the use of [Web Audio API](https://developer.mozilla.org/en-US/docs/Web/API/Web_Audio_API). Recently, it used my heavily modified fork a third-party open-source library with very serious defects which I don't even want to discuss here. Anyway, it already played its role when the proof of concept goal was more important. These days, I continue the research and development and cannot tolerate those defects and insufficient maintainability. But it's very hard or even impossible to find a decent open-source synthesizer satisfying all my requirements, so I've decided to develop my own. In other words, I started the work just because I [badly wanted](#epigraph) to get the result. Recently, I introduced my results to some prominent musicians, specialists in microtonal music, theory, and pedagogics, and got very positive feedback. I think the tool is advanced, accurate, and interesting enough to share it.
+The second keyboard is _microchromatic_, very innovative, and works in a Web browser with the use of [Web Audio API](https://developer.mozilla.org/en-US/docs/Web/API/Web_Audio_API). Recently, it used my heavily modified fork a third-party open-source library with very serious defects which I'm not going to discuss here. Anyway, it already played its role when the proof of concept goal was more important. These days, I continue the research and development and cannot tolerate those defects and insufficient maintainability. Later, I decided to develop my own sound synthesis engine and a tool. In other words, I started the work just because I [badly wanted](#epigraph) to get the result. I introduced my results to some prominent musicians, specialists in microtonal music, theorists and educators, and got very positive feedback. I think the tool is advanced, accurate, and interesting enough to share it.
 
 ## Advanced features
 
