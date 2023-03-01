@@ -428,7 +428,7 @@ By the way, my congratulations to Microsoft people for their virtue of giving up
 ## Live Play
 The application can play [on this page](https://sakryukov.github.io/microtonal-fabric/code/SoundBuilder/) of the [Microtonal Fabric site](https://sakryukov.github.io/microtonal-fabric/). On this site, one can find several musical keyboard applications based on Sound Builder and some synthesized instruments created with Sound Builder. All of them can also be played live on their Web pages.
 
-Also, it is possible to play different (microtonal) musical instruments based on data created with Sound Builder. Please see the section "Live-Play Applications" on the [Microtonal Fabric main documentation page](https://sakryukov.github.io/microtonal-fabric#).
+Also, it is possible to play different (microtonal) musical instruments based on data created with Sound Builder. Please see the section "Live-Play Applications" on the [Microtonal Fabric main documentation page](https://sakryukov.github.io/microtonal-fabric).
 
 Again, no server part and no network is used, so the application can be downloaded and used on a local system.
 

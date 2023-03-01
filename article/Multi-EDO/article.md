@@ -2,7 +2,7 @@
     enable: false
 }
 
-Microtonal Music Study with Chromatic Lattice Keyboard[](title)
+{title}Sound Builder, Web Audio Synthesizer
 
 [*Sergey A Kryukov*](https://www.SAKryukov.org)
 
@@ -44,13 +44,21 @@ This is the second article  in the series dedicated to musical study using speci
 2. Present article
 3. *[Sound Builder, Web Audio Synthesizer](https://www.codeproject.com/Articles/5268512/Sound-Builder)*
  
- In my [previous article](https://www.codeproject.com/Articles/1201737/Musical-Study-with-Isomorphic-Computer-Keyboard), I tried to explain very basic mathematical and physical aspects of music and put forward a keyboard structured to be very suggestive of music harmony. However, the application illustrates everything on much less general case of common-practice [common-practice](https://en.wikipedia.org/wiki/Common_practice_period) [tone system](https://en.wikipedia.org/wiki/Musical_tuning).
+ In my [previous article](https://www.codeproject.com/Articles/1201737/Musical-Study-with-Isomorphic-Computer-Keyboard), I tried to explain very basic mathematical and physical aspects of music and put forward a keyboard structured to be very suggestive of music harmony. However, the application illustrates everything based on a much less general case of the [common-practice](https://en.wikipedia.org/wiki/Common_practice_period) [tone system](https://en.wikipedia.org/wiki/Musical_tuning).
 
-The application I introduce in the present article covers this case, but is mainly focused on [microtonal](https://en.wikipedia.org/wiki/Microtonal_music) systems. It provides more flexible ways for the very basic study of the field. I will often refer to certain points in my previous article. In the present article, I'm not going to get into theoretical reasoning much, mostly because my own study of the microtonal music is only starting.
+The application I introduce in the present article covers this case but is mainly focused on [microtonal](https://en.wikipedia.org/wiki/Microtonal_music) systems. It provides more flexible ways for the very basic study of the field. I will often refer to certain points in my previous article. In the present article, I'm not going to get into theoretical reasoning much, mostly because my own study of microtonal music is only starting.
 
-[GitHub project](https://github.com/SAKryukov/microtonal-chromatic-lattice-keyboard)
+[GitHub project "Microtonal Fabric"](https://github.com/SAKryukov/microtonal-fabric)
 
-[Live play](https://sakryukov.github.io/microtonal-chromatic-lattice-keyboard)
+See also [my page](https://en.xen.wiki/w/Sergey_A_Kryukov) at the microtonal community Web site [Xenharmonic Wiki](https://en.xen.wiki). In addition to the Microtonal Fabric links, there are some useful links on different microtonal topics and personalities.
+
+## Live Play
+
+The ready-to-play applications, presently available in Microtonal Fabric can be found on the [Microtonal Fabric main documentation page](https://sakryukov.github.io/microtonal-fabric). One can try out the applications and play music directly in a Web browser.
+
+The application discussed in the present article is named Multi-EDO and can also be played [here](https://sakryukov.github.io/microtonal-fabric/code/Multi-EDO).
+
+If the touch screen is available, one can play musical instruments using ten fingers. This way chords can be played, even in combination with *glissando*.
 
 ## Why Microtonal?
 
@@ -306,11 +314,9 @@ Now the compatible browser is detected as the one which successfully loads all s
 * Fixed and improved the mechanism of detection of incompatible browsers, discriminated Microsoft Edge by its features.
 
 #### 5.0
-
 Sound generation is migrated to the use of [Sound Builder](https://www.codeproject.com/Articles/5268512/Sound-Builder)
 
 #### 5.4
-
 * Wave FFT (see [Sound Builder](https://www.codeproject.com/Articles/5268512/Sound-Builder)) is migrated to .NET from .NET Core.
 * Refactoring related to the newly created project name, "Microtonal Framework".
 
