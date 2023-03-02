@@ -44,6 +44,8 @@ This is the third article of the series dedicated to musical study with on-scree
 
 The present and the previous article describe different applications of a single project [Microtonal Fabric](https://github.com/SAKryukov/microtonal-fabric). The present article describes the sound synthesis engine used by all Microtonal Fabric applications. The Sound Bilder application provides a method used to synthesize the sounds of different musical instruments and to create a library of sounds.
 
+See also [my page](https://en.xen.wiki/w/Sergey_A_Kryukov) at the microtonal community Web site [Xenharmonic Wiki](https://en.xen.wiki). In addition to the Microtonal Fabric links, there are some useful links on different microtonal topics and personalities.
+
 ## Motivation
 
 The main driving force of this present work is a severe need.
