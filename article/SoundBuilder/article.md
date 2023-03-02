@@ -42,7 +42,7 @@ This is the third article of the series dedicated to musical study with on-scree
 - [Microtonal Music Study with Chromatic Lattice Keyboard](https://www.codeproject.com/Articles/1204180/Microtonal-Music-Study-Chromatic-Lattice-Keyboard)
 - Present article
 
-The present and the previous article describe different applications of a single project [Microtonal Fabric](https://github.com/SAKryukov/microtonal-fabric). The present article describes the sound synthesis engine used by all Microtonal Fabric applications. The Sound Builder application provides a method used to synthesize the sounds of different musical instruments and to create a library of sounds.
+The present and the previous article describe different applications of a single project [Microtonal Fabric](https://github.com/SAKryukov/microtonal-fabric). The present article describes the sound synthesis engine used by all Microtonal Fabric applications. The Sound Bilder application provides a method used to synthesize the sounds of different musical instruments and to create a library of sounds.
 
 ## Motivation
 
@@ -82,15 +82,15 @@ I cannot assume any responsibility for the production of bad or unpleasant sound
 
 First of all, the most important design feature is this: all keys of the on-screen keyboard should be able to generate sound at the same time. One may ask: why would we need all of them? --- if we play with only 10 fingers? Simple: this is because of the *sustain* value of an instrument. For example, if we press a sustain pedal of a piano and keep it down, we can, in principle, quickly hit all 88 strings, so at some moment all of them can generate sound, no matter how insane it may sound.
 
-To achieve that, we have to dedicate a considerable number of nodes to each and every instrument key. These parts of the graph are implemented by an object of a type `Tone`. However, we also minimize the number of those per-key nodes. It can be done by sharing some of our audio effects in another object of the type `Instrument`.
+To achieve that, we have to dedicate a considerable number of nodes to each instrument key. These parts of the graph are implemented by an object of a type `Tone`. However, we also minimize the number of those per-key nodes. It can be done by sharing some of our audio effects in another object of the type `Instrument`.
 
 First, let's see what we can share. The set of filters can be shared. Some modulations can be shared, but some should be per key. I developed four kinds of modulation. We can apply an unlimited number of frequency modulators (FM) and amplitude modulators (AM). Each of those modulators can be either absolute frequency or relative frequency. All absolute-frequency modulators can be placed in the single-instance `Instrument` and `Tone` instances can share them. But relative-frequency modulators modulate at some frequencies which are different for each of the tones. In the tool, the actual frequency is the fundamental frequency of each tone, simply multiplied by some factor, with fixed modulation depths, individual for each modulator.
 
-Therefore, both `Instrument` and `Tone` are based on the same type named `ModulatorSet`. For the implementation of a set of modulators, it does not matter which role it plays, absolute frequency of relative frequency, implementation is the same.
+Therefore, both `Instrument` and `Tone` are based on the same type named `ModulatorSet`. For the implementation of a set of modulators, it does not matter which role it plays, absolute frequency or relative frequency, implementation is the same.
 
 Another per-tone part of the graph is a set of gain nodes used as targets for _envelopes_. An envelope is a mechanism used to program the dynamic behavior of a tone in its attack and damping. Customary synthesis technology usually implements only the envelope controlling volume, with a fixed number of stages. The usual envelope is called [ADSR](https://en.wikipedia.org/wiki/Envelope_(music)) (Attack, Decay, Sustain, and Release), but I don't even want to discuss it here, because it cannot satisfy me. Sound Builder has a unified system of authoring envelopes of several types which makes it possible to create an envelope with an unlimited number of stages. Each stage is characterized by its time, gain, and choice of one of three functions. There are four characteristics of a node, and each of them can be envelope-programmed: volume, detune, AM, and FM.
 
-Now, we are ready to present a graph, starting with a tone part of it. First, let's introduce some graphical conventions.
+Now, we are ready to present a graph, starting with the tone part of it. First, let's introduce some graphical conventions.
 
 ![Oscillator node](oscillator.png) Oscillator node
 
@@ -104,7 +104,7 @@ Now, we are ready to present a graph, starting with a tone part of it. First, le
 
 ![Output mode](output.png) Output node
 
-The graph is shown schematically in two parts, left and right. On left, there is a singleton instance of `Instrument` connected with a set of `Tone` instances show as only one on left. Let's remember that there is an entire set of `Tone` instances, all having different fundamental frequencies. Every `Tone` instance is connected to the instance of the instrument in three ways. An `Instrument` instance supplies two signals from the sets of FM and AM modulators, which are common to all tones, and receives a fully-shaped sound signal from each tone, modulated and controlled by the functions of the envelopes.
+The graph is shown schematically in two parts, left and right. On left, there is a singleton instance of `Instrument` connected with a set of `Tone` instances shown as only one on left. Let's remember that there is an entire set of `Tone` instances, all having different fundamental frequencies. Every `Tone` instance is connected to the instance of the instrument in three ways. An `Instrument` instance supplies two signals from the sets of FM and AM modulators, which are common to all tones, and receives a fully-shaped sound signal from each tone, modulated and controlled by the functions of the envelopes.
 
 ![Graph](graph.png){id=picture-graph}
 
@@ -112,7 +112,7 @@ There are four kinds of oscillators. The first one provides a signal of a fundam
 
 At the very beginning of the operation, as soon as the entire graph is populated and connected, all oscillators start and provide their signals permanently, even when no sounds are emitted. The sound signals from the tone graphs are blocked by their gain envelopes. The oscillators stop only when the graph needs to be re-populated according to new instrument data.
 
-Let's first consider the main kind of the oscillator, the one supplying the base of the sound. Naturally, in absolutely all cases, it provides an entire spectrum of frequencies based on its fundamental frequency.
+Let's first consider the main kind of oscillator, the one supplying the base of the sound. Naturally, in absolutely all cases, it provides an entire spectrum of frequencies based on its fundamental frequency.
 
 ## Main Oscillator
 
@@ -122,7 +122,7 @@ The user selects the spectrum of the node by assigning a value to the property `
 
 This call is a working horse of synthesis. The data for the wave is supplied by the instance of `Instrument` and is shared by all tones. This is because the components of the Fourier spectrum are relative to the fundamental frequency.
 
-In the Sound Builder UI, the spectrum is represented not by an array or complex number, but by an equivalent array of amplitudes and phases, which the user can "draw" by a mouse on a table of sliders. Each slider is an input element with `type="range"` with modified behavior which allowed drawing-like mouse action.
+In the Sound Builder UI, the spectrum is represented not by an array or complex number, but by an equivalent array of amplitudes and phases, which the user can "draw" with a mouse on a table of sliders. Each slider is an input element with `type="range"` with modified behavior which allowed drawing-like mouse action.
 
 ### Wave FFT
 
@@ -185,27 +185,27 @@ for (let element of this.#implementation.data) {
 }
 ```
 
-It's important to note, that the exponential function is implemented in two different ways: via [setTargetAtTime](https://developer.mozilla.org/en-US/docs/Web/API/AudioParam/setTargetAtTime) or [exponentialRampToValueAtTime](https://developer.mozilla.org/en-US/docs/Web/API/AudioParam/linearRampToValueAtTime). The first case is used when a target value is zero, and the stage is the very last one. It is done so, because, for obvious mathematical reasons, target value cannot be zero for the exponent. Then the function represents the "infinite" approach of a `AudioParam` value to the target value. Naturally, for the last stage, such behavior represents natural damping or of an instrument sound, or growing of the parameter to the values corresponding to the stabilized sound, zero or not. In both cases, "infinite" exponential behavior is the most suitable.
+It's important to note, that the exponential function is implemented in two different ways: via [setTargetAtTime](https://developer.mozilla.org/en-US/docs/Web/API/AudioParam/setTargetAtTime) or [exponentialRampToValueAtTime](https://developer.mozilla.org/en-US/docs/Web/API/AudioParam/linearRampToValueAtTime). The first case is used when a target value is zero, and the stage is the very last one. It is done so, because, for obvious mathematical reasons, the target value cannot be zero for the exponent. Then the function represents the "infinite" approach of an `AudioParam` value to the target value. Naturally, for the last stage, such behavior represents the natural damping of an instrument sound or growing of the parameter to the values corresponding to the stabilized sound, zero or not. In both cases, "infinite" exponential behavior is the most suitable.
 
-With Sound Builder, the envelopes can optionally be applied to three characteristics of a sound: volume, detune, FM and AM.
+With Sound Builder, the envelopes can optionally be applied to three characteristics of a sound: volume, detune, FM, and AM.
 
 Let's discuss the application of these techniques.
 
 ### Volume Envelope
 
-This is the most traditional kind of envelope, which is used, for example, in ADSR. The difference is not only the unlimited number of stages. Additional volume envelope characteristic is its dumping sustain. There is no such thing as a sound stopped instantly. If we try to produce such instantaneous stop, electronics not instantaneously, but very quickly, which, naturally, produces so wide spectrum, that is is perceived as very unpleasant crackling noise. The same thing can happen if an attack is too fast. I don't think any timing faster than some 10 ms can be practically used, so the envelope stage times are limited by this maximum duration. Dumping sustain happens when we play, for example, a piano and release a key. But what happens when we keep a key down or use a sustain key?
+This is the most traditional kind of envelope, which is used, for example, in ADSR. The difference is not only the unlimited number of stages. An additional volume envelope characteristic is its dumping sustain. There is no such thing as a sound stopping instantly. If we try to produce such instantaneous stop, electronics not instantaneously, but very quickly, which, naturally, produces so wide spectrum, that is perceived as a very unpleasant crackling noise. The same thing can happen if an attack is too fast. I don't think any timing faster than some 10 ms can be practically used, so the envelope stage times are limited by this maximum duration. Dumping sustain happens when we play, for example, a piano and release a key. But what happens when we keep a key down or use a *sustain* key?
 
-In this case, the behavior is defined by the last stage of an envelope. We can define essentially two different types of instruments. The first type is suitable for the instrument with natural damping, such as piano or bells. For these instruments, the target value of the gain of the last stage should be zero, but the stage itself can be prolonged, say, up to several seconds. If we make this time about 10 milliseconds or perhaps a few times greater, we can achieve the effect closer to some melodic percussion. The second type can model the instrument of "infinite" sound, such as in wind or bowed string instruments. The target gain of the last envelope stage should be of maximum value, or about it. In this case, the sound is damped only when a performer releases a key.
+In this case, the behavior is defined by the last stage of an envelope. We can define essentially two different types of instruments. The first type is suitable for an instrument with natural damping behavior, such as pianos or bells. For these instruments, the target value of the gain of the last stage should be zero, but the stage itself can be prolonged, say, up to several seconds. If we make this time about 10 milliseconds or perhaps a few times greater, we can achieve the effect closer to some melodic percussion. The second type can model the instrument of "infinite" sound, such as in wind or bowed string instruments. The target gain of the last envelope stage should be of maximum value, or about it. In this case, the sound is damped only when a performer releases a key.
 
 ### Detune Envelope
 
-It is not unusual, that an instrument plays a tone, which is, during some limited time, is detuned, especially during the attack phase. For example, it happens in loud fingerstyle guitar playing. At the first phase of plucking of the string, it is considerably elongated and hence sounds sharper then the tone it is tuned to. Besides, at first, a string can be pressed against the fret stronger. This effect can be achieved by controlling some detune value of the oscillator. Naturally, unlike the case of the volume, the detune value of the last stage should be zero.
+It is not unusual, that an instrument plays a tone, which is, during some limited time, detuned, especially during the attack phase. For example, it happens in loud fingerstyle guitar playing. At the first phase of plucking the string, it is considerably elongated and hence sounds sharper than the tone it is tuned to. Besides, at first, a string can be pressed against the fret with a greater force. This effect can be achieved by controlling some detune value of the oscillator. Naturally, unlike the case of the volume, the detune value of the last stage should be zero.
 
-Detune envelope is the only envelope not represented on the [audio graph](#picture-graph) as an envelope-controlled gain mode. Its target is the [detune](https://developer.mozilla.org/en-US/docs/Web/API/OscillatorNode/detune) [AudioParam](https://developer.mozilla.org/en-US/docs/Web/API/AudioParam) of each main oscillator of a tone. No gain node is required for this functionality. The master gain of the effect is simply a numerical factor; all target values all envelope stages are multiplied by this factor.
+Detune envelope is the only envelope not represented on the [audio graph](#picture-graph) as an envelope-controlled gain mode. Its target is the [detune](https://developer.mozilla.org/en-US/docs/Web/API/OscillatorNode/detune) [AudioParam](https://developer.mozilla.org/en-US/docs/Web/API/AudioParam) of each main oscillator of a tone. No gain node is required for this functionality. The master gain of the effect is simply a numerical factor; all target values for all envelope stages are multiplied by this factor.
 
 ### Modulation Envelopes
 
-Two remaining envelopes are those separately controlling AM and FM, but I don't make any distinction between absolute-frequency FM/AM and relative-frequency FM/AM. Instead, one envelope controls all AM and one --- all FM. Let's consider a typical case of such an envelope. A tuba or a saxophone, as well as many other wind instruments, show extremely strong vibration when a performer starts to blow a sound, but the vibration becomes barely perceivable as the sound stabilizes. This can be achieved with these two kinds of the envelope.
+The two remaining envelopes are those separately controlling AM and FM, but I don't make any distinction between absolute-frequency FM/AM and relative-frequency FM/AM. Instead, one envelope controls all AM and one --- all FM. Let's consider a typical case of such an envelope. A tuba or a saxophone, as well as many other wind instruments, show extremely strong vibration when a performer starts to blow a sound, but the vibration becomes barely perceivable as the sound stabilizes. This can be achieved with these two kinds of envelope.
 
 ## Filters
 
@@ -217,9 +217,9 @@ To learn filter tuning, a good starting point could be [BiquadFilterNode documen
 
 ## Gain Compensation
 
-Both kinds of design features of the instrument synthesis, additive synthesis based on Fourier spectrum, and subtractive synthesis based on filters, make the final volume of each tone hard to predict. The worst thing is: all tones produce very different subjective levels of volume, depending on the frequency. The overall volume of an instrument also can differ dramatically. Hence, some frequency-dependent gain compensation is badly needed. I've tried a good deal of research using different "clever" functions but finally ended up with the simplest approach: quadratic spline defined by three points: some low frequency and compensation level for this frequency, some high frequency, and compensation level for this frequency and some medium frequency point where the compensation is considered to be equal to 1. Naturally, two quadratic functions are stitched at this point. This simple function has the following benefit: one can compensate for part of the spectrum on the right of this point, then, separately, on the left part of the spectrum. When the left or right part is done, compensation for another part won't spoil previous work.
+Both kinds of design features of the instrument synthesis, additive synthesis based on the Fourier spectrum, and subtractive synthesis based on filters, make the final volume of each tone hard to predict. The worst thing is: all tones produce very different subjective levels of volume, depending on the frequency. The overall volume of an instrument also can differ dramatically. Hence, some frequency-dependent gain compensation is badly needed. I've tried a good deal of research using different "clever" functions but finally ended up with the simplest approach: quadratic spline defined by three points: some low frequency and compensation level for this frequency, some high frequency, and compensation level for this frequency and some medium frequency point where the compensation is considered to be equal to 1. Naturally, two quadratic functions are stitched at this point. This simple function has the following benefit: one can compensate for part of the spectrum on the right of this point, then, separately, on the left part of the spectrum. When the left or right part is done, compensation for another part won't spoil previous work.
 
-This procedure requires a table of three parameters: low-frequency and high-frequency compensation and the position of the middle frequency, plus the value for the overall compensation factor. Two values for low and high frequencies themselves are not presented in the table, because they rarely, if ever, need to be modified; they correspond to highest of lowers frequencies of a standard 88-key piano. However, they are prescribed in the data files (where they are written based on the code's definition set) and can be modified by some overly smart users. :-)
+This procedure requires a table of three parameters: low-frequency and high-frequency compensation and the position of the middle frequency, plus the value for the overall compensation factor. Two values for low and high frequencies themselves are not presented in the table, because they rarely, if ever, need to be modified; they correspond to the highest or lowest frequencies of a standard 88-key piano. However, they are prescribed in the data files (where they are written based on the code's definition set) and can be modified by some overly smart users. :-)
 
 This is the implementation of this simple spline function:
 
@@ -244,21 +244,21 @@ const compensation = (() =&gt; {
 })(); //setupGain
 ```
 
-The stitching happens at the medium frequency point, at the point of zero derivative, but with a step in second derivative. This imperfect _smoothness_ may sound questionable, but, after some experiments, seems to produce smooth sound, pun unintended ;-).
+The stitching happens at the medium frequency point, at the point of zero derivative, but with a step in second derivative. This imperfect _smoothness_ may sound questionable, but, after some experiments, seems to produce a smooth sound, pun unintended ;-).
 
 The compensation function depends on the fundamental frequency of each of the main oscillators, the value of gain compensation is combined as a result of the operation of many gain nodes, gain nodes "Compensation", one per `Tone` instance, plus one node of the `Instrument` instance, "Gain compensation", as shown on the [graph](#picture-graph).
 
 ## Using API and Generated Instruments In Applications
 
-Naturally, Sound Builder doesn't do much if it is not used in other applications. See the instructions in https://SAKryukov.github.io/microtonal-chromatic-lattice-keyboard/SoundBuilder/API.html.
+Naturally, Sound Builder doesn't do much if it is not used in other applications. See the instructions at https://SAKryukov.github.io/microtonal-chromatic-lattice-keyboard/SoundBuilder/API.html.
 
 Basically, the user needs to produce a set of desired instruments and test them.
 
 - Produce some set of instruments, test and save them, each instrument is a separate JSON - file;
 - Use the element “Instrument List”, button “Load” to load created instruments, “Save” all of them in a single .js file;{id=api-export}
 - Include the API, all sound/*.js files in the application;
-- Also include .js file generated before;{id=api-embed}
-- In the application, create in instance of `Instrument`;
+- Also, include .js file generated before;{id=api-embed}
+- In the application, create an instance of `Instrument`;
 - To apply instrument data, assign `instrumentInstance.data = instrumentList[someIndex]`;
 - To play a single sound, call `instrumentInstance.play`;{id=api-use}
 - Enjoy :-).
@@ -277,9 +277,9 @@ For example:
 
 `const perfect = new Instrument([100, 133.333, 150])` will create an instrument with only 3 tones, 100 Hz, and two more tones, perfect fourth and perfect fifth in [just intonation](https://en.wikipedia.org/wiki/Just_intonation).
 
-The second parameter, `tonalSystem`, is used even when an array of fixed frequency values --- for the implementation of the property `transposition`. If this argument is not specified, it is assumed to the length of this array.
+The second parameter, `tonalSystem`, is used even when an array of fixed frequency values is used --- this is important for the implementation of the property `transposition`. If this argument is not specified, it is assumed to be the length of this array.
 
-Method `play(on, index)` starts (if `on==true`) or stops (if `on==false`) the damps of a tone of specified `index`. Starting of damping is never instantaneous, it is defined by the gain envelope and damping sustain parameter. The timing is limited by some minimal values.
+Method `play(on, index)` starts (if `on==true`) or stops (if `on==false`) the damps of a tone of the specified `index`. The dumping start is never instantaneous, it is defined by the gain envelope and damping sustain parameter. The timing is limited by some minimal values.
 
 Properties: `volume` (0 to 1), `sustain` (time in seconds) and `transposition` (in the units of logarithmic equal divisions of octave, depending on the `tonalSystem` argument of the `Instrument` constructor). The property `frequencies` is read-only, it returns the array representing current frequency set.
 
