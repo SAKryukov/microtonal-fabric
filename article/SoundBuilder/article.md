@@ -281,7 +281,7 @@ The second parameter, `tonalSystem`, is used even when an array of fixed frequen
 
 Method `play(on, index)` starts (if `on==true`) or stops (if `on==false`) the damps of a tone of the specified `index`. The dumping start is never instantaneous, it is defined by the gain envelope and damping sustain parameter. The timing is limited by some minimal values.
 
-Properties: `volume` (0 to 1), `sustain` (time in seconds) and `transposition` (in the units of logarithmic equal divisions of octave, depending on the `tonalSystem` argument of the `Instrument` constructor). The property `frequencies` is read-only, it returns the array representing current frequency set.
+Properties: `volume` (0 to 1), `sustain` (time in seconds), and `transposition` (in the units of logarithmic equal divisions of octave, depending on the `tonalSystem` argument of the `Instrument` constructor). The property `frequencies` is read-only, it returns the array representing the current frequency set.
 
 To include the API, use this code sample:</h2>
 
@@ -310,11 +310,11 @@ To include the API, use this code sample:</h2>
 
 ## Interesting Implementation Detail
 
-There is no much code needed to explain the principles of operation --- anyway, the [graph](#picture-graph) explains the essence of this technology in the best way, but some technical peculiarities are also good to share.
+There is not much code needed to explain the principles of operation --- anyway, the [graph](#picture-graph) explains the essence of this technology in the best way, but some technical peculiarities are also good to share.
 
 ### Classes with Private Members
 
-After some experiments and thinking, I developed a convenient discipline of using JavaScript classes, only for the cases when it seems to be convenient, with separation of public and [private members](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes/Class_fields). To reduce some possible clutter, I decided to concentrate all private members of a single object uniformly named `#implementation`.
+After some experiments and thinking, I developed a convenient discipline of using JavaScript classes, only for the cases when it seems to be convenient, with the separation of public and [private members](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes/Class_fields). To reduce some possible clutter, I decided to concentrate all private members of a single object uniformly named `#implementation`.
 
 To demonstrate it, I'm showing the simplest of the sound classes, `Modulator`. It is a pretty trivial thing, a connected pair of instances of [OscillatorNode](https://developer.mozilla.org/en-US/docs/Web/API/OscillatorNode) and [GainNode](https://developer.mozilla.org/en-US/docs/Web/API/GainNode):
 
@@ -359,9 +359,9 @@ Hopefully, this code is self-explaining. The sets of oscillators are used to imp
 
 One may wonder, why all the applications of the [Microtonal Music Study project](https://SAKryukov.github.io/microtonal-chromatic-lattice-keyboard) start with the on-screen "Start" key or a power button.
 
-If one tries to initialize Web Audio subsystem when the page is loaded, it will fail. Depending on the browser, producing sound may still be possible, or it will require [resuming](https://developer.mozilla.org/en-US/docs/Web/API/AudioContext/resume) of the [AudioContext](https://developer.mozilla.org/en-US/docs/Web/API/AudioContext). In both cases, the very first sound will be lost, and it may be delayed if the initialization is [lazily](https://en.wikipedia.org/wiki/Lazy_evaluation) performed on the first press on a musical instrument key. Therefore, both practices would be dirty.
+If one tries to initialize the Web Audio subsystem when the page is loaded, it will fail. Depending on the browser, producing sound may still be possible, or it will require [resuming](https://developer.mozilla.org/en-US/docs/Web/API/AudioContext/resume) the [AudioContext](https://developer.mozilla.org/en-US/docs/Web/API/AudioContext). In both cases, the very first sound will be lost, and it may be delayed if the initialization is [lazily](https://en.wikipedia.org/wiki/Lazy_evaluation) performed on the first press on a musical instrument key. Therefore, both practices would be dirty.
 
-Web Audio starts to function in full only after the user of a Web page provides any input on this page. Why Web Audio behaves in such a strange way. I think this is very good. It tries to protect the users of a Web page. The users reasonably expect nice behavior. Even though many sites violate nice practices, people generally don't expect a nice site to produce any sound without the explicit consent of the user. Imagine what a user sometimes working in the middle of a night can feel if this person accidentally loads a Web page, which could wake up an entire household! Web browser tries to protect users from such accidents.
+Web Audio starts to function in full only after the user of a Web page provides any input on this page. Why Web Audio behaves in such a strange way. I think this is very good. It tries to protect the users of a Web page. The users reasonably expect nice behavior. Even though many sites violate nice practices, people generally don't expect a nice site to produce any sound without the explicit consent of the user. Imagine what a user sometimes working in the middle of the night can feel if this person accidentally loads a Web page, which could wake up an entire household! Web browser tries to protect users from such accidents.
 
 Therefore, Web Audio should be initialized early, but only on some user's input.
 
@@ -405,22 +405,22 @@ const initializationController = {
 }; //initializationController
 ```
 
-This object pretty delicately works with page controls. Its `initialize` method accepts an array of elements to be hidden, an element used as the input for initialization command, its parent element and the initialization method named `startHandler`. During initial phase, elements to be hidden get hidden, but their `style.display` property values are remembered to be restored after initialization is complete. Everything else is self-explaining.
+This object pretty delicately works with page controls. Its `initialize` method accepts an array of elements to be hidden, an element used as the input for the initialization command, its parent element, and the initialization method named `startHandler`. During the initial phase, elements to be hidden get hidden, but their `style.display` property values are remembered to be restored after initialization is complete. Everything else is self-explaining.
 
-Note `goodJavaScriptEngine` part. This is done to filter out obsolete JavaScript engines, those which don't support private class members. Unfortunately, Mozilla doesn't support it, but this is only useful for this application, because of the problems of Mozilla [Gecko](https://en.wikipedia.org/wiki/Gecko_(software)) sound rendition. See also [compatibility section](#heading-compatibility).
+Note `goodJavaScriptEngine` part. This is done to filter out obsolete JavaScript engines, those which don't support private class members. Unfortunately, Mozilla doesn't support it, but this is only useful for this application, because of the problems of Mozilla [Gecko](https://en.wikipedia.org/wiki/Gecko_(software)) sound rendition. See also [the compatibility section](#heading-compatibility).
 
 ## Compatibility
 
 The tool is tested on a good number of browsers and some different systems.
 
-I found that at the time of writing there is only one type of browsers with sufficient support of Web Audio API: those based on [V8](https://en.wikipedia.org/wiki/V8_engine) + [Blink](https://en.wikipedia.org/wiki/Blink_(browser_engine)) combination of engines. Fortunately, the set if such browsers is pretty wide.
+I found that at the time of writing, there is only one type of browser with sufficient support of Web Audio API: those based on the [V8](https://en.wikipedia.org/wiki/V8_engine) + [Blink](https://en.wikipedia.org/wiki/Blink_(browser_engine)) combination of engines. Fortunately, the set of such browsers is pretty wide.
 
-Unfortunately, Mozilla browsers, formally implementing full Web Audio API, produce pretty bad crackling noise which cannot be eliminated, in the situation when the operation of V8 + Blink combination is just fine. For the time being, the application prevents the use of these and some other browsers.
+Unfortunately, Mozilla browsers, formally implementing full Web Audio API, produce pretty bad crackling noise which cannot be eliminated, in the situation when the operation of the V8 + Blink combination is just fine. For the time being, the application prevents the use of these and some other browsers.
 
 Here is the text of the recommendations which a page shows when a browser cannot cope with the task:
 
 <blockquote id="epigraph" class="FQ">
-<p>This application requires JavaScript engine better conforming to the standard.</p><p>Browsers based on V8 engine are recommended, such as Chromium, Chrome, Opera, Vivaldi, Microsoft Edge v. 80.0.361.111 or later, and more…</p>
+<p>This application requires a JavaScript engine better conforming to the standard.</p><p>Browsers based on the V8 engine are recommended, such as Chromium, Chrome, Opera, Vivaldi, Microsoft Edge v. 80.0.361.111 or later, and more…</p>
 </blockquote>
 
 By the way, my congratulations to Microsoft people for their virtue of giving up majorly defunct [EdgeHTML](https://en.wikipedia.org/wiki/EdgeHTML) used for [Edge](https://en.wikipedia.org/wiki/Microsoft_Edge) until 2020. :-)
@@ -430,7 +430,7 @@ The application can play [on this page](https://sakryukov.github.io/microtonal-f
 
 Also, it is possible to play different (microtonal) musical instruments based on data created with Sound Builder. Please see the section "Live-Play Applications" on the [Microtonal Fabric main documentation page](https://sakryukov.github.io/microtonal-fabric).
 
-Again, no server part and no network is used, so the application can be downloaded and used on a local system.
+Again, no server part and no network are used, so the application can be downloaded and used on a local system.
 
 Most likely, to get started, one may need a set of sample data files, which can be downloaded from this article page.
 
@@ -438,13 +438,13 @@ Most likely, to get started, one may need a set of sample data files, which can 
 
 [Wave FFT](#heading-wave-fft) uses C# [implementation](http://lomont.org/software/misc/fft/LomontFFT.html) of Fast Fourier Transform by [Chris Lomont](http://lomont.org).
 
-[Valeri Brainin](https://en.wikipedia.org/wiki/Valeri_Brainin), a prominent musicologist, music manager, composer, and poet, the author of the famous pedagogical system called [Brainin Method](http://brainin.org/Method/method_pro_de/publications_en1.html), participated in the [Microtonal Music Study project](https://SAKryukov.github.io/microtonal-chromatic-lattice-keyboard) as the early author of conception, inventor or co-author of some microtonal keyboard designs, recently implemented based on Sound Builder. He started to use those keyboards in his pedagogical practice and reported very promising results. He also has done a good deal of testing of the performance of the instruments and evaluation of the sound during development, provided feedback which helped me to solve some of the problems, and some ideas which have been implemented or will be implemented in future versions.
+[Valeri Brainin](https://en.wikipedia.org/wiki/Valeri_Brainin), a prominent musicologist, music manager, composer, and poet, the author of the famous pedagogical system called [Brainin Method](http://brainin.org/Method/method_pro_de/publications_en1.html), participated in the [Microtonal Music Study project](https://SAKryukov.github.io/microtonal-chromatic-lattice-keyboard) as the early author of conception, inventor or co-author of some microtonal keyboard designs, recently implemented based on Sound Builder. He started to use those keyboards in his pedagogical practice and reported very promising results. He also has done a good deal of testing of the performance of the instruments and evaluation of the sound during development, providing feedback that helped me to solve some of the problems, and some ideas which have been implemented or will be implemented in future versions.
 
 ## Conclusions
 
 It works now, and I think that this experiment with musical sound synthesis can be dubbed successful.
 
-I'll highly appreciate if anyone tries out the operation and gives me some feedback; I'll also be much grateful for any questions, comments, suggestions, and especially for criticism.
+I'll highly appreciate it if anyone tries out the operation and gives me some feedback; I'll also be much grateful for any questions, comments, suggestions, and especially for criticism.
 
 Enjoy! :-)
 
