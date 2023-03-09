@@ -48,11 +48,11 @@ This is the second article  in the series dedicated to musical study using speci
 
 The present and next article introduce the browser-based platform for microtonal music study, composers' experiments, and more, called [Microtonal Fabric](https://github.com/SAKryukov/microtonal-fabric).
 
-The present article describes two Microtonal Fabric applications. The first one corresponds to the topic described by the title of the article, it is called Multi-EDO; its source code can be found in "code/Multi-EDO".
+The present article describes two Microtonal Fabric applications. The first one corresponds to the topic described by the title of the article, it is called Multi-EDO Chromatic Lattice; its source code can be found in "Multi-EDO".
 
 The microtonal keyboard I've proposed provides more flexible ways for the very basic study of the field. I will often refer to certain points in my previous article. In the present article, I'm not going to get into theoretical reasoning much, mostly because my own study of microtonal music is only starting.
 
-The second application is the auxiliary one used for the study and the comparison of different tonal systems, the source code can be found in "code/tone-system-comparison". It is useful for the understanding how different EDO systems work. In particular, it can be used to play and listen to the chords to detect the compromised harmonic quality of the traditional *common practice* [12-EDO system](https://en.xen.wiki/w/12edo) (Equal Division of Octave using 12 tones).
+The second application is the auxiliary one used for the study and the comparison of different tonal systems, the source code can be found in "tone-system-comparison". It is useful for the understanding how different EDO systems work. In particular, it can be used to play and listen to the chords to detect the compromised harmonic quality of the traditional *common practice* [12-EDO system](https://en.xen.wiki/w/12edo) (Equal Division of Octave using 12 tones).
 
 See also [my page](https://en.xen.wiki/w/Sergey_A_Kryukov) at the microtonal community Web site [Xenharmonic Wiki](https://en.xen.wiki). In addition to the Microtonal Fabric links, there are some useful links on different microtonal topics and personalities.
 
@@ -60,36 +60,36 @@ See also [my page](https://en.xen.wiki/w/Sergey_A_Kryukov) at the microtonal com
 
 The ready-to-play applications, presently available in Microtonal Fabric can be found on the [Microtonal Fabric main documentation page](https://sakryukov.github.io/microtonal-fabric). One can try out the applications and play music directly in a Web browser.
 
-The application discussed in the present article is named Multi-EDO and can also be played [here](https://sakryukov.github.io/microtonal-fabric/code/Multi-EDO).
+The application discussed in the present article is named [Multi-EDO Chromatic Lattice and can be played here](https://sakryukov.github.io/microtonal-fabric/code/Multi-EDO).
 
-Another application discussed in this article is the application for [microtonal system comparison](https://sakryukov.github.io/microtonal-fabric/code/tone-system-comparison).
+Another application discussed in this article is the application for [Microtonal System Comparison](https://sakryukov.github.io/microtonal-fabric/code/tone-system-comparison).
 
 ## Why Microtonal?
 
 There can be very [many answers](https://en.xen.wiki) to this question. Not trying to cover the topic, I'll try to point out four aspects I consider the most fundamental:
 
-1. Traditional Western [equal temperament](https://en.wikipedia.org/wiki/Equal_temperament) faces serious problems. Strictly speaking, its harmony does not sound quite harmonically. The basic sense of harmony is based on fundamental physical and mathematical principles independent of a particular culture. At the same time, [transpositional equivalence](https://en.wikipedia.org/wiki/Transposition_%28music%29#Transpositional_equivalence) is impossible to achieve with strict harmonics -- in my previous article, [I tried to explain it](https://www.codeproject.com/Articles/1201737/Musical-Study-with-Isomorphic-Computer-Keyboard#heading.rational-and-irrational-numbers). However, hearing the defects require a pretty well-trained ear. So, here is the first principle: with microtonal systems, it's possible to play music, which sounds very traditional, but more with improved harmony. At the same time, it's possible to play something very different and unusual. 
+1. Traditional Western [equal temperament](https://en.wikipedia.org/wiki/Equal_temperament) system [12-EDO](https://en.xen.wiki/w/12edo) faces serious problems. Strictly speaking, its harmony does not sound quite harmonically. The basic sense of harmony is based on fundamental physical and mathematical principles independent of a particular culture. At the same time, [transpositional equivalence](https://en.wikipedia.org/wiki/Transposition_%28music%29#Transpositional_equivalence) is impossible to achieve with strict harmonics -- in my previous article, [I tried to explain it](https://www.codeproject.com/Articles/1201737/Musical-Study-with-Isomorphic-Computer-Keyboard#heading.rational-and-irrational-numbers). However, hearing the defects require a pretty well-trained ear. So, here is the first principle: with microtonal systems, it's possible to play music, which sounds very traditional, but more with improved harmony. At the same time, it's possible to play something very different and unusual. 
 
 1. The historical musical instrument tuning and tonal systems can be considered microtonal in the following sense: they cannot be rendered using the modern common practice approach and 12-tonal tonal system, 12-EDO. However, they cannot be approximated very well using microtonal systems. Those historical systems are usually more refined in terms of musical harmony. The problem with these systems is the fixed tonality of a music piece, and the lack of *transpositional equivalence*, so arbitrary [*transposition*](https://en.wikipedia.org/wiki/Transposition_(music)) is impossible.
 The rendering of historical tonal systems can be considered as actual, in particular, for so-called [*historically informed performance*](https://en.wikipedia.org/wiki/Historically_informed_performance).
 
-1. In non-Western cultures, the microtonal approach is more actual. Traditional tuning systems can have more tones than twelve, they can use different principles rather than EDO. Microtonal Fabric helps to render any of those systems. For example, the application Microtonal Playground ("code/playground") contains the implementation of Indian [sruti](https://en.wikipedia.org/wiki/Shruti_(music)), traditional Chinese, and other systems. Microtonal Playground deserves a separate article.
+1. In non-Western cultures, the microtonal approach is more actual. Traditional tuning systems can have more tones than twelve, they can use different principles rather than EDO. Microtonal Fabric helps to render any of those systems. For example, the application Microtonal Playground (source code: "playground") contains the implementation of Indian [sruti](https://en.wikipedia.org/wiki/Shruti_(music)), traditional Chinese, and other systems. Microtonal Playground deserves a separate article.
 
 1. How about the possibility to create new music? At first glance, it may sound impossible. I often heard from people, including musicians, that such music is awful and "out of tune". Is it, really? I think, it depends. It can sound totally [xenharmonic](https://en.wikipedia.org/wiki/Xenharmonic_music), but it actually depends on the listener. The ability to perceive microtonal music can be limited by too strong bonding with the current cultural environment. The musical sense is a complicated combination of fundamental laws of nature and culture — I also [tried to explain it](https://www.codeproject.com/Articles/1201737/Musical-Study-with-Isomorphic-Computer-Keyboard#heading.culture-versus-physics), very roughly. It simply means that understanding anything which can be called "music" always required involvement in culture and considerable listening experience. Microtonal music just needs involvement in a wider cultural context and more experience.
 
 ## Supported Tone Systems
 
-The application Multi-EDO supports the following systems:
+The application Multi-EDO Chromatic Lattice supports the following systems:
 
-- [Just Intonation](https://en.wikipedia.org/wiki/Just_intonation) (only [presented](https://sakryukov.github.io/microtonal-chromatic-lattice-keyboard/tone-system-comparison/tone-system-comparison.html) on the [chromatic-circle](https://en.wikipedia.org/wiki/Chromatic_circle) keyboard)
+- [Just Intonation](https://en.wikipedia.org/wiki/Just_intonation) (only [presented by the Multi-EDO Chromatic Lattice application](https://sakryukov.github.io/microtonal-fabric/code/tone-system-comparison) on the [chromatic-circle](https://en.wikipedia.org/wiki/Chromatic_circle) keyboard)
 - [Common-practice](https://en.wikipedia.org/wiki/Common_practice_period) [12-TET](https://en.wikipedia.org/wiki/Equal_temperament)
 - [19-TET](https://en.wikipedia.org/wiki/19_equal_temperament)
 - 19-TET (since v.&thinsp;4.0)
 - [31-TET](https://en.wikipedia.org/wiki/31_equal_temperament).
 
-29-TET is supported by a separate application ("code/29-EDO"). This application is more advanced and is currently used for teaching music in the famous international Brainin school of music on a regular basis. It deserves a separate article.
+29-TET is supported by a separate application (source code: "29-EDO"). This application is more advanced and is currently used for teaching music in the famous international Brainin school of music on a regular basis. It deserves a separate article.
 
-Any arbitrary tonal systems can be created using Microtonal Playground ("code/playground"),
+Any arbitrary tonal systems can be created using Microtonal Playground (source code: "playground"),
 
 ## Features
 - For three chromatic tone systems, the same keyboard is used; the choice of tone system can be changed dynamically
@@ -105,17 +105,16 @@ Since v.&thinsp;4.0:
 
 ## Using the Application
 
-The application could be considered as two independent [single-page applications](https://en.wikipedia.org/wiki/Single-page_application), not counting [index file](https://sakryukov.github.io/microtonal-chromatic-lattice-keyboard) simply referencing the matter involved. Implementations share some JavaScript files, that's it.
-???
+The applications presented in this article could be considered as two independent [single-page applications](https://en.wikipedia.org/wiki/Single-page_application).
 
-1. First part: [Microtonal Tone Systems Comparison](https://sakryukov.github.io/microtonal-chromatic-lattice-keyboard/tone-system-comparison/tone-system-comparison.html) based on four chromatic-circle keyboards. Chords can be defined directly on the chromatic-circle keyboard and played separately on in fast succession comparison.
-2. Second part: [Microtonal Chromatic Lattice](https://sakryukov.github.io/microtonal-chromatic-lattice-keyboard/keyboard/keyboard.html) keyboard, which allows playing wide range of tones. Chords can be defined through chord tables, auto-generated and played with single click or key press. 
+1. [Microtonal Tone Systems Comparison](https://sakryukov.github.io/microtonal-fabric/code/tone-system-comparison) based on four chromatic-circle keyboards. Chords can be defined directly on the chromatic-circle keyboard and played separately on in fast succession comparison.
+2. [Multi-EDO Chromatic Lattice](https://sakryukov.github.io/microtonal-fabric/code/Multi-EDO) keyboard, which allows playing wide range of tones. Chords can be defined through chord tables, auto-generated and played with single click or key press. 
 
-The full source code can be downloaded, but there is no a need to download software to use it — everything can be played directly on the application [Web site](https://sakryukov.github.io/microtonal-chromatic-lattice-keyboard).
+The full source code can be downloaded, but there is no a need to download software to use it — everything can be played directly on the [main Microtonal Fabric documentation page](https://sakryukov.github.io/microtonal-fabric).
 
 ### Microtonal Tone Systems Comparison
 
-On [this page](https://sakryukov.github.io/microtonal-chromatic-lattice-keyboard/tone-system-comparison/tone-system-comparison.html), all round shapes can be used as musical instrument keys. Lower octaves are closer to the center.
+On the [Microtonal System Comparison page](https://sakryukov.github.io/microtonal-fabric/code/tone-system-comparison), all round shapes can be used as musical instrument keys. Lower octaves are closer to the center.
 Central areas are used to play chords. The round shapes at the center are hidden and are visualized when at least one note is added to a chord. Shift+note toggles a note of a chord (double click to clears the chord). For example, the [picture on the top](#image.title) shows an inversion of the harmonic seventh chord, at the moment of playing, in [31-TET](https://en.wikipedia.org/wiki/31_equal_temperament) system. 
 
 The chords can be played by clicking at the center round areas. Besides, if more than two chords are selected, two different temperaments can be listened in fast alteration on the special control "<u>C</u>ompare (Ctrl+ &larr; &rarr;)". When sound is activated, moving a mouse pointer between two halves quickly alters the chords:
@@ -211,6 +210,12 @@ Obviously, the ratio values 3/2, 4/3 and 9/8 are only approximated by microtonal
 
 ## Implementation
 
+### Why Start Button?
+
+Both applications have "Start" or power-on ![power-on](standby-on.png) buttons. Before the user clicks the button, nothing playable is visualized. Why? Basically, this is done to avoid the loss of the very first note played by the user. It would happen due to Web Audio *autoplay blocking*. The audio is available only after the user has interacted with the site (by clicking, tapping, pressing keys, etc.) Please see the [autoplay documentation] for more detail.
+
+The major part of the initialization of the Microtonal Fabric application happens in response to the click on this button. In particular, the keyboards become visible, and [AudioContext](https://developer.mozilla.org/en-US/docs/Web/API/AudioContext) is initialized. If `AudioContext` was initialized before the first user input event, the very first sound activation would have been ignored.
+
 ### Sound Synthesis
 
 Firstly, sound synthesis is totally based on [Web Audio API](https://developer.mozilla.org/en-US/docs/Web/API/Web_Audio_API) implemented by nearly all major browsers. Presently, it is based on the [W3C working draft of August 2017](https://webaudio.github.io/web-audio-api).
@@ -223,21 +228,69 @@ Because of the problems explained above, I would consider the quality as basical
 
 ### Scalable Vector Graphics
 
+The on-screen keyboards of the Mictotonal Fabric applications use Scalable Vector Graphics based on embedded `<svg>` [elements](https://developer.mozilla.org/en-US/docs/Web/API/SVGGElement). The applications use two methods of the keyboard initialization.
+
+The first method is based on visual development of the keyboard. The entire keyboard is prepared using some vector graphics editor. I use and recommend open-source [InkScape](https://en.wikipedia.org/wiki/Inkscape). In the code, the keyboard is initialized based on pre-created SVG elements.
+
+The second method is the programmatic population of the empty or dynamically created `<svg>` element.
+
+For different applications, both methods are useful. Let's discuss them.
+
 #### Visual Development
+
+This method can be useful for *ad-hoc* programming, when the keyboard is somewhat irregular and not too big. It is used for the tone system comparison application.
+
+When a keyboard is created with a vector graphics editor, it can be cleaned up: redundant metadata and identifiers can be removed, and the elements to be used in the code should be named in a consistent way. Besides, numeric colors should better be replaced with suitable CSS names. Not all elements needs to be identified with the `id` attribute; the references to most of them can be obtained via the enumeration. This technique is shown in the source code file "tone-system-comparison/main-circular.js":
+
+```{lang=JavaScript}{id=code.svg.visual}
+const populateKeyboard = function (keyboard, chordActivator, toneSet, tonalSystem) {
+
+    const frequencyArray = [];
+    const keyMap = new Map();
+
+    let instrument;
+    const soundHandler = (key, on) =&gt; {
+        instrument.play(on, keyMap.get(key).index);
+    }; //soundHandler
+
+    chordActivator.chord = { count: 0 };
+
+    const octaveGroups = [];
+    for (let node of keyboard.childNodes) {
+        if (node.constructor != SVGGElement) continue;
+        let circleCount = 0;
+        for (let circle of node.childNodes)
+            if (circle.constructor == SVGCircleElement)
+                circleCount++;
+        if (circleCount &gt; 5) {
+            const octave = [];
+            for (let circle of node.childNodes)
+                if (circle.constructor == SVGCircleElement)
+                    octave.push(circle);
+            octaveGroups.push(octave);
+        } //if
+    } //loop counting
+
+    // populate keyboard with event handlers, etc.
+
+};
+```
+
+The references to the elements identified by their `id` attribute can be best obtained using [`Document.querySelector`](https://developer.mozilla.org/en-US/docs/Web/API/Document/querySelector).
 
 #### Programmatical Development
 
-Programmatical SVG development is much more maintainable in most cases, especially when graphics is more complicated and regular, which is the case for regular keyboards. Therefore it is uses for Multi-EDO 
+Programmatical SVG development is much more maintainable in most cases, especially when graphics is more complicated and regular, which is the case for musical keyboards build based on some regular tonal system. Therefore it is uses for the Multi-EDO Chromatic Lattice application.
 
-The skeleton sample of the SVG population is shown in "code/Multi-EDO/keyboard.js":
+The skeleton sample of the SVG population is shown in "Multi-EDO/keyboard.js":
 
 ```{lang=JavaScript}{id=code.svg.programmatical}
 "use strict";
 
-const keyboard = (definitionSet) => {
+const keyboard = (definitionSet) =&gt; {
 
     const svgPreparer = (function (svg) {
-        const findNamespace = () => {
+        const findNamespace = () =&gt; {
             for (let index in svg.attributes) {
                 const attribute = svg.attributes[index];
                 if (attribute.localName == "xmlns:svg")
@@ -245,35 +298,26 @@ const keyboard = (definitionSet) => {
             } // loop
         } //findNamespace
         const namespace = findNamespace(svg);
-        return { svg: svg, elementCreator: (tagName) => { return document.createElementNS(namespace, tagName); } };
+        return { svg: svg, elementCreator: (tagName) =&gt; {
+            return document.createElementNS(namespace, tagName); } };
     })(definitionSet.elements.keyboard);
         
     const keyboardStructure = { rows: []};
 
     const svg = svgPreparer.svg;
 
-    svg.style.display = "none";
+    svg.style.display = "none"; // to be visualized after initialization
 
-    // populate keyboardStructure with keys
+    // populate keyboardStructure with keys, using svgPreparer
     // ...
 
     return keyboardStructure;
 
 };
 ```
-Keyboard structure is used to create a keyboard event handler, see "code/multi-EDO/keyboard-handler.js" for the detail.
-
-In early versions of the software, I've used not a very usual method of HTML/CSS/JavaScript development: embedded [SVG](https://en.wikipedia.org/wiki/Scalable_Vector_Graphics). Here is the idea: the UI element is developed using wonderful SVG-based vector editor, [https://en.wikipedia.org/wiki/Inkscape](https://en.wikipedia.org/wiki/Inkscape); any other suitable editor can be used. In JavaScript code, some of the SVG elements are found using their `id` values or known inner XML structure. When this is done, obtained JavaScript objects can be modified by altering their attributes (first of all, CSS attributes). And then, input event properties can be added to these elements. This is how a musical instrument key function can be implemented, such as production of sound and highlight.
-
-Later, I got rid of this bulky method. SVG is to big to manage in this case, but this method could be very convenient for some other applications. If someone needs some more explanations, please ask me questions.
-
-Presently, SVG element is populated automatically based on calculations. SA???
+Keyboard structure is used to create a keyboard event handler, see "multi-EDO/keyboard-handler.js" for the detail.
 
 For the detail, please see complete source code.
-
-### Multi-touch Support
-
-SA???
 
 ### Compatibility
 
@@ -370,7 +414,7 @@ Now the compatible browser is detected as the one which successfully loads all s
 * Major re-factoring performed to improve modularity and untangle dependencies between modules.
 * Unification of keyboard.html and tone-system-comparison.html applications, improved code, reduced unwanted dependencies between applications.
 * Developed conversion of objects to read-only, recursive or not, applied to definition sets of applications.
-* Solved the problem of silent first note in file-based instruments, due to the use of futures and a need for defer. (SA???)
+* Solved the problem of silent first note in file-based instruments, due to the use of futures and a need for defer.
 * Fixed and improved the mechanism of detection of incompatible browsers, discriminated Microsoft Edge by its features.
 
 #### 5.0{no-toc}
