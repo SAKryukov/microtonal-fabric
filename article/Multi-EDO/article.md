@@ -54,7 +54,9 @@ The name "Microtonal Fabric" was created after these two applications were publi
 
 The microtonal keyboard I've proposed provides more flexible ways for the very basic study of the field. I will often refer to certain points in my previous article. In the present article, I'm not going to get into theoretical reasoning much, mostly because my own study of microtonal music is only starting.
 
-The second application is the auxiliary one used for the study and the comparison of different tonal systems, the source code can be found in "tone-system-comparison". It is useful for the understanding how different EDO systems work. In particular, it can be used to play and listen to the chords to detect the compromised harmonic quality of the traditional *common practice* [12-EDO system](https://en.xen.wiki/w/12edo) (Equal Division of Octave using 12 tones).
+The second application is the auxiliary one used for the study and the comparison of different tonal systems, the source code can be found in "tone-system-comparison". It is useful for understanding how different EDO systems work. In particular, it can be used to play and listen to the chords to detect the compromised harmonic quality of the traditional present-day *common practice* [12-EDO system](https://en.xen.wiki/w/12edo).
+
+Here, "EDO" stands for "Equal Division of Octave" on a *logarithmic scale*. For example, the 12-EDO means the most widely used equal division of the octave into 12 "semitone" intervals. An alternative term is "12-TET", it stands for "twelve-tone equal temperament". Some authors do not consider EDO and TET terminology equivalent on the following basis: the term EDO does not imply [*"temperament"*](https://en.wikipedia.org/wiki/Musical_temperament), because if we simply divide the octave into an arbitrary number of intervals, we can obtain intervals between tones that are very far from harmonical intervals. However, in this article we are going to consider only the tonal systems which approximate the harmonical intervals very well, so they can be considered temperaments.
 
 See also [my page](https://en.xen.wiki/w/Sergey_A_Kryukov) at the microtonal community Web site [Xenharmonic Wiki](https://en.xen.wiki). In addition to the Microtonal Fabric links, there are some useful links on different microtonal topics and personalities.
 
@@ -124,23 +126,23 @@ The chords can be played by clicking at the center round areas. Besides, if more
 
 Now, let's consider the circular keyboards to be used for study of different tone systems.
 
-[Just Intonation](https://en.wikipedia.org/wiki/Just_intonation):
+[Just Intonation](https://en.wikipedia.org/wiki/Just_intonation) compared with 12-EDO (gray):<br/>
 ![Just Intonation Keyboard](just.png)
 
 Just intonation is shown in comparison with the positions of [Common-practice](https://en.wikipedia.org/wiki/Common_practice_period) [12-EDO](https://en.wikipedia.org/wiki/Equal_temperament) *semitones* depicted as gray radial lines. This picture reveals the bigger problem of tuning accuracy of 12-EDO: pure rendering of 6th and, even more importantly, 3rd, which is the central note of very important [major chord](https://en.wikipedia.org/wiki/Major_chord). The errors are 15.6 [cents](https://en.wikipedia.org/wiki/Cent_%28music%29) for 6th and 13.7 for 3rd. Most probably people can hear the pretty subtle difference, perhaps after certain training, but the difference becomes more apparent in cases where inter-string resonances of the instruments (like piano or guitar) are noticeable.
 
 I want to remind that [Just Intonation](https://en.wikipedia.org/wiki/Just_intonation) is based on pure [harmonic relationships]((https://www.codeproject.com/Articles/1201737/Musical-Study-with-Isomorphic-Computer-Keyboard#heading.rational-and-irrational-numbers)) between tones, is very important for comparison of tone systems, but is fairly impractical for playing of most musical pieces due to the lack of [transpositional equivalence](https://en.wikipedia.org/wiki/Transposition_%28music%29#Transpositional_equivalence).
 
-[12-EDO](https://en.wikipedia.org/wiki/Equal_temperament):
-![12-EDO Keyboard](12-tet.png)
+[12-EDO](https://en.wikipedia.org/wiki/Equal_temperament):<br/>
+![12-EDO Keyboard](12-EDO.png)
 
-[19-EDO](https://en.wikipedia.org/wiki/19_equal_temperament):
-![19-EDO Keyboard](19-tet.png)
+[19-EDO](https://en.wikipedia.org/wiki/19_equal_temperament):<br/>
+![19-EDO Keyboard](19-EDO.png)
 
 With [19-EDO](https://en.wikipedia.org/wiki/19_equal_temperament), two different intervals between the degrees of [major scale](https://en.wikipedia.org/wiki/Major_scale): 2 (for B-C and E-F intervals) or 3 microtones. So, there is only one kind of sharp and one kind of flat, &plusmn;1 microtone. However, I avoid using ♯ and ♭ inside minor second intervals, to avoid the choice between [enharmonically equivalent](https://en.wikipedia.org/wiki/Enharmonic) notations, because, in microtonal systems, enharmonic equivalence generally cannot be assumed -- it is not the case for the 3-microtone minor second intervals.
 
-[31-EDO](https://en.wikipedia.org/wiki/31_equal_temperament):
-![31-EDO Keyboard](31-tet.png)
+[31-EDO](https://en.wikipedia.org/wiki/31_equal_temperament):<br/>
+![31-EDO Keyboard](31-EDO.png)
 
 With [31-EDO](https://en.wikipedia.org/wiki/31_equal_temperament), there are two sharp and flat intervals, 2 and 4 microtones. "Inverted" order of ♯ and ♭ is not a mistake, because they are sharp and flat based on different notes. For example, all the tones in C to D and B to C intervals are:
 
@@ -165,7 +167,7 @@ For [31-EDO](https://en.wikipedia.org/wiki/31_equal_temperament), the table is w
 
 For [Just Intonation](https://en.wikipedia.org/wiki/Just_intonation) and [12-EDO](https://en.wikipedia.org/wiki/Equal_temperament), I imposed some constraints to keep the chords matching the definition for "valid" chord accepted as modern music term. For example, for [12-EDO](https://en.wikipedia.org/wiki/Equal_temperament) there major/minor/diminished/augmented triad is always either present or replaced with sus2 or sus4 — look at the last line:
 
-![12-EDO Chord Table](table-12-tet.png)
+![12-EDO Chord Table](table-12-EDO.png)
 
 This is not the case for microtonal systems. For consistency, generalization and simplification, any subset of notes can be chosen, even the empty set, but no more than one alteration per zone. Note that 6th and 7th zones are not united for microtonal systems, because generally there is no [enharmonically equivalent](https://en.wikipedia.org/wiki/Enharmonic) between 6th and 7&minus;; by the same reasons, there are no empty table cells for altered notes.
 
