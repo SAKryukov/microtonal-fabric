@@ -50,6 +50,8 @@ The present and next article introduce the browser-based platform for microtonal
 
 The present article describes two Microtonal Fabric applications. The first one corresponds to the topic described by the title of the article, it is called Multi-EDO Chromatic Lattice; its source code can be found in "Multi-EDO".
 
+The name "Microtonal Fabric" was created after these two applications were published. Its word "Fabric" is associated with two things. First, this is a matter of music, its material structure. Second, it suggests that the product is not only a set of browser applications sharing some common code. It is actually a platform for the *fabrication* of the applications, implementing any thinkable musical tonal systems, tunings, and keyboard layouts.
+
 The microtonal keyboard I've proposed provides more flexible ways for the very basic study of the field. I will often refer to certain points in my previous article. In the present article, I'm not going to get into theoretical reasoning much, mostly because my own study of microtonal music is only starting.
 
 The second application is the auxiliary one used for the study and the comparison of different tonal systems, the source code can be found in "tone-system-comparison". It is useful for the understanding how different EDO systems work. In particular, it can be used to play and listen to the chords to detect the compromised harmonic quality of the traditional *common practice* [12-EDO system](https://en.xen.wiki/w/12edo) (Equal Division of Octave using 12 tones).
@@ -82,12 +84,11 @@ The rendering of historical tonal systems can be considered as actual, in partic
 The application Multi-EDO Chromatic Lattice supports the following systems:
 
 - [Just Intonation](https://en.wikipedia.org/wiki/Just_intonation) (only [presented by the Multi-EDO Chromatic Lattice application](https://sakryukov.github.io/microtonal-fabric/code/tone-system-comparison) on the [chromatic-circle](https://en.wikipedia.org/wiki/Chromatic_circle) keyboard)
-- [Common-practice](https://en.wikipedia.org/wiki/Common_practice_period) [12-TET](https://en.wikipedia.org/wiki/Equal_temperament)
-- [19-TET](https://en.wikipedia.org/wiki/19_equal_temperament)
-- 19-TET (since v.&thinsp;4.0)
-- [31-TET](https://en.wikipedia.org/wiki/31_equal_temperament).
+- [Common-practice](https://en.wikipedia.org/wiki/Common_practice_period) system [12-EDO](https://en.wikipedia.org/wiki/12_equal_temperament)
+- [19-EDO](https://en.wikipedia.org/wiki/19_equal_temperament)
+- [31-EDO](https://en.wikipedia.org/wiki/31_equal_temperament).
 
-29-TET is supported by a separate application (source code: "29-EDO"). This application is more advanced and is currently used for teaching music in the famous international Brainin school of music on a regular basis. It deserves a separate article.
+[29-EDO](https://en.wikipedia.org/wiki/19_equal_temperament) is supported by a separate application (source code: "29-EDO"). This application is more advanced and is currently used for teaching music in the famous international Brainin school of music on a regular basis. It deserves a separate article.
 
 Any arbitrary tonal systems can be created using Microtonal Playground (source code: "playground"),
 
@@ -210,6 +211,8 @@ Obviously, the ratio values 3/2, 4/3 and 9/8 are only approximated by microtonal
 
 ## Implementation
 
+The implementation section does not cover all the Microtonal Fabric techniques, it is only focused on some key or interesting aspects relevant to the two applications described in the present articles. Some may need a separate article to cover.
+
 ### Why Start Button?
 
 Both applications have "Start" or power-on ![power-on](standby-on.png) buttons. Before the user clicks the button, nothing playable is visualized. Why? Basically, this is done to avoid the loss of the very first note played by the user. It would happen due to Web Audio *autoplay blocking*. The audio is available only after the user has interacted with the site (by clicking, tapping, pressing keys, etc.) Please see the [autoplay documentation] for more detail.
@@ -224,7 +227,7 @@ Since v.&thinsp;5.0, the synthesis is fully based on the code of Sound Builder a
 
 ### Sound Quality
 
-Because of the problems explained above, I would consider the quality as basically acceptable, but far from decent. First of all, I just failed to find sufficient number of good samples. I would gladly try to use any data or advice. Perhaps sample-free synthesis of sounds from scratch Perhaps sample-free synthesis of sounds from scratch based on [Web Audio API](https://developer.mozilla.org/en-US/docs/Web/API/Web_Audio_API) would be more suitable.
+Because of the problems explained above, I would consider the quality as basically acceptable, but far from decent. First of all, I just failed to find sufficient number of good samples. I would gladly try to use any data or advice. Perhaps sample-free synthesis of sounds from scratch. Perhaps sample-free synthesis of sounds from scratch based on [Web Audio API](https://developer.mozilla.org/en-US/docs/Web/API/Web_Audio_API) would be more suitable.
 
 ### Scalable Vector Graphics
 
@@ -376,7 +379,7 @@ function handleGoodBrowser(scripts, successAction, errorAction) {
         document.body.onload = saveBodyLoadHandler;
     }; //if hasError
 
-} //handleGoodBrowser
+}
 ```
 
 The function `handleGoodBrowser` accepts array of script names relative to the name of the HTML file. So, instead of loading all the scripts using the `script` element, the developer needs to add only the script with `handleGoodBrowser` and pass the file names of other script in the actual argument of the call.
@@ -400,7 +403,7 @@ The option added is important because some key combinations such as Ctrl+W (usua
 Now the compatible browser is detected as the one which successfully loads all scripts. No criteria related to user agent product names, manufacturers or versions are used.
 
 #### 2.1.0{no-toc}
-* Refined [detection of incompatible browsers](#code.good-browser).
+* Refined [detection of incompatible browsers](##heading-compatibility).
 
 #### 4.0.0{no-toc}
 * Touch screen support.
