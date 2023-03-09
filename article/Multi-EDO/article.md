@@ -28,7 +28,7 @@ C &mdash; D♭² &mdash; Db &mdash; C♯ &mdash; C♯² &mdash; D
 
 <p id="image.title">
 
-![31-TET Keyboard, harmonic seventh chord](title.png)
+![31-EDO Keyboard, harmonic seventh chord](title.png)
 
 </p>
 
@@ -116,7 +116,7 @@ The full source code can be downloaded, but there is no a need to download softw
 ### Microtonal Tone Systems Comparison
 
 On the [Microtonal System Comparison page](https://sakryukov.github.io/microtonal-fabric/code/tone-system-comparison), all round shapes can be used as musical instrument keys. Lower octaves are closer to the center.
-Central areas are used to play chords. The round shapes at the center are hidden and are visualized when at least one note is added to a chord. Shift+note toggles a note of a chord (double click to clears the chord). For example, the [picture on the top](#image.title) shows an inversion of the harmonic seventh chord, at the moment of playing, in [31-TET](https://en.wikipedia.org/wiki/31_equal_temperament) system. 
+Central areas are used to play chords. The round shapes at the center are hidden and are visualized when at least one note is added to a chord. Shift+note toggles a note of a chord (double click to clears the chord). For example, the [picture on the top](#image.title) shows an inversion of the harmonic seventh chord, at the moment of playing, in [31-EDO](https://en.wikipedia.org/wiki/31_equal_temperament) system. 
 
 The chords can be played by clicking at the center round areas. Besides, if more than two chords are selected, two different temperaments can be listened in fast alteration on the special control "<u>C</u>ompare (Ctrl+ &larr; &rarr;)". When sound is activated, moving a mouse pointer between two halves quickly alters the chords:
 
@@ -127,22 +127,22 @@ Now, let's consider the circular keyboards to be used for study of different ton
 [Just Intonation](https://en.wikipedia.org/wiki/Just_intonation):
 ![Just Intonation Keyboard](just.png)
 
-Just intonation is shown in comparison with the positions of [Common-practice](https://en.wikipedia.org/wiki/Common_practice_period) [12-TET](https://en.wikipedia.org/wiki/Equal_temperament) *semitones* depicted as gray radial lines. This picture reveals the bigger problem of tuning accuracy of 12-TET: pure rendering of 6th and, even more importantly, 3rd, which is the central note of very important [major chord](https://en.wikipedia.org/wiki/Major_chord). The errors are 15.6 [cents](https://en.wikipedia.org/wiki/Cent_%28music%29) for 6th and 13.7 for 3rd. Most probably people can hear the pretty subtle difference, perhaps after certain training, but the difference becomes more apparent in cases where inter-string resonances of the instruments (like piano or guitar) are noticeable.
+Just intonation is shown in comparison with the positions of [Common-practice](https://en.wikipedia.org/wiki/Common_practice_period) [12-EDO](https://en.wikipedia.org/wiki/Equal_temperament) *semitones* depicted as gray radial lines. This picture reveals the bigger problem of tuning accuracy of 12-EDO: pure rendering of 6th and, even more importantly, 3rd, which is the central note of very important [major chord](https://en.wikipedia.org/wiki/Major_chord). The errors are 15.6 [cents](https://en.wikipedia.org/wiki/Cent_%28music%29) for 6th and 13.7 for 3rd. Most probably people can hear the pretty subtle difference, perhaps after certain training, but the difference becomes more apparent in cases where inter-string resonances of the instruments (like piano or guitar) are noticeable.
 
 I want to remind that [Just Intonation](https://en.wikipedia.org/wiki/Just_intonation) is based on pure [harmonic relationships]((https://www.codeproject.com/Articles/1201737/Musical-Study-with-Isomorphic-Computer-Keyboard#heading.rational-and-irrational-numbers)) between tones, is very important for comparison of tone systems, but is fairly impractical for playing of most musical pieces due to the lack of [transpositional equivalence](https://en.wikipedia.org/wiki/Transposition_%28music%29#Transpositional_equivalence).
 
-[12-TET](https://en.wikipedia.org/wiki/Equal_temperament):
-![12-TET Keyboard](12-tet.png)
+[12-EDO](https://en.wikipedia.org/wiki/Equal_temperament):
+![12-EDO Keyboard](12-tet.png)
 
-[19-TET](https://en.wikipedia.org/wiki/19_equal_temperament):
-![19-TET Keyboard](19-tet.png)
+[19-EDO](https://en.wikipedia.org/wiki/19_equal_temperament):
+![19-EDO Keyboard](19-tet.png)
 
-With [19-TET](https://en.wikipedia.org/wiki/19_equal_temperament), two different intervals between the degrees of [major scale](https://en.wikipedia.org/wiki/Major_scale): 2 (for B-C and E-F intervals) or 3 microtones. So, there is only one kind of sharp and one kind of flat, &plusmn;1 microtone. However, I avoid using ♯ and ♭ inside minor second intervals, to avoid the choice between [enharmonically equivalent](https://en.wikipedia.org/wiki/Enharmonic) notations, because, in microtonal systems, enharmonic equivalence generally cannot be assumed -- it is not the case for the 3-microtone minor second intervals.
+With [19-EDO](https://en.wikipedia.org/wiki/19_equal_temperament), two different intervals between the degrees of [major scale](https://en.wikipedia.org/wiki/Major_scale): 2 (for B-C and E-F intervals) or 3 microtones. So, there is only one kind of sharp and one kind of flat, &plusmn;1 microtone. However, I avoid using ♯ and ♭ inside minor second intervals, to avoid the choice between [enharmonically equivalent](https://en.wikipedia.org/wiki/Enharmonic) notations, because, in microtonal systems, enharmonic equivalence generally cannot be assumed -- it is not the case for the 3-microtone minor second intervals.
 
-[31-TET](https://en.wikipedia.org/wiki/31_equal_temperament):
-![31-TET Keyboard](31-tet.png)
+[31-EDO](https://en.wikipedia.org/wiki/31_equal_temperament):
+![31-EDO Keyboard](31-tet.png)
 
-With [31-TET](https://en.wikipedia.org/wiki/31_equal_temperament), there are two sharp and flat intervals, 2 and 4 microtones. "Inverted" order of ♯ and ♭ is not a mistake, because they are sharp and flat based on different notes. For example, all the tones in C to D and B to C intervals are:
+With [31-EDO](https://en.wikipedia.org/wiki/31_equal_temperament), there are two sharp and flat intervals, 2 and 4 microtones. "Inverted" order of ♯ and ♭ is not a mistake, because they are sharp and flat based on different notes. For example, all the tones in C to D and B to C intervals are:
 
 C &mdash; D♭² &mdash; Db &mdash; C♯ &mdash; C♯² &mdash; D
 B &mdash; C♭ &mdash; B♯ &mdash; C
@@ -157,15 +157,15 @@ So, there are two different intervals between the degrees of [major scale](https
 Another way to define a chord is based on the degrees of the scale, chosen from a table.
 </p>
 
-This is the example of the table for [19-TET](https://en.wikipedia.org/wiki/19_equal_temperament) showing the default selection of [major chord](https://en.wikipedia.org/wiki/Major_chord):
+This is the example of the table for [19-EDO](https://en.wikipedia.org/wiki/19_equal_temperament) showing the default selection of [major chord](https://en.wikipedia.org/wiki/Major_chord):
 
-![19-TET Chord Table](table.png)
+![19-EDO Chord Table](table.png)
 
-For [31-TET](https://en.wikipedia.org/wiki/31_equal_temperament), the table is wider, because two more columns are added: "Double ♯" and "Double ♭".
+For [31-EDO](https://en.wikipedia.org/wiki/31_equal_temperament), the table is wider, because two more columns are added: "Double ♯" and "Double ♭".
 
-For [Just Intonation](https://en.wikipedia.org/wiki/Just_intonation) and [12-TET](https://en.wikipedia.org/wiki/Equal_temperament), I imposed some constraints to keep the chords matching the definition for "valid" chord accepted as modern music term. For example, for [12-TET](https://en.wikipedia.org/wiki/Equal_temperament) there major/minor/diminished/augmented triad is always either present or replaced with sus2 or sus4 — look at the last line:
+For [Just Intonation](https://en.wikipedia.org/wiki/Just_intonation) and [12-EDO](https://en.wikipedia.org/wiki/Equal_temperament), I imposed some constraints to keep the chords matching the definition for "valid" chord accepted as modern music term. For example, for [12-EDO](https://en.wikipedia.org/wiki/Equal_temperament) there major/minor/diminished/augmented triad is always either present or replaced with sus2 or sus4 — look at the last line:
 
-![12-TET Chord Table](table-12-tet.png)
+![12-EDO Chord Table](table-12-tet.png)
 
 This is not the case for microtonal systems. For consistency, generalization and simplification, any subset of notes can be chosen, even the empty set, but no more than one alteration per zone. Note that 6th and 7th zones are not united for microtonal systems, because generally there is no [enharmonically equivalent](https://en.wikipedia.org/wiki/Enharmonic) between 6th and 7&minus;; by the same reasons, there are no empty table cells for altered notes.
 
@@ -177,17 +177,17 @@ The same system of chord selection, based on shared JavaScript code, is used for
 
 Basically, the idea of the keyboard structure is based on [Wicki-Hayden layout](https://en.wikipedia.org/wiki/Wicki-Hayden_note_layout), but the geometry is different. Instead of being hexagonal, it is rectangular, which is simpler and better matches the symmetry of the grid of tone relationships.
 
-The keyboard takes the same share, dimensions and structure as the one offered in the [previous article](https://www.codeproject.com/Articles/1201737/Musical-Study-with-Isomorphic-Computer-Keyboard). Its *fragment* is shown for [31-TET](https://en.wikipedia.org/wiki/31_equal_temperament):
+The keyboard takes the same share, dimensions and structure as the one offered in the [previous article](https://www.codeproject.com/Articles/1201737/Musical-Study-with-Isomorphic-Computer-Keyboard). Its *fragment* is shown for [31-EDO](https://en.wikipedia.org/wiki/31_equal_temperament):
 
 ![Microtonal Chromatic Lattice](keyboard.png)
 
 The green area is used to play part of the tones using the physical computer keyboard (sorry, modeled based on standard US keyboard layout, without any options; anyone who really needs something else is welcome to address me).
 
-The controls are different. First of all, one of the three tone systems and four layouts ([12-TET](https://en.wikipedia.org/wiki/Equal_temperament), 12-TET in [Jankó layout](https://en.wikipedia.org/wiki/Jank%C3%B3_keyboard), [19-TET](https://en.wikipedia.org/wiki/19_equal_temperament) and [31-TET](https://en.wikipedia.org/wiki/31_equal_temperament)) can be chosen at any time.
+The controls are different. First of all, one of the three tone systems and four layouts ([12-EDO](https://en.wikipedia.org/wiki/Equal_temperament), 12-EDO in [Jankó layout](https://en.wikipedia.org/wiki/Jank%C3%B3_keyboard), [19-EDO](https://en.wikipedia.org/wiki/19_equal_temperament) and [31-EDO](https://en.wikipedia.org/wiki/31_equal_temperament)) can be chosen at any time.
 
 Other controls enable optional highlighting of chords (played prefixed with Ctrl+) and chosen from the tables [described above](#special.chord-tables) and chord note marking using the scale degree notation.
 
-First surprising thing is that the tone layout looks nearly identical to that of 12-TET. This layout is very special: 1) it is very suggestive of harmonic relationship between notes; 2) the layouts for different tone systems are "locally identical". The differences become apparent, for example, in the attempt to perform [harmonic modulation](https://en.wikipedia.org/wiki/Modulation_%28music%29), which is very easy though, due to chromatic nature of the keyboard. How it works?
+First surprising thing is that the tone layout looks nearly identical to that of 12-EDO. This layout is very special: 1) it is very suggestive of harmonic relationship between notes; 2) the layouts for different tone systems are "locally identical". The differences become apparent, for example, in the attempt to perform [harmonic modulation](https://en.wikipedia.org/wiki/Modulation_%28music%29), which is very easy though, due to chromatic nature of the keyboard. How it works?
 
 Here is how the layout is structured:
 
@@ -197,13 +197,13 @@ The intervals in semitones depend on the tone system:
 
 <table class="grid">
 <tr>
-<td>12-TET</td><td>K=2</td><td>L=5</td><td>M=7</td>
+<td>12-EDO</td><td>K=2</td><td>L=5</td><td>M=7</td>
 </tr>
 <tr>
-<td>19-TET</td><td>K=3</td><td>L=8</td><td>M=11</td>
+<td>19-EDO</td><td>K=3</td><td>L=8</td><td>M=11</td>
 </tr>
 <tr>
-<td>31-TET</td><td>K=5</td><td>L=13</td><td>M=18</td>
+<td>31-EDO</td><td>K=5</td><td>L=13</td><td>M=18</td>
 <tr>
 </table>
 
