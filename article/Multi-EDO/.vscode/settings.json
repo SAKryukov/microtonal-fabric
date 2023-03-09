@@ -39,7 +39,7 @@
         "color": "white",
         "backgroundColor": "navy"
     },
-    "markdown.extension.convertToHtml.tocIncludeLevels": [ 2, 3 ],
+    "markdown.extension.convertToHtml.tocIncludeLevels": [ 1, 2, 3 ],
     "markdown.extension.convertToHtml.options.additionalPlugins": {
         "absolutePath": "/app/nodejs.markdown-it-plugins/node_modules",
         "relativePath": "", // relative to workspace

@@ -2,7 +2,7 @@
     enable: false
 }
 
-{title}Sound Builder, Web Audio Synthesizer
+{title}Microtonal Music Study with Chromatic Lattice Keyboard
 
 [*Sergey A Kryukov*](https://www.SAKryukov.org)
 
@@ -46,13 +46,13 @@ This is the second article  in the series dedicated to musical study using speci
  
  In my [first article](https://www.codeproject.com/Articles/1201737/Musical-Study-with-Isomorphic-Computer-Keyboard) of this series, I tried to explain very basic mathematical and physical aspects of music and put forward a keyboard structured to be very suggestive of music harmony. However, the application illustrates everything based on a much less general case of the [common-practice](https://en.wikipedia.org/wiki/Common_practice_period) [tone system](https://en.wikipedia.org/wiki/Musical_tuning).
 
-The present and next article introduce the browser-based platform for microtonal music study, composers' experiments and more, called [Microtonal Fabric](https://github.com/SAKryukov/microtonal-fabric).
+The present and next article introduce the browser-based platform for microtonal music study, composers' experiments, and more, called [Microtonal Fabric](https://github.com/SAKryukov/microtonal-fabric).
 
 The present article describes two Microtonal Fabric applications. The first one corresponds to the topic described by the title of the article, it is called Multi-EDO; its source code can be found in "code/Multi-EDO".
 
 The microtonal keyboard I've proposed provides more flexible ways for the very basic study of the field. I will often refer to certain points in my previous article. In the present article, I'm not going to get into theoretical reasoning much, mostly because my own study of microtonal music is only starting.
 
-The second application is the auxilarry one used for the study and the comparison of different tonal systems, the source code can be found in "code/tone-system-comparison". It is useful for understanding of how different EDO systems work. In particular, it can be used to play and listen to the chords to detect the compromized harmonic quality of the traditional *common practice* [12-EDO system](https://en.xen.wiki/w/12edo) (Equal Division of Octave using 12 tones).
+The second application is the auxiliary one used for the study and the comparison of different tonal systems, the source code can be found in "code/tone-system-comparison". It is useful for the understanding how different EDO systems work. In particular, it can be used to play and listen to the chords to detect the compromised harmonic quality of the traditional *common practice* [12-EDO system](https://en.xen.wiki/w/12edo) (Equal Division of Octave using 12 tones).
 
 See also [my page](https://en.xen.wiki/w/Sergey_A_Kryukov) at the microtonal community Web site [Xenharmonic Wiki](https://en.xen.wiki). In addition to the Microtonal Fabric links, there are some useful links on different microtonal topics and personalities.
 
@@ -62,26 +62,24 @@ The ready-to-play applications, presently available in Microtonal Fabric can be 
 
 The application discussed in the present article is named Multi-EDO and can also be played [here](https://sakryukov.github.io/microtonal-fabric/code/Multi-EDO).
 
-If the touch screen is available, one can play musical instruments using ten fingers. This way chords can be played, even in combination with *glissando*.
-
 Another application discussed in this article is the application for [microtonal system comparison](https://sakryukov.github.io/microtonal-fabric/code/tone-system-comparison).
 
 ## Why Microtonal?
 
-There can be very [many answers](https://en.xen.wiki) to this question. Not trying to cover the topic, I'll try to point out, maybe in a naive and rough way, four aspects I consider the most fundamental:
+There can be very [many answers](https://en.xen.wiki) to this question. Not trying to cover the topic, I'll try to point out four aspects I consider the most fundamental:
 
-1. Traditional Western [equal-temperament](https://en.wikipedia.org/wiki/Equal_temperament) faces serious problems. Strictly speaking, its harmony does not sound quite harmonically. Basic sense of harmony is based on fundamental physical and mathematical principles independent from particular culture. At the same time, [transpositional equivalence](https://en.wikipedia.org/wiki/Transposition_%28music%29#Transpositional_equivalence) is impossible to achieve with strict harmonics -- in my previous article, [I tried to explain it](https://www.codeproject.com/Articles/1201737/Musical-Study-with-Isomorphic-Computer-Keyboard#heading.rational-and-irrational-numbers). However hearing the defects require pretty well-trained ear. So, here is the first principle: with microtonal systems, it's possible to play music, which sounds very traditional, but more with improved harmony. At the same time, it's possible to play something very different from and unusual. 
+1. Traditional Western [equal temperament](https://en.wikipedia.org/wiki/Equal_temperament) faces serious problems. Strictly speaking, its harmony does not sound quite harmonically. The basic sense of harmony is based on fundamental physical and mathematical principles independent of a particular culture. At the same time, [transpositional equivalence](https://en.wikipedia.org/wiki/Transposition_%28music%29#Transpositional_equivalence) is impossible to achieve with strict harmonics -- in my previous article, [I tried to explain it](https://www.codeproject.com/Articles/1201737/Musical-Study-with-Isomorphic-Computer-Keyboard#heading.rational-and-irrational-numbers). However, hearing the defects require a pretty well-trained ear. So, here is the first principle: with microtonal systems, it's possible to play music, which sounds very traditional, but more with improved harmony. At the same time, it's possible to play something very different and unusual. 
 
-1. The historical musical instrument tuning and tonal systems can be considered as microtonal in the following sense: they cannot be rendered using modern common practice approach and 12-tonal tonal system, 12-EDO. However, they cannot be approximated very well using microtonal systems. Those historical systems are usually more refined in terms of musical harmony. The problem of these systems is fixed tonality if a music piece, the lack of *transpositional equivalence*, so the arbitrary [*transposition*](https://en.wikipedia.org/wiki/Transposition_(music)) is impossible.
-The rendering of historical tonal systems can be considered as actual, in particular, for so called [*historically informed performance*](https://en.wikipedia.org/wiki/Historically_informed_performance).
+1. The historical musical instrument tuning and tonal systems can be considered microtonal in the following sense: they cannot be rendered using the modern common practice approach and 12-tonal tonal system, 12-EDO. However, they cannot be approximated very well using microtonal systems. Those historical systems are usually more refined in terms of musical harmony. The problem with these systems is the fixed tonality of a music piece, and the lack of *transpositional equivalence*, so arbitrary [*transposition*](https://en.wikipedia.org/wiki/Transposition_(music)) is impossible.
+The rendering of historical tonal systems can be considered as actual, in particular, for so-called [*historically informed performance*](https://en.wikipedia.org/wiki/Historically_informed_performance).
 
-1. In non-Western cultures, microtonal approach is more actual. Traditional tuning systems can have more tones than twelve, they can use different principles rather than EDO. Microtonal Fabric helps to render any of those systems. For example, the application Microtonal Playground ("code/playground") contains the implementation of Indian [sruti](https://en.wikipedia.org/wiki/Shruti_(music)), traditional Chinese, and other systems. Microtonal Playground deserves a separate article.
+1. In non-Western cultures, the microtonal approach is more actual. Traditional tuning systems can have more tones than twelve, they can use different principles rather than EDO. Microtonal Fabric helps to render any of those systems. For example, the application Microtonal Playground ("code/playground") contains the implementation of Indian [sruti](https://en.wikipedia.org/wiki/Shruti_(music)), traditional Chinese, and other systems. Microtonal Playground deserves a separate article.
 
-1. How about the possibility to create really new music? From the first glance, it may sound impossible. I often heard from people, including musicians, that such music is awfully "out of tune". Is it, really? I think, it depends. It can sound totally [xenharmonic](https://en.wikipedia.org/wiki/Xenharmonic_music), but it really depends on the listener. The ability to perceive microtonal music can be limited by too strong bonding with current cultural environment. The musical sense is a complicated combination of fundamental laws of nature and culture — I also [tried to explain it](https://www.codeproject.com/Articles/1201737/Musical-Study-with-Isomorphic-Computer-Keyboard#heading.culture-versus-physics), very roughly. It simply means that understanding of anything which can be called "music" always required involvement in culture and considerable listening experience. Microtonal music just needs involvement in wider cultural context and more experience.
+1. How about the possibility to create new music? At first glance, it may sound impossible. I often heard from people, including musicians, that such music is awful and "out of tune". Is it, really? I think, it depends. It can sound totally [xenharmonic](https://en.wikipedia.org/wiki/Xenharmonic_music), but it actually depends on the listener. The ability to perceive microtonal music can be limited by too strong bonding with the current cultural environment. The musical sense is a complicated combination of fundamental laws of nature and culture — I also [tried to explain it](https://www.codeproject.com/Articles/1201737/Musical-Study-with-Isomorphic-Computer-Keyboard#heading.culture-versus-physics), very roughly. It simply means that understanding anything which can be called "music" always required involvement in culture and considerable listening experience. Microtonal music just needs involvement in a wider cultural context and more experience.
 
 ## Supported Tone Systems
 
-The applicatin Multi-EDO supports the following systems:
+The application Multi-EDO supports the following systems:
 
 - [Just Intonation](https://en.wikipedia.org/wiki/Just_intonation) (only [presented](https://sakryukov.github.io/microtonal-chromatic-lattice-keyboard/tone-system-comparison/tone-system-comparison.html) on the [chromatic-circle](https://en.wikipedia.org/wiki/Chromatic_circle) keyboard)
 - [Common-practice](https://en.wikipedia.org/wiki/Common_practice_period) [12-TET](https://en.wikipedia.org/wiki/Equal_temperament)
@@ -89,7 +87,7 @@ The applicatin Multi-EDO supports the following systems:
 - 19-TET (since v.&thinsp;4.0)
 - [31-TET](https://en.wikipedia.org/wiki/31_equal_temperament).
 
-29-TET is supported by a separate application ("code/29-EDO"). This application is more advanced, is currently used for teaching music in the famouse international Brainin school of music on a regular basis. It deserves a separate article.
+29-TET is supported by a separate application ("code/29-EDO"). This application is more advanced and is currently used for teaching music in the famous international Brainin school of music on a regular basis. It deserves a separate article.
 
 Any arbitrary tonal systems can be created using Microtonal Playground ("code/playground"),
 
@@ -100,15 +98,14 @@ Any arbitrary tonal systems can be created using Microtonal Playground ("code/pl
 - Choice of 5 instruments or 4 basic waveforms
 - Chord generation
 - Optional chord visualization
-- Compatible browsers include, but not limited to Google Chrome, Mozilla Firefox, Mozilla SeaMonkey and Opera.
+- Compatible browsers include, but are not limited to Google Chrome, Mozilla Firefox, Mozilla SeaMonkey, and Opera.
 
 Since v.&thinsp;4.0:
-- Touch screen support
-- Key press dynamics
+- Touch screen support. With a touch screen, one can play with ten fingers, any chords, and *glissando* (important) in any combination.
 
 ## Using the Application
 
-The application could be considered as two independent [single-page applications](https://en.wikipedia.org/wiki/Single-page_application), not counting [index file](https://sakryukov.github.io/microtonal-chromatic-lattice-keyboard) simply referencing the matter involved. Implementations share some of JavaScript files, that's it.
+The application could be considered as two independent [single-page applications](https://en.wikipedia.org/wiki/Single-page_application), not counting [index file](https://sakryukov.github.io/microtonal-chromatic-lattice-keyboard) simply referencing the matter involved. Implementations share some JavaScript files, that's it.
 ???
 
 1. First part: [Microtonal Tone Systems Comparison](https://sakryukov.github.io/microtonal-chromatic-lattice-keyboard/tone-system-comparison/tone-system-comparison.html) based on four chromatic-circle keyboards. Chords can be defined directly on the chromatic-circle keyboard and played separately on in fast succession comparison.
@@ -226,6 +223,46 @@ Because of the problems explained above, I would consider the quality as basical
 
 ### Scalable Vector Graphics
 
+#### Visual Development
+
+#### Programmatical Development
+
+Programmatical SVG development is much more maintainable in most cases, especially when graphics is more complicated and regular, which is the case for regular keyboards. Therefore it is uses for Multi-EDO 
+
+The skeleton sample of the SVG population is shown in "code/Multi-EDO/keyboard.js":
+
+```{lang=JavaScript}{id=code.svg.programmatical}
+"use strict";
+
+const keyboard = (definitionSet) => {
+
+    const svgPreparer = (function (svg) {
+        const findNamespace = () => {
+            for (let index in svg.attributes) {
+                const attribute = svg.attributes[index];
+                if (attribute.localName == "xmlns:svg")
+                    return attribute.value;
+            } // loop
+        } //findNamespace
+        const namespace = findNamespace(svg);
+        return { svg: svg, elementCreator: (tagName) => { return document.createElementNS(namespace, tagName); } };
+    })(definitionSet.elements.keyboard);
+        
+    const keyboardStructure = { rows: []};
+
+    const svg = svgPreparer.svg;
+
+    svg.style.display = "none";
+
+    // populate keyboardStructure with keys
+    // ...
+
+    return keyboardStructure;
+
+};
+```
+Keyboard structure is used to create a keyboard event handler, see "code/multi-EDO/keyboard-handler.js" for the detail.
+
 In early versions of the software, I've used not a very usual method of HTML/CSS/JavaScript development: embedded [SVG](https://en.wikipedia.org/wiki/Scalable_Vector_Graphics). Here is the idea: the UI element is developed using wonderful SVG-based vector editor, [https://en.wikipedia.org/wiki/Inkscape](https://en.wikipedia.org/wiki/Inkscape); any other suitable editor can be used. In JavaScript code, some of the SVG elements are found using their `id` values or known inner XML structure. When this is done, obtained JavaScript objects can be modified by altering their attributes (first of all, CSS attributes). And then, input event properties can be added to these elements. This is how a musical instrument key function can be implemented, such as production of sound and highlight.
 
 Later, I got rid of this bulky method. SVG is to big to manage in this case, but this method could be very convenient for some other applications. If someone needs some more explanations, please ask me questions.
@@ -236,94 +273,7 @@ For the detail, please see complete source code.
 
 ### Multi-touch Support
 
-One of the most important features of Microtonal Fabric is its support for multi-touch devices, such as a touchpad or touchscreen.
-
 SA???
-
-```{lang=JavaScript}{id=code.multi-touch}
-"use strict";
-
-const setMultiTouch = (
-    container,
-    elementSelector, // element =&gt; bool
-    elementHandler,  // (element, Touch touchObject, bool on) =&gt; undefined
-    sameElementHandler, // (element, Touch touchObject) =&gt; undefined: handles move in idthe area of the same element
-) =&gt; {
-
-    if (!container) container = document;
-
-    const assignEvent = (element, name, handler) =&gt; {
-        element.addEventListener(name, handler, { passive: false, capture: true });
-    };
-    const assignTouchStart = (element, handler) =&gt; {
-        assignEvent(element, "touchstart", handler);
-    };
-    const assignTouchMove = (element, handler) =&gt; {
-        assignEvent(element, "touchmove", handler);
-    };
-    const assignTouchEnd = (element, handler) =&gt; {
-        assignEvent(element, "touchend", handler);
-    };
-
-    if (!elementSelector)
-        return {
-            assignTouchStart: assignTouchStart,
-            assignTouchMove: assignTouchMove,
-            dynamicAlgorithm: (touch, volumeDivider) =&gt; { return Math.pow(touch.radiusX * touch.radiusY, 2) / volumeDivider; }};
-
-    const isGoodElement = element =&gt; element && elementSelector(element); 
-    const elementDictionary = {};
-    
-    const addRemoveElement = (touch, element, doAdd) =&gt; {
-        if (isGoodElement(element) && elementHandler)
-            elementHandler(element, touch, doAdd);
-        if (doAdd)
-            elementDictionary[touch.identifier] = element;
-        else
-            delete elementDictionary[touch.identifier];
-    }; //addRemoveElement
-
-    assignTouchStart(container, ev =&gt; {
-        ev.preventDefault();
-        if (ev.changedTouches.length &lt; 1) return;
-        const touch = ev.changedTouches[ev.changedTouches.length - 1];
-        const element = document.elementFromPoint(touch.clientX, touch.clientY);
-        addRemoveElement(touch, element, true);    
-    }); //assignTouchStart
-    
-    assignTouchMove(container, ev =&gt; {
-        ev.preventDefault();
-        for (let touch of ev.touches) {
-            let element = document.elementFromPoint(touch.clientX, touch.clientY);
-            const goodElement = isGoodElement(element); 
-            const touchElement = elementDictionary[touch.identifier];
-            if (goodElement && touchElement) {
-                if (element == touchElement) {
-                    if (sameElementHandler)
-                        sameElementHandler(element, touch)
-                        continue;
-                    } //if same
-                addRemoveElement(touch, touchElement, false);            
-                addRemoveElement(touch, element, true);
-            } else {
-                if (goodElement)
-                    addRemoveElement(touch, element, goodElement);
-                else
-                    addRemoveElement(touch, touchElement, goodElement);
-            } //if    
-        } //loop
-    }); //assignTouchMove
-    
-    assignTouchEnd(container, ev =&gt; {
-        ev.preventDefault();
-        for (let touch of ev.changedTouches) {
-            const element = document.elementFromPoint(touch.clientX, touch.clientY);
-            addRemoveElement(touch, element, false);
-        } //loop
-    }); //assignTouchEnd
-
-};
-```
 
 ### Compatibility
 
@@ -391,42 +341,42 @@ The other scripts, all the scripts other than the one shown above, are loaded re
 
 ## Versions
 
-#### 1.0.0
+#### 1.0.0{no-toc}
 Initial production version.
 
-#### 1.1.0
+#### 1.1.0{no-toc}
 * Added option "Use Computer Keyboard".
 * On application pages, added links to original publication.
 
 The option added is important because some key combinations such as Ctrl+W (usually, browser's close tab) are busy with the physical computer keyboard function.
 
-#### 2.0.0
-* Added browser detection and dynamic [script loading](#heading.compatibility).
+#### 2.0.0{no-toc}
+* Added dynamic script loading and detection of incompatible browsers.
 
 Now the compatible browser is detected as the one which successfully loads all scripts. No criteria related to user agent product names, manufacturers or versions are used.
 
-#### 2.1.0
-* Developed detection of incompatible browsers.
+#### 2.1.0{no-toc}
+* Refined [detection of incompatible browsers](#code.good-browser).
 
-#### 4.0.0
+#### 4.0.0{no-toc}
 * Touch screen support.
 
-#### 4.1.0
+#### 4.1.0{no-toc}
 * Keyboard layout is generated dynamically rather then imported from vector graphics image; it helped to make keyboard layout variable.
 * Markup of the hardware keyboard on a on-screen keyboard (shown in green) is automatically calculated based on on-screen keyboard.
 * Several minor improvements.
 
-#### 4.2.0
+#### 4.2.0{no-toc}
 * Major re-factoring performed to improve modularity and untangle dependencies between modules.
 * Unification of keyboard.html and tone-system-comparison.html applications, improved code, reduced unwanted dependencies between applications.
 * Developed conversion of objects to read-only, recursive or not, applied to definition sets of applications.
 * Solved the problem of silent first note in file-based instruments, due to the use of futures and a need for defer. (SA???)
 * Fixed and improved the mechanism of detection of incompatible browsers, discriminated Microsoft Edge by its features.
 
-#### 5.0
+#### 5.0{no-toc}
 Sound generation is migrated to the use of [Sound Builder](https://www.codeproject.com/Articles/5268512/Sound-Builder).
 
-#### 5.4
+#### 5.4{no-toc}
 * Wave FFT (see [Sound Builder](https://www.codeproject.com/Articles/5268512/Sound-Builder)) is migrated to .NET from .NET Core.
 * Refactoring related to the newly created project name, "Microtonal Framework".
 
