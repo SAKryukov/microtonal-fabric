@@ -86,7 +86,7 @@ The rendering of historical tonal systems can be considered as actual, in partic
 The application Multi-EDO Chromatic Lattice supports the following systems:
 
 - [Just Intonation](https://en.wikipedia.org/wiki/Just_intonation) (only [presented by the Multi-EDO Chromatic Lattice application](https://sakryukov.github.io/microtonal-fabric/code/tone-system-comparison) on the [chromatic-circle](https://en.wikipedia.org/wiki/Chromatic_circle) keyboard)
-- [Common-practice](https://en.wikipedia.org/wiki/Common_practice_period) system [12-EDO](https://en.wikipedia.org/wiki/12_equal_temperament)
+- [Common-practice](https://en.wikipedia.org/wiki/Common_practice_period) system [12-EDO](https://en.xen.wiki/w/12edo)
 - [19-EDO](https://en.wikipedia.org/wiki/19_equal_temperament)
 - [31-EDO](https://en.wikipedia.org/wiki/31_equal_temperament).
 
@@ -129,11 +129,11 @@ Now, let's consider the circular keyboards to be used for study of different ton
 [Just Intonation](https://en.wikipedia.org/wiki/Just_intonation) compared with 12-EDO (gray):<br/>
 ![Just Intonation Keyboard](just.png)
 
-Just intonation is shown in comparison with the positions of [Common-practice](https://en.wikipedia.org/wiki/Common_practice_period) [12-EDO](https://en.wikipedia.org/wiki/Equal_temperament) *semitones* depicted as gray radial lines. This picture reveals the bigger problem of tuning accuracy of 12-EDO: pure rendering of 6th and, even more importantly, 3rd, which is the central note of very important [major chord](https://en.wikipedia.org/wiki/Major_chord). The errors are 15.6 [cents](https://en.wikipedia.org/wiki/Cent_%28music%29) for 6th and 13.7 for 3rd. Most probably people can hear the pretty subtle difference, perhaps after certain training, but the difference becomes more apparent in cases where inter-string resonances of the instruments (like piano or guitar) are noticeable.
+Just intonation is shown in comparison with the positions of [Common-practice](https://en.wikipedia.org/wiki/Common_practice_period) [12-EDO](https://en.xen.wiki/w/12edo) *semitones* depicted as gray radial lines. This picture reveals the bigger problem of tuning accuracy of 12-EDO: pure rendering of 6th and, even more importantly, 3rd, which is the central note of very important [major chord](https://en.wikipedia.org/wiki/Major_chord). The errors are 15.6 [cents](https://en.wikipedia.org/wiki/Cent_%28music%29) for 6th and 13.7 for 3rd. Most probably people can hear the pretty subtle difference, perhaps after certain training, but the difference becomes more apparent in cases where inter-string resonances of the instruments (like piano or guitar) are noticeable.
 
 I want to remind that [Just Intonation](https://en.wikipedia.org/wiki/Just_intonation) is based on pure [harmonic relationships]((https://www.codeproject.com/Articles/1201737/Musical-Study-with-Isomorphic-Computer-Keyboard#heading.rational-and-irrational-numbers)) between tones, is very important for comparison of tone systems, but is fairly impractical for playing of most musical pieces due to the lack of [transpositional equivalence](https://en.wikipedia.org/wiki/Transposition_%28music%29#Transpositional_equivalence).
 
-[12-EDO](https://en.wikipedia.org/wiki/Equal_temperament):<br/>
+[12-EDO](https://en.xen.wiki/w/12edo):<br/>
 ![12-EDO Keyboard](12-EDO.png)
 
 [19-EDO](https://en.wikipedia.org/wiki/19_equal_temperament):<br/>
@@ -155,7 +155,7 @@ This way, there is only one kind of ♯ and one kind of ♭: &plusmn;2 microtone
 
 So, there are two different intervals between the degrees of [major scale](https://en.wikipedia.org/wiki/Major_scale): either 5 or 3 (between B and C and between E and F) microtones. It makes 31 microtones and very good rendering of [major scale](https://en.wikipedia.org/wiki/Major_scale). At the same time altered intervals and chord can sound very differently.  
 
-<p id="special.chord-tables">
+<p id="special-chord-tables">
 Another way to define a chord is based on the degrees of the scale, chosen from a table.
 </p>
 
@@ -165,7 +165,7 @@ This is the example of the table for [19-EDO](https://en.wikipedia.org/wiki/19_e
 
 For [31-EDO](https://en.wikipedia.org/wiki/31_equal_temperament), the table is wider, because two more columns are added: "Double ♯" and "Double ♭".
 
-For [Just Intonation](https://en.wikipedia.org/wiki/Just_intonation) and [12-EDO](https://en.wikipedia.org/wiki/Equal_temperament), I imposed some constraints to keep the chords matching the definition for "valid" chord accepted as modern music term. For example, for [12-EDO](https://en.wikipedia.org/wiki/Equal_temperament) there major/minor/diminished/augmented triad is always either present or replaced with sus2 or sus4 — look at the last line:
+For [Just Intonation](https://en.wikipedia.org/wiki/Just_intonation) and [12-EDO](https://en.xen.wiki/w/12edo), I imposed some constraints to keep the chords matching the definition for "valid" chord accepted as modern music term. For example, for [12-EDO](https://en.wikipedia.org/wiki/Equal_temperament) there major/minor/diminished/augmented triad is always either present or replaced with sus2 or sus4 — look at the last line:
 
 ![12-EDO Chord Table](table-12-EDO.png)
 
@@ -185,9 +185,9 @@ The keyboard takes the same share, dimensions and structure as the one offered i
 
 The green area is used to play part of the tones using the physical computer keyboard (sorry, modeled based on standard US keyboard layout, without any options; anyone who really needs something else is welcome to address me).
 
-The controls are different. First of all, one of the three tone systems and four layouts ([12-EDO](https://en.wikipedia.org/wiki/Equal_temperament), 12-EDO in [Jankó layout](https://en.wikipedia.org/wiki/Jank%C3%B3_keyboard), [19-EDO](https://en.wikipedia.org/wiki/19_equal_temperament) and [31-EDO](https://en.wikipedia.org/wiki/31_equal_temperament)) can be chosen at any time.
+The controls are different. First of all, one of the three tone systems and four layouts ([12-EDO](https://en.xen.wiki/w/12edo), 12-EDO in [Jankó layout](https://en.wikipedia.org/wiki/Jank%C3%B3_keyboard), [19-EDO](https://en.wikipedia.org/wiki/19_equal_temperament) and [31-EDO](https://en.wikipedia.org/wiki/31_equal_temperament)) can be chosen at any time.
 
-Other controls enable optional highlighting of chords (played prefixed with Ctrl+) and chosen from the tables [described above](#special.chord-tables) and chord note marking using the scale degree notation.
+Other controls enable optional highlighting of chords (played prefixed with Ctrl+) and chosen from the tables [described above](#special-chord-tables) and chord note marking using the scale degree notation.
 
 First surprising thing is that the tone layout looks nearly identical to that of 12-EDO. This layout is very special: 1) it is very suggestive of harmonic relationship between notes; 2) the layouts for different tone systems are "locally identical". The differences become apparent, for example, in the attempt to perform [harmonic modulation](https://en.wikipedia.org/wiki/Modulation_%28music%29), which is very easy though, due to chromatic nature of the keyboard. How it works?
 
@@ -219,7 +219,7 @@ The implementation section does not cover all the Microtonal Fabric techniques, 
 
 Both applications have "Start" or power-on ![power-on](standby-on.png) buttons. Before the user clicks the button, nothing playable is visualized. Why? Basically, this is done to avoid the loss of the very first note played by the user. It would happen due to Web Audio *autoplay blocking*. The audio is available only after the user has interacted with the site (by clicking, tapping, pressing keys, etc.) Please see the [autoplay documentation] for more detail.
 
-The major part of the initialization of the Microtonal Fabric application happens in response to the click on this button. In particular, the keyboards become visible, and [AudioContext](https://developer.mozilla.org/en-US/docs/Web/API/AudioContext) is initialized. If `AudioContext` was initialized before the first user input event, the very first sound activation would have been ignored.
+The major part of the initialization of the Microtonal Fabric application happens in response to the click on this button. In particular, the keyboards become visible, and [AudioContext](https://developer.mozilla.org/en-US/docs/Web/API/AudioContext) is initialized. If `AudioContext` was initialized before the first user input event, the very first sound activation would have been ignored by the Web Audio system.
 
 ### Sound Synthesis
 
@@ -326,7 +326,7 @@ For the detail, please see complete source code.
 
 ### Compatibility
 
-At the moment of writing, Web Audio API exists as a W3C editor's [draft of September 2017](https://webaudio.github.io/web-audio-api). Nevertheless, the applications described in the present article work with most major browsers.
+At the moment of writing, Web Audio API exists as a W3C editor's [draft of 7 November 2022](https://webaudio.github.io/web-audio-api). Nevertheless, the applications described in the present article work with most major browsers.
 
 Another advanced aspect is the use of SVG embedded in HTML. This feature is presently the part of [W3C Recommendation of October 28, 2014](https://www.w3.org/TR/html5/embedded-content-0.html#svg) and also should be quite usable.
 
