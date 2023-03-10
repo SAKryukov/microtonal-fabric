@@ -360,7 +360,6 @@ The option added is important because some key combinations such as Ctrl+W (usua
 * Unification of keyboard.html and tone-system-comparison.html applications, improved code, and reduced unwanted dependencies between applications.
 * Developed conversion of objects to read-only, recursive or not, applied to the definition sets of applications.
 * Solved the problem of the silent first note in file-based instruments, due to the use of futures and a need for deferring.
-* Fixed and improved the mechanism of detection of incompatible browsers, and discriminated Microsoft Edge by its features.
 
 #### 5.0{no-toc}
 Sound generation is migrated to the use of [Sound Builder](https://www.codeproject.com/Articles/5268512/Sound-Builder).
