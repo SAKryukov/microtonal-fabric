@@ -74,7 +74,7 @@ There can be very [many answers](https://en.xen.wiki) to this question. Not tryi
 
 1. Traditional Western [equal temperament](https://en.wikipedia.org/wiki/Equal_temperament) system [12-EDO](https://en.xen.wiki/w/12edo) faces serious problems. Strictly speaking, its harmony does not sound quite harmonically. The basic sense of harmony is based on fundamental physical and mathematical principles independent of a particular culture. At the same time, [transpositional equivalence](https://en.wikipedia.org/wiki/Transposition_%28music%29#Transpositional_equivalence) is impossible to achieve with strict harmonics -- in my previous article, [I tried to explain it](https://www.codeproject.com/Articles/1201737/Musical-Study-with-Isomorphic-Computer-Keyboard#heading.rational-and-irrational-numbers). However, hearing the defects require a pretty well-trained ear. So, here is the first principle: with microtonal systems, it's possible to play music, which sounds very traditional, but more with improved harmony. At the same time, it's possible to play something very different and unusual. 
 
-1. The historical musical instrument tuning and tonal systems can be considered microtonal in the following sense: they cannot be rendered using the modern common practice approach and 12-tonal tonal system, 12-EDO. However, they cannot be approximated very well using microtonal systems. Those historical systems are usually more refined in terms of musical harmony. The problem with these systems is the fixed tonality of a music piece, and the lack of *transpositional equivalence*, so arbitrary [*transposition*](https://en.wikipedia.org/wiki/Transposition_(music)) is impossible.
+1. The historical musical instrument tuning and tonal systems can be considered microtonal in the following sense: they cannot be rendered using the modern common practice approach and the 12-tonal system, 12-EDO. However, they cannot be approximated very well using microtonal systems. Those historical systems are usually more refined in terms of musical harmony. The problem with these systems is the fixed tonality of a music piece, and the lack of *transpositional equivalence*, so arbitrary [*transposition*](https://en.wikipedia.org/wiki/Transposition_(music)) is impossible.
 The rendering of historical tonal systems can be considered as actual, in particular, for so-called [*historically informed performance*](https://en.wikipedia.org/wiki/Historically_informed_performance).
 
 1. In non-Western cultures, the microtonal approach is more actual. Traditional tuning systems can have more tones than twelve, they can use different principles rather than EDO. Microtonal Fabric helps to render any of those systems. For example, the application Microtonal Playground (source code: "playground") contains the implementation of Indian [sruti](https://en.wikipedia.org/wiki/Shruti_(music)), traditional Chinese, and other systems. Microtonal Playground deserves a separate article.
@@ -108,30 +108,30 @@ Since v.&thinsp;4.0:
 
 ## Using the Application
 
-The applications presented in this article could be considered as two independent [single-page applications](https://en.wikipedia.org/wiki/Single-page_application).
+The applications presented in this article are two independent [single-page applications](https://en.wikipedia.org/wiki/Single-page_application).
 
-1. [Microtonal Tone Systems Comparison](https://sakryukov.github.io/microtonal-fabric/code/tone-system-comparison) based on four chromatic-circle keyboards. Chords can be defined directly on the chromatic-circle keyboard and played separately on in fast succession comparison.
-2. [Multi-EDO Chromatic Lattice](https://sakryukov.github.io/microtonal-fabric/code/Multi-EDO) keyboard, which allows playing wide range of tones. Chords can be defined through chord tables, auto-generated and played with single click or key press. 
+1. [Microtonal Tone Systems Comparison](https://sakryukov.github.io/microtonal-fabric/code/tone-system-comparison) based on four chromatic-circle keyboards. Chords can be defined directly on the chromatic-circle keyboard and played separately in fast succession comparison.
+2. [Multi-EDO Chromatic Lattice](https://sakryukov.github.io/microtonal-fabric/code/Multi-EDO) keyboard, which allows playing a wide range of tones. Chords can be defined through chord tables, auto-generated, and played with a single click or key press. 
 
-The full source code can be downloaded, but there is no a need to download software to use it — everything can be played directly on the [main Microtonal Fabric documentation page](https://sakryukov.github.io/microtonal-fabric).
+The full source code can be downloaded, but there is no need to download software to use it — everything can be played directly on the [main Microtonal Fabric documentation page](https://sakryukov.github.io/microtonal-fabric).
 
 ### Microtonal Tone Systems Comparison
 
-On the [Microtonal System Comparison page](https://sakryukov.github.io/microtonal-fabric/code/tone-system-comparison), all round shapes can be used as musical instrument keys. Lower octaves are closer to the center.
-Central areas are used to play chords. The round shapes at the center are hidden and are visualized when at least one note is added to a chord. Shift+note toggles a note of a chord (double click to clears the chord). For example, the [picture on the top](#image.title) shows an inversion of the harmonic seventh chord, at the moment of playing, in [31-EDO](https://en.wikipedia.org/wiki/31_equal_temperament) system. 
+On the [Microtonal System Comparison page](https://sakryukov.github.io/microtonal-fabric/code/tone-system-comparison), all the round shapes can be used as musical instrument keys. Lower octaves are closer to the center.
+Central areas are used to play chords. The round shapes at the center are hidden and are visualized when at least one note is added to a chord. Shift+note toggles a note of a chord (double click to clear the chord). For example, the [picture on the top](#image.title) shows an inversion of the harmonic seventh chord, at the moment of playing, in the [31-EDO](https://en.wikipedia.org/wiki/31_equal_temperament) system. 
 
-The chords can be played by clicking at the center round areas. Besides, if more than two chords are selected, two different temperaments can be listened in fast alteration on the special control "<u>C</u>ompare (Ctrl+ &larr; &rarr;)". When sound is activated, moving a mouse pointer between two halves quickly alters the chords:
+The chords can be played by clicking at the centers of the round areas. Besides, if more than two chords are selected, two different temperaments can be listened to in fast alteration on the special control "<u>C</u>ompare (Ctrl+ &larr; &rarr;)". When sound is activated, moving a mouse pointer between two halves quickly alters the chords:
 
 ![Chord Comparer](comparer.png)
 
-Now, let's consider the circular keyboards to be used for study of different tone systems.
+Now, let's consider the circular keyboards to be used for the study of different tone systems.
 
 [Just Intonation](https://en.wikipedia.org/wiki/Just_intonation) compared with 12-EDO (gray):<br/>
 ![Just Intonation Keyboard](just.png)
 
-Just intonation is shown in comparison with the positions of [Common-practice](https://en.wikipedia.org/wiki/Common_practice_period) [12-EDO](https://en.xen.wiki/w/12edo) *semitones* depicted as gray radial lines. This picture reveals the bigger problem of tuning accuracy of 12-EDO: pure rendering of 6th and, even more importantly, 3rd, which is the central note of very important [major chord](https://en.wikipedia.org/wiki/Major_chord). The errors are 15.6 [cents](https://en.wikipedia.org/wiki/Cent_%28music%29) for 6th and 13.7 for 3rd. Most probably people can hear the pretty subtle difference, perhaps after certain training, but the difference becomes more apparent in cases where inter-string resonances of the instruments (like piano or guitar) are noticeable.
+Just intonation is shown in comparison with the positions of [Common-practice](https://en.wikipedia.org/wiki/Common_practice_period) [12-EDO](https://en.xen.wiki/w/12edo) *semitones* depicted as gray radial lines. This picture reveals the bigger problem of tuning accuracy of 12-EDO: pure rendering of the 6th and, even more importantly, 3rd, which is the central note of the very important [major chord](https://en.wikipedia.org/wiki/Major_chord). The errors are 15.6 [cents](https://en.wikipedia.org/wiki/Cent_%28music%29) for the 6th and 13.7 for the 3rd. Most probably people can hear the pretty subtle difference, perhaps after certain training, but the difference becomes more apparent in cases where inter-string resonances of the instruments (like piano or guitar) are noticeable.
 
-I want to remind that [Just Intonation](https://en.wikipedia.org/wiki/Just_intonation) is based on pure [harmonic relationships]((https://www.codeproject.com/Articles/1201737/Musical-Study-with-Isomorphic-Computer-Keyboard#heading.rational-and-irrational-numbers)) between tones, is very important for comparison of tone systems, but is fairly impractical for playing of most musical pieces due to the lack of [transpositional equivalence](https://en.wikipedia.org/wiki/Transposition_%28music%29#Transpositional_equivalence).
+Note that [Just Intonation](https://en.wikipedia.org/wiki/Just_intonation) is based on pure [harmonic relationships]((https://www.codeproject.com/Articles/1201737/Musical-Study-with-Isomorphic-Computer-Keyboard#heading.rational-and-irrational-numbers)) between tones, is very important for comparison of tone systems, but is fairly impractical for the playing of most musical pieces due to the lack of [transpositional equivalence](https://en.wikipedia.org/wiki/Transposition_%28music%29#Transpositional_equivalence).
 
 [12-EDO](https://en.xen.wiki/w/12edo):<br/>
 ![12-EDO Keyboard](12-EDO.png)
@@ -139,24 +139,24 @@ I want to remind that [Just Intonation](https://en.wikipedia.org/wiki/Just_inton
 [19-EDO](https://en.wikipedia.org/wiki/19_equal_temperament):<br/>
 ![19-EDO Keyboard](19-EDO.png)
 
-With [19-EDO](https://en.wikipedia.org/wiki/19_equal_temperament), two different intervals between the degrees of [major scale](https://en.wikipedia.org/wiki/Major_scale): 2 (for B-C and E-F intervals) or 3 microtones. So, there is only one kind of sharp and one kind of flat, &plusmn;1 microtone. However, I avoid using ♯ and ♭ inside minor second intervals, to avoid the choice between [enharmonically equivalent](https://en.wikipedia.org/wiki/Enharmonic) notations, because, in microtonal systems, enharmonic equivalence generally cannot be assumed -- it is not the case for the 3-microtone minor second intervals.
+With [19-EDO](https://en.wikipedia.org/wiki/19_equal_temperament), two different intervals between the degrees of the [major scale](https://en.wikipedia.org/wiki/Major_scale): 2 (for B-C and E-F intervals) or 3 microtones. So, there is only one kind of sharp and one kind of flat, &plusmn;1 microtone. However, I avoid using ♯ and ♭ inside minor second intervals, to avoid the choice between [enharmonically equivalent](https://en.wikipedia.org/wiki/Enharmonic) notations, because, in microtonal systems, enharmonic equivalence generally cannot be assumed -- it is not the case for the 3-microtone minor second intervals.
 
 [31-EDO](https://en.wikipedia.org/wiki/31_equal_temperament):<br/>
 ![31-EDO Keyboard](31-EDO.png)
 
-With [31-EDO](https://en.wikipedia.org/wiki/31_equal_temperament), there are two sharp and flat intervals, 2 and 4 microtones. "Inverted" order of ♯ and ♭ is not a mistake, because they are sharp and flat based on different notes. For example, all the tones in C to D and B to C intervals are:
+With [31-EDO](https://en.wikipedia.org/wiki/31_equal_temperament), there are two sharp and flat intervals, 2 and 4 microtones. The "inverted" order of ♯ and ♭ is not a mistake, because they are sharp and flat based on different notes. For example, all the tones in C to D and B to C intervals are:
 
 C &mdash; D♭² &mdash; Db &mdash; C♯ &mdash; C♯² &mdash; D
 B &mdash; C♭ &mdash; B♯ &mdash; C
 
-Here, I denoted "double flat" (also known as half-sharp if counted from C) as D♭² and (also known as half-flat if counted from D) C♯². The Unicode characters for half/double sharp/flat are not standardized (and many other characters for musical notation are not implemented be default on most systems), so I decided to use my own notation, which is not shown on small keys.
+Here, I denoted "double flat" (also known as half-sharp if counted from C) as D♭² and (also known as half-flat if counted from D) C♯². The Unicode characters for half/double sharp/flat are not standardized (and many other characters for musical notation are not implemented by default on most systems), so I decided to use my own notation, which is not shown on small keys.
 
 This way, there is only one kind of ♯ and one kind of ♭: &plusmn;2 microtones.
 
-So, there are two different intervals between the degrees of [major scale](https://en.wikipedia.org/wiki/Major_scale): either 5 or 3 (between B and C and between E and F) microtones. It makes 31 microtones and very good rendering of [major scale](https://en.wikipedia.org/wiki/Major_scale). At the same time altered intervals and chord can sound very differently.  
+So, there are two different intervals between the degrees of the [major scale](https://en.wikipedia.org/wiki/Major_scale): either 5 or 3 (between B and C and between E and F) microtones. It makes 31 microtones and very good rendering of the [major scale](https://en.wikipedia.org/wiki/Major_scale). At the same time altered intervals and chords can sound very differently.  
 
 <p id="special-chord-tables">
-Another way to define a chord is based on the degrees of the scale, chosen from a table.
+Another way to define a chord is based on the degrees of the scale, which can be chosen from a table.
 </p>
 
 This is the example of the table for [19-EDO](https://en.wikipedia.org/wiki/19_equal_temperament) showing the default selection of [major chord](https://en.wikipedia.org/wiki/Major_chord):
@@ -165,31 +165,31 @@ This is the example of the table for [19-EDO](https://en.wikipedia.org/wiki/19_e
 
 For [31-EDO](https://en.wikipedia.org/wiki/31_equal_temperament), the table is wider, because two more columns are added: "Double ♯" and "Double ♭".
 
-For [Just Intonation](https://en.wikipedia.org/wiki/Just_intonation) and [12-EDO](https://en.xen.wiki/w/12edo), I imposed some constraints to keep the chords matching the definition for "valid" chord accepted as modern music term. For example, for [12-EDO](https://en.wikipedia.org/wiki/Equal_temperament) there major/minor/diminished/augmented triad is always either present or replaced with sus2 or sus4 — look at the last line:
+For [Just Intonation](https://en.wikipedia.org/wiki/Just_intonation) and [12-EDO](https://en.xen.wiki/w/12edo), I imposed some constraints to keep the chords matching the definition of a "valid" chord accepted as a modern music term. For example, for [12-EDO](https://en.wikipedia.org/wiki/Equal_temperament) there major/minor/diminished/augmented triad is always either present or replaced with sus2 or sus4 — look at the last line:
 
 ![12-EDO Chord Table](table-12-EDO.png)
 
-This is not the case for microtonal systems. For consistency, generalization and simplification, any subset of notes can be chosen, even the empty set, but no more than one alteration per zone. Note that 6th and 7th zones are not united for microtonal systems, because generally there is no [enharmonically equivalent](https://en.wikipedia.org/wiki/Enharmonic) between 6th and 7&minus;; by the same reasons, there are no empty table cells for altered notes.
+This is not the case for microtonal systems. For consistency, generalization, and simplification, any subset of notes can be chosen, even the empty set, but no more than one alteration per zone. Note that the 6th and 7th zones are not united for microtonal systems, because generally there is no [enharmonically equivalent](https://en.wikipedia.org/wiki/Enharmonic) between 6th and 7&minus;; for the same reasons, there are no empty table cells for altered notes.
 
 The chord [inversions](https://en.wikipedia.org/wiki/Inversion_(music)) are created by the check boxes "/2" and "/4", which lower notes by one or two octaves. 
 
-The same system of chord selection, based on shared JavaScript code, is used for "big" chromatic lattice keyboard. Such selection provides the only way to play a chord in one click.
+The same system of chord selection, based on shared JavaScript code, is used for the "big" chromatic lattice keyboard. Such selection provides the only way to play a chord in one click.
 
 ### Microtonal Chromatic Lattice
 
-Basically, the idea of the keyboard structure is based on [Wicki-Hayden layout](https://en.wikipedia.org/wiki/Wicki-Hayden_note_layout), but the geometry is different. Instead of being hexagonal, it is rectangular, which is simpler and better matches the symmetry of the grid of tone relationships.
+Basically, the idea of the lattice is based on the [Wicki-Hayden layout](https://en.wikipedia.org/wiki/Wicki-Hayden_note_layout), but the geometry is different. Instead of being hexagonal, it is rectangular, which is simpler and better matches the symmetry of the grid of tone relationships.
 
-The keyboard takes the same share, dimensions and structure as the one offered in the [previous article](https://www.codeproject.com/Articles/1201737/Musical-Study-with-Isomorphic-Computer-Keyboard). Its *fragment* is shown for [31-EDO](https://en.wikipedia.org/wiki/31_equal_temperament):
+The keyboard takes the same share, dimensions, and structure as the one offered in the [previous article](https://www.codeproject.com/Articles/1201737/Musical-Study-with-Isomorphic-Computer-Keyboard). Its *fragment* is shown for [31-EDO](https://en.wikipedia.org/wiki/31_equal_temperament):
 
 ![Microtonal Chromatic Lattice](keyboard.png)
 
-The green area is used to play part of the tones using the physical computer keyboard (sorry, modeled based on standard US keyboard layout, without any options; anyone who really needs something else is welcome to address me).
+The green area is used to play part of the tones using the physical computer keyboard (sorry, modeled based on standard US keyboard layout, without any options; anyone who needs something else is welcome to address me).
 
-The controls are different. First of all, one of the three tone systems and four layouts ([12-EDO](https://en.xen.wiki/w/12edo), 12-EDO in [Jankó layout](https://en.wikipedia.org/wiki/Jank%C3%B3_keyboard), [19-EDO](https://en.wikipedia.org/wiki/19_equal_temperament) and [31-EDO](https://en.wikipedia.org/wiki/31_equal_temperament)) can be chosen at any time.
+The controls are different. First of all, one of the three tonal systems and four layouts ([12-EDO](https://en.xen.wiki/w/12edo), 12-EDO in [Jankó layout](https://en.wikipedia.org/wiki/Jank%C3%B3_keyboard), [19-EDO](https://en.wikipedia.org/wiki/19_equal_temperament), and [31-EDO](https://en.wikipedia.org/wiki/31_equal_temperament)) can be chosen at any time.
 
-Other controls enable optional highlighting of chords (played prefixed with Ctrl+) and chosen from the tables [described above](#special-chord-tables) and chord note marking using the scale degree notation.
+Other controls enable optional highlighting of chords (played prefixed with Ctrl+) that are chosen from the tables [described above](#special-chord-tables) and chord note marking using the scale degree notation.
 
-First surprising thing is that the tone layout looks nearly identical to that of 12-EDO. This layout is very special: 1) it is very suggestive of harmonic relationship between notes; 2) the layouts for different tone systems are "locally identical". The differences become apparent, for example, in the attempt to perform [harmonic modulation](https://en.wikipedia.org/wiki/Modulation_%28music%29), which is very easy though, due to chromatic nature of the keyboard. How it works?
+First surprising thing is that the tone layout looks nearly identical to that of 12-EDO. This layout is very special: 1) it is very suggestive of harmonic relationship between notes; 2) the layouts for different tone systems are "locally identical". The differences become apparent, for example, in the attempt to perform [harmonic modulation](https://en.wikipedia.org/wiki/Modulation_%28music%29), which is very easy though, due to the chromatic nature of the keyboard. How does it work?
 
 Here is how the layout is structured:
 
@@ -209,7 +209,7 @@ The intervals in semitones depend on the tone system:
 <tr>
 </table>
 
-Obviously, the ratio values 3/2, 4/3 and 9/8 are only approximated by microtonal intervals, because rational frequency ratio values are [impossible with equal temperaments](https://www.codeproject.com/Articles/1201737/Musical-Study-with-Isomorphic-Computer-Keyboard#heading.rational-and-irrational-numbers).
+Obviously, the ratio values 3/2, 4/3, and 9/8 are only approximated by microtonal intervals, because rational frequency ratio values are [impossible with equal temperaments](https://www.codeproject.com/Articles/1201737/Musical-Study-with-Isomorphic-Computer-Keyboard#heading.rational-and-irrational-numbers).
 
 ## Implementation
 
@@ -220,7 +220,7 @@ The implementation section does not cover all the Microtonal Fabric techniques, 
 Both applications have "Start" or power-on ![power-on](standby-on.png) buttons. Before the user clicks the button, nothing playable is visualized. Why? Basically, this is done to avoid the loss of the very first note played by the user. It would happen due to Web Audio *autoplay blocking*. The audio is available only after the user has interacted with the site (by clicking, tapping, pressing keys, etc.) Please see the [autoplay documentation] for more detail.
 
 The major part of the initialization of the Microtonal Fabric application happens in response to the click on this button. In particular, the keyboards become visible, and [AudioContext](https://developer.mozilla.org/en-US/docs/Web/API/AudioContext) is initialized. If `AudioContext` was initialized before the first user input event, the very first sound activation would have been ignored by the Web Audio system.
-
+h
 ### Sound Synthesis
 
 Firstly, sound synthesis is totally based on [Web Audio API](https://developer.mozilla.org/en-US/docs/Web/API/Web_Audio_API) implemented by nearly all major browsers. Presently, it is based on the [W3C working draft of August 2017](https://webaudio.github.io/web-audio-api).
@@ -229,13 +229,13 @@ Since v.&thinsp;5.0, the synthesis is fully based on the code of Sound Builder a
 
 ### Sound Quality
 
-Because of the problems explained above, I would consider the quality as basically acceptable, but far from decent. First of all, I just failed to find sufficient number of good samples. I would gladly try to use any data or advice. Perhaps sample-free synthesis of sounds from scratch. Perhaps sample-free synthesis of sounds from scratch based on [Web Audio API](https://developer.mozilla.org/en-US/docs/Web/API/Web_Audio_API) would be more suitable.
+Because of the problems explained above, I would consider the quality as basically acceptable, but far from decent. First of all, I just failed to find a sufficient number of good samples. I would gladly try to use any data or advice. Perhaps sample-free synthesis of sounds from scratch. Perhaps the sample-free synthesis of sounds from scratch based on [Web Audio API](https://developer.mozilla.org/en-US/docs/Web/API/Web_Audio_API) would be more suitable.
 
 ### Scalable Vector Graphics
 
-The on-screen keyboards of the Mictotonal Fabric applications use Scalable Vector Graphics based on embedded `<svg>` [elements](https://developer.mozilla.org/en-US/docs/Web/API/SVGGElement). The applications use two methods of the keyboard initialization.
+The on-screen keyboards of the Mictotonal Fabric applications use Scalable Vector Graphics based on embedded `<svg>` [elements](https://developer.mozilla.org/en-US/docs/Web/API/SVGGElement). The applications use two methods of keyboard initialization.
 
-The first method is based on visual development of the keyboard. The entire keyboard is prepared using some vector graphics editor. I use and recommend open-source [InkScape](https://en.wikipedia.org/wiki/Inkscape). In the code, the keyboard is initialized based on pre-created SVG elements.
+The first method is based on the visual development of the keyboard. The entire keyboard is prepared using some kind of vector graphics editor. I use and recommend open-source [InkScape](https://en.wikipedia.org/wiki/Inkscape). In the code, the keyboard is initialized based on pre-created SVG elements.
 
 The second method is the programmatic population of the empty or dynamically created `<svg>` element.
 
@@ -243,9 +243,9 @@ For different applications, both methods are useful. Let's discuss them.
 
 #### Visual Development
 
-This method can be useful for *ad-hoc* programming, when the keyboard is somewhat irregular and not too big. It is used for the tone system comparison application.
+This method can be useful for *ad-hoc* programming when the keyboard is somewhat irregular and not too big. It is used for the tone system comparison application.
 
-When a keyboard is created with a vector graphics editor, it can be cleaned up: redundant metadata and identifiers can be removed, and the elements to be used in the code should be named in a consistent way. Besides, numeric colors should better be replaced with suitable CSS names. Not all elements needs to be identified with the `id` attribute; the references to most of them can be obtained via the enumeration. This technique is shown in the source code file "tone-system-comparison/main-circular.js":
+When a keyboard is created with a vector graphics editor, it can be cleaned up: redundant metadata and identifiers can be removed, and the elements to be used in the code should be named consistently. Besides, numeric colors should better be replaced with suitable CSS names. Not all elements need to be identified with the `id` attribute; the references to most of them can be obtained via enumeration. This technique is shown in the source code file "tone-system-comparison/main-circular.js":
 
 ```{lang=JavaScript}{id=code.svg.visual}
 const populateKeyboard = function (keyboard, chordActivator, toneSet, tonalSystem) {
@@ -285,7 +285,7 @@ The references to the elements identified by their `id` attribute can be best ob
 
 #### Programmatical Development
 
-Programmatical SVG development is much more maintainable in most cases, especially when graphics is more complicated and regular, which is the case for musical keyboards build based on some regular tonal system. Therefore it is uses for the Multi-EDO Chromatic Lattice application.
+Programmatical SVG development is much more maintainable in most cases, especially when graphics is more complicated and regular, which is the case for musical keyboards that are built based on some regular tonal system. Therefore, it is used for the Multi-EDO Chromatic Lattice application.
 
 The skeleton sample of the SVG population is shown in "Multi-EDO/keyboard.js":
 
@@ -322,71 +322,19 @@ const keyboard = (definitionSet) =&gt; {
 ```
 Keyboard structure is used to create a keyboard event handler, see "multi-EDO/keyboard-handler.js" for the detail.
 
-For the detail, please see complete source code.
+For detail, please see the complete source code.
 
 ### Compatibility
 
 At the moment of writing, Web Audio API exists as a W3C editor's [draft of 7 November 2022](https://webaudio.github.io/web-audio-api). Nevertheless, the applications described in the present article work with most major browsers.
 
-Another advanced aspect is the use of SVG embedded in HTML. This feature is presently the part of [W3C Recommendation of October 28, 2014](https://www.w3.org/TR/html5/embedded-content-0.html#svg) and also should be quite usable.
+Another advanced aspect is the use of SVG embedded in HTML. This feature is presently the part of [W3C Recommendation of October 28, 2014](https://www.w3.org/TR/html5/embedded-content-0.html#svg), and also should be quite usable.
 
 Besides, more modern JavaScript syntax is used, including `const`, `let` and `for... of`, not supported by some old browsers.
 
-The applications are successfully tested on Google Chrome, Opera, Mozilla Firefox and Seamonkey.
+The applications are successfully tested on Google Chrome, Opera, Mozilla Firefox, and Seamonkey.
 
-Not too surprisingly, nothing works on Microsoft browsers, and by some reasons, not even Edge (despite Mozilla documentation claiming that both Audio API and embedded SVG are supported by Microsoft Edge). As these products often demonstrated lack of compliance throughout their history and improvements have been very limited, it seems to be practical to curb their operation with advanced applications and provide some information on their incompatibility. However, this brings us to the problem solved in not very trivial way.
-
-The problems start at the attempt to detect the browser or some separate feature and present some information on incompatible browser. Generally, if we have this code followed by some code unsupported by some browsers, it is impossible, because the whole thing, including detection code, may not execute at all. Why? Because JavaScript is not a pure interpreter. After loading, the script is "pre-compiled" on some lexical level. If this step fails, whole script fails, without execution of supportable part of code. This failure cannot be bypassed by putting the incompatible code in a `try` block.
-
-It looks like the only feasible general-purpose resolution of this problem is dynamic loading of scripts. The HTML file can include only one script via the use of the `script` element. This script can detect the browser, perform appropriate processing depending on the detection result and then load other scripts. The names of the scripts to be loaded need to be passed to the first script.
-
-This is how it works:
-
-```{lang=JavaScript}{id=code.good-browser}
-"use strict";
-
-function handleGoodBrowser(scripts, successAction, errorAction) {
-
-    // no "const", "let", lambda-like syntax () =&gt; {}, not "for... of Object",
-    // no String.prototype.includes -- it won't work with some bad browsers    
-
-    var saveWindowErrorHandler = window.onerror;
-    var saveBodyLoadHandler = document.body.onload;
-    var hasError = false;
-    window.onerror = function (event) {
-        hasError = true;
-    };
-    var currentOrder = 0;
-    function loadScript() {
-        if (currentOrder == scripts.length)
-            return;
-        var scriptElement = document.createElement("script");
-        scriptElement.src = scripts[currentOrder];
-        scriptElement.onload = function () {
-            currentOrder++;
-            loadScript();
-        }; //scriptElement.onload
-        scriptElement.onerror = function () {
-            throw new URIError("error");
-        }; //scriptElement.onerror
-        document.body.appendChild(scriptElement);
-    }; //loadScript
-    loadScript();
-    window.onerror = window.onerror;
-    document.body.onload = function () {
-        if (hasError && errorAction)
-            errorAction();
-        else if (!hasError && successAction)
-            successAction();
-        document.body.onload = saveBodyLoadHandler;
-    }; //if hasError
-
-}
-```
-
-The function `handleGoodBrowser` accepts array of script names relative to the name of the HTML file. So, instead of loading all the scripts using the `script` element, the developer needs to add only the script with `handleGoodBrowser` and pass the file names of other script in the actual argument of the call.
-
-The other scripts, all the scripts other than the one shown above, are loaded recursively via `loadScript` by one important reason: generally, scripts depend on each other, so the order of their execution is essential. This function guarantees that the scripts are loaded one by one, because each load entails adding next script in the array in DOM.
+Not too surprisingly, nothing works on Microsoft browsers, and, for some reason, not even Microsoft Edge (despite Mozilla documentation claiming that both Audio API and embedded SVG are supported by Microsoft Edge). As these products often demonstrated a lack of compliance throughout their history and improvements have been very limited, it seems to be practical to curb their operation with advanced applications and provide some information on their incompatibility. However, this brings us to the problem solved in not a very trivial way.
 
 ## Versions
 
@@ -395,32 +343,24 @@ Initial production version.
 
 #### 1.1.0{no-toc}
 * Added option "Use Computer Keyboard".
-* On application pages, added links to original publication.
+* On application pages, added links to the original publication.
 
-The option added is important because some key combinations such as Ctrl+W (usually, browser's close tab) are busy with the physical computer keyboard function.
-
-#### 2.0.0{no-toc}
-* Added dynamic script loading and detection of incompatible browsers.
-
-Now the compatible browser is detected as the one which successfully loads all scripts. No criteria related to user agent product names, manufacturers or versions are used.
-
-#### 2.1.0{no-toc}
-* Refined [detection of incompatible browsers](##heading-compatibility).
+The option added is important because some key combinations such as Ctrl+W (usually, the browser's close tab) are busy with the physical computer keyboard function.
 
 #### 4.0.0{no-toc}
 * Touch screen support.
 
 #### 4.1.0{no-toc}
-* Keyboard layout is generated dynamically rather then imported from vector graphics image; it helped to make keyboard layout variable.
-* Markup of the hardware keyboard on a on-screen keyboard (shown in green) is automatically calculated based on on-screen keyboard.
+* The keyboard layout is generated dynamically rather than imported from a vector graphics image; it helped to make the keyboard layout variable.
+* Markup of the hardware keyboard on an on-screen keyboard (shown in green) is automatically calculated based on the on-screen keyboard data.
 * Several minor improvements.
 
 #### 4.2.0{no-toc}
-* Major re-factoring performed to improve modularity and untangle dependencies between modules.
-* Unification of keyboard.html and tone-system-comparison.html applications, improved code, reduced unwanted dependencies between applications.
-* Developed conversion of objects to read-only, recursive or not, applied to definition sets of applications.
-* Solved the problem of silent first note in file-based instruments, due to the use of futures and a need for defer.
-* Fixed and improved the mechanism of detection of incompatible browsers, discriminated Microsoft Edge by its features.
+* Major refactoring to improve modularity and untangle dependencies between modules.
+* Unification of keyboard.html and tone-system-comparison.html applications, improved code, and reduced unwanted dependencies between applications.
+* Developed conversion of objects to read-only, recursive or not, applied to the definition sets of applications.
+* Solved the problem of the silent first note in file-based instruments, due to the use of futures and a need for deferring.
+* Fixed and improved the mechanism of detection of incompatible browsers, and discriminated Microsoft Edge by its features.
 
 #### 5.0{no-toc}
 Sound generation is migrated to the use of [Sound Builder](https://www.codeproject.com/Articles/5268512/Sound-Builder).
