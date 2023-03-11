@@ -366,6 +366,6 @@ Sound generation is migrated to the use of [Sound Builder](https://www.codeproje
 
 #### 5.4{no-toc}
 * Wave FFT (see [Sound Builder](https://www.codeproject.com/Articles/5268512/Sound-Builder)) is migrated to .NET from .NET Core.
-* Refactoring related to the newly created project name, "Microtonal Framework".
+* Refactoring related to the newly created project name, "Microtonal Fabric".
 
 <!-- copy to CodeProject to here --------------------------------------------->
