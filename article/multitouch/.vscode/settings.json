@@ -1,0 +1,96 @@
+// Original publication:
+// https://www.codeproject.com/Articles/1194125/Article-Writing-Toolchain-with-VSCode
+{
+    "python.pythonPath": "c:\\app\\Python\\python2\\python.exe",
+    "python.linting.pylintEnabled": true,
+    "python.formatting.provider": "yapf",
+    "cSpell.words": [
+        "abnormal",
+        "exit",
+        "iskeyword",
+        "normal",
+        "on",
+        "wait"
+    ]
+    "markdown.extension.convertToHtml.reportSuccess": true, // default
+    "markdown.extension.convertToHtml.showHtmlInBrowser": false, // default
+    "markdown.extension.convertToHtml.embedCss": true, // default
+    "markdown.extension.convertToHtml.outputPath": "",
+    "markdown.extension.convertToHtml.defaultListElementAttributeSet": {
+        "style": "list-style-type: none; margin-top:0; margin-bottom:0;"
+    },    
+    // markdown-it options, all defaults:
+    "markdown.extension.convertToHtml.options.allowHTML": true,
+    // "markdown-it-named-headers" plug-in, adds id attributes to h1 .. h6 elements:
+    // converts "link-like" text: for ex., "http://my.com" ->
+    // <a href="http://my.com">"http://my.com"</a>: 
+    "markdown.extension.convertToHtml.options.linkify": false,
+    // replaces new line marker with <br/>:
+    "markdown.extension.convertToHtml.options.br": true,
+    // typographer replaces -- --- with en dash and em dash, smart quotes, etc.:
+    "markdown.extension.convertToHtml.options.typographer": true,
+    // applicable if typographer is true:
+    // 4 characters, replacement for "" and '':
+    "markdown.extension.convertToHtml.options.smartQuotes": "“”‘’",
+    "markdown.extension.convertToHtml.titleLocatorRegex": "^(.*?)\\[\\]\\(title\\)",    
+    "markdown.extension.convertToHtml.titleLocatorDecoratorStyle": {
+        "cursor": "copy",
+        "borderRadius": "5px",
+        "color": "white",
+        "backgroundColor": "navy"
+    },
+    "markdown.extension.convertToHtml.tocIncludeLevels": [ 1, 2, 3 ],
+    "markdown.extension.convertToHtml.options.additionalPlugins": {
+        "absolutePath": "/app/nodejs.markdown-it-plugins/node_modules",
+        "relativePath": "", // relative to workspace
+        "plugins": [
+            {
+                "name": "markdown-it-attrs",
+                "enable": true,
+                "syntacticDecorators": [
+                    { // for "id" attribute {id=...}:
+                        "enable": true,
+                        "regexString": "\\{id\\=([^\\s]+?)\\}",
+                        "tooltipFormat": "id=\"%s\"",
+                        "style": {
+                            "cursor": "pointer",
+                            "color": "black",
+                            "backgroundColor": "rgba(100,0,200,0.1)",
+                            "border": "solid thin black"
+                        }
+                    },
+                    { // for "class" attribute {.class-name}:
+                        "enable": true,
+                        "regexString": "\\{\\.([^\\s]+?)\\}",
+                        "tooltipFormat": "CSS class: \"%s\"",
+                        "style": {
+                            "cursor": "copy",
+                            "color": "darkBlue",
+                            "backgroundColor": "rgba(200,50,200,0.2)",
+                            "border": "solid thin black"
+                        }
+                    }
+                ]                
+            }            
+        ]
+    },
+    "markdown.styles": [
+        // same styles used for preview are used in converted HTML files:
+        "style.css", 
+        "moreStyles.css"
+    ],
+    "markdown.preview.fontSize": 12,
+    // Controls the line height used in the markdown preview. This number is relative to the font size.
+    "markdown.preview.lineHeight": 1.4,
+    // Very important: remove entred words from suggestions, leave only markdown syntax:
+    "editor.wordBasedSuggestions": false,
+    "[markdown]": { // for Markdown language id only:
+        "editor.codeLens": true,
+        "editor.lineNumbers": "off",
+        "editor.rulers": [
+            79 //CodeProject requirements for source code samples
+        ]
+    },
+    "git.enabled": false,
+    "cSpell.enabled": true
+}
