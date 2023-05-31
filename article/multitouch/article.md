@@ -147,4 +147,15 @@ const setMultiTouch = (
 };
 ```
 
+## Application Using Multitouch Control
+
+<table>
+<tr><th>Application</th><th>Source code</th><th>Live play</th></tr>
+<tr><td>Multi-EDO</td><td>Multi-EDO</td><td>Multi-EDO</td></tr>
+<tr><td>29-EDO</td><td>29-EDO</td><td>29-EDO</td></tr>
+<tr><td>Microtonal Playground</td><td>microtonal-playground</td><td>1<br/>2<br/>3</td></tr>
+<tr><td>Kite Giedraitis<br/>(under development)</td><td>Kite.Giedraitis</td><td>Kite.Giedraitis</td></tr>
+
+</table>
+
 <!-- copy to CodeProject to here --------------------------------------------->

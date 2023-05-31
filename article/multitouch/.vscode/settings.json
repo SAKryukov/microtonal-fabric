@@ -77,7 +77,6 @@
     "markdown.styles": [
         // same styles used for preview are used in converted HTML files:
         "style.css", 
-        "moreStyles.css"
     ],
     "markdown.preview.fontSize": 12,
     // Controls the line height used in the markdown preview. This number is relative to the font size.
