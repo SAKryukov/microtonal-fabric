@@ -197,5 +197,13 @@ setMultiTouch(
     } //elementHandler
 );
 ```
+"ui.components/abstract-keyboard.js"
+
+```{lang=JavaScript}{id=code-abstract-keyboard}
+setMultiTouch(
+    parentElement,
+    keyElement => this.isTouchKey(parentElement, keyElement),
+    (keyElement, _, on) => { handler(keyElement, on); });
+```
 
 <!-- copy to CodeProject to here --------------------------------------------->
