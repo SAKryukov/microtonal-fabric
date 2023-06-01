@@ -40,6 +40,8 @@ C &mdash; D♭² &mdash; Db &mdash; C♯ &mdash; C♯² &mdash; D
 
 ## Implementation
 
+[Touch events](https://developer.mozilla.org/en-US/docs/Web/API/Touch_events)
+
 ### Multitouch
 
 The function `setMultiTouch` assumes the following UI model of the multitouch sensitive area: a `container` HTML or SVG element containing one or more HTML or SVG child elements, they can be direct or indirect children.
@@ -147,15 +149,53 @@ const setMultiTouch = (
 };
 ```
 
-## Application Using Multitouch Control
+## Microtonal Fabric Applications Using Multitouch Control
 
 <table>
 <tr><th>Application</th><th>Source code</th><th>Live play</th></tr>
-<tr><td>Multi-EDO</td><td>Multi-EDO</td><td>Multi-EDO</td></tr>
-<tr><td>29-EDO</td><td>29-EDO</td><td>29-EDO</td></tr>
-<tr><td>Microtonal Playground</td><td>microtonal-playground</td><td>1<br/>2<br/>3</td></tr>
-<tr><td>Kite Giedraitis<br/>(under development)</td><td>Kite.Giedraitis</td><td>Kite.Giedraitis</td></tr>
-
+<tr><td>Multi-EDO</td><td>Multi-EDO</td><td><a href="https://sakryukov.github.io/microtonal-fabric/code/Multi-EDO">Multi-EDO</a></td></tr>
+<tr><td>29-EDO</td><td>./29-EDO</td><td><a href="https://sakryukov.github.io/microtonal-fabric/code/29-EDO">29-EDO</a></td></tr>
+<tr><td>Microtonal Playground</td><td>./playground</td><td>
+    <a href="https://sakryukov.github.io/microtonal-fabric/code/playground?user.data">Aura's Diatonic Scales</a><br/>
+    <a href="https://sakryukov.github.io/microtonal-fabric/code/playground?custom/12-EDO.user.data">Common-practice 12-EDO</a><br/>
+    <a href="https://sakryukov.github.io/microtonal-fabric/code/playground?custom/shruti.user.data">Shruti Scales</a><br/>
+    <a href="https://sakryukov.github.io/microtonal-fabric/code/playground?custom/chinese.user.data">Traditional Chinese Tonal System</a><br/>
+    <a href="https://sakryukov.github.io/microtonal-fabric/code/playground?custom/customized.user.data"></a>Microtonal Playground Customization Demo<br/>
+</td></tr>
+<tr><td>Kite Giedraitis<br/>(under development)</td><td>./Kite.Giedraitis</td><td>https://sakryukov.github.io/microtonal-fabric/code/Kite.Giedraitis</td></tr>
 </table>
+
+## Usage Examples
+
+"29-EDO/ui/keyboard.js":
+
+```{lang=JavaScript}{id=code-29-edo}
+setMultiTouch(
+    element,
+    element => element.constructor == SVGRectElement,
+    (element, _, on) =&gt; handler(element, on));
+```
+
+"Kite.Giedraitis/ui/keyboard.js":
+
+```{lang=JavaScript}{id=code-round}
+setMultiTouch(
+    svg.element,
+    element => element.constructor == SVGCircleElement, 
+    (element, _, on) =&gt; handler(element, on));
+```
+
+"Multi-EDO/keyboard-handler.js":
+
+```{lang=JavaScript}{id=code-dictionary}
+setMultiTouch(
+    definitionSet.elements.keyboard,
+    (element) => { return element.dataset.multiTouchTarget; },
+    (element, touch, on) => {
+        const volume = 1;
+        element.key.activate(element.key, false, on, volume);
+    } //elementHandler
+);
+```
 
 <!-- copy to CodeProject to here --------------------------------------------->
