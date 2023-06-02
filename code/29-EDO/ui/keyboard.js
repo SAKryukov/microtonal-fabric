@@ -159,7 +159,7 @@ class Keyboard {
             setMultiTouch(
                 element,
                 element => element.constructor == SVGRectElement,
-                (element, _, on) => { handler(element, on); });
+                (element, _, on) => handler(element, on));
             for (let key of keys) {
                 key.onmousedown = event => handler(event.target, true);
                 key.onmouseup = event => handler(event.target, false);

@@ -98,7 +98,7 @@ const keyboardHandling = (definitionSet, keyboardStructure, chordLayoutFinder, s
             definitionSet.elements.keyboard,
             (element) => { return element.dataset.multiTouchTarget; }, //elementSelector
             (element, touch, on) => {
-                let volume = 1;
+                const volume = 1;
                 element.key.activate(element.key, false, on, volume);
             } //elementHandler
         );    

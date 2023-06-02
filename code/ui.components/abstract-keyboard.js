@@ -145,7 +145,7 @@ class AbstractKeyboard {
             setMultiTouch(
                 parentElement,
                 keyElement => this.isTouchKey(parentElement, keyElement),
-                (keyElement, _, on) => { handler(keyElement, on); });
+                (keyElement, _, on) => handler(keyElement, on));
             for (let key of this.#implementation.keyList) {
                 key.onmousedown = event => handler(event.target, true);
                 key.onmouseup = event => handler(event.target, false);
