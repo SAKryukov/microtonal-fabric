@@ -270,6 +270,14 @@ Apparently, this is just the imitation of the interface mechanism found in some 
 
 ### Using Extra Data
 
+Note that none of the examples uses the second argument parameter of the handler `handler`, accepted as a the second `setMultiTouch` argument, the argument `touchObject` of the [Touch](https://developer.mozilla.org/en-US/docs/Web/API/Touch) type. Also, the last argument of `setMultiTouch`, the handler `sameElementHandler` is not used. However, these arguments are fully functional and can be used. They are reserved for advanced use.
+
+The `Touch` argument passed to `handler` is used to get additional information on the original touch event. In particular, I've tried to use the values `Touch.radiusX` and `Touch.radiusY`. My idea was to evaluate the area of the contact of the touchscreen with a finger. This information could be used to derive an amount of pressure, and hence, adjust sound volume based on this value, to add some dynamics to the performance. However, my experiments demonstrated that the performer poorly controls this value, and it is not the same as actual pressure. The more principle problem of those `Touch` member properties is that their change does not trigger any touch events; an event is triggered only when the centroid of the touch is changed. Nevertheless, it is obvious that the `Touch` data can be useful for the implementation of some advanced effect.
+
+The argument `sameElementHandler` of the function `setMultiTouch` is called when a touch event is triggered when a location of the touch remains within the same `element` as a previous touch event. Apparently, such events should not modify the activation state of the `element`. At the same time, such events can be used for the implementation of finer techniques. For example, the motion of a finger within the same key can be interpreted as finger-controlled `vibrato`. 
+
+All the finer techniques mentioned above are the matter of further research.
+
 ## Conclusions
 
 <!-- copy to CodeProject to here --------------------------------------------->
