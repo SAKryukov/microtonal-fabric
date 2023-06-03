@@ -220,13 +220,26 @@ setMultiTouch(
 setMultiTouch(
     parentElement,
     keyElement => this.isTouchKey(parentElement, keyElement),
-    (keyElement, _, on) => { handler(keyElement, on); });
+    (keyElement, _, on) => handler(keyElement, on));
 ```
-### Virtual Keyboard
+### Abstract Keyboard
 
-IInterface &#x25C1;― IKeyboardGeometry 
+`IInterface` (agnostic/interfaces.js") &#x25C1;&#x2014; `IKeyboardGeometry` ("ui.components\abstract-keyboard.js")
 
-`VirtualKeyboard` &#x25C1;― `VirtualKeyboard` &#x25C1;― `VirtualKeyboard` &#x25C1;― `VirtualKeyboard`
+`VirtualKeyboard` ("ui.components\abstract-keyboard.js") &#x25C1;&#x2500; `GridKeyboard` ("ui.components\grid-keyboard.js") &#x25C1;― `PlaygroungKeyboard` ("playground\ui\playground-keyboard.js")
+
+"ui.components\abstract-keyboard.js":
+
+```{lang=JavaScript}{id=code-ikeyboardgeometry}
+class IKeyboardGeometry extends IInterface {
+    createKeys(parentElement) {}
+    createCustomKeyData(keyElement, index) {}
+    highlightKey(keyElement, keyboardMode) {}
+    isTouchKey(parentElement, keyElement) {} // for touch interface
+    get defaultChord() {} // should return array of indices of keys in default chord
+    customKeyHandler(keyElement, keyData, on) {} // return false to stop embedded handling
+}
+```
 
 ### Using Extra Data
 
