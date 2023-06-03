@@ -85,9 +85,9 @@ The function accepts four input arguments, `container` and three handlers:
 - `elementSelector`: this hander `element => bool` selects relevant children of the `contaner`, if this handler returns `false`, the event is ignored. Essentially, this handler is used by the user code to define the HTML or SVG elements to be interpreted as keys of some keyboard represented by the `container`.
 - `elementHandler`: this handler `(element, Touch touchObject, bool on) => undefined` is used to implement the main functionality, for example, produce sounds in response to the keyboard events; the handler accepts `element`, a touch object, and a Boolean `on` argument showing if this is an on of off action. Basically, this handler calls a general semantic handler which can be triggered in different way, for example, through a keyboard or a mouse. Essentially, it implements the action triggered when a keyboard key, represented by `element` is activated or deactiveted, depending on the value of `on`. 
 
-"ui.components/multitouch.js":
+"ui.components/multitouch.js":{id=code-multitouch}
 
-```{lang=JavaScript}{id=code-multitouch}
+```{lang=JavaScript}
 "use strict";
 
 const setMultiTouch = (
@@ -184,39 +184,27 @@ const setMultiTouch = (
 
 ### Usage Examples
 
-"29-EDO/ui/keyboard.js":
+"29-EDO/ui/keyboard.js":{id=code-29-edo}
 
-```{lang=JavaScript}{id=code-29-edo}
+```{lang=JavaScript}
 setMultiTouch(
     element,
     element => element.constructor == SVGRectElement,
     (element, _, on) =&gt; handler(element, on));
 ```
 
-"Kite.Giedraitis/ui/keyboard.js":
+"Kite.Giedraitis/ui/keyboard.js":{id=code-round}
 
-```{lang=JavaScript}{id=code-round}
+```{lang=JavaScript}
 setMultiTouch(
     svg.element,
     element => element.constructor == SVGCircleElement, 
     (element, _, on) =&gt; handler(element, on));
 ```
 
-"Multi-EDO/keyboard-handler.js":
+"ui.components/abstract-keyboard.js":{id=code-abstract-keyboard}
 
-```{lang=JavaScript}{id=code-dictionary}
-setMultiTouch(
-    definitionSet.elements.keyboard,
-    (element) => { return element.dataset.multiTouchTarget; },
-    (element, touch, on) => {
-        const volume = 1;
-        element.key.activate(element.key, false, on, volume);
-    } //elementHandler
-);
-```
-"ui.components/abstract-keyboard.js"
-
-```{lang=JavaScript}{id=code-abstract-keyboard}
+```{lang=JavaScript}
 setMultiTouch(
     parentElement,
     keyElement => this.isTouchKey(parentElement, keyElement),
@@ -224,13 +212,17 @@ setMultiTouch(
 ```
 ### Abstract Keyboard
 
+The last example above ???
+
 `IInterface` (agnostic/interfaces.js") &#x25C1;&#x2014; `IKeyboardGeometry` ("ui.components\abstract-keyboard.js")
 
 `VirtualKeyboard` ("ui.components\abstract-keyboard.js") &#x25C1;&#x2500; `GridKeyboard` ("ui.components\grid-keyboard.js") &#x25C1;― `PlaygroungKeyboard` ("playground\ui\playground-keyboard.js")
 
-"ui.components\abstract-keyboard.js":
+The terminal class is supposed to 
 
-```{lang=JavaScript}{id=code-ikeyboardgeometry}
+"ui.components\abstract-keyboard.js":{id=code-ikeyboardgeometry}
+
+```{lang=JavaScript}
 class IKeyboardGeometry extends IInterface {
     createKeys(parentElement) {}
     createCustomKeyData(keyElement, index) {}
@@ -240,7 +232,6 @@ class IKeyboardGeometry extends IInterface {
     customKeyHandler(keyElement, keyData, on) {} // return false to stop embedded handling
 }
 ```
-
 ### Using Extra Data
 
 ## Conclusions
