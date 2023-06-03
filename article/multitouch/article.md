@@ -51,7 +51,7 @@ Most of the Microtonal Fabric applications allowes the user to play music in a b
 
 In the approach discussed, the application of the present multitouch solution is not limited to musical keyboards. The view model of the keyboard lools like a collection of HTML or SVG elemets with two states: "activated" (down) or "deactivated" (up). The states can be modified by the user or by software in many different ways. First, let's consider the entire problem.
 
-## Keyboard Keys are not Like Buttons!
+## The Problem: Keyboard Keys are not Like Buttons!
 
 So, why the multitouch control of the keyboard presents some problem. Well, it would be not a problem at all, but inertia of thinking could lead us in a wrong direction.
 
@@ -221,11 +221,13 @@ In the class `AbstractKeyboard`, the functions used in the call to `setMultiTouc
 
 To guarantee, I've put forward a new technique I called *interface* ("agnostic/interfaces.js"). The keyboard classes do not extend an appropriate interface class, they just implement proper functions defined in a particular interface, a decsedant class of the class `IInterface` (agnostic/interfaces.js"). The only purpose of `IInterface` is to provide a way of early detection of the problem due to the lack of full implementation of an interface to some degree of *strictness*. To understand the concept of strictness, please see `const IInterfaceStrictness` in the same file, it is self-explaining.
 
-`IInterface` (agnostic/interfaces.js") &#x25C1;&#x2014; `IKeyboardGeometry` ("ui.components\abstract-keyboard.js")
+On the example of the application Microtonal Playground, the terminal keyboard class implements the multitouch behavior not directly by calling `setMultiTouch`, but by inheriting from `AbstractKeyboard` through the following inheritance diagram: 
 
-`VirtualKeyboard` ("ui.components\abstract-keyboard.js") &#x25C1;&#x2500; `GridKeyboard` ("ui.components\grid-keyboard.js") &#x25C1;― `PlaygroungKeyboard` ("playground\ui\playground-keyboard.js")
+`AbstractKeyboard` ("ui.components\abstract-keyboard.js") &#x25C1;&#x2500; `GridKeyboard` ("ui.components\grid-keyboard.js") &#x25C1;― `PlaygroungKeyboard` ("playground\ui\playground-keyboard.js")
 
-The terminal class is supposed to 
+In addition to the inherirance from `AbstractKeyboard`, the terminal class is supposed to implement `IKeyboardGeometry`:
+
+`IInterface` ("agnostic/interfaces.js") &#x25C1;&#x2014; `IKeyboardGeonetry` ("ui.components\abstract-keyboard.js")
 
 "ui.components\abstract-keyboard.js":{id=code-ikeyboardgeometry}
 
@@ -239,6 +241,32 @@ class IKeyboardGeometry extends IInterface {
     customKeyHandler(keyElement, keyData, on) {} // return false to stop embedded handling
 }
 ```
+
+The implementation of this interface guarantees that the functions of `AbstractKeyboard` work correctly, and the fact that the implementation of `IKeyboardGeometry` is fully implemented is validated by the constructor of the class `AbstractKeyboard`.
+
+This validation is throwing an exception in case the implementation of the interface is not satisfactory:{id=code-test-interface-implementation}
+
+```{lang=JavaScript}
+class AbstractKeyboard {
+
+    #implementation = { mode: 0, chord: new Set(), playingElements: new(Set), chordRoot: -1, useHighlight: true };
+    derivedImplementation = {};
+    derivedClassConstructorArguments = [undefined];
+
+    constructor(parentElement, ...moreArguments) {
+        IKeyboardGeometry.throwIfNotImplemented(this);
+        this.derivedClassConstructorArguments = moreArguments;
+        //...
+    }
+
+    //...
+
+}
+```
+
+For the detail of `IInterface.throwIfNotImplemented` please see the source code, "agnostic/interfaces.js". The validation of the interface implementation is based on the reflection of the terminal class performed during runtime by the constructor. It checks up all the interface functions, property getters, and setters, and, depending on required strictness, the number of arguments for each function. In our case, it happens during the construction of the terminal application-level class `PlaygroungKeyboard` of the application Microtonal Playground. The application itself deserves a separate article.
+
+Apparently, this is just the imitation of the interface mechanism found in some well-designed compiled languages. It validates the implementation of the interfaces later, during runtime, but as soon as possible. Naturally, the mechanism cannot change the behavior of the software, it only facilitates debugging and, hence, software development. The mechanismn does work, but I consider it experimental an do understand that the value if it is discussible. I would be grateful for any criticism or suggestions. 
 
 ### Using Extra Data
 
