@@ -205,14 +205,21 @@ setMultiTouch(
 "ui.components/abstract-keyboard.js":{id=code-abstract-keyboard}
 
 ```{lang=JavaScript}
-setMultiTouch(
-    parentElement,
-    keyElement => this.isTouchKey(parentElement, keyElement),
-    (keyElement, _, on) => handler(keyElement, on));
+class AbstractKeyboard {
+    //...
+    setMultiTouch(
+        parentElement,
+        keyElement => this.isTouchKey(parentElement, keyElement),
+        (keyElement, _, on) => handler(keyElement, on));
+}
 ```
 ### Abstract Keyboard
 
-The last example above ???
+The [last example](#code-abstract-keyboard) shows an additional abstraction layer: the universal piece of code setting up the multitouch features is placed once in a class representing an abstract keyboard. Potentially, more then one terminal keyboard class can be derived from `AbstractKeyboard` and reuse the multitouch setup and other common keyboard features.
+
+In the class `AbstractKeyboard`, the functions used in the call to `setMultiTouch` are not fully defined: the function `this.isTouchKey` is not defined at all, and the function `handler` is defined, but it depends on not yet functions. These functions are supposed to be implemented in all the terminal classes derived from `AbstractKeyboard`. But how to guarantee it?
+
+To guarantee, I've put forward a new technique I called *interface* ("agnostic/interfaces.js"). The keyboard classes do not extend an appropriate interface class, they just implement proper functions defined in a particular interface, a decsedant class of the class `IInterface` (agnostic/interfaces.js"). The only purpose of `IInterface` is to provide a way of early detection of the problem due to the lack of full implementation of an interface to some degree of *strictness*. To understand the concept of strictness, please see `const IInterfaceStrictness` in the same file, it is self-explaining.
 
 `IInterface` (agnostic/interfaces.js") &#x25C1;&#x2014; `IKeyboardGeometry` ("ui.components\abstract-keyboard.js")
 
@@ -232,6 +239,7 @@ class IKeyboardGeometry extends IInterface {
     customKeyHandler(keyElement, keyData, on) {} // return false to stop embedded handling
 }
 ```
+
 ### Using Extra Data
 
 ## Conclusions
