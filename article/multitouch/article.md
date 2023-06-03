@@ -38,9 +38,42 @@ C &mdash; D♭² &mdash; Db &mdash; C♯ &mdash; C♯² &mdash; D
 
 ## Introduction
 
+This is the fourth article of the series dedicated to musical study with on-screen keyboards, including microtonal ones:
+
+- [Musical Study with Isomorphic Computer Keyboard](https://www.codeproject.com/Articles/1201737/Musical-Study-with-Isomorphic-Computer-Keyboard)
+- [Microtonal Music Study with Chromatic Lattice Keyboard](https://www.codeproject.com/Articles/1204180/Microtonal-Music-Study-Chromatic-Lattice-Keyboard)
+- [Sound Builder, Web Audio Synthesizer](https://www.codeproject.com/Articles/5268512/Sound-Builder)
+- Present article
+
+Last three articles are devoted to the project named [Microtonal FabrMicrotonal Fabricic](https://en.xen.wiki/w/Sergey_A_Kryukov#Microtonal_Fabric), a  microtonal music platform based on [WebAudio API](https://developer.mozilla.org/en-US/docs/Web/API/Web_Audio_API). It is a framework for building universal or customized microtonal musical keyboard instruments, microtonal experiments and computing, music study, and teaching music lessons with possible remote options. The platform provides several applications executed in a Web browser using shared JavaScript components.
+
+Most of the Microtonal Fabric applications allowes the user to play music in a browser. If a multitouch screen is available, the user can play with ten fingers. The required features of the multitouch interface are not so trivial as it may seem at first glance. The present article explains the problem, the solution. It shows how the multitouch behavior is abstracted from the other part of the code, reused, and utilized by different types of on-screeen keyboards.
+
+In the approach discussed, the application of the present multitouch solution is not limited to musical keyboards. The view model of the keyboard lools like a collection of HTML or SVG elemets with two states: "activated" (down) or "deactivated" (up). The states can be modified by the user or by software in many different ways. First, let's consider the entire problem.
+
+## Keyboard Keys are not Like Buttons!
+
+So, why the multitouch control of the keyboard presents some problem. Well, it would be not a problem at all, but inertia of thinking could lead us in a wrong direction.
+
+## Microtonal Fabric Applications Using Multitouch Control
+
+<table>
+<tr><th>Application</th><th>Source code</th><th>Live play</th></tr>
+<tr><td>Multi-EDO</td><td>./Multi-EDO</td><td><a href="https://sakryukov.github.io/microtonal-fabric/code/Multi-EDO">Multi-EDO</a></td></tr>
+<tr><td>29-EDO</td><td>./29-EDO</td><td><a href="https://sakryukov.github.io/microtonal-fabric/code/29-EDO">29-EDO</a></td></tr>
+<tr><td>Microtonal Playground</td><td>./playground</td><td>
+    <a href="https://sakryukov.github.io/microtonal-fabric/code/playground?user.data">Aura's Diatonic Scales</a><br/>
+    <a href="https://sakryukov.github.io/microtonal-fabric/code/playground?custom/12-EDO.user.data">Common-practice 12-EDO</a><br/>
+    <a href="https://sakryukov.github.io/microtonal-fabric/code/playground?custom/shruti.user.data">Shruti Scales</a><br/>
+    <a href="https://sakryukov.github.io/microtonal-fabric/code/playground?custom/chinese.user.data">Traditional Chinese Tonal System</a><br/>
+    <a href="https://sakryukov.github.io/microtonal-fabric/code/playground?custom/customized.user.data"></a>Microtonal Playground Customization Demo<br/>
+</td></tr>
+<tr><td>Kite Giedraitis<br/>(under development)</td><td>./Kite.Giedraitis</td><td>https://sakryukov.github.io/microtonal-fabric/code/Kite.Giedraitis</td></tr>
+</table>
+
 ## Implementation
 
-[Touch events](https://developer.mozilla.org/en-US/docs/Web/API/Touch_events)
+The idea is: we need a separate unit abstracted from the set of UI elements representing the keyboard. We are going to set some [touch events](https://developer.mozilla.org/en-US/docs/Web/API/Touch_events) to the singl HTML or SVG control representing the entire contols. These events should be interpreted by some events that may or may not related to the koeboard keys. To pull the information on the keys from the user, we are going to use *inversion of control*.
 
 ### Multitouch
 
@@ -49,8 +82,8 @@ The function `setMultiTouch` assumes the following UI model of the multitouch se
 The function accepts four input arguments, `container` and three handlers:
 
 - `container`: HTML or SVG handling multitouch events
-- `elementSelector`: this hander `element =&gt; bool` selects relevant children of the `contaner`, if this handler returns `false`, the event is ignored
-- `elementHandler`: this is the handler used to implement the main functionality, for example, produce sounds in response to the keyboard events; the handler accepts `element`, a touch object, and a Boolean `on` argument showing if this is an on of off action.
+- `elementSelector`: this hander `element => bool` selects relevant children of the `contaner`, if this handler returns `false`, the event is ignored. Essentially, this handler is used by the user code to define the HTML or SVG elements to be interpreted as keys of some keyboard represented by the `container`.
+- `elementHandler`: this handler `(element, Touch touchObject, bool on) => undefined` is used to implement the main functionality, for example, produce sounds in response to the keyboard events; the handler accepts `element`, a touch object, and a Boolean `on` argument showing if this is an on of off action. Basically, this handler calls a general semantic handler which can be triggered in different way, for example, through a keyboard or a mouse. Essentially, it implements the action triggered when a keyboard key, represented by `element` is activated or deactiveted, depending on the value of `on`. 
 
 "ui.components/multitouch.js":
 
@@ -149,23 +182,7 @@ const setMultiTouch = (
 };
 ```
 
-## Microtonal Fabric Applications Using Multitouch Control
-
-<table>
-<tr><th>Application</th><th>Source code</th><th>Live play</th></tr>
-<tr><td>Multi-EDO</td><td>Multi-EDO</td><td><a href="https://sakryukov.github.io/microtonal-fabric/code/Multi-EDO">Multi-EDO</a></td></tr>
-<tr><td>29-EDO</td><td>./29-EDO</td><td><a href="https://sakryukov.github.io/microtonal-fabric/code/29-EDO">29-EDO</a></td></tr>
-<tr><td>Microtonal Playground</td><td>./playground</td><td>
-    <a href="https://sakryukov.github.io/microtonal-fabric/code/playground?user.data">Aura's Diatonic Scales</a><br/>
-    <a href="https://sakryukov.github.io/microtonal-fabric/code/playground?custom/12-EDO.user.data">Common-practice 12-EDO</a><br/>
-    <a href="https://sakryukov.github.io/microtonal-fabric/code/playground?custom/shruti.user.data">Shruti Scales</a><br/>
-    <a href="https://sakryukov.github.io/microtonal-fabric/code/playground?custom/chinese.user.data">Traditional Chinese Tonal System</a><br/>
-    <a href="https://sakryukov.github.io/microtonal-fabric/code/playground?custom/customized.user.data"></a>Microtonal Playground Customization Demo<br/>
-</td></tr>
-<tr><td>Kite Giedraitis<br/>(under development)</td><td>./Kite.Giedraitis</td><td>https://sakryukov.github.io/microtonal-fabric/code/Kite.Giedraitis</td></tr>
-</table>
-
-## Usage Examples
+### Usage Examples
 
 "29-EDO/ui/keyboard.js":
 
@@ -205,5 +222,14 @@ setMultiTouch(
     keyElement => this.isTouchKey(parentElement, keyElement),
     (keyElement, _, on) => { handler(keyElement, on); });
 ```
+### Virtual Keyboard
+
+IInterface &#x25C1;― IKeyboardGeometry 
+
+`VirtualKeyboard` &#x25C1;― `VirtualKeyboard` &#x25C1;― `VirtualKeyboard` &#x25C1;― `VirtualKeyboard`
+
+### Using Extra Data
+
+## Conclusions
 
 <!-- copy to CodeProject to here --------------------------------------------->
