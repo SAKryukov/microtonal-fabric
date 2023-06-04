@@ -17,15 +17,25 @@
     <meta charset="utf-8"/>
     <script src="main.js"></script>
     <style>
-        * { font-family: sans-serif; touch-action: none; user-select: none; box-sizing: content-box; }
-        body > div { margin: 2em; padding: 2em; background-color: lightGray;  width: 30%; }
-        body > div > b { padding: 2em; background-color: yellow; margin: 1em; }
+        * { font-family: sans-serif; font-size: 110%; touch-action: none; user-select: none; box-sizing: content-box; }
+        body > div { margin: 2em; padding: 2em; background-color: navy; color:yellow; width: 30%; }
+        body > div > b { padding: 2em; color: black; }
+        body > div > b:first-of-type { background-color: yellow; }
+        body > div > b:last-of-type { background-color: lightgreen; }
+        select, button { display: inline-block; vertical-align: top; }
+        button, option { padding: 0.1em 1em 0.1em 1em }
     </style>
 </head>
 
 <body>
 
-<div>AAA<b>111</b>BBB</div>
+<div>bkg <b>Key 1</b><b>Key 2</b> bkg</div>
+
+<section>
+    <button accesskey="C"><u>C</u>lear</button>
+    <select size=30>
+    </select>
+</section>
 
 </body>
 </html>

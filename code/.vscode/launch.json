@@ -1,11 +1,13 @@
 {
     "version": "0.2.0",
     "configurations": [
+
         {
             "type": "chrome",
             "request": "launch",
             "name": "Debug with Chrome",
             "runtimeArgs": ["--incognito", "--enable-precise-memory-info"],
+            //"file": "${workspaceFolder}/unit-tests/multitouch-low-level/index.html" 
             //"file": "${workspaceFolder}/sequence-tool/index.html"
             //"file": "${workspaceFolder}/index.html"
             //"file": "${workspaceFolder}/tone-system-comparison/index.html"
@@ -13,8 +15,8 @@
             //"file": "${workspaceFolder}/unit-tests/grid-keyboard.html"
             //"file": "${workspaceFolder}/unit-tests/keyboard/index.html"
             //"file": "${workspaceFolder}/SoundBuilder/index.html"
-            //"file": "${workspaceFolder}/playground/index.html?custom-demo/customized.user.data"
-            "file": "${workspaceFolder}/playground/index.html"
+            "file": "${workspaceFolder}/playground/index.html?custom-demo/customized.user.data"
+            //"file": "${workspaceFolder}/playground/index.html"
             //"file": "${workspaceFolder}/unit-tests/circular-keyboard.html"
         }
     ]
