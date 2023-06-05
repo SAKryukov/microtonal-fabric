@@ -13,7 +13,7 @@ window.onload = () => {
 
     const elements = {
         keyboard: document.querySelector("body > div"),
-        keys: [ document.querySelector("body > div > b:first-of-type"), document.querySelector("body > div > b:last-of-type") ],
+        keys: [ document.querySelector("td:nth-of-type(2)"), document.querySelector("td:nth-of-type(3)") ],
         buttonClear: document.querySelector("button"),
         output: document.querySelector("select"),
     };
@@ -40,10 +40,15 @@ window.onload = () => {
     };
 
     for (let element of elements.keys) {
-        assignTouchStart(element, ()=> writeLine("start"));
-        assignTouchEnd(element, ()=> writeLine("end"));
-        assignTouchCancel(element, ()=> writeLine("cancel"));
-        assignTouchMove(element, ()=> writeLine("move"));    
+        /*
+        element.onclick = event => writeLine(`${event.target.textContent} click`);
+        element.onpointerenter = event => writeLine(`${event.target.textContent} pointer enter`);
+        element.onpointerleave = event => writeLine(`${event.target.textContent} pointer leave`);
+        */
+        assignTouchStart(element, event => writeLine(`${event.target.textContent} start`));
+        assignTouchEnd(element, event => writeLine(`${event.target.textContent} end`));
+        assignTouchCancel(element, event => writeLine(`${event.target.textContent} cancel`));
+        assignTouchMove(element, event => writeLine(`${event.target.textContent} move`));    
     } //loop
 
     elements.buttonClear.onclick = () => {

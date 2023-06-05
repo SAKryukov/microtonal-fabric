@@ -18,22 +18,28 @@
     <script src="main.js"></script>
     <style>
         * { font-family: sans-serif; font-size: 110%; touch-action: none; user-select: none; box-sizing: content-box; }
-        body > div { margin: 2em; padding: 2em; background-color: navy; color:yellow; width: 30%; }
-        body > div > b { padding: 2em; color: black; }
-        body > div > b:first-of-type { background-color: yellow; }
-        body > div > b:last-of-type { background-color: lightgreen; }
         select, button { display: inline-block; vertical-align: top; }
         button, option { padding: 0.1em 1em 0.1em 1em }
+        table { width: 100%; border-collapse: collapse; }
+        tr { background-color: navy; color: yellow; }
+        main { height: 0.4em; }
+        td { padding: 3em; color: yellow; }
+        td:nth-of-type(2) { background-color: yellow; width: 1px; color: black; }
+        td:nth-of-type(3) { background-color: lightgreen; width: 1px; color: black; }
     </style>
 </head>
 
 <body>
 
-<div>bkg <b>Key 1</b><b>Key 2</b> bkg</div>
+<table>
+    <tr><td>bkg</td><td>1</td><td>2</td><td>bkg</td></tr>
+</table>
+
+<main></main>
 
 <section>
     <button accesskey="C"><u>C</u>lear</button>
-    <select size=30>
+    <select size=20>
     </select>
 </section>
 
