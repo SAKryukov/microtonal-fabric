@@ -59,7 +59,15 @@ So, why does the multitouch control of the keyboard present some problems? Well,
 
 The most usual approach is to take the set of keys of some keyboard and attach some event handler to each one. It looks natural, but it cannot work at all.
 
-???
+Let's see what the playing with all ten fingers requires. On a screen, we have three kinds of area: 1) the area of some of the keyboard key, 2) the area of a keyboard not occupied by a key, 3) the area outside the keyboard. When one or more fingers touch the screen inside the area of some key (case #1), a [Touch object](https://developer.mozilla.org/en-US/docs/Web/API/Touch) is created. The low-level touch event is invoked, but a semantic-level keyboard event to be handled to invoke key activation should be ivoked only if there are no more `Touch` objects in the area of the given key. Likewise, when a finger is removed from the screen, a semantic-level keyboard event should be invoked only if there no other `Touch` objects in the area of the key.
+
+But this is not enough. The key activation can also be changed if a finger just slides on the screen. When a sliging finger enters the area of leaves the area of some key, it can come from or move to any of the areas of the types #1 to #3. Depending on the presence of other `Touch` objects in the area of the given key, it can also change the activation state of this key. Most typically, it happens when fingers slide across two or more keys. This technique is known as *glissando*. And this is something which cannot be implemented, when  [touch events](https://developer.mozilla.org/en-US/docs/Web/API/Touch_events) are attached to each key separately.
+
+Why? It's easy to understand by comparison with the [pointer events](https://developer.mozilla.org/en-US/docs/Web/API/Pointer_events). These events include the events `pointerleave` and `pointerout`. These events make perfect sense for a single pointer controlled by a mouse or a touchpad. However, there is nothing similar in [touch events](https://developer.mozilla.org/en-US/docs/Web/API/Touch_events). The keyboard keys do not at all behave like UI buttons. Despite the apparent similarity, they are totally different.
+
+The only way to implement all the combinations of the semantic-level multitouch events is to handle low-level [touch events](https://developer.mozilla.org/en-US/docs/Web/API/Touch_events) to some element containing all the keys. In Microsoft Fabric code, this is the element representing the entire keyboard. Let's see how it is implemented in the section [Implementation](#heading-implementation) [Multitouch](#heading-multitouch).
+
+Before looking at the implementation, the reader may want to look at the availlable Microtonal Fabric applications using multitouch control. For all the applications, *live play* is available. For each application, life play URL can be found below. 
 
 ## Microtonal Fabric Applications Using Multitouch Control
 
