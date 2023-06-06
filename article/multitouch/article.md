@@ -6,7 +6,9 @@
 
 [*Sergey A Kryukov*](https://www.SAKryukov.org)
 
-Microtonal Fabric uses multitouch screen support for the musical keyboards.
+Microtonal Fabric uses multitouch screen support for musical keyboards.
+
+If a multitouch screen is available, the user can play music with Microtonal Fabric applications with ten fingers, play chords, glissando, and use other techniques. Microtonal Fabric uses a unified approach to cover the handling of the musical on-screen keyboards and more. ???
 
 ???
 
@@ -51,7 +53,7 @@ Last three articles are devoted to the project named [Microtonal FabrMicrotonal 
 
 Most of the Microtonal Fabric applications allowes the user to play music in a browser. If a multitouch screen is available, the user can play with ten fingers. The required features of the multitouch interface are not so trivial as it may seem at first glance. The present article explains the problem, the solution. It shows how the multitouch behavior is abstracted from the other part of the code, reused, and utilized by different types of on-screeen keyboards.
 
-In the approach discussed, the application of the present multitouch solution is not limited to musical keyboards. The view model of the keyboard lools like a collection of HTML or SVG elemets with two states: "activated" (down) or "deactivated" (up). The states can be modified by the user or by software in many different ways. First, let's consider the entire problem.
+In the approach discussed, the application of the present multitouch solution is not limited to musical keyboards. The *view model* of the keyboard lools like a collection of HTML or SVG elemets with two states: "activated" (down) or "deactivated" (up). The states can be modified by the user or by software in many different ways. First, let's consider the entire problem.
 
 ## The Problem: Keyboard Keys are not Like Buttons!
 
