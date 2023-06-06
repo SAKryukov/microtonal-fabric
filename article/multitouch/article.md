@@ -190,9 +190,13 @@ const setMultiTouch = (
 
 ???
 
+Let's see how `setMultiTouch` can be used by applications.
+
 ### Usage Examples
 
-???
+A very typical usage example can be found in the application 29-EDO. It provides several keyboard layouts and two different tonal systems (29-EDO and a common-practice 12-EDO), but the keyboards reuse a lot of common code. For all the keyboard layouts `elementSelector` is based on the fact that all the keyboard keys are rectangular SVG elements [SVGRectElement](https://developer.mozilla.org/en-US/docs/Web/API/SVGRectElement), but the keyboards are not, they are represented by an SVG element, [SVGSVGElement](https://developer.mozilla.org/en-US/docs/Web/API/SVGSVGElement).
+
+Also, the keyboards have a common semantic-level handler `handler(element, on)`, it controls highlighting and audio action of a key represented by `element`, depending on its Boolean activation state `on`. This is a common handler used via the touch API and [pointer API](https://developer.mozilla.org/en-US/docs/Web/API/Pointer_events). The handler can also be activated by the code through a computer keyboard or other control elements. In particular, it can be called by the Microtonal Fabric sequence *recorder*. It makes the call to `setMultiTouch` pretty simple:
 
 "29-EDO/ui/keyboard.js":{id=code-29-edo}
 
@@ -203,14 +207,11 @@ setMultiTouch(
     (element, _, on) =&gt; handler(element, on));
 ```
 
-"Kite.Giedraitis/ui/keyboard.js":{id=code-round}
+Here, the first `element` represents a keyboard, an [SVGRectElement](https://developer.mozilla.org/en-US/docs/Web/API/SVGRectElement), and the `element` arguments of the handlers represent the keyboard keys.
 
-```{lang=JavaScript}
-setMultiTouch(
-    svg.element,
-    element => element.constructor == SVGCircleElement, 
-    (element, _, on) =&gt; handler(element, on));
-```
+In another place the expression `element.constructor == SVGCircleElement` is used, for the application having only round-shaped keys.
+
+There is a more dedicated example where the selection of the key element is performed by a method of some abstract JavaScript class.
 
 "ui.components/abstract-keyboard.js":{id=code-abstract-keyboard}
 
@@ -223,6 +224,9 @@ class AbstractKeyboard {
         (keyElement, _, on) => handler(keyElement, on));
 }
 ```
+
+This example is more interesting from a programming standpoint. Let's discuss it in more detail.
+
 ### Abstract Keyboard
 
 The [last example](#code-abstract-keyboard) shows an additional abstraction layer: the universal piece of code setting up the multitouch features is placed once in a class representing an abstract keyboard. Potentially, more then one terminal keyboard class can be derived from `AbstractKeyboard` and reuse the multitouch setup and other common keyboard features.
