@@ -55,7 +55,9 @@ In the approach discussed, the application of the present multitouch solution is
 
 ## The Problem: Keyboard Keys are not Like Buttons!
 
-So, why the multitouch control of the keyboard presents some problem. Well, it would be not a problem at all, but inertia of thinking could lead us in a wrong direction.
+So, why does the multitouch control of the keyboard present some problems? Well, mostly because the inertia of thinking could lead us in the wrong direction.
+
+The most usual approach is to take the set of keys of some keyboard and attach some event handler to each one. It looks natural, but it cannot work at all.
 
 ???
 
