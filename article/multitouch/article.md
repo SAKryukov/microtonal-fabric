@@ -2,11 +2,13 @@
     enable: false
 }
 
-{title}Multitouch Support for Ten-Finger Playing and More
+{title}Multitouch Support for Ten-Finger Playing
 
 [*Sergey A Kryukov*](https://www.SAKryukov.org)
 
 Microtonal Fabric uses multitouch screen support for the musical keyboards.
+
+???
 
 <!-- <h2>Contents</h2> is not Markdown element, just to avoid adding it to TOC -->
 <!-- change style in next line <ul> to <ul style="list-style-type: none"> -->
@@ -55,6 +57,8 @@ In the approach discussed, the application of the present multitouch solution is
 
 So, why the multitouch control of the keyboard presents some problem. Well, it would be not a problem at all, but inertia of thinking could lead us in a wrong direction.
 
+???
+
 ## Microtonal Fabric Applications Using Multitouch Control
 
 <table>
@@ -74,6 +78,8 @@ So, why the multitouch control of the keyboard presents some problem. Well, it w
 ## Implementation
 
 The idea is: we need a separate unit abstracted from the set of UI elements representing the keyboard. We are going to set some [touch events](https://developer.mozilla.org/en-US/docs/Web/API/Touch_events) to the singl HTML or SVG control representing the entire contols. These events should be interpreted by some events that may or may not related to the koeboard keys. To pull the information on the keys from the user, we are going to use *inversion of control*.
+
+???
 
 ### Multitouch
 
@@ -182,7 +188,11 @@ const setMultiTouch = (
 };
 ```
 
+???
+
 ### Usage Examples
+
+???
 
 "29-EDO/ui/keyboard.js":{id=code-29-edo}
 
