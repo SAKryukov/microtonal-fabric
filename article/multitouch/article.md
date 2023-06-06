@@ -72,7 +72,7 @@ So, why the multitouch control of the keyboard presents some problem. Well, it w
     <a href="https://sakryukov.github.io/microtonal-fabric/code/playground?custom/chinese.user.data">Traditional Chinese Tonal System</a><br/>
     <a href="https://sakryukov.github.io/microtonal-fabric/code/playground?custom/customized.user.data"></a>Microtonal Playground Customization Demo<br/>
 </td></tr>
-<tr><td>Kite Giedraitis<br/>(under development)</td><td>./Kite.Giedraitis</td><td>https://sakryukov.github.io/microtonal-fabric/code/Kite.Giedraitis</td></tr>
+<tr><td><a href="https://en.xen.wiki/w/Color_notation#Interval_Names">Kite Giedraitis keyboard</a><br/>(under development)</td><td>./Kite.Giedraitis</td><td>https://sakryukov.github.io/microtonal-fabric/code/Kite.Giedraitis</td></tr>
 </table>
 
 ## Implementation
