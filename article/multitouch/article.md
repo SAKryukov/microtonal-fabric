@@ -280,4 +280,10 @@ All the finer techniques mentioned above are the matter of further research.
 
 ## Conclusions
 
+We have a mechanism and an abstraction layer to be used as a semantic wrapper around a more general touch API, which is closer to the touchscreen hardware. This layer presents the events in а form adequate to the *view model* of an on-screen keyboard or other UI elements similar in functionality. The code using this layer calls a single function `setMultiTouch` and passes its semantic handlers.
+
+Optionally, on top of this layer, the user can use a more specific and potentially less universal API based on `IKeyboardGeometry` and JavaScript classes.
+
+These two options present a comprehensive semantic-level mechanism for the implementation of all aspects of the behavior of on-screen keyboards based on a multitouch touchscreen. At the same time, it leaves the UI open to other input methods, such as a physical computer keyboard, mouse, or touchpad.
+
 <!-- copy to CodeProject to here --------------------------------------------->
