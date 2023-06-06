@@ -89,7 +89,7 @@ Before looking at the implementation, the reader may want to look at the availla
 
 The idea is: we need a separate unit abstracted from the set of UI elements representing the keyboard. We are going to set some [touch events](https://developer.mozilla.org/en-US/docs/Web/API/Touch_events) to the singl HTML or SVG control representing the entire contols. These events should be interpreted by some events that may or may not related to the koeboard keys. To pull the information on the keys from the user, we are going to use *inversion of control*.
 
-???
+The touch functionality is attach to some element representing an entire keyboard using the single call to the function `setMultiTouch`, and it gets the key configuration information and invokes the semantic-level key events through three callback handers. Let's see how it works. 
 
 ### Multitouch
 
@@ -198,7 +198,7 @@ const setMultiTouch = (
 };
 ```
 
-???
+The central point of the `setMultiTouch` implementation is the call to [document.elementFromPoint](https://developer.mozilla.org/en-US/docs/Web/API/Document/elementFromPoint). This way, the elements related to the [Touch event data](https://developer.mozilla.org/en-US/docs/Web/API/Touch) are found. When an element is found, it is checked up weather this is the element representing a keyboard key, and the function `isGoodElement` does that using the handler `elementSelector`. If it is, the handler `elementHandler` or `sameElementHandler` is called, depending the event data. These calls are used to handle the [touch events](https://developer.mozilla.org/en-US/docs/Web/API/Touch_events) `"touchstart"`, `"touchmove"`, and `"touchend"`.
 
 Let's see how `setMultiTouch` can be used by applications.
 
@@ -235,7 +235,7 @@ class AbstractKeyboard {
 }
 ```
 
-This example is more interesting from a programming standpoint. Let's discuss it in more detail.
+This second example is more interesting from a programming standpoint. Let's discuss it in more detail.
 
 ### Abstract Keyboard
 
