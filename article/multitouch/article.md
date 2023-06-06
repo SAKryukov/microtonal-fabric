@@ -8,7 +8,7 @@
 
 Microtonal Fabric uses multitouch screen support for musical keyboards.
 
-If a multitouch screen is available, the user can play music with Microtonal Fabric applications with ten fingers, play chords, glissando, and use other techniques. Microtonal Fabric uses a unified approach to cover the handling of the musical on-screen keyboards and more. ???
+If a multitouch screen is available, the user can play music with Microtonal Fabric applications with ten fingers, play chords, glissando, and use other techniques in all combinations. Microtonal Fabric uses a unified approach to cover the handling of the musical on-screen keyboards and more. The present article offers an easy-to-use yet comprehensive API suitable not only to Microtonal Fabric but a wide class of applications.
 
 ???
 
