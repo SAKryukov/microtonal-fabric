@@ -278,6 +278,12 @@ The argument `sameElementHandler` of the function `setMultiTouch` is called when
 
 All the finer techniques mentioned above are the matter of further research.
 
+## Compatibility
+
+Microtonal Fabric functionality is based on advanced and modern JavaScipt and browser features and may fail when used with some Web browsers. Basically, it works correctly with all [Chromium](https://en.wikipedia.org/wiki/Chromium_(web_browser))-based browsers, or, more exactly, the modern browsers based on [Blink](https://en.wikipedia.org/wiki/Blink_(browser_engine)) and [V8](https://en.wikipedia.org/wiki/V8_(JavaScript_engine)) engines. It means [Chromium](https://en.wikipedia.org/wiki/Chromium_(web_browser)), [Chrome](https://en.wikipedia.org/wiki/Google_Chrome), and many other derived browsers. Even the latest "Anaheim" [Microsoft Edge](https://en.wikipedia.org/wiki/Microsoft_Edge#New_Edge_(2019–present)) works correctly.
+
+Unfortunately, [Mozilla browsers](https://en.wikipedia.org/wiki/Firefox) manifest some problems and cannot correctly run the Microtonal Fabric application. Microtonal Fabric users and I keep an eye on compatibility, so I’ll try to update compatibility information if something changes.
+
 ## Conclusions
 
 We have a mechanism and an abstraction layer to be used as a semantic wrapper around a more general touch API, which is closer to the touchscreen hardware. This layer presents the events in а form adequate to the *view model* of an on-screen keyboard or other UI elements similar in functionality. The code using this layer calls a single function `setMultiTouch` and passes its semantic handlers.
