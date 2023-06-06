@@ -6,11 +6,9 @@
 
 [*Sergey A Kryukov*](https://www.SAKryukov.org)
 
-Microtonal Fabric uses multitouch screen support for musical keyboards.
+Microtonal Fabric uses multitouch screen support for musical keyboards
 
 If a multitouch screen is available, the user can play music with Microtonal Fabric applications with ten fingers, play chords, glissando, and use other techniques in all combinations. Microtonal Fabric uses a unified approach to cover the handling of the musical on-screen keyboards and more. The present article offers an easy-to-use yet comprehensive API suitable not only to Microtonal Fabric but a wide class of applications.
-
-???
 
 <!-- <h2>Contents</h2> is not Markdown element, just to avoid adding it to TOC -->
 <!-- change style in next line <ul> to <ul style="list-style-type: none"> -->
@@ -290,9 +288,9 @@ Apparently, this is just the imitation of the interface mechanism found in some 
 
 Note that none of the examples uses the second argument parameter of the handler `handler`, accepted as a the second `setMultiTouch` argument, the argument `touchObject` of the [Touch](https://developer.mozilla.org/en-US/docs/Web/API/Touch) type. Also, the last argument of `setMultiTouch`, the handler `sameElementHandler` is not used. However, these arguments are fully functional and can be used. They are reserved for advanced use.
 
-The `Touch` argument passed to `handler` is used to get additional information on the original touch event. In particular, I've tried to use the values `Touch.radiusX` and `Touch.radiusY`. My idea was to evaluate the area of the contact of the touchscreen with a finger. This information could be used to derive an amount of pressure, and hence, adjust sound volume based on this value, to add some dynamics to the performance. However, my experiments demonstrated that the performer poorly controls this value, and it is not the same as actual pressure. The more principle problem of those `Touch` member properties is that their change does not trigger any touch events; an event is triggered only when the centroid of the touch is changed. Nevertheless, it is obvious that the `Touch` data can be useful for the implementation of some advanced effect.
+The `Touch` argument passed to `handler` is used to get additional information on the original touch event. In particular, I've tried to use the values [Touch.radiusX](https://developer.mozilla.org/en-US/docs/Web/API/Touch/radiusX) and [Touch.radiusY](https://developer.mozilla.org/en-US/docs/Web/API/Touch/radiusY). My idea was to evaluate the area of the contact of the touchscreen with a finger. This information could be used to derive an amount of pressure, and hence, adjust sound volume based on this value, to add some dynamics to the performance. However, my experiments demonstrated that the performer poorly controls this value, and it is not the same as actual pressure. The more principle problem of those [Touch](https://developer.mozilla.org/en-US/docs/Web/API/Touch) member properties is that their change does not trigger any touch events; an event is triggered only when the centroid of the touch is changed. Nevertheless, it is obvious that the `Touch` data can be useful for the implementation of some advanced effect.
 
-The argument `sameElementHandler` of the function `setMultiTouch` is called when a touch event is triggered when a location of the touch remains within the same `element` as a previous touch event. Apparently, such events should not modify the activation state of the `element`. At the same time, such events can be used for the implementation of finer techniques. For example, the motion of a finger within the same key can be interpreted as finger-controlled `vibrato`. 
+The argument `sameElementHandler` of the function `setMultiTouch` is called when a touch event is triggered when a location of the touch remains within the same `element` as a previous touch event. Apparently, such events should not modify the activation state of the `element`. At the same time, such events can be used for the implementation of finer techniques. For example, the motion of a finger within the same key can be interpreted as finger-controlled *vibrato*. 
 
 All the finer techniques mentioned above are the matter of further research.
 
@@ -300,7 +298,7 @@ All the finer techniques mentioned above are the matter of further research.
 
 Microtonal Fabric functionality is based on advanced and modern JavaScipt and browser features and may fail when used with some Web browsers. Basically, it works correctly with all [Chromium](https://en.wikipedia.org/wiki/Chromium_(web_browser))-based browsers, or, more exactly, the modern browsers based on [Blink](https://en.wikipedia.org/wiki/Blink_(browser_engine)) and [V8](https://en.wikipedia.org/wiki/V8_(JavaScript_engine)) engines. It means [Chromium](https://en.wikipedia.org/wiki/Chromium_(web_browser)), [Chrome](https://en.wikipedia.org/wiki/Google_Chrome), and some other derived browsers. Even the latest "Anaheim" [Microsoft Edge](https://en.wikipedia.org/wiki/Microsoft_Edge#New_Edge_(2019–present)) works correctly.
 
-Unfortunately, the present-day [Mozilla browsers](https://en.wikipedia.org/wiki/Firefox) manifest some problems and cannot correctly run the Microtonal Fabric application. Microtonal Fabric users and I keep an eye on compatibility, so I’ll try to update compatibility information if something changes.
+Unfortunately, the present-day [Mozilla browsers](https://en.wikipedia.org/wiki/Firefox) manifest some problems and cannot correctly run the Microtonal Fabric application. In particular, [Firefox](https://en.wikipedia.org/wiki/Firefox) for Linux does not properly handle the [touch events](https://developer.mozilla.org/en-US/docs/Web/API/Touch_events) described in the present article. Microtonal Fabric users and I keep an eye on compatibility, so I’ll try to update compatibility information if something changes.
 
 ## Conclusions
 
