@@ -35,6 +35,9 @@ _[Microtonal Music Study with Chromatic Lattice Keyboard](https://www.codeprojec
 
 _[Sound Builder, Web Audio Synthesizer](https://www.codeproject.com/Articles/5268512/Sound-Builder)_, May 19, 2020
 
+_[Sound Builder, Web Audio Synthesizer]([Multitouch Support for Ten-Finger Playing](https://www.codeproject.com/Articles/5362252/Multitouch-Support))_, June 6, 2023
+
+
 ### See Also
 
 [Microtonal Fabric on Xenharmonic Wiki](https://en.xen.wiki/w/Sergey_A_Kryukov#Microtonal_Fabric)
