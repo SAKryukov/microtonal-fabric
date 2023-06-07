@@ -10,7 +10,7 @@ Browsers based on V8 engine are recommended, such as Chromium, Chrome, Opera, Vi
 
 ### Live-Play Applications
 
-[SoundBuilder](https://SAKryukov.github.io/microtonal-fabric/code/SoundBuilder)
+[Sound Builder](https://SAKryukov.github.io/microtonal-fabric/code/SoundBuilder)
 
 [Tonal System Comparison](https://SAKryukov.github.io/microtonal-fabric/code/tone-system-comparison) application
 
@@ -34,6 +34,9 @@ _[Musical Study with Isomorphic Computer Keyboard](https://www.codeproject.com/A
 _[Microtonal Music Study with Chromatic Lattice Keyboard](https://www.codeproject.com/Articles/1204180/Microtonal-Music-Study-Chromatic-Lattice-Keyboard)_, September 1, 2017
 
 _[Sound Builder, Web Audio Synthesizer](https://www.codeproject.com/Articles/5268512/Sound-Builder)_, May 19, 2020
+
+_[Multitouch Support for Ten-Finger Playing](https://www.codeproject.com/Articles/5362252/Multitouch-Support)_, June 6, 2023
+
 
 ### See Also
 
