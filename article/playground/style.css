@@ -7,7 +7,12 @@
         pre { background-color: antiqueWhite; }
         blockquote { border-left: thick blue solid; padding-left: 1em; }
 	h1, h2, h3, h4, h5, h6 { border: none; }
-        details > details, details > p { margin-left: 2em; }
 	h1 { font-size: 200%; }
 	h2 { font-size: 162%; }
-	h3 { font-size: 114%; }
+	h3 { font-size: 134%; }
+	h4 { font-size: 114%; }
+	h5 { font-size: 105%; }
+	h6 { font-size: 100%; }
+	table { border-collapse: collapse; }
+	td, th { padding: 0; padding-left: 1em; padding-right: 1em; vertical-align: top; border: thin solid gray; } 
+	th { background-color: silver; }
