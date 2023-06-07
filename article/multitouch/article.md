@@ -26,6 +26,8 @@ C &mdash; D♭² &mdash; Db &mdash; C♯ &mdash; C♯² &mdash; D
 
 ---
 
+Download Microtonal Fabric source code — 284 KB
+
 <!-- copy to CodeProject from here ------------------------------------------->
 
 <p id="image-title">
@@ -47,7 +49,9 @@ This is the fourth article of the series dedicated to musical study with on-scre
 - [Sound Builder, Web Audio Synthesizer](https://www.codeproject.com/Articles/5268512/Sound-Builder)
 - Present article
 
-The last three articles are devoted to the project named [Microtonal FabrMicrotonal Fabricic](https://en.xen.wiki/w/Sergey_A_Kryukov#Microtonal_Fabric), a  microtonal music platform based on [WebAudio API](https://developer.mozilla.org/en-US/docs/Web/API/Web_Audio_API). It is a framework for building universal or customized microtonal musical keyboard instruments, microtonal experiments and computing, music study, and teaching music lessons with possible remote options. The platform provides several applications executed in a Web browser using shared JavaScript components.
+The last three articles are devoted to the project named [Microtonal Fabric](https://github.com/SAKryukov/microtonal-fabric), a  microtonal music platform based on [WebAudio API](https://developer.mozilla.org/en-US/docs/Web/API/Web_Audio_API). It is a framework for building universal or customized microtonal musical keyboard instruments, microtonal experiments and computing, music study, and teaching music lessons with possible remote options. The platform provides several applications executed in a Web browser using shared JavaScript components.
+
+See also [my page](https://en.xen.wiki/w/Sergey_A_Kryukov) at the microtonal community Web site [Xenharmonic Wiki](https://en.xen.wiki). In addition to the Microtonal Fabric links, there are some useful links on different microtonal topics and personalities.
 
 Most of the Microtonal Fabric applications allow the user to play music in a browser. If a multitouch screen is available, the user can play with ten fingers. The required features of the multitouch interface are not as trivial as they may seem at first glance. The present article explains the problem and the solution. It shows how the multitouch behavior is abstracted from the other part of the code, reused, and utilized by different types of on-screen keyboards.
 
