@@ -10,7 +10,7 @@ Browsers based on V8 engine are recommended, such as Chromium, Chrome, Opera, Vi
 
 ### Live-Play Applications
 
-[SoundBuilder](https://SAKryukov.github.io/microtonal-fabric/code/SoundBuilder)
+[Sound Builder](https://SAKryukov.github.io/microtonal-fabric/code/SoundBuilder)
 
 [Tonal System Comparison](https://SAKryukov.github.io/microtonal-fabric/code/tone-system-comparison) application
 
