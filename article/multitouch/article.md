@@ -47,11 +47,11 @@ This is the fourth article of the series dedicated to musical study with on-scre
 - [Sound Builder, Web Audio Synthesizer](https://www.codeproject.com/Articles/5268512/Sound-Builder)
 - Present article
 
-Last three articles are devoted to the project named [Microtonal FabrMicrotonal Fabricic](https://en.xen.wiki/w/Sergey_A_Kryukov#Microtonal_Fabric), a  microtonal music platform based on [WebAudio API](https://developer.mozilla.org/en-US/docs/Web/API/Web_Audio_API). It is a framework for building universal or customized microtonal musical keyboard instruments, microtonal experiments and computing, music study, and teaching music lessons with possible remote options. The platform provides several applications executed in a Web browser using shared JavaScript components.
+The last three articles are devoted to the project named [Microtonal FabrMicrotonal Fabricic](https://en.xen.wiki/w/Sergey_A_Kryukov#Microtonal_Fabric), a  microtonal music platform based on [WebAudio API](https://developer.mozilla.org/en-US/docs/Web/API/Web_Audio_API). It is a framework for building universal or customized microtonal musical keyboard instruments, microtonal experiments and computing, music study, and teaching music lessons with possible remote options. The platform provides several applications executed in a Web browser using shared JavaScript components.
 
-Most of the Microtonal Fabric applications allowes the user to play music in a browser. If a multitouch screen is available, the user can play with ten fingers. The required features of the multitouch interface are not so trivial as it may seem at first glance. The present article explains the problem, the solution. It shows how the multitouch behavior is abstracted from the other part of the code, reused, and utilized by different types of on-screeen keyboards.
+Most of the Microtonal Fabric applications allow the user to play music in a browser. If a multitouch screen is available, the user can play with ten fingers. The required features of the multitouch interface are not as trivial as they may seem at first glance. The present article explains the problem and the solution. It shows how the multitouch behavior is abstracted from the other part of the code, reused, and utilized by different types of on-screen keyboards.
 
-In the approach discussed, the application of the present multitouch solution is not limited to musical keyboards. The *view model* of the keyboard lools like a collection of HTML or SVG elemets with two states: "activated" (down) or "deactivated" (up). The states can be modified by the user or by software in many different ways. First, let's consider the entire problem.
+In the approach discussed, the application of the present multitouch solution is not limited to musical keyboards. The *view model* of the keyboard looks like a collection of HTML or SVG elements with two states: "activated" (down) or "deactivated" (up). The states can be modified by the user or by software in many different ways. First, let's consider the entire problem.
 
 ## The Problem: Keyboard Keys are not Like Buttons!
 
@@ -59,15 +59,15 @@ So, why does the multitouch control of the keyboard present some problems? Well,
 
 The most usual approach is to take the set of keys of some keyboard and attach some event handler to each one. It looks natural, but it cannot work at all.
 
-Let's see what the playing with all ten fingers requires. On a screen, we have three kinds of area: 1) the area of some of the keyboard key, 2) the area of a keyboard not occupied by a key, 3) the area outside the keyboard. When one or more fingers touch the screen inside the area of some key (case #1), a [Touch object](https://developer.mozilla.org/en-US/docs/Web/API/Touch) is created. The low-level touch event is invoked, but a semantic-level keyboard event to be handled to invoke key activation should be ivoked only if there are no more `Touch` objects in the area of the given key. Likewise, when a finger is removed from the screen, a semantic-level keyboard event should be invoked only if there no other `Touch` objects in the area of the key.
+Let's see what playing with all ten fingers requires. On a screen, we have three kinds of area: 1) the area of some keyboard key, 2) the area of a keyboard not occupied by a key, and 3) the area outside the keyboard. When one or more fingers touch the screen inside the area of some key (case #1), a [Touch object](https://developer.mozilla.org/en-US/docs/Web/API/Touch) is created. The low-level touch event is invoked, but a semantic-level keyboard event to be handled to invoke key activation should be invoked only if there are no more `Touch` objects in the area of the given key. Likewise, when a finger is removed from the screen, a semantic-level keyboard event should be invoked only if there are no other `Touch` objects in the area of the key.
 
-But this is not enough. The key activation can also be changed if a finger just slides on the screen. When a sliging finger enters the area of leaves the area of some key, it can come from or move to any of the areas of the types #1 to #3. Depending on the presence of other `Touch` objects in the area of the given key, it can also change the activation state of this key. Most typically, it happens when fingers slide across two or more keys. This technique is known as *glissando*. And this is something which cannot be implemented, when  [touch events](https://developer.mozilla.org/en-US/docs/Web/API/Touch_events) are attached to each key separately.
+But this is not enough. The key activation can also be changed if a finger just slides on the screen. When a sliding finger enters the area or leaves the area of some key, it can come from or move to any of the areas of types #1 to #3. Depending on the presence of other `Touch` objects in the area of the given key, it can also change the activation state of this key. Most typically, it happens when fingers slide across two or more keys. This technique is known as *glissando*. And this is something that cannot be implemented when  [touch events](https://developer.mozilla.org/en-US/docs/Web/API/Touch_events) are attached to each key separately.
 
 Why? It's easy to understand by comparison with the [pointer events](https://developer.mozilla.org/en-US/docs/Web/API/Pointer_events). These events include the events `pointerleave` and `pointerout`. These events make perfect sense for a single pointer controlled by a mouse or a touchpad. However, there is nothing similar in [touch events](https://developer.mozilla.org/en-US/docs/Web/API/Touch_events). The keyboard keys do not at all behave like UI buttons. Despite the apparent similarity, they are totally different.
 
 The only way to implement all the combinations of the semantic-level multitouch events is to handle low-level [touch events](https://developer.mozilla.org/en-US/docs/Web/API/Touch_events) to some element containing all the keys. In Microsoft Fabric code, this is the element representing the entire keyboard. Let's see how it is implemented in the section [Implementation](#heading-implementation) [Multitouch](#heading-multitouch).
 
-Before looking at the implementation, the reader may want to look at the availlable Microtonal Fabric applications using multitouch control. For all the applications, *live play* is available. For each application, life play URL can be found below. 
+Before looking at the implementation, the reader may want to look at the available Microtonal Fabric applications using multitouch control. For all the applications, *live play* is available. For each application, the live play URL can be found below. 
 
 ## Microtonal Fabric Applications Using Multitouch Control
 
@@ -87,19 +87,20 @@ Before looking at the implementation, the reader may want to look at the availla
 
 ## Implementation
 
-The idea is: we need a separate unit abstracted from the set of UI elements representing the keyboard. We are going to set some [touch events](https://developer.mozilla.org/en-US/docs/Web/API/Touch_events) to the singl HTML or SVG control representing the entire contols. These events should be interpreted by some events that may or may not related to the koeboard keys. To pull the information on the keys from the user, we are going to use *inversion of control*.
+The idea is: we need a separate unit abstracted from the set of UI elements representing the keyboard. We are going to set some [touch events](https://developer.mozilla.org/en-US/docs/Web/API/Touch_events) to the single HTML or SVG control representing the entire keyboard. These events should be interpreted by some events that may or may not be related to the keyboard keys. To pull the information on the keys from the user, we are going to use *inversion of control*.
 
-The touch functionality is attach to some element representing an entire keyboard using the single call to the function `setMultiTouch`, and it gets the key configuration information and invokes the semantic-level key events through three callback handers. Let's see how it works. 
+The touch functionality is implemented by attaching the events to some element representing an entire keyboard using the single call to the function `setMultiTouch`, and it gets the key configuration information and invokes the semantic-level key events through three callback handers. Let's see how it works. 
 
 ### Multitouch
 
 The function `setMultiTouch` assumes the following UI model of the multitouch sensitive area: a `container` HTML or SVG element containing one or more HTML or SVG child elements, they can be direct or indirect children.
 
-The function accepts four input arguments, `container` and three handlers:
+The function accepts four input arguments, `container`, and three handlers:
 
 - `container`: HTML or SVG handling multitouch events
-- `elementSelector`: this hander `element => bool` selects relevant children of the `contaner`, if this handler returns `false`, the event is ignored. Essentially, this handler is used by the user code to define the HTML or SVG elements to be interpreted as keys of some keyboard represented by the `container`.
-- `elementHandler`: this handler `(element, Touch touchObject, bool on) => undefined` is used to implement the main functionality, for example, produce sounds in response to the keyboard events; the handler accepts `element`, a touch object, and a Boolean `on` argument showing if this is an on of off action. Basically, this handler calls a general semantic handler which can be triggered in different way, for example, through a keyboard or a mouse. Essentially, it implements the action triggered when a keyboard key, represented by `element` is activated or deactiveted, depending on the value of `on`. 
+- `elementSelector`: this hander `element => bool` selects relevant children of the `container`, if this handler returns `false`, the event is ignored. Essentially, this handler is used by the user code to define the HTML or SVG elements to be interpreted as keys of some keyboard represented by the `container`.
+- `elementHandler`: this handler `(element, Touch touchObject, bool on) => undefined` is used to implement the main functionality, for example, produce sounds in response to the keyboard events; the handler accepts `element`, a touch object, and a Boolean `on` argument showing if this is an "on" or "off" action. Basically, this handler calls a general semantic handler which can be triggered in different ways, for example, through a keyboard or a mouse. Essentially, it implements the action triggered when a keyboard key, represented by `element` is activated or deactivated, depending on the value of `on`.
+- `sameElementHandler`: this handler `(element, Touch touchObject) => undefined` implements handling of the touch events within the same element representing a key.
 
 "ui.components/multitouch.js":{id=code-multitouch}
 
@@ -187,7 +188,6 @@ const setMultiTouch = (
     }); //assignTouchMove
     
     assignTouchEnd(container, ev =&gt; {
-        ev.preventDefault();
         for (let touch of ev.changedTouches) {
             const element =
                 document.elementFromPoint(touch.clientX, touch.clientY);
@@ -198,7 +198,7 @@ const setMultiTouch = (
 };
 ```
 
-The central point of the `setMultiTouch` implementation is the call to [document.elementFromPoint](https://developer.mozilla.org/en-US/docs/Web/API/Document/elementFromPoint). This way, the elements related to the [Touch event data](https://developer.mozilla.org/en-US/docs/Web/API/Touch) are found. When an element is found, it is checked up weather this is the element representing a keyboard key, and the function `isGoodElement` does that using the handler `elementSelector`. If it is, the handler `elementHandler` or `sameElementHandler` is called, depending the event data. These calls are used to handle the [touch events](https://developer.mozilla.org/en-US/docs/Web/API/Touch_events) `"touchstart"`, `"touchmove"`, and `"touchend"`.
+The central point of the `setMultiTouch` implementation is the call to [document.elementFromPoint](https://developer.mozilla.org/en-US/docs/Web/API/Document/elementFromPoint). This way, the elements related to the [Touch event data](https://developer.mozilla.org/en-US/docs/Web/API/Touch) are found. When an element is found, it is checked up whether this is the element representing a keyboard key, and the function `isGoodElement` does that using the handler `elementSelector`. If it is, the handler `elementHandler` or `sameElementHandler` is called, depending on the event data. These calls are used to handle [touch events](https://developer.mozilla.org/en-US/docs/Web/API/Touch_events) `"touchstart"`, `"touchmove"`, and `"touchend"`.
 
 Let's see how `setMultiTouch` can be used by applications.
 
@@ -239,17 +239,17 @@ This second example is more interesting from a programming standpoint. Let's dis
 
 ### Abstract Keyboard
 
-The [last example](#code-abstract-keyboard) shows an additional abstraction layer: the universal piece of code setting up the multitouch features is placed once in a class representing an abstract keyboard. Potentially, more then one terminal keyboard class can be derived from `AbstractKeyboard` and reuse the multitouch setup and other common keyboard features.
+The [last example](#code-abstract-keyboard) shows an additional abstraction layer: the universal piece of code setting up the multitouch features is placed once in a class representing an abstract keyboard. Potentially, more than one terminal keyboard class can be derived from `AbstractKeyboard` and reuse the multitouch setup and other common keyboard features.
 
 In the class `AbstractKeyboard`, the functions used in the call to `setMultiTouch` are not fully defined: the function `this.isTouchKey` is not defined at all, and the function `handler` is defined, but it depends on not yet functions. These functions are supposed to be implemented in all the terminal classes derived from `AbstractKeyboard`. But how to guarantee it?
 
-To guarantee, I've put forward a new technique I called *interface* ("agnostic/interfaces.js"). The keyboard classes do not extend an appropriate interface class, they just implement proper functions defined in a particular interface, a decsedant class of the class `IInterface` (agnostic/interfaces.js"). The only purpose of `IInterface` is to provide a way of early detection of the problem due to the lack of full implementation of an interface to some degree of *strictness*. To understand the concept of strictness, please see `const IInterfaceStrictness` in the same file, it is self-explaining.
+To guarantee, I've put forward a new technique I called *interface* ("agnostic/interfaces.js"). The keyboard classes do not extend an appropriate interface class, they just implement proper functions defined in a particular interface, a descendant class of the class `IInterface` (agnostic/interfaces.js"). The only purpose of `IInterface` is to provide a way of early detection of the problem due to the lack of full implementation of an interface to some degree of *strictness*. To understand the concept of strictness, please see `const IInterfaceStrictness` in the same file, it is self-explaining.
 
-On the example of the application Microtonal Playground, the terminal keyboard class implements the multitouch behavior not directly by calling `setMultiTouch`, but by inheriting from `AbstractKeyboard` through the following inheritance diagram: 
+In the example of the application Microtonal Playground, the terminal keyboard class implements the multitouch behavior not directly by calling `setMultiTouch`, but by inheriting from `AbstractKeyboard` through the following inheritance diagram: 
 
 `AbstractKeyboard` ("ui.components\abstract-keyboard.js") &#x25C1;&#x2500; `GridKeyboard` ("ui.components\grid-keyboard.js") &#x25C1;― `PlaygroungKeyboard` ("playground\ui\playground-keyboard.js")
 
-In addition to the inherirance from `AbstractKeyboard`, the terminal class is supposed to implement `IKeyboardGeometry`:
+In addition to the inheritance from `AbstractKeyboard`, the terminal class is supposed to implement `IKeyboardGeometry`:
 
 `IInterface` ("agnostic/interfaces.js") &#x25C1;&#x2014; `IKeyboardGeonetry` ("ui.components\abstract-keyboard.js")
 
@@ -290,17 +290,17 @@ class AbstractKeyboard {
 
 For the detail of `IInterface.throwIfNotImplemented` please see the source code, "agnostic/interfaces.js". The validation of the interface implementation is based on the reflection of the terminal class performed during runtime by the constructor. It checks up all the interface functions, property getters, and setters, and, depending on required strictness, the number of arguments for each function. In our case, it happens during the construction of the terminal application-level class `PlaygroungKeyboard` of the application Microtonal Playground. The application itself deserves a separate article.
 
-Apparently, this is just the imitation of the interface mechanism found in some well-designed compiled languages. It validates the implementation of the interfaces later, during runtime, but as soon as possible. Naturally, the mechanism cannot change the behavior of the software, it only facilitates debugging and, hence, software development. The mechanismn does work, but I consider it experimental an do understand that the value if it is discussible. I would be grateful for any criticism or suggestions. 
+Apparently, this is just the imitation of the interface mechanism found in some well-designed compiled languages. It validates the implementation of the interfaces later, during runtime, but as soon as possible. Naturally, the mechanism cannot change the behavior of the software, it only facilitates debugging and, hence, software development. The mechanism does work, but I consider it experimental and do understand that its value is discussible. I would be grateful for any criticism or suggestions. 
 
 ### Using Extra Data
 
-Note that none of the examples uses the second argument parameter of the handler `handler`, accepted as a the second `setMultiTouch` argument, the argument `touchObject` of the [Touch](https://developer.mozilla.org/en-US/docs/Web/API/Touch) type. Also, the last argument of `setMultiTouch`, the handler `sameElementHandler` is not used. However, these arguments are fully functional and can be used. They are reserved for advanced use.
+Note that none of the examples uses the second argument parameter of the handler `handler`, accepted as the second `setMultiTouch` argument, the argument `touchObject` of the [Touch](https://developer.mozilla.org/en-US/docs/Web/API/Touch) type. Also, the last argument of `setMultiTouch`, the handler `sameElementHandler` is not used. However, these arguments are fully functional and can be used. They are reserved for advanced use.
 
-The `Touch` argument passed to `handler` is used to get additional information on the original touch event. In particular, I've tried to use the values [Touch.radiusX](https://developer.mozilla.org/en-US/docs/Web/API/Touch/radiusX) and [Touch.radiusY](https://developer.mozilla.org/en-US/docs/Web/API/Touch/radiusY). My idea was to evaluate the area of the contact of the touchscreen with a finger. This information could be used to derive an amount of pressure, and hence, adjust sound volume based on this value, to add some dynamics to the performance. However, my experiments demonstrated that the performer poorly controls this value, and it is not the same as actual pressure. The more principle problem of those [Touch](https://developer.mozilla.org/en-US/docs/Web/API/Touch) member properties is that their change does not trigger any touch events; an event is triggered only when the centroid of the touch is changed. Nevertheless, it is obvious that the `Touch` data can be useful for the implementation of some advanced effect.
+The `Touch` argument passed to `handler` is used to get additional information on the original touch event. In particular, I've tried to use the values [Touch.radiusX](https://developer.mozilla.org/en-US/docs/Web/API/Touch/radiusX) and [Touch.radiusY](https://developer.mozilla.org/en-US/docs/Web/API/Touch/radiusY). My idea was to evaluate the area of the contact of the touchscreen with a finger. This information could be used to derive an amount of pressure, and hence, adjust sound volume based on this value, to add some dynamics to the performance. However, my experiments demonstrated that the performer poorly controls this value, and it is not the same as actual pressure. The more principle problem of those [Touch](https://developer.mozilla.org/en-US/docs/Web/API/Touch) member properties is that their change does not trigger any touch events; an event is triggered only when the centroid of the touch is changed. Nevertheless, it is obvious that the `Touch` data can be useful for the implementation of some advanced effects.
 
 The argument `sameElementHandler` of the function `setMultiTouch` is called when a touch event is triggered when a location of the touch remains within the same `element` as a previous touch event. Apparently, such events should not modify the activation state of the `element`. At the same time, such events can be used for the implementation of finer techniques. For example, the motion of a finger within the same key can be interpreted as finger-controlled *vibrato*. 
 
-All the finer techniques mentioned above are the matter of further research.
+All the finer techniques mentioned above are a matter of further research.
 
 ## Compatibility
 
