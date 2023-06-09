@@ -84,12 +84,22 @@
             <code>tones.keyboardStyle.className</code> before the application.
             It makes the style applied only to the key elements.</p>
         </details>
-    </details>
+        <p>Example:</p>
+        <pre>
+            keyboardStyle: {
+                className: "keyboard",
+                rules: [
+                    "b:first-of-type { color: navy }",
+                    "b:last-of-type { color: green }"
+                ]
+            },
+</pre>
+</details>
 </details>
 <h3 id="heading-fixed-frequency">Fixed Frequency</h3>
 <p>Fixed frequency is a floating-point or integer number, representing frequency in Hertz.</p><h3 id="heading-interval">Interval</h3>
 <p>The intervals are defined by the calls to the functions <code>interval(numerator, denonimator)</code>, where <code>numerator</code> and <code>denonimator</code> are positive integer numbers representing a rational number <code>numerator/denonimator</code>. Interval is the element of a free Abelian group with the multiplicative group operation.</p><h3 id="heading-frequency-element-with-a-custom-label">Frequency Element with a Custom Label</h3>
-<p>Such elements take on of the forms: <code>{ label: &quot;label&quot;, interval: interval(numerator, denonimator)}</code> or <code>{ label: &quot;label&quot;, frequency: number}</code>. These forms allow to provide a custom label with an interval or a fixed frequency object. If a label is not defined, is an empty string or this property with the name <code>label</code> is not of a <code>String</code> type, it renders the corresponding key disabled. Likewise, a key is disabled when the frequency is zero or not defined, or an interval is not defined.</p><h3 id="heading-repeat">Repeat</h3>
+<p>Such elements take on of the forms: <code>{ label: &quot;label&quot;, interval: interval(numerator, denonimator) }</code> or <code>{ label: &quot;label&quot;, frequency: number }</code>. These forms allow to provide a custom label with an interval or a fixed frequency object. If a label is not defined, is an empty string or this property with the name <code>label</code> is not of a <code>String</code> type, it renders the corresponding key disabled. Likewise, a key is disabled when the frequency is zero or not defined, or an interval is not defined.</p><h3 id="heading-repeat">Repeat</h3>
 <p>The special object <code>repeat</code> is used to mark the row array for repetition of the previous elements. It works only if the <code>repeat</code> object is the last element of an array, otherwise it renders corresponding key disabled. The repetition works in the following way: all the elements before the element <code>repeat</code> are copied to fill in the complete row in a repeating patterns. The labels are simply copied, but the repeated frequencies are transposed to the next octave per each repetition.</p><h3 id="heading-invalid-array-elements">Invalid Array Elements</h3>
 <p>Array elements of the types not listed above render corresponding part of the keys disabled. Other cases when the key is disabled are described above.</p>
 
