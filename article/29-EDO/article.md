@@ -38,10 +38,12 @@ A specialized microtonal musical instrument is specialized to 29 EDO tonal syste
 
 This is the fourth article of the series dedicated to musical study with on-screen keyboards, including microtonal ones:
 
-- [Musical Study with Isomorphic Computer Keyboard](https://www.codeproject.com/Articles/1201737/Musical-Study-with-Isomorphic-Computer-Keyboard)
-- [Microtonal Music Study with Chromatic Lattice Keyboard](https://www.codeproject.com/Articles/1204180/Microtonal-Music-Study-Chromatic-Lattice-Keyboard)
-- [Sound Builder, Web Audio Synthesizer](https://www.codeproject.com/Articles/5268512/Sound-Builder)
-- Present article
+1. *[Musical Study with Isomorphic Computer Keyboard](https://www.codeproject.com/Articles/1201737/Musical-Study-with-Isomorphic-Computer-Keyboard)*
+2. *[Microtonal Music Study with Chromatic Lattice Keyboard](https://www.codeproject.com/Articles/1204180/Microtonal-Music-Study-Chromatic-Lattice-Keyboard)*
+3. *[Sound Builder, Web Audio Synthesizer](https://www.codeproject.com/Articles/5268512/Sound-Builder)*
+4. *[Multitouch Support for Ten-Finger Playing](https://www.codeproject.com/Articles/5362252/Multitouch-Support)*
+5. *Microtonal Playground* ???
+6. *Present article*
 
 ## History
 
