@@ -105,14 +105,15 @@ Any arbitrary tonal systems can be created using Microtonal Playground (source c
 - Compatible browsers include, but are not limited to Google Chrome, Mozilla Firefox, Mozilla SeaMonkey, and Opera.
 
 Since v.&thinsp;4.0:
-- Touch screen support. With a touch screen, one can play with ten fingers, any chords, and *glissando* (important) in any combination.
+- Touch screen support. With a touch screen, one can play with ten fingers, any chords, and *glissando* (important) in any combination.<br/>
+For the detal, see the article *[Multitouch Support for Ten-Finger Playing](https://www.codeproject.com/Articles/5362252/Multitouch-Support)*.
 
 ## Using the Application
 
 The applications presented in this article are two independent [single-page applications](https://en.wikipedia.org/wiki/Single-page_application).
 
 1. [Microtonal Tone Systems Comparison](https://sakryukov.github.io/microtonal-fabric/code/tone-system-comparison) based on four chromatic-circle keyboards. Chords can be defined directly on the chromatic-circle keyboard and played separately in fast succession comparison.
-2. [Multi-EDO Chromatic Lattice](https://sakryukov.github.io/microtonal-fabric/code/Multi-EDO) keyboard, which allows playing a wide range of tones. Chords can be defined through chord tables, auto-generated, and played with a single click or key press. 
+2. [Multi-EDO Chromatic Lattice](https://sakryukov.github.io/microtonal-fabric/code/Multi-EDO) keyboard, which allows playing a wide range of tones. Chords can be defined through chord tables, auto-generated, and played with a single click or key press.
 
 The full source code can be downloaded, but there is no need to download software to use it — everything can be played directly on the [main Microtonal Fabric documentation page](https://sakryukov.github.io/microtonal-fabric).
 
