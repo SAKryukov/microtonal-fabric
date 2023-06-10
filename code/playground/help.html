@@ -37,21 +37,21 @@
     </p>
     <h2 id="heading-general">General</h2>
     <p>Microtone Playground is one of the <a href="https://github.com/SAKryukov/microtonal-fabric">Microtonal Fabric</a>
-        applications. It is the in-browser application which provides a way of playing with different thinkable tonal
-        systems. The user uses simple grid keyboard with fixed number and arrangenement of keys. The main method of
-        playing is based on 10-finger touchscreen. In this case all kinds of chords combined with glissando can be
+        applications. It is an in-browser application that provides a way of playing with different thinkable tonal
+        systems. The user uses a simple grid keyboard with a fixed number and arrangement of keys. The main method of
+        playing is based on a 10-finger touchscreen. In this case, all kinds of chords combined with glissando can be
         played. Without a touchscreen, it can be played with a mouse/trackball.</p>
     <h2 id="heading-tones">Tones</h2>
     <p>The user creates a tonal system by defining frequencies for all or some keys and defines some presentation
         detail, such as labels on the keyboard elements. All this data is created as a single <code>tone</code> object.
     </p>
     <h3 id="heading-tones-object">Tones Object</h3>
-    <p>Frequences are put in an array representing rows, each row being an array of row keys.
-        Any sizes of arrays are allowed — redundant data will be ignored, and missing data will be filled with disabled
+    <p>Frequencies are put in an array representing rows, each row being an array of row keys.
+        Any array size is allowed — redundant data will be ignored, and missing data will be filled with disabled
         keys.</p>
     <p>Array elements representing frequencies for the keys are defined as a polymorphic set, so the elements can be of
-        several differnet types: fixed frequency,
-        interval from a base note, fixed frequency or interval with a custom label, or repeat object.</p>
+        several different types: fixed frequency, an interval from a base note, fixed frequency or interval with
+        a custom label, or repeat object.</p>
     <p>The structure of the <code>tones</code> object:
     </p>
     <details open="true">
@@ -71,7 +71,7 @@
             </p>
             <details>
                 <summary><code>tones.metadata.title</code></summary>
-                <p>Title is shown as heading of the metadata element.</p>
+                <p><code>tones.metadata.title</code> is shown as the heading of the metadata element.</p>
             </details>
             <details>
                 <summary><code>tones.metadata.copyright</code></summary>
@@ -84,7 +84,7 @@
             <details>
                 <summary><code>tones.size.width</code></summary>
                 <p>Number of columns in the keyboard table.<br />
-                    The table width is not reduced, if some or all elements of <code>tones.rows</code> has lower length.
+                    The table width is not reduced, if some or all elements of <code>tones.rows</code> have lower length.
                     Instead, missing row elements are rendered as disabled.
                     In other cases, when the object <code>repeat</code> is used, the missing data is filled in
                     automatically.</p>
@@ -92,27 +92,27 @@
             <details>
                 <summary><code>tones.size.height</code></summary>
                 <p>Number of rows in the keyboard table. This is only a limiting property. The actual number of rows
-                    cannot be greater than this number, but it could be smaller, if the actual number of elements of
+                    cannot be greater than this number, but it could be smaller if the actual number of elements of
                     <code>tones.rows</code> is smaller.
                 </p>
             </details>
         </details>
         <details>
             <summary><code>tones.base</code></summary>
-            <p>Base frequency in Hz used to calculate frequencies specified as intervals.</p>
+            <p>Base frequency in Hz is used to calculate the frequencies specified as intervals.</p>
         </details>
         <details>
             <summary><code>tones.transpositionUnits</code></summary>
-            <p>Number of the transposition units per octave. For 12-EDO, this value is usually 12. This value is used in
+            <p>Number of transposition units per octave. For 12-EDO, this value is usually 12. This value is used in
                 the calculations of the minimum and maximum values of Transposition.</p>
         </details>
         <details>
             <summary><code>tones.rows</code></summary>
             <p>Array of arrays of tone objects.<br />
                 A tone object can represent
-                <a href="#heading-fixed-frequency">fixed frequency</a>,
+                <a href="#heading-fixed-frequency">a fixed frequency</a>,
                 <a href="#heading-interval">interval</a>, or
-                a <a href="#heading-frequency-element-with-a-custom-label">frequency element with a custom label</a>.
+                <a href="#heading-frequency-element-with-a-custom-label">frequency element with a custom label</a>.
             </p>
         </details>
         <details>
@@ -154,27 +154,27 @@
     <h3 id="heading-fixed-frequency">Fixed Frequency</h3>
     <p>Fixed frequency is a floating-point or integer number, representing frequency in Hertz.</p>
     <h3 id="heading-interval">Interval</h3>
-    <p>The intervals are defined by the calls to the functions <code>interval(numerator, denonimator)</code>, where
-        <code>numerator</code> and <code>denonimator</code> are positive integer numbers representing a rational number
-        <code>numerator/denonimator</code>. Interval is the element of a free Abelian group with the multiplicative
+    <p>The intervals are defined by the calls to the functions <code>interval(numerator, denominator)</code>, where
+        <code>numerator</code> and <code>denominator</code> are positive integer numbers representing a rational number
+        <code>numerator/denominator</code>. Interval is the element of a free Abelian group with the multiplicative
         group operation.
     </p>
     <h3 id="heading-frequency-element-with-a-custom-label">Frequency Element with a Custom Label</h3>
     <p>Such elements take on of the forms:
-        <code>{ label: &quot;label&quot;, interval: interval(numerator, denonimator) }</code> or
-        <code>{ label: &quot;label&quot;, frequency: number }</code>. These forms allow to provide a custom label with
-        an interval or a fixed frequency object. If a label is not defined, is an empty string or this property with the
+        <code>{ label: &quot;label&quot;, interval: interval(numerator, denominator) }</code> or
+        <code>{ label: &quot;label&quot;, frequency: number }</code>. These forms allow the definition of a custom label with
+        an interval, or a fixed frequency object. If a label is not defined, is an empty string or this property with the
         name <code>label</code> is not of a <code>String</code> type, it renders the corresponding key disabled.
         Likewise, a key is disabled when the frequency is zero or not defined, or an interval is not defined.
     </p>
     <h3 id="heading-repeat">Repeat</h3>
     <p>The special object <code>repeat</code> is used to mark the row array for repetition of the previous elements. It
-        works only if the <code>repeat</code> object is the last element of an array, otherwise it renders corresponding
+        works only if the <code>repeat</code> object is the last element of an array, otherwise, it renders the corresponding
         key disabled. The repetition works in the following way: all the elements before the element <code>repeat</code>
-        are copied to fill in the complete row in a repeating patterns. The labels are simply copied, but the repeated
+        are copied to fill in the complete row in a repeating pattern. The labels are simply copied, but the repeated
         frequencies are transposed to the next octave per each repetition.</p>
     <h3 id="heading-invalid-array-elements">Invalid Array Elements</h3>
-    <p>Array elements of the types not listed above render corresponding part of the keys disabled. Other cases when the
+    <p>Array elements of the types not listed above render the corresponding part of the keys disabled. Other cases when the
         key is disabled are described above.</p>
 
 </body>
