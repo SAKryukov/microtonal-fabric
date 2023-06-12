@@ -1,4 +1,4 @@
-@numbering {
+﻿@numbering {
     enable: false
 }
 
@@ -96,11 +96,18 @@ Each mode row covers four octaves plus one 12-EDO semitone.
 
 ### Demo
 
-### Credits
+## Credits
 
-I'm much grateful to [Xenharmonic Wiki](https://en.xen.wiki) members [Dawson Berry](https://en.xen.wiki/w/Dawson_Berry) a.k.a. *Aura*, and [Flora Canou](https://en.xen.wiki/w/User:FloraC) for trying out Microtonal Fabric, the present application, and useful discussion. Dawson Berry validated my implementation of his Aura's Diatonic Scales, and Flora Canou validated my implementation of the Chinese system, she also checked up my [pinyin](https://en.wikipedia.org/wiki/Pinyin) spelling of the words used to label the keyboard keys. Both colleagues found my mistakes and corrected me.
+I'm much grateful to [Xenharmonic Wiki](https://en.xen.wiki) members [Dawson Berry](https://en.xen.wiki/w/Dawson_Berry) a.k.a. *Aura* and [Flora Canou](https://en.xen.wiki/w/User:FloraC) for trying out Microtonal Fabric, the present application, and useful discussions.
+
+Dawson Berry validated my implementation of his Aura's Diatonic Scales, and Flora Canou validated my implementation of the Chinese system, she also checked up my [pinyin](https://en.wikipedia.org/wiki/Pinyin) spelling of the words used to label the keyboard keys. Both colleagues found my mistakes and helped me to corrected them.
+
+I would also be much greatful to everyone who could try out my shruti implementation, validate the tonal system and the label on the keys.
 
 ## Conclusions
 
+The keyboards rendered with Microtonal Playground may not be the most convenient instruments. Even though it is quite possible to learn playing them, they hardly can be considered as anything serious from the perspective of playing music practically.
+
+However, for the purposes of study, learning and teaching, Microtonal Playground is flexible and convenient enough. The key here is flexibility. In particular, any theorist can quickly implement one's ideas, try them out and hear the results right away. A student trying to learn some exotic of foreign system can immediately try it out and experience ist feel.
 
 <!-- copy to CodeProject to here --------------------------------------------->
