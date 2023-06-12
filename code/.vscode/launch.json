@@ -15,7 +15,7 @@
             //"file": "${workspaceFolder}/unit-tests/grid-keyboard.html"
             //"file": "${workspaceFolder}/unit-tests/keyboard/index.html"
             //"file": "${workspaceFolder}/SoundBuilder/index.html"
-            "file": "${workspaceFolder}/playground/index.html?custom-demo/customized.user.data"
+            "file": "${workspaceFolder}/playground/index.html"
             //"file": "${workspaceFolder}/playground/index.html"
             //"file": "${workspaceFolder}/unit-tests/circular-keyboard.html"
         }
