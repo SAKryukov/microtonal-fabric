@@ -34,6 +34,7 @@
         <a style="margin-left: 3em;" href="#heading-frequency-element-with-a-custom-label">Frequency Element with a Custom Label</a><br />
         <a style="margin-left: 3em;" href="#heading-repeat">Repeat</a><br />
         <a style="margin-left: 3em;" href="#heading-invalid-array-elements">Invalid Array Elements</a><br />
+        <a style="margin-left: 0em;" href="#heading-referencing-user-data">Referencing User Data</a><br />
     </p>
     <h2 id="heading-general">General</h2>
     <p>Microtone Playground is one of the <a href="https://github.com/SAKryukov/microtonal-fabric">Microtonal Fabric</a>
@@ -176,6 +177,23 @@
     <h3 id="heading-invalid-array-elements">Invalid Array Elements</h3>
     <p>Array elements of the types not listed above render the corresponding part of the keys disabled. Other cases when the
         key is disabled are described above.</p>
+
+    <h2 id="heading-referencing-user-data">Referencing User Data</h2>
+
+    <p>The application looks for the default user data file with the definition of <code>tones</code>. The default file name is &ldquo;user.data&rdquo;, it should be located in the same directory as the main application file &ldquo;index.html&rdquo;.</p>.
+    <p>To customize the tonal system and keyboard, the user needs to provide an alternative file and specify the name name in the URL with the location relative to the location of the main application file, for example:
+    <p><code>.../index.html?custom/shruti.user.data</code></p>
+
+    <p>The location of the data file relative to the main application file should be taken into account if redirection is used. For example, if the ??? For example: ???</p>
+   <pre lang="HTML">
+&lt;!DOCTYPE html&gt;
+&lt;html lang="en-us"&gt;
+    &lt;head&gt;
+        &lt;meta http-equiv="refresh" content="0; url=../index.html?custom/shruti.user.data" /&gt;
+    &lt;/head&gt;
+&lt;/html&gt;</pre>
+
+   <p>If the user data file is not found, the application shows an error after the user hits the button &ldquo;start&rdquo;.</p>
 
 </body>
 
