@@ -180,11 +180,12 @@
 
     <h2 id="heading-referencing-user-data">Referencing User Data</h2>
 
-    <p>The application looks for the default user data file with the definition of <code>tones</code>. The default file name is &ldquo;user.data&rdquo;, it should be located in the same directory as the main application file &ldquo;index.html&rdquo;.</p>.
-    <p>To customize the tonal system and keyboard, the user needs to provide an alternative file and specify the name name in the URL with the location relative to the location of the main application file, for example:
+    <p>The application looks for the default user data file with the definition of <code>tones</code>. The default file name is &ldquo;user.data&rdquo;, it should be located in the same directory as the main application file &ldquo;index.html&rdquo;.</p>
+    <p>To customize the tonal system and keyboard, the user needs to provide an alternative file and specify the name in the URL <i>query string</i> with the location relative to the location of the main application file.
+         This query strings start with '?' immediately followed by the file name, without parameter names or anything else. For example:
     <p><code>.../index.html?custom/shruti.user.data</code></p>
 
-    <p>The location of the data file relative to the main application file should be taken into account if redirection is used. For example, if the ??? For example: ???</p>
+    <p>The location of the data file relative to the main application file should be taken into account if redirection is used. For example, if the HTML file shown below is placed in the immediate subdirectory of the main application file, it may look like this:</p>
    <pre lang="HTML">
 &lt;!DOCTYPE html&gt;
 &lt;html lang="en-us"&gt;
