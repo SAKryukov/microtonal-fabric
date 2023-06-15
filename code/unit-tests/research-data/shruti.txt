@@ -39,7 +39,11 @@ See Turkish 22 Shruti
 
 https://hmong.es/wiki/%C5%9Aruti_(music)
 
-	1	0	261.6256	C	261.6256	0	0
+Shrutis	12-TET	53-TET
+Nombre	Proporción	Centavos	Frecuencia
+(Hz)	Nombre	Frecuencia
+(Hz)	Paso	Centavos
+Chandovatī	1	0	261.6256	C	261.6256	0	0
 Dayāvatī	256/243	90	275.6220	D ♭	277.1826	4	90,57
 Ranjanī	16/15	112	279.0673	5	113.21
 Ratikā	9/10	182	290.6951	D	293.6648	8	181.13
