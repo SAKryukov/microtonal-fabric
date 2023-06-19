@@ -1,3 +1,5 @@
+"use strict";
+
 window.onload = () => {
 
     const halfSize = 1;

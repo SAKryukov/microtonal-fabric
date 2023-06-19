@@ -7,16 +7,21 @@
 // https://github.com/SAKryukov
 // https://github.com/SAKryukov/microtonal-fabric
 
-const StrokeJoin = { miter:0, round:0, bevel:0, miterClip:"miter-clip", arcs:0 }
+
+const namedEnumeration = baseObject => {
+    for (let index in baseObject)
+    if (baseObject[index].constructor != String)
+        baseObject[index] = index;
+    return Object.freeze(baseObject);
+}; //namedEnumeration
+
+const StrokeJoin = namedEnumeration({ miter:0, round:0, bevel:0, miterClip:"miter-clip", arcs:0 });
 
 class SVG {
 
     #implementation = {};
 
     constructor(viewBox, existingSvg) {
-        for (let index in StrokeJoin)
-            if (StrokeJoin[index].constructor != String)
-                StrokeJoin[index] = index;
         const ns = "http://www.w3.org/2000/svg";
         this.#implementation.createNS = (name) => document.createElementNS(ns, name);
         this.#implementation.attribute = (element, values) => {
