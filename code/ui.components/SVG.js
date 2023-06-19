@@ -1,17 +1,22 @@
 // Microtonal Fabric
 //
-// Copyright (c) Sergey A Kryukov, 2017-2021
+// Copyright (c) Sergey A Kryukov, 2017-2023
 //
 // http://www.SAKryukov.org
 // http://www.codeproject.com/Members/SAKryukov
 // https://github.com/SAKryukov
 // https://github.com/SAKryukov/microtonal-fabric
 
+const StrokeJoin = { miter:0, round:0, bevel:0, miterClip:"miter-clip", arcs:0 }
+
 class SVG {
 
     #implementation = {};
 
-    constructor(viewBox) {
+    constructor(viewBox, existingSvg) {
+        for (let index in StrokeJoin)
+            if (StrokeJoin[index].constructor != String)
+                StrokeJoin[index] = index;
         const ns = "http://www.w3.org/2000/svg";
         this.#implementation.createNS = (name) => document.createElementNS(ns, name);
         this.#implementation.attribute = (element, values) => {
@@ -23,14 +28,20 @@ class SVG {
         this.#implementation.lineStrokeColor = "black";
         this.#implementation.circleStrokeColor = "black";
         this.#implementation.rectangleStrokeColor = "black";
+        this.#implementation.polygonStrokeColor = "black";
         this.#implementation.circleFillColor = "transparent";
         this.#implementation.rectangleFillColor = "transparent";
-        this.#implementation.lineStrokeWidth = null;
-        this.#implementation.circleStrokeWidth = null;
-        this.#implementation.rectangleStrokeWidth = null;
-        this.#implementation.svg = this.#implementation.createNS("svg");
-        this.#implementation.svg.setAttribute("viewBox",
-            `${viewBox.x.from} ${viewBox.y.from} ${viewBox.x.to - viewBox.x.from} ${viewBox.y.to - viewBox.y.from}`);
+        this.#implementation.polygonFillColor = "transparent";
+        this.#implementation.lineStrokeWidth = "1%";
+        this.#implementation.circleStrokeWidth = "1%";
+        this.#implementation.rectangleStrokeWidth = "1%";
+        this.#implementation.polygonStrokeWidth = "1%";
+        this.#implementation.polygonStrokeLineJoin = StrokeJoin.round; 
+        this.#implementation.svg = existingSvg == null ?
+            this.#implementation.createNS("svg") : existingSvg;
+        if (viewBox != null)
+            this.#implementation.svg.setAttribute("viewBox",
+                `${viewBox.x.from} ${viewBox.y.from} ${viewBox.x.to - viewBox.x.from} ${viewBox.y.to - viewBox.y.from}`);
     } //constructor
 
     get element() { return this.#implementation.svg; }
@@ -39,18 +50,26 @@ class SVG {
     set lineStrokeColor(value) { this.#implementation.lineStrokeColor = value; }
     get rectangleStrokeColor() { return this.#implementation.rectangleStrokeColor; }
     set rectangleStrokeColor(value) { this.#implementation.rectangleStrokeColor = value; }
+    get polygonStrokeColor() { return this.#implementation.polygonStrokeColor; }
+    set polygonStrokeColor(value) { this.#implementation.polygonStrokeColor = value; }
     get circleStrokeColor() { return this.#implementation.circleStrokeColor; }
     set circleStrokeColor(value) { this.#implementation.circleStrokeColor = value; }
     get circleFillColor() { return this.#implementation.circleFillColor; }
     set circleFillColor(value) { this.#implementation.circleFillColor = value; }
     get rectangleFillColor() { return this.#implementation.rectangleFillColor; }
     set rectangleFillColor(value) { this.#implementation.rectangleFillColor = value; }
+    get polygonFillColor() { return this.#implementation.polygonFillColor; }
+    set polygonFillColor(value) { this.#implementation.polygonFillColor = value; }
     get lineStrokeWidth() { return this.#implementation.lineStrokeWidth; }
     set lineStrokeWidth(value) { this.#implementation.lineStrokeWidth = value; }
     get circleStrokeWidth() { return this.#implementation.circleStrokeWidth; }
     set circleStrokeWidth(value) { this.#implementation.circleStrokeWidth = value; }
     get rectangleStrokeWidth() { return this.#implementation.rectangleStrokeWidth; }
     set rectangleStrokeWidth(value) { this.#implementation.rectangleStrokeWidth = value; }
+    get polygonStrokeWidth() { return this.#implementation.polygonStrokeWidth; }
+    set polygonStrokeWidth(value) { this.#implementation.polygonStrokeWidth = value; }
+    get polygonStrokeLineJoin() { return this.#implementation.polygonStrokeLineJoin; }
+    set polygonStrokeLineJoin(value) { this.#implementation.polygonStrokeLineJoin = value; }
 
     appendElement(element, group) {
         if (group)
@@ -88,6 +107,24 @@ class SVG {
         element.style.strokeWidth = this.#implementation.rectangleStrokeWidth;
         return this.appendElement(element, group);
     } //rectangle
+    
+    polygon(pointArray, group) {
+        const element = this.#implementation.createNS("polygon");
+        element.style.stroke = this.#implementation.rectangleStrokeColor;
+        element.style.fill = this.#implementation.rectangleFillColor;
+        element.style.strokeWidth = this.#implementation.rectangleStrokeWidth;
+        for (let value of pointArray) {
+            let point = this.element.createSVGPoint();
+            point.x = value[0];
+            point.y = value[1];
+            element.points.appendItem(point);
+        } //loop
+        element.style.stroke = this.#implementation.polygonStrokeColor;
+        element.style.fill = this.#implementation.polygonFillColor;
+        element.style.strokeWidth = this.#implementation.polygonStrokeWidth;
+        element.style.strokeLinejoin = this.#implementation.polygonStrokeLineJoin?.toString();
+        return this.appendElement(element, group);
+    } //polygon
 
     text(x, y, value, size, group) {
         const element = this.#implementation.createNS("text");
