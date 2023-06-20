@@ -19,12 +19,16 @@ class Enumeration {
         let index = 0;
         let fullMember;
         for (let member of values) {
-            if (member.constructor == String)
+            if (member == null) continue;
+            if (member.constructor == String) {
                 fullMember = { index: index, name: member, humanReadableName: member };
-            else 
+                this[member] = member;
+            } else {
                 fullMember = { index: index, name: member.name, humanReadableName: member.humanReadableName };
+                this[member.name] = member.name;
+            } //if
             this.#implementation.indexMap.set(index, fullMember);    
-            this.#implementation.nameMap.set(fullMember.name, index);    
+            this.#implementation.nameMap.set(fullMember.name, index);
             ++index;
         } //loop
     } //constructor
