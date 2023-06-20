@@ -34,8 +34,15 @@ class Enumeration {
     
     forEach(method) {
         if (!method) return;
-        for (let [key, value] of this.#implementation.indexMap)
+        for (let [_, value] of this.#implementation.indexMap)
             method(value); 
     } //forEach
+
+    static namedEnumeration(baseObject) {
+        for (let index in baseObject)
+        if (baseObject[index].constructor != String)
+            baseObject[index] = index;
+        return Object.freeze(baseObject);    
+    } //namedEnumeration
  
 } //class Enumeration

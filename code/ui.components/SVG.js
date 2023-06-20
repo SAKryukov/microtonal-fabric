@@ -7,15 +7,7 @@
 // https://github.com/SAKryukov
 // https://github.com/SAKryukov/microtonal-fabric
 
-
-const namedEnumeration = baseObject => {
-    for (let index in baseObject)
-    if (baseObject[index].constructor != String)
-        baseObject[index] = index;
-    return Object.freeze(baseObject);
-}; //namedEnumeration
-
-const StrokeJoin = namedEnumeration({ miter:0, round:0, bevel:0, miterClip:"miter-clip", arcs:0 });
+const StrokeJoin = Enumeration.namedEnumeration({ miter:0, round:0, bevel:0, miterClip:"miter-clip", arcs:0 });
 
 class SVG {
 
