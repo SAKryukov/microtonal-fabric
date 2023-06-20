@@ -13,7 +13,7 @@ class Enumeration {
 
     #implementation = {};
 
-    constructor(values) { // values: list of strings or objects { name: name, humanReadableName: name; }
+    constructor(values) { // values: list of strings or objects { name: name, humanReadableName: name; value: value }
         this.#implementation.indexMap = new Map();
         this.#implementation.nameMap = new Map();
         let index = 0;
@@ -25,6 +25,8 @@ class Enumeration {
                 this[member] = member;
             } else {
                 fullMember = { index: index, name: member.name, humanReadableName: member.humanReadableName };
+                if (member.value != undefined)
+                    fullMember.value = member.value;
                 this[member.name] = member.name;
             } //if
             this.#implementation.indexMap.set(index, fullMember);    
