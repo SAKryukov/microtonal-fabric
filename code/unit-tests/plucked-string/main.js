@@ -40,9 +40,20 @@ window.onload = () => {
     let lastElement = null;
     let lastCoordinate = null;
 
+    let instrument = null;
+    const button = document.querySelector("button");
+
+    button.onclick = () => {
+        instrument = new Instrument([440]);
+        instrument.volume = 1.4;
+        instrument.data = instrumentList[0];    
+    }
+
     const play = (element, volumeDelta) => {
         const keySize = DefinitionSet.widthRight * 2 * (svg.element.getBoundingClientRect().height / DefinitionSet.halfSize / 2);
-        console.log(element, "Relative: " + Math.abs(volumeDelta)/keySize);
+        const relative = Math.abs(volumeDelta)/keySize;
+        //console.log(element, "Relative: " + Math.abs(volumeDelta)/keySize);
+        instrument.play(true, 0, 450, relative);
     } //play
 
     setMultiTouch(
@@ -52,6 +63,7 @@ window.onload = () => {
             if (on) {
                 lastElement = element;
                 lastCoordinate = touchObject.clientY;
+                instrument.play(false, 0);
             } else {
                 if (lastElement == element)
                     play(element, touchObject.clientY - lastCoordinate);
