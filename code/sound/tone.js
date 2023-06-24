@@ -58,6 +58,8 @@ class Tone extends ModulatorSet {
         this.#implementation.frequencyModulationEnvelope.play(this.#implementation.context, this.#implementation.frequencyModulationEnvelopeNode.gain, on);
         this.#implementation.amplitudeModulationEnvelope.play(this.#implementation.context, this.#implementation.amplitudeModulationEnvelopeNode.gain, on);
     } //play
+    
+    pitchShift(frequency) { this.#implementation.mainOscillator.frequency.value = frequency; }
 
     set waveform(wave) {
         if (wave.constructor == String)
