@@ -152,7 +152,7 @@ class Instrument extends ModulatorSet {
         }; //this.#implementation.silence
     } //constructor
 
-    play(on, index) { this.#implementation.tones.get(index).play(on); }
+    play(on, index, frequency, dynamicGain) { this.#implementation.tones.get(index).play(on, frequency, dynamicGain); }
 
     playWith(usage, enable) {
         switch (usage) {

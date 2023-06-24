@@ -48,9 +48,11 @@ class Tone extends ModulatorSet {
     } //constructor
 
     play(on, frequency, dynamicGain) {
-        this.#implementation.mainOscillator.frequency.value = frequency == null ?
-              this.#implementation.initialFrequency : frequency;
-        this.#implementation.dynamicGainNode.gain.value = dynamicGain == null ? 1 : dynamicGain;     
+        if (on) {
+            this.#implementation.mainOscillator.frequency.value = frequency == null ?
+                this.#implementation.initialFrequency : frequency;
+            this.#implementation.dynamicGainNode.gain.value = dynamicGain == null ? 1 : dynamicGain;
+        } //if     
         this.#implementation.gainEnvelope.play(this.#implementation.context, this.#implementation.gainEnvelopeNode.gain, on);
         this.#implementation.detuneEnvelope.play(this.#implementation.context, this.#implementation.mainOscillator.detune, on);
         this.#implementation.frequencyModulationEnvelope.play(this.#implementation.context, this.#implementation.frequencyModulationEnvelopeNode.gain, on);
