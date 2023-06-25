@@ -26,27 +26,36 @@ window.onload = () => {
     svg.rectangleStrokeColor = "red";
     //svg.rectangleStrokeWidth = 0.01;
     svg.polygonStrokeColor = "blue";
+    svg.element.style.width = "100%";
     //svg.polygonFillColor = 
     svg.polygonStrokeWidth = DefinitionSet.thickness;
 
     svg.lineStrokeWidth = DefinitionSet.thickness;
-    svg.line(-1, 1, 0, 0);
+    svg.circleFillColor = "darkGray";
+    svg.circle(0.7, 0, 1/4);
     //svg.line(-1, 1, -DefinitionSet.widthLeft, -DefinitionSet.widthRight);
     //svg.line(-1, 1, +DefinitionSet.widthLeft, +DefinitionSet.widthRight);
+    svg.line(-1, +1, 0, 0);
+    svg.line(0, 0, -1, 1);
     const key = svg.polygon([[-1, -DefinitionSet.widthLeft], [1, -DefinitionSet.widthRight], [1, +DefinitionSet.widthRight], [-1, +DefinitionSet.widthLeft]]);
 
-    document.body.appendChild(svg.element);
+    const main = document.querySelector("main"); 
+    main.appendChild(svg.element);
+    //main.style.display = "none";
 
     let lastElement = null;
     let lastCoordinate = null;
 
     let instrument = null;
     const button = document.querySelector("button");
+    button.focus();
 
     button.onclick = () => {
-        instrument = new Instrument([440]);
-        instrument.volume = 1.4;
-        instrument.data = instrumentList[0];    
+        instrument = new Instrument([240]);
+        instrument.volume = 3;
+        instrument.data = instrumentList[0];
+        main.style.display = "block";
+        document.body.removeChild(button);    
     }
 
     const play = (element, volumeDelta) => {
