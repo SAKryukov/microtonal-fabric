@@ -153,7 +153,7 @@ class Instrument extends ModulatorSet {
     } //constructor
 
     play(on, index, frequency, dynamicGain) { this.#implementation.tones.get(index).play(on, frequency, dynamicGain); }
-    pitchShift(frequency) { this.#implementation.tones.get(index).pitchShift(frequency); } 
+    pitchShift(index, frequency) { this.#implementation.tones.get(index).pitchShift(frequency); } 
 
     playWith(usage, enable) {
         switch (usage) {

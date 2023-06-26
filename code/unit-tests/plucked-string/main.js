@@ -16,6 +16,8 @@ window.onload = () => {
         widthLeft: 0.3,
         widthRight: 0.4,
         thickness: "0.3%",
+        pitch: 200,
+        volume: 5,
     } //DefinitionSet
 
     const svg = new SVG({
@@ -37,7 +39,14 @@ window.onload = () => {
     //svg.line(-1, 1, +DefinitionSet.widthLeft, +DefinitionSet.widthRight);
     svg.line(-1, +1, 0, 0);
     svg.line(0, 0, -1, 1);
-    const key = svg.polygon([[-1, -DefinitionSet.widthLeft], [1, -DefinitionSet.widthRight], [1, +DefinitionSet.widthRight], [-1, +DefinitionSet.widthLeft]]);
+
+    const createKeys = () => {
+        const widthMiddle = (DefinitionSet.widthLeft + DefinitionSet.widthRight) / 2;
+        const fretKey = svg.polygon([[-1, -DefinitionSet.widthLeft], [0, -widthMiddle], [0, +widthMiddle], [-1, +DefinitionSet.widthLeft]]);
+        const pluckingKey = svg.polygon([[0, -widthMiddle], [1, -DefinitionSet.widthRight], [1, +DefinitionSet.widthRight], [0, +widthMiddle]]);
+        return { fretKey: fretKey, pluckingKey: pluckingKey };
+    };
+    const keys = createKeys();
 
     const main = document.querySelector("main"); 
     main.appendChild(svg.element);
@@ -51,34 +60,52 @@ window.onload = () => {
     button.focus();
 
     button.onclick = () => {
-        instrument = new Instrument([240]);
-        instrument.volume = 3;
+        instrument = new Instrument([DefinitionSet.pitch]);
+        instrument.volume = DefinitionSet.volume;
         instrument.data = instrumentList[0];
         main.style.display = "block";
         document.body.removeChild(button);    
-    }
+    };
+
+    let pitch = DefinitionSet.pitch;
+
+    const getPitch = (element, touchObject) => {
+        const keySize = element.getBoundingClientRect().width;
+        let relative = touchObject.clientX / keySize;
+        const width = 2 - relative;
+        relative = 2 / width;
+        return DefinitionSet.pitch*relative;
+    }; //getPitch
 
     const play = (element, volumeDelta) => {
-        const keySize = DefinitionSet.widthRight * 2 * (svg.element.getBoundingClientRect().height / DefinitionSet.halfSize / 2);
+        const keySize = DefinitionSet.widthRight * 2 * (element.getBoundingClientRect().height / DefinitionSet.halfSize / 2);
         const relative = Math.abs(volumeDelta)/keySize;
         //console.log(element, "Relative: " + Math.abs(volumeDelta)/keySize);
-        instrument.play(true, 0, 450, relative);
+        instrument.play(true, 0, pitch, relative);
     } //play
 
     setMultiTouch(
         svg.element,
         element => element.constructor == SVGPolygonElement,
         (element, touchObject, on) => {
-            if (on) {
-                lastElement = element;
-                lastCoordinate = touchObject.clientY;
-                instrument.play(false, 0);
+            if (element == keys.pluckingKey) {
+                if (on) {
+                    lastElement = element;
+                    lastCoordinate = touchObject.clientY;
+                    instrument.play(false, 0);
+                } else {
+                    if (lastElement == element)
+                        play(element, touchObject.clientY - lastCoordinate);
+                } //if    
             } else {
-                if (lastElement == element)
-                    play(element, touchObject.clientY - lastCoordinate);
+                if (!on)
+                    instrument.play(false, 0);
             } //if
         },
         (element, touchObject) => { //same element
+            if (element != keys.fretKey) return;
+            pitch = getPitch(element, touchObject);
+            instrument.pitchShift(0, pitch);
         });
 
 } //window.onload
