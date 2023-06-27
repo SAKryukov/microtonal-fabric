@@ -1,4 +1,4 @@
-// Microtonal Fabric
+/ Microtonal Fabric
 //
 // Copyright (c) Sergey A Kryukov, 2017-2023
 //
@@ -17,7 +17,7 @@ window.onload = () => {
         widthRight: 0.4,
         thickness: "0.3%",
         pitch: 200,
-        volume: 5,
+        volume: 2,
     } //DefinitionSet
 
     const svg = new SVG({
@@ -26,7 +26,6 @@ window.onload = () => {
     });
 
     svg.rectangleStrokeColor = "red";
-    //svg.rectangleStrokeWidth = 0.01;
     svg.polygonStrokeColor = "blue";
     svg.element.style.width = "100%";
     //svg.polygonFillColor = 
@@ -35,8 +34,6 @@ window.onload = () => {
     svg.lineStrokeWidth = DefinitionSet.thickness;
     svg.circleFillColor = "darkGray";
     svg.circle(0.7, 0, 1/4);
-    //svg.line(-1, 1, -DefinitionSet.widthLeft, -DefinitionSet.widthRight);
-    //svg.line(-1, 1, +DefinitionSet.widthLeft, +DefinitionSet.widthRight);
     svg.line(-1, +1, 0, 0);
     svg.line(0, 0, -1, 1);
 
@@ -50,7 +47,6 @@ window.onload = () => {
 
     const main = document.querySelector("main"); 
     main.appendChild(svg.element);
-    //main.style.display = "none";
 
     let lastElement = null;
     let lastCoordinate = null;
@@ -69,9 +65,15 @@ window.onload = () => {
 
     let pitch = DefinitionSet.pitch;
 
-    const getPitch = (element, touchObject) => {
+    const getPitch = (element, touchEvent) => {
+        let max = 0;
+        for (let touch of touchEvent.touches) {
+            if (touch.target != element) continue;
+            if (touch.clientX > max) max = touch.clientX; 
+        }
+        const x = max == 0 ? DefinitionSet.pitch : max;
         const keySize = element.getBoundingClientRect().width;
-        let relative = touchObject.clientX / keySize;
+        let relative = x / keySize;
         const width = 2 - relative;
         relative = 2 / width;
         return DefinitionSet.pitch*relative;
@@ -80,14 +82,13 @@ window.onload = () => {
     const play = (element, volumeDelta) => {
         const keySize = DefinitionSet.widthRight * 2 * (element.getBoundingClientRect().height / DefinitionSet.halfSize / 2);
         const relative = Math.abs(volumeDelta)/keySize;
-        //console.log(element, "Relative: " + Math.abs(volumeDelta)/keySize);
         instrument.play(true, 0, pitch, relative);
     } //play
 
     setMultiTouch(
         svg.element,
         element => element.constructor == SVGPolygonElement,
-        (element, touchObject, on) => {
+        (element, touchObject, on, event) => {
             if (element == keys.pluckingKey) {
                 if (on) {
                     lastElement = element;
@@ -98,13 +99,13 @@ window.onload = () => {
                         play(element, touchObject.clientY - lastCoordinate);
                 } //if    
             } else {
-                if (!on)
-                    instrument.play(false, 0);
+                pitch = getPitch(keys.fretKey, event);
+                instrument.pitchShift(0, pitch);
             } //if
         },
-        (element, touchObject) => { //same element
+        (element, touchObject, event) => { //same element
             if (element != keys.fretKey) return;
-            pitch = getPitch(element, touchObject);
+            pitch = getPitch(keys.fretKey, event);
             instrument.pitchShift(0, pitch);
         });
 

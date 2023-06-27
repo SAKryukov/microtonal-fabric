@@ -12,8 +12,8 @@
 const setMultiTouch = (
     container,
     elementSelector, // element => bool
-    elementHandler,  // (element, Touch touchObject, bool on) => undefined
-    sameElementHandler, // (element, Touch touchObject) => undefined: handles move in the area of the same element
+    elementHandler,  // (element, Touch touchObject, bool on, TouchEvent touchEvent) => undefined
+    sameElementHandler, // (element, Touch touchObject, TouchEvent touchEvent) => undefined: handles move in the area of the same element
 ) => {
 
     if (!container) container = document;
@@ -40,9 +40,9 @@ const setMultiTouch = (
     const isGoodElement = element => element && elementSelector(element); 
     const elementDictionary = {};
     
-    const addRemoveElement = (touch, element, doAdd) => {
+    const addRemoveElement = (touch, element, doAdd, event) => {
         if (isGoodElement(element) && elementHandler)
-            elementHandler(element, touch, doAdd);
+            elementHandler(element, touch, doAdd, event);
         if (doAdd)
             elementDictionary[touch.identifier] = element;
         else
@@ -54,7 +54,7 @@ const setMultiTouch = (
         if (ev.changedTouches.length < 1) return;
         const touch = ev.changedTouches[ev.changedTouches.length - 1];
         const element = document.elementFromPoint(touch.clientX, touch.clientY);
-        addRemoveElement(touch, element, true);    
+        addRemoveElement(touch, element, true, ev);    
     }); //assignTouchStart
     
     assignTouchMove(container, ev => {
@@ -66,16 +66,16 @@ const setMultiTouch = (
             if (goodElement && touchElement) {
                 if (element == touchElement) {
                     if (sameElementHandler)
-                        sameElementHandler(element, touch)
+                        sameElementHandler(element, touch, ev)
                         continue;
                     } //if same
-                addRemoveElement(touch, touchElement, false);            
-                addRemoveElement(touch, element, true);
+                addRemoveElement(touch, touchElement, false, ev);            
+                addRemoveElement(touch, element, truem, ev);
             } else {
                 if (goodElement)
-                    addRemoveElement(touch, element, goodElement);
+                    addRemoveElement(touch, element, goodElement, ev);
                 else
-                    addRemoveElement(touch, touchElement, goodElement);
+                    addRemoveElement(touch, touchElement, goodElement, ev);
             } //if    
         } //loop
     }); //assignTouchMove
@@ -84,7 +84,7 @@ const setMultiTouch = (
         ev.preventDefault();
         for (let touch of ev.changedTouches) {
             const element = document.elementFromPoint(touch.clientX, touch.clientY);
-            addRemoveElement(touch, element, false);
+            addRemoveElement(touch, element, false, ev);
         } //loop
     }); //assignTouchEnd
 
