@@ -9,16 +9,18 @@
 
 class Tone extends ModulatorSet {
 
-    #implementation = { isFmEnvelopeEnabled: true, isAmEnvelopeEnabled: true };
+    #implementation = { isFmEnvelopeEnabled: true, isAmEnvelopeEnabled: true, initialFrequency: null };
 
     constructor(audioContext, frequency, frequencyCompensationGain) {
         super(audioContext, frequency);
         const context = audioContext;
         this.#implementation.context = context;
+        this.#implementation.initialFrequency = frequency;
         this.#implementation.mainOscillator = new OscillatorNode(context, { frequency: frequency });
         this.#implementation.frequencyCompensationGainNode = new GainNode(context, { gain: frequencyCompensationGain });
         this.#implementation.gainEnvelopeNode = new GainNode(context, { gain: 0 });
         this.#implementation.amplitudeModulationNode = new GainNode(context, { gain: 1 });
+        this.#implementation.dynamicGainNode = new GainNode(context, { gain: 1 });
         this.#implementation.frequencyModulationEnvelopeNode = new GainNode(context, { gain: 0 });
         this.#implementation.amplitudeModulationEnvelopeNode = new GainNode(context, { gain: 0 });
         this.#implementation.frequencyModulationEnvelopeNode.connect(this.#implementation.mainOscillator.frequency);
@@ -28,14 +30,16 @@ class Tone extends ModulatorSet {
         this.#implementation.frequencyModulationEnvelope = new Envelope();
         this.#implementation.amplitudeModulationEnvelope = new Envelope();
         this.#implementation.mainOscillator.connect(this.#implementation.frequencyCompensationGainNode);
-        this.#implementation.frequencyCompensationGainNode.connect(this.#implementation.amplitudeModulationNode);
+        this.#implementation.frequencyCompensationGainNode.connect(this.#implementation.dynamicGainNode);
+        this.#implementation.dynamicGainNode.connect(this.#implementation.amplitudeModulationNode);
         this.#implementation.amplitudeModulationNode.connect(this.#implementation.gainEnvelopeNode);
         this.#implementation.mainOscillator.start();
-        this.#implementation.deactivate = _ => {
+        this.#implementation.deactivate = () => {
             super.baseDeactivate();
             this.#implementation.mainOscillator.stop();
             this.#implementation.mainOscillator.disconnect();
             this.#implementation.frequencyCompensationGainNode.disconnect();
+            this.#implementation.dynamicGainNode.disconnect();
             this.#implementation.gainEnvelopeNode.disconnect();
             this.#implementation.amplitudeModulationNode.disconnect();
             this.#implementation.frequencyModulationEnvelopeNode.disconnect();
@@ -43,12 +47,19 @@ class Tone extends ModulatorSet {
         }; //this.#implementation.deactivate
     } //constructor
 
-    play(on) {
+    play(on, frequency, dynamicGain) {
+        if (on) {
+            this.#implementation.mainOscillator.frequency.value = frequency == null ?
+                this.#implementation.initialFrequency : frequency;
+            this.#implementation.dynamicGainNode.gain.value = dynamicGain == null ? 1 : dynamicGain;
+        } //if
         this.#implementation.gainEnvelope.play(this.#implementation.context, this.#implementation.gainEnvelopeNode.gain, on);
         this.#implementation.detuneEnvelope.play(this.#implementation.context, this.#implementation.mainOscillator.detune, on);
         this.#implementation.frequencyModulationEnvelope.play(this.#implementation.context, this.#implementation.frequencyModulationEnvelopeNode.gain, on);
         this.#implementation.amplitudeModulationEnvelope.play(this.#implementation.context, this.#implementation.amplitudeModulationEnvelopeNode.gain, on);
     } //play
+    
+    pitchShift(frequency) { this.#implementation.mainOscillator.frequency.value = frequency; }
 
     set waveform(wave) {
         if (wave.constructor == String)
@@ -92,6 +103,7 @@ class Tone extends ModulatorSet {
     get frequency() { return this.#implementation.mainOscillator.frequency.value; } 
 
     transpose(frequency, frequencyCompensationGain) {
+        this.#implementation.initialFrequency = frequency;
         this.#implementation.mainOscillator.frequency.value = frequency;
         this.#implementation.frequencyCompensationGainNode.gain.value = frequencyCompensationGain;
     } //transpose
