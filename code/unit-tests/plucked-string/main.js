@@ -1,4 +1,4 @@
-/ Microtonal Fabric
+// Microtonal Fabric
 //
 // Copyright (c) Sergey A Kryukov, 2017-2023
 //
