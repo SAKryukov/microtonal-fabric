@@ -16,9 +16,10 @@
             //"file": "${workspaceFolder}/unit-tests/keyboard/index.html"
             //"file": "${workspaceFolder}/SoundBuilder/index.html"
             //"file": "${workspaceFolder}/playground/index.html"
+            "file": "${workspaceFolder}/chordophone/index.html"
             //"file": "${workspaceFolder}/unit-tests/circular-keyboard.html"
             //"file": "${workspaceFolder}/unit-tests/svg-test.html"
-            "file": "${workspaceFolder}/unit-tests/plucked-string/index.html"
+            //"file": "${workspaceFolder}/unit-tests/plucked-string/index.html"
         }
     ]
 }

@@ -1,0 +1,159 @@
+﻿<!DOCTYPE html>
+
+<!--
+// Microtonal Fabric
+//
+// Copyright (c) Sergey A Kryukov, 2017-2021
+//
+// http://www.SAKryukov.org
+// http://www.codeproject.com/Members/SAKryukov
+// https://github.com/SAKryukov
+// https://github.com/SAKryukov/microtonal-fabric
+-->
+
+<html lang="en-us">
+<head>
+    <title>Microtonal Playground &mdash; Microtonal Fabric</title>
+    <meta charset="utf-8"/>
+    <meta name="url" content="https://github.com/SAKryukov/microtonal-fabric"/>
+    <meta name="author" content="Sergey A Kryukov"/>
+    <meta name="url" content="https://www.SAKryukov.org"/>
+    <script src="../definition-set.js"></script>
+    <script src="../agnostic/test-js-engine.js"></script>
+    <script src="../agnostic/enumeration.js"></script>
+    <script src="../agnostic/interfaces.js"></script>
+    <!--script src="../agnostic/mathematics.js"></script-->
+    <script src="main/interval-mimic.js"></script>
+    <script src="../agnostic/initialization-controller.js"></script>
+    <script src="../ui.components/multitouch.js"></script>
+    <script src="../ui.components/abstract-keyboard.js"></script>
+    <script src="../ui.components/grid-keyboard.js"></script>
+    <script src="../ui.components/slider.js"></script>
+    <script src="../ui.components/button.js"></script>
+    <script src="../ui.components/recorder.js"></script>
+    <script src="../ui.components/recorder-control.js"></script>
+    <script src="../ui.components/global-key-tracker.js"></script>
+    <script src="../ui.components/metadata.js"></script>
+    <script src="../sound/definition-set.js"></script>
+    <script src="../sound/chain-node.js"></script>
+    <script src="../sound/envelope.js"></script>
+    <script src="../sound/modulator.js"></script>
+    <script src="../sound/modulator-set.js"></script>
+    <script src="../sound/tone.js"></script>
+    <script src="../sound/instrument.js"></script>
+    <script src="../instruments/instrument-list.js"></script>
+    <script src="ui/playground-keyboard.js"></script>
+    <script src="ui/elements.js"></script>
+    <script src="ui/metadata.js"></script>
+    <script src="main/user-population.js"></script>
+    <script src="main/main.js"></script>
+    <style>
+        :root {
+            --vertical-gap: 0.2em;
+            --horizontal-gap: 0.6em;
+            --big-vertical-gap: 0.4em;
+            --big-horizontal-gap: 1.6em;
+            --small-horizontal-gap: 0.4em;
+            --frame: 0.2em 0.6em 0.2em 0.6em;
+        }
+        * { margin: 0; padding: 0; font-family: sans-serif; box-sizing: content-box; user-select: none; }
+        header { touch-action: none; }
+        main { padding-right: 1em; padding-top: var(--big-vertical-gap); }
+        main p { height: var(--big-vertical-gap); }
+        main > article > p { width: var(--horizontal-gap); }
+        /* flex: */
+        html, body { height: 100%; }
+        body { display: flex; flex-flow: column; }
+        main { flex: auto; overflow: auto; }
+        /* end flex */
+        footer { background: oldlace; padding: 0.2em; padding-bottom: 0.4em; padding-left: 0.4rem; padding-right: 0.4rem; border-top: solid gray thin; font-size: 60%; }
+        body > section { margin-left: auto; margin-right: auto; margin-top: 3em; margin-bottom: 4em; }
+        body > section > button { padding: 0.2em; padding-left:1em; padding-right:1em; border: solid thin navy; font-size: 120%; }
+        body > section > button, body > section > button:focus { border-radius: 2px; border-style: solid solid solid solid; background-color: yellow; }
+        body > section > button
+        header { padding: 0.6em; }
+        main article { margin: 0; display: flex; white-space: nowrap; width: 100%; align-items: center; }
+        main article div { white-space: nowrap; width: 100%; }
+        main article label { margin-right: var(--small-horizontal-gap); }
+        main > section, details, details section > section { display: inline-block; }
+        main > details { margin-left: var(--horizontal-gap); }
+        main > section, main > section > label { vertical-align: top; }
+        details section > section:last-of-type { margin-left: var(--big-horizontal-gap); }
+        details section button { margin-top: var(--big-vertical-gap); width: 12em; }
+        button {
+            outline: none;
+            border: solid 2px;
+            border-radius: 0.6em;
+            padding: var(--frame);
+        }
+        button[disabled] { border-color: silver; color: silver; border-style: double; }
+        button:active { background-color: var(--light-title-background); filter: brightness(116%); }
+        button:focus {
+            border-style: double dotted double dotted;
+        }
+        button.st {
+            background: lightgray;
+            padding-bottom: 0.3em;
+            border-color: slategray;
+        }
+        button.st.down {
+            background: darkslategray;
+            color: white;
+            border-color: lightgreen;
+        }
+        button span { opacity: 0.2; }
+        button.st.down span { color: lightgreen; font-weight: normal; opacity: 1; };
+        #keyboard-control > button { margin-right: var(--big-horizontal-gap); }
+        #sound-control > label { padding-left: var(--big-horizontal-gap); }
+        main { padding: var(--horizontal-gap); padding-bottom: 0; }
+        header { padding: var(--horizontal-gap); padding-bottom: 0; }
+    </style>
+</head>
+
+<body>
+
+    <section><button>Start</button></section>
+    <header><section id="keyboard"></section></header>
+
+    <main>
+        <section id="keyboard-control">
+            <button class="st down" accesskey="F"><span>&#x2B24;</span> <u>F</u>it</button>
+            <button class="st down" accesskey="U"><span>&#x2B24;</span> <u>U</u>se Hightlight</button>
+            <button class="st down" ><span>&#x2B24;</span>Tonal System Metadata&hellip;</button>
+            <button accesskey="M"><u>R</u>eset All Modes</button>
+            <span>(Ctrl+Click: change mode)</span>
+        </section>
+        <p/>
+        <article id="sound-control">
+            <button class="st down" accesskey="S"><span>&#x2B24;</span> <u>S</u>ustain</button>
+            <p/>
+            <div id="slider-sustain"></div>
+            <label data-disabled-color="lightGray" for="slider-transposition-control" accesskey="T"><u>T</u>ransposition:</label>
+            <div id="slider-transposition"></div>
+        </article>
+        <p/>
+        <article id="volume-control">
+            <label for="slider-volume-control" accesskey="V"><u>V</u>olume:</label>
+            <div id="slider-volume"></div>
+        </article>
+        <p/>
+        <section>
+            <label>Instrument: <select id="instrument"></select></label>
+        </section>
+        <details><summary accesskey="R"><u>R</u>ecorder</summary>
+            <section id="recorder">
+                <section>
+                    <button class="st down" data-direct-access-key="R"><span>&#x2B24;</span> Record (R)</button><br/>
+                    <button data-cancel-name="Cancel (1)" accesskey="P" data-direct-access-key="1"><u>P</u>lay (1)</button>
+                </section>
+                <section>
+                    <button accesskey="O" data-direct-access-key="C">T<u>o</u> Clipboard (C)</button><br/>
+                    <button accesskey="M" data-direct-access-key="V">Fro<u>m</u> Clipboard (V)</button><br/>
+                </section>
+            </section>
+        </details>
+   </main>
+   <footer><span></span><span style="padding-left: 1em; padding-right: 1em">&bigstar;</span><a href="help.html">Help</a></footer>
+
+</body>
+</html>
