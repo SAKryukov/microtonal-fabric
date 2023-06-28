@@ -1,4 +1,4 @@
-﻿// Microtonal Fabric
+// Microtonal Fabric
 //
 // Copyright (c) Sergey A Kryukov, 2017-2021
 //
@@ -11,7 +11,7 @@
 
 const sharedDefinitionSet = {
 
-    version: "5.5",
+    version: "5.6",
     years: "2017-2023",
 
     soundControl: {
