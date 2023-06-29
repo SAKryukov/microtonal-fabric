@@ -19,30 +19,31 @@ function handleGoodBrowser(scripts, successAction, errorAction) {
         column: null,
         error: null
     };
+
     const incompatibleMessage = function(message, style, showDiagnostics) {
         while (document.body.lastChild) document.body.removeChild(document.body.lastChild);
         document.body.style.padding = "1em";
-        var text = document.createElement("p");
+        const text = document.createElement("p");
         text.textContent = message;
         if (style)
-            for (var styleIndex in style)
+            for (let styleIndex in style)
                 text.style[styleIndex] = style[styleIndex];
         document.body.appendChild(text);
         if (showDiagnostics) {
-            var error = document.createElement("p");
+            const error = document.createElement("p");
             error.style.marginTop = "3em";
-            var text = "Diagnostics:<br/><br/>";
-            for (var element in globalError)
+            const text = "Diagnostics:<br/><br/>";
+            for (let element in globalError)
                 text += element + ": " + globalError[element] + "<br/>";
             error.innerHTML = text;
-            document.body.appendChild(error);
+            document.head.appendChild(error);
         } // if showDiagnostics
     }; //incompatibleMessage
     
     // no "const", "let", lambda-like syntax () => {}, not "for... of Object",
     // no String.prototype.includes -- it won't work with some bad browsers    
 
-    const saveBodyLoadHandler = document.body.onload;
+    const saveWindowLoadHandler = window.onload;
     let hasError = false;
     window.onerror = function (message, source, line, column, error) {
         hasError = true;
@@ -66,16 +67,16 @@ function handleGoodBrowser(scripts, successAction, errorAction) {
         scriptElement.onerror = function () {
             throw new URIError("error");
         }; //scriptElement.onerror
-        document.body.appendChild(scriptElement);
+        document.head.appendChild(scriptElement);
     }; //loadScript
     loadScript();
     window.onerror = window.onerror;
-    document.body.onload = function () {
+    window.onload = function () {
         if (hasError && errorAction) {
             errorAction(incompatibleMessage);
         } else if (!hasError && successAction)
             successAction();
-        document.body.onload = saveBodyLoadHandler;
+        window.onload = saveWindowLoadHandler;
     }; //if hasError
 
 } //handleGoodBrowser
