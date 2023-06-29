@@ -9,7 +9,10 @@
 
 "use strict";
 
+const previousWindowLoadHandler = window.onload;
 window.onload = () => {
+
+    if (previousWindowLoadHandler) previousWindowLoadHandler();
 
     const DefinitionSet = {
         halfSize: 1,
@@ -109,4 +112,4 @@ window.onload = () => {
             instrument.pitchShift(0, pitch);
         });
 
-};
+}; //body.onload
