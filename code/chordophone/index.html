@@ -16,7 +16,6 @@
     <title>Touchscreen Test</title>
     <meta charset="utf-8"/>
     <script src="../agnostic/good-browser.js"></script>
-    <script src="main/main.js"></script>
     <style>
         * { font-family: sans-serif; font-size: 110%; touch-action: none; user-select: none; box-sizing: content-box; }
         main { display: none; }
@@ -26,34 +25,7 @@
 <body> <button>Start</button>
   <main></main>
 
-  <script>
-    handleGoodBrowser([
-      "../agnostic/interfaces.js",
-      "../agnostic/test-js-engine.js",
-      "../agnostic/enumeration.js",
-      "../agnostic/mathematics.js",
-      "../agnostic/initialization-controller.js",
-      "../ui.components/metadata.js",
-      "../ui.components/multitouch.js",
-      "../ui.components/SVG.js",
-      "../sound/definition-set.js",
-      "../sound/chain-node.js",
-      "../sound/envelope.js",
-      "../sound/modulator.js",
-      "../sound/modulator-set.js",
-      "../sound/tone.js",
-      "../sound/instrument.js",
-      "../instruments/instrument-list.js",
-      "ui/keyboard.js",
-      "main/start.js"],
-      null,
-      function (incompatibleMessage) {
-        incompatibleMessage(
-          "Sorry, this browser does not support essential required features",
-          { fontSize: "120%", textAlign: "center" },
-          false);
-      });
-  </script>
+  <script src="main/main.js"></script>
 
 </body>
 </html>
