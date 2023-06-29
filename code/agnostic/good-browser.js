@@ -11,7 +11,7 @@
 
 function handleGoodBrowser(scripts, successAction, errorAction) {
 
-    var globalError = {
+    const globalError = {
         hasError: false,
         message: null,
         source: null,
@@ -19,7 +19,7 @@ function handleGoodBrowser(scripts, successAction, errorAction) {
         column: null,
         error: null
     };
-    var incompatibleMessage = function(message, style, showDiagnostics) {
+    const incompatibleMessage = function(message, style, showDiagnostics) {
         while (document.body.lastChild) document.body.removeChild(document.body.lastChild);
         document.body.style.padding = "1em";
         var text = document.createElement("p");
@@ -42,12 +42,8 @@ function handleGoodBrowser(scripts, successAction, errorAction) {
     // no "const", "let", lambda-like syntax () => {}, not "for... of Object",
     // no String.prototype.includes -- it won't work with some bad browsers    
 
-    var saveWindowErrorHandler = window.onerror;
-    var saveBodyLoadHandler = document.body.onload;
-    var hasError = false;
-    var errorSource = null;
-    var errorLine = null;
-    var errorMessage = null;
+    const saveBodyLoadHandler = document.body.onload;
+    let hasError = false;
     window.onerror = function (message, source, line, column, error) {
         hasError = true;
         globalError.hasError = true;
@@ -57,11 +53,11 @@ function handleGoodBrowser(scripts, successAction, errorAction) {
         globalError.column = column;
         globalError.error = error;
     };
-    var currentOrder = 0;
+    let currentOrder = 0;
     function loadScript() {
         if (currentOrder == scripts.length)
             return;
-        var scriptElement = document.createElement("script");
+        const scriptElement = document.createElement("script");
         scriptElement.src = scripts[currentOrder];
         scriptElement.onload = function () {
             currentOrder++;
