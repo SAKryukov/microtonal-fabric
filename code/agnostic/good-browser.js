@@ -32,11 +32,11 @@ function handleGoodBrowser(scripts, successAction, errorAction) {
         if (showDiagnostics) {
             const error = document.createElement("p");
             error.style.marginTop = "3em";
-            const text = "Diagnostics:<br/><br/>";
+            let text = "Diagnostics:<br/><br/>";
             for (let element in globalError)
                 text += element + ": " + globalError[element] + "<br/>";
             error.innerHTML = text;
-            document.head.appendChild(error);
+            document.body.appendChild(error);
         } // if showDiagnostics
     }; //incompatibleMessage
     

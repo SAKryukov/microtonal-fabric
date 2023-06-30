@@ -21,6 +21,6 @@ handleGoodBrowser([
     function (incompatibleMessage) {
       incompatibleMessage(
         "Sorry, this browser does not support essential required features",
-        { fontSize: "120%", textAlign: "center" },
+        { fontSize: "320%", textAlign: "center" },
         false);
 });

@@ -9,10 +9,15 @@
 
 "use strict";
 
-const previousWindowLoadHandler = window.onload;
+const chainWindowLoadHandler = window.onload;
 window.onload = () => {
 
-    if (previousWindowLoadHandler) previousWindowLoadHandler();
+    if (chainWindowLoadHandler) chainWindowLoadHandler();
+
+    if (!goodJavaScriptEngine) {
+        document.body.innerHTML = "<h1>Incompatible Javascript Engine</h1>";
+        return;
+    } //if
 
     const DefinitionSet = {
         halfSize: 1,
