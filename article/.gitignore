@@ -1,1 +1,4 @@
 .html
+
+# Ignoring this file only at this directory level:
+/working.notes.txt
