@@ -16,6 +16,8 @@ const setMultiTouch = (
     sameElementHandler, // (element, Touch touchObject, TouchEvent touchEvent) => undefined: handles move in the area of the same element
 ) => {
 
+    if (!elementSelector)
+        return;
     if (!container) container = document;
 
     const assignEvent = (element, name, handler) => {
@@ -30,12 +32,6 @@ const setMultiTouch = (
     const assignTouchEnd = (element, handler) => {
         assignEvent(element, "touchend", handler);
     };
-
-    if (!elementSelector)
-        return {
-            assignTouchStart: assignTouchStart,
-            assignTouchMove: assignTouchMove,
-            dynamicAlgorithm: (touch, volumeDivider) => { return Math.pow(touch.radiusX * touch.radiusY, 2) / volumeDivider; }};
 
     const isGoodElement = element => element && elementSelector(element); 
     const elementDictionary = {};
