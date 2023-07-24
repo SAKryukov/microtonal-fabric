@@ -102,9 +102,15 @@ The function `setMultiTouch` assumes the following UI model of the multitouch se
 The function accepts four input arguments, `container`, and three handlers:
 
 - `container`: HTML or SVG handling multitouch events
-- `elementSelector`: this hander `element => bool` selects relevant children of the `container`, if this handler returns `false`, the event is ignored. Essentially, this handler is used by the user code to define the HTML or SVG elements to be interpreted as keys of some keyboard represented by the `container`.
-- `elementHandler`: this handler `(element, Touch touchObject, bool on) => undefined` is used to implement the main functionality, for example, produce sounds in response to the keyboard events; the handler accepts `element`, a touch object, and a Boolean `on` argument showing if this is an "on" or "off" action. Basically, this handler calls a general semantic handler which can be triggered in different ways, for example, through a keyboard or a mouse. Essentially, it implements the action triggered when a keyboard key, represented by `element` is activated or deactivated, depending on the value of `on`.
-- `sameElementHandler`: this handler `(element, Touch touchObject) => undefined` implements handling of the touch events within the same element representing a key.
+- `elementSelector`: the handler to select relevant children in `container`.
+<br/>
+Profile: `element => bool`
+<br/>If this handler returns `false`, the event is ignored. Essentially, this handler is used by the user code to define the HTML or SVG elements to be interpreted as keys of some keyboard represented by the `container`.
+- `elementHandler`: the handler used to implement main keyboard functionality.
+<br/>Profile: `(element, Touch touchObject, bool on, touchEvent event) => undefined`
+<br/>The handler is used to implement the main functionality, for example, produce sounds in response to the keyboard events; the handler accepts `element`, a touch object, and a Boolean `on` argument showing if this is an "on" or "off" action. Basically, this handler calls a general semantic handler which can be triggered in different ways, for example, through a keyboard or a mouse. Essentially, it implements the action triggered when a keyboard key, represented by `element` is activated or deactivated, depending on the value of `on`.
+- `sameElementHandler`: the handler used to handle events within the same element representing a key touch events.
+<br/>Profile: `(element, Touch touchObject) => undefined` 
 
 "ui.components/multitouch.js":{id=code-multitouch}
 
