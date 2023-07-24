@@ -40,8 +40,9 @@ function handleGoodBrowser(scripts, successAction, errorAction) {
         } // if showDiagnostics
     }; //incompatibleMessage
     
-    // no "const", "let", lambda-like syntax () => {}, not "for... of Object",
-    // no String.prototype.includes -- it won't work with some bad browsers    
+    // no lambda-like syntax () => {}, not "for... of Object",
+    // no String.prototype.includes -- it won't work with some bad browsers
+    // but const and let are used
 
     const saveWindowLoadHandler = window.onload;
     let hasError = false;
