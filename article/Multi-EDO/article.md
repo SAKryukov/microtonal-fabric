@@ -1,4 +1,4 @@
-@numbering {
+﻿@numbering {
     enable: false
 }
 
@@ -369,5 +369,9 @@ Sound generation is migrated to the use of [Sound Builder](https://www.codeproje
 #### 5.4{no-toc}
 * Wave FFT (see [Sound Builder](https://www.codeproject.com/Articles/5268512/Sound-Builder)) is migrated to .NET from .NET Core.
 * Refactoring related to the newly created project name, "Microtonal Fabric".
+
+#### 5.6{no-toc}
+* Multitouch functionality is upgraded in order to support the simulation of plucked string instruments, such as guitars, mandolins, and the like. The application mimicking simulation of plucked string instruments is currently under development.
+* Sound system is upgraded to implement volume dynamics and pitch modification effects, such as portamento, finger vibrato, tremolo, or string bending. These effects can be applied to plucked string and other instruments.
 
 <!-- copy to CodeProject to here --------------------------------------------->
