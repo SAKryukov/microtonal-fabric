@@ -109,7 +109,7 @@ Profile: `element => bool`
 - `elementHandler`: the handler used to implement main keyboard functionality.
 <br/>Profile: `(element, Touch touchObject, bool on, touchEvent event) => undefined`
 <br/>The handler is used to implement the main functionality, for example, produce sounds in response to the keyboard events; the handler accepts `element`, a touch object, and a Boolean `on` argument showing if this is an "on" or "off" action. Basically, this handler calls a general semantic handler which can be triggered in different ways, for example, through a keyboard or a mouse. Essentially, it implements the action triggered when a keyboard key, represented by `element` is activated or deactivated, depending on the value of `on`.
-- `sameElementHandler`: the handler used to handle events within the same element representing a key touch events.
+- `sameElementHandler`: the handler used to handle events within the same element
 <br/>Profile: `(element, Touch touchObject) => undefined` 
 
 "ui.components/multitouch.js":{id=code-multitouch}
