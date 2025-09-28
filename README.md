@@ -29,13 +29,13 @@ Specialized [29-EDO](https://SAKryukov.github.io/microtonal-fabric/code/29-EDO) 
 
 ### Original Publications
 
-_[Musical Study with Isomorphic Computer Keyboard](https://www.codeproject.com/Articles/1201737/Musical-Study-with-Isomorphic-Computer-Keyboard)_, August 16, 2017<br/><small>This is the first work of the keyboard-related cycle, and it is not microtonal. However, it contains some theoretical introduction applicable to other works, which are essentially microtonal.</small>
+_[Musical Study with Isomorphic Computer Keyboard](https://sakryukov.github.io/publications/2017-08-16.Musical-Study-with-Isomorphic-Computer-Keyboard.html)_, August 16, 2017<br/><small>This is the first work of the keyboard-related cycle, and it is not microtonal. However, it contains some theoretical introduction applicable to other works, which are essentially microtonal.</small>
 
-_[Microtonal Music Study with Chromatic Lattice Keyboard](https://www.codeproject.com/Articles/1204180/Microtonal-Music-Study-Chromatic-Lattice-Keyboard)_, September 1, 2017
+_[Microtonal Music Study with Chromatic Lattice Keyboard](https://sakryukov.github.io/publications/2017-09-01.Microtonal-Music-Study-with-Chromatic-Lattice-Keyboard.html)_, September 1, 2017
 
-_[Sound Builder, Web Audio Synthesizer](https://www.codeproject.com/Articles/5268512/Sound-Builder)_, May 19, 2020
+_[Sound Builder, Web Audio Synthesizer](https://sakryukov.github.io/publications/2020-05-19.Sound-Builder-Web-Audio-Synthesizer.html)_, May 19, 2020
 
-_[Multitouch Support for Ten-Finger Playing](https://www.codeproject.com/Articles/5362252/Multitouch-Support)_, June 6, 2023
+_[Multitouch Support for Ten-Finger Playing](https://sakryukov.github.io/publications/2023-06-06.Multitouch-Support-for-Ten-Finger-Playing.html)_, June 6, 2023
 
 
 ### See Also
@@ -46,3 +46,4 @@ _[Multitouch Support for Ten-Finger Playing](https://www.codeproject.com/Article
 
 <br/><a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-sa/4.0/88x31.png" /></a>
 This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International License</a>.
+
